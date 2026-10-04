@@ -1,200 +1,298 @@
 import { clamp } from '@/lib/motion-math';
-import { PAPER, RED, TAU, WINE, frac, mix, rgba, roundRectPath, sceneBackground, sceneVignette, type Rgb, type Scene } from './helpers';
+import { PAPER, RED, TAU, WINE, mix, rgba, roundRectPath, sceneBackground, sceneVignette, type Scene } from './helpers';
 
 const W = 1280;
 const H = 960;
 const DURATION = 8;
-const PATH_STEPS = 300;
-const TUBE_STEPS = 6;
-const CAMERA = 640;
+const CAMERA = 9;
+const PITCH = 0.5;
+const UNIT = 78;
 const CENTER_X = W / 2;
-const CENTER_Y = 368;
-const SCALE = 94;
-const WORD = 'MOTION';
+const CENTER_Y = 392;
+const LIFT_UNITS = 1.3;
 const MONO = '600 12px ui-monospace, SFMono-Regular, Menlo, monospace';
 
-const easeOutExpo = (x: number) => (x >= 1 ? 1 : 1 - Math.pow(2, -10 * x));
-const easeInCubic = (x: number) => x * x * x;
-const easeInOut = (x: number) => (x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2);
+type Ease = [number, number, number, number];
+type Keyframe = { time: number; value: number; ease: Ease };
+type TrackName = 'POSITION' | 'SCALE' | 'ROTATION' | 'OPACITY';
+type Track = { name: TrackName; keys: Keyframe[]; format: (value: number) => string };
+
+const TRACKS: Track[] = [
+	{
+		name: 'POSITION',
+		format: value => value.toFixed(2),
+		keys: [
+			{ time: 0, value: 0, ease: [0.16, 0.9, 0.3, 1] },
+			{ time: 1.1, value: 1.5, ease: [0.55, 0, 1, 0.45] },
+			{ time: 2.3, value: 0, ease: [0.2, 0.8, 0.4, 1] },
+			{ time: 2.9, value: 0.45, ease: [0.55, 0, 1, 0.45] },
+			{ time: 3.5, value: 0, ease: [0.16, 0.9, 0.3, 1] },
+			{ time: 5, value: 1, ease: [0.55, 0, 1, 0.45] },
+			{ time: 6.1, value: 0, ease: [0.2, 0.8, 0.4, 1] },
+		],
+	},
+	{
+		name: 'SCALE',
+		format: value => `${value.toFixed(2)}x`,
+		keys: [
+			{ time: 0.5, value: 1, ease: [0.5, 0, 0.2, 1] },
+			{ time: 2.4, value: 1.28, ease: [0.34, 1.4, 0.64, 1] },
+			{ time: 3.9, value: 0.84, ease: [0.4, 0, 0.2, 1] },
+			{ time: 5.6, value: 1.14, ease: [0.45, 0, 0.55, 1] },
+			{ time: 7, value: 1, ease: [0.45, 0, 0.55, 1] },
+		],
+	},
+	{
+		name: 'ROTATION',
+		format: value => `${Math.round(value)}°`,
+		keys: [
+			{ time: 0, value: 0, ease: [0.65, 0, 0.35, 1] },
+			{ time: 1.6, value: 90, ease: [0.3, 0, 0.1, 1] },
+			{ time: 3.2, value: 215, ease: [0.5, 0, 0.5, 1] },
+			{ time: 4.8, value: 270, ease: [0.7, 0, 0.2, 1] },
+			{ time: 6.4, value: 360, ease: [0.45, 0, 0.55, 1] },
+		],
+	},
+	{
+		name: 'OPACITY',
+		format: value => `${Math.round(value * 100)}%`,
+		keys: [
+			{ time: 0.3, value: 0.25, ease: [0.42, 0, 0.58, 1] },
+			{ time: 1.6, value: 0.9, ease: [0.42, 0, 0.58, 1] },
+			{ time: 4.2, value: 0.3, ease: [0.25, 0.1, 0.25, 1] },
+			{ time: 6, value: 0.9, ease: [0.42, 0, 0.58, 1] },
+			{ time: 7.5, value: 0.25, ease: [0.42, 0, 0.58, 1] },
+		],
+	},
+];
+
+function bezierPoint(ease: Ease, u: number): [number, number] {
+	const inv = 1 - u;
+	const x = 3 * inv * inv * u * ease[0] + 3 * inv * u * u * ease[2] + u * u * u;
+	const y = 3 * inv * inv * u * ease[1] + 3 * inv * u * u * ease[3] + u * u * u;
+	return [x, y];
+}
+
+function easeBezierParam(ease: Ease, x: number) {
+	let low = 0;
+	let high = 1;
+	for (let step = 0; step < 22; step += 1) {
+		const mid = (low + high) / 2;
+		if (bezierPoint(ease, mid)[0] < x) low = mid;
+		else high = mid;
+	}
+	return (low + high) / 2;
+}
+
+function easeValue(ease: Ease, x: number) {
+	return bezierPoint(ease, easeBezierParam(ease, x))[1];
+}
+
+function wrapTime(time: number) {
+	return ((time % DURATION) + DURATION) % DURATION;
+}
+
+function valueAt(track: Track, time: number) {
+	const { keys } = track;
+	const t = wrapTime(time);
+	if (t <= keys[0].time) return keys[0].value;
+	for (let i = 0; i < keys.length - 1; i += 1) {
+		if (t < keys[i + 1].time) {
+			const progress = (t - keys[i].time) / (keys[i + 1].time - keys[i].time);
+			return keys[i].value + (keys[i + 1].value - keys[i].value) * easeValue(keys[i].ease, progress);
+		}
+	}
+	return keys[keys.length - 1].value;
+}
+
+type Segment = { track: number; index: number; start: number; end: number };
+
+function focusSegment(time: number): Segment {
+	let active: Segment | null = null;
+	let ended: Segment | null = null;
+	TRACKS.forEach((track, trackIndex) => {
+		for (let i = 0; i < track.keys.length - 1; i += 1) {
+			const segment = { track: trackIndex, index: i, start: track.keys[i].time, end: track.keys[i + 1].time };
+			if (time >= segment.start && time < segment.end) {
+				if (!active || segment.start > active.start) active = segment;
+			} else if (time >= segment.end && (!ended || segment.end > ended.end)) {
+				ended = segment;
+			}
+		}
+	});
+	return active ?? ended ?? { track: 0, index: 0, start: 0, end: TRACKS[0].keys[1].time };
+}
+
+type CubeState = { lift: number; scale: number; rotation: number; opacity: number };
+
+function cubeStateAt(time: number): CubeState {
+	return {
+		lift: valueAt(TRACKS[0], time),
+		scale: valueAt(TRACKS[1], time),
+		rotation: (valueAt(TRACKS[2], time) * Math.PI) / 180,
+		opacity: valueAt(TRACKS[3], time),
+	};
+}
 
 type Vec = [number, number, number];
 
-function knotPath(u: number): Vec {
-	const radius = 2 + Math.cos(3 * u);
-	return [radius * Math.cos(2 * u), radius * Math.sin(2 * u), Math.sin(3 * u)];
+function project(point: Vec) {
+	const cosPitch = Math.cos(PITCH);
+	const sinPitch = Math.sin(PITCH);
+	const y2 = point[1] * cosPitch + point[2] * sinPitch;
+	const z2 = -point[1] * sinPitch + point[2] * cosPitch;
+	const depth = CAMERA / (CAMERA + z2);
+	return { x: CENTER_X + point[0] * UNIT * depth, y: CENTER_Y - (y2 - 1.3 * cosPitch) * UNIT * depth, z: z2, depth };
 }
 
-function ringPath(u: number): Vec {
-	return [2.7 * Math.cos(u), 2.7 * Math.sin(u), 0.9 * Math.sin(4 * u)];
+function rotateYaw(point: Vec, yaw: number): Vec {
+	const cos = Math.cos(yaw);
+	const sin = Math.sin(yaw);
+	return [point[0] * cos + point[2] * sin, point[1], -point[0] * sin + point[2] * cos];
 }
 
-function centerline(u: number, morph: number): Vec {
-	const a = knotPath(u);
-	const b = ringPath(u);
-	return [a[0] + (b[0] - a[0]) * morph, a[1] + (b[1] - a[1]) * morph, a[2] + (b[2] - a[2]) * morph];
+const VERTICES: Vec[] = [
+	[-1, -1, -1],
+	[1, -1, -1],
+	[1, 1, -1],
+	[-1, 1, -1],
+	[-1, -1, 1],
+	[1, -1, 1],
+	[1, 1, 1],
+	[-1, 1, 1],
+];
+
+const FACES: { corners: [number, number, number, number]; normal: Vec }[] = [
+	{ corners: [0, 1, 2, 3], normal: [0, 0, -1] },
+	{ corners: [5, 4, 7, 6], normal: [0, 0, 1] },
+	{ corners: [4, 0, 3, 7], normal: [-1, 0, 0] },
+	{ corners: [1, 5, 6, 2], normal: [1, 0, 0] },
+	{ corners: [3, 2, 6, 7], normal: [0, 1, 0] },
+	{ corners: [4, 5, 1, 0], normal: [0, -1, 0] },
+];
+
+const LIGHT: Vec = [-0.45, 0.85, -0.55];
+
+function placeVertex(vertex: Vec, state: CubeState): Vec {
+	const scaled: Vec = [vertex[0] * state.scale, vertex[1] * state.scale, vertex[2] * state.scale];
+	const turned = rotateYaw(scaled, state.rotation);
+	return [turned[0], turned[1] + state.scale + state.lift * LIFT_UNITS, turned[2]];
 }
 
-function cross(a: Vec, b: Vec): Vec {
-	return [a[1] * b[2] - a[2] * b[1], a[2] * b[0] - a[0] * b[2], a[0] * b[1] - a[1] * b[0]];
-}
-
-function normalize(v: Vec): Vec {
-	const length = Math.hypot(v[0], v[1], v[2]) || 1;
-	return [v[0] / length, v[1] / length, v[2] / length];
-}
-
-function project(point: Vec, yaw: number, pitch: number) {
-	const cosYaw = Math.cos(yaw);
-	const sinYaw = Math.sin(yaw);
-	const x1 = point[0] * cosYaw + point[2] * sinYaw;
-	const z1 = -point[0] * sinYaw + point[2] * cosYaw;
-	const cosPitch = Math.cos(pitch);
-	const sinPitch = Math.sin(pitch);
-	const y2 = point[1] * cosPitch - z1 * sinPitch;
-	const z2 = point[1] * sinPitch + z1 * cosPitch;
-	const depth = CAMERA / (CAMERA + z2 * SCALE);
-	return { x: CENTER_X + x1 * SCALE * depth, y: CENTER_Y + y2 * SCALE * depth, depth, z: z2 };
-}
-
-function heat(color: Rgb, amount: number): Rgb {
-	return mix(color, RED, amount);
-}
-
-function drawOrbits(ctx: CanvasRenderingContext2D, t: number) {
-	ctx.globalCompositeOperation = 'lighter';
-	ctx.lineWidth = 1;
-	for (let ring = 0; ring < 3; ring += 1) {
-		const radius = 300 + ring * 62;
-		const tilt = 0.32 + ring * 0.07;
-		const spin = (TAU * t) / DURATION;
-		ctx.save();
-		ctx.translate(CENTER_X, CENTER_Y);
-		ctx.rotate(-0.28 + ring * 0.2);
-		ctx.strokeStyle = rgba(PAPER, 0.07 + ring * 0.015);
-		ctx.setLineDash([2, 9 + ring * 5]);
-		ctx.beginPath();
-		ctx.ellipse(0, 0, radius, radius * tilt, 0, 0, TAU);
-		ctx.stroke();
-		ctx.setLineDash([]);
-		const direction = ring % 2 === 0 ? 1 : -1;
-		const angle = direction * spin * (ring + 1) + ring * 2.1;
-		const sx = Math.cos(angle) * radius;
-		const sy = Math.sin(angle) * radius * tilt;
-		const glow = ctx.createRadialGradient(sx, sy, 0, sx, sy, 18);
-		glow.addColorStop(0, rgba(RED, 0.9));
-		glow.addColorStop(1, rgba(RED, 0));
-		ctx.fillStyle = glow;
-		ctx.fillRect(sx - 18, sy - 18, 36, 36);
-		ctx.fillStyle = rgba(PAPER, 0.95);
-		ctx.beginPath();
-		ctx.arc(sx, sy, 2.6, 0, TAU);
-		ctx.fill();
-		ctx.restore();
-	}
-}
-
-function drawWord(ctx: CanvasRenderingContext2D, t: number) {
+function drawFloor(ctx: CanvasRenderingContext2D, state: CubeState) {
 	ctx.globalCompositeOperation = 'source-over';
-	ctx.font = '800 200px "Inter", "Helvetica Neue", Arial, sans-serif';
-	ctx.textBaseline = 'alphabetic';
-	const spacing = 14;
-	const widths = [...WORD].map(letter => ctx.measureText(letter).width);
-	const total = widths.reduce((sum, width) => sum + width, 0) + spacing * (WORD.length - 1);
-	let x = CENTER_X - total / 2;
-	const baseline = CENTER_Y + 78;
-
-	[...WORD].forEach((letter, index) => {
-		const enter = easeOutExpo(clamp((t - 0.25 - index * 0.11) / 1.3));
-		const exit = easeInCubic(clamp((t - 6.35 - index * 0.07) / 0.95));
-		const visible = enter * (1 - exit);
-		if (visible > 0.001) {
-			const lift = (1 - enter) * 150 - exit * 90;
-			ctx.save();
-			ctx.translate(x + widths[index] / 2, baseline + lift);
-			ctx.scale(1, 0.6 + 0.4 * enter);
-			ctx.lineWidth = 1.5;
-			ctx.strokeStyle = rgba(PAPER, 0.2 * visible);
-			ctx.textAlign = 'center';
-			ctx.strokeText(letter, 0, 0);
-			const sweep = frac((t - 0.8 - index * 0.14) / DURATION);
-			const fillAlpha = 0.05 + 0.1 * Math.pow(Math.max(0, Math.sin(Math.PI * clamp(sweep * 3.2))), 2);
-			ctx.fillStyle = rgba(RED, fillAlpha * visible);
-			ctx.fillText(letter, 0, 0);
-			ctx.restore();
-		}
-		x += widths[index] + spacing;
-	});
-}
-
-function drawKnot(ctx: CanvasRenderingContext2D, t: number) {
-	const cycle = t / DURATION;
-	const morphWave = 0.5 - 0.5 * Math.cos(TAU * cycle);
-	const morph = easeInOut(clamp((morphWave - 0.12) / 0.76));
-	const yaw = TAU * cycle;
-	const pitch = 0.55 + 0.28 * Math.sin(TAU * cycle);
-	const travel = TAU * cycle * 2;
-
-	const path: Vec[] = [];
-	for (let i = 0; i <= PATH_STEPS; i += 1) path.push(centerline((i / PATH_STEPS) * TAU, morph));
-
-	const tubeRadius = 0.34 + 0.06 * Math.sin(TAU * cycle * 2);
-
-	ctx.globalCompositeOperation = 'lighter';
-	const bloom = ctx.createRadialGradient(CENTER_X, CENTER_Y, 0, CENTER_X, CENTER_Y, 380);
-	bloom.addColorStop(0, rgba(RED, 0.22));
-	bloom.addColorStop(1, rgba(RED, 0));
-	ctx.fillStyle = bloom;
-	ctx.fillRect(0, 0, W, 800);
-
-	for (let i = 0; i < PATH_STEPS; i += 1) {
-		const current = path[i];
-		const next = path[i + 1];
-		const tangent = normalize([next[0] - current[0], next[1] - current[1], next[2] - current[2]]);
-		const helper: Vec = Math.abs(tangent[2]) > 0.9 ? [1, 0, 0] : [0, 0, 1];
-		const normalA = normalize(cross(tangent, helper));
-		const normalB = cross(tangent, normalA);
-		const along = i / PATH_STEPS;
-		const pulse = Math.pow(0.5 + 0.5 * Math.sin(TAU * along * 2 - travel), 7);
-
-		for (let k = 0; k < TUBE_STEPS; k += 1) {
-			const angle = (k / TUBE_STEPS) * TAU + along * 14;
-			const cosAngle = Math.cos(angle) * tubeRadius;
-			const sinAngle = Math.sin(angle) * tubeRadius;
-			const point: Vec = [
-				current[0] + normalA[0] * cosAngle + normalB[0] * sinAngle,
-				current[1] + normalA[1] * cosAngle + normalB[1] * sinAngle,
-				current[2] + normalA[2] * cosAngle + normalB[2] * sinAngle,
-			];
-			const view = project(point, yaw, pitch);
-			const facing = clamp(0.5 - view.z * 0.22);
-			const base = mix(WINE, PAPER, Math.pow(facing, 1.8));
-			const color = heat(base, clamp(pulse * 1.1 + 0.18 * (1 - facing)));
-			const size = (0.9 + facing * 1.5 + pulse * 1.6) * view.depth;
-			ctx.fillStyle = rgba(color, 0.35 + facing * 0.55);
-			ctx.fillRect(view.x - size / 2, view.y - size / 2, size, size);
-		}
-
-		const view = project(current, yaw, pitch);
-		const nextView = project(next, yaw, pitch);
-		ctx.strokeStyle = rgba(RED, 0.1 + 0.55 * pulse);
-		ctx.lineWidth = 0.8 + pulse * 1.6;
+	const extent = 6;
+	for (let line = -extent; line <= extent; line += 1) {
+		const fade = 1 - Math.abs(line) / (extent + 1);
+		ctx.strokeStyle = rgba(PAPER, 0.05 + 0.1 * fade * fade);
+		ctx.lineWidth = 1;
+		const a = project([line, 0, -extent]);
+		const b = project([line, 0, extent]);
 		ctx.beginPath();
-		ctx.moveTo(view.x, view.y);
-		ctx.lineTo(nextView.x, nextView.y);
+		ctx.moveTo(a.x, a.y);
+		ctx.lineTo(b.x, b.y);
+		ctx.stroke();
+		const c = project([-extent, 0, line]);
+		const d = project([extent, 0, line]);
+		ctx.beginPath();
+		ctx.moveTo(c.x, c.y);
+		ctx.lineTo(d.x, d.y);
 		ctx.stroke();
 	}
 
-	const headIndex = Math.floor(frac(cycle * 2) * PATH_STEPS);
-	const head = project(path[headIndex], yaw, pitch);
-	const flare = ctx.createRadialGradient(head.x, head.y, 0, head.x, head.y, 40);
-	flare.addColorStop(0, rgba(PAPER, 0.95));
-	flare.addColorStop(0.25, rgba(RED, 0.8));
-	flare.addColorStop(1, rgba(RED, 0));
-	ctx.fillStyle = flare;
-	ctx.fillRect(head.x - 40, head.y - 40, 80, 80);
+	const center = project([0, 0, 0]);
+	const height = state.lift * LIFT_UNITS;
+	const spread = state.scale * (1 + height * 0.18);
+	const strength = clamp(0.8 - height * 0.28);
+	ctx.save();
+	ctx.translate(center.x, center.y);
+	ctx.scale(1, Math.sin(PITCH));
+	const shadow = ctx.createRadialGradient(0, 0, 0, 0, 0, UNIT * 2.1 * spread);
+	shadow.addColorStop(0, rgba(RED, 0.55 * strength));
+	shadow.addColorStop(0.45, rgba(WINE, 0.4 * strength));
+	shadow.addColorStop(1, rgba(WINE, 0));
+	ctx.fillStyle = shadow;
+	ctx.beginPath();
+	ctx.arc(0, 0, UNIT * 2.1 * spread, 0, TAU);
+	ctx.fill();
+	ctx.restore();
 }
 
-function drawFrameMarks(ctx: CanvasRenderingContext2D, t: number) {
+function drawCube(ctx: CanvasRenderingContext2D, state: CubeState, wireOnly: boolean, alpha: number) {
+	const placed = VERTICES.map(vertex => placeVertex(vertex, state));
+	const projected = placed.map(project);
+
+	const faces = FACES.map(face => {
+		const normal = rotateYaw(face.normal, state.rotation);
+		const cosPitch = Math.cos(PITCH);
+		const sinPitch = Math.sin(PITCH);
+		const normalZ = -normal[1] * sinPitch + normal[2] * cosPitch;
+		const depth = face.corners.reduce((sum, corner) => sum + projected[corner].z, 0) / 4;
+		const light = clamp(normal[0] * LIGHT[0] + normal[1] * LIGHT[1] + normal[2] * LIGHT[2]);
+		return { face, facing: normalZ < 0, depth, light };
+	}).sort((a, b) => b.depth - a.depth);
+
+	faces.forEach(({ face, facing, light }) => {
+		const points = face.corners.map(corner => projected[corner]);
+		ctx.globalCompositeOperation = 'source-over';
+		ctx.beginPath();
+		points.forEach((point, index) => (index === 0 ? ctx.moveTo(point.x, point.y) : ctx.lineTo(point.x, point.y)));
+		ctx.closePath();
+
+		if (!wireOnly) {
+			const tone = mix(WINE, RED, 0.25 + light * 0.75);
+			ctx.fillStyle = rgba(tone, alpha * state.opacity * (facing ? 0.18 + light * 0.62 : 0.06));
+			ctx.fill();
+		}
+
+		ctx.globalCompositeOperation = 'lighter';
+		if (!wireOnly && facing) {
+			ctx.strokeStyle = rgba(PAPER, 0.16 * state.opacity);
+			ctx.lineWidth = 1;
+			for (let step = 1; step < 4; step += 1) {
+				const k = step / 4;
+				const lerpPoint = (from: (typeof points)[number], to: (typeof points)[number]) => ({
+					x: from.x + (to.x - from.x) * k,
+					y: from.y + (to.y - from.y) * k,
+				});
+				const a = lerpPoint(points[0], points[1]);
+				const b = lerpPoint(points[3], points[2]);
+				const c = lerpPoint(points[0], points[3]);
+				const d = lerpPoint(points[1], points[2]);
+				ctx.beginPath();
+				ctx.moveTo(a.x, a.y);
+				ctx.lineTo(b.x, b.y);
+				ctx.moveTo(c.x, c.y);
+				ctx.lineTo(d.x, d.y);
+				ctx.stroke();
+			}
+		}
+
+		const edgeAlpha = (facing ? 1 : 0.28) * alpha;
+		ctx.beginPath();
+		points.forEach((point, index) => (index === 0 ? ctx.moveTo(point.x, point.y) : ctx.lineTo(point.x, point.y)));
+		ctx.closePath();
+		if (!wireOnly) {
+			ctx.strokeStyle = rgba(RED, 0.3 * edgeAlpha);
+			ctx.lineWidth = 7;
+			ctx.stroke();
+		}
+		ctx.strokeStyle = rgba(PAPER, (wireOnly ? 0.6 : 0.95) * edgeAlpha);
+		ctx.lineWidth = wireOnly ? 1.2 : 1.8;
+		ctx.stroke();
+	});
+
+	if (!wireOnly) {
+		projected.forEach(point => {
+			ctx.fillStyle = rgba(PAPER, 0.9);
+			ctx.beginPath();
+			ctx.arc(point.x, point.y, 2.4, 0, TAU);
+			ctx.fill();
+		});
+	}
+}
+
+function drawFrameMarks(ctx: CanvasRenderingContext2D, t: number, state: CubeState) {
 	ctx.globalCompositeOperation = 'source-over';
 	ctx.strokeStyle = rgba(PAPER, 0.28);
 	ctx.lineWidth = 1.2;
@@ -214,33 +312,32 @@ function drawFrameMarks(ctx: CanvasRenderingContext2D, t: number) {
 		ctx.stroke();
 	});
 
+	const frames = Math.floor(t * 60);
+	const code = `00:0${Math.floor(frames / 60)}:${String(frames % 60).padStart(2, '0')}`;
 	ctx.font = MONO;
 	ctx.textBaseline = 'middle';
 	ctx.textAlign = 'left';
-
-	const frames = Math.floor(t * 60);
-	const seconds = Math.floor(frames / 60);
-	const code = `00:0${seconds}:${String(frames % 60).padStart(2, '0')}`;
 	ctx.fillStyle = rgba(RED, 0.95);
 	ctx.fillText(code, inset + 14, 630);
+
+	const readouts = [
+		`POS ${TRACKS[0].format(state.lift)}`,
+		`SCALE ${TRACKS[1].format(state.scale)}`,
+		`ROT ${TRACKS[2].format((state.rotation * 180) / Math.PI)}`,
+		`OPA ${TRACKS[3].format(state.opacity)}`,
+	];
 	ctx.textAlign = 'right';
-	ctx.fillStyle = rgba(PAPER, 0.4);
-	ctx.fillText('60 FPS  ·  4K  ·  LOOP', W - inset - 14, 630);
+	ctx.fillStyle = rgba(PAPER, 0.5);
+	ctx.fillText(readouts.join('   '), W - inset - 14, 630);
 }
 
-const TRACKS: { label: string; keys: number[] }[] = [
-	{ label: 'POSITION', keys: [0.4, 1.9, 3.6, 5.6, 7.2] },
-	{ label: 'SCALE', keys: [0.9, 2.7, 4.3, 6.4] },
-	{ label: 'ROTATION', keys: [0.2, 2.2, 3.9, 5.1, 6.9] },
-	{ label: 'OPACITY', keys: [0.6, 1.5, 4.8, 7.4] },
-];
-
-function drawTimeline(ctx: CanvasRenderingContext2D, t: number) {
+function drawTimeline(ctx: CanvasRenderingContext2D, t: number, focus: Segment) {
 	const x0 = 150;
 	const x1 = 800;
 	const top = 712;
 	const rowHeight = 38;
 	const panelTop = 688;
+	const timeToX = (time: number) => x0 + ((x1 - x0) * time) / DURATION;
 
 	ctx.globalCompositeOperation = 'source-over';
 	roundRectPath(ctx, 56, panelTop, x1 - 56 + 24, 214, 18);
@@ -255,7 +352,7 @@ function drawTimeline(ctx: CanvasRenderingContext2D, t: number) {
 	ctx.textAlign = 'left';
 
 	for (let tick = 0; tick <= 8; tick += 1) {
-		const x = x0 + ((x1 - x0) * tick) / 8;
+		const x = timeToX(tick);
 		ctx.strokeStyle = 'rgba(255, 255, 255, 0.07)';
 		ctx.beginPath();
 		ctx.moveTo(x, top - 6);
@@ -265,38 +362,38 @@ function drawTimeline(ctx: CanvasRenderingContext2D, t: number) {
 		ctx.fillText(`${tick}s`, x + 4, top - 12);
 	}
 
-	const playheadX = x0 + ((x1 - x0) * t) / DURATION;
-
 	TRACKS.forEach((track, row) => {
 		const y = top + row * rowHeight + rowHeight / 2;
-		ctx.fillStyle = rgba(PAPER, 0.55);
+		const focused = focus.track === row;
+		ctx.fillStyle = focused ? rgba(RED, 1) : rgba(PAPER, 0.55);
 		ctx.textAlign = 'left';
-		ctx.fillText(track.label, 76, y);
+		ctx.fillText(track.name, 76, y);
 
 		for (let i = 0; i < track.keys.length - 1; i += 1) {
-			const startX = x0 + ((x1 - x0) * track.keys[i]) / DURATION;
-			const endX = x0 + ((x1 - x0) * track.keys[i + 1]) / DURATION;
-			const active = t >= track.keys[i] && t <= track.keys[i + 1];
+			const a = track.keys[i];
+			const b = track.keys[i + 1];
+			const startX = timeToX(a.time);
+			const endX = timeToX(b.time);
+			const selected = focused && focus.index === i;
+			const running = t >= a.time && t < b.time;
 			roundRectPath(ctx, startX + 3, y - 5, endX - startX - 6, 10, 5);
-			ctx.fillStyle = active ? rgba(RED, 0.42) : 'rgba(255, 255, 255, 0.07)';
+			ctx.fillStyle = selected ? rgba(RED, 0.4) : 'rgba(255, 255, 255, 0.07)';
 			ctx.fill();
-			if (active) {
-				const filled = ((t - track.keys[i]) / (track.keys[i + 1] - track.keys[i])) * (endX - startX - 6);
+			if (running) {
+				const filled = ((t - a.time) / (b.time - a.time)) * (endX - startX - 6);
 				roundRectPath(ctx, startX + 3, y - 5, Math.max(10, filled), 10, 5);
-				ctx.fillStyle = rgba(RED, 0.95);
+				ctx.fillStyle = selected ? rgba(RED, 0.95) : rgba(PAPER, 0.4);
 				ctx.fill();
 			}
 		}
 
 		track.keys.forEach(key => {
-			const x = x0 + ((x1 - x0) * key) / DURATION;
-			const distance = Math.abs(t - key);
-			const flash = Math.pow(clamp(1 - distance / 0.35), 2);
+			const flash = Math.pow(clamp(1 - Math.abs(t - key.time) / 0.35), 2);
 			const size = 6 + flash * 4;
 			ctx.save();
-			ctx.translate(x, y);
+			ctx.translate(timeToX(key.time), y);
 			ctx.rotate(Math.PI / 4);
-			ctx.fillStyle = t >= key ? rgba(PAPER, 0.95) : rgba(PAPER, 0.4);
+			ctx.fillStyle = t >= key.time ? rgba(PAPER, 0.95) : rgba(PAPER, 0.4);
 			if (flash > 0) {
 				ctx.shadowColor = rgba(RED, 1);
 				ctx.shadowBlur = 16 * flash;
@@ -307,6 +404,7 @@ function drawTimeline(ctx: CanvasRenderingContext2D, t: number) {
 	});
 
 	ctx.shadowBlur = 0;
+	const playheadX = timeToX(t);
 	const lineBottom = top + rowHeight * TRACKS.length + 8;
 	const lineGlow = ctx.createLinearGradient(playheadX - 8, 0, playheadX + 8, 0);
 	lineGlow.addColorStop(0, rgba(RED, 0));
@@ -324,22 +422,25 @@ function drawTimeline(ctx: CanvasRenderingContext2D, t: number) {
 	ctx.fill();
 }
 
-function bezier(p1x: number, p1y: number, p2x: number, p2y: number, u: number): [number, number] {
-	const inv = 1 - u;
-	const x = 3 * inv * inv * u * p1x + 3 * inv * u * u * p2x + u * u * u;
-	const y = 3 * inv * inv * u * p1y + 3 * inv * u * u * p2y + u * u * u;
-	return [x, y];
-}
-
-function drawCurveEditor(ctx: CanvasRenderingContext2D, t: number) {
+function drawCurveEditor(ctx: CanvasRenderingContext2D, t: number, focus: Segment) {
 	const left = 850;
 	const top = 688;
 	const panelW = 374;
 	const panelH = 214;
-	const boxX = left + 40;
-	const boxY = top + 34;
-	const boxW = 292;
-	const boxH = 150;
+	const boxX = left + 42;
+	const boxY = top + 40;
+	const boxW = 288;
+	const boxH = 148;
+	const track = TRACKS[focus.track];
+	const from = track.keys[focus.index];
+	const to = track.keys[focus.index + 1];
+	const ease = from.ease;
+	const rangeLow = -0.3;
+	const rangeHigh = 1.3;
+	const toX = (value: number) => boxX + value * boxW;
+	const toY = (value: number) => boxY + boxH - ((value - rangeLow) / (rangeHigh - rangeLow)) * boxH;
+	const progress = clamp((t - from.time) / (to.time - from.time));
+	const eased = easeValue(ease, progress);
 
 	ctx.globalCompositeOperation = 'source-over';
 	roundRectPath(ctx, left, top, panelW, panelH, 18);
@@ -352,54 +453,57 @@ function drawCurveEditor(ctx: CanvasRenderingContext2D, t: number) {
 	ctx.font = MONO;
 	ctx.textBaseline = 'middle';
 	ctx.textAlign = 'left';
-	ctx.fillStyle = rgba(PAPER, 0.55);
-	ctx.fillText('EASING', left + 22, top + 20);
-
-	const cycle = t / DURATION;
-	const p1x = 0.3 + 0.16 * Math.sin(TAU * cycle);
-	const p1y = 0.5 + 0.45 * Math.sin(TAU * cycle * 2 + 0.6);
-	const p2x = 0.7 + 0.14 * Math.cos(TAU * cycle);
-	const p2y = 0.9 - 0.5 * (0.5 + 0.5 * Math.cos(TAU * cycle * 2));
-
-	const toX = (value: number) => boxX + value * boxW;
-	const toY = (value: number) => boxY + boxH - value * boxH;
+	ctx.fillStyle = rgba(RED, 1);
+	ctx.fillText(track.name, left + 22, top + 20);
+	ctx.fillStyle = rgba(PAPER, 0.45);
+	ctx.fillText(`${track.format(from.value)} → ${track.format(to.value)}`, left + 22 + 92, top + 20);
+	ctx.textAlign = 'right';
+	ctx.fillText(`cubic-bezier(${ease.join(', ')})`, left + panelW - 22, top + panelH - 14);
 
 	ctx.strokeStyle = 'rgba(255, 255, 255, 0.07)';
 	for (let line = 0; line <= 4; line += 1) {
-		ctx.beginPath();
-		ctx.moveTo(boxX, boxY + (boxH * line) / 4);
-		ctx.lineTo(boxX + boxW, boxY + (boxH * line) / 4);
-		ctx.stroke();
 		ctx.beginPath();
 		ctx.moveTo(boxX + (boxW * line) / 4, boxY);
 		ctx.lineTo(boxX + (boxW * line) / 4, boxY + boxH);
 		ctx.stroke();
 	}
-
-	ctx.setLineDash([3, 5]);
-	ctx.strokeStyle = 'rgba(255, 255, 255, 0.18)';
-	ctx.beginPath();
-	ctx.moveTo(toX(0), toY(0));
-	ctx.lineTo(toX(1), toY(1));
-	ctx.stroke();
-	ctx.setLineDash([]);
+	[0, 1].forEach(level => {
+		ctx.strokeStyle = 'rgba(255, 255, 255, 0.2)';
+		ctx.beginPath();
+		ctx.moveTo(boxX, toY(level));
+		ctx.lineTo(boxX + boxW, toY(level));
+		ctx.stroke();
+	});
 
 	ctx.strokeStyle = rgba(PAPER, 0.4);
+	ctx.lineWidth = 1;
 	ctx.beginPath();
 	ctx.moveTo(toX(0), toY(0));
-	ctx.lineTo(toX(p1x), toY(p1y));
+	ctx.lineTo(toX(ease[0]), toY(ease[1]));
 	ctx.moveTo(toX(1), toY(1));
-	ctx.lineTo(toX(p2x), toY(p2y));
+	ctx.lineTo(toX(ease[2]), toY(ease[3]));
 	ctx.stroke();
 
 	ctx.globalCompositeOperation = 'lighter';
-	ctx.lineWidth = 2.4;
+	ctx.lineJoin = 'round';
+	ctx.strokeStyle = rgba(RED, 0.25);
+	ctx.lineWidth = 2;
+	ctx.beginPath();
+	for (let step = 0; step <= 60; step += 1) {
+		const [x, y] = bezierPoint(ease, step / 60);
+		if (step === 0) ctx.moveTo(toX(x), toY(y));
+		else ctx.lineTo(toX(x), toY(y));
+	}
+	ctx.stroke();
+
 	ctx.strokeStyle = rgba(RED, 1);
+	ctx.lineWidth = 2.6;
 	ctx.shadowColor = rgba(RED, 0.9);
 	ctx.shadowBlur = 12;
 	ctx.beginPath();
-	for (let step = 0; step <= 60; step += 1) {
-		const [x, y] = bezier(p1x, p1y, p2x, p2y, step / 60);
+	const reached = easeBezierParam(ease, progress);
+	for (let step = 0; step <= 40; step += 1) {
+		const [x, y] = bezierPoint(ease, (reached * step) / 40);
 		if (step === 0) ctx.moveTo(toX(x), toY(y));
 		else ctx.lineTo(toX(x), toY(y));
 	}
@@ -408,8 +512,8 @@ function drawCurveEditor(ctx: CanvasRenderingContext2D, t: number) {
 
 	ctx.globalCompositeOperation = 'source-over';
 	[
-		[p1x, p1y],
-		[p2x, p2y],
+		[ease[0], ease[1]],
+		[ease[2], ease[3]],
 	].forEach(([x, y]) => {
 		ctx.fillStyle = '#0a0a0d';
 		ctx.strokeStyle = rgba(PAPER, 0.95);
@@ -420,45 +524,44 @@ function drawCurveEditor(ctx: CanvasRenderingContext2D, t: number) {
 		ctx.stroke();
 	});
 
-	const progress = easeInOut(frac(cycle * 2) < 0.5 ? frac(cycle * 2) * 2 : 2 - frac(cycle * 2) * 2);
-	const [dotX, dotY] = bezier(p1x, p1y, p2x, p2y, progress);
-	ctx.strokeStyle = rgba(RED, 0.35);
+	ctx.strokeStyle = rgba(RED, 0.4);
 	ctx.lineWidth = 1;
 	ctx.setLineDash([2, 4]);
 	ctx.beginPath();
-	ctx.moveTo(toX(dotX), toY(dotY));
-	ctx.lineTo(toX(dotX), toY(0));
-	ctx.moveTo(toX(dotX), toY(dotY));
-	ctx.lineTo(toX(0), toY(dotY));
+	ctx.moveTo(toX(progress), toY(eased));
+	ctx.lineTo(toX(progress), toY(rangeLow));
+	ctx.moveTo(toX(progress), toY(eased));
+	ctx.lineTo(toX(0), toY(eased));
 	ctx.stroke();
 	ctx.setLineDash([]);
-	ctx.globalCompositeOperation = 'lighter';
-	const dotGlow = ctx.createRadialGradient(toX(dotX), toY(dotY), 0, toX(dotX), toY(dotY), 20);
-	dotGlow.addColorStop(0, rgba(PAPER, 0.95));
-	dotGlow.addColorStop(0.3, rgba(RED, 0.7));
-	dotGlow.addColorStop(1, rgba(RED, 0));
-	ctx.fillStyle = dotGlow;
-	ctx.fillRect(toX(dotX) - 20, toY(dotY) - 20, 40, 40);
 
-	ctx.globalCompositeOperation = 'source-over';
-	ctx.textAlign = 'right';
-	ctx.fillStyle = rgba(PAPER, 0.4);
-	ctx.fillText(`cubic-bezier(${p1x.toFixed(2)}, ${p1y.toFixed(2)}, ${p2x.toFixed(2)}, ${p2y.toFixed(2)})`, left + panelW - 20, top + 20);
+	ctx.globalCompositeOperation = 'lighter';
+	const glow = ctx.createRadialGradient(toX(progress), toY(eased), 0, toX(progress), toY(eased), 20);
+	glow.addColorStop(0, rgba(PAPER, 0.95));
+	glow.addColorStop(0.3, rgba(RED, 0.7));
+	glow.addColorStop(1, rgba(RED, 0));
+	ctx.fillStyle = glow;
+	ctx.fillRect(toX(progress) - 20, toY(eased) - 20, 40, 40);
 }
 
 export const motionScene: Scene = {
 	width: W,
 	height: H,
 	duration: DURATION,
-	poster: 3.1,
+	poster: 2.0,
 	draw(ctx, t) {
-		sceneBackground(ctx, W, H, 0.09);
-		drawOrbits(ctx, t);
-		drawWord(ctx, t);
-		drawKnot(ctx, t);
-		drawFrameMarks(ctx, t);
-		drawTimeline(ctx, t);
-		drawCurveEditor(ctx, t);
+		sceneBackground(ctx, W, H, 0.1);
+		const state = cubeStateAt(t);
+		const focus = focusSegment(t);
+
+		drawFloor(ctx, state);
+		for (let ghost = 4; ghost >= 1; ghost -= 1) {
+			drawCube(ctx, cubeStateAt(t - ghost * 0.05), true, 0.2 / ghost);
+		}
+		drawCube(ctx, state, false, 1);
+		drawFrameMarks(ctx, t, state);
+		drawTimeline(ctx, t, focus);
+		drawCurveEditor(ctx, t, focus);
 		sceneVignette(ctx, W, H);
 		ctx.globalCompositeOperation = 'source-over';
 	},
