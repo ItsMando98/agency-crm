@@ -27,10 +27,10 @@ export function Reveal({ children, delay = 0, y = 40, className, as = 'div' }: R
 	return (
 		<Tag
 			className={className}
-			initial={reduced ? false : { opacity: 0, y }}
+			initial={{ opacity: 0, y }}
 			whileInView={{ opacity: 1, y: 0 }}
 			viewport={{ once: true, margin: '0px 0px -12% 0px' }}
-			transition={{ duration: 1, delay, ease: EASE_OUT }}
+			transition={{ duration: reduced ? 0 : 1, delay: reduced ? 0 : delay, ease: EASE_OUT }}
 		>
 			{children}
 		</Tag>
@@ -67,13 +67,17 @@ export function MaskedLines({
 					<motion.span
 						className={lineClassName}
 						style={{ display: 'block' }}
-						initial={reduced ? 'shown' : 'hidden'}
+						initial="hidden"
 						variants={{
 							hidden: { y: '115%', rotate: 3 },
 							shown: {
 								y: '0%',
 								rotate: 0,
-								transition: { duration: 1.1, delay: delay + index * stagger, ease: EASE_OUT },
+								transition: {
+									duration: reduced ? 0 : 1.1,
+									delay: reduced ? 0 : delay + index * stagger,
+									ease: EASE_OUT,
+								},
 							},
 						}}
 						{...animateProps}
@@ -149,10 +153,14 @@ export function Counter({ to, decimals = 0, prefix = '', suffix = '', duration =
 	const ref = useRef<HTMLSpanElement>(null);
 	const inView = useInView(ref, { once: true, margin: '0px 0px -15% 0px' });
 	const reduced = useReducedMotion();
-	const [value, setValue] = useState(reduced ? to : 0);
+	const [value, setValue] = useState(0);
 
 	useEffect(() => {
-		if (!inView || reduced) return;
+		if (!inView) return;
+		if (reduced) {
+			setValue(to);
+			return;
+		}
 		const controls = animate(0, to, {
 			duration,
 			ease: EASE_OUT,
