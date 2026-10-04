@@ -1,0 +1,10 @@
+{
+  "name": "roaswell-expertise-google",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "check": "npx --yes hyperframes@0.8.124 check",
+    "render": "npx --yes hyperframes@0.8.124 render --fps 24 --quality high -o out/expertise-google.mp4",
+    "dev": "npx --yes hyperframes@0.8.124 preview"
+  }
+}

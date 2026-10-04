@@ -1,9 +1,8 @@
-import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { useLayoutEffect, useRef, useState } from 'react';
 import { Link } from 'react-router';
 import { ArrowUp, ArrowUpRight } from 'lucide-react';
 import {
 	motion,
-	useInView,
 	useMotionValue,
 	useReducedMotion,
 	useScroll,
@@ -13,6 +12,7 @@ import {
 } from 'framer-motion';
 import { disciplines } from '@/data/expertise';
 import { Magnetic } from '@/components/motion/primitives';
+import { LoopVideo } from '@/components/motion/loop-video';
 import { clamp } from '@/lib/motion-math';
 
 const WORD = 'ROASWELL';
@@ -113,37 +113,11 @@ function FooterWordmark({ progress }: { progress: MotionValue<number> }) {
 }
 
 function FooterVideo({ progress }: { progress: MotionValue<number> }) {
-	const ref = useRef<HTMLVideoElement>(null);
-	const wrapRef = useRef<HTMLDivElement>(null);
-	const inView = useInView(wrapRef, { margin: '200px 0px 0px 0px' });
-	const reduced = useReducedMotion();
 	const y = useTransform(progress, [0, 1], ['-8%', '0%']);
 
-	useEffect(() => {
-		const video = ref.current;
-		if (!video || reduced) return;
-		if (inView) {
-			video.play().catch(() => undefined);
-		} else {
-			video.pause();
-		}
-	}, [inView, reduced]);
-
 	return (
-		<div ref={wrapRef} className="footer-media" aria-hidden="true">
-			<motion.video
-				ref={ref}
-				className="footer-video"
-				style={{ y }}
-				muted
-				loop
-				playsInline
-				preload="none"
-				poster="/footer-poster.jpg"
-			>
-				<source src="/footer-loop.webm" type="video/webm" />
-				<source src="/footer-loop.mp4" type="video/mp4" />
-			</motion.video>
+		<div className="footer-media" aria-hidden="true">
+			<LoopVideo name="footer-loop" poster="/footer-poster.jpg" className="footer-video" style={{ y }} />
 			<div className="footer-media-fade" />
 		</div>
 	);
