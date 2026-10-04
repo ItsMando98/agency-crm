@@ -22,6 +22,12 @@ type Pages = {
       "slug": string;
     };
   };
+  "/expertise/:slug/:subSlug": {
+    params: {
+      "slug": string;
+      "subSlug": string;
+    };
+  };
   "/work": {
     params: {};
   };
@@ -75,7 +81,7 @@ type Pages = {
 type RouteFiles = {
   "root.tsx": {
     id: "root";
-    page: "/" | "/expertise" | "/expertise/:slug" | "/work" | "/work/:slug" | "/approach" | "/insights" | "/insights/:slug" | "/about" | "/contact" | "/sitemap.xml" | "/robots.txt" | "/llms.txt" | "/llms-full.txt" | "/api/health" | "/api/contact" | "/api/*";
+    page: "/" | "/expertise" | "/expertise/:slug" | "/expertise/:slug/:subSlug" | "/work" | "/work/:slug" | "/approach" | "/insights" | "/insights/:slug" | "/about" | "/contact" | "/sitemap.xml" | "/robots.txt" | "/llms.txt" | "/llms-full.txt" | "/api/health" | "/api/contact" | "/api/*";
   };
   "routes/home.tsx": {
     id: "routes/home";
@@ -88,6 +94,10 @@ type RouteFiles = {
   "routes/expertise.$slug.tsx": {
     id: "routes/expertise.$slug";
     page: "/expertise/:slug";
+  };
+  "routes/expertise.$slug.$subSlug.tsx": {
+    id: "routes/expertise.$slug.$subSlug";
+    page: "/expertise/:slug/:subSlug";
   };
   "routes/work.tsx": {
     id: "routes/work";
@@ -152,6 +162,7 @@ type RouteModules = {
   "routes/home": typeof import("./src/routes/home.tsx");
   "routes/expertise": typeof import("./src/routes/expertise.tsx");
   "routes/expertise.$slug": typeof import("./src/routes/expertise.$slug.tsx");
+  "routes/expertise.$slug.$subSlug": typeof import("./src/routes/expertise.$slug.$subSlug.tsx");
   "routes/work": typeof import("./src/routes/work.tsx");
   "routes/work.$slug": typeof import("./src/routes/work.$slug.tsx");
   "routes/approach": typeof import("./src/routes/approach.tsx");
