@@ -3,7 +3,9 @@ import { seo, siteOriginFrom } from '@/lib/seo';
 import { SiteHeader } from '@/components/site-header';
 import { SiteFooter } from '@/components/site-footer';
 import { Hero } from '@/components/home/hero';
-import { Services } from '@/components/home/services';
+import { Marquee } from '@/components/home/marquee';
+import { Manifesto } from '@/components/home/manifesto';
+import { GrowthSystem } from '@/components/home/growth-system';
 import { Work } from '@/components/home/work';
 import { Approach } from '@/components/home/approach';
 import { Testimonials } from '@/components/home/testimonials';
@@ -29,7 +31,9 @@ export default function HomePage() {
 			<SiteHeader />
 			<main>
 				<Hero />
-				<Services />
+				<Marquee />
+				<Manifesto />
+				<GrowthSystem />
 				<Work />
 				<Approach />
 				<Testimonials />
