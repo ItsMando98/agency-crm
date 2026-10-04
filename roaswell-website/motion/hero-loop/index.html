@@ -2,22 +2,22 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=1920, height=1080" />
+    <meta name="viewport" content="width=2560, height=1440" />
     <script src="./gsap.min.js"></script>
     <style>
       * { margin: 0; padding: 0; box-sizing: border-box; }
-      html, body { width: 1920px; height: 1080px; overflow: hidden; background: #07070a; }
-      #root { position: relative; width: 1920px; height: 1080px; overflow: hidden; background: #07070a; }
-      #scene { position: absolute; inset: 0; width: 1920px; height: 1080px; }
+      html, body { width: 2560px; height: 1440px; overflow: hidden; background: #07070a; }
+      #root { position: relative; width: 2560px; height: 1440px; overflow: hidden; background: #07070a; }
+      #scene { position: absolute; inset: 0; width: 2560px; height: 1440px; }
     </style>
   </head>
   <body>
-    <div id="root" data-composition-id="roaswell-hero-loop" data-start="0" data-duration="10" data-width="1920" data-height="1080">
-      <canvas id="scene" class="clip" width="1920" height="1080" data-start="0" data-duration="10" data-track-index="0"></canvas>
+    <div id="root" data-composition-id="roaswell-hero-loop" data-start="0" data-duration="10" data-width="2560" data-height="1440">
+      <canvas id="scene" class="clip" width="2560" height="1440" data-start="0" data-duration="10" data-track-index="0"></canvas>
     </div>
     <script>
-      const W = 1920;
-      const H = 1080;
+      const W = 2560;
+      const H = 1440;
       const DURATION = 10;
       const TAU = Math.PI * 2;
       const RED = [255, 52, 72];
@@ -78,19 +78,40 @@
       }
 
 
+      const LW = 1920;
+      const LH = 1080;
+      const K = W / LW;
       const SPACING = 52;
-      const COLS = Math.ceil(W / SPACING) + 1;
-      const ROWS = Math.ceil(H / SPACING) + 1;
+      const COLS = Math.ceil(LW / SPACING) + 1;
+      const ROWS = Math.ceil(LH / SPACING) + 1;
       const GLOW_R = 400;
+
+      const dither = document.createElement("canvas");
+      dither.width = 256;
+      dither.height = 256;
+      (function () {
+        const dctx = dither.getContext("2d");
+        const rnd = mulberry32(99);
+        const img = dctx.createImageData(256, 256);
+        for (let i = 0; i < img.data.length; i += 4) {
+          const v = rnd() > 0.5 ? 255 : 0;
+          img.data[i] = v;
+          img.data[i + 1] = v;
+          img.data[i + 2] = v;
+          img.data[i + 3] = 255;
+        }
+        dctx.putImageData(img, 0, 0);
+      })();
 
       function draw(t) {
         const a = TAU * (t / DURATION);
-        const lx = W * (0.64 + 0.2 * Math.sin(a));
-        const ly = H * (0.5 + 0.18 * Math.sin(2 * a + 0.7));
+        const lx = LW * (0.64 + 0.2 * Math.sin(a));
+        const ly = LH * (0.5 + 0.18 * Math.sin(2 * a + 0.7));
 
+        ctx.setTransform(K, 0, 0, K, 0, 0);
         ctx.globalCompositeOperation = "source-over";
         ctx.fillStyle = "#07070a";
-        ctx.fillRect(0, 0, W, H);
+        ctx.fillRect(0, 0, LW, LH);
 
         ctx.globalCompositeOperation = "lighter";
         const glow = ctx.createRadialGradient(lx, ly, 0, lx, ly, 640);
@@ -98,7 +119,7 @@
         glow.addColorStop(0.5, rgba(RED, 0.06));
         glow.addColorStop(1, rgba(RED, 0));
         ctx.fillStyle = glow;
-        ctx.fillRect(0, 0, W, H);
+        ctx.fillRect(0, 0, LW, LH);
 
         for (let gy = 0; gy < ROWS; gy += 1) {
           for (let gx = 0; gx < COLS; gx += 1) {
@@ -124,21 +145,29 @@
         }
 
         ctx.globalCompositeOperation = "source-over";
-        const left = ctx.createLinearGradient(0, 0, W * 0.62, 0);
+        const left = ctx.createLinearGradient(0, 0, LW * 0.62, 0);
         left.addColorStop(0, "rgba(7, 7, 10, 0.82)");
         left.addColorStop(1, "rgba(7, 7, 10, 0)");
         ctx.fillStyle = left;
-        ctx.fillRect(0, 0, W, H);
-        const top = ctx.createLinearGradient(0, 0, 0, H * 0.25);
+        ctx.fillRect(0, 0, LW, LH);
+        const top = ctx.createLinearGradient(0, 0, 0, LH * 0.25);
         top.addColorStop(0, "rgba(7, 7, 10, 0.9)");
         top.addColorStop(1, "rgba(7, 7, 10, 0)");
         ctx.fillStyle = top;
-        ctx.fillRect(0, 0, W, H * 0.25);
-        const bottom = ctx.createLinearGradient(0, H, 0, H * 0.7);
+        ctx.fillRect(0, 0, LW, LH * 0.25);
+        const bottom = ctx.createLinearGradient(0, LH, 0, LH * 0.7);
         bottom.addColorStop(0, "rgba(7, 7, 10, 0.95)");
         bottom.addColorStop(1, "rgba(7, 7, 10, 0)");
         ctx.fillStyle = bottom;
-        ctx.fillRect(0, H * 0.7, W, H * 0.3);
+        ctx.fillRect(0, LH * 0.7, LW, LH * 0.3);
+
+        ctx.setTransform(1, 0, 0, 1, 0, 0);
+        ctx.globalAlpha = 0.05;
+        ctx.globalCompositeOperation = "overlay";
+        ctx.fillStyle = ctx.createPattern(dither, "repeat");
+        ctx.fillRect(0, 0, W, H);
+        ctx.globalAlpha = 1;
+        ctx.globalCompositeOperation = "source-over";
       }
 
 
