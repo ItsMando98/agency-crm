@@ -1,8 +1,13 @@
 import type { Route } from './+types/llms.txt';
 import { siteOrigin } from '@/lib/site-origin.server';
+import { disciplines } from '@/data/expertise';
 
 export function loader({ request }: Route.LoaderArgs) {
 	const origin = siteOrigin(request);
+
+	const specialisms = disciplines
+		.flatMap(d => d.subpages.map(subpage => `- [${subpage.name}](${origin}/expertise/${d.slug}/${subpage.slug}): ${subpage.summary}`))
+		.join('\n');
 
 	const content = `# ROASWELL
 
@@ -17,6 +22,10 @@ ROASWELL is an independent, senior-led digital marketing and growth studio. We u
 - [Google Ads Performance](${origin}/expertise/google-ads): High-intent search, Google Shopping, conversion value modeling, and incrementality-first bidding.
 - [Motion Graphics](${origin}/expertise/motion-graphics): Paid social creative, explainer videos, product animation, brand films, and web motion built for creative testing.
 - [Studio Approach & Philosophy](${origin}/approach): Fewer clients, senior execution, transparent commercial reporting, no agency bloat.
+
+## Specialisms
+
+${specialisms}
 
 ## Key Differentiators & Working Model
 

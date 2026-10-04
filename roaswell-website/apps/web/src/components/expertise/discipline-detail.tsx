@@ -47,6 +47,26 @@ export function DisciplineDetail({ discipline }: { discipline: Discipline }) {
 				</div>
 			</section>
 
+			{discipline.subpages.length > 0 && (
+				<section className="specialisms section">
+					<span className="eyebrow">
+						<i /> SPECIALISMS
+					</span>
+					<div className="related-grid">
+						{discipline.subpages.map(subpage => (
+							<Link to={`/expertise/${discipline.slug}/${subpage.slug}`} className="related-card" key={subpage.slug}>
+								<span className="discipline-index">{subpage.eyebrow.split(' / ')[0]}</span>
+								<h3>{subpage.name}</h3>
+								<p>
+									{subpage.headline} {subpage.headlineAccent}
+								</p>
+								<ArrowUpRight size={20} />
+							</Link>
+						))}
+					</div>
+				</section>
+			)}
+
 			<section className="related-disciplines section">
 				<span className="eyebrow">
 					<i /> THE OTHER DISCIPLINES

@@ -1,6 +1,12 @@
 # Roaswell sub-page plan
 
-Status: proposal. Nothing below is built yet except the four top-level service pages.
+Status: batch 1 is built (data model, route, shared template and the five Motion Graphics sub-pages). SEO, Meta Ads and Google Ads sub-pages are still to do.
+
+Batch 1 notes:
+- Route: `/expertise/:slug/:subSlug`, backed by `subpages` on each discipline in `src/data/expertise.ts`.
+- Template: `components/expertise/subpage-detail.tsx`. Each sub-page has an original concept sample in `components/expertise/samples/`, all made by the studio and labelled as concept work.
+- Samples share `components/motion/player.tsx` (play, pause, scrub, chapters) and `lib/motion-math.ts`.
+- Sitemap, `llms.txt`, `llms-full.txt`, breadcrumbs, Service and FAQPage schema are generated from the data.
 
 ## Where we are
 
@@ -109,8 +115,8 @@ Every sub-page uses the same sections so one build covers all 14:
 
 ## Needs from the Roaswell team
 
-- Real sample work for Motion Graphics. Until then every demo is labelled illustrative, in line with the rest of the site. No invented clients or results.
-- Confirm the sub-page list. Cut anything the studio does not want to sell.
+- Real sample work for Motion Graphics, when it exists. Until then every demo is labelled as a concept sample. No invented clients or results.
+- Sub-page list confirmed.
 - Pricing and engagement model: show publicly, or "talk to us" only.
 - One short real FAQ answer per sub-page, so the copy reflects how the studio actually works.
 

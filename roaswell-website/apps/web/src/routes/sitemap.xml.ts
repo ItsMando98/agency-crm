@@ -2,6 +2,7 @@ import type { Route } from './+types/sitemap.xml';
 import { siteOrigin } from '@/lib/site-origin.server';
 import { caseStudies } from '@/data/case-studies';
 import { articles } from '@/data/articles';
+import { disciplines } from '@/data/expertise';
 
 type SitemapEntry = {
 	path: string;
@@ -67,7 +68,15 @@ async function getDynamicEntries(): Promise<SitemapEntry[]> {
 		priority: '0.8',
 	}));
 
-	return [...work, ...insights];
+	const subpages: SitemapEntry[] = disciplines.flatMap(d =>
+		d.subpages.map(subpage => ({
+			path: `/expertise/${d.slug}/${subpage.slug}`,
+			changefreq: 'weekly' as const,
+			priority: '0.8',
+		})),
+	);
+
+	return [...subpages, ...work, ...insights];
 }
 
 export async function loader({ request }: Route.LoaderArgs) {

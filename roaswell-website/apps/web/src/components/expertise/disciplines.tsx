@@ -19,6 +19,15 @@ export function ExpertiseDisciplines() {
 								<li key={c}>{c}</li>
 							))}
 						</ul>
+						{d.subpages.length > 0 && (
+							<div className="sub-links">
+								{d.subpages.map(subpage => (
+									<Link key={subpage.slug} to={`/expertise/${d.slug}/${subpage.slug}`}>
+										{subpage.name} <ArrowUpRight size={14} />
+									</Link>
+								))}
+							</div>
+						)}
 						<Link to={`/expertise/${d.slug}`} className="discipline-cta">
 							{d.cta} <ArrowUpRight size={18} />
 						</Link>

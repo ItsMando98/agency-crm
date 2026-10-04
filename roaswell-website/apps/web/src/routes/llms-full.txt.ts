@@ -46,6 +46,15 @@ export function loader({ request }: Route.LoaderArgs) {
 				content += `${block.text}\n\n`;
 			}
 		}
+		for (const subpage of d.subpages) {
+			content += `#### Specialism: ${subpage.name}\n`;
+			content += `- **URL:** ${origin}/expertise/${d.slug}/${subpage.slug}\n`;
+			content += `- **Summary:** ${subpage.summary}\n`;
+			content += `- **Deliverables:** ${subpage.deliverables.map(item => item.title).join(', ')}\n\n`;
+			for (const faq of subpage.faqs) {
+				content += `**${faq.question}** ${faq.answer}\n\n`;
+			}
+		}
 		content += `---\n\n`;
 	}
 

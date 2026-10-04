@@ -1,5 +1,5 @@
 import { absoluteUrl } from '@/lib/seo';
-import type { Discipline } from '@/data/expertise';
+import type { Discipline, SubPage } from '@/data/expertise';
 import type { Article } from '@/data/articles';
 import type { CaseStudy } from '@/data/case-studies';
 
@@ -208,5 +208,34 @@ export function buildContactPageSchema(origin: string) {
 		mainEntity: {
 			'@id': `${origin}/#organization`,
 		},
+	};
+}
+
+export function buildSubpageSchema(origin: string, discipline: Discipline, subpage: SubPage) {
+	const url = absoluteUrl(origin, `/expertise/${discipline.slug}/${subpage.slug}`);
+	return {
+		'@context': 'https://schema.org',
+		'@type': 'Service',
+		'@id': `${url}#service`,
+		name: subpage.name,
+		headline: `${subpage.headline} ${subpage.headlineAccent}`,
+		description: subpage.summary,
+		url,
+		isPartOf: { '@id': absoluteUrl(origin, `/expertise/${discipline.slug}#service`) },
+		provider: { '@id': `${origin}/#organization` },
+		serviceType: subpage.deliverables.map(item => item.title).join(', '),
+		areaServed: 'Worldwide',
+	};
+}
+
+export function buildFaqSchema(faqs: SubPage['faqs']) {
+	return {
+		'@context': 'https://schema.org',
+		'@type': 'FAQPage',
+		mainEntity: faqs.map(item => ({
+			'@type': 'Question',
+			name: item.question,
+			acceptedAnswer: { '@type': 'Answer', text: item.answer },
+		})),
 	};
 }
