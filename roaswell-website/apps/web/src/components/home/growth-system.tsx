@@ -4,13 +4,17 @@ import { ArrowUpRight } from 'lucide-react';
 import { AnimatePresence, motion, useMotionValueEvent, useReducedMotion, useScroll, useTransform } from 'framer-motion';
 import { disciplines } from '@/data/expertise';
 import { EASE_OUT } from '@/components/motion/primitives';
-import { LoopVideo } from '@/components/motion/loop-video';
+import { SceneCanvas } from '@/components/motion/scene-canvas';
+import { seoScene } from '@/lib/scenes/seo';
+import { metaScene } from '@/lib/scenes/meta';
+import { googleScene } from '@/lib/scenes/google';
+import { motionScene } from '@/lib/scenes/motion';
 
 const SCENES = [
-	{ video: 'expertise-seo', caption: 'Climbing the results' },
-	{ video: 'expertise-meta', caption: 'Testing to a clear winner' },
-	{ video: 'expertise-google', caption: 'Intent converging on action' },
-	{ video: 'expertise-motion', caption: 'Easing with intention' },
+	{ scene: seoScene, caption: 'Climbing the results' },
+	{ scene: metaScene, caption: 'Testing to a clear winner' },
+	{ scene: googleScene, caption: 'Intent converging on action' },
+	{ scene: motionScene, caption: 'Easing with intention' },
 ];
 
 const COUNT_WORDS = ['Zero', 'One', 'Two', 'Three', 'Four', 'Five'];
@@ -86,14 +90,8 @@ export function GrowthSystem() {
 					<div className="system-media">
 						<div className="system-frame">
 							{SCENES.map((scene, index) => (
-								<div key={scene.video} className={index === active ? 'system-scene on' : 'system-scene'}>
-									<LoopVideo
-										name={scene.video}
-										poster={`/${scene.video}-poster.jpg`}
-										className="system-video"
-										active={index === active}
-										eager={index === 0}
-									/>
+								<div key={scene.caption} className={index === active ? 'system-scene on' : 'system-scene'}>
+									<SceneCanvas scene={scene.scene} className="system-video" active={index === active} />
 								</div>
 							))}
 							<span className="system-count">

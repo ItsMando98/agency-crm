@@ -12,7 +12,8 @@ import {
 } from 'framer-motion';
 import { disciplines } from '@/data/expertise';
 import { Magnetic } from '@/components/motion/primitives';
-import { LoopVideo } from '@/components/motion/loop-video';
+import { SceneCanvas } from '@/components/motion/scene-canvas';
+import { footerScene } from '@/lib/scenes/footer';
 import { clamp } from '@/lib/motion-math';
 
 const WORD = 'ROASWELL';
@@ -117,7 +118,9 @@ function FooterVideo({ progress }: { progress: MotionValue<number> }) {
 
 	return (
 		<div className="footer-media" aria-hidden="true">
-			<LoopVideo name="footer-loop" poster="/footer-poster.jpg" className="footer-video" style={{ y }} />
+			<motion.div className="footer-video" style={{ y }}>
+				<SceneCanvas scene={footerScene} fit="cover" maxDpr={1.5} className="footer-canvas" />
+			</motion.div>
 			<div className="footer-media-fade" />
 		</div>
 	);
