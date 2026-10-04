@@ -1,89 +1,87 @@
-import { PAPER, RED, TAU, WINE, rgba, sceneBackground, sceneVignette, type Scene } from './helpers';
+import { clamp } from '@/lib/motion-math';
+import { PAPER, RED, TAU, WINE, frac, mix, rgba, sceneBackground, sceneVignette, type Scene } from './helpers';
 
 const W = 1280;
 const H = 960;
 const DURATION = 8;
-const BASE_RADIUS = 128;
-const POINTS = 120;
+const STRANDS = 44;
+const SAMPLES = 160;
+const SPAN = 1160;
 
-function center(t: number) {
-	const a = TAU * (t / DURATION);
-	return { x: W / 2 + 270 * Math.sin(a), y: H / 2 + 110 * Math.sin(2 * a), vx: Math.cos(a), vy: Math.cos(2 * a) };
+function strandY(s: number, strand: number, t: number) {
+	const phase = strand / STRANDS;
+	const envelope = Math.pow(Math.sin(Math.PI * s), 0.85);
+	const slow = Math.sin(TAU * (s * 1 + t / DURATION) + phase * 1.7);
+	const fast = Math.sin(TAU * (s * 2 - (2 * t) / DURATION) + phase * 3.4);
+	const drift = Math.sin(TAU * (s * 3 + t / DURATION) + phase * 5.1);
+	return H / 2 + envelope * (150 * slow + 62 * fast + 18 * drift);
 }
 
-function blobPath(ctx: CanvasRenderingContext2D, t: number) {
-	const c = center(t);
-	const speed = Math.min(1, Math.hypot(c.vx, c.vy * 0.8));
-	const stretch = 1 + 0.2 * speed;
-	const angle = Math.atan2(c.vy * 0.8, c.vx);
-	ctx.save();
-	ctx.translate(c.x, c.y);
-	ctx.rotate(angle);
-	ctx.scale(stretch, 1 / stretch);
-	ctx.rotate(-angle);
-	ctx.beginPath();
-	for (let i = 0; i <= POINTS; i += 1) {
-		const theta = (i / POINTS) * TAU;
-		const r =
-			BASE_RADIUS *
-			(1 +
-				0.1 * Math.sin(3 * theta + TAU * (t / DURATION)) +
-				0.07 * Math.sin(5 * theta - TAU * 2 * (t / DURATION)) +
-				0.04 * Math.sin(2 * theta + TAU * 3 * (t / DURATION)));
-		const x = Math.cos(theta) * r;
-		const y = Math.sin(theta) * r;
-		if (i === 0) ctx.moveTo(x, y);
-		else ctx.lineTo(x, y);
-	}
-	ctx.closePath();
-}
+const strandX = (s: number) => W / 2 + (s - 0.5) * SPAN;
 
 export const motionScene: Scene = {
 	width: W,
 	height: H,
 	duration: DURATION,
-	poster: 1.6,
+	poster: 2.2,
 	draw(ctx, t) {
-		sceneBackground(ctx, W, H, 0.07);
+		sceneBackground(ctx, W, H, 0.1);
 
-		ctx.strokeStyle = rgba(PAPER, 0.08);
-		ctx.lineWidth = 1.2;
-		ctx.beginPath();
-		for (let i = 0; i <= 240; i += 1) {
-			const c = center((i / 240) * DURATION);
-			if (i === 0) ctx.moveTo(c.x, c.y);
-			else ctx.lineTo(c.x, c.y);
-		}
-		ctx.stroke();
-
-		for (let k = 12; k >= 1; k -= 1) {
-			const past = (t - k * 0.05 + DURATION) % DURATION;
-			blobPath(ctx, past);
-			ctx.strokeStyle = rgba(RED, 0.2 * (1 - k / 13));
-			ctx.lineWidth = 1.4;
-			ctx.stroke();
-			ctx.restore();
-		}
-
-		const c = center(t);
 		ctx.globalCompositeOperation = 'lighter';
-		const glow = ctx.createRadialGradient(c.x, c.y, 0, c.x, c.y, BASE_RADIUS * 3);
-		glow.addColorStop(0, rgba(RED, 0.3));
-		glow.addColorStop(1, rgba(RED, 0));
-		ctx.fillStyle = glow;
-		ctx.fillRect(c.x - BASE_RADIUS * 3, c.y - BASE_RADIUS * 3, BASE_RADIUS * 6, BASE_RADIUS * 6);
-		ctx.globalCompositeOperation = 'source-over';
+		const haze = ctx.createRadialGradient(W / 2, H / 2, 0, W / 2, H / 2, 520);
+		haze.addColorStop(0, rgba(RED, 0.16));
+		haze.addColorStop(1, rgba(RED, 0));
+		ctx.fillStyle = haze;
+		ctx.fillRect(0, 0, W, H);
 
-		blobPath(ctx, t);
-		const fill = ctx.createRadialGradient(-BASE_RADIUS * 0.35, -BASE_RADIUS * 0.4, BASE_RADIUS * 0.1, 0, 0, BASE_RADIUS * 1.3);
-		fill.addColorStop(0, rgba(RED, 0.95));
-		fill.addColorStop(1, rgba(WINE, 0.9));
-		ctx.fillStyle = fill;
-		ctx.fill();
-		ctx.strokeStyle = 'rgba(255, 255, 255, 0.5)';
-		ctx.lineWidth = 1.8;
-		ctx.stroke();
-		ctx.restore();
+		ctx.lineJoin = 'round';
+		ctx.lineCap = 'round';
+		for (let strand = 0; strand < STRANDS; strand += 1) {
+			const k = strand / (STRANDS - 1);
+			const tone = mix(WINE, PAPER, Math.pow(k, 2.2));
+			const heat = mix(tone, RED, 0.55 * Math.sin(Math.PI * k));
+			ctx.strokeStyle = rgba(heat, 0.2 + 0.5 * Math.sin(Math.PI * k));
+			ctx.lineWidth = 1.1 + 0.9 * Math.sin(Math.PI * k);
+			ctx.beginPath();
+			for (let i = 0; i <= SAMPLES; i += 1) {
+				const s = i / SAMPLES;
+				const x = strandX(s);
+				const y = strandY(s, strand, t);
+				if (i === 0) ctx.moveTo(x, y);
+				else ctx.lineTo(x, y);
+			}
+			ctx.stroke();
+		}
+
+		const lead = STRANDS >> 1;
+		const head = frac(t / DURATION);
+		for (let i = 0; i < 26; i += 1) {
+			const s = clamp(head - (26 - i) * 0.006);
+			const x = strandX(s);
+			const y = strandY(s, lead, t);
+			const fade = (i + 1) / 26;
+			ctx.fillStyle = rgba(PAPER, 0.5 * fade * fade);
+			ctx.beginPath();
+			ctx.arc(x, y, 1.2 + 2.8 * fade, 0, TAU);
+			ctx.fill();
+		}
+		const hx = strandX(head);
+		const hy = strandY(head, lead, t);
+		const flare = ctx.createRadialGradient(hx, hy, 0, hx, hy, 70);
+		flare.addColorStop(0, 'rgba(255, 255, 255, 0.95)');
+		flare.addColorStop(0.2, rgba(RED, 0.6));
+		flare.addColorStop(1, rgba(RED, 0));
+		ctx.fillStyle = flare;
+		ctx.fillRect(hx - 70, hy - 70, 140, 140);
+
+		ctx.globalCompositeOperation = 'source-over';
+		const fadeEdge = ctx.createLinearGradient(0, 0, W, 0);
+		fadeEdge.addColorStop(0, 'rgba(9, 9, 12, 1)');
+		fadeEdge.addColorStop(0.1, 'rgba(9, 9, 12, 0)');
+		fadeEdge.addColorStop(0.9, 'rgba(9, 9, 12, 0)');
+		fadeEdge.addColorStop(1, 'rgba(9, 9, 12, 1)');
+		ctx.fillStyle = fadeEdge;
+		ctx.fillRect(0, 0, W, H);
 		sceneVignette(ctx, W, H);
 	},
 };
