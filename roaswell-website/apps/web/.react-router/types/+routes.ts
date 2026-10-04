@@ -53,7 +53,16 @@ type Pages = {
   "/robots.txt": {
     params: {};
   };
+  "/llms.txt": {
+    params: {};
+  };
+  "/llms-full.txt": {
+    params: {};
+  };
   "/api/health": {
+    params: {};
+  };
+  "/api/contact": {
     params: {};
   };
   "/api/*": {
@@ -66,7 +75,7 @@ type Pages = {
 type RouteFiles = {
   "root.tsx": {
     id: "root";
-    page: "/" | "/expertise" | "/expertise/:slug" | "/work" | "/work/:slug" | "/approach" | "/insights" | "/insights/:slug" | "/about" | "/contact" | "/sitemap.xml" | "/robots.txt" | "/api/health" | "/api/*";
+    page: "/" | "/expertise" | "/expertise/:slug" | "/work" | "/work/:slug" | "/approach" | "/insights" | "/insights/:slug" | "/about" | "/contact" | "/sitemap.xml" | "/robots.txt" | "/llms.txt" | "/llms-full.txt" | "/api/health" | "/api/contact" | "/api/*";
   };
   "routes/home.tsx": {
     id: "routes/home";
@@ -116,9 +125,21 @@ type RouteFiles = {
     id: "routes/robots.txt";
     page: "/robots.txt";
   };
+  "routes/llms.txt.ts": {
+    id: "routes/llms.txt";
+    page: "/llms.txt";
+  };
+  "routes/llms-full.txt.ts": {
+    id: "routes/llms-full.txt";
+    page: "/llms-full.txt";
+  };
   "routes/api.health.ts": {
     id: "routes/api.health";
     page: "/api/health";
+  };
+  "routes/api.contact.ts": {
+    id: "routes/api.contact";
+    page: "/api/contact";
   };
   "routes/api.$.ts": {
     id: "routes/api.$";
@@ -140,6 +161,9 @@ type RouteModules = {
   "routes/contact": typeof import("./src/routes/contact.tsx");
   "routes/sitemap.xml": typeof import("./src/routes/sitemap.xml.ts");
   "routes/robots.txt": typeof import("./src/routes/robots.txt.ts");
+  "routes/llms.txt": typeof import("./src/routes/llms.txt.ts");
+  "routes/llms-full.txt": typeof import("./src/routes/llms-full.txt.ts");
   "routes/api.health": typeof import("./src/routes/api.health.ts");
+  "routes/api.contact": typeof import("./src/routes/api.contact.ts");
   "routes/api.$": typeof import("./src/routes/api.$.ts");
 };
