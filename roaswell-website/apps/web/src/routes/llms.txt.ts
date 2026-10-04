@@ -6,15 +6,16 @@ export function loader({ request }: Route.LoaderArgs) {
 
 	const content = `# ROASWELL
 
-> Independent digital growth studio specializing in SEO & Content, Meta Ads, and Google Ads.
+> Independent digital growth studio specializing in SEO & Content, Meta Ads, Google Ads, and Motion Graphics.
 
-ROASWELL is an independent, senior-led digital marketing and growth studio. We unite three core disciplines—organic search (SEO & Content Strategy), paid social performance (Meta Ads), and high-intent paid search (Google Ads)—into a unified, compounding growth engine.
+ROASWELL is an independent, senior-led digital marketing and growth studio. We unite four core disciplines—organic search (SEO & Content Strategy), paid social performance (Meta Ads), high-intent paid search (Google Ads), and performance-led Motion Graphics—into a unified, compounding growth engine.
 
 ## Core Disciplines & Services
 
 - [SEO & Content Strategy](${origin}/expertise/seo-content): Intent mapping, commercial SEO, technical crawlability, and compounding editorial architecture.
 - [Meta Ads Management](${origin}/expertise/meta-ads): High-velocity creative testing, full-funnel paid social campaigns, audience architecture, and conversion optimization across Facebook and Instagram.
 - [Google Ads Performance](${origin}/expertise/google-ads): High-intent search, Google Shopping, conversion value modeling, and incrementality-first bidding.
+- [Motion Graphics](${origin}/expertise/motion-graphics): Paid social creative, explainer videos, product animation, brand films, and web motion built for creative testing.
 - [Studio Approach & Philosophy](${origin}/approach): Fewer clients, senior execution, transparent commercial reporting, no agency bloat.
 
 ## Key Differentiators & Working Model

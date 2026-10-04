@@ -96,6 +96,34 @@ export const disciplines: Discipline[] = [
 			{ type: 'p', text: 'Bid strategies tuned to your economics, not a default target. We test, we watch the edge cases, and we keep the spend honest.' },
 		],
 	},
+	{
+		slug: 'motion-graphics',
+		number: '04',
+		name: 'Motion Graphics',
+		eyebrow: '04 / MOTION GRAPHICS',
+		headline: 'Stop the scroll.',
+		headlineAccent: 'Be unmissable.',
+		summary:
+			'Motion is the fastest way to earn attention and the clearest way to explain a big idea. We design ads, product animations and brand films that are built to be tested, not just admired.',
+		capabilities: [
+			'Paid Social Creative',
+			'Explainer Videos',
+			'Product Animation',
+			'Brand Films',
+			'Web & UI Motion',
+			'Creative Testing Assets',
+		],
+		cta: 'Explore Motion Graphics',
+		body: [
+			{ type: 'p', text: 'Static creative asks for attention. Motion takes it. In the first second of a feed, movement decides whether a message gets a chance, and the rest of the idea only matters if it survives that second.' },
+			{ type: 'h2', text: 'Built for the feed, not the showreel' },
+			{ type: 'p', text: 'Every piece starts with a hypothesis: the hook, the claim, the reason to keep watching. We storyboard against the metric it needs to move, then build variants so the testing system has real material to learn from.' },
+			{ type: 'quote', text: 'Great motion is not decoration. It is the argument, made visible.' },
+			{ type: 'h2', text: 'One idea, every surface' },
+			{ type: 'p', text: 'The same concept travels from a six-second paid cut to a product explainer, a landing page animation and a launch film. One design language, one set of assets, no rebuilding the idea three times.' },
+			{ type: 'p', text: 'Because motion sits inside the same studio as search and paid media, creative is briefed by performance data and judged by commercial results, not by how it looks on a reel.' },
+		],
+	},
 ];
 
 export const getDiscipline = (slug: string) => disciplines.find(d => d.slug === slug);

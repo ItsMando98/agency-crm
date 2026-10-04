@@ -12,9 +12,9 @@ export function meta({ matches, location }: Route.MetaArgs) {
 	return seo(
 		{ matches, location },
 		{
-			title: 'Expertise: SEO, Meta Ads & Google Ads — ROASWELL',
+			title: 'Expertise: SEO, Meta Ads, Google Ads & Motion Graphics — ROASWELL',
 			description:
-				'Three disciplines — SEO & Content, Meta Ads, and Google Ads — as one growth system. Search captures intent, content builds demand, paid media accelerates what works.',
+				'Four disciplines — SEO & Content, Meta Ads, Google Ads and Motion Graphics — as one growth system. Search captures intent, content builds demand, paid media accelerates what works, motion makes it unforgettable.',
 			jsonLd: buildBreadcrumbSchema(origin, [
 				{ name: 'Home', path: '/' },
 				{ name: 'Expertise', path: '/expertise' },

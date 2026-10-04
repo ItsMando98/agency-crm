@@ -13,7 +13,7 @@ export function meta({ matches, location }: Route.MetaArgs) {
 		{
 			title: 'Selected Work & Case Studies — ROASWELL',
 			description:
-				'Illustrative case studies in SEO & Content, Meta Ads, and Google Ads — how we think about performance and commercial outcomes, not vanity metrics.',
+				'Illustrative case studies in SEO & Content, Meta Ads, Google Ads, and Motion Graphics — how we think about performance and commercial outcomes, not vanity metrics.',
 			jsonLd: buildBreadcrumbSchema(origin, [
 				{ name: 'Home', path: '/' },
 				{ name: 'Work', path: '/work' },

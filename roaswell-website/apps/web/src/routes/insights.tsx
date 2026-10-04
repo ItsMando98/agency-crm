@@ -13,7 +13,7 @@ export function meta({ matches, location }: Route.MetaArgs) {
 		{
 			title: 'Insights & Strategy Notes — ROASWELL',
 			description:
-				'Notes on search, content, and paid media — and how the three disciplines fit together as one compounding growth system.',
+				'Notes on search, content, paid media and motion — and how the disciplines fit together as one compounding growth system.',
 			jsonLd: buildBreadcrumbSchema(origin, [
 				{ name: 'Home', path: '/' },
 				{ name: 'Insights', path: '/insights' },

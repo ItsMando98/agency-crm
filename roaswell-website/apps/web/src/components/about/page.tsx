@@ -17,8 +17,8 @@ export function AboutPage() {
 					by design.
 				</h1>
 				<p>
-					ROASWELL is an independent digital growth studio. We work in three disciplines —
-					SEO & Content, Meta Ads, and Google Ads — because they belong together, and
+					ROASWELL is an independent digital growth studio. We work in four disciplines —
+					SEO & Content, Meta Ads, Google Ads and Motion Graphics — because they belong together, and
 					because keeping them under one roof is how growth actually compounds.
 				</p>
 			</section>
@@ -55,7 +55,7 @@ export function AboutPage() {
 							<dt>STUDIO</dt>
 							<dd>Independent, senior-led</dd>
 							<dt>DISCIPLINES</dt>
-							<dd>SEO & Content · Meta Ads · Google Ads</dd>
+							<dd>SEO & Content · Meta Ads · Google Ads · Motion Graphics</dd>
 							<dt>STANDARD</dt>
 							<dd>Transparent reporting tied to commercial outcomes</dd>
 							<dt>CONTACT</dt>
@@ -77,7 +77,7 @@ export function AboutPage() {
 				<div className="related-grid">
 					<Link to="/expertise" className="related-card dark">
 						<h3>Expertise</h3>
-						<p>Three disciplines, one system.</p>
+						<p>Four disciplines, one system.</p>
 						<ArrowUpRight size={20} />
 					</Link>
 					<Link to="/approach" className="related-card dark">

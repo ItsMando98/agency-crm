@@ -14,7 +14,7 @@ export function InsightsList() {
 				<p>
 					Notes on search, content, and paid media —
 					<br />
-					and how the three fit together.
+					and how the disciplines fit together.
 				</p>
 			</div>
 			<div className="article-list">

@@ -9,7 +9,7 @@ export function loader({ request }: Route.LoaderArgs) {
 
 	let content = `# ROASWELL — Complete Knowledge Base & Studio Documentation
 
-> Independent digital growth studio. Senior-led SEO & Content, Meta Ads, and Google Ads.
+> Independent digital growth studio. Senior-led SEO & Content, Meta Ads, Google Ads, and Motion Graphics.
 > Canonical URL: ${origin}
 > Contact: hello@roaswell.com
 
@@ -19,7 +19,7 @@ export function loader({ request }: Route.LoaderArgs) {
 
 - **Name:** ROASWELL
 - **Entity Type:** Digital Growth Studio / Performance Marketing Agency
-- **Specialization:** SEO & Content Strategy, Meta Ads (Paid Social), Google Ads (Paid Search), Server-Side Attribution & Incrementality Measurement.
+- **Specialization:** SEO & Content Strategy, Meta Ads (Paid Social), Google Ads (Paid Search), Motion Graphics (Performance Creative), Server-Side Attribution & Incrementality Measurement.
 - **Operating Model:** Senior-led execution. The specialists who design strategy execute the campaigns. No account managers, no junior handoffs, no agency bloat.
 - **Core Principle:** "A channel in isolation is a tactic. Channels that feed each other are a system."
 - **Standard:** Transparent reporting tied directly to commercial outcomes (revenue, profit, blended CAC, incrementality) rather than vanity platform dashboard metrics.

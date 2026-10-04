@@ -14,8 +14,9 @@ import { EASE_OUT } from '@/components/motion/primitives';
 
 const RED = '#ff3448';
 const PAPER = '#f4f1ea';
-const SCENE_COUNT = 4;
-const RAIL_LABELS = ['SEO', 'META', 'GOOGLE', 'SYSTEM'];
+const SCENE_COUNT = disciplines.length + 1;
+const RAIL_LABELS = ['SEO', 'META', 'GOOGLE', 'MOTION', 'SYSTEM'];
+const COUNT_WORDS = ['Zero', 'One', 'Two', 'Three', 'Four', 'Five'];
 
 type SceneProps = { progress: MotionValue<number> };
 
@@ -162,10 +163,78 @@ function GoogleScene({ progress }: SceneProps) {
 	);
 }
 
+const TRACKS = [
+	{ y: 322, from: 0.02, to: 0.55, fill: RED },
+	{ y: 346, from: 0.18, to: 0.8, fill: PAPER },
+	{ y: 370, from: 0.1, to: 0.95, fill: PAPER },
+];
+const KEYFRAMES = [0.12, 0.3, 0.5, 0.7, 0.9];
+
+function TimelineBar({ track, progress }: { track: (typeof TRACKS)[number] } & SceneProps) {
+	const scaleX = useTransform(progress, [track.from, track.to], [0, 1], { clamp: true });
+	return (
+		<motion.rect
+			x={60}
+			y={track.y}
+			width={400}
+			height={12}
+			rx={6}
+			fill={track.fill}
+			fillOpacity={track.fill === RED ? 1 : 0.28}
+			style={{ scaleX, transformBox: 'fill-box', transformOrigin: 'left' }}
+		/>
+	);
+}
+
+function Keyframe({ at, progress }: { at: number } & SceneProps) {
+	const fill = useTransform(progress, [at - 0.02, at + 0.02], ['#26262b', RED]);
+	return <motion.rect x={at * 400 + 56} y={314} width={9} height={9} rx={1.5} fill={fill} style={{ rotate: 45, transformOrigin: `${at * 400 + 60.5}px 318.5px` }} />;
+}
+
+function MotionScene({ progress }: SceneProps) {
+	const playhead = useTransform(progress, [0, 1], [60, 460]);
+	const timecode = useTransform(progress, (value): string => `00:0${Math.min(9, Math.floor(value * 10))}:${String(Math.floor((value * 240) % 24)).padStart(2, '0')}`);
+	const ballX = useTransform(progress, [0, 0.5, 1], [120, 300, 480]);
+	const ballY = useTransform(progress, [0, 0.25, 0.5, 0.75, 1], [210, 90, 210, 90, 210]);
+	const ballScaleX = useTransform(progress, [0, 0.22, 0.25, 0.28, 0.5], [1, 0.9, 1.3, 0.9, 1]);
+	const square = useTransform(progress, [0, 1], [0, 270]);
+	const squareScale = useTransform(progress, [0, 0.5, 1], [0.6, 1.25, 0.6]);
+	const trailDraw = useTransform(progress, [0, 1], [0, 1]);
+	return (
+		<svg viewBox="0 0 600 480" className="scene-svg" role="img" aria-label="A motion timeline scrubbing while an animated shape moves across the preview">
+			<rect x="60" y="30" width="480" height="244" rx="14" fill="#0b0b0e" stroke={PAPER} strokeOpacity="0.2" />
+			<motion.path
+				d="M120 210 Q 210 20 300 210 T 480 210"
+				fill="none"
+				stroke={RED}
+				strokeOpacity="0.55"
+				strokeWidth="2"
+				strokeDasharray="3 8"
+				style={{ pathLength: trailDraw }}
+			/>
+			<motion.rect x={430} y={150} width={56} height={56} rx={8} fill="none" stroke={PAPER} strokeWidth="2.5" style={{ rotate: square, scale: squareScale, transformOrigin: '458px 178px' }} />
+			<motion.circle cx={ballX} cy={ballY} r={26} fill={RED} style={{ scaleX: ballScaleX, filter: 'drop-shadow(0 0 16px rgba(255,52,72,.8))' }} />
+			<motion.text x="76" y="56" className="svg-caption" fill={PAPER} fillOpacity="0.6">{timecode}</motion.text>
+			<text x="524" y="56" textAnchor="end" className="svg-caption" fill={RED}>REC</text>
+			<line x1="60" y1="304" x2="460" y2="304" stroke={PAPER} strokeOpacity="0.25" />
+			{TRACKS.map(track => (
+				<TimelineBar key={track.y} track={track} progress={progress} />
+			))}
+			{KEYFRAMES.map(at => (
+				<Keyframe key={at} at={at} progress={progress} />
+			))}
+			<motion.line x1={playhead} x2={playhead} y1="296" y2="394" stroke="#fff" strokeWidth="2" />
+			<motion.circle cx={playhead} cy="294" r="6" fill="#fff" />
+			<text x="60" y="440" className="svg-caption" fill={PAPER} fillOpacity="0.55">KEYFRAMES x EASING x STORY</text>
+		</svg>
+	);
+}
+
 const NODES = [
-	{ label: 'SEO', x: 300, y: 70 },
-	{ label: 'META', x: 110, y: 370 },
-	{ label: 'GOOGLE', x: 490, y: 370 },
+	{ label: 'SEO', x: 300, y: 72 },
+	{ label: 'META', x: 508, y: 250 },
+	{ label: 'GOOGLE', x: 300, y: 428 },
+	{ label: 'MOTION', x: 92, y: 250 },
 ];
 
 function SystemNode({ node, index, progress }: { node: (typeof NODES)[number]; index: number } & SceneProps) {
@@ -184,23 +253,21 @@ function SystemScene({ progress }: SceneProps) {
 	const coreScale = useTransform(progress, [0.4, 1], [0.5, 1], { clamp: true });
 	const coreOpacity = useTransform(progress, [0.4, 0.7], [0, 1], { clamp: true });
 	return (
-		<svg viewBox="0 0 600 480" className="scene-svg" role="img" aria-label="SEO, Meta and Google feeding a single compounding system">
+		<svg viewBox="0 0 600 480" className="scene-svg" role="img" aria-label="SEO, Meta, Google and Motion feeding a single compounding system">
 			<motion.circle
 				cx="300"
 				cy="250"
-				r="168"
+				r="124"
 				fill="none"
 				stroke={PAPER}
 				strokeOpacity="0.25"
 				strokeDasharray="4 12"
 				style={{ rotate, transformOrigin: '300px 250px' }}
 			/>
-			<motion.path d="M300 114 L 128 336" stroke={RED} strokeWidth="2" fill="none" style={{ pathLength: draw }} />
-			<motion.path d="M154 370 L 446 370" stroke={RED} strokeWidth="2" fill="none" style={{ pathLength: draw }} />
-			<motion.path d="M472 336 L 300 114" stroke={RED} strokeWidth="2" fill="none" style={{ pathLength: draw }} />
-			<motion.g style={{ scale: coreScale, opacity: coreOpacity, transformOrigin: '300px 260px' }}>
-				<circle cx="300" cy="260" r="60" fill={RED} style={{ filter: 'drop-shadow(0 0 28px rgba(255,52,72,.8))' }} />
-				<text x="300" y="270" textAnchor="middle" className="svg-core" fill="#fff">ROAS</text>
+			<motion.path d="M300 116 L 464 250 L 300 384 L 136 250 Z" stroke={RED} strokeWidth="2" fill="none" strokeLinejoin="round" style={{ pathLength: draw }} />
+			<motion.g style={{ scale: coreScale, opacity: coreOpacity, transformOrigin: '300px 250px' }}>
+				<circle cx="300" cy="250" r="56" fill={RED} style={{ filter: 'drop-shadow(0 0 28px rgba(255,52,72,.8))' }} />
+				<text x="300" y="260" textAnchor="middle" className="svg-core" fill="#fff">ROAS</text>
 			</motion.g>
 			{NODES.map((node, index) => (
 				<SystemNode key={node.label} node={node} index={index} progress={progress} />
@@ -242,9 +309,9 @@ const COPY: Copy[] = [
 		cta: discipline.cta,
 	})),
 	{
-		number: '04',
+		number: '05',
 		name: 'One system',
-		headline: 'Three engines.',
+		headline: 'Four engines.',
 		accent: 'One result.',
 		summary:
 			'Each channel feeds the next. One strategy, one measurement framework and one senior team accountable for the number that actually matters: return.',
@@ -274,7 +341,7 @@ export function GrowthSystem() {
 						<i /> 01 / OUR EXPERTISE
 					</span>
 					<h2 id="system-title">
-						Three disciplines. <em>One growth system.</em>
+						{COUNT_WORDS[disciplines.length]} disciplines. <em>One growth system.</em>
 					</h2>
 				</div>
 
@@ -313,7 +380,8 @@ export function GrowthSystem() {
 							<Scene index={0} progress={scrollYProgress}>{local => <SeoScene progress={local} />}</Scene>
 							<Scene index={1} progress={scrollYProgress}>{local => <MetaScene progress={local} />}</Scene>
 							<Scene index={2} progress={scrollYProgress}>{local => <GoogleScene progress={local} />}</Scene>
-							<Scene index={3} progress={scrollYProgress}>{local => <SystemScene progress={local} />}</Scene>
+							<Scene index={3} progress={scrollYProgress}>{local => <MotionScene progress={local} />}</Scene>
+							<Scene index={4} progress={scrollYProgress}>{local => <SystemScene progress={local} />}</Scene>
 						</div>
 					</div>
 				</div>

@@ -160,7 +160,7 @@ export function Hero() {
 					transition={{ duration: 1.1, delay: 1.1, ease: EASE_OUT }}
 				>
 					<p>
-						Search, Meta and Google engineered as one growth system.
+						Search, paid media and motion engineered as one growth system.
 						<br />
 						Senior-led. Measured to the dollar. Built to scale.
 					</p>
@@ -185,6 +185,7 @@ export function Hero() {
 				<span>SEO & CONTENT</span>
 				<span>META ADS</span>
 				<span>GOOGLE ADS</span>
+				<span>MOTION GRAPHICS</span>
 				<span className="scroll-cue" aria-hidden="true">
 					SCROLL <i />
 				</span>

@@ -14,7 +14,7 @@ export function buildOrganizationSchema(origin: string) {
 		logo: absoluteUrl(origin, '/favicon.ico'),
 		image: absoluteUrl(origin, '/og-image.png'),
 		description:
-			'Independent, senior-led digital growth studio specializing in SEO & Content, Meta Ads, and Google Ads.',
+			'Independent, senior-led digital growth studio specializing in SEO & Content, Meta Ads, Google Ads, and Motion Graphics.',
 		email: 'hello@roaswell.com',
 		areaServed: 'Worldwide',
 		knowsAbout: [
@@ -25,6 +25,7 @@ export function buildOrganizationSchema(origin: string) {
 			'Creative Testing Frameworks',
 			'Google Ads & Paid Search',
 			'Conversion Rate Optimization',
+			'Motion Graphics & Performance Creative',
 			'Server-Side Attribution & Tracking',
 			'Incrementality Measurement',
 		],
@@ -62,6 +63,16 @@ export function buildOrganizationSchema(origin: string) {
 						url: absoluteUrl(origin, '/expertise/google-ads'),
 					},
 				},
+				{
+					'@type': 'Offer',
+					itemOffered: {
+						'@type': 'Service',
+						name: 'Motion Graphics',
+						description:
+							'Paid social creative, explainer videos, product animation, brand films and web motion built for creative testing.',
+						url: absoluteUrl(origin, '/expertise/motion-graphics'),
+					},
+				},
 			],
 		},
 		contactPoint: [
@@ -82,7 +93,7 @@ export function buildWebSiteSchema(origin: string) {
 		'@id': `${origin}/#website`,
 		url: origin,
 		name: 'ROASWELL',
-		description: 'Independent digital growth studio. SEO & Content, Meta Ads, Google Ads.',
+		description: 'Independent digital growth studio. SEO & Content, Meta Ads, Google Ads, Motion Graphics.',
 		publisher: {
 			'@id': `${origin}/#organization`,
 		},
@@ -179,7 +190,7 @@ export function buildAboutPageSchema(origin: string) {
 		url: absoluteUrl(origin, '/about'),
 		name: 'About ROASWELL',
 		description:
-			'ROASWELL is an independent, senior-led digital growth studio uniting SEO & Content, Meta Ads, and Google Ads.',
+			'ROASWELL is an independent, senior-led digital growth studio uniting SEO & Content, Meta Ads, Google Ads, and Motion Graphics.',
 		mainEntity: {
 			'@id': `${origin}/#organization`,
 		},

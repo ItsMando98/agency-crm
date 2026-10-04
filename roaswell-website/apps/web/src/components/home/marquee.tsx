@@ -9,8 +9,8 @@ import {
 	useVelocity,
 } from 'framer-motion';
 
-const ROW_ONE = ['SEO & CONTENT', 'META ADS', 'GOOGLE ADS', 'CREATIVE TESTING'];
-const ROW_TWO = ['INCREMENTALITY', 'SERVER-SIDE TRACKING', 'FULL-FUNNEL', 'BLENDED CAC'];
+const ROW_ONE = ['SEO & CONTENT', 'META ADS', 'GOOGLE ADS', 'MOTION GRAPHICS'];
+const ROW_TWO = ['CREATIVE TESTING', 'INCREMENTALITY', 'SERVER-SIDE TRACKING', 'BLENDED CAC'];
 
 function wrapPercent(value: number) {
 	return ((((value + 50) % 50) + 50) % 50) - 50;

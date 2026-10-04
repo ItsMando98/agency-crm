@@ -8,7 +8,7 @@ export function ExpertiseHero() {
 				<span className="hero-note">What we do — and why it belongs together.</span>
 			</div>
 			<h1>
-				Three disciplines.
+				Four disciplines.
 				<br />
 				One growth system.
 			</h1>
@@ -18,6 +18,8 @@ export function ExpertiseHero() {
 				Content builds demand.
 				<br />
 				Paid media accelerates what works.
+				<br />
+				Motion makes it unforgettable.
 			</p>
 		</section>
 	);

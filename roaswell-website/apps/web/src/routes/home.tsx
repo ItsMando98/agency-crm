@@ -19,7 +19,7 @@ export function meta({ matches, location }: Route.MetaArgs) {
 		{
 			title: 'ROASWELL — Digital Growth Studio · SEO, Meta Ads & Google Ads',
 			description:
-				'Independent, senior-led digital growth studio. Specializing in SEO & Content, Meta Ads, and Google Ads. Focused execution, transparent measurement, no agency bloat.',
+				'Independent, senior-led digital growth studio. Specializing in SEO & Content, Meta Ads, Google Ads, and Motion Graphics. Focused execution, transparent measurement, no agency bloat.',
 			jsonLd: [buildOrganizationSchema(origin), buildWebSiteSchema(origin)],
 		},
 	);
