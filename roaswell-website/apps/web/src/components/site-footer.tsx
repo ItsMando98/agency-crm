@@ -12,6 +12,7 @@ import {
 } from 'framer-motion';
 import { disciplines } from '@/data/expertise';
 import { Magnetic } from '@/components/motion/primitives';
+import { LoopVideo } from '@/components/motion/loop-video';
 import { clamp } from '@/lib/motion-math';
 
 const WORD = 'ROASWELL';
@@ -111,6 +112,16 @@ function FooterWordmark({ progress }: { progress: MotionValue<number> }) {
 	);
 }
 
+function FooterVideo({ progress }: { progress: MotionValue<number> }) {
+	const y = useTransform(progress, [0, 1], ['-8%', '0%']);
+
+	return (
+		<div className="footer-media" aria-hidden="true">
+			<LoopVideo name="footer-loop" poster="/footer-poster.jpg" className="footer-video" style={{ y }} />
+			<div className="footer-media-fade" />
+		</div>
+	);
+}
 
 function BackToTop() {
 	const reduced = useReducedMotion();
@@ -139,6 +150,8 @@ export function SiteFooter() {
 
 	return (
 		<footer ref={ref} className="site-footer">
+			<FooterVideo progress={scrollYProgress} />
+
 			<div className="footer-inner">
 				<div className="footer-cta">
 					<span className="eyebrow">
