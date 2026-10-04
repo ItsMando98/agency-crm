@@ -1,104 +1,82 @@
-import { clamp, easeInCubic, lerp } from '@/lib/motion-math';
-import { PAPER, RED, TAU, frac, mix, rgba, sceneBackground, sceneVignette, type Scene } from './helpers';
+import { easeInCubic, lerp, seg } from '@/lib/motion-math';
+import { PAPER, RED, TAU, frac, mix, mulberry32, rgba, sceneBackground, sceneVignette, type Scene } from './helpers';
 
 const W = 1280;
 const H = 960;
-const DURATION = 8;
-const CX = W / 2;
-const CY = H / 2;
-const COUNT = 96;
-const RX = 590;
-const RY = 450;
+const DURATION = 6;
 
-type Curve = { sx: number; sy: number; cx: number; cy: number; ex: number; ey: number; phase: number };
-
-const CURVES: Curve[] = Array.from({ length: COUNT }, (_, index) => {
-	const angle = (index / COUNT) * TAU;
-	const swirl = angle + 0.95;
-	const end = angle + 1.3;
-	return {
-		sx: CX + Math.cos(angle) * RX,
-		sy: CY + Math.sin(angle) * RY,
-		cx: CX + Math.cos(swirl) * RX * 0.46,
-		cy: CY + Math.sin(swirl) * RY * 0.46,
-		ex: CX + Math.cos(end) * 20,
-		ey: CY + Math.sin(end) * 20,
-		phase: frac(index * 0.381966),
-	};
-});
-
-function pointAt(curve: Curve, s: number): [number, number] {
-	const k = 1 - s;
-	return [
-		k * k * curve.sx + 2 * k * s * curve.cx + s * s * curve.ex,
-		k * k * curve.sy + 2 * k * s * curve.cy + s * s * curve.ey,
-	];
-}
+const random = mulberry32(7);
+const DOTS = Array.from({ length: 54 }, (_, index) => ({
+	base: (index / 54) * TAU + random() * 0.4,
+	cycles: 1 + (index % 2),
+	phase: random(),
+	size: 2.4 + random() * 2.2,
+}));
 
 export const googleScene: Scene = {
 	width: W,
 	height: H,
 	duration: DURATION,
-	poster: 3,
+	poster: 2,
 	draw(ctx, t) {
-		sceneBackground(ctx, W, H, 0.08);
-
-		ctx.lineWidth = 1.2;
-		ctx.strokeStyle = rgba(PAPER, 0.075);
-		for (const curve of CURVES) {
+		sceneBackground(ctx, W, H, 0.1);
+		const cx = W / 2;
+		const cy = H / 2;
+		ctx.lineWidth = 1.5;
+		for (const radius of [130, 260, 390]) {
+			ctx.strokeStyle = 'rgba(244, 241, 234, 0.13)';
 			ctx.beginPath();
-			ctx.moveTo(curve.sx, curve.sy);
-			ctx.quadraticCurveTo(curve.cx, curve.cy, curve.ex, curve.ey);
+			ctx.arc(cx, cy, radius, 0, TAU);
 			ctx.stroke();
 		}
+		ctx.strokeStyle = 'rgba(244, 241, 234, 0.07)';
+		ctx.beginPath();
+		ctx.moveTo(cx, 60);
+		ctx.lineTo(cx, H - 60);
+		ctx.moveTo(60, cy);
+		ctx.lineTo(W - 60, cy);
+		ctx.stroke();
 
 		ctx.globalCompositeOperation = 'lighter';
-		ctx.lineCap = 'round';
-		let arrival = 0;
-		for (const curve of CURVES) {
-			const head = frac(t / DURATION + curve.phase);
-			const eased = 1 - Math.pow(1 - head, 1.6);
-			const tail = 0.16;
-			arrival += Math.max(0, 1 - Math.abs(head - 0.98) / 0.06);
-			const steps = 9;
-			for (let i = 0; i < steps; i += 1) {
-				const a = Math.max(0, eased - tail * ((steps - i) / steps));
-				const b = Math.max(0, eased - tail * ((steps - i - 1) / steps));
-				const [x0, y0] = pointAt(curve, a);
-				const [x1, y1] = pointAt(curve, b);
-				const fade = (i + 1) / steps;
-				const color = mix(PAPER, RED, clamp((head - 0.35) / 0.5));
-				ctx.strokeStyle = rgba(color, 0.9 * fade * fade);
-				ctx.lineWidth = 1 + 1.6 * fade;
-				ctx.beginPath();
-				ctx.moveTo(x0, y0);
-				ctx.lineTo(x1, y1);
-				ctx.stroke();
-			}
+		for (const dot of DOTS) {
+			const p = frac(dot.cycles * (t / DURATION) + dot.phase);
+			const radius = lerp(560, 26, easeInCubic(p));
+			const angle = dot.base + p * 1.5;
+			const x = cx + Math.cos(angle) * radius;
+			const y = cy + Math.sin(angle) * radius;
+			const fade = Math.pow(Math.sin(Math.PI * p), 0.6);
+			const color = mix(PAPER, RED, seg(p, 0.55, 0.95));
+			const glow = ctx.createRadialGradient(x, y, 0, x, y, dot.size * 6);
+			glow.addColorStop(0, rgba(color, 0.4 * fade));
+			glow.addColorStop(1, rgba(color, 0));
+			ctx.fillStyle = glow;
+			ctx.fillRect(x - dot.size * 6, y - dot.size * 6, dot.size * 12, dot.size * 12);
+			ctx.fillStyle = rgba(color, 0.95 * fade);
+			ctx.beginPath();
+			ctx.arc(x, y, dot.size * (1 - 0.35 * p), 0, TAU);
+			ctx.fill();
 		}
 
-		const energy = clamp(arrival / 6);
-		const core = ctx.createRadialGradient(CX, CY, 0, CX, CY, 220);
-		core.addColorStop(0, rgba(RED, 0.5 + 0.3 * energy));
-		core.addColorStop(0.35, rgba(RED, 0.12));
+		const pulseP = frac((t / DURATION) * 3);
+		ctx.strokeStyle = rgba(RED, 0.55 * (1 - pulseP));
+		ctx.lineWidth = 2.5;
+		ctx.beginPath();
+		ctx.arc(cx, cy, 30 + pulseP * 150, 0, TAU);
+		ctx.stroke();
+
+		const breathe = 1 + 0.12 * Math.sin(TAU * 3 * (t / DURATION));
+		const core = ctx.createRadialGradient(cx, cy, 0, cx, cy, 120);
+		core.addColorStop(0, rgba(RED, 0.5));
 		core.addColorStop(1, rgba(RED, 0));
 		ctx.fillStyle = core;
-		ctx.fillRect(CX - 220, CY - 220, 440, 440);
-
-		ctx.globalCompositeOperation = 'source-over';
-		const radius = lerp(24, 30, energy);
+		ctx.fillRect(cx - 120, cy - 120, 240, 240);
 		ctx.fillStyle = rgba(RED, 1);
 		ctx.beginPath();
-		ctx.arc(CX, CY, radius, 0, TAU);
+		ctx.arc(cx, cy, 20 * breathe, 0, TAU);
 		ctx.fill();
-		ctx.strokeStyle = 'rgba(255, 255, 255, 0.55)';
-		ctx.lineWidth = 1.6;
+		ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
 		ctx.beginPath();
-		ctx.arc(CX, CY, radius + 12 + 6 * easeInCubic(energy), 0, TAU);
-		ctx.stroke();
-		ctx.fillStyle = 'rgba(255, 255, 255, 0.95)';
-		ctx.beginPath();
-		ctx.arc(CX, CY, 8, 0, TAU);
+		ctx.arc(cx, cy, 7, 0, TAU);
 		ctx.fill();
 		sceneVignette(ctx, W, H);
 	},

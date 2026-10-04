@@ -11,10 +11,10 @@ import { googleScene } from '@/lib/scenes/google';
 import { motionScene } from '@/lib/scenes/motion';
 
 const SCENES = [
-	{ scene: seoScene, caption: 'Rising through the results' },
-	{ scene: metaScene, caption: 'One clear winner' },
-	{ scene: googleScene, caption: 'Intent flowing in' },
-	{ scene: motionScene, caption: 'Motion with weight' },
+	{ scene: seoScene, caption: 'Climbing the results' },
+	{ scene: metaScene, caption: 'Testing to a clear winner' },
+	{ scene: googleScene, caption: 'Intent converging on action' },
+	{ scene: motionScene, caption: 'Fluid, on purpose' },
 ];
 
 const COUNT_WORDS = ['Zero', 'One', 'Two', 'Three', 'Four', 'Five'];
