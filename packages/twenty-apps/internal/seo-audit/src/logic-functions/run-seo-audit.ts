@@ -5,15 +5,13 @@ import {
 } from 'twenty-sdk/define';
 import { type DatabaseEventBatchPayload } from 'twenty-sdk/logic-function';
 
-import {
-  SEO_AUDIT_LANGUAGE,
-  SEO_AUDIT_STATUS,
-} from 'src/constants/seo-audit.constants';
+import { SEO_AUDIT_STATUS } from 'src/constants/seo-audit.constants';
 import { type AuditLanguage } from 'src/types/audit-language';
 import { buildAuditName } from 'src/utils/build-audit-name.util';
 import { getAnthropicClient } from 'src/utils/get-anthropic-client.util';
 import { normalizeAuditDomain } from 'src/utils/normalize-audit-domain.util';
 import { persistSeoAuditResult } from 'src/utils/persist-seo-audit-result.util';
+import { readAuditSettings } from 'src/utils/read-audit-settings.util';
 import { runSeoAuditPipeline } from 'src/utils/run-seo-audit-pipeline.util';
 
 type SeoAuditRecord = {
@@ -30,6 +28,7 @@ const handler = async (
 ): Promise<void> => {
   const client = new CoreApiClient();
   const anthropicClient = getAnthropicClient();
+  const { defaultLanguage, maxPages } = readAuditSettings();
 
   for (const event of batch.events) {
     const audit = event.properties.after;
@@ -61,8 +60,9 @@ const handler = async (
       const origin = normalizeAuditDomain(audit.domain ?? '');
       const result = await runSeoAuditPipeline({
         domain: origin,
-        language: audit.language ?? SEO_AUDIT_LANGUAGE.DE,
+        language: audit.language ?? defaultLanguage,
         anthropicClient,
+        maxPages,
       });
 
       await persistSeoAuditResult({

@@ -59,7 +59,11 @@ describe('run-seo-audit', () => {
 
     expect(updates()[0].data).toMatchObject({ status: 'RUNNING' });
     expect(pipelineMock).toHaveBeenCalledWith(
-      expect.objectContaining({ domain: 'https://example.com', language: 'EN' }),
+      expect.objectContaining({
+        domain: 'https://example.com',
+        language: 'EN',
+        maxPages: 60,
+      }),
     );
     expect(persistMock).toHaveBeenCalledWith(
       expect.objectContaining({ auditId: 'audit-1', result: { score: 80 } }),

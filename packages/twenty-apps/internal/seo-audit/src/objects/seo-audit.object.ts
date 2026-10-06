@@ -68,8 +68,9 @@ export default defineObject({
       type: FieldType.SELECT,
       name: 'language',
       label: 'Report language',
+      description: 'Leave empty to use the default language from the app settings',
       icon: 'IconLanguage',
-      defaultValue: `'${SEO_AUDIT_LANGUAGE.DE}'`,
+      isNullable: true,
       options: buildSelectOptions([
         { id: '2ee27b38-140f-4a02-a31e-1a45d830032d', value: SEO_AUDIT_LANGUAGE.DE, label: 'German', color: 'yellow' },
         { id: '66e21c29-53e6-44eb-86e0-9072d317f58c', value: SEO_AUDIT_LANGUAGE.EN, label: 'English', color: 'blue' },

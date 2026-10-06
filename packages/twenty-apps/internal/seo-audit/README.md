@@ -25,9 +25,17 @@ Audits run asynchronously: creating a `seoAudit` record (through the tool, the U
 
 `seoAudit` (linked to company) has many `seoAuditPage` (metrics and assessment per page) and `seoAuditTask` (the action list with status for checking items off).
 
-## Setup
+## Setup in the UI
 
-Set the server variable `ANTHROPIC_API_KEY` after installing. Without it the audit still runs on measured rules only and the report says content quality was not assessed.
+After installing, open Settings > Apps > SEO Audit > Setup. The page walks through:
+
+1. Connect Anthropic: paste the API key. It is stored as a secret workspace variable.
+2. Choose defaults: report language and the maximum number of pages per audit.
+3. Run your first audit: enter a website and the audit record opens. Recent audits are listed below.
+
+The app's health check shows a banner on the app page when the key is missing or rejected by Anthropic. Without a key the audit still runs on measured rules only and the report says content quality was not assessed.
+
+The same variables are also editable on the built-in Variables tab: `ANTHROPIC_API_KEY`, `SEO_AUDIT_DEFAULT_LANGUAGE`, `SEO_AUDIT_MAX_PAGES`.
 
 ```bash
 yarn install

@@ -19,7 +19,7 @@ export const startSeoAuditInputSchema: InputJsonSchema = {
       type: 'string',
       enum: Object.values(SEO_AUDIT_LANGUAGE),
       description:
-        'Report language: DE for German (default) or EN for English.',
+        'Report language: DE for German or EN for English. Defaults to the language set in the app settings.',
     },
   },
   required: ['domain'],

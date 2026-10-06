@@ -23,6 +23,7 @@ type RunSeoAuditPipelineParams = {
   language: AuditLanguage;
   // Without a client the audit runs on measured rules only.
   anthropicClient: Anthropic | null;
+  maxPages?: number;
   fetchImplementation?: typeof fetch;
   now?: Date;
 };
@@ -31,11 +32,12 @@ export const runSeoAuditPipeline = async ({
   domain,
   language,
   anthropicClient,
+  maxPages,
   fetchImplementation,
   now = new Date(),
 }: RunSeoAuditPipelineParams): Promise<SeoAuditResult> => {
   const origin = normalizeAuditDomain(domain);
-  const crawlResult = await crawlWebsite({ origin, fetchImplementation });
+  const crawlResult = await crawlWebsite({ origin, maxPages, fetchImplementation });
   const auditablePages = crawlResult.pages.filter(isAuditablePage);
 
   let siteProfile: SiteProfile | null = null;

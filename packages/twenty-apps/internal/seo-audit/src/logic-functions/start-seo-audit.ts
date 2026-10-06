@@ -1,14 +1,12 @@
 import { CoreApiClient } from 'twenty-client-sdk/core';
 import { defineLogicFunction } from 'twenty-sdk/define';
 
-import {
-  SEO_AUDIT_LANGUAGE,
-  SEO_AUDIT_STATUS,
-} from 'src/constants/seo-audit.constants';
+import { SEO_AUDIT_STATUS } from 'src/constants/seo-audit.constants';
 import { startSeoAuditInputSchema } from 'src/logic-functions/schemas/start-seo-audit-input.schema';
 import { type StartSeoAuditInput } from 'src/types/start-seo-audit-input';
 import { buildAuditName } from 'src/utils/build-audit-name.util';
 import { normalizeAuditDomain } from 'src/utils/normalize-audit-domain.util';
+import { readAuditSettings } from 'src/utils/read-audit-settings.util';
 
 type StartSeoAuditResult = {
   success: boolean;
@@ -41,7 +39,7 @@ const handler = async (
           name: buildAuditName(origin, new Date()),
           domain: origin,
           status: SEO_AUDIT_STATUS.QUEUED,
-          language: parameters.language ?? SEO_AUDIT_LANGUAGE.DE,
+          language: parameters.language ?? readAuditSettings().defaultLanguage,
           companyId: parameters.companyId,
         },
       },
