@@ -8,11 +8,23 @@ import { buildPageRecordData } from 'src/utils/build-page-record-data.util';
 import { buildTaskRecordData } from 'src/utils/build-task-record-data.util';
 import { selectKeywordRecords } from 'src/utils/select-keyword-records.util';
 
+type FileReference = { fileId: string; label: string }[];
+
+export type PersistedExports = {
+  reportHtml: string;
+  reportUrl: string | null;
+  shareToken: string;
+  excelFile: FileReference | null;
+  pdfFile: FileReference | null;
+  notes: string[];
+};
+
 type PersistSeoAuditResultParams = {
   client: CoreApiClient;
   auditId: string;
   result: SeoAuditResult;
   finishedAt: Date;
+  exports?: PersistedExports;
 };
 
 export const persistSeoAuditResult = async ({
@@ -20,6 +32,7 @@ export const persistSeoAuditResult = async ({
   auditId,
   result,
   finishedAt,
+  exports,
 }: PersistSeoAuditResultParams): Promise<void> => {
   const assessmentByUrl = new Map(
     result.assessments.map((assessment) => [assessment.url, assessment]),
@@ -76,6 +89,16 @@ export const persistSeoAuditResult = async ({
           finishedAt: finishedAt.toISOString(),
           failureReason: null,
           ...buildMarketAuditData(result.marketData),
+          ...(exports === undefined
+            ? {}
+            : {
+                reportHtml: exports.reportHtml,
+                reportUrl: exports.reportUrl,
+                shareToken: exports.shareToken,
+                excelFile: exports.excelFile ?? undefined,
+                pdfFile: exports.pdfFile ?? undefined,
+                exportNotes: exports.notes.length > 0 ? exports.notes.join('\n') : null,
+              }),
         },
       },
       id: true,

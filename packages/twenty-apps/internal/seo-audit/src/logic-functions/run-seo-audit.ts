@@ -1,4 +1,7 @@
+import { randomBytes } from 'node:crypto';
+
 import { CoreApiClient } from 'twenty-client-sdk/core';
+import { MetadataApiClient } from 'twenty-client-sdk/metadata';
 import {
   defineLogicFunction,
   type ObjectRecordCreateEvent,
@@ -7,11 +10,17 @@ import { type DatabaseEventBatchPayload } from 'twenty-sdk/logic-function';
 
 import { SEO_AUDIT_STATUS } from 'src/constants/seo-audit.constants';
 import { type AuditLanguage } from 'src/types/audit-language';
+import { buildAuditExports } from 'src/utils/build-audit-exports.util';
 import { buildAuditName } from 'src/utils/build-audit-name.util';
+import { buildReportUrl } from 'src/utils/build-report-url.util';
 import { getAnthropicClient } from 'src/utils/get-anthropic-client.util';
 import { normalizeAuditDomain } from 'src/utils/normalize-audit-domain.util';
 import { persistSeoAuditResult } from 'src/utils/persist-seo-audit-result.util';
 import { readDataForSeoCredentials } from 'src/utils/read-dataforseo-credentials.util';
+import { readReportBaseUrl } from 'src/utils/read-report-base-url.util';
+import { readPdfRendererSettings } from 'src/utils/read-pdf-renderer-settings.util';
+import { readReportBranding } from 'src/utils/read-report-branding.util';
+import { uploadAuditFiles } from 'src/utils/upload-audit-files.util';
 import { readAuditSettings } from 'src/utils/read-audit-settings.util';
 import { runSeoAuditPipeline } from 'src/utils/run-seo-audit-pipeline.util';
 
@@ -69,11 +78,36 @@ const handler = async (
         dataForSeoCredentials,
       });
 
+      const auditExports = await buildAuditExports({
+        result,
+        branding: readReportBranding(),
+        pdfRenderer: readPdfRendererSettings(),
+      });
+      const uploadedFiles = await uploadAuditFiles({
+        client: new MetadataApiClient(),
+        exports: auditExports,
+        origin: result.origin,
+        generatedAt: result.generatedAt,
+      });
+      const shareToken = randomBytes(24).toString('hex');
+
       await persistSeoAuditResult({
         client,
         auditId,
         result,
         finishedAt: new Date(),
+        exports: {
+          reportHtml: auditExports.reportHtml,
+          reportUrl: buildReportUrl({
+            serverUrl: readReportBaseUrl(),
+            auditId,
+            shareToken,
+          }),
+          shareToken,
+          excelFile: uploadedFiles.excelFile,
+          pdfFile: uploadedFiles.pdfFile,
+          notes: [...auditExports.notes, ...uploadedFiles.notes],
+        },
       });
 
       if (!audit.name) {

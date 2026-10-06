@@ -8,9 +8,15 @@ import {
   DEFAULT_LANGUAGE_VARIABLE_KEY,
   MARKET_VARIABLE_KEY,
   MAX_PAGES_VARIABLE_KEY,
+  PDF_RENDERER_API_KEY_VARIABLE_KEY,
+  PDF_RENDERER_URL_VARIABLE_KEY,
+  REPORT_ACCENT_COLOR_VARIABLE_KEY,
+  REPORT_BRAND_NAME_VARIABLE_KEY,
+  REPORT_PUBLIC_URL_VARIABLE_KEY,
 } from 'src/constants/application-variable-keys.const';
 import { MAX_CRAWLED_PAGES } from 'src/constants/crawl.const';
 import { DEFAULT_MARKET, MARKETS } from 'src/constants/dataforseo.const';
+import { DEFAULT_ACCENT_COLOR } from 'src/constants/report.const';
 import { SEO_AUDIT_LANGUAGE } from 'src/constants/seo-audit.constants';
 
 export default defineApplication({
@@ -40,6 +46,46 @@ export default defineApplication({
       label: 'DataForSEO API password',
       description:
         'The API password from the DataForSEO dashboard, not your account password.',
+      isSecret: true,
+    },
+    [REPORT_BRAND_NAME_VARIABLE_KEY]: {
+      universalIdentifier: '42e31f7e-5681-4899-98d0-ef921966114a',
+      label: 'Report brand name',
+      description: 'Your agency name on the cover and in the footer of reports. Leave empty for none.',
+      type: FieldType.TEXT,
+      isSecret: false,
+      value: '',
+    },
+    [REPORT_ACCENT_COLOR_VARIABLE_KEY]: {
+      universalIdentifier: 'de515325-c9b5-4e54-b113-86b22c8bdd0f',
+      label: 'Report accent color',
+      description: 'Hex color of the cover line, for example #2a78d6.',
+      type: FieldType.TEXT,
+      isSecret: false,
+      value: DEFAULT_ACCENT_COLOR,
+    },
+    [REPORT_PUBLIC_URL_VARIABLE_KEY]: {
+      universalIdentifier: '3dbd616f-4153-4944-b3fa-4a127aecb01f',
+      label: 'Report link base URL',
+      description:
+        'Optional. The address of your workspace, for example https://crm.example.com. Needed when each workspace has its own subdomain. Defaults to the server URL.',
+      type: FieldType.TEXT,
+      isSecret: false,
+      value: '',
+    },
+    [PDF_RENDERER_URL_VARIABLE_KEY]: {
+      universalIdentifier: '2341ebf3-18df-499f-b317-4685970a2fb2',
+      label: 'PDF renderer URL',
+      description:
+        'Optional. URL of a Gotenberg service, for example http://gotenberg:3000. With it every audit gets a PDF rendered from the HTML report. Without it, open the report link and choose Save as PDF.',
+      type: FieldType.TEXT,
+      isSecret: false,
+      value: '',
+    },
+    [PDF_RENDERER_API_KEY_VARIABLE_KEY]: {
+      universalIdentifier: 'a7c30442-b164-496f-ab95-2c1485e94251',
+      label: 'PDF renderer API key',
+      description: 'Optional. Sent as a bearer token when your renderer sits behind authentication.',
       isSecret: true,
     },
     [MARKET_VARIABLE_KEY]: {

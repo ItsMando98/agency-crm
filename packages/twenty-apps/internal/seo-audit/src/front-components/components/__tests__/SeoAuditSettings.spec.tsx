@@ -42,7 +42,12 @@ const variable = (overrides: Record<string, unknown>) => ({
   ...overrides,
 });
 
-const buildVariables = (apiKeyValue = '', dataForSeoLogin = '', dataForSeoPassword = '') => [
+const buildVariables = (
+  apiKeyValue = '',
+  dataForSeoLogin = '',
+  dataForSeoPassword = '',
+  pdfRendererUrl = '',
+) => [
   variable({
     key: 'ANTHROPIC_API_KEY',
     label: 'Anthropic API key',
@@ -81,6 +86,11 @@ const buildVariables = (apiKeyValue = '', dataForSeoLogin = '', dataForSeoPasswo
       { label: 'Austria', value: 'AT' },
     ],
   }),
+  variable({ key: 'SEO_AUDIT_BRAND_NAME', label: 'Report brand name' }),
+  variable({ key: 'SEO_AUDIT_ACCENT_COLOR', label: 'Report accent color', value: '#2a78d6' }),
+  variable({ key: 'SEO_AUDIT_PUBLIC_URL', label: 'Report link base URL' }),
+  variable({ key: 'PDF_RENDERER_URL', label: 'PDF renderer URL', value: pdfRendererUrl }),
+  variable({ key: 'PDF_RENDERER_API_KEY', label: 'PDF renderer API key', isSecret: true }),
   variable({
     key: 'SEO_AUDIT_MAX_PAGES',
     label: 'Maximum pages per audit',
@@ -93,11 +103,12 @@ const givenWorkspace = ({
   apiKeyValue = '',
   dataForSeoLogin = '',
   dataForSeoPassword = '',
+  pdfRendererUrl = '',
   audits = [] as unknown[],
   hasFinishedAudit = false,
 } = {}) => {
   mocks.metadataQuery.mockResolvedValue({
-    findOneApplication: { id: 'app-1', applicationVariables: buildVariables(apiKeyValue, dataForSeoLogin, dataForSeoPassword) },
+    findOneApplication: { id: 'app-1', applicationVariables: buildVariables(apiKeyValue, dataForSeoLogin, dataForSeoPassword, pdfRendererUrl) },
   });
   mocks.metadataMutation.mockResolvedValue({});
   mocks.coreQuery.mockImplementation(async (query: { seoAudits: { __args: { filter?: unknown } } }) =>
@@ -131,6 +142,7 @@ describe('SeoAuditSettings', () => {
     expect((await stepStatus('Connect Anthropic')).getByText('To do')).toBeTruthy();
     expect((await stepStatus('Connect DataForSEO')).getByText('Optional')).toBeTruthy();
     expect((await stepStatus('Choose defaults')).getByText('Optional')).toBeTruthy();
+    expect((await stepStatus('Set up PDF export')).getByText('Optional')).toBeTruthy();
     expect((await stepStatus('Run your first audit')).getByText('To do')).toBeTruthy();
     expect(screen.getByText('0 of 2 required steps done')).toBeTruthy();
     expect(screen.getByText('No Anthropic key yet')).toBeTruthy();
@@ -157,6 +169,47 @@ describe('SeoAuditSettings', () => {
     render(<SeoAuditSettings />);
 
     expect((await stepStatus('Connect DataForSEO')).getByText('Optional')).toBeTruthy();
+  });
+
+  it('marks PDF export as done once a renderer URL is stored', async () => {
+    givenWorkspace({ pdfRendererUrl: 'http://gotenberg:3000' });
+    render(<SeoAuditSettings />);
+
+    expect((await stepStatus('Set up PDF export')).getByText('Done')).toBeTruthy();
+  });
+
+  it('saves the PDF renderer URL and the brand name', async () => {
+    givenWorkspace();
+    const user = userEvent.setup();
+
+    render(<SeoAuditSettings />);
+
+    const urlInput = await screen.findByLabelText('PDF renderer URL');
+
+    await user.type(urlInput, 'http://gotenberg:3000');
+    await user.click(within(urlInput.parentElement as HTMLElement).getByRole('button', { name: 'Save' }));
+
+    await waitFor(() =>
+      expect(mocks.metadataMutation).toHaveBeenCalledWith({
+        updateOneApplicationVariable: {
+          __args: { key: 'PDF_RENDERER_URL', value: 'http://gotenberg:3000', applicationId: 'app-1' },
+        },
+      }),
+    );
+    expect((await stepStatus('Set up PDF export')).getByText('Done')).toBeTruthy();
+
+    const brandInput = screen.getByLabelText('Report brand name');
+
+    await user.type(brandInput, 'Muster Agentur');
+    await user.click(within(brandInput.parentElement as HTMLElement).getByRole('button', { name: 'Save' }));
+
+    await waitFor(() =>
+      expect(mocks.metadataMutation).toHaveBeenCalledWith({
+        updateOneApplicationVariable: {
+          __args: { key: 'SEO_AUDIT_BRAND_NAME', value: 'Muster Agentur', applicationId: 'app-1' },
+        },
+      }),
+    );
   });
 
   it('saves the DataForSEO password as a secret variable', async () => {

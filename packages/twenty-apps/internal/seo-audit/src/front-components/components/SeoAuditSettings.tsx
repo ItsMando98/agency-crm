@@ -11,6 +11,11 @@ import {
   DEFAULT_LANGUAGE_VARIABLE_KEY,
   MARKET_VARIABLE_KEY,
   MAX_PAGES_VARIABLE_KEY,
+  PDF_RENDERER_API_KEY_VARIABLE_KEY,
+  PDF_RENDERER_URL_VARIABLE_KEY,
+  REPORT_ACCENT_COLOR_VARIABLE_KEY,
+  REPORT_BRAND_NAME_VARIABLE_KEY,
+  REPORT_PUBLIC_URL_VARIABLE_KEY,
 } from 'src/constants/application-variable-keys.const';
 import { SEO_AUDIT_LANGUAGE } from 'src/constants/seo-audit.constants';
 import { ApplicationVariableField } from 'src/front-components/components/ApplicationVariableField';
@@ -55,6 +60,9 @@ export const SeoAuditSettings = () => {
   const isDataForSeoConfigured =
     getIsApplicationVariableConfigured(getValue(DATAFORSEO_LOGIN_VARIABLE_KEY)) &&
     getIsApplicationVariableConfigured(getValue(DATAFORSEO_PASSWORD_VARIABLE_KEY));
+  const isPdfRendererConfigured = getIsApplicationVariableConfigured(
+    getValue(PDF_RENDERER_URL_VARIABLE_KEY),
+  );
   const defaultLanguage: AuditLanguage =
     getValue(DEFAULT_LANGUAGE_VARIABLE_KEY) === SEO_AUDIT_LANGUAGE.EN
       ? SEO_AUDIT_LANGUAGE.EN
@@ -90,6 +98,7 @@ export const SeoAuditSettings = () => {
         steps={buildSetupSteps({
           isApiKeyConfigured,
           isDataForSeoConfigured,
+          isPdfRendererConfigured,
           hasFinishedAudit,
         })}
       />
@@ -116,6 +125,19 @@ export const SeoAuditSettings = () => {
           {renderField(MARKET_VARIABLE_KEY)}
           {renderField(DEFAULT_LANGUAGE_VARIABLE_KEY)}
           {renderField(MAX_PAGES_VARIABLE_KEY)}
+        </div>
+      </Section.Root>
+      <Section.Root>
+        <Section.Header
+          title="Reports and PDF"
+          description="Every audit gets an HTML report page and an Excel file. The PDF is rendered from the report page."
+        />
+        <div style={{ display: 'flex', flexDirection: 'column', gap: themeCssVariables.spacing[4] }}>
+          {renderField(REPORT_BRAND_NAME_VARIABLE_KEY)}
+          {renderField(REPORT_ACCENT_COLOR_VARIABLE_KEY)}
+          {renderField(REPORT_PUBLIC_URL_VARIABLE_KEY)}
+          {renderField(PDF_RENDERER_URL_VARIABLE_KEY)}
+          {renderField(PDF_RENDERER_API_KEY_VARIABLE_KEY)}
         </div>
       </Section.Root>
       <StartAuditSection

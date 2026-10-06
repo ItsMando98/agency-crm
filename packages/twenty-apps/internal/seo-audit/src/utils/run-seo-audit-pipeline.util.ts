@@ -154,6 +154,10 @@ export const runSeoAuditPipeline = async ({
   });
 
   return {
+    origin: crawlResult.origin,
+    language,
+    generatedAt: now.toISOString(),
+    brokenBacklinkTargets,
     score,
     grade,
     areaScores,

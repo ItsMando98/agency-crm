@@ -5,6 +5,7 @@ import { buildSetupSteps } from 'src/front-components/utils/build-setup-steps.ut
 const baseParams = {
   isApiKeyConfigured: false,
   isDataForSeoConfigured: false,
+  isPdfRendererConfigured: false,
   hasFinishedAudit: false,
 };
 
@@ -14,6 +15,7 @@ describe('buildSetupSteps', () => {
       { id: 'ANTHROPIC_KEY', status: 'TODO' },
       { id: 'DATAFORSEO', status: 'OPTIONAL' },
       { id: 'DEFAULTS', status: 'OPTIONAL' },
+      { id: 'PDF_EXPORT', status: 'OPTIONAL' },
       { id: 'FIRST_AUDIT', status: 'TODO' },
     ]);
   });
@@ -24,6 +26,7 @@ describe('buildSetupSteps', () => {
 
     expect(statusOf({ isApiKeyConfigured: true }, 'ANTHROPIC_KEY')).toBe('DONE');
     expect(statusOf({ isDataForSeoConfigured: true }, 'DATAFORSEO')).toBe('DONE');
+    expect(statusOf({ isPdfRendererConfigured: true }, 'PDF_EXPORT')).toBe('DONE');
     expect(statusOf({ hasFinishedAudit: true }, 'FIRST_AUDIT')).toBe('DONE');
   });
 });

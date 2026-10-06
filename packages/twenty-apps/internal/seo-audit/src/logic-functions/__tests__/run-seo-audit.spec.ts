@@ -1,9 +1,11 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
-const { mutationMock, pipelineMock, persistMock } = vi.hoisted(() => ({
+const { mutationMock, pipelineMock, persistMock, exportsMock, uploadMock } = vi.hoisted(() => ({
   mutationMock: vi.fn(),
   pipelineMock: vi.fn(),
   persistMock: vi.fn(),
+  exportsMock: vi.fn(),
+  uploadMock: vi.fn(),
 }));
 
 vi.mock('twenty-client-sdk/core', () => ({
@@ -16,6 +18,17 @@ vi.mock('src/utils/run-seo-audit-pipeline.util', () => ({
 }));
 vi.mock('src/utils/persist-seo-audit-result.util', () => ({
   persistSeoAuditResult: persistMock,
+}));
+vi.mock('twenty-client-sdk/metadata', () => ({
+  MetadataApiClient: vi.fn(function () {
+    return { uploadFile: vi.fn() };
+  }),
+}));
+vi.mock('src/utils/build-audit-exports.util', () => ({
+  buildAuditExports: exportsMock,
+}));
+vi.mock('src/utils/upload-audit-files.util', () => ({
+  uploadAuditFiles: uploadMock,
 }));
 
 import runSeoAudit from 'src/logic-functions/run-seo-audit';
@@ -48,8 +61,23 @@ describe('run-seo-audit', () => {
   beforeEach(() => {
     vi.clearAllMocks();
     mutationMock.mockResolvedValue({});
-    pipelineMock.mockResolvedValue({ score: 80 });
+    pipelineMock.mockResolvedValue({
+      score: 80,
+      origin: 'https://example.com',
+      generatedAt: '2026-10-06T10:00:00.000Z',
+    });
     persistMock.mockResolvedValue(undefined);
+    exportsMock.mockResolvedValue({
+      reportHtml: '<html>report</html>',
+      excelBuffer: Buffer.from('xlsx'),
+      pdfBytes: null,
+      notes: ['PDF export failed: down'],
+    });
+    uploadMock.mockResolvedValue({
+      excelFile: [{ fileId: 'excel-id', label: 'audit.xlsx' }],
+      pdfFile: null,
+      notes: [],
+    });
   });
 
   it('marks the audit as running, runs the pipeline and persists the result', async () => {
@@ -68,8 +96,68 @@ describe('run-seo-audit', () => {
       }),
     );
     expect(persistMock).toHaveBeenCalledWith(
-      expect.objectContaining({ auditId: 'audit-1', result: { score: 80 } }),
+      expect.objectContaining({ auditId: 'audit-1' }),
     );
+  });
+
+  it('builds the exports, uploads the files and stores them with a share link', async () => {
+    process.env.TWENTY_API_URL = 'https://crm.example.com';
+    process.env.SEO_AUDIT_BRAND_NAME = 'Muster Agentur';
+    process.env.PDF_RENDERER_URL = 'http://gotenberg:3000';
+
+    try {
+      await handler({
+        events: [event('audit-1', { domain: 'https://example.com', status: 'QUEUED', name: 'x' })],
+      } as Batch);
+    } finally {
+      delete process.env.TWENTY_API_URL;
+      delete process.env.SEO_AUDIT_BRAND_NAME;
+      delete process.env.PDF_RENDERER_URL;
+    }
+
+    expect(exportsMock).toHaveBeenCalledWith(
+      expect.objectContaining({
+        branding: expect.objectContaining({ brandName: 'Muster Agentur' }),
+        pdfRenderer: { url: 'http://gotenberg:3000', apiKey: null },
+      }),
+    );
+    expect(uploadMock).toHaveBeenCalledWith(
+      expect.objectContaining({ origin: 'https://example.com', generatedAt: '2026-10-06T10:00:00.000Z' }),
+    );
+
+    const { exports } = persistMock.mock.calls[0][0];
+
+    expect(exports.shareToken).toMatch(/^[0-9a-f]{48}$/);
+    expect(exports.reportUrl).toBe(
+      `https://crm.example.com/s/seo-audit/report?id=audit-1&token=${exports.shareToken}`,
+    );
+    expect(exports).toMatchObject({
+      reportHtml: '<html>report</html>',
+      excelFile: [{ fileId: 'excel-id', label: 'audit.xlsx' }],
+      pdfFile: null,
+      notes: ['PDF export failed: down'],
+    });
+  });
+
+  it('creates a new share token for every audit', async () => {
+    await handler({
+      events: [
+        event('audit-1', { domain: 'https://example.com', status: 'QUEUED', name: 'x' }),
+        event('audit-2', { domain: 'https://example.com', status: 'QUEUED', name: 'x' }),
+      ],
+    } as Batch);
+
+    const tokens = persistMock.mock.calls.map(([params]) => params.exports.shareToken);
+
+    expect(new Set(tokens).size).toBe(2);
+  });
+
+  it('still finishes the audit without a server URL for the link', async () => {
+    await handler({
+      events: [event('audit-1', { domain: 'https://example.com', status: 'QUEUED', name: 'x' })],
+    } as Batch);
+
+    expect(persistMock.mock.calls[0][0].exports.reportUrl).toBeNull();
   });
 
   it('passes DataForSEO credentials and the market from the app variables', async () => {

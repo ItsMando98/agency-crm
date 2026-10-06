@@ -19,6 +19,8 @@ export const SEO_AUDIT_AREA_SCORES_FIELD_UNIVERSAL_IDENTIFIER = '5a834691-0c10-4
 export const SEO_AUDIT_REPORT_MARKDOWN_FIELD_UNIVERSAL_IDENTIFIER = 'bb19ce12-d0c8-4aef-a9d3-494c0bdc23ac';
 export const SEO_AUDIT_STARTED_AT_FIELD_UNIVERSAL_IDENTIFIER = 'b5386a5e-9b13-4201-a581-230e19bba950';
 export const SEO_AUDIT_FINISHED_AT_FIELD_UNIVERSAL_IDENTIFIER = 'b8efe40f-7fcf-4203-8449-b50cdcbaf4e0';
+export const SEO_AUDIT_EXCEL_FILE_FIELD_UNIVERSAL_IDENTIFIER = '547bb5ba-cad7-4490-a4b2-2d964b8acaab';
+export const SEO_AUDIT_PDF_FILE_FIELD_UNIVERSAL_IDENTIFIER = '8f7ca6a7-13b0-4fdd-b8da-e825421db48a';
 export const SEO_AUDIT_FAILURE_REASON_FIELD_UNIVERSAL_IDENTIFIER = '91288421-a54e-473d-ba2b-b1483c875e23';
 
 export default defineObject({
@@ -200,6 +202,60 @@ export default defineObject({
       name: 'marketDataNotes',
       label: 'Market data notes',
       description: 'Requests that failed or were skipped',
+      icon: 'IconInfoCircle',
+      isNullable: true,
+    },
+    {
+      universalIdentifier: '3062ded5-bde8-4c73-9d9e-7647e4e99aa4',
+      type: FieldType.TEXT,
+      name: 'reportHtml',
+      label: 'Report (HTML)',
+      description: 'Print-ready report page, source of the PDF',
+      icon: 'IconFileTypeHtml',
+      isNullable: true,
+    },
+    {
+      universalIdentifier: '5e58c95a-f456-41b1-926d-01eec9f8fd6e',
+      type: FieldType.TEXT,
+      name: 'reportUrl',
+      label: 'Report link',
+      description: 'Share this link with the client. Open it and choose Save as PDF.',
+      icon: 'IconExternalLink',
+      isNullable: true,
+    },
+    {
+      universalIdentifier: '5ccee369-55dc-4e4c-8521-07dba2f1dc6a',
+      type: FieldType.TEXT,
+      name: 'shareToken',
+      label: 'Share token',
+      description: 'Part of the report link. Clear it to disable the link.',
+      icon: 'IconKey',
+      isNullable: true,
+    },
+    {
+      universalIdentifier: SEO_AUDIT_EXCEL_FILE_FIELD_UNIVERSAL_IDENTIFIER,
+      type: FieldType.FILES,
+      name: 'excelFile',
+      label: 'Excel',
+      description: 'Action list, pages, keywords and backlinks as a spreadsheet',
+      icon: 'IconFileSpreadsheet',
+      universalSettings: { maxNumberOfValues: 1 },
+    },
+    {
+      universalIdentifier: SEO_AUDIT_PDF_FILE_FIELD_UNIVERSAL_IDENTIFIER,
+      type: FieldType.FILES,
+      name: 'pdfFile',
+      label: 'PDF',
+      description: 'Client-ready report, rendered from the HTML page',
+      icon: 'IconFileTypePdf',
+      universalSettings: { maxNumberOfValues: 1 },
+    },
+    {
+      universalIdentifier: 'fd556651-8eab-4445-849d-5917fdb93d3c',
+      type: FieldType.TEXT,
+      name: 'exportNotes',
+      label: 'Export notes',
+      description: 'Exports that failed or were skipped',
       icon: 'IconInfoCircle',
       isNullable: true,
     },

@@ -14,6 +14,20 @@ Give it a homepage. A few minutes later the audit record holds a score, a grade,
 
 Content quality weighs 25% of the score, so a technically clean site with weak pages does not get an A.
 
+## Reports and exports
+
+Every finished audit comes with three deliverables:
+
+- **HTML report page.** A standalone, print-ready page (A4, no external assets) with cover score, area bars, the action plan by horizon, keyword opportunities, backlinks and competitors. It is the single source for the PDF. The audit record stores it and a share link in `Report link`. Anyone with the link can open it without an account. Open it and choose Save as PDF in the print dialog.
+- **Excel file.** Attached to the audit as `Excel`: overview, action list (with a status dropdown to check items off), pages, keywords, backlinks, competitors and a review list. Market sheets only appear when DataForSEO delivered data.
+- **PDF file.** When a PDF renderer is configured (a Gotenberg service, for example `docker run --rm -p 3000:3000 gotenberg/gotenberg:8`), the same HTML is rendered by headless Chromium and attached as `PDF`. Without a renderer nothing breaks, you just use Save as PDF on the report page.
+
+Reports can carry your brand name and accent color (Setup tab). If an export fails, the audit still completes and `Export notes` says what went wrong.
+
+The share link contains a random token. Clear `Share token` on the audit to disable the link. The server resolves the workspace of a public link from the host, so on installations with one subdomain per workspace set `Report link base URL` to the workspace address.
+
+The report page is built from text found on crawled websites. Everything is escaped, and the page carries its own Content-Security-Policy that allows no scripts except the print button, because the server serves it on the app origin and drops most response headers.
+
 ## Tools for agents
 
 | Tool | Purpose |
@@ -39,7 +53,7 @@ The app's health check shows a banner on the app page when the key is missing or
 
 DataForSEO is optional. Enter the API login and API password from the DataForSEO dashboard under API Access (not your account password) and pick the market (country and language). Market data costs roughly 0.15 to 0.35 USD per audit, shown on the audit as DataForSEO cost. If a request fails, for example because the account has no Backlinks API subscription, the audit still completes and lists what was skipped.
 
-The same variables are also editable on the built-in Variables tab: `ANTHROPIC_API_KEY`, `DATAFORSEO_LOGIN`, `DATAFORSEO_PASSWORD`, `SEO_AUDIT_MARKET`, `SEO_AUDIT_DEFAULT_LANGUAGE`, `SEO_AUDIT_MAX_PAGES`.
+The same variables are also editable on the built-in Variables tab: `ANTHROPIC_API_KEY`, `DATAFORSEO_LOGIN`, `DATAFORSEO_PASSWORD`, `SEO_AUDIT_MARKET`, `SEO_AUDIT_DEFAULT_LANGUAGE`, `SEO_AUDIT_MAX_PAGES`, `SEO_AUDIT_BRAND_NAME`, `SEO_AUDIT_ACCENT_COLOR`, `SEO_AUDIT_PUBLIC_URL`, `PDF_RENDERER_URL`, `PDF_RENDERER_API_KEY`.
 
 ```bash
 yarn install
@@ -53,4 +67,5 @@ yarn test:unit
 - Only public hosts can be audited. Private and internal addresses are rejected, also on redirects.
 - Confidence is the model's own estimate, not a calibrated probability.
 - The DataForSEO response parsers are tolerant: a field that is missing or renamed leaves that part of the market data empty and is listed in the audit notes instead of failing the audit. The integration was written from the public API description and could not be run against the live API in the build environment.
+- The PDF renderer integration follows the public Gotenberg API (POST /forms/chromium/convert/html) and was tested against a fake. The HTML to PDF layout was checked with a local headless Chromium.
 - Keyword relevance is judged for the 300 keywords with the highest search volume.

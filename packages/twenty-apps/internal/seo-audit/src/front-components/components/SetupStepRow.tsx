@@ -17,6 +17,11 @@ const STEP_TEXT: Record<SetupStep['id'], { title: string; description: string }>
     title: 'Choose defaults',
     description: 'Pick the market, report language and how many pages each audit checks.',
   },
+  PDF_EXPORT: {
+    title: 'Set up PDF export',
+    description:
+      'Optional. Connect a PDF renderer to attach a PDF to every audit. Excel and the report link work without it.',
+  },
   FIRST_AUDIT: {
     title: 'Run your first audit',
     description: 'Enter a website below. The result appears on the audit record.',
