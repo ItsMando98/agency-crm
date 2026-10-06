@@ -1,0 +1,22 @@
+export type CrawledPage = {
+  url: string;
+  statusCode: number;
+  responseTimeMs: number;
+  contentType: string | null;
+  isHtml: boolean;
+  title: string | null;
+  metaDescription: string | null;
+  canonicalUrl: string | null;
+  robotsMeta: string | null;
+  isNoindex: boolean;
+  lang: string | null;
+  hasViewport: boolean;
+  h1Count: number;
+  wordCount: number;
+  imageCount: number;
+  imagesWithoutAlt: number;
+  insecureResourceUrls: string[];
+  internalLinks: string[];
+  structuredDataTypes: string[];
+  textExcerpt: string;
+};
