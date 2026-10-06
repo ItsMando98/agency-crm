@@ -1,10 +1,12 @@
 import { useId, useState } from 'react';
 import { enqueueSnackbar } from 'twenty-sdk/front-component';
+import { Status } from 'twenty-ui/primitives/data-display';
 import { Button, Input, SegmentedControl } from 'twenty-ui/primitives/input';
 import { themeCssVariables } from 'twenty-ui/theme';
 
 import { useUpdateApplicationVariable } from 'src/front-components/hooks/use-update-application-variable';
 import { type SeoAuditApplicationVariable } from 'src/front-components/types/seo-audit-application-variable';
+import { getVariableInputId } from 'src/front-components/utils/get-variable-input-id.util';
 import { parseMaxPagesInput } from 'src/front-components/utils/parse-max-pages-input.util';
 import { MAX_PAGES_VARIABLE_KEY } from 'src/constants/application-variable-keys.const';
 
@@ -21,7 +23,8 @@ export const ApplicationVariableField = ({
   storedValue,
   onSaved,
 }: ApplicationVariableFieldProps) => {
-  const inputId = useId();
+  const inputId = getVariableInputId(variable.key);
+  const descriptionId = useId();
   const [draftValue, setDraftValue] = useState<string | undefined>(undefined);
   const [isSaving, setIsSaving] = useState(false);
   const { updateApplicationVariable } = useUpdateApplicationVariable(applicationId);
@@ -77,10 +80,22 @@ export const ApplicationVariableField = ({
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: themeCssVariables.spacing[1] }}>
-      <label htmlFor={inputId} style={labelStyle}>
-        {variable.label}
-      </label>
-      <span style={descriptionStyle}>{variable.description}</span>
+      <div
+        style={{
+          alignItems: 'center',
+          display: 'flex',
+          gap: themeCssVariables.spacing[2],
+          justifyContent: 'space-between',
+        }}
+      >
+        <label htmlFor={inputId} style={labelStyle}>
+          {variable.label}
+        </label>
+        {isSecretStored && <Status color="green">Saved</Status>}
+      </div>
+      <span id={descriptionId} style={descriptionStyle}>
+        {variable.description}
+      </span>
       {variable.type === 'SELECT' && variable.options !== null ? (
         <SegmentedControl
           aria-label={variable.label}
@@ -92,6 +107,7 @@ export const ApplicationVariableField = ({
         <div style={{ display: 'flex', gap: themeCssVariables.spacing[2] }}>
           <Input
             id={inputId}
+            aria-describedby={descriptionId}
             type={variable.isSecret ? 'password' : variable.type === 'NUMBER' ? 'number' : 'text'}
             autoComplete="off"
             placeholder={isSecretStored ? 'Key saved. Enter a new key to replace it.' : 'Value'}

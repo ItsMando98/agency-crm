@@ -8,9 +8,10 @@ import { getSetupProgress } from 'src/front-components/utils/get-setup-progress.
 
 type SetupChecklistProps = {
   steps: SetupStep[];
+  onStepSelect: (stepId: SetupStep['id']) => void;
 };
 
-export const SetupChecklist = ({ steps }: SetupChecklistProps) => {
+export const SetupChecklist = ({ steps, onStepSelect }: SetupChecklistProps) => {
   const { completed, total, percentage } = getSetupProgress(steps);
 
   return (
@@ -26,7 +27,7 @@ export const SetupChecklist = ({ steps }: SetupChecklistProps) => {
       <ProgressBar value={percentage} ariaLabel="Setup progress" />
       <ul style={{ margin: 0, marginTop: themeCssVariables.spacing[2], padding: 0 }}>
         {steps.map((step) => (
-          <SetupStepRow key={step.id} step={step} />
+          <SetupStepRow key={step.id} step={step} onSelect={onStepSelect} />
         ))}
       </ul>
     </Section.Root>

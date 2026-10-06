@@ -360,6 +360,108 @@ describe('SeoAuditSettings', () => {
     });
   });
 
+  it('shows an empty state instead of nothing when no audit exists yet', async () => {
+    givenWorkspace();
+    render(<SeoAuditSettings />);
+
+    expect(await screen.findByText(/No audits yet/)).toBeTruthy();
+  });
+
+  it('puts running an audit above the configuration sections', async () => {
+    givenWorkspace();
+    render(<SeoAuditSettings />);
+
+    const runAudit = await screen.findByText('Run an audit');
+    const anthropic = screen.getByText('Anthropic');
+
+    expect(
+      runAudit.compareDocumentPosition(anthropic) & Node.DOCUMENT_POSITION_FOLLOWING,
+    ).toBeTruthy();
+  });
+
+  it('marks a stored secret as saved without revealing it', async () => {
+    givenWorkspace({ apiKeyValue: 'sk-ant-••••1234' });
+    render(<SeoAuditSettings />);
+
+    const keyInput = await screen.findByLabelText('Anthropic API key');
+    const field = keyInput.closest('div')?.parentElement as HTMLElement;
+
+    expect(within(field).getByText('Saved')).toBeTruthy();
+    expect((keyInput as HTMLInputElement).value).toBe('');
+  });
+
+  it('does not mark an empty secret as saved', async () => {
+    givenWorkspace();
+    render(<SeoAuditSettings />);
+
+    await screen.findByLabelText('Anthropic API key');
+
+    expect(screen.queryByText('Saved')).toBeNull();
+  });
+
+  it('connects each text input to its description for screen readers', async () => {
+    givenWorkspace();
+    render(<SeoAuditSettings />);
+
+    const keyInput = await screen.findByLabelText('Anthropic API key');
+    const descriptionId = keyInput.getAttribute('aria-describedby');
+
+    expect(descriptionId).toBeTruthy();
+    expect(document.getElementById(descriptionId as string)?.textContent).toBe(
+      'Used by the page classifier.',
+    );
+  });
+
+  it('jumps to the matching field when a setup step is selected', async () => {
+    givenWorkspace();
+    const user = userEvent.setup();
+
+    render(<SeoAuditSettings />);
+
+    await user.click(await screen.findByText('Connect Anthropic'));
+    expect(document.activeElement).toBe(await screen.findByLabelText('Anthropic API key'));
+
+    await user.click(screen.getByText('Set up PDF export'));
+    expect(document.activeElement).toBe(screen.getByLabelText('PDF renderer URL'));
+
+    await user.click(screen.getByText('Run your first audit'));
+    expect(document.activeElement).toBe(screen.getByLabelText('Website'));
+  });
+
+  it('highlights a setup step while the pointer is over it', async () => {
+    givenWorkspace();
+    const user = userEvent.setup();
+
+    render(<SeoAuditSettings />);
+
+    const row = (await screen.findByText('Connect Anthropic')).closest('button') as HTMLElement;
+
+    expect(row.getAttribute('style')).not.toContain('background-transparent-lighter');
+
+    await user.hover(row);
+    expect(row.getAttribute('style')).toContain('background-transparent-lighter');
+
+    await user.unhover(row);
+    expect(row.getAttribute('style')).not.toContain('background-transparent-lighter');
+  });
+
+  it('highlights a recent audit while the pointer is over it', async () => {
+    givenWorkspace({
+      audits: [
+        { id: 'a1', name: 'example.com 2026-10-06', domain: 'https://example.com', status: 'DONE', score: 81, grade: 'B' },
+      ],
+    });
+    const user = userEvent.setup();
+
+    render(<SeoAuditSettings />);
+
+    const row = (await screen.findByText('example.com 2026-10-06')).closest('button') as HTMLElement;
+
+    await user.hover(row);
+
+    expect(row.getAttribute('style')).toContain('background-transparent-lighter');
+  });
+
   it('shows an error when the settings cannot be loaded', async () => {
     givenWorkspace();
     mocks.metadataQuery.mockRejectedValue(new Error('network'));

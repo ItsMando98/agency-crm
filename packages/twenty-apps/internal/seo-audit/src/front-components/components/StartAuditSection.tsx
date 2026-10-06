@@ -5,6 +5,7 @@ import { Button, Input, SegmentedControl } from 'twenty-ui/primitives/input';
 import { themeCssVariables } from 'twenty-ui/theme';
 
 import { SEO_AUDIT_LANGUAGE } from 'src/constants/seo-audit.constants';
+import { START_AUDIT_DOMAIN_INPUT_ID } from 'src/front-components/constants/focus-target-ids.const';
 import { useStartSeoAudit } from 'src/front-components/hooks/use-start-seo-audit';
 import { type AuditLanguage } from 'src/types/audit-language';
 
@@ -66,6 +67,7 @@ export const StartAuditSection = ({
         )}
         <div style={{ display: 'flex', gap: themeCssVariables.spacing[2] }}>
           <Input
+            id={START_AUDIT_DOMAIN_INPUT_ID}
             aria-label="Website"
             placeholder="example.com"
             value={domain}

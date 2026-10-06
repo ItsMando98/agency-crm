@@ -19,10 +19,13 @@ import {
 } from 'src/constants/application-variable-keys.const';
 import { SEO_AUDIT_LANGUAGE } from 'src/constants/seo-audit.constants';
 import { ApplicationVariableField } from 'src/front-components/components/ApplicationVariableField';
+import { FieldGroup } from 'src/front-components/components/FieldGroup';
 import { RecentAuditsSection } from 'src/front-components/components/RecentAuditsSection';
 import { SetupChecklist } from 'src/front-components/components/SetupChecklist';
 import { StartAuditSection } from 'src/front-components/components/StartAuditSection';
+import { SETUP_STEP_FOCUS_TARGET_ID } from 'src/front-components/constants/focus-target-ids.const';
 import { useRecentSeoAudits } from 'src/front-components/hooks/use-recent-seo-audits';
+import { type SetupStep } from 'src/front-components/types/setup-step';
 import { useSeoAuditApplicationVariables } from 'src/front-components/hooks/use-seo-audit-application-variables';
 import { buildSetupSteps } from 'src/front-components/utils/build-setup-steps.util';
 import { getIsApplicationVariableConfigured } from 'src/front-components/utils/get-is-application-variable-configured.util';
@@ -31,7 +34,12 @@ import { type AuditLanguage } from 'src/types/audit-language';
 export const SeoAuditSettings = () => {
   const { applicationId, applicationVariables, isLoading, hasError } =
     useSeoAuditApplicationVariables();
-  const { recentAudits, hasFinishedAudit, refresh } = useRecentSeoAudits();
+  const {
+    recentAudits,
+    hasFinishedAudit,
+    isLoading: isLoadingAudits,
+    refresh,
+  } = useRecentSeoAudits();
   const [savedValueByKey, setSavedValueByKey] = useState<Record<string, string>>({});
 
   if (isLoading) {
@@ -68,6 +76,11 @@ export const SeoAuditSettings = () => {
       ? SEO_AUDIT_LANGUAGE.EN
       : SEO_AUDIT_LANGUAGE.DE;
 
+  // Focusing the target makes the host scroll it into view and puts the cursor there.
+  const focusSetupStep = (stepId: SetupStep['id']) => {
+    document.getElementById(SETUP_STEP_FOCUS_TARGET_ID[stepId])?.focus();
+  };
+
   const renderField = (key: string) => {
     const variable = findVariable(key);
 
@@ -101,7 +114,14 @@ export const SeoAuditSettings = () => {
           isPdfRendererConfigured,
           hasFinishedAudit,
         })}
+        onStepSelect={focusSetupStep}
       />
+      <StartAuditSection
+        isApiKeyConfigured={isApiKeyConfigured}
+        defaultLanguage={defaultLanguage}
+        onAuditStarted={refresh}
+      />
+      <RecentAuditsSection audits={recentAudits} isLoading={isLoadingAudits} />
       <Section.Root>
         <Section.Header
           title="Anthropic"
@@ -114,38 +134,32 @@ export const SeoAuditSettings = () => {
           title="DataForSEO"
           description="Optional. Adds rankings, keyword opportunities, backlinks and competitors. Costs about 0.15 to 0.35 USD per audit at DataForSEO."
         />
-        <div style={{ display: 'flex', flexDirection: 'column', gap: themeCssVariables.spacing[4] }}>
+        <FieldGroup>
           {renderField(DATAFORSEO_LOGIN_VARIABLE_KEY)}
           {renderField(DATAFORSEO_PASSWORD_VARIABLE_KEY)}
-        </div>
+        </FieldGroup>
       </Section.Root>
       <Section.Root>
         <Section.Header title="Defaults" description="Applied when an audit is started without choices." />
-        <div style={{ display: 'flex', flexDirection: 'column', gap: themeCssVariables.spacing[4] }}>
+        <FieldGroup>
           {renderField(MARKET_VARIABLE_KEY)}
           {renderField(DEFAULT_LANGUAGE_VARIABLE_KEY)}
           {renderField(MAX_PAGES_VARIABLE_KEY)}
-        </div>
+        </FieldGroup>
       </Section.Root>
       <Section.Root>
         <Section.Header
           title="Reports and PDF"
           description="Every audit gets an HTML report page and an Excel file. The PDF is rendered from the report page."
         />
-        <div style={{ display: 'flex', flexDirection: 'column', gap: themeCssVariables.spacing[4] }}>
+        <FieldGroup>
           {renderField(REPORT_BRAND_NAME_VARIABLE_KEY)}
           {renderField(REPORT_ACCENT_COLOR_VARIABLE_KEY)}
           {renderField(REPORT_PUBLIC_URL_VARIABLE_KEY)}
           {renderField(PDF_RENDERER_URL_VARIABLE_KEY)}
           {renderField(PDF_RENDERER_API_KEY_VARIABLE_KEY)}
-        </div>
+        </FieldGroup>
       </Section.Root>
-      <StartAuditSection
-        isApiKeyConfigured={isApiKeyConfigured}
-        defaultLanguage={defaultLanguage}
-        onAuditStarted={refresh}
-      />
-      <RecentAuditsSection audits={recentAudits} />
     </div>
   );
 };

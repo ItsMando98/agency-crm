@@ -1,6 +1,7 @@
 import { Status } from 'twenty-ui/primitives/data-display';
 import { themeCssVariables } from 'twenty-ui/theme';
 
+import { RowButton } from 'src/front-components/components/RowButton';
 import { type SetupStep } from 'src/front-components/types/setup-step';
 
 const STEP_TEXT: Record<SetupStep['id'], { title: string; description: string }> = {
@@ -39,43 +40,37 @@ const STATUS_PRESENTATION: Record<
 
 type SetupStepRowProps = {
   step: SetupStep;
+  onSelect: (stepId: SetupStep['id']) => void;
 };
 
-export const SetupStepRow = ({ step }: SetupStepRowProps) => {
+export const SetupStepRow = ({ step, onSelect }: SetupStepRowProps) => {
   const text = STEP_TEXT[step.id];
   const presentation = STATUS_PRESENTATION[step.status];
 
   return (
-    <li
-      style={{
-        alignItems: 'center',
-        display: 'flex',
-        gap: themeCssVariables.spacing[2],
-        justifyContent: 'space-between',
-        listStyle: 'none',
-        padding: `${themeCssVariables.spacing[2]} 0`,
-      }}
-    >
-      <div style={{ display: 'flex', flexDirection: 'column' }}>
-        <span
-          style={{
-            color: themeCssVariables.font.color.primary,
-            fontSize: themeCssVariables.font.size.md,
-            fontWeight: themeCssVariables.font.weight.medium,
-          }}
-        >
-          {text.title}
-        </span>
-        <span
-          style={{
-            color: themeCssVariables.font.color.tertiary,
-            fontSize: themeCssVariables.font.size.sm,
-          }}
-        >
-          {text.description}
-        </span>
-      </div>
-      <Status color={presentation.color}>{presentation.label}</Status>
+    <li style={{ listStyle: 'none' }}>
+      <RowButton onClick={() => onSelect(step.id)}>
+        <div style={{ display: 'flex', flexDirection: 'column' }}>
+          <span
+            style={{
+              color: themeCssVariables.font.color.primary,
+              fontSize: themeCssVariables.font.size.md,
+              fontWeight: themeCssVariables.font.weight.medium,
+            }}
+          >
+            {text.title}
+          </span>
+          <span
+            style={{
+              color: themeCssVariables.font.color.tertiary,
+              fontSize: themeCssVariables.font.size.sm,
+            }}
+          >
+            {text.description}
+          </span>
+        </div>
+        <Status color={presentation.color}>{presentation.label}</Status>
+      </RowButton>
     </li>
   );
 };
