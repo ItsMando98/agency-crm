@@ -1,0 +1,720 @@
+{
+	"expertise": {
+		"seo-content": {
+			"name": "SEO & Content",
+			"eyebrow": "01 / SEO & CONTENT",
+			"headline": "Gefunden werden.",
+			"headlineAccent": "Gewählt werden.",
+			"summary": "Suche erfasst Intent. Content baut Nachfrage auf. Wir machen aus Fragen qualifizierten Traffic und aus Traffic Kunden, mit Strategie, Redaktion und technischen Grundlagen, die sich mit der Zeit potenzieren.",
+			"capabilities": [
+				"SEO-Strategie",
+				"Content-Strategie",
+				"Keyword-Recherche",
+				"Redaktion",
+				"Onpage-SEO",
+				"Content-Optimierung"
+			],
+			"cta": "SEO & Content entdecken",
+			"subpages": [],
+			"body": [
+				{
+					"text": "Der Großteil des Suchtraffics ist verschenkt, weil er die falsche Frage beantwortet oder die richtige Frage schlecht. Wir beginnen beim Intent, also dabei, was deine Zielgruppe wirklich verstehen, entscheiden oder kaufen will, und bauen von dort aus auf."
+				},
+				{
+					"text": "Strategie vor Output"
+				},
+				{
+					"text": "Eine Content-Maschine funktioniert nur, wenn jedes Stück eine Aufgabe hat. Wir kartieren die Themen, die geschäftliche Ergebnisse bewegen, priorisieren nach Chance und takten die Arbeit so, dass sich Schwung aufbaut, statt zu verpuffen."
+				},
+				{
+					"text": "Sei die Antwort, die deine Zielgruppe sucht, nicht nur ein weiteres Ergebnis auf der Seite."
+				},
+				{
+					"text": "Technische Grundlagen, die tragen"
+				},
+				{
+					"text": "Crawlbarkeit, Seitenarchitektur, Core Web Vitals, strukturierte Daten. Die unspektakuläre Arbeit, die entscheidet, ob großartiger Content überhaupt die Chance bekommt zu ranken. Wir behandeln sie als Teil der Strategie, nicht als Nachgedanken."
+				},
+				{
+					"text": "Dann messen wir. Search-Console-Daten, Ranking-Tracking, Conversion-Attribution, zurückgeführt auf die geschäftlichen Ergebnisse, die zählen, nicht auf Traffic-Kurven zum Angeben."
+				}
+			]
+		},
+		"meta-ads": {
+			"name": "Meta Ads",
+			"eyebrow": "02 / META ADS",
+			"headline": "Aus Aufmerksamkeit",
+			"headlineAccent": "wird Nachfrage.",
+			"summary": "Kreation, die verbindet, Kampagnen, die konvertieren. Wir kombinieren Zielgruppen-Einblicke mit konsequentem Testing, damit jede Impression auf Facebook, Instagram und im gesamten Meta-Ökosystem härter arbeitet.",
+			"capabilities": [
+				"Paid Social",
+				"Creative Testing",
+				"Zielgruppenstrategie",
+				"Full-Funnel-Kampagnen",
+				"Conversion-Optimierung",
+				"Retargeting"
+			],
+			"cta": "Meta Ads entdecken",
+			"subpages": [],
+			"body": [
+				{
+					"text": "Aufmerksamkeit ist reichlich da, Nachfrage nicht. Die Aufgabe von Paid Social ist nicht, gesehen zu werden, sondern in Erinnerung zu bleiben, erwogen und gewählt zu werden. Das beginnt mit Kreation, die den Daumen stoppt."
+				},
+				{
+					"text": "Die Kreation ist das Targeting"
+				},
+				{
+					"text": "Auf modernen Plattformen zählt mehr, was du zeigst, als wem du es zeigst. Wir bauen ein strukturiertes Creative-Testing-System mit Hypothesen, Varianten und klaren Gewinnern, damit die Arbeit mit jedem Zyklus schärfer wird."
+				},
+				{
+					"text": "Jeder Klick hat eine Aufgabe. Mach ihn wirksam."
+				},
+				{
+					"text": "Full Funnel statt Last Click"
+				},
+				{
+					"text": "Aufmerksamkeit, Abwägung, Conversion, Bindung. Wir gestalten die Reise so, dass jede Stufe die nächste speist, und messen inkrementell, damit du weißt, was das Budget tatsächlich bewirkt hat."
+				},
+				{
+					"text": "Kein Einrichten und Vergessen. Wöchentliche Creative-Reviews, Zielgruppen-Updates und Budgetverschiebungen hin zu dem, was funktioniert, und weg von dem, was nicht."
+				}
+			]
+		},
+		"google-ads": {
+			"name": "Google Ads",
+			"eyebrow": "03 / GOOGLE ADS",
+			"headline": "Intent erfassen,",
+			"headlineAccent": "wenn es zählt.",
+			"summary": "Intent mit Präzision begegnen. Von Suche bis Shopping setzen wir das Budget dort ein, wo die Chance liegt, und messen mit klarem, geschäftsorientiertem Reporting, was zurückkommt.",
+			"capabilities": [
+				"Paid Search",
+				"Shopping Ads",
+				"Performance Max",
+				"Conversion-Optimierung",
+				"Gebotsstrategie",
+				"Tracking & Messung"
+			],
+			"cta": "Google Ads entdecken",
+			"subpages": [],
+			"body": [
+				{
+					"text": "Suche ist der Moment, in dem aus Intent Handlung wird. Die Frage ist, ob du dafür sichtbar bist und ob die Erfahrung konvertiert, wenn du es bist."
+				},
+				{
+					"text": "Budget dort, wo die Chance liegt"
+				},
+				{
+					"text": "Nicht jedes Keyword verdient dein Geld. Wir bauen die Keyword-Strategie auf kommerziellem Intent und Marge auf, streichen Streuverlust bei breiten und Marken-Überschneidungen und konzentrieren das Budget dort, wo der Ertrag real ist."
+				},
+				{
+					"text": "Intent mit Präzision begegnen. Messen, was zurückkommt."
+				},
+				{
+					"text": "Messung, der du vertrauen kannst"
+				},
+				{
+					"text": "Server-Side-Tracking, Modellierung des Conversion-Werts, saubere Attribution. Damit die Zahlen hinter Entscheidungen die Realität abbilden und nicht die Selbstauskunft der Plattform."
+				},
+				{
+					"text": "Gebotsstrategien, abgestimmt auf deine Wirtschaftlichkeit statt auf ein Standardziel. Wir testen, behalten die Randfälle im Blick und halten das Budget ehrlich."
+				}
+			]
+		},
+		"motion-graphics": {
+			"name": "Motion Graphics",
+			"eyebrow": "04 / MOTION GRAPHICS",
+			"headline": "Den Scroll stoppen.",
+			"headlineAccent": "Unübersehbar sein.",
+			"summary": "Motion ist der schnellste Weg, Aufmerksamkeit zu gewinnen, und der klarste Weg, eine große Idee zu erklären. Wir gestalten Anzeigen, Produktanimationen und Markenfilme, die zum Testen gebaut sind und nicht nur zum Bewundern.",
+			"capabilities": [
+				"Paid-Social-Kreation",
+				"Erklärvideos",
+				"Produktanimation",
+				"Markenfilme",
+				"Web- & UI-Motion",
+				"Assets für Creative Testing"
+			],
+			"cta": "Motion Graphics entdecken",
+			"subpages": {
+				"paid-social-motion": {
+					"name": "Paid-Social-Motion-Ads",
+					"eyebrow": "04.1 / PAID-SOCIAL-MOTION-ADS",
+					"headline": "Die erste",
+					"headlineAccent": "Sekunde gewinnen.",
+					"summary": "Kurze Motion für den Feed: ein Hook, der den Daumen stoppt, eine Aussage, die ankommt, und ein Variantensystem, das zeigt, welche Idee das nächste Budget verdient.",
+					"sample": {
+						"title": "NOVA Sparkling: eine 10-Sekunden-Anzeige, auseinandergenommen",
+						"note": "Eine Konzept-Anzeige für eine erfundene Getränkemarke. Zieh die Zeitleiste und lies daneben die vier Beats: Hook, Aussage, Beweis, Aufruf."
+					},
+					"deliverables": [
+						{
+							"title": "Hook-first-Storyboards",
+							"text": "Drei bis fünf Einstiegsideen pro Konzept, jede so geschrieben, dass sie die erste Sekunde allein gewinnt."
+						},
+						{
+							"title": "Master-Animation und Cutdowns",
+							"text": "Ein Hauptstück plus Versionen in 6, 15 und 30 Sekunden, geschnitten für die Platzierungen, die du wirklich buchst."
+						},
+						{
+							"title": "Jedes Format",
+							"text": "Umsetzungen in 9:16, 4:5 und 1:1, auf Safe Zones für Stories, Reels und den Feed geprüft."
+						},
+						{
+							"title": "Varianten-Kits",
+							"text": "Austauschbare Hooks, Aussagen und Endkarten direkt in der Datei, damit Testen nie bedeutet, von vorn anzufangen."
+						},
+						{
+							"title": "Untertitel und Ton",
+							"text": "Eingebrannte Untertitel für das Ansehen ohne Ton und ein Sounddesign für das Ansehen mit Ton."
+						},
+						{
+							"title": "Learning-Review",
+							"text": "Eine schriftliche Auswertung, was jede Variante uns gelehrt hat und was der nächste Durchgang ändern sollte."
+						}
+					],
+					"steps": [
+						{
+							"title": "Das Konto lesen",
+							"text": "Wir starten bei den Performance-Daten: was ermüdet, welche Winkel noch ziehen, wo der Absprung passiert."
+						},
+						{
+							"title": "Hypothesen formulieren",
+							"text": "Jedes Konzept nennt die Aussage, die es testet, und die Zahl, die es bewegen soll, bevor irgendetwas animiert wird."
+						},
+						{
+							"title": "Das System bauen",
+							"text": "Zuerst die Master-Animation, dann Varianten aus derselben Quelle, damit der Look konsistent bleibt."
+						},
+						{
+							"title": "Starten und lernen",
+							"text": "Varianten laufen gegeneinander. Gewinner werden skaliert, Verlierer ausgemustert, und die Erkenntnisse speisen die nächste Runde."
+						}
+					],
+					"connects": [
+						{
+							"text": "Das Creative-Testing-System, das entscheidet, welche Varianten Budget bekommen und wann sie ausgemustert werden."
+						},
+						{
+							"text": "Kurze Cutdowns dienen zugleich als Video-Assets für YouTube und Performance Max."
+						}
+					],
+					"faqs": [
+						{
+							"question": "Müssen wir Footage liefern?",
+							"answer": "Nein. Wir arbeiten mit Marken-Assets, Produkt-Renderings, Bildschirmaufnahmen oder bauen das ganze Stück aus Illustration und Typografie. Wenn du Footage hast, nutzen wir es."
+						},
+						{
+							"question": "Mit wie vielen Varianten sollten wir starten?",
+							"answer": "Mit genug, um etwas zu lernen, aber nicht so vielen, dass jede verhungert. Meist schlagen wir eine kleine Matrix aus Hooks und Aussagen vor und legen die Größe pro Durchgang fest."
+						},
+						{
+							"question": "Könnt ihr auch die Ausspielung übernehmen?",
+							"answer": "Ja, über unsere Arbeit mit Meta Ads und Google Ads. Du kannst die fertigen Dateien auch selbst ausspielen."
+						},
+						{
+							"question": "Was ist mit Musik und Sprecher?",
+							"answer": "Wir nutzen lizenzierte oder originale Audiospuren und klären die Rechte vorab, auch wo und wie lange die Anzeige laufen darf."
+						},
+						{
+							"question": "Wie beurteilt ihr eine Motion-Anzeige?",
+							"answer": "Nach der geschäftlichen Kennzahl, für die sie gebrieft wurde, nicht nach ihrer Optik. Jedes Konzept wird vor dem Bau an eine Zahl gebunden."
+						}
+					]
+				},
+				"explainer-videos": {
+					"name": "Erklärvideos",
+					"eyebrow": "04.2 / ERKLÄRVIDEOS",
+					"headline": "Das Komplexe",
+					"headlineAccent": "offensichtlich machen.",
+					"summary": "Eine kurze animierte Erklärung, die ein schwieriges Produkt oder eine schwierige Idee so einfach macht, dass ein Käufer sie seinem Chef weitererzählen kann.",
+					"sample": {
+						"title": "Von verstreuter Aufmerksamkeit zum Kunden in 14 Sekunden",
+						"note": "Ein Konzept-Erklärvideo dazu, wie ein Funnel funktioniert. Punkte sind Menschen. Sieh, wie viele hineinkommen, wie viele konvertieren und wie die Geschichte allein durch Bewegung getragen wird."
+					},
+					"deliverables": [
+						{
+							"title": "Skript und Erzählung",
+							"text": "Ein straffes Skript rund um das Eine, das der Zuschauer am Ende glauben muss."
+						},
+						{
+							"title": "Style Frames und Storyboard",
+							"text": "Look und jede Szene sind auf dem Papier abgestimmt, bevor die Animation beginnt."
+						},
+						{
+							"title": "Eigene Illustration und Animation",
+							"text": "Originale Visuals für dein Produkt, keine verschobenen Stock-Icons."
+						},
+						{
+							"title": "Sprecher-Regie und Ton",
+							"text": "Besetzungsempfehlung, Regie und fertig gemischte Tonspur oder eine reine Musikversion."
+						},
+						{
+							"title": "Cutdowns mit Untertiteln",
+							"text": "Kurze Versionen für Social und Paid mit fest eingebauten Untertiteln."
+						},
+						{
+							"title": "Bereit für die Landingpage",
+							"text": "Komprimierte Dateien, ein Posterbild und ein Transkript, damit das Video der Seite hilft, statt sie zu bremsen."
+						}
+					],
+					"steps": [
+						{
+							"title": "Die Überzeugung definieren",
+							"text": "Wer schaut zu, woran zweifelt er und was soll er am Ende glauben?"
+						},
+						{
+							"title": "Schreiben und Boards zeichnen",
+							"text": "Skript und Storyboard gemeinsam, damit jede Zeile ein Bild hat, das seinen Platz verdient."
+						},
+						{
+							"title": "Gestalten und animieren",
+							"text": "Zuerst Style Frames, dann Animation in modularen Szenen, die sich leicht aktualisieren lassen."
+						},
+						{
+							"title": "Finalisieren und ausspielen",
+							"text": "Ton, Untertitel, Cutdowns und Platzierung auf den Seiten und in den Kampagnen, die es brauchen."
+						}
+					],
+					"connects": [
+						{
+							"text": "Eingebettet auf Seiten, die zum Ranken gebaut sind, mit Transkripten, die den Inhalt ergänzen, statt ihn zu verstecken."
+						},
+						{
+							"text": "Eine klare Erklärung auf der Landingpage macht aus bezahlten Klicks Anfragen."
+						}
+					],
+					"faqs": [
+						{
+							"question": "Wie lang sollte ein Erklärvideo sein?",
+							"answer": "So kurz, wie die Idee es zulässt. Die meisten liegen zwischen 45 und 90 Sekunden, mit Cutdowns von 15 und 30 Sekunden für Social."
+						},
+						{
+							"question": "Schreibt ihr das Skript?",
+							"answer": "Ja. Wir können auch mit deinem Skript oder einem groben Briefing arbeiten und es für den Bildschirm formen."
+						},
+						{
+							"question": "Was, wenn sich das Produkt ändert?",
+							"answer": "Wir bauen in modularen Szenen, damit sich ein Feature austauschen oder aktualisieren lässt, ohne den ganzen Film neu zu machen."
+						},
+						{
+							"question": "Wie viele Korrekturschleifen sind enthalten?",
+							"answer": "Wir legen die Schleifen pro Projekt vorab fest und setzen sie in die Phasen, in denen Änderungen günstig sind: Skript, Boards, dann Animation."
+						},
+						{
+							"question": "Wo funktionieren Erklärvideos am besten?",
+							"answer": "Auf Landingpages, in Sales-Decks, beim Onboarding, in E-Mails und in bezahlten Platzierungen, die einen schnellen, klaren Pitch brauchen."
+						}
+					]
+				},
+				"product-animation": {
+					"name": "Produktanimation",
+					"eyebrow": "04.3 / PRODUKTANIMATION",
+					"headline": "Zeig es",
+					"headlineAccent": "bei der Arbeit.",
+					"summary": "Explosionsansichten, Feature-Rundgänge und Launch-Reveals, mit denen Käufer sehen, wie etwas funktioniert, bevor sie es anfassen können.",
+					"sample": {
+						"title": "HALO: eine Explosionsansicht, fünf Teile in zehn Sekunden",
+						"note": "Ein Konzept-Smart-Speaker, erfunden für diese Seite. Zieh an der Zeitleiste, um ihn auseinanderzunehmen und wieder zusammenzusetzen."
+					},
+					"deliverables": [
+						{
+							"title": "Hero-Loop",
+							"text": "Eine saubere Endlosanimation für den Kopf einer Produkt- oder Landingpage."
+						},
+						{
+							"title": "Explosions- und Schnittansichten",
+							"text": "Die Geschichte im Inneren: Teile, Schichten und wie sie zusammenpassen."
+						},
+						{
+							"title": "Feature-Call-out-Sequenzen",
+							"text": "Ein kurzes Stück pro Feature, jedes mit einer klaren Aussage."
+						},
+						{
+							"title": "Launch-Reveal",
+							"text": "Ein filmisches Stück für den Moment, in dem das Produkt öffentlich wird."
+						},
+						{
+							"title": "Web-taugliche Exporte",
+							"text": "Komprimiertes Video und, wo es hilft, leichte Vektoranimation für schnelle Seiten."
+						},
+						{
+							"title": "Social-Cutdowns und Stills",
+							"text": "Hoch- und Quadratformate sowie Schlüsselbilder für Decks, E-Mail und Presse."
+						}
+					],
+					"steps": [
+						{
+							"title": "Quellmaterial sammeln",
+							"text": "CAD, Renderings, Bildschirmaufnahmen oder Skizzen, was auch immer das Produkt am besten zeigt."
+						},
+						{
+							"title": "Choreografieren",
+							"text": "Kamera planen, die Reihenfolge, in der Teile erscheinen, und das Eine, das jede Einstellung erklären muss."
+						},
+						{
+							"title": "Licht und Material",
+							"text": "Oberflächen, Glühen und Schatten so abgestimmt, dass es sich wie das echte Objekt oder Interface anfühlt."
+						},
+						{
+							"title": "Rendern und ausliefern",
+							"text": "Finale Dateien für jeden Ort, an dem das Produkt erscheint, mit einer leichten Option fürs Web."
+						}
+					],
+					"connects": [
+						{
+							"text": "Dieselbe Animation, für den Feed geschnitten, macht aus einer Produktanzeige eine, die erklärt, statt nur anzukündigen."
+						},
+						{
+							"text": "Produktseiten mit klarer Demonstration halten die Aufmerksamkeit länger und geben der Suche etwas zum Ranken."
+						}
+					],
+					"faqs": [
+						{
+							"question": "Braucht ihr 3D-Dateien?",
+							"answer": "Sie helfen, aber wir können auch mit Fotografie, Zeichnungen oder einer Beschreibung arbeiten. Bei Software-Produkten animieren wir aus deinem Interface."
+						},
+						{
+							"question": "Könnt ihr auch Software animieren, nicht nur physische Produkte?",
+							"answer": "Ja. UI-Rundgänge, Datenflüsse und Feature-Erklärungen folgen demselben Handwerk wie Hardware."
+						},
+						{
+							"question": "Macht das unsere Website langsamer?",
+							"answer": "Wir liefern komprimierte Dateien und, wo es sinnvoll ist, Vektoranimation, die leicht bleibt. Ein Größenbudget legen wir vorab fest."
+						},
+						{
+							"question": "Können wir die Animation später wiederverwenden?",
+							"answer": "Ja. Wir liefern die Quelle in Ebenen und klären die Nutzung, damit künftige Launches auf denselben Assets aufbauen können."
+						},
+						{
+							"question": "Wie perfekt ist perfekt?",
+							"answer": "Erst Klarheit, dann Schönheit. Wenn eine Einstellung großartig aussieht, aber nicht erklärt, fliegt sie raus."
+						}
+					]
+				},
+				"brand-films": {
+					"name": "Markenfilme",
+					"eyebrow": "04.4 / MARKENFILME",
+					"headline": "Einmal sagen.",
+					"headlineAccent": "Lange wirken.",
+					"summary": "Filmische, typografiegetriebene Filme, die die Haltung einer Marke tragen und einen Launch, eine Kampagne oder eine Startseite verankern.",
+					"sample": {
+						"title": "ROASWELL: ein 16-Sekunden-Titelfilm in drei Kapiteln",
+						"note": "Ein Konzeptfilm für unser eigenes Studio, komplett im Motion Design entstanden. Mit den Kapitelmarken springst du zwischen Signal, Intent und Return."
+					},
+					"deliverables": [
+						{
+							"title": "Konzept und Treatment",
+							"text": "Idee, Ton und visuelle Sprache, geschrieben und gezeichnet vor der Produktion."
+						},
+						{
+							"title": "Manifest-Skript",
+							"text": "Worte, die nach der Marke klingen und kurz genug sind, um im Gedächtnis zu bleiben."
+						},
+						{
+							"title": "Motion-getriebene Regie",
+							"text": "Typografisch, illustrativ oder gemischt, passend zu Geschichte und Budget gewählt."
+						},
+						{
+							"title": "Sound- und Musikregie",
+							"text": "Ein Score und Sounddesign, die die Hälfte der emotionalen Arbeit leisten."
+						},
+						{
+							"title": "Masterfilm und Cutdowns",
+							"text": "Das komplette Stück plus Versionen in 30, 15 und 6 Sekunden für jeden Kanal."
+						},
+						{
+							"title": "Brand-Motion-Toolkit",
+							"text": "Übergänge, Easing und Titelstile, damit der Look in allem Folgenden weiterlebt."
+						}
+					],
+					"steps": [
+						{
+							"title": "Die Haltung finden",
+							"text": "Woran glaubt die Marke, was ihre Kategorie nicht tut? Das ist der Film."
+						},
+						{
+							"title": "Das Treatment schreiben",
+							"text": "Kapitel, Rhythmus, Schlüsselbilder und Ton, abgestimmt, bevor ein Bild animiert wird."
+						},
+						{
+							"title": "Machen",
+							"text": "Design, Animation und Sound werden zusammen gebaut, damit der Schnitt atmet."
+						},
+						{
+							"title": "Veröffentlichen und verlängern",
+							"text": "Den Master starten, dann die Idee mit Cutdowns und dem Motion-Toolkit am Leben halten."
+						}
+					],
+					"connects": [
+						{
+							"text": "Cutdowns werden zur Awareness-Ebene eines Full-Funnel-Paid-Social-Plans."
+						},
+						{
+							"text": "Marken-Suche und Video-Kampagnen haben etwas, das den Klick wert ist."
+						},
+						{
+							"text": "Ein Film im Zentrum eines Content-Hubs gibt Autoren und Links etwas, worauf sie zeigen können."
+						}
+					],
+					"faqs": [
+						{
+							"question": "Dreht ihr Realfilm?",
+							"answer": "Wir führen Regie bei Motion-getriebenen Filmen. Braucht ein Projekt Realfilm, planen wir ihn mit einem Produktionspartner und behalten die Motion-Regie im Haus."
+						},
+						{
+							"question": "Wie lang ist ein Markenfilm?",
+							"answer": "Die Idee entscheidet. Die meisten liegen zwischen 30 Sekunden und zwei Minuten, mit kürzeren Versionen, die aus dem Master geschnitten werden."
+						},
+						{
+							"question": "Wem gehört der Film?",
+							"answer": "Dir. Wir klären die Nutzungsrechte und liefern Quelldateien in Ebenen als Teil des Projekts."
+						},
+						{
+							"question": "Kann der Film auf unserer Startseite laufen?",
+							"answer": "Ja. Wir liefern einen leichten Loop und ein Posterbild, der volle Film ist einen Klick entfernt."
+						},
+						{
+							"question": "Ist das nur etwas für große Marken?",
+							"answer": "Nein. Ein straff geschriebener, typografiegetriebener Film kostet einen Bruchteil eines Realdrehs und wirkt trotzdem wie eine Haltung."
+						}
+					]
+				},
+				"web-ui-motion": {
+					"name": "Web- & UI-Motion",
+					"eyebrow": "04.5 / WEB- & UI-MOTION",
+					"headline": "Interfaces, die",
+					"headlineAccent": "lebendig wirken.",
+					"summary": "Scroll-Geschichten, Mikrointeraktionen und Seitenübergänge, die eine Website leichter verständlich und schwerer vergessbar machen, ohne Tempo oder Barrierefreiheit zu kosten.",
+					"sample": {
+						"title": "Das Motion-Labor: sieben Interaktionen zum Anfassen",
+						"note": "Echte, funktionierende Interface-Motion, kein Video. Schalten, Hovern, Ziehen und Klicken. Alles hier respektiert Reduced-Motion-Einstellungen."
+					},
+					"deliverables": [
+						{
+							"title": "Motion-Prinzipien",
+							"text": "Easing-, Timing- und Spring-Tokens, damit sich jede Interaktion wie Teil eines Produkts anfühlt."
+						},
+						{
+							"title": "Scroll- und Seitenübergänge",
+							"text": "Story-geführte Scroll-Sequenzen und Routenübergänge, die die Aufmerksamkeit lenken, wie die auf dieser Website."
+						},
+						{
+							"title": "Mikrointeraktions-Bibliothek",
+							"text": "Buttons, Schalter, Menüs, Karten und Formulare, die mit Absicht reagieren."
+						},
+						{
+							"title": "Produktionscode oder Exporte",
+							"text": "Sauberes CSS und JavaScript oder Lottie- und Video-Exporte, bereit für deinen Stack."
+						},
+						{
+							"title": "Barrierefreie Varianten",
+							"text": "Reduced-Motion-Alternativen und Fokusverhalten von Anfang an eingeplant, nicht nachträglich aufgesetzt."
+						},
+						{
+							"title": "Performance-Budget",
+							"text": "Motion wird vor dem Release an Ladezeit und Interaktionslatenz gemessen."
+						}
+					],
+					"steps": [
+						{
+							"title": "Audit",
+							"text": "Herausfinden, wo Motion etwas klärt und wo sie nur Rauschen hinzufügt."
+						},
+						{
+							"title": "Die Prinzipien festlegen",
+							"text": "Das Vokabular für Easing und Timing definieren, damit Entscheidungen nicht mehr Einzelfall sind."
+						},
+						{
+							"title": "Im Browser prototypen",
+							"text": "Im echten Medium bauen, damit das, was du abnimmst, auch ausgeliefert wird."
+						},
+						{
+							"title": "Ausliefern und messen",
+							"text": "Mit Performance-Budget veröffentlichen und beobachten, was Nutzer tatsächlich tun."
+						}
+					],
+					"connects": [
+						{
+							"text": "Schnelle, barrierefreie Motion unterstützt die Core Web Vitals, statt gegen sie zu arbeiten."
+						},
+						{
+							"text": "Landingpages mit klaren, schnellen Interaktionen machen aus bezahlten Klicks Handlung."
+						}
+					],
+					"faqs": [
+						{
+							"question": "Macht Animation unsere Seite langsamer?",
+							"answer": "Nicht, wenn sie richtig gebaut ist. Wir setzen ein Performance-Budget, animieren mit den günstigsten Eigenschaften und testen auf echten Geräten."
+						},
+						{
+							"question": "Schreibt ihr den Code?",
+							"answer": "Ja. Wir liefern produktionsreifen Code oder übergeben Spezifikationen und Exporte, die dein Team umsetzt."
+						},
+						{
+							"question": "Wie sieht es mit Barrierefreiheit aus?",
+							"answer": "Jede Motion hat eine Reduced-Motion-Alternative, und das Verhalten für Tastatur und Screenreader wird zusammen mit der Animation entworfen."
+						},
+						{
+							"question": "Funktioniert das mit unserem CMS oder Framework?",
+							"answer": "Wir arbeiten mit den meisten modernen Stacks. Sag uns, was du einsetzt, und wir bestätigen den besten Weg."
+						},
+						{
+							"question": "Kann ich es in Aktion sehen?",
+							"answer": "Du siehst es gerade. Die Scroll-Sequenzen, Zähler und Reveals auf dieser Website sind nach demselben Ansatz gebaut."
+						}
+					]
+				}
+			},
+			"body": [
+				{
+					"text": "Statische Kreation bittet um Aufmerksamkeit. Motion nimmt sie sich. In der ersten Sekunde eines Feeds entscheidet Bewegung, ob eine Botschaft eine Chance bekommt, und der Rest der Idee zählt nur, wenn sie diese Sekunde übersteht."
+				},
+				{
+					"text": "Für den Feed gebaut, nicht für das Showreel"
+				},
+				{
+					"text": "Jedes Stück beginnt mit einer Hypothese: der Hook, die Aussage, der Grund weiterzuschauen. Wir zeichnen das Storyboard gegen die Kennzahl, die sie bewegen soll, und bauen dann Varianten, damit das Testsystem echtes Material zum Lernen hat."
+				},
+				{
+					"text": "Großartige Motion ist keine Dekoration. Sie ist das Argument, sichtbar gemacht."
+				},
+				{
+					"text": "Eine Idee, jede Fläche"
+				},
+				{
+					"text": "Dasselbe Konzept wandert vom sechssekündigen Paid-Cut zum Produkt-Erklärvideo, zur Landingpage-Animation und zum Launch-Film. Eine Designsprache, ein Satz Assets, keine dreimalige Neuerfindung der Idee."
+				},
+				{
+					"text": "Weil Motion im selben Studio sitzt wie Suche und Paid Media, wird die Kreation durch Performance-Daten gebrieft und an geschäftlichen Ergebnissen gemessen, nicht daran, wie sie auf dem Reel aussieht."
+				}
+			]
+		}
+	},
+	"caseStudies": {
+		"search-to-significance": {
+			"title": "Aus Such-Intent Nachfrage machen",
+			"discipline": "SEO & Content",
+			"summary": "Wie eine Marke mit abwägungsintensivem Kaufprozess ihre organische Präsenz rund um kommerziellen Intent neu aufgebaut und Top-of-Funnel-Traffic in qualifizierte Pipeline verwandelt hat.",
+			"challenge": "Eine spezialisierte B2B-Marke rankte für informationelle Suchanfragen, die Traffic brachten, aber keine Pipeline. Content gab es reichlich, doch er beantwortete die falschen Fragen für Käufer weiter unten im Funnel.",
+			"approach": "Wir haben die Themenlandschaft rund um Kaufabsicht neu kartiert, dünnen Content konsolidiert und den Redaktionsplan um die Entscheidungen gebaut, vor denen Käufer tatsächlich stehen. Technische SEO-Arbeit, also Seitenarchitektur, interne Verlinkung und strukturierte Daten, gab dem neuen Content Raum zum Ranken.",
+			"outcome": "Der organische Traffic verlagerte sich auf kommerzielle Seiten, qualifizierte Anfragen stiegen, und die Content-Maschine begann sich zu potenzieren, statt zu streuen. Die Arbeit läuft weiter, die Richtung steht.",
+			"metrics": [
+				{
+					"label": "Ziel für organischen Traffic"
+				},
+				{
+					"label": "Ziel für qualifizierte Leads"
+				}
+			]
+		},
+		"making-acquisition-work-harder": {
+			"title": "Neukundengewinnung härter arbeiten lassen",
+			"discipline": "Meta Ads + Google Ads",
+			"summary": "Eine DTC-Marke gab mehr aus, um weniger zu gewinnen. Ein kreativgetriebener Neustart über Paid Social und Suche hat die Effizienz von Grund auf neu aufgebaut.",
+			"challenge": "Steigende CPMs und Creative-Ermüdung hatten die Akquisitionskosten über die Profitabilitätsgrenze getrieben. Das Konto war beschäftigt, aber nicht wirksam, das Budget verteilte sich dünn auf Zielgruppen, die nicht mehr konvertierten.",
+			"approach": "Wir haben das Konto rund um ein strukturiertes Creative-Testing-System konsolidiert, die Full-Funnel-Abfolge neu aufgebaut und das Suchbudget auf Begriffe mit hohem Intent und hoher Marge umgelenkt. Das Tracking wanderte serverseitig, damit Entscheidungen die Realität abbildeten.",
+			"outcome": "Die Akquisitionskosten sanken, der Return on Ad Spend erholte sich, und der Testrhythmus sorgte dafür, dass die Kreation mit jedem Zyklus besser wurde, statt zu verfallen. Die Marke hat jetzt ein System, nicht nur Kampagnen.",
+			"metrics": [
+				{
+					"label": "Ziel für Return on Ad Spend"
+				},
+				{
+					"label": "Ziel für Akquisitionskosten"
+				}
+			]
+		},
+		"full-funnel-foundations": {
+			"title": "Full-Funnel-Fundament für einen neuen Launch",
+			"discipline": "SEO & Content + Paid",
+			"summary": "Ein Produktlaunch brauchte organisches Kapital und bezahlten Schwung zur gleichen Zeit. Wir haben beides gebaut, so getaktet, dass es sich potenziert.",
+			"challenge": "Ein neues Angebot hatte weder Suchpräsenz noch Paid-Historie. Das Risiko war, in die Stille zu starten: bezahlte Reichweite, ohne etwas, das die erzeugte Nachfrage auffängt.",
+			"approach": "Content und technische SEO-Arbeit begannen Monate vor dem Launch, um thematische Autorität aufzubauen. Paid Social säte Aufmerksamkeit und Retargeting, während die Suche den Intent erfasste, den der Launch erzeugte. Die Messung war vom ersten Tag an eingebaut.",
+			"outcome": "Der Launch landete in vorhandenem organischem Kapital statt im Vakuum, das Paid-Budget konvertierte von Anfang an in gesunder Rate, und die Marke hatte ein Messframework, auf dem sie skalieren konnte.",
+			"metrics": [
+				{
+					"label": "ROAS-Ziel im Launch-Monat"
+				},
+				{
+					"label": "Vor dem Launch aufgebautes organisches Kapital"
+				}
+			]
+		}
+	},
+	"articles": {
+		"why-three-disciplines": {
+			"title": "Warum diese drei Disziplinen zusammengehören",
+			"excerpt": "Suche, Content und Paid Media werden meist als getrennte Disziplinen verkauft. Hier steht, warum es das Ergebnis verändert, sie als ein Wachstumssystem zu behandeln.",
+			"category": "Strategie",
+			"body": [
+				{
+					"text": "Die meisten Agenturen organisieren sich um Kanäle, weil sich Kanäle leicht verkaufen lassen. Ein Such-Team. Ein Social-Team. Ein Content-Team. Jedes optimiert seine eigene Ecke, und in den Lücken dazwischen versickert das Wachstum."
+				},
+				{
+					"text": "Intent, Nachfrage und Beschleunigung"
+				},
+				{
+					"text": "Suche erfasst Intent, der bereits existiert. Content baut die Nachfrage auf, die ihn erzeugt. Paid Media beschleunigt, was funktioniert, und bringt das Bewährte schneller in mehr Momente. Nimmt man eines heraus, verliert das System an Hebelwirkung."
+				},
+				{
+					"text": "Ein Kanal für sich ist eine Taktik. Kanäle, die sich gegenseitig speisen, sind ein System."
+				},
+				{
+					"text": "Wenn dasselbe Denken die Keyword-Strategie, den Redaktionsplan und die bezahlte Kreation prägt, potenziert sich die Arbeit. Content rankt, weil er dafür gebaut wurde. Paid konvertiert, weil die Botschaft organisch schon Vertrauen verdient hat. Die Suche erfasst die Nachfrage, die die anderen beiden erzeugt haben."
+				},
+				{
+					"text": "Was sich in der Praxis ändert"
+				},
+				{
+					"text": "Weniger Übergaben. Ein Messframework. Eine kreative Idee, die vom organischen Post über das bezahlte Asset zur Landingpage wandern kann, ohne dreimal neu gebaut zu werden. Genau darum halten wir es klein und Senior-geführt."
+				}
+			]
+		},
+		"creative-is-the-targeting": {
+			"title": "Die Kreation ist das Targeting",
+			"excerpt": "Auf modernen Paid-Social-Plattformen zählt mehr, was du zeigst, als wem du es zeigst. Eine Notiz zum Aufbau eines Testsystems, das trägt.",
+			"category": "Paid Media",
+			"body": [
+				{
+					"text": "Das alte Drehbuch war zielgruppenzentriert: die perfekte Persona bauen, sie präzise ansteuern und darauf vertrauen, dass der Algorithmus mehr davon findet. Diese Welt ist weitgehend vorbei. Zielgruppen sind breiter, Signale rauschen stärker, und die Kreation selbst übernimmt die Filterung."
+				},
+				{
+					"text": "Die Kreation entscheidet, wer bleibt"
+				},
+				{
+					"text": "Ein Hook, der den Scroll stoppt, spricht die richtige Person an und schreckt die falsche ab. Das ist Targeting, nur erledigt von der Botschaft statt von der Zielgruppenauswahl. Das heißt: Die Kreations-Pipeline ist jetzt der Hebel."
+				},
+				{
+					"text": "Wenn dein Testsystem nicht mit jedem Zyklus schärfer wird, verfällt deine Kreation."
+				},
+				{
+					"text": "Ein System bauen, keine Charge"
+				},
+				{
+					"text": "Hypothesen vor Varianten. Klare Gewinner vor Skalierung. Ein Takt, der Erkenntnisse liefert, nicht nur Assets. Die Marken, die auf Paid Social gewinnen, sind die, deren Kreation Monat für Monat messbar besser wird, nicht die mit dem größten Budget."
+				}
+			]
+		},
+		"measuring-what-comes-back": {
+			"title": "Messen, was zurückkommt",
+			"excerpt": "Plattform-Dashboards sagen dir immer, dass das Budget gewirkt hat. So halten wir die Zahlen ehrlich.",
+			"category": "Messung",
+			"body": [
+				{
+					"text": "Jede Werbeplattform berichtet über ihren eigenen Erfolg. Sie lügen nicht direkt, aber sie messen aus ihrer eigenen Perspektive, und diese Perspektive ist großzügig zur Plattform."
+				},
+				{
+					"text": "Attribution ist eine Frage, keine Einstellung"
+				},
+				{
+					"text": "Die Frage lautet nicht, ob diese Kampagne Conversions gebracht hat, sondern was ohne sie passiert wäre. Inkrementalität, Blended CAC und die Modellierung des Conversion-Werts beantworten das. Last-Click-Dashboards nicht."
+				},
+				{
+					"text": "Wenn die Zahl hinter der Entscheidung von der Plattform kommt, die das Geld ausgibt, behandle sie als Behauptung, nicht als Tatsache."
+				},
+				{
+					"text": "Server-Side-Tracking, eine saubere Datenschicht und eine Reporting-Ansicht, die an geschäftliche Ergebnisse gebunden ist und nicht an die Selbstauskunft der Plattform: Dort sollten Entscheidungen fallen. Das ist weniger schmeichelhaft und viel nützlicher."
+				}
+			]
+		}
+	}
+}

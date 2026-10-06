@@ -6,10 +6,10 @@ export const REVEAL_START = 0.6;
 export const REVEAL_TIME = 2.8;
 
 export const NODES = [
-	{ u: 0.3, index: '01', label: 'Intent captured' },
-	{ u: 0.6, index: '02', label: 'Demand built' },
-	{ u: 0.88, index: '03', label: 'Return accelerated' },
-];
+	{ u: 0.3, index: '01', labelKey: 'hero.node.1' },
+	{ u: 0.6, index: '02', labelKey: 'hero.node.2' },
+	{ u: 0.88, index: '03', labelKey: 'hero.node.3' },
+] as const;
 
 function growth(u: number) {
 	const smooth = u * u * (3 - 2 * u);

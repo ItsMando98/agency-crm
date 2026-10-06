@@ -1,0 +1,720 @@
+{
+	"expertise": {
+		"seo-content": {
+			"name": "SEO & Content",
+			"eyebrow": "01 / SEO & CONTENT",
+			"headline": "Word gevonden.",
+			"headlineAccent": "Word gekozen.",
+			"summary": "Zoeken pikt intentie op. Content bouwt vraag op. We maken van vragen gekwalificeerd verkeer en van verkeer klanten, met strategie, redactie en technische fundamenten die zich in de loop van de tijd opstapelen.",
+			"capabilities": [
+				"SEO-strategie",
+				"Contentstrategie",
+				"Zoekwoordonderzoek",
+				"Redactie",
+				"On-page SEO",
+				"Contentoptimalisatie"
+			],
+			"cta": "Ontdek SEO & Content",
+			"subpages": [],
+			"body": [
+				{
+					"text": "Het meeste zoekverkeer gaat verloren omdat het de verkeerde vraag beantwoordt, of de juiste vraag slecht. We beginnen bij intentie: wat je doelgroep werkelijk wil begrijpen, beslissen of kopen, en bouwen van daaruit verder."
+				},
+				{
+					"text": "Strategie vóór output"
+				},
+				{
+					"text": "Een contentmachine werkt alleen als elk stuk een taak heeft. We brengen de onderwerpen in kaart die zakelijke resultaten bewegen, prioriteren op kans en plannen het werk zo dat momentum zich opstapelt in plaats van versnippert."
+				},
+				{
+					"text": "Wees het antwoord waar je doelgroep naar zoekt, niet zomaar een resultaat op de pagina."
+				},
+				{
+					"text": "Technische fundamenten die standhouden"
+				},
+				{
+					"text": "Crawlbaarheid, sitearchitectuur, Core Web Vitals, gestructureerde data. Het onopvallende werk dat bepaalt of geweldige content ooit de kans krijgt te ranken. We behandelen het als onderdeel van de strategie, niet als bijzaak."
+				},
+				{
+					"text": "Daarna meten we. Search Console-data, rankingtracking, conversie-attributie, teruggebracht tot de zakelijke resultaten die ertoe doen, niet tot ijdele verkeersgrafieken."
+				}
+			]
+		},
+		"meta-ads": {
+			"name": "Meta Ads",
+			"eyebrow": "02 / META ADS",
+			"headline": "Maak van aandacht",
+			"headlineAccent": "vraag.",
+			"summary": "Creatie die verbindt, campagnes die converteren. We combineren doelgroepinzicht met onophoudelijk testen zodat elke vertoning harder werkt op Facebook, Instagram en het bredere Meta-ecosysteem.",
+			"capabilities": [
+				"Paid social",
+				"Creatief testen",
+				"Doelgroepstrategie",
+				"Full-funnelcampagnes",
+				"Conversieoptimalisatie",
+				"Retargeting"
+			],
+			"cta": "Ontdek Meta Ads",
+			"subpages": [],
+			"body": [
+				{
+					"text": "Aandacht is er genoeg; vraag niet. De taak van paid social is niet gezien worden, maar onthouden, overwogen en gekozen worden. Dat begint met creatie die de scrollstop verdient."
+				},
+				{
+					"text": "Creatie is de targeting"
+				},
+				{
+					"text": "Op moderne platforms telt wat je toont zwaarder dan aan wie je het toont. We bouwen een gestructureerd systeem voor creatief testen, met hypotheses, varianten en duidelijke winnaars, zodat het werk elke cyclus scherper wordt."
+				},
+				{
+					"text": "Elke klik heeft een taak. Laat hem tellen."
+				},
+				{
+					"text": "Full funnel, niet last click"
+				},
+				{
+					"text": "Bekendheid, overweging, conversie, behoud. We ontwerpen de reis zodat elke fase de volgende voedt en meten incrementeel, zodat je weet wat de uitgaven werkelijk opleverden."
+				},
+				{
+					"text": "Geen instellen en vergeten. Wekelijkse creatieve reviews, doelgroepverversing en budgetverschuivingen naar wat werkt en weg van wat niet werkt."
+				}
+			]
+		},
+		"google-ads": {
+			"name": "Google Ads",
+			"eyebrow": "03 / GOOGLE ADS",
+			"headline": "Vang intentie op",
+			"headlineAccent": "als het telt.",
+			"summary": "Ontmoet intentie met precisie. Van zoeken tot shopping zetten we budget waar de kans ligt en meten we wat terugkomt met heldere, zakelijke rapportage.",
+			"capabilities": [
+				"Betaald zoeken",
+				"Shopping-advertenties",
+				"Performance Max",
+				"Conversieoptimalisatie",
+				"Biedstrategie",
+				"Tracking & meting"
+			],
+			"cta": "Ontdek Google Ads",
+			"subpages": [],
+			"body": [
+				{
+					"text": "Zoeken is het moment waarop intentie actie wordt. De vraag is of je er dan bent en of de ervaring converteert als je er bent."
+				},
+				{
+					"text": "Budget waar de kans ligt"
+				},
+				{
+					"text": "Niet elk zoekwoord verdient je geld. We bouwen de zoekwoordstrategie rond commerciële intentie en marge, snijden verspilling uit brede en merkoverlap en concentreren de uitgaven waar het rendement echt is."
+				},
+				{
+					"text": "Ontmoet intentie met precisie. Meet wat terugkomt."
+				},
+				{
+					"text": "Meting waarop je kunt vertrouwen"
+				},
+				{
+					"text": "Server-side tracking, modellering van conversiewaarde, schone attributie. Zodat de cijfers achter beslissingen de werkelijkheid weerspiegelen en niet de zelfrapportage van platforms."
+				},
+				{
+					"text": "Biedstrategieën afgestemd op jouw economie, niet op een standaarddoel. We testen, bewaken de randgevallen en houden de uitgaven eerlijk."
+				}
+			]
+		},
+		"motion-graphics": {
+			"name": "Motion Graphics",
+			"eyebrow": "04 / MOTION GRAPHICS",
+			"headline": "Stop de scroll.",
+			"headlineAccent": "Wees onmiskenbaar.",
+			"summary": "Motion is de snelste manier om aandacht te verdienen en de duidelijkste manier om een groot idee uit te leggen. We ontwerpen advertenties, productanimaties en merkfilms die gebouwd zijn om getest te worden, niet alleen om bewonderd te worden.",
+			"capabilities": [
+				"Paid social creatie",
+				"Uitlegvideo's",
+				"Productanimatie",
+				"Merkfilms",
+				"Web- & UI-motion",
+				"Assets voor creatief testen"
+			],
+			"cta": "Ontdek Motion Graphics",
+			"subpages": {
+				"paid-social-motion": {
+					"name": "Paid social motion-advertenties",
+					"eyebrow": "04.1 / PAID SOCIAL MOTION-ADVERTENTIES",
+					"headline": "Win de eerste",
+					"headlineAccent": "seconde.",
+					"summary": "Korte motion gebouwd voor de feed: een hook die de duim stopt, een boodschap die aankomt en een variantensysteem dat laat zien welk idee het volgende budget verdient.",
+					"sample": {
+						"title": "NOVA Sparkling: een advertentie van 10 seconden, uit elkaar gehaald",
+						"note": "Een conceptadvertentie voor een verzonnen drankmerk. Schuif door de tijdlijn en lees ernaast de vier beats: hook, claim, bewijs, oproep."
+					},
+					"deliverables": [
+						{
+							"title": "Storyboards met de hook voorop",
+							"text": "Drie tot vijf openingsideeën per concept, elk geschreven om de eerste seconde in z'n eentje te winnen."
+						},
+						{
+							"title": "Masteranimatie en kortere versies",
+							"text": "Eén hoofdfilm plus versies van 6, 15 en 30 seconden, geknipt voor de plaatsingen die je echt koopt."
+						},
+						{
+							"title": "Elk formaat",
+							"text": "Uitvoeringen in 9:16, 4:5 en 1:1, gecontroleerd op veilige zones voor Stories, Reels en de feed."
+						},
+						{
+							"title": "Variantenkits",
+							"text": "Verwisselbare hooks, claims en eindkaarten in het bestand, zodat testen nooit betekent dat je opnieuw begint."
+						},
+						{
+							"title": "Ondertiteling en geluid",
+							"text": "Ingebrande ondertiteling voor kijken zonder geluid en een sounddesignronde voor kijken met geluid."
+						},
+						{
+							"title": "Leerreview",
+							"text": "Een schriftelijke terugblik op wat elke variant ons leerde en wat de volgende batch moet veranderen."
+						}
+					],
+					"steps": [
+						{
+							"title": "Het account lezen",
+							"text": "We beginnen bij prestatiedata: wat slijt, welke invalshoeken nog trekken, waar de uitval zit."
+						},
+						{
+							"title": "De hypotheses schrijven",
+							"text": "Elk concept benoemt de claim die het test en het getal dat het moet bewegen, voordat er iets geanimeerd wordt."
+						},
+						{
+							"title": "Het systeem bouwen",
+							"text": "Eerst de masteranimatie, daarna varianten uit dezelfde bron zodat de look consistent blijft."
+						},
+						{
+							"title": "Lanceren en leren",
+							"text": "Varianten strijden tegen elkaar. Winnaars worden opgeschaald, verliezers verdwijnen en de aantekeningen voeden de volgende ronde."
+						}
+					],
+					"connects": [
+						{
+							"text": "Het systeem voor creatief testen dat beslist welke varianten budget krijgen en wanneer ze worden stopgezet."
+						},
+						{
+							"text": "Korte versies dienen ook als videoassets voor YouTube en Performance Max."
+						}
+					],
+					"faqs": [
+						{
+							"question": "Moeten we beeldmateriaal aanleveren?",
+							"answer": "Nee. We kunnen werken met merkassets, productrenders, schermopnames of het hele stuk bouwen uit illustratie en typografie. Als je wel beeldmateriaal hebt, gebruiken we het."
+						},
+						{
+							"question": "Met hoeveel varianten moeten we beginnen?",
+							"answer": "Genoeg om iets te leren, niet zoveel dat elke variant verhongert. Meestal stellen we een kleine matrix van hooks tegenover claims voor en spreken we de omvang per batch af."
+						},
+						{
+							"question": "Kunnen jullie ook de mediainkoop doen?",
+							"answer": "Ja, via ons werk in Meta Ads en Google Ads. Je kunt ook de afgewerkte bestanden meenemen en zelf draaien."
+						},
+						{
+							"question": "En muziek en voice-over?",
+							"answer": "We gebruiken gelicentieerde of originele audio en regelen de rechten vooraf, inclusief waar en hoe lang de advertentie mag lopen."
+						},
+						{
+							"question": "Hoe beoordelen jullie een motion-advertentie?",
+							"answer": "Op de zakelijke metric waarvoor hij gebriefd is, niet op hoe hij eruitziet. Elk concept wordt aan een getal gekoppeld voordat het gebouwd wordt."
+						}
+					]
+				},
+				"explainer-videos": {
+					"name": "Uitlegvideo's",
+					"eyebrow": "04.2 / UITLEGVIDEO'S",
+					"headline": "Maak het ingewikkelde",
+					"headlineAccent": "vanzelfsprekend.",
+					"summary": "Een korte geanimeerde uitleg die een moeilijk product of idee omzet in iets wat een koper aan zijn baas kan navertellen.",
+					"sample": {
+						"title": "Van versnipperde aandacht naar klant, in 14 seconden",
+						"note": "Een concept-uitlegvideo over hoe een funnel werkt. Stippen zijn mensen. Zie hoeveel er binnenkomen, hoeveel er converteren en hoe het verhaal alleen door beweging gedragen wordt."
+					},
+					"deliverables": [
+						{
+							"title": "Script en verhaallijn",
+							"text": "Een strak script rond het ene ding dat de kijker aan het eind moet geloven."
+						},
+						{
+							"title": "Style frames en storyboard",
+							"text": "De look en elke scène op papier afgestemd voordat de animatie begint."
+						},
+						{
+							"title": "Eigen illustratie en animatie",
+							"text": "Originele beelden gebouwd voor jouw product, geen stockiconen die rondgeschoven worden."
+						},
+						{
+							"title": "Voice-overregie en geluid",
+							"text": "Castingadvies, regie en een gemixt spoor, of een versie met alleen muziek."
+						},
+						{
+							"title": "Korte versies met ondertiteling",
+							"text": "Korte versies voor social en paid met ondertiteling al ingebakken."
+						},
+						{
+							"title": "Klaar voor de landingspagina",
+							"text": "Gecomprimeerde bestanden, een posterframe en een transcript zodat de video de pagina helpt in plaats van vertraagt."
+						}
+					],
+					"steps": [
+						{
+							"title": "De overtuiging bepalen",
+							"text": "Wie kijkt er, waar twijfelt diegene aan en wat moet er aan het eind geloofd worden?"
+						},
+						{
+							"title": "Schrijven en storyboarden",
+							"text": "Script en storyboard samen, zodat elke regel een beeld heeft dat zijn plek verdient."
+						},
+						{
+							"title": "Ontwerpen en animeren",
+							"text": "Eerst style frames, daarna animatie in modulaire scènes die makkelijk te updaten zijn."
+						},
+						{
+							"title": "Afwerken en uitrollen",
+							"text": "Geluid, ondertiteling, korte versies en plaatsing op de pagina's en campagnes die het nodig hebben."
+						}
+					],
+					"connects": [
+						{
+							"text": "Ingebed op pagina's die gebouwd zijn om te ranken, met transcripts die de content aanvullen in plaats van verbergen."
+						},
+						{
+							"text": "Een heldere uitleg op de landingspagina maakt van betaalde klikken aanvragen."
+						}
+					],
+					"faqs": [
+						{
+							"question": "Hoe lang moet een uitlegvideo zijn?",
+							"answer": "Zo kort als het idee toestaat. De meeste zitten tussen 45 en 90 seconden, met versies van 15 en 30 seconden voor social."
+						},
+						{
+							"question": "Schrijven jullie het script?",
+							"answer": "Ja. We kunnen ook uitgaan van jouw script of een ruwe briefing en die vormgeven voor het scherm."
+						},
+						{
+							"question": "Wat als het product verandert?",
+							"answer": "We bouwen in modulaire scènes zodat een functie vervangen of bijgewerkt kan worden zonder de hele film opnieuw te maken."
+						},
+						{
+							"question": "Hoeveel correctierondes zijn inbegrepen?",
+							"answer": "We spreken de rondes per project vooraf af en plaatsen ze in de fasen waarin wijzigen goedkoop is: script, boards, daarna animatie."
+						},
+						{
+							"question": "Waar werken uitlegvideo's het best?",
+							"answer": "Op landingspagina's, in salesdecks, bij onboarding, in e-mail en op betaalde plaatsingen die een snelle, heldere pitch nodig hebben."
+						}
+					]
+				},
+				"product-animation": {
+					"name": "Productanimatie",
+					"eyebrow": "04.3 / PRODUCTANIMATIE",
+					"headline": "Laat het zien",
+					"headlineAccent": "in actie.",
+					"summary": "Exploded views, functiedemo's en lanceringsreveals waarmee kopers zien hoe iets werkt voordat ze het kunnen aanraken.",
+					"sample": {
+						"title": "HALO: een exploded view, vijf onderdelen in tien seconden",
+						"note": "Een concept slimme speaker, verzonnen voor deze pagina. Sleep de tijdlijn om hem uit elkaar te halen en weer in elkaar te zetten."
+					},
+					"deliverables": [
+						{
+							"title": "Hero-loop",
+							"text": "Een schone loopanimatie voor de bovenkant van een product- of landingspagina."
+						},
+						{
+							"title": "Exploded views en doorsneden",
+							"text": "Het verhaal van binnen: onderdelen, lagen en hoe ze in elkaar passen."
+						},
+						{
+							"title": "Functie-uitlichtsequenties",
+							"text": "Eén kort stuk per functie, elk met één helder punt."
+						},
+						{
+							"title": "Lanceringsreveal",
+							"text": "Een filmisch stuk voor het moment waarop het product openbaar wordt."
+						},
+						{
+							"title": "Webklare exports",
+							"text": "Gecomprimeerde video en, waar het helpt, lichte vectoranimatie voor snelle pagina's."
+						},
+						{
+							"title": "Social-versies en stills",
+							"text": "Verticale en vierkante versies plus keyframes voor decks, e-mail en pers."
+						}
+					],
+					"steps": [
+						{
+							"title": "Bronmateriaal verzamelen",
+							"text": "CAD, renders, schermopnames of schetsen, wat het product het best laat zien."
+						},
+						{
+							"title": "Choreograferen",
+							"text": "De camera plannen, de volgorde waarin onderdelen verschijnen en het ene ding dat elke shot moet uitleggen."
+						},
+						{
+							"title": "Licht en materiaal",
+							"text": "Oppervlakken, gloed en schaduw afgestemd zodat het aanvoelt als het echte object of de echte interface."
+						},
+						{
+							"title": "Renderen en opleveren",
+							"text": "Eindbestanden voor elke plek waar het product verschijnt, met een lichte optie voor het web."
+						}
+					],
+					"connects": [
+						{
+							"text": "Dezelfde animatie, geknipt voor de feed, maakt een productadvertentie die uitlegt in plaats van alleen aankondigt."
+						},
+						{
+							"text": "Productpagina's met een heldere demonstratie houden de aandacht langer vast en geven zoeken iets om te ranken."
+						}
+					],
+					"faqs": [
+						{
+							"question": "Hebben jullie 3D-bestanden nodig?",
+							"answer": "Ze helpen, maar we kunnen ook uitgaan van fotografie, tekeningen of een beschrijving. Bij softwareproducten animeren we vanuit je interface."
+						},
+						{
+							"question": "Kunnen jullie ook software animeren, niet alleen fysieke producten?",
+							"answer": "Ja. UI-doorlopen, datastromen en functie-uitleg vragen hetzelfde vakmanschap als hardware."
+						},
+						{
+							"question": "Maakt het onze site trager?",
+							"answer": "We leveren gecomprimeerde bestanden en, waar het zinvol is, vectoranimatie die licht blijft. We spreken vooraf een gewichtsbudget af."
+						},
+						{
+							"question": "Kunnen we de animatie later hergebruiken?",
+							"answer": "Ja. We leveren de bron in lagen en spreken het gebruik af zodat toekomstige lanceringen op dezelfde assets kunnen voortbouwen."
+						},
+						{
+							"question": "Hoe gepolijst is gepolijst?",
+							"answer": "Eerst helderheid, dan schoonheid. Als een shot er geweldig uitziet maar niets uitlegt, sneuvelt hij."
+						}
+					]
+				},
+				"brand-films": {
+					"name": "Merkfilms",
+					"eyebrow": "04.4 / MERKFILMS",
+					"headline": "Zeg het één keer.",
+					"headlineAccent": "Laat het beklijven.",
+					"summary": "Filmische, typografiegedreven films die het standpunt van een merk dragen en een lancering, campagne of homepage verankeren.",
+					"sample": {
+						"title": "ROASWELL: een titelfilm van 16 seconden in drie hoofdstukken",
+						"note": "Een conceptfilm voor onze eigen studio, volledig in motion design. Gebruik de hoofdstukmarkeringen om te springen tussen Signal, Intent en Return."
+					},
+					"deliverables": [
+						{
+							"title": "Concept en treatment",
+							"text": "Het idee, de toon en de beeldtaal, opgeschreven en getekend vóór de productie."
+						},
+						{
+							"title": "Manifestscript",
+							"text": "Woorden die klinken als het merk en kort genoeg zijn om onthouden te worden."
+						},
+						{
+							"title": "Motiongedreven regie",
+							"text": "Typografisch, illustratief of gemengd, gekozen passend bij het verhaal en het budget."
+						},
+						{
+							"title": "Geluids- en muziekregie",
+							"text": "Een score en sounddesign die de helft van het emotionele werk doen."
+						},
+						{
+							"title": "Masterfilm en korte versies",
+							"text": "Het volledige stuk plus versies van 30, 15 en 6 seconden voor elk kanaal."
+						},
+						{
+							"title": "Merkmotion-toolkit",
+							"text": "Overgangen, easing en titelstijlen zodat de look doorloopt in alles wat volgt."
+						}
+					],
+					"steps": [
+						{
+							"title": "Het standpunt vinden",
+							"text": "Wat gelooft het merk dat zijn categorie niet gelooft? Dat is de film."
+						},
+						{
+							"title": "Het treatment schrijven",
+							"text": "Hoofdstukken, ritme, keyframes en geluid, afgestemd voordat er één frame geanimeerd wordt."
+						},
+						{
+							"title": "Maken",
+							"text": "Design, animatie en geluid samen gebouwd zodat de montage ademt."
+						},
+						{
+							"title": "Uitbrengen en verlengen",
+							"text": "De master lanceren en het idee levend houden met korte versies en de motion-toolkit."
+						}
+					],
+					"connects": [
+						{
+							"text": "Korte versies worden de bekendheidslaag van een full-funnel paid social-plan."
+						},
+						{
+							"text": "Merkzoek- en videocampagnes hebben iets waar het de moeite waard is op door te klikken."
+						},
+						{
+							"text": "Een film in het hart van een contenthub geeft schrijvers en links iets om naar te wijzen."
+						}
+					],
+					"faqs": [
+						{
+							"question": "Filmen jullie live action?",
+							"answer": "We regisseren motiongedreven films. Als een project live action nodig heeft, plannen we dat met een productiepartner en houden we de motionregie in huis."
+						},
+						{
+							"question": "Hoe lang is een merkfilm?",
+							"answer": "Het idee bepaalt het. De meeste duren tussen 30 seconden en twee minuten, met kortere versies uit de master."
+						},
+						{
+							"question": "Van wie is de film?",
+							"answer": "Van jou. We spreken gebruiksrechten af en leveren bronbestanden in lagen als onderdeel van het project."
+						},
+						{
+							"question": "Kan de film op onze homepage staan?",
+							"answer": "Ja. We leveren een lichte loop en een posterframe, met de volledige film één klik verder."
+						},
+						{
+							"question": "Is dit alleen voor grote merken?",
+							"answer": "Nee. Een strak geschreven typografiefilm kost een fractie van een opnamedag en voelt toch als een standpunt."
+						}
+					]
+				},
+				"web-ui-motion": {
+					"name": "Web- & UI-motion",
+					"eyebrow": "04.5 / WEB- & UI-MOTION",
+					"headline": "Interfaces die",
+					"headlineAccent": "levend aanvoelen.",
+					"summary": "Scrollverhalen, microinteracties en paginaovergangen die een site makkelijker te begrijpen en moeilijker te vergeten maken, zonder snelheid of toegankelijkheid te kosten.",
+					"sample": {
+						"title": "Het motionlab: zeven interacties om aan te raken",
+						"note": "Echte, werkende interfacemotion, geen video. Schakel, hover, sleep en klik. Alles hier respecteert de instelling voor verminderde beweging."
+					},
+					"deliverables": [
+						{
+							"title": "Motionprincipes",
+							"text": "Easing-, timing- en springtokens zodat elke interactie aanvoelt als onderdeel van één product."
+						},
+						{
+							"title": "Scroll- en paginaovergangen",
+							"text": "Verhaalgestuurde scrollsequenties en routeovergangen die de aandacht sturen, zoals die op deze site."
+						},
+						{
+							"title": "Microinteractiebibliotheek",
+							"text": "Knoppen, schakelaars, menu's, kaarten en formulieren die met een doel reageren."
+						},
+						{
+							"title": "Productiecode of exports",
+							"text": "Schone CSS en JavaScript, of Lottie- en video-exports, klaar voor jouw stack."
+						},
+						{
+							"title": "Toegankelijke varianten",
+							"text": "Alternatieven voor verminderde beweging en focusgedrag van meet af aan ontworpen, niet achteraf erop geplakt."
+						},
+						{
+							"title": "Prestatiebudget",
+							"text": "Motion wordt vóór oplevering gemeten tegen laadtijd en interactielatentie."
+						}
+					],
+					"steps": [
+						{
+							"title": "Audit",
+							"text": "Uitzoeken waar motion iets zou verhelderen en waar het alleen ruis zou toevoegen."
+						},
+						{
+							"title": "De principes vastleggen",
+							"text": "Het vocabulaire voor easing en timing bepalen zodat beslissingen niet meer van geval tot geval worden genomen."
+						},
+						{
+							"title": "Prototypen in de browser",
+							"text": "Bouwen in het echte medium zodat wat je goedkeurt ook is wat live gaat."
+						},
+						{
+							"title": "Opleveren en meten",
+							"text": "Uitbrengen met een prestatiebudget en kijken wat gebruikers werkelijk doen."
+						}
+					],
+					"connects": [
+						{
+							"text": "Snelle, toegankelijke motion ondersteunt Core Web Vitals in plaats van ertegen te vechten."
+						},
+						{
+							"text": "Landingspagina's met heldere, snelle interacties maken van betaalde klikken actie."
+						}
+					],
+					"faqs": [
+						{
+							"question": "Maakt animatie onze site trager?",
+							"answer": "Niet als hij goed gebouwd is. We stellen een prestatiebudget vast, animeren met de goedkoopste eigenschappen en testen op echte apparaten."
+						},
+						{
+							"question": "Schrijven jullie de code?",
+							"answer": "Ja. We kunnen productieklare code opleveren, of specificaties en exports overdragen zodat jouw team ze implementeert."
+						},
+						{
+							"question": "Hoe zit het met toegankelijkheid?",
+							"answer": "Elke motion heeft een alternatief voor verminderde beweging en het gedrag voor toetsenbord en schermlezer wordt samen met de animatie ontworpen."
+						},
+						{
+							"question": "Werkt het met ons CMS of framework?",
+							"answer": "We werken met de meeste moderne stacks. Vertel ons wat je draait en we bevestigen de beste aanpak."
+						},
+						{
+							"question": "Kan ik het in actie zien?",
+							"answer": "Je kijkt ernaar. De scrollsequenties, tellers en reveals op deze site zijn met dezelfde aanpak gebouwd."
+						}
+					]
+				}
+			},
+			"body": [
+				{
+					"text": "Statische creatie vraagt om aandacht. Motion neemt haar. In de eerste seconde van een feed beslist beweging of een boodschap een kans krijgt, en de rest van het idee telt alleen als het die seconde overleeft."
+				},
+				{
+					"text": "Gebouwd voor de feed, niet voor de showreel"
+				},
+				{
+					"text": "Elk stuk begint met een hypothese: de hook, de claim, de reden om te blijven kijken. We storyboarden tegen de metric die het moet bewegen en bouwen dan varianten zodat het testsysteem echt materiaal heeft om van te leren."
+				},
+				{
+					"text": "Geweldige motion is geen decoratie. Het is het argument, zichtbaar gemaakt."
+				},
+				{
+					"text": "Eén idee, elk oppervlak"
+				},
+				{
+					"text": "Hetzelfde concept reist van een betaalde cut van zes seconden naar een productuitleg, een landingspagina-animatie en een lanceringsfilm. Eén ontwerptaal, één set assets, het idee niet drie keer opnieuw bouwen."
+				},
+				{
+					"text": "Omdat motion in dezelfde studio zit als zoeken en betaalde media, wordt creatie gebriefd met prestatiedata en beoordeeld op zakelijke resultaten, niet op hoe het eruitziet op een reel."
+				}
+			]
+		}
+	},
+	"caseStudies": {
+		"search-to-significance": {
+			"title": "Zoekintentie omzetten in vraag",
+			"discipline": "SEO & Content",
+			"summary": "Hoe een merk met een weloverwogen aankoop zijn organische aanwezigheid herbouwde rond commerciële intentie en verkeer bovenin de funnel omzette in gekwalificeerde pipeline.",
+			"challenge": "Een gespecialiseerd B2B-merk rankte voor informatieve zoekopdrachten die verkeer brachten maar geen pipeline. Er was volop content, maar die beantwoordde de verkeerde vragen voor kopers verderop in de funnel.",
+			"approach": "We brachten het onderwerplandschap opnieuw in kaart rond koopintentie, voegden dunne content samen en herbouwden de redactiekalender rond de beslissingen waar kopers daadwerkelijk voor staan. Technisch SEO-werk, zoals sitearchitectuur, interne links en gestructureerde data, gaf de nieuwe content ruimte om te ranken.",
+			"outcome": "Organisch verkeer verschoof naar commerciële pagina's, gekwalificeerde aanvragen namen toe en de contentmachine begon zich op te stapelen in plaats van te versnipperen. Het werk loopt door; de richting staat vast.",
+			"metrics": [
+				{
+					"label": "Doel organisch verkeer"
+				},
+				{
+					"label": "Doel gekwalificeerde leads"
+				}
+			]
+		},
+		"making-acquisition-work-harder": {
+			"title": "Acquisitie harder laten werken",
+			"discipline": "Meta Ads + Google Ads",
+			"summary": "Een DTC-merk gaf meer uit om minder binnen te halen. Een creatief gedreven reset over paid social en zoeken herbouwde de efficiëntie van de grond af.",
+			"challenge": "Stijgende CPM's en creatieve vermoeidheid hadden de acquisitiekosten voorbij het punt van winstgevendheid geduwd. Het account was druk maar niet effectief: budget verspreid over doelgroepen die niet meer converteerden.",
+			"approach": "We consolideerden het account rond een gestructureerd systeem voor creatief testen, herbouwden de full-funnelvolgorde en verschoven het zoekbudget naar zoektermen met hoge intentie en hoge marge. Tracking ging server-side zodat beslissingen de werkelijkheid weerspiegelden.",
+			"outcome": "De acquisitiekosten daalden, het rendement op advertentie-uitgaven herstelde en het testritme zorgde dat de creatie elke cyclus beter werd in plaats van te verslijten. Het merk heeft nu een systeem, niet alleen campagnes.",
+			"metrics": [
+				{
+					"label": "Doel rendement op advertentie-uitgaven"
+				},
+				{
+					"label": "Doel acquisitiekosten"
+				}
+			]
+		},
+		"full-funnel-foundations": {
+			"title": "Full-funnelfundamenten voor een nieuwe lancering",
+			"discipline": "SEO & Content + Paid",
+			"summary": "Een productlancering had organisch kapitaal en betaald momentum tegelijk nodig. We bouwden beide, getimed om zich op te stapelen.",
+			"challenge": "Een nieuw aanbod had geen zoekaanwezigheid en geen betaalde historie. Het risico was lanceren in stilte: betaalde uitgaven zonder iets om de gecreëerde vraag op te vangen.",
+			"approach": "Content- en technisch SEO-werk begon maanden voor de lancering om thematische autoriteit op te bouwen. Paid social zaaide bekendheid en retargeting, terwijl zoeken de intentie opving die de lancering genereerde. Meting was vanaf dag één ingebouwd.",
+			"outcome": "De lancering landde op bestaand organisch kapitaal in plaats van in een vacuüm, de betaalde uitgaven converteerden vanaf het begin op gezond tempo en het merk had een meetkader om op te schalen.",
+			"metrics": [
+				{
+					"label": "ROAS-doel in de lanceringsmaand"
+				},
+				{
+					"label": "Organisch kapitaal opgebouwd vóór de lancering"
+				}
+			]
+		}
+	},
+	"articles": {
+		"why-three-disciplines": {
+			"title": "Waarom deze drie disciplines bij elkaar horen",
+			"excerpt": "Zoeken, content en betaalde media worden meestal als losse vakgebieden verkocht. Dit is waarom ze behandelen als één groeisysteem de uitkomst verandert.",
+			"category": "Strategie",
+			"body": [
+				{
+					"text": "De meeste bureaus organiseren zich rond kanalen omdat kanalen makkelijk te verkopen zijn. Een zoekteam. Een socialteam. Een contentteam. Elk optimaliseert zijn eigen hoek en in de gaten ertussen lekt de groei weg."
+				},
+				{
+					"text": "Intentie, vraag en versnelling"
+				},
+				{
+					"text": "Zoeken pikt intentie op die al bestaat. Content bouwt de vraag op die haar creëert. Betaalde media versnellen wat werkt en brengen het bewezene sneller in meer momenten. Haal er één uit en het systeem verliest hefboom."
+				},
+				{
+					"text": "Een kanaal op zichzelf is een tactiek. Kanalen die elkaar voeden zijn een systeem."
+				},
+				{
+					"text": "Wanneer hetzelfde denken de zoekwoordstrategie, de redactiekalender en de betaalde creatie vormgeeft, stapelt het werk zich op. Content rankt omdat hij daarvoor gebouwd is. Paid converteert omdat de boodschap al organisch vertrouwen verdiende. Zoeken vangt de vraag op die de andere twee creëerden."
+				},
+				{
+					"text": "Wat er in de praktijk verandert"
+				},
+				{
+					"text": "Minder overdrachten. Eén meetkader. Een creatief idee dat van een organische post naar een betaald asset naar een landingspagina kan reizen zonder drie keer opnieuw gebouwd te worden. Daarom houden we het klein en senior geleid."
+				}
+			]
+		},
+		"creative-is-the-targeting": {
+			"title": "Creatie is de targeting",
+			"excerpt": "Op moderne paid social-platforms telt wat je toont zwaarder dan aan wie je het toont. Een notitie over het bouwen van een testsysteem dat standhoudt.",
+			"category": "Betaalde media",
+			"body": [
+				{
+					"text": "Het oude draaiboek begon bij de doelgroep: de perfecte persona bouwen, precies targeten en erop vertrouwen dat het algoritme meer van hetzelfde vindt. Die wereld is grotendeels verdwenen. Doelgroepen zijn breder, signalen ruiziger en de creatie zelf doet het filteren."
+				},
+				{
+					"text": "De creatie bepaalt wie blijft"
+				},
+				{
+					"text": "Een hook die de scroll stopt spreekt de juiste persoon aan en schrikt de verkeerde af. Dat is targeting, alleen gedaan door de boodschap in plaats van de doelgroepkiezer. Wat betekent dat de creatieve pijplijn nu de hefboom is."
+				},
+				{
+					"text": "Als je testsysteem niet elke cyclus scherper wordt, slijt je creatie."
+				},
+				{
+					"text": "Bouw een systeem, geen batch"
+				},
+				{
+					"text": "Hypotheses vóór varianten. Duidelijke winnaars vóór opschalen. Een ritme dat leren oplevert, niet alleen assets. De merken die winnen op paid social zijn die waarvan de creatie meetbaar beter wordt van maand tot maand, niet die met het grootste budget."
+				}
+			]
+		},
+		"measuring-what-comes-back": {
+			"title": "Meten wat terugkomt",
+			"excerpt": "Platformdashboards zullen altijd zeggen dat de uitgaven werkten. Zo houden wij de cijfers eerlijk.",
+			"category": "Meting",
+			"body": [
+				{
+					"text": "Elk advertentieplatform rapporteert zijn eigen succes. Ze liegen niet precies, maar ze meten vanuit hun eigen gezichtspunt en dat gezichtspunt is royaal voor het platform."
+				},
+				{
+					"text": "Attributie is een vraag, geen instelling"
+				},
+				{
+					"text": "De vraag is niet of deze campagne conversies opleverde, maar wat er zonder gebeurd zou zijn. Incrementaliteit, blended CAC en modellering van conversiewaarde beantwoorden dat. Last-click-dashboards niet."
+				},
+				{
+					"text": "Als het getal achter de beslissing komt van het platform dat het geld uitgeeft, behandel het dan als een bewering, niet als een feit."
+				},
+				{
+					"text": "Server-side tracking, een schone datalaag en een rapportageweergave gekoppeld aan zakelijke resultaten, en niet aan de zelfrapportage van platforms, is waar beslissingen genomen moeten worden. Het is minder vleiend en veel nuttiger."
+				}
+			]
+		}
+	}
+}

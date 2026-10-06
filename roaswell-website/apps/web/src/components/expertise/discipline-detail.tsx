@@ -1,10 +1,14 @@
-import { Link } from 'react-router';
 import { ArrowUpRight } from 'lucide-react';
 import type { Discipline } from '@/data/expertise';
-import { disciplines } from '@/data/expertise';
+import { Link, useT } from '@/i18n/context';
 
-export function DisciplineDetail({ discipline }: { discipline: Discipline }) {
-	const others = disciplines.filter(d => d.slug !== discipline.slug);
+type DisciplineDetailProps = {
+	discipline: Discipline;
+	others: Discipline[];
+};
+
+export function DisciplineDetail({ discipline, others }: DisciplineDetailProps) {
+	const t = useT();
 
 	return (
 		<>
@@ -14,7 +18,7 @@ export function DisciplineDetail({ discipline }: { discipline: Discipline }) {
 						<i /> {discipline.eyebrow}
 					</span>
 					<Link to="/expertise" className="back-link">
-						← All expertise
+						{t('expertise.back')}
 					</Link>
 				</div>
 				<h1>
@@ -26,14 +30,14 @@ export function DisciplineDetail({ discipline }: { discipline: Discipline }) {
 
 			<section className="detail-body">
 				<aside className="detail-aside">
-					<h4>CAPABILITIES</h4>
+					<h4>{t('expertise.capabilities')}</h4>
 					<ul>
 						{discipline.capabilities.map(c => (
 							<li key={c}>{c}</li>
 						))}
 					</ul>
 					<Link to="/contact" className="discipline-cta">
-						Work with us <ArrowUpRight size={18} />
+						{t('expertise.workWithUs')} <ArrowUpRight size={18} />
 					</Link>
 				</aside>
 
@@ -50,7 +54,7 @@ export function DisciplineDetail({ discipline }: { discipline: Discipline }) {
 			{discipline.subpages.length > 0 && (
 				<section className="specialisms section">
 					<span className="eyebrow">
-						<i /> SPECIALISMS
+						<i /> {t('expertise.specialisms')}
 					</span>
 					<div className="related-grid">
 						{discipline.subpages.map(subpage => (
@@ -69,7 +73,7 @@ export function DisciplineDetail({ discipline }: { discipline: Discipline }) {
 
 			<section className="related-disciplines section">
 				<span className="eyebrow">
-					<i /> THE OTHER DISCIPLINES
+					<i /> {t('expertise.others')}
 				</span>
 				<div className="related-grid">
 					{others.map(d => (

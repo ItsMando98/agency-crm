@@ -4,57 +4,70 @@ import {
 	Links,
 	Meta,
 	Outlet,
+	redirect,
 	Scripts,
 	ScrollRestoration,
+	useLoaderData,
+	useRouteLoaderData,
 } from 'react-router';
 import type { Route } from './+types/root';
 import stylesheet from '@/index.css?url';
 import { siteOrigin } from '@/lib/site-origin.server';
+import { DEFAULT_LOCALE, getLocaleDefinition, isLocale } from '@/i18n/locales';
+import { loadUiMessages, localizeContent } from '@/i18n/messages.server';
+import { disciplines } from '@/data/expertise';
+import { getBookingUrl } from '@/data/company.server';
+import { I18nProvider } from '@/i18n/context';
 import { HorizonsPreviewScripts } from './horizons-preview-scripts';
 
 export const links: Route.LinksFunction = () => [
 	{ rel: 'stylesheet', href: stylesheet },
 	{ rel: 'icon', href: '/favicon.ico', sizes: '32x32' },
-	{ rel: 'preconnect', href: 'https://fonts.googleapis.com' },
-	{
-		rel: 'preconnect',
-		href: 'https://fonts.gstatic.com',
-		crossOrigin: 'anonymous',
-	},
-	{
-		rel: 'stylesheet',
-		href: 'https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Manrope:wght@400;500;600;700;800&family=Libre+Caslon+Text:ital@0;1&display=swap', 
-	},
 ];
 
-/**
- * Publishes the site's public origin, which `seo()` reads to build canonical and
- * `og:url` tags, and advertises the sitemap to crawlers that read response
- * headers rather than HTML.
- *
- * A `meta` export can only reach server data through `matches`, and the `headers`
- * export cannot see loader data at all, so both have to travel this way.
- */
-export function loader({ request }: Route.LoaderArgs) {
+export async function loader({ request, params }: Route.LoaderArgs) {
 	const origin = siteOrigin(request);
+	const requested = params.lang;
+
+	if (requested !== undefined) {
+		if (!isLocale(requested)) {
+			throw new Response('Not found', { status: 404 });
+		}
+		if (requested === DEFAULT_LOCALE) {
+			const url = new URL(request.url);
+			const bare = url.pathname.replace(/^\/en(?=\/|$)/, '') || '/';
+			throw redirect(`${bare}${url.search}`, 301);
+		}
+	}
+
+	const locale = requested ?? DEFAULT_LOCALE;
+	const [messages, localizedDisciplines] = await Promise.all([
+		loadUiMessages(locale),
+		localizeContent(disciplines, locale, 'expertise'),
+	]);
 
 	return data(
-		{ origin },
+		{
+			origin,
+			locale,
+			messages,
+			bookingUrl: getBookingUrl(),
+			disciplineNav: localizedDisciplines.map(({ slug, number, name }) => ({ slug, number, name })),
+		},
 		{ headers: { Link: `<${origin}/sitemap.xml>; rel="sitemap"; type="application/xml"` } },
 	);
 }
 
-/**
- * A page route that exports `headers` replaces this one, so merge `parentHeaders`
- * there rather than returning only that route's own headers.
- */
 export function headers({ loaderHeaders }: Route.HeadersArgs) {
 	return loaderHeaders;
 }
 
 export function Layout({ children }: { children: React.ReactNode }) {
+	const rootData = useRouteLoaderData<typeof loader>('root');
+	const locale = getLocaleDefinition(rootData?.locale ?? DEFAULT_LOCALE);
+
 	return (
-		<html lang="en">
+		<html lang={locale.hreflang} dir={locale.direction}>
 			<head>
 				<meta charSet="utf-8" />
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -72,7 +85,13 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
-	return <Outlet />;
+	const { locale, messages } = useLoaderData<typeof loader>();
+
+	return (
+		<I18nProvider locale={locale} messages={messages}>
+			<Outlet />
+		</I18nProvider>
+	);
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {

@@ -10,6 +10,7 @@ import {
 	useTransform,
 	type MotionValue,
 } from 'framer-motion';
+import { useLocale } from '@/i18n/context';
 
 export const EASE_OUT = [0.16, 1, 0.3, 1] as const;
 
@@ -92,9 +93,37 @@ export function MaskedLines({
 
 type ScrollWordsProps = {
 	text: string;
-	highlight?: string[];
 	className?: string;
 };
+
+type WordChunk = { text: string; accent: boolean };
+
+const UNSPACED_LOCALES = new Set(['ja', 'zh', 'zh-hant', 'th']);
+const UNSPACED_CHUNK_SIZE = 3;
+
+function splitChunks(text: string, locale: string): WordChunk[] {
+	const chunks: WordChunk[] = [];
+	const pieces = text.split(/(\*[^*]+\*)/).filter(Boolean);
+
+	for (const piece of pieces) {
+		const accent = piece.startsWith('*') && piece.endsWith('*') && piece.length > 2;
+		const content = accent ? piece.slice(1, -1) : piece;
+
+		if (UNSPACED_LOCALES.has(locale)) {
+			const graphemes = Array.from(new Intl.Segmenter(locale, { granularity: 'grapheme' }).segment(content), part => part.segment);
+			for (let index = 0; index < graphemes.length; index += UNSPACED_CHUNK_SIZE) {
+				chunks.push({ text: graphemes.slice(index, index + UNSPACED_CHUNK_SIZE).join(''), accent });
+			}
+			continue;
+		}
+
+		for (const word of content.split(/(?<=\s)/)) {
+			if (word !== '') chunks.push({ text: word, accent });
+		}
+	}
+
+	return chunks;
+}
 
 function ScrollWord({
 	word,
@@ -110,29 +139,29 @@ function ScrollWord({
 	const opacity = useTransform(progress, range, [0.14, 1]);
 	return (
 		<motion.span className={accent ? 'scroll-word accent' : 'scroll-word'} style={{ opacity }}>
-			{word}{' '}
+			{word}
 		</motion.span>
 	);
 }
 
-export function ScrollWords({ text, highlight = [], className }: ScrollWordsProps) {
+export function ScrollWords({ text, className }: ScrollWordsProps) {
 	const ref = useRef<HTMLParagraphElement>(null);
+	const locale = useLocale();
 	const { scrollYProgress } = useScroll({ target: ref, offset: ['start 0.85', 'end 0.45'] });
-	const words = text.split(' ');
-	const accents = new Set(highlight.map(word => word.toLowerCase()));
+	const chunks = splitChunks(text, locale);
 
 	return (
 		<p ref={ref} className={className}>
-			{words.map((word, index) => {
-				const start = index / words.length;
-				const end = Math.min(1, start + 2.5 / words.length);
+			{chunks.map((chunk, index) => {
+				const start = index / chunks.length;
+				const end = Math.min(1, start + 2.5 / chunks.length);
 				return (
 					<ScrollWord
-						key={`${word}-${index}`}
-						word={word}
+						key={`${chunk.text}-${index}`}
+						word={chunk.text}
 						range={[start, end]}
 						progress={scrollYProgress}
-						accent={accents.has(word.toLowerCase().replace(/[^a-z0-9]/g, ''))}
+						accent={chunk.accent}
 					/>
 				);
 			})}
@@ -153,6 +182,7 @@ export function Counter({ to, decimals = 0, prefix = '', suffix = '', duration =
 	const ref = useRef<HTMLSpanElement>(null);
 	const inView = useInView(ref, { once: true, margin: '0px 0px -15% 0px' });
 	const reduced = useReducedMotion();
+	const locale = useLocale();
 	const [value, setValue] = useState(0);
 
 	useEffect(() => {
@@ -172,7 +202,7 @@ export function Counter({ to, decimals = 0, prefix = '', suffix = '', duration =
 	return (
 		<span ref={ref} className={className}>
 			{prefix}
-			{value.toFixed(decimals)}
+			{value.toLocaleString(locale, { minimumFractionDigits: decimals, maximumFractionDigits: decimals, useGrouping: false })}
 			{suffix}
 		</span>
 	);

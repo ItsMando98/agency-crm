@@ -4,7 +4,7 @@ export type Article = {
 	excerpt: string;
 	category: string;
 	date: string;
-	readTime: string;
+	readMinutes: number;
 	body: { type: 'p' | 'h2' | 'quote'; text: string }[];
 };
 
@@ -16,7 +16,7 @@ export const articles: Article[] = [
 			'Search, content, and paid media are usually sold as separate practices. Here is why treating them as one growth system changes the outcome.',
 		category: 'Strategy',
 		date: '2026-09-12T09:00:00.000Z',
-		readTime: '4 min read',
+		readMinutes: 4,
 		body: [
 			{ type: 'p', text: 'Most agencies organise around channels because channels are easy to sell. A search team. A social team. A content team. Each optimises its own corner, and the gaps between them are where growth leaks out.' },
 			{ type: 'h2', text: 'Intent, demand, and acceleration' },
@@ -34,7 +34,7 @@ export const articles: Article[] = [
 			'On modern paid social platforms, what you show matters more than who you show it to. A note on building a testing system that holds.',
 		category: 'Paid Media',
 		date: '2026-08-28T09:00:00.000Z',
-		readTime: '5 min read',
+		readMinutes: 5,
 		body: [
 			{ type: 'p', text: 'The old playbook was audience-first: build the perfect persona, target it precisely, and trust the algorithm to find more like it. That world is mostly gone. Audiences are broader, signals are noisier, and the creative itself does the filtering.' },
 			{ type: 'h2', text: 'The creative decides who stays' },
@@ -51,7 +51,7 @@ export const articles: Article[] = [
 			'Platform dashboards will always tell you the spend worked. Here is how we keep the numbers honest.',
 		category: 'Measurement',
 		date: '2026-08-05T09:00:00.000Z',
-		readTime: '4 min read',
+		readMinutes: 4,
 		body: [
 			{ type: 'p', text: 'Every ad platform reports its own success. They are not lying, exactly — but they are measuring from their own vantage point, and that vantage point is generous to the platform.' },
 			{ type: 'h2', text: 'Attribution is a question, not a setting' },

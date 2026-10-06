@@ -1,17 +1,25 @@
-import { Link } from 'react-router';
 import { ArrowUpRight } from 'lucide-react';
+import { Link, Lines, useT } from '@/i18n/context';
+import { usePrimaryCta } from '@/lib/use-root-data';
 
 export function ContactCta() {
+	const t = useT();
+	const cta = usePrimaryCta();
+
 	return (
 		<section className="cta-band section">
 			<h2>
-				Let’s talk
-				<br />
-				growth.
+				<Lines text={t('cta.band.title')} />
 			</h2>
-			<Link to="/contact" className="cta-band-link">
-				Start a conversation <ArrowUpRight size={20} />
-			</Link>
+			{cta.external ? (
+				<a href={cta.href} className="cta-band-link" target="_blank" rel="noopener noreferrer">
+					{t(cta.labelKey)} <ArrowUpRight size={20} />
+				</a>
+			) : (
+				<Link to={cta.href} className="cta-band-link">
+					{t(cta.labelKey)} <ArrowUpRight size={20} />
+				</Link>
+			)}
 		</section>
 	);
 }

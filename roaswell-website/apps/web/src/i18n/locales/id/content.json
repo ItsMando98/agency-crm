@@ -1,0 +1,720 @@
+{
+	"expertise": {
+		"seo-content": {
+			"name": "SEO & Konten",
+			"eyebrow": "01 / SEO & KONTEN",
+			"headline": "Ditemukan.",
+			"headlineAccent": "Dipilih.",
+			"summary": "Pencarian menangkap niat. Konten membangun permintaan. Kami mengubah pertanyaan menjadi lalu lintas berkualitas, dan lalu lintas menjadi pelanggan, dengan strategi, editorial, dan fondasi teknis yang berlipat ganda seiring waktu.",
+			"capabilities": [
+				"Strategi SEO",
+				"Strategi konten",
+				"Riset kata kunci",
+				"Editorial",
+				"SEO on-page",
+				"Optimasi konten"
+			],
+			"cta": "Jelajahi SEO & Konten",
+			"subpages": [],
+			"body": [
+				{
+					"text": "Sebagian besar lalu lintas pencarian terbuang karena menjawab pertanyaan yang salah, atau pertanyaan yang benar dengan buruk. Kami mulai dari niat, yaitu apa yang sebenarnya ingin dipahami, diputuskan, atau dibeli audiens Anda, lalu membangun dari sana."
+				},
+				{
+					"text": "Strategi sebelum produksi"
+				},
+				{
+					"text": "Mesin konten hanya bekerja jika setiap bagiannya punya tugas. Kami memetakan topik yang menggerakkan hasil bisnis, memprioritaskan berdasarkan peluang, dan menyusun urutan kerja agar momentum berlipat ganda, bukan tercerai-berai."
+				},
+				{
+					"text": "Jadilah jawaban yang dicari audiens Anda, bukan sekadar hasil lain di halaman."
+				},
+				{
+					"text": "Fondasi teknis yang kokoh"
+				},
+				{
+					"text": "Kemampuan crawl, arsitektur situs, Core Web Vitals, data terstruktur. Pekerjaan tak glamor yang menentukan apakah konten hebat punya peluang untuk berperingkat. Kami menganggapnya bagian dari strategi, bukan pikiran susulan."
+				},
+				{
+					"text": "Lalu kami mengukur. Data Search Console, pelacakan peringkat, atribusi konversi, dikaitkan kembali dengan hasil bisnis yang penting, bukan grafik lalu lintas pajangan."
+				}
+			]
+		},
+		"meta-ads": {
+			"name": "Iklan Meta",
+			"eyebrow": "02 / IKLAN META",
+			"headline": "Ubah perhatian",
+			"headlineAccent": "menjadi permintaan.",
+			"summary": "Kreatif yang terhubung, kampanye yang mengonversi. Kami memadukan wawasan audiens dengan pengujian tanpa henti agar setiap tayangan bekerja lebih keras di Facebook, Instagram, dan seluruh ekosistem Meta.",
+			"capabilities": [
+				"Sosial berbayar",
+				"Uji kreatif",
+				"Strategi audiens",
+				"Kampanye full-funnel",
+				"Optimasi konversi",
+				"Retargeting"
+			],
+			"cta": "Jelajahi Iklan Meta",
+			"subpages": [],
+			"body": [
+				{
+					"text": "Perhatian melimpah; permintaan tidak. Tugas sosial berbayar bukan untuk dilihat, melainkan untuk diingat, dipertimbangkan, dan dipilih. Itu dimulai dari kreatif yang layak menghentikan gulir."
+				},
+				{
+					"text": "Kreatif adalah targeting"
+				},
+				{
+					"text": "Di platform modern, apa yang Anda tampilkan lebih penting daripada kepada siapa Anda menampilkannya. Kami membangun sistem uji kreatif yang terstruktur, dengan hipotesis, varian, dan pemenang yang jelas, sehingga pekerjaan makin tajam di setiap siklus."
+				},
+				{
+					"text": "Setiap klik punya tugas yang harus dikerjakan. Buatlah berarti."
+				},
+				{
+					"text": "Full-funnel, bukan klik terakhir"
+				},
+				{
+					"text": "Kesadaran, pertimbangan, konversi, retensi. Kami merancang perjalanan agar setiap tahap menyuburkan tahap berikutnya, dan mengukur secara inkremental agar Anda tahu apa yang sebenarnya dihasilkan belanja iklan."
+				},
+				{
+					"text": "Tidak ada atur lalu lupakan. Tinjauan kreatif mingguan, penyegaran audiens, dan pergeseran anggaran menuju yang berhasil dan menjauh dari yang tidak."
+				}
+			]
+		},
+		"google-ads": {
+			"name": "Iklan Google",
+			"eyebrow": "03 / IKLAN GOOGLE",
+			"headline": "Tangkap niat",
+			"headlineAccent": "saat itu penting.",
+			"summary": "Temui niat dengan presisi. Dari pencarian hingga belanja, kami menaruh anggaran di tempat peluang berada dan mengukur apa yang kembali dengan pelaporan yang jelas dan komersial.",
+			"capabilities": [
+				"Pencarian berbayar",
+				"Iklan Shopping",
+				"Performance Max",
+				"Optimasi konversi",
+				"Strategi bid",
+				"Pelacakan & pengukuran"
+			],
+			"cta": "Jelajahi Iklan Google",
+			"subpages": [],
+			"body": [
+				{
+					"text": "Pencarian adalah momen ketika niat menjadi tindakan. Pertanyaannya, apakah Anda hadir pada momen itu, dan apakah pengalamannya mengonversi ketika Anda hadir."
+				},
+				{
+					"text": "Anggaran di tempat peluang berada"
+				},
+				{
+					"text": "Tidak setiap kata kunci layak mendapat uang Anda. Kami membangun strategi kata kunci di sekitar niat komersial dan margin, memangkas pemborosan dari tumpang tindih kata luas dan merek, dan memusatkan belanja di tempat pengembaliannya nyata."
+				},
+				{
+					"text": "Temui niat dengan presisi. Ukur apa yang kembali."
+				},
+				{
+					"text": "Pengukuran yang bisa dipercaya"
+				},
+				{
+					"text": "Pelacakan sisi server, pemodelan nilai konversi, atribusi yang bersih. Agar angka yang menggerakkan keputusan mencerminkan kenyataan, bukan laporan mandiri platform."
+				},
+				{
+					"text": "Strategi bid yang disetel sesuai ekonomi Anda, bukan target bawaan. Kami menguji, mengamati kasus tepi, dan menjaga belanja tetap jujur."
+				}
+			]
+		},
+		"motion-graphics": {
+			"name": "Motion Graphics",
+			"eyebrow": "04 / MOTION GRAPHICS",
+			"headline": "Hentikan gulir.",
+			"headlineAccent": "Jadilah tak terlewatkan.",
+			"summary": "Motion adalah cara tercepat untuk meraih perhatian dan cara paling jelas untuk menjelaskan ide besar. Kami merancang iklan, animasi produk, dan film merek yang dibuat untuk diuji, bukan sekadar dikagumi.",
+			"capabilities": [
+				"Kreatif sosial berbayar",
+				"Video penjelas",
+				"Animasi produk",
+				"Film merek",
+				"Motion web & UI",
+				"Aset uji kreatif"
+			],
+			"cta": "Jelajahi Motion Graphics",
+			"subpages": {
+				"paid-social-motion": {
+					"name": "Iklan Motion Sosial Berbayar",
+					"eyebrow": "04.1 / IKLAN MOTION SOSIAL BERBAYAR",
+					"headline": "Menangkan",
+					"headlineAccent": "detik pertama.",
+					"summary": "Motion singkat yang dibuat untuk feed: pengait yang menghentikan jempol, klaim yang mengena, dan sistem varian yang menunjukkan ide mana yang layak mendapat anggaran berikutnya.",
+					"sample": {
+						"title": "NOVA Sparkling: iklan 10 detik, dibongkar",
+						"note": "Iklan konsep untuk merek minuman rekaan. Geser garis waktunya, lalu baca empat ketukan di sampingnya: pengait, klaim, bukti, ajakan."
+					},
+					"deliverables": [
+						{
+							"title": "Storyboard yang mengutamakan pengait",
+							"text": "Tiga hingga lima ide pembuka untuk setiap konsep, masing-masing ditulis untuk memenangkan detik pertama dengan sendirinya."
+						},
+						{
+							"title": "Animasi master dan versi pendek",
+							"text": "Satu karya utama plus versi 6, 15, dan 30 detik yang dipotong untuk penempatan yang benar-benar Anda beli."
+						},
+						{
+							"title": "Semua format",
+							"text": "Versi 9:16, 4:5, dan 1:1, diperiksa zona amannya untuk Stories, Reels, dan feed."
+						},
+						{
+							"title": "Kit varian",
+							"text": "Pengait, klaim, dan kartu penutup yang dapat ditukar, tertanam di berkas agar pengujian tidak berarti mulai dari nol."
+						},
+						{
+							"title": "Teks dan suara",
+							"text": "Teks tertanam untuk tontonan tanpa suara dan penggarapan desain suara untuk tontonan dengan suara."
+						},
+						{
+							"title": "Tinjauan pembelajaran",
+							"text": "Bacaan tertulis tentang apa yang diajarkan tiap varian dan apa yang harus diubah oleh gelombang berikutnya."
+						}
+					],
+					"steps": [
+						{
+							"title": "Membaca akun",
+							"text": "Kami mulai dari data kinerja: apa yang kelelahan, sudut mana yang masih menarik, di mana penurunan terjadi."
+						},
+						{
+							"title": "Menulis hipotesis",
+							"text": "Setiap konsep menyatakan klaim yang diuji dan angka yang harus digerakkannya, sebelum apa pun dianimasikan."
+						},
+						{
+							"title": "Membangun sistem",
+							"text": "Animasi master dahulu, lalu varian yang dihasilkan dari sumber yang sama agar tampilan tetap konsisten."
+						},
+						{
+							"title": "Meluncur dan belajar",
+							"text": "Varian saling beradu. Pemenang diskalakan, yang kalah dipensiunkan, dan catatan menyuburkan putaran berikutnya."
+						}
+					],
+					"connects": [
+						{
+							"text": "Sistem uji kreatif yang memutuskan varian mana yang mendapat anggaran dan kapan dipensiunkan."
+						},
+						{
+							"text": "Potongan pendek juga berfungsi sebagai aset video untuk YouTube dan Performance Max."
+						}
+					],
+					"faqs": [
+						{
+							"question": "Apakah kami perlu menyediakan rekaman?",
+							"answer": "Tidak. Kami dapat bekerja dari aset merek, render produk, tangkapan layar, atau membangun seluruh karya dari ilustrasi dan tipografi. Jika Anda punya rekaman, kami akan memakainya."
+						},
+						{
+							"question": "Berapa varian yang sebaiknya kami mulai?",
+							"answer": "Cukup untuk belajar sesuatu, tidak sebanyak itu hingga masing-masing kelaparan. Biasanya kami mengusulkan matriks kecil pengait melawan klaim dan menyepakati ukurannya per gelombang."
+						},
+						{
+							"question": "Bisakah Anda juga menjalankan medianya?",
+							"answer": "Ya, melalui pekerjaan kami di Iklan Meta dan Iklan Google. Anda juga dapat mengambil berkas jadi dan menayangkannya sendiri."
+						},
+						{
+							"question": "Bagaimana dengan musik dan pengisi suara?",
+							"answer": "Kami memakai audio berlisensi atau orisinal dan menyepakati hak di awal, termasuk di mana dan berapa lama iklan boleh tayang."
+						},
+						{
+							"question": "Bagaimana Anda menilai iklan motion?",
+							"answer": "Berdasarkan metrik bisnis yang menjadi briefnya, bukan tampilannya. Setiap konsep diikat ke sebuah angka sebelum dibuat."
+						}
+					]
+				},
+				"explainer-videos": {
+					"name": "Video Penjelas",
+					"eyebrow": "04.2 / VIDEO PENJELAS",
+					"headline": "Buat yang rumit",
+					"headlineAccent": "jadi jelas.",
+					"summary": "Penjelasan animasi singkat yang mengubah produk atau ide yang sulit menjadi sesuatu yang bisa diulang pembeli kepada atasannya.",
+					"sample": {
+						"title": "Dari perhatian yang tercerai-berai menjadi pelanggan, dalam 14 detik",
+						"note": "Video penjelas konsep tentang cara kerja funnel. Titik-titik adalah orang. Lihat berapa yang masuk, berapa yang mengonversi, dan bagaimana cerita dibawa oleh gerak semata."
+					},
+					"deliverables": [
+						{
+							"title": "Naskah dan narasi",
+							"text": "Naskah ringkas yang dibangun di sekitar satu hal yang harus dipercaya penonton di akhir."
+						},
+						{
+							"title": "Style frame dan storyboard",
+							"text": "Tampilan dan setiap adegan disepakati di atas kertas sebelum animasi dimulai."
+						},
+						{
+							"title": "Ilustrasi dan animasi khusus",
+							"text": "Visual orisinal yang dibuat untuk produk Anda, bukan ikon stok yang digeser-geser."
+						},
+						{
+							"title": "Arahan pengisi suara dan suara",
+							"text": "Panduan casting, arahan, dan trek yang sudah dimiks, atau versi hanya musik."
+						},
+						{
+							"title": "Versi pendek bersubteks",
+							"text": "Versi pendek untuk sosial dan berbayar dengan teks yang sudah tertanam."
+						},
+						{
+							"title": "Siap untuk landing page",
+							"text": "Berkas terkompresi, bingkai poster, dan transkrip agar video membantu halaman, bukan memperlambatnya."
+						}
+					],
+					"steps": [
+						{
+							"title": "Menentukan keyakinan",
+							"text": "Siapa yang menonton, apa yang diragukannya, dan apa yang harus diyakininya di akhir?"
+						},
+						{
+							"title": "Menulis dan membuat papan",
+							"text": "Naskah dan storyboard bersama-sama, agar setiap baris punya gambar yang layak ada di sana."
+						},
+						{
+							"title": "Mendesain dan menganimasikan",
+							"text": "Style frame dahulu, lalu animasi dalam adegan modular yang mudah diperbarui."
+						},
+						{
+							"title": "Menyelesaikan dan menyebarkan",
+							"text": "Suara, teks, versi pendek, dan penempatan di halaman dan kampanye yang membutuhkannya."
+						}
+					],
+					"connects": [
+						{
+							"text": "Disematkan di halaman yang dibuat untuk berperingkat, dengan transkrip yang menambah konten alih-alih menyembunyikannya."
+						},
+						{
+							"text": "Penjelasan yang jelas di landing page adalah yang mengubah klik berbayar menjadi pertanyaan."
+						}
+					],
+					"faqs": [
+						{
+							"question": "Berapa panjang video penjelas seharusnya?",
+							"answer": "Sesingkat yang diizinkan ide. Kebanyakan berada di antara 45 dan 90 detik, dengan versi pendek 15 dan 30 detik untuk sosial."
+						},
+						{
+							"question": "Apakah Anda menulis naskahnya?",
+							"answer": "Ya. Kami juga dapat bekerja dari naskah Anda atau brief kasar dan membentuknya untuk layar."
+						},
+						{
+							"question": "Bagaimana jika produknya berubah?",
+							"answer": "Kami membangun dengan adegan modular sehingga satu fitur dapat diganti atau diperbarui tanpa mengerjakan ulang seluruh film."
+						},
+						{
+							"question": "Berapa putaran revisi yang termasuk?",
+							"answer": "Kami menyepakati jumlah putaran per proyek di awal dan menaruhnya di tahap-tahap ketika perubahan murah: naskah, papan, lalu animasi."
+						},
+						{
+							"question": "Di mana video penjelas bekerja paling baik?",
+							"answer": "Landing page, dek penjualan, onboarding, email, dan penempatan berbayar yang membutuhkan pitch cepat dan jelas."
+						}
+					]
+				},
+				"product-animation": {
+					"name": "Animasi Produk",
+					"eyebrow": "04.3 / ANIMASI PRODUK",
+					"headline": "Tunjukkan ia",
+					"headlineAccent": "bekerja.",
+					"summary": "Tampilan terurai, penelusuran fitur, dan pengungkapan peluncuran yang memungkinkan pembeli melihat cara kerja sesuatu sebelum mereka bisa menyentuhnya.",
+					"sample": {
+						"title": "HALO: tampilan terurai, lima komponen dalam sepuluh detik",
+						"note": "Speaker pintar konsep, direkacipta untuk halaman ini. Seret garis waktu untuk membongkarnya lalu memasangnya kembali."
+					},
+					"deliverables": [
+						{
+							"title": "Loop hero",
+							"text": "Animasi loop yang bersih untuk bagian atas halaman produk atau landing page."
+						},
+						{
+							"title": "Tampilan terurai dan potongan melintang",
+							"text": "Kisah di dalam: komponen, lapisan, dan cara semuanya menyatu."
+						},
+						{
+							"title": "Urutan sorotan fitur",
+							"text": "Satu karya singkat per fitur, masing-masing menyampaikan satu poin dengan jelas."
+						},
+						{
+							"title": "Pengungkapan peluncuran",
+							"text": "Karya sinematik untuk saat produk dirilis ke publik."
+						},
+						{
+							"title": "Ekspor siap web",
+							"text": "Video terkompresi dan, bila membantu, animasi vektor ringan untuk halaman cepat."
+						},
+						{
+							"title": "Versi sosial dan gambar diam",
+							"text": "Versi vertikal dan persegi plus bingkai kunci untuk dek, email, dan pers."
+						}
+					],
+					"steps": [
+						{
+							"title": "Mengumpulkan sumber",
+							"text": "CAD, render, rekaman layar, atau sketsa, apa pun yang paling baik menunjukkan produk."
+						},
+						{
+							"title": "Mengoreografi",
+							"text": "Merencanakan kamera, urutan komponen muncul, dan satu hal yang harus dijelaskan setiap bidikan."
+						},
+						{
+							"title": "Cahaya dan material",
+							"text": "Permukaan, pendar, dan bayangan disetel agar terasa seperti objek atau antarmuka yang nyata."
+						},
+						{
+							"title": "Render dan serahkan",
+							"text": "Berkas akhir untuk setiap tempat produk muncul, dengan opsi ringan untuk web."
+						}
+					],
+					"connects": [
+						{
+							"text": "Animasi yang sama dipotong untuk feed menghasilkan iklan produk yang menjelaskan, bukan sekadar mengumumkan."
+						},
+						{
+							"text": "Halaman produk dengan demonstrasi yang jelas menahan perhatian lebih lama dan memberi pencarian sesuatu untuk diperingkat."
+						}
+					],
+					"faqs": [
+						{
+							"question": "Apakah Anda memerlukan berkas 3D?",
+							"answer": "Membantu, tetapi kami juga dapat bekerja dari fotografi, gambar, atau deskripsi. Untuk produk perangkat lunak, kami menganimasikan dari antarmuka Anda."
+						},
+						{
+							"question": "Bisakah Anda menganimasikan perangkat lunak, bukan hanya produk fisik?",
+							"answer": "Bisa. Penelusuran UI, aliran data, dan penjelasan fitur mengikuti keahlian yang sama dengan perangkat keras."
+						},
+						{
+							"question": "Apakah ini akan memperlambat situs kami?",
+							"answer": "Kami menyerahkan berkas terkompresi dan, bila masuk akal, animasi vektor yang tetap ringan. Kami menyepakati anggaran ukuran di awal."
+						},
+						{
+							"question": "Bisakah kami memakai ulang animasinya nanti?",
+							"answer": "Bisa. Kami menyerahkan sumber berlapis dan menyepakati penggunaan agar peluncuran mendatang dapat dibangun di atas aset yang sama."
+						},
+						{
+							"question": "Seberapa halus itu halus?",
+							"answer": "Kejelasan dahulu, baru keindahan. Jika sebuah bidikan tampak hebat tetapi tidak menjelaskan, ia dipotong."
+						}
+					]
+				},
+				"brand-films": {
+					"name": "Film Merek",
+					"eyebrow": "04.4 / FILM MEREK",
+					"headline": "Ucapkan sekali.",
+					"headlineAccent": "Buat bertahan.",
+					"summary": "Film sinematik yang berpusat pada tipografi, membawa sudut pandang sebuah merek, dibuat untuk menjangkarkan peluncuran, kampanye, atau beranda.",
+					"sample": {
+						"title": "ROASWELL: film judul 16 detik dalam tiga bab",
+						"note": "Film konsep untuk studio kami sendiri, dibuat sepenuhnya dalam motion design. Gunakan penanda bab untuk melompat antara Signal, Intent, dan Return."
+					},
+					"deliverables": [
+						{
+							"title": "Konsep dan treatment",
+							"text": "Ide, nada, dan bahasa visual, ditulis dan digambar sebelum produksi."
+						},
+						{
+							"title": "Naskah manifesto",
+							"text": "Kata-kata yang terdengar seperti merek dan cukup singkat untuk diingat."
+						},
+						{
+							"title": "Arahan berbasis motion",
+							"text": "Tipografis, ilustratif, atau campuran, dipilih agar sesuai dengan cerita dan anggaran."
+						},
+						{
+							"title": "Arahan suara dan musik",
+							"text": "Musik dan desain suara yang mengerjakan separuh pekerjaan emosional."
+						},
+						{
+							"title": "Film master dan versi pendek",
+							"text": "Karya penuh plus versi 30, 15, dan 6 detik untuk setiap kanal."
+						},
+						{
+							"title": "Toolkit motion merek",
+							"text": "Transisi, easing, dan gaya judul agar tampilan berlanjut dalam semua yang menyusul."
+						}
+					],
+					"steps": [
+						{
+							"title": "Menemukan sudut pandang",
+							"text": "Apa yang diyakini merek yang tidak diyakini kategorinya? Itulah filmnya."
+						},
+						{
+							"title": "Menulis treatment",
+							"text": "Bab, ritme, bingkai kunci, dan suara, disepakati sebelum satu bingkai pun dianimasikan."
+						},
+						{
+							"title": "Membuatnya",
+							"text": "Desain, animasi, dan suara dibangun bersama agar hasil suntingan bernapas."
+						},
+						{
+							"title": "Merilis dan memperluas",
+							"text": "Luncurkan master, lalu jaga ide tetap hidup dengan versi pendek dan toolkit motion."
+						}
+					],
+					"connects": [
+						{
+							"text": "Versi pendek menjadi lapisan kesadaran dalam rencana sosial berbayar full-funnel."
+						},
+						{
+							"text": "Kampanye pencarian merek dan video punya sesuatu yang layak diklik."
+						},
+						{
+							"text": "Film di jantung pusat konten memberi penulis dan tautan sesuatu untuk dituju."
+						}
+					],
+					"faqs": [
+						{
+							"question": "Apakah Anda syuting live action?",
+							"answer": "Kami mengarahkan film berbasis motion. Jika proyek membutuhkan live action, kami merencanakannya dengan mitra produksi dan menjaga arahan motion tetap di dalam."
+						},
+						{
+							"question": "Berapa panjang film merek?",
+							"answer": "Ide yang menentukan. Kebanyakan berkisar antara 30 detik dan dua menit, dengan versi lebih pendek dipotong dari master."
+						},
+						{
+							"question": "Siapa pemilik filmnya?",
+							"answer": "Anda. Kami menyepakati hak penggunaan dan menyerahkan berkas sumber berlapis sebagai bagian proyek."
+						},
+						{
+							"question": "Bisakah film itu tayang di beranda kami?",
+							"answer": "Bisa. Kami menyerahkan loop ringan dan bingkai poster, dengan film penuh hanya satu klik jauhnya."
+						},
+						{
+							"question": "Apakah ini hanya untuk merek besar?",
+							"answer": "Tidak. Film tipografi yang ditulis dengan ketat bisa berbiaya sebagian kecil dari syuting langsung dan tetap terasa sebagai sudut pandang."
+						}
+					]
+				},
+				"web-ui-motion": {
+					"name": "Motion Web & UI",
+					"eyebrow": "04.5 / MOTION WEB & UI",
+					"headline": "Antarmuka yang",
+					"headlineAccent": "terasa hidup.",
+					"summary": "Cerita gulir, mikro-interaksi, dan transisi halaman yang membuat situs lebih mudah dipahami dan lebih sulit dilupakan, tanpa mengorbankan kecepatan atau aksesibilitas.",
+					"sample": {
+						"title": "Laboratorium motion: tujuh interaksi yang bisa Anda sentuh",
+						"note": "Motion antarmuka nyata yang berfungsi, bukan video. Alihkan, arahkan, seret, dan klik. Semua di sini menghormati pengaturan pengurangan gerak."
+					},
+					"deliverables": [
+						{
+							"title": "Prinsip motion",
+							"text": "Token easing, timing, dan pegas agar setiap interaksi terasa milik satu produk."
+						},
+						{
+							"title": "Transisi gulir dan halaman",
+							"text": "Urutan gulir berbasis cerita dan transisi rute yang memandu perhatian, seperti yang ada di situs ini."
+						},
+						{
+							"title": "Pustaka mikro-interaksi",
+							"text": "Tombol, sakelar, menu, kartu, dan formulir yang merespons dengan tujuan."
+						},
+						{
+							"title": "Kode produksi atau ekspor",
+							"text": "CSS dan JavaScript yang bersih, atau ekspor Lottie dan video, siap untuk stack Anda."
+						},
+						{
+							"title": "Varian aksesibilitas",
+							"text": "Alternatif pengurangan gerak dan perilaku fokus yang dirancang sejak awal, bukan ditambal belakangan."
+						},
+						{
+							"title": "Anggaran kinerja",
+							"text": "Motion diukur terhadap waktu muat dan latensi interaksi sebelum dirilis."
+						}
+					],
+					"steps": [
+						{
+							"title": "Audit",
+							"text": "Temukan di mana motion akan memperjelas sesuatu dan di mana ia hanya menambah derau."
+						},
+						{
+							"title": "Tetapkan prinsip",
+							"text": "Tentukan kosakata easing dan timing agar keputusan tidak lagi kasus per kasus."
+						},
+						{
+							"title": "Prototipe di browser",
+							"text": "Bangun di medium yang sebenarnya agar yang Anda setujui adalah yang dirilis."
+						},
+						{
+							"title": "Rilis dan ukur",
+							"text": "Rilis dengan anggaran kinerja dan amati apa yang sebenarnya dilakukan pengguna."
+						}
+					],
+					"connects": [
+						{
+							"text": "Motion yang cepat dan aksesibel mendukung Core Web Vitals alih-alih melawannya."
+						},
+						{
+							"text": "Landing page dengan interaksi yang jelas dan cepat mengubah klik berbayar menjadi tindakan."
+						}
+					],
+					"faqs": [
+						{
+							"question": "Apakah animasi akan memperlambat situs kami?",
+							"answer": "Tidak jika dibangun dengan benar. Kami menetapkan anggaran kinerja, menganimasikan dengan properti termurah, dan menguji di perangkat nyata."
+						},
+						{
+							"question": "Apakah Anda menulis kodenya?",
+							"answer": "Ya. Kami dapat menyerahkan kode siap produksi, atau menyerahkan spesifikasi dan ekspor untuk diimplementasikan tim Anda."
+						},
+						{
+							"question": "Bagaimana dengan aksesibilitas?",
+							"answer": "Setiap motion punya alternatif pengurangan gerak, dan perilaku keyboard serta pembaca layar dirancang bersama animasi."
+						},
+						{
+							"question": "Apakah ini bekerja dengan CMS atau framework kami?",
+							"answer": "Kami bekerja dengan sebagian besar stack modern. Beri tahu kami apa yang Anda jalankan dan kami akan mengonfirmasi pendekatan terbaik."
+						},
+						{
+							"question": "Bisakah saya melihatnya bekerja?",
+							"answer": "Anda sedang melihatnya. Urutan gulir, penghitung, dan pengungkapan di situs ini dibangun dengan pendekatan yang sama."
+						}
+					]
+				}
+			},
+			"body": [
+				{
+					"text": "Kreatif statis meminta perhatian. Motion mengambilnya. Dalam detik pertama sebuah feed, gerak menentukan apakah pesan mendapat kesempatan, dan sisa ide hanya berarti jika bertahan dari detik itu."
+				},
+				{
+					"text": "Dibuat untuk feed, bukan untuk showreel"
+				},
+				{
+					"text": "Setiap karya dimulai dengan hipotesis: pengait, klaim, alasan untuk terus menonton. Kami membuat storyboard terhadap metrik yang harus digerakkan, lalu membangun varian agar sistem pengujian punya bahan nyata untuk dipelajari."
+				},
+				{
+					"text": "Motion yang hebat bukan dekorasi. Ia adalah argumen yang dibuat terlihat."
+				},
+				{
+					"text": "Satu ide, setiap permukaan"
+				},
+				{
+					"text": "Konsep yang sama berpindah dari potongan berbayar enam detik ke penjelasan produk, animasi landing page, dan film peluncuran. Satu bahasa desain, satu set aset, tanpa membangun ulang ide tiga kali."
+				},
+				{
+					"text": "Karena motion berada di studio yang sama dengan pencarian dan media berbayar, kreatif dibriefkan oleh data kinerja dan dinilai oleh hasil bisnis, bukan oleh tampilannya di sebuah reel."
+				}
+			]
+		}
+	},
+	"caseStudies": {
+		"search-to-significance": {
+			"title": "Mengubah niat pencarian menjadi permintaan",
+			"discipline": "SEO & Konten",
+			"summary": "Bagaimana sebuah merek dengan pembelian yang dipertimbangkan matang membangun ulang kehadiran organiknya di sekitar niat komersial, dan mengubah lalu lintas atas funnel menjadi pipeline yang berkualitas.",
+			"challenge": "Sebuah merek B2B spesialis berperingkat untuk kueri informasional yang mendatangkan lalu lintas tetapi tidak ada pipeline. Kontennya melimpah, tetapi menjawab pertanyaan yang salah bagi pembeli yang lebih jauh di bawah funnel.",
+			"approach": "Kami memetakan ulang lanskap topik di sekitar niat membeli, menggabungkan konten tipis, dan membangun ulang kalender editorial di sekitar keputusan yang benar-benar dihadapi pembeli. Pekerjaan SEO teknis, yaitu arsitektur situs, tautan internal, dan data terstruktur, memberi ruang bagi konten baru untuk berperingkat.",
+			"outcome": "Lalu lintas organik berpusat kembali ke halaman komersial, pertanyaan berkualitas meningkat, dan mesin konten mulai berlipat ganda alih-alih tercerai-berai. Pekerjaan terus berlanjut; arahnya sudah ditetapkan.",
+			"metrics": [
+				{
+					"label": "Target lalu lintas organik"
+				},
+				{
+					"label": "Target prospek berkualitas"
+				}
+			]
+		},
+		"making-acquisition-work-harder": {
+			"title": "Membuat akuisisi bekerja lebih keras",
+			"discipline": "Iklan Meta + Iklan Google",
+			"summary": "Sebuah merek DTC membelanjakan lebih banyak untuk mendapatkan lebih sedikit. Reset yang dipimpin kreatif di sosial berbayar dan pencarian membangun kembali efisiensi dari dasar.",
+			"challenge": "CPM yang naik dan kelelahan kreatif mendorong biaya akuisisi melewati titik keuntungan. Akunnya sibuk tetapi tidak efektif: anggaran tersebar tipis ke audiens yang tak lagi mengonversi.",
+			"approach": "Kami mengonsolidasikan akun di sekitar sistem uji kreatif yang terstruktur, membangun ulang urutan full-funnel, dan menyelaraskan ulang anggaran pencarian ke istilah berniat tinggi dan bermargin tinggi. Pelacakan dipindah ke sisi server agar keputusan mencerminkan kenyataan.",
+			"outcome": "Biaya akuisisi turun, pengembalian belanja iklan pulih, dan ritme pengujian membuat kreatif membaik di setiap siklus alih-alih membusuk. Merek kini punya sistem, bukan sekadar kampanye.",
+			"metrics": [
+				{
+					"label": "Target pengembalian belanja iklan"
+				},
+				{
+					"label": "Target biaya akuisisi"
+				}
+			]
+		},
+		"full-funnel-foundations": {
+			"title": "Fondasi full-funnel untuk peluncuran baru",
+			"discipline": "SEO & Konten + Berbayar",
+			"summary": "Peluncuran produk membutuhkan ekuitas organik dan momentum berbayar pada saat yang sama. Kami membangun keduanya, diurutkan agar berlipat ganda.",
+			"challenge": "Penawaran baru tidak punya kehadiran di pencarian dan tidak punya riwayat berbayar. Risikonya meluncur dalam kesunyian: belanja berbayar tanpa apa pun untuk menangkap permintaan yang diciptakannya.",
+			"approach": "Pekerjaan konten dan SEO teknis dimulai berbulan-bulan sebelum peluncuran untuk membangun otoritas topikal. Sosial berbayar menabur kesadaran dan retargeting, sementara pencarian menangkap niat yang dihasilkan peluncuran. Pengukuran dipasang sejak hari pertama.",
+			"outcome": "Peluncuran mendarat pada ekuitas organik yang sudah ada alih-alih ruang hampa, belanja berbayar mengonversi dengan laju sehat sejak awal, dan merek punya kerangka pengukuran untuk berskala.",
+			"metrics": [
+				{
+					"label": "Target ROAS bulan peluncuran"
+				},
+				{
+					"label": "Ekuitas organik yang dibangun sebelum peluncuran"
+				}
+			]
+		}
+	},
+	"articles": {
+		"why-three-disciplines": {
+			"title": "Mengapa ketiga disiplin ini saling melengkapi",
+			"excerpt": "Pencarian, konten, dan media berbayar biasanya dijual sebagai praktik terpisah. Inilah mengapa memperlakukannya sebagai satu sistem pertumbuhan mengubah hasilnya.",
+			"category": "Strategi",
+			"body": [
+				{
+					"text": "Kebanyakan agensi diorganisasi di sekitar kanal karena kanal mudah dijual. Tim pencarian. Tim sosial. Tim konten. Masing-masing mengoptimalkan sudutnya sendiri, dan celah di antara mereka adalah tempat pertumbuhan bocor."
+				},
+				{
+					"text": "Niat, permintaan, dan akselerasi"
+				},
+				{
+					"text": "Pencarian menangkap niat yang sudah ada. Konten membangun permintaan yang menciptakannya. Media berbayar mempercepat apa yang berhasil, mendorong yang terbukti ke lebih banyak momen, lebih cepat. Cabut satu dan sistem kehilangan daya ungkit."
+				},
+				{
+					"text": "Satu kanal yang terisolasi adalah taktik. Kanal-kanal yang saling menyuburkan adalah sistem."
+				},
+				{
+					"text": "Ketika pemikiran yang sama membentuk strategi kata kunci, kalender editorial, dan kreatif berbayar, pekerjaan berlipat ganda. Konten berperingkat karena dibuat untuk itu. Iklan berbayar mengonversi karena pesannya sudah mendapat kepercayaan secara organik. Pencarian menangkap permintaan yang diciptakan dua lainnya."
+				},
+				{
+					"text": "Apa yang berubah dalam praktik"
+				},
+				{
+					"text": "Lebih sedikit oper tangan. Satu kerangka pengukuran. Ide kreatif yang bisa berpindah dari unggahan organik ke aset berbayar ke landing page tanpa dibangun ulang tiga kali. Itulah tujuan menjaganya tetap kecil dan dipimpin senior."
+				}
+			]
+		},
+		"creative-is-the-targeting": {
+			"title": "Kreatif adalah targeting",
+			"excerpt": "Di platform sosial berbayar modern, apa yang Anda tampilkan lebih penting daripada kepada siapa Anda menampilkannya. Catatan tentang membangun sistem pengujian yang tahan lama.",
+			"category": "Media Berbayar",
+			"body": [
+				{
+					"text": "Buku panduan lama mengutamakan audiens: bangun persona yang sempurna, targetkan dengan tepat, dan percayai algoritma untuk menemukan lebih banyak yang serupa. Dunia itu sebagian besar sudah hilang. Audiens lebih luas, sinyal lebih berisik, dan kreatif itu sendiri yang melakukan penyaringan."
+				},
+				{
+					"text": "Kreatiflah yang memutuskan siapa yang bertahan"
+				},
+				{
+					"text": "Pengait yang menghentikan gulir berbicara kepada orang yang tepat dan menolak yang salah. Itulah targeting, hanya saja dilakukan oleh pesan alih-alih pemilih audiens. Artinya, jalur kreatif kini menjadi tuasnya."
+				},
+				{
+					"text": "Jika sistem pengujian Anda tidak makin tajam di setiap siklus, kreatif Anda sedang membusuk."
+				},
+				{
+					"text": "Bangun sistem, bukan satu gelombang"
+				},
+				{
+					"text": "Hipotesis sebelum varian. Pemenang yang jelas sebelum penskalaan. Ritme yang menghasilkan pembelajaran, bukan sekadar aset. Merek yang menang di sosial berbayar adalah yang kreatifnya membaik secara terukur dari bulan ke bulan, bukan yang berbudget terbesar."
+				}
+			]
+		},
+		"measuring-what-comes-back": {
+			"title": "Mengukur apa yang kembali",
+			"excerpt": "Dasbor platform akan selalu mengatakan belanja berhasil. Inilah cara kami menjaga angka tetap jujur.",
+			"category": "Pengukuran",
+			"body": [
+				{
+					"text": "Setiap platform iklan melaporkan keberhasilannya sendiri. Mereka tidak berbohong, tepatnya, tetapi mereka mengukur dari sudut pandang mereka sendiri, dan sudut pandang itu murah hati bagi platform."
+				},
+				{
+					"text": "Atribusi adalah pertanyaan, bukan pengaturan"
+				},
+				{
+					"text": "Pertanyaannya bukan apakah kampanye ini mendorong konversi, tetapi apa yang akan terjadi tanpa kampanye itu. Inkrementalitas, CAC gabungan, dan pemodelan nilai konversi menjawabnya. Dasbor klik terakhir tidak."
+				},
+				{
+					"text": "Jika angka yang mendorong keputusan datang dari platform yang membelanjakan uang, perlakukan itu sebagai klaim, bukan fakta."
+				},
+				{
+					"text": "Pelacakan sisi server, lapisan data yang bersih, dan tampilan pelaporan yang terkait hasil bisnis, bukan laporan mandiri platform, adalah tempat keputusan seharusnya dibuat. Ini kurang menyanjung, dan jauh lebih berguna."
+				}
+			]
+		}
+	}
+}

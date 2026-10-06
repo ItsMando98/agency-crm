@@ -1,9 +1,20 @@
 import { absoluteUrl } from '@/lib/seo';
+import { LOCALES, getLocaleDefinition, localizePath } from '@/i18n/locales';
+import type { Translate } from '@/i18n/context';
 import type { Discipline, SubPage } from '@/data/expertise';
 import type { Article } from '@/data/articles';
 import type { CaseStudy } from '@/data/case-studies';
 
-export function buildOrganizationSchema(origin: string) {
+export type SchemaSite = { origin: string; locale: string };
+
+function pageUrl(site: SchemaSite, path: string) {
+	return absoluteUrl(site.origin, localizePath(path, site.locale));
+}
+
+type DisciplineSummary = Pick<Discipline, 'slug' | 'name' | 'summary'>;
+
+export function buildOrganizationSchema(site: SchemaSite, t: Translate, disciplines: DisciplineSummary[]) {
+	const { origin } = site;
 	return {
 		'@context': 'https://schema.org',
 		'@type': ['Organization', 'ProfessionalService'],
@@ -13,8 +24,7 @@ export function buildOrganizationSchema(origin: string) {
 		url: origin,
 		logo: absoluteUrl(origin, '/favicon.ico'),
 		image: absoluteUrl(origin, '/og-image.png'),
-		description:
-			'Independent, senior-led digital growth studio specializing in SEO & Content, Meta Ads, Google Ads, and Motion Graphics.',
+		description: t('schema.organization.description'),
 		email: 'hello@roaswell.com',
 		areaServed: 'Worldwide',
 		knowsAbout: [
@@ -31,77 +41,45 @@ export function buildOrganizationSchema(origin: string) {
 		],
 		hasOfferCatalog: {
 			'@type': 'OfferCatalog',
-			name: 'Growth Studio Capabilities',
-			itemListElement: [
-				{
-					'@type': 'Offer',
-					itemOffered: {
-						'@type': 'Service',
-						name: 'SEO & Content',
-						description:
-							'Intent mapping, commercial keyword prioritization, technical crawlability, and compounding editorial architecture.',
-						url: absoluteUrl(origin, '/expertise/seo-content'),
-					},
+			name: t('schema.organization.catalog'),
+			itemListElement: disciplines.map(discipline => ({
+				'@type': 'Offer',
+				itemOffered: {
+					'@type': 'Service',
+					name: discipline.name,
+					description: discipline.summary,
+					url: pageUrl(site, `/expertise/${discipline.slug}`),
 				},
-				{
-					'@type': 'Offer',
-					itemOffered: {
-						'@type': 'Service',
-						name: 'Meta Ads',
-						description:
-							'Creative-led testing systems, audience strategy, and full-funnel conversion campaigns across Meta platforms.',
-						url: absoluteUrl(origin, '/expertise/meta-ads'),
-					},
-				},
-				{
-					'@type': 'Offer',
-					itemOffered: {
-						'@type': 'Service',
-						name: 'Google Ads',
-						description:
-							'High-intent search, shopping, and conversion value modeling tied to real economic returns.',
-						url: absoluteUrl(origin, '/expertise/google-ads'),
-					},
-				},
-				{
-					'@type': 'Offer',
-					itemOffered: {
-						'@type': 'Service',
-						name: 'Motion Graphics',
-						description:
-							'Paid social creative, explainer videos, product animation, brand films and web motion built for creative testing.',
-						url: absoluteUrl(origin, '/expertise/motion-graphics'),
-					},
-				},
-			],
+			})),
 		},
 		contactPoint: [
 			{
 				'@type': 'ContactPoint',
 				contactType: 'customer service',
 				email: 'hello@roaswell.com',
-				availableLanguage: ['English', 'German'],
+				availableLanguage: LOCALES.map(locale => locale.hreflang),
 			},
 		],
 	};
 }
 
-export function buildWebSiteSchema(origin: string) {
+export function buildWebSiteSchema(site: SchemaSite, t: Translate) {
+	const { origin, locale } = site;
 	return {
 		'@context': 'https://schema.org',
 		'@type': 'WebSite',
 		'@id': `${origin}/#website`,
 		url: origin,
 		name: 'ROASWELL',
-		description: 'Independent digital growth studio. SEO & Content, Meta Ads, Google Ads, Motion Graphics.',
+		description: t('schema.website.description'),
 		publisher: {
 			'@id': `${origin}/#organization`,
 		},
-		inLanguage: 'en',
+		inLanguage: getLocaleDefinition(locale).hreflang,
 	};
 }
 
-export function buildBreadcrumbSchema(origin: string, items: Array<{ name: string; path: string }>) {
+export function buildBreadcrumbSchema(site: SchemaSite, items: Array<{ name: string; path: string }>) {
 	return {
 		'@context': 'https://schema.org',
 		'@type': 'BreadcrumbList',
@@ -109,30 +87,30 @@ export function buildBreadcrumbSchema(origin: string, items: Array<{ name: strin
 			'@type': 'ListItem',
 			position: index + 1,
 			name: item.name,
-			item: absoluteUrl(origin, item.path),
+			item: pageUrl(site, item.path),
 		})),
 	};
 }
 
-export function buildServiceSchema(origin: string, discipline: Discipline) {
+export function buildServiceSchema(site: SchemaSite, discipline: Discipline) {
 	return {
 		'@context': 'https://schema.org',
 		'@type': 'Service',
-		'@id': absoluteUrl(origin, `/expertise/${discipline.slug}#service`),
+		'@id': `${pageUrl(site, `/expertise/${discipline.slug}`)}#service`,
 		name: discipline.name,
 		headline: `${discipline.headline} ${discipline.headlineAccent}`,
 		description: discipline.summary,
-		url: absoluteUrl(origin, `/expertise/${discipline.slug}`),
+		url: pageUrl(site, `/expertise/${discipline.slug}`),
 		provider: {
-			'@id': `${origin}/#organization`,
+			'@id': `${site.origin}/#organization`,
 		},
 		serviceType: discipline.capabilities.join(', '),
 		areaServed: 'Worldwide',
 	};
 }
 
-export function buildArticleSchema(origin: string, article: Article) {
-	const url = absoluteUrl(origin, `/insights/${article.slug}`);
+export function buildArticleSchema(site: SchemaSite, article: Article) {
+	const url = pageUrl(site, `/insights/${article.slug}`);
 	return {
 		'@context': 'https://schema.org',
 		'@type': 'BlogPosting',
@@ -140,25 +118,26 @@ export function buildArticleSchema(origin: string, article: Article) {
 		headline: article.title,
 		description: article.excerpt,
 		url,
+		inLanguage: getLocaleDefinition(site.locale).hreflang,
 		datePublished: article.date,
 		dateModified: article.date,
 		articleSection: article.category,
 		author: {
-			'@id': `${origin}/#organization`,
+			'@id': `${site.origin}/#organization`,
 		},
 		publisher: {
-			'@id': `${origin}/#organization`,
+			'@id': `${site.origin}/#organization`,
 		},
 		mainEntityOfPage: {
 			'@type': 'WebPage',
 			'@id': url,
 		},
-		image: absoluteUrl(origin, '/og-image.png'),
+		image: absoluteUrl(site.origin, '/og-image.png'),
 	};
 }
 
-export function buildCaseStudySchema(origin: string, study: CaseStudy) {
-	const url = absoluteUrl(origin, `/work/${study.slug}`);
+export function buildCaseStudySchema(site: SchemaSite, study: CaseStudy) {
+	const url = pageUrl(site, `/work/${study.slug}`);
 	return {
 		'@context': 'https://schema.org',
 		'@type': 'Article',
@@ -166,53 +145,53 @@ export function buildCaseStudySchema(origin: string, study: CaseStudy) {
 		headline: study.title,
 		description: study.summary,
 		url,
+		inLanguage: getLocaleDefinition(site.locale).hreflang,
 		datePublished: study.publishedAt,
 		articleSection: study.discipline,
 		author: {
-			'@id': `${origin}/#organization`,
+			'@id': `${site.origin}/#organization`,
 		},
 		publisher: {
-			'@id': `${origin}/#organization`,
+			'@id': `${site.origin}/#organization`,
 		},
 		mainEntityOfPage: {
 			'@type': 'WebPage',
 			'@id': url,
 		},
-		image: absoluteUrl(origin, '/og-image.png'),
+		image: absoluteUrl(site.origin, '/og-image.png'),
 	};
 }
 
-export function buildAboutPageSchema(origin: string) {
+export function buildAboutPageSchema(site: SchemaSite, t: Translate) {
 	return {
 		'@context': 'https://schema.org',
 		'@type': 'AboutPage',
-		'@id': `${origin}/about#about`,
-		url: absoluteUrl(origin, '/about'),
-		name: 'About ROASWELL',
-		description:
-			'ROASWELL is an independent, senior-led digital growth studio uniting SEO & Content, Meta Ads, Google Ads, and Motion Graphics.',
+		'@id': `${pageUrl(site, '/about')}#about`,
+		url: pageUrl(site, '/about'),
+		name: t('schema.about.name'),
+		description: t('schema.about.description'),
 		mainEntity: {
-			'@id': `${origin}/#organization`,
+			'@id': `${site.origin}/#organization`,
 		},
 	};
 }
 
-export function buildContactPageSchema(origin: string) {
+export function buildContactPageSchema(site: SchemaSite, t: Translate) {
 	return {
 		'@context': 'https://schema.org',
 		'@type': 'ContactPage',
-		'@id': `${origin}/contact#contact`,
-		url: absoluteUrl(origin, '/contact'),
-		name: 'Contact ROASWELL',
-		description: 'Start a conversation with the ROASWELL studio.',
+		'@id': `${pageUrl(site, '/contact')}#contact`,
+		url: pageUrl(site, '/contact'),
+		name: t('schema.contact.name'),
+		description: t('schema.contact.description'),
 		mainEntity: {
-			'@id': `${origin}/#organization`,
+			'@id': `${site.origin}/#organization`,
 		},
 	};
 }
 
-export function buildSubpageSchema(origin: string, discipline: Discipline, subpage: SubPage) {
-	const url = absoluteUrl(origin, `/expertise/${discipline.slug}/${subpage.slug}`);
+export function buildSubpageSchema(site: SchemaSite, discipline: Discipline, subpage: SubPage) {
+	const url = pageUrl(site, `/expertise/${discipline.slug}/${subpage.slug}`);
 	return {
 		'@context': 'https://schema.org',
 		'@type': 'Service',
@@ -221,8 +200,8 @@ export function buildSubpageSchema(origin: string, discipline: Discipline, subpa
 		headline: `${subpage.headline} ${subpage.headlineAccent}`,
 		description: subpage.summary,
 		url,
-		isPartOf: { '@id': absoluteUrl(origin, `/expertise/${discipline.slug}#service`) },
-		provider: { '@id': `${origin}/#organization` },
+		isPartOf: { '@id': `${pageUrl(site, `/expertise/${discipline.slug}`)}#service` },
+		provider: { '@id': `${site.origin}/#organization` },
 		serviceType: subpage.deliverables.map(item => item.title).join(', '),
 		areaServed: 'Worldwide',
 	};

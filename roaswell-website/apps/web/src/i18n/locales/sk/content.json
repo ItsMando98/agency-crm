@@ -1,0 +1,720 @@
+{
+	"expertise": {
+		"seo-content": {
+			"name": "SEO a obsah",
+			"eyebrow": "01 / SEO A OBSAH",
+			"headline": "Buďte nájdení.",
+			"headlineAccent": "Buďte vybraní.",
+			"summary": "Vyhľadávanie zachytáva zámer. Obsah buduje dopyt. Meníme otázky na kvalifikovanú návštevnosť a návštevnosť na zákazníkov pomocou stratégie, redakčnej práce a technických základov, ktoré sa v čase znásobujú.",
+			"capabilities": [
+				"SEO stratégia",
+				"Obsahová stratégia",
+				"Analýza kľúčových slov",
+				"Redakčná práca",
+				"On-page SEO",
+				"Optimalizácia obsahu"
+			],
+			"cta": "Preskúmať SEO a obsah",
+			"subpages": [],
+			"body": [
+				{
+					"text": "Väčšina návštevnosti z vyhľadávania ide nazmar, pretože odpovedá na zlú otázku alebo na správnu otázku zle. Začíname zámerom, teda tým, čo vaše publikum skutočne chce pochopiť, rozhodnúť alebo kúpiť, a staviame odtiaľ."
+				},
+				{
+					"text": "Stratégia pred produkciou"
+				},
+				{
+					"text": "Obsahový stroj funguje len vtedy, keď má každý kus svoju úlohu. Mapujeme témy, ktoré hýbu obchodnými výsledkami, radíme ich podľa príležitosti a skladáme prácu tak, aby sa hybnosť násobila namiesto rozptyľovania."
+				},
+				{
+					"text": "Buďte odpoveďou, ktorú vaše publikum hľadá, nie len ďalším výsledkom na stránke."
+				},
+				{
+					"text": "Technické základy, ktoré držia"
+				},
+				{
+					"text": "Prehľadateľnosť, architektúra webu, Core Web Vitals, štruktúrované dáta. Nenápadná práca, ktorá rozhoduje o tom, či skvelý obsah vôbec dostane šancu umiestniť sa. Berieme ju ako súčasť stratégie, nie ako dodatočný nápad."
+				},
+				{
+					"text": "Potom meriame. Dáta zo Search Console, sledovanie pozícií, atribúcia konverzií, všetko naviazané na obchodné výsledky, na ktorých záleží, nie na okázalé grafy návštevnosti."
+				}
+			]
+		},
+		"meta-ads": {
+			"name": "Meta Ads",
+			"eyebrow": "02 / META ADS",
+			"headline": "Premeňte pozornosť",
+			"headlineAccent": "na dopyt.",
+			"summary": "Kreatíva, ktorá zaujme, kampane, ktoré konvertujú. Spájame vhľad do publika s neúnavným testovaním, aby každé zobrazenie pracovalo tvrdšie na Facebooku, Instagrame aj v celom ekosystéme Meta.",
+			"capabilities": [
+				"Platené sociálne siete",
+				"Testovanie kreatív",
+				"Stratégia publík",
+				"Kampane pre celý lievik",
+				"Optimalizácia konverzií",
+				"Retargeting"
+			],
+			"cta": "Preskúmať Meta Ads",
+			"subpages": [],
+			"body": [
+				{
+					"text": "Pozornosti je dosť, dopytu nie. Úlohou platených sociálnych sietí nie je byť videný, ale byť zapamätaný, zvážený a vybraný. Začína to kreatívou, ktorá si zaslúži zastaviť scrollovanie."
+				},
+				{
+					"text": "Kreatíva je cielenie"
+				},
+				{
+					"text": "Na moderných platformách záleží viac na tom, čo ukazujete, než komu. Budujeme štruktúrovaný systém testovania kreatív, s hypotézami, variantmi a jasnými víťazmi, aby bola práca s každým cyklom ostrejšia."
+				},
+				{
+					"text": "Každé kliknutie má svoju úlohu. Postarajte sa, aby sa rátalo."
+				},
+				{
+					"text": "Celý lievik, nie posledné kliknutie"
+				},
+				{
+					"text": "Povedomie, zvažovanie, konverzia, udržanie. Cestu navrhujeme tak, aby každá fáza živila tú ďalšiu, a meriame inkrementálne, aby ste vedeli, čo minuté peniaze skutočne priniesli."
+				},
+				{
+					"text": "Žiadne nastav a zabudni. Týždenné revízie kreatív, obmeny publík a presuny rozpočtu k tomu, čo funguje, a preč od toho, čo nie."
+				}
+			]
+		},
+		"google-ads": {
+			"name": "Google Ads",
+			"eyebrow": "03 / GOOGLE ADS",
+			"headline": "Zachyťte zámer",
+			"headlineAccent": "vo chvíli, keď záleží.",
+			"summary": "Stretnite sa so zámerom presne. Od vyhľadávania po nákupy dávame rozpočet tam, kde je príležitosť, a meriame, čo sa vracia, prehľadným obchodným reportingom.",
+			"capabilities": [
+				"Platené vyhľadávanie",
+				"Nákupné reklamy",
+				"Performance Max",
+				"Optimalizácia konverzií",
+				"Stratégia ponúk",
+				"Sledovanie a meranie"
+			],
+			"cta": "Preskúmať Google Ads",
+			"subpages": [],
+			"body": [
+				{
+					"text": "Vyhľadávanie je okamih, keď sa zámer mení na čin. Otázka je, či sa v ňom objavíte, a či zážitok konvertuje, keď áno."
+				},
+				{
+					"text": "Rozpočet tam, kde je príležitosť"
+				},
+				{
+					"text": "Nie každé kľúčové slovo si zaslúži vaše peniaze. Budujeme stratégiu kľúčových slov okolo obchodného zámeru a marže, orezávame plytvanie zo širokých zhôd a prekryvu s vlastnou značkou a sústreďujeme výdavky tam, kde je návratnosť skutočná."
+				},
+				{
+					"text": "Stretnite sa so zámerom presne. Merajte, čo sa vracia."
+				},
+				{
+					"text": "Meranie, ktorému môžete veriť"
+				},
+				{
+					"text": "Serverové sledovanie, modelovanie hodnoty konverzie, čistá atribúcia. Aby čísla, ktoré riadia rozhodnutia, odrážali realitu, nie vlastné hlásenie platformy."
+				},
+				{
+					"text": "Stratégie ponúk vyladené podľa vašej ekonomiky, nie podľa predvoleného cieľa. Testujeme, strážime okrajové prípady a držíme výdavky poctivé."
+				}
+			]
+		},
+		"motion-graphics": {
+			"name": "Motion grafika",
+			"eyebrow": "04 / MOTION GRAFIKA",
+			"headline": "Zastavte scrollovanie.",
+			"headlineAccent": "Buďte neprehliadnuteľní.",
+			"summary": "Pohyb je najrýchlejší spôsob, ako získať pozornosť, a najjasnejší spôsob, ako vysvetliť veľkú myšlienku. Navrhujeme reklamy, produktové animácie a značkové filmy, ktoré sú stavané na testovanie, nie len na obdiv.",
+			"capabilities": [
+				"Kreatíva pre platené sociálne siete",
+				"Vysvetľujúce videá",
+				"Produktová animácia",
+				"Značkové filmy",
+				"Pohyb pre web a rozhranie",
+				"Podklady pre testovanie kreatív"
+			],
+			"cta": "Preskúmať motion grafiku",
+			"subpages": {
+				"paid-social-motion": {
+					"name": "Motion reklamy pre platené sociálne siete",
+					"eyebrow": "04.1 / MOTION REKLAMY PRE PLATENÉ SOCIÁLNE SIETE",
+					"headline": "Vyhrajte prvú",
+					"headlineAccent": "sekundu.",
+					"summary": "Krátky pohyb stavaný pre feed: háčik, ktorý zastaví palec, posolstvo, ktoré zasiahne, a systém variantov, ktorý ukáže, ktorá myšlienka si zaslúži ďalší rozpočet.",
+					"sample": {
+						"title": "NOVA Sparkling: 10-sekundová reklama rozobraná na časti",
+						"note": "Konceptová reklama na vymyslenú značku nápojov. Posúvajte ju a vedľa čítajte štyri údery: háčik, posolstvo, dôkaz, výzva."
+					},
+					"deliverables": [
+						{
+							"title": "Storyboardy začínajúce háčikom",
+							"text": "Tri až päť úvodných nápadov pre každý koncept, každý napísaný tak, aby sám vyhral prvú sekundu."
+						},
+						{
+							"title": "Hlavná animácia a skrátené verzie",
+							"text": "Jedno hlavné dielo plus verzie na 6, 15 a 30 sekúnd zostrihané pre umiestnenia, ktoré skutočne nakupujete."
+						},
+						{
+							"title": "Všetky formáty",
+							"text": "Verzie 9:16, 4:5 a 1:1 s kontrolou bezpečných zón pre Stories, Reels aj feed."
+						},
+						{
+							"title": "Sady variantov",
+							"text": "Vymeniteľné háčiky, posolstvá a záverečné karty zabudované do súboru, aby testovanie nikdy neznamenalo začínať od nuly."
+						},
+						{
+							"title": "Titulky a zvuk",
+							"text": "Vypálené titulky na sledovanie bez zvuku a zvukový dizajn na sledovanie so zvukom."
+						},
+						{
+							"title": "Rozbor poznatkov",
+							"text": "Písomný prehľad toho, čo nás ktorá varianta naučila a čo má ďalšia dávka zmeniť."
+						}
+					],
+					"steps": [
+						{
+							"title": "Prečítať účet",
+							"text": "Začíname dátami o výkone: čo sa unavuje, ktoré uhly ešte fungujú, kde diváci odpadávajú."
+						},
+						{
+							"title": "Napísať hypotézy",
+							"text": "Každý koncept uvádza tvrdenie, ktoré testuje, a číslo, ktoré má pohnúť, ešte než sa čokoľvek animuje."
+						},
+						{
+							"title": "Postaviť systém",
+							"text": "Najprv hlavná animácia, potom varianty vytvorené z rovnakého zdroja, aby vzhľad zostal jednotný."
+						},
+						{
+							"title": "Spustiť a učiť sa",
+							"text": "Varianty bežia proti sebe. Víťazi sa škálujú, porazení odchádzajú a poznámky živia ďalšie kolo."
+						}
+					],
+					"connects": [
+						{
+							"text": "Systém testovania kreatív, ktorý rozhoduje, ktoré varianty dostanú rozpočet a kedy ich vyradiť."
+						},
+						{
+							"text": "Krátke verzie slúžia zároveň ako video materiály pre YouTube a Performance Max."
+						}
+					],
+					"faqs": [
+						{
+							"question": "Musíme dodať natočený materiál?",
+							"answer": "Nie. Môžeme pracovať s firemnými podkladmi, produktovými rendermi, záznamami obrazovky alebo postaviť celé dielo z ilustrácie a typografie. Ak zábery máte, použijeme ich."
+						},
+						{
+							"question": "S koľkými variantmi začať?",
+							"answer": "S dostatkom, aby sme sa niečo naučili, nie s toľkými, aby každá strádala. Zvyčajne navrhujeme malú maticu háčikov a posolstiev a veľkosť dávky dohodneme."
+						},
+						{
+							"question": "Viete aj prevádzkovať médiá?",
+							"answer": "Áno, v rámci našej práce s Meta Ads a Google Ads. Hotové súbory si tiež môžete vziať a spúšťať sami."
+						},
+						{
+							"question": "A čo hudba a namluvenie?",
+							"answer": "Používame licencovaný alebo originálny zvuk a práva dohodneme vopred, vrátane toho, kde a ako dlho smie reklama bežať."
+						},
+						{
+							"question": "Ako sa hodnotí motion reklama?",
+							"answer": "Podľa obchodnej metriky, proti ktorej bola zadaná, nie podľa toho, ako vyzerá. Každý koncept je pred výrobou viazaný na číslo."
+						}
+					]
+				},
+				"explainer-videos": {
+					"name": "Vysvetľujúce videá",
+					"eyebrow": "04.2 / VYSVETĽUJÚCE VIDEÁ",
+					"headline": "Urobte zložité",
+					"headlineAccent": "zrejmým.",
+					"summary": "Krátke animované vysvetlenie, ktoré zmení zložitý produkt alebo myšlienku na niečo, čo kupujúci zopakuje svojmu šéfovi.",
+					"sample": {
+						"title": "Od rozptýlenej pozornosti k zákazníkovi za 14 sekúnd",
+						"note": "Konceptové video o tom, ako funguje lievik. Bodky sú ľudia. Sledujte, koľko ich vstúpi, koľko konvertuje a ako príbeh nesie samotný pohyb."
+					},
+					"deliverables": [
+						{
+							"title": "Scenár a rozprávanie",
+							"text": "Úsporný scenár postavený okolo jednej veci, ktorej musí divák na konci veriť."
+						},
+						{
+							"title": "Štýlové zábery a storyboard",
+							"text": "Vzhľad aj každá scéna dohodnuté na papieri, než animácia začne."
+						},
+						{
+							"title": "Vlastná ilustrácia a animácia",
+							"text": "Originálne vizuály vytvorené pre váš produkt, nie stockové ikony, ktoré sa presúvajú."
+						},
+						{
+							"title": "Réžia namluvenia a zvuk",
+							"text": "Odporúčania k obsadeniu, réžia a namiešaná stopa, alebo verzia len s hudbou."
+						},
+						{
+							"title": "Skrátené verzie s titulkami",
+							"text": "Krátke verzie pre sociálne siete a platenú reklamu s už zapečenými titulkami."
+						},
+						{
+							"title": "Pripravené pre vstupnú stránku",
+							"text": "Komprimované súbory, plagátový záber a prepis, aby video stránke pomáhalo, a nespomaľovalo ju."
+						}
+					],
+					"steps": [
+						{
+							"title": "Určiť presvedčenie",
+							"text": "Kto sa pozerá, o čom pochybuje a čomu má veriť, keď video skončí?"
+						},
+						{
+							"title": "Napísať a nakresliť storyboard",
+							"text": "Scenár a storyboard spoločne, aby každá veta mala obraz, ktorý si zaslúži svoje miesto."
+						},
+						{
+							"title": "Navrhnúť a animovať",
+							"text": "Najprv štýlové zábery, potom animácia v modulárnych scénach, ktoré sa ľahko aktualizujú."
+						},
+						{
+							"title": "Dokončiť a nasadiť",
+							"text": "Zvuk, titulky, skrátené verzie a umiestnenie na stránky a do kampaní, ktoré ho potrebujú."
+						}
+					],
+					"connects": [
+						{
+							"text": "Vložené na stránky stavané na umiestnenie vo vyhľadávaní, s prepismi, ktoré obsah dopĺňajú, namiesto toho, aby ho skrývali."
+						},
+						{
+							"text": "Jasné vysvetlenie na vstupnej stránke je to, čo mení platené kliknutia na dopyty."
+						}
+					],
+					"faqs": [
+						{
+							"question": "Aké dlhé by vysvetľujúce video malo byť?",
+							"answer": "Tak krátke, ako myšlienka dovolí. Väčšina skončí medzi 45 a 90 sekundami, s verziami na 15 a 30 sekúnd pre sociálne siete."
+						},
+						{
+							"question": "Píšete scenár?",
+							"answer": "Áno. Môžeme tiež vychádzať z vášho scenára alebo hrubého zadania a upraviť ho pre obrazovku."
+						},
+						{
+							"question": "Čo ak sa produkt zmení?",
+							"answer": "Staviame v modulárnych scénach, takže funkciu možno vymeniť alebo aktualizovať bez prerábania celého filmu."
+						},
+						{
+							"question": "Koľko kôl úprav je zahrnutých?",
+							"answer": "Počet kôl dohodneme pri každom projekte vopred a umiestnime ich do fáz, kde sú zmeny lacné: scenár, storyboard, potom animácia."
+						},
+						{
+							"question": "Kde vysvetľujúce videá fungujú najlepšie?",
+							"answer": "Na vstupných stránkach, v predajných prezentáciách, pri onboardingu, v e-maile a v platených umiestneniach, ktoré potrebujú rýchle a jasné predstavenie."
+						}
+					]
+				},
+				"product-animation": {
+					"name": "Produktová animácia",
+					"eyebrow": "04.3 / PRODUKTOVÁ ANIMÁCIA",
+					"headline": "Ukážte ho",
+					"headlineAccent": "v akcii.",
+					"summary": "Rozložené pohľady, prehliadky funkcií a odhalenia pri uvedení, ktoré kupujúcim dovolia vidieť, ako niečo funguje, skôr než sa toho môžu dotknúť.",
+					"sample": {
+						"title": "HALO: rozložený pohľad, päť dielov za desať sekúnd",
+						"note": "Konceptový inteligentný reproduktor vymyslený pre túto stránku. Ťahajte časovou osou, aby ste ho rozobrali a zase zložili."
+					},
+					"deliverables": [
+						{
+							"title": "Hlavná slučka",
+							"text": "Čistá opakujúca sa animácia pre hornú časť produktovej alebo vstupnej stránky."
+						},
+						{
+							"title": "Rozložené pohľady a rezy",
+							"text": "Príbeh zvnútra: diely, vrstvy a ako do seba zapadajú."
+						},
+						{
+							"title": "Sekvencie zdôrazňujúce funkcie",
+							"text": "Jeden krátky kus na funkciu, každý jasne odovzdáva jednu vec."
+						},
+						{
+							"title": "Odhalenie pri uvedení",
+							"text": "Filmový kus pre okamih, keď produkt vstupuje na verejnosť."
+						},
+						{
+							"title": "Exporty pripravené pre web",
+							"text": "Komprimované video a, kde to pomáha, ľahká vektorová animácia pre rýchle stránky."
+						},
+						{
+							"title": "Skrátené verzie pre sociálne siete a stills",
+							"text": "Zvislé a štvorcové verzie a kľúčové zábery pre prezentácie, e-mail a tlač."
+						}
+					],
+					"steps": [
+						{
+							"title": "Zhromaždiť zdroje",
+							"text": "CAD, rendery, záznamy obrazovky alebo skice, čokoľvek, čo produkt ukáže najlepšie."
+						},
+						{
+							"title": "Zchoreografovať",
+							"text": "Naplánovať kameru, poradie, v akom sa diely objavujú, a to jedno, čo musí každý záber vysvetliť."
+						},
+						{
+							"title": "Svetlo a materiál",
+							"text": "Povrchy, žiara a tiene sa dolaďujú tak, aby to pôsobilo ako skutočný predmet alebo rozhranie."
+						},
+						{
+							"title": "Renderovať a dodať",
+							"text": "Finálne súbory pre každé miesto, kde sa produkt objavuje, s ľahkou variantou pre web."
+						}
+					],
+					"connects": [
+						{
+							"text": "Rovnaká animácia zostrihaná pre feed urobí z produktovej reklamy niečo, čo vysvetľuje, namiesto toho, aby len oznamovala."
+						},
+						{
+							"text": "Produktové stránky s jasnou ukážkou udržia pozornosť dlhšie a dávajú vyhľadávaniu čo hodnotiť."
+						}
+					],
+					"faqs": [
+						{
+							"question": "Potrebujete 3D súbory?",
+							"answer": "Pomáhajú, ale môžeme pracovať aj z fotografií, výkresov alebo popisu. Pri softvérových produktoch animujeme z vášho rozhrania."
+						},
+						{
+							"question": "Viete animovať softvér, nielen fyzické produkty?",
+							"answer": "Áno. Prehliadky rozhrania, dátové toky a vysvetlenia funkcií vyžadujú rovnaké remeslo ako hardvér."
+						},
+						{
+							"question": "Spomalí to náš web?",
+							"answer": "Dodávame komprimované súbory a, kde to dáva zmysel, vektorovú animáciu, ktorá zostáva ľahká. Veľkostný rozpočet dohodneme vopred."
+						},
+						{
+							"question": "Môžeme animáciu neskôr znovu použiť?",
+							"answer": "Áno. Dodávame zdroje vo vrstvách a dohodneme použitie, aby budúce uvedenia mohli stavať na rovnakých podkladoch."
+						},
+						{
+							"question": "Ako je to vyleštené?",
+							"answer": "Cieľom je najprv zrozumiteľnosť, potom krása. Ak záber vyzerá skvele, ale nič nevysvetľuje, vypadne."
+						}
+					]
+				},
+				"brand-films": {
+					"name": "Značkové filmy",
+					"eyebrow": "04.4 / ZNAČKOVÉ FILMY",
+					"headline": "Povedzte to raz.",
+					"headlineAccent": "Nech to vydrží.",
+					"summary": "Filmové, typograficky vedené filmy, ktoré nesú pohľad značky, postavené ako kotva pre uvedenie, kampaň alebo úvodnú stránku.",
+					"sample": {
+						"title": "ROASWELL: 16-sekundový úvodný film v troch kapitolách",
+						"note": "Konceptový film pre naše vlastné štúdio, celý vytvorený v motion dizajne. Pomocou značiek kapitol preskakujte medzi Signal, Intent a Return."
+					},
+					"deliverables": [
+						{
+							"title": "Koncept a treatment",
+							"text": "Myšlienka, tón a vizuálny jazyk, zapísané a nakreslené do storyboardu pred produkciou."
+						},
+						{
+							"title": "Manifestový scenár",
+							"text": "Slová, ktoré znejú ako značka a sú dosť krátke, aby sa zapamätali."
+						},
+						{
+							"title": "Réžia vedená pohybom",
+							"text": "Typografická, ilustračná alebo kombinovaná, zvolená podľa príbehu a rozpočtu."
+						},
+						{
+							"title": "Réžia zvuku a hudby",
+							"text": "Hudba a zvukový dizajn, ktoré odvedú polovicu emočnej práce."
+						},
+						{
+							"title": "Hlavný film a skrátené verzie",
+							"text": "Celé dielo plus verzie na 30, 15 a 6 sekúnd pre každý kanál."
+						},
+						{
+							"title": "Motion súprava značky",
+							"text": "Prechody, easing a štýly titulkov, aby sa vzhľad držal vo všetkom, čo príde potom."
+						}
+					],
+					"steps": [
+						{
+							"title": "Nájsť pohľad",
+							"text": "V čo značka verí, v čo jej kategória nie? To je ten film."
+						},
+						{
+							"title": "Napísať treatment",
+							"text": "Kapitoly, rytmus, kľúčové zábery a zvuk, dohodnuté skôr, než sa animuje jediný záber."
+						},
+						{
+							"title": "Vytvoriť ho",
+							"text": "Dizajn, animácia a zvuk vznikajú spoločne, aby strih dýchal."
+						},
+						{
+							"title": "Uvoľniť a rozšíriť",
+							"text": "Spustiť hlavný film a potom udržiavať myšlienku nažive skrátenými verziami a motion súpravou."
+						}
+					],
+					"connects": [
+						{
+							"text": "Skrátené verzie sa stávajú vrstvou povedomia v pláne platených sociálnych sietí pre celý lievik."
+						},
+						{
+							"text": "Brandové vyhľadávanie a video kampane majú kam kliknúť."
+						},
+						{
+							"text": "Film v srdci obsahového centra dáva autorom a odkazom na čo ukazovať."
+						}
+					],
+					"faqs": [
+						{
+							"question": "Natáčate hrané zábery?",
+							"answer": "Režírujeme filmy vedené pohybom. Ak projekt vyžaduje natáčanie, plánujeme ho s produkčným partnerom a motion réžiu si nechávame u seba."
+						},
+						{
+							"question": "Aký dlhý je značkový film?",
+							"answer": "Rozhoduje myšlienka. Väčšina má medzi 30 sekundami a dvoma minútami, kratšie verzie sa strihajú z hlavného filmu."
+						},
+						{
+							"question": "Komu film patrí?",
+							"answer": "Vám. Dohodneme užívacie práva a dodáme zdrojové súbory vo vrstvách ako súčasť projektu."
+						},
+						{
+							"question": "Môže film žiť na našej úvodnej stránke?",
+							"answer": "Áno. Dodáme ľahkú slučku a plagátový záber, s plným filmom na jedno kliknutie."
+						},
+						{
+							"question": "Je to len pre veľké značky?",
+							"answer": "Nie. Starostlivo napísaný typograficky vedený film môže stáť zlomok natáčania a napriek tomu pôsobiť ako pohľad."
+						}
+					]
+				},
+				"web-ui-motion": {
+					"name": "Pohyb pre web a rozhranie",
+					"eyebrow": "04.5 / POHYB PRE WEB A ROZHRANIE",
+					"headline": "Rozhrania, ktoré",
+					"headlineAccent": "pôsobia živo.",
+					"summary": "Príbehy pri posúvaní, mikrointerakcie a prechody stránok, vďaka ktorým je web zrozumiteľnejší a nezabudnuteľnejší, bez straty rýchlosti alebo prístupnosti.",
+					"sample": {
+						"title": "Motion laboratórium: sedem interakcií, ktorých sa môžete dotknúť",
+						"note": "Skutočný, fungujúci pohyb rozhrania, nie video. Prepínajte, nabiehajte, presúvajte a klikajte. Všetko tu rešpektuje nastavenie obmedzeného pohybu."
+					},
+					"deliverables": [
+						{
+							"title": "Princípy pohybu",
+							"text": "Tokeny easingu, časovania a spring, aby každá interakcia pôsobila ako súčasť jedného produktu."
+						},
+						{
+							"title": "Prechody pri posúvaní a medzi stránkami",
+							"text": "Príbehové sekvencie posúvania a prechody trás, ktoré vedú pozornosť, ako na tomto webe."
+						},
+						{
+							"title": "Knižnica mikrointerakcií",
+							"text": "Tlačidlá, prepínače, ponuky, karty a formuláre, ktoré reagujú s účelom."
+						},
+						{
+							"title": "Produkčný kód alebo exporty",
+							"text": "Čisté CSS a JavaScript, alebo exporty Lottie a videa, pripravené pre váš stack."
+						},
+						{
+							"title": "Varianty pre prístupnosť",
+							"text": "Alternatívy s obmedzeným pohybom a správanie fokusu navrhnuté od začiatku, nie dodatočne nalepené."
+						},
+						{
+							"title": "Rozpočet výkonu",
+							"text": "Pohyb sa meria voči dobe načítania a latencii interakcií, než sa nasadí."
+						}
+					],
+					"steps": [
+						{
+							"title": "Audit",
+							"text": "Zistiť, kde by pohyb niečo objasnil a kde by len pridal šum."
+						},
+						{
+							"title": "Stanoviť princípy",
+							"text": "Definovať slovník easingu a časovania, aby sa rozhodovanie prestalo robiť prípad od prípadu."
+						},
+						{
+							"title": "Prototyp v prehliadači",
+							"text": "Stavať v skutočnom médiu, aby to, čo schválite, bolo to, čo sa nasadí."
+						},
+						{
+							"title": "Nasadiť a merať",
+							"text": "Vydať s rozpočtom výkonu a sledovať, čo používatelia skutočne robia."
+						}
+					],
+					"connects": [
+						{
+							"text": "Rýchly, prístupný pohyb podporuje Core Web Vitals, namiesto toho, aby s nimi bojoval."
+						},
+						{
+							"text": "Vstupné stránky s jasnými a rýchlymi interakciami menia platené kliknutia na akciu."
+						}
+					],
+					"faqs": [
+						{
+							"question": "Spomalí animácia náš web?",
+							"answer": "Nie, ak je postavená správne. Stanovíme rozpočet výkonu, animujeme najlacnejšími vlastnosťami a testujeme na skutočných zariadeniach."
+						},
+						{
+							"question": "Píšete kód?",
+							"answer": "Áno. Môžeme dodať kód pripravený pre produkciu, alebo odovzdať špecifikácie a exporty vášmu tímu na implementáciu."
+						},
+						{
+							"question": "A čo prístupnosť?",
+							"answer": "Každý pohyb má alternatívu s obmedzeným pohybom a správanie pre klávesnicu a čítačky obrazovky sa navrhuje spolu s animáciou."
+						},
+						{
+							"question": "Funguje to s naším CMS alebo frameworkom?",
+							"answer": "Pracujeme s väčšinou moderných stackov. Povedzte nám, čo prevádzkujete, a potvrdíme najlepší postup."
+						},
+						{
+							"question": "Môžem to vidieť v akcii?",
+							"answer": "Práve sa na to pozeráte. Sekvencie posúvania, počítadlá a odhalenia na tomto webe sú postavené rovnakým prístupom."
+						}
+					]
+				}
+			},
+			"body": [
+				{
+					"text": "Statická kreatíva žiada o pozornosť. Pohyb si ju berie. V prvej sekunde feedu rozhoduje pohyb o tom, či posolstvo dostane šancu, a zvyšok myšlienky má význam, len ak túto sekundu prežije."
+				},
+				{
+					"text": "Stavané pre feed, nie pre showreel"
+				},
+				{
+					"text": "Každý kus začína hypotézou: háčik, posolstvo, dôvod pozerať sa ďalej. Storyboard robíme voči metrike, ktorú má pohnúť, a potom staviame varianty, aby systém testovania mal z čoho sa učiť."
+				},
+				{
+					"text": "Skvelá motion grafika nie je dekorácia. Je to argument urobený viditeľným."
+				},
+				{
+					"text": "Jedna myšlienka, všetky plochy"
+				},
+				{
+					"text": "Rovnaký koncept putuje od šesťsekundového plateného strihu cez produktové vysvetlenie a animáciu na vstupnej stránke až po film k uvedeniu. Jeden dizajnový jazyk, jedna sada podkladov, žiadne trojité prerábanie myšlienky."
+				},
+				{
+					"text": "Pretože motion grafika sídli v rovnakom štúdiu ako vyhľadávanie a platené médiá, zadávajú kreatívu dáta o výkone a posudzujú ju obchodné výsledky, nie to, ako vyzerá na reeli."
+				}
+			]
+		}
+	},
+	"caseStudies": {
+		"search-to-significance": {
+			"title": "Premena zámeru vo vyhľadávaní na dopyt",
+			"discipline": "SEO a obsah",
+			"summary": "Ako značka s rozvážnymi nákupmi prebudovala svoju organickú prítomnosť okolo obchodného zámeru a premenila návštevnosť z hornej časti lievika na kvalifikovaný pipeline.",
+			"challenge": "Špecializovaná B2B značka sa umiestňovala na informačné dopyty, ktoré prinášali návštevnosť, ale žiadny pipeline. Obsahu bolo dosť, ale odpovedal na zlé otázky pre kupujúcich nižšie v lieviku.",
+			"approach": "Znova sme zmapovali tematickú krajinu okolo nákupného zámeru, zlúčili slabý obsah a prestavali redakčný kalendár okolo rozhodnutí, ktorým kupujúci skutočne čelia. Technické SEO, architektúra webu, interné prelinkovanie a štruktúrované dáta dali novému obsahu priestor na umiestnenie.",
+			"outcome": "Organická návštevnosť sa presunula k obchodným stránkam, kvalifikované otázky vzrástli a obsahový stroj sa začal znásobovať namiesto rozptyľovania. Práca pokračuje, smer je daný.",
+			"metrics": [
+				{
+					"label": "Cieľ organickej návštevnosti"
+				},
+				{
+					"label": "Cieľ kvalifikovaných leadov"
+				}
+			]
+		},
+		"making-acquisition-work-harder": {
+			"title": "Akvizícia, ktorá pracuje tvrdšie",
+			"discipline": "Meta Ads + Google Ads",
+			"summary": "DTC značka míňala viac, aby získala menej. Reštart vedený kreatívou naprieč platenými sociálnymi sieťami a vyhľadávaním obnovil efektivitu od základov.",
+			"challenge": "Rastúce CPM a únava kreatív vytlačili náklady na akvizíciu za hranicu ziskovosti. Účet bol vyťažený, ale neúčinný, rozpočet rozptýlený medzi publiká, ktoré už nekonvertovali.",
+			"approach": "Účet sme zjednotili okolo štruktúrovaného systému testovania kreatív, prestavali sekvenciu pre celý lievik a presunuli rozpočet vyhľadávania k výrazom s vysokým zámerom a vysokou maržou. Sledovanie sme presunuli na server, aby rozhodnutia odrážali realitu.",
+			"outcome": "Náklady na akvizíciu klesli, návratnosť reklamných výdavkov sa zotavila a rytmus testovania znamenal, že sa kreatíva s každým cyklom zlepšovala namiesto úpadku. Značka má teraz systém, nie len kampane.",
+			"metrics": [
+				{
+					"label": "Cieľ návratnosti reklamných výdavkov"
+				},
+				{
+					"label": "Cieľ nákladov na akvizíciu"
+				}
+			]
+		},
+		"full-funnel-foundations": {
+			"title": "Základy pre celý lievik pri novom uvedení",
+			"discipline": "SEO a obsah + platené médiá",
+			"summary": "Uvedenie produktu potrebovalo organický kapitál a platenú hybnosť v rovnakej chvíli. Postavili sme oboje, zoradené tak, aby sa znásobovali.",
+			"challenge": "Nová ponuka nemala žiadnu prítomnosť vo vyhľadávaní ani platenú históriu. Hrozilo uvedenie do ticha: platené výdavky bez čohokoľvek, čo by zachytilo dopyt, ktorý vytvorili.",
+			"approach": "Práca na obsahu a technickom SEO začala mesiace pred uvedením, aby sa vybudovala tematická autorita. Platené sociálne siete zasiali povedomie a retargeting, zatiaľ čo vyhľadávanie zachytilo zámer, ktorý uvedenie vyvolalo. Meranie bolo zapojené od prvého dňa.",
+			"outcome": "Uvedenie dopadlo do existujúceho organického kapitálu, nie do prázdna, platené výdavky konvertovali od začiatku zdravým tempom a značka získala rámec merania, z ktorého sa dá škálovať.",
+			"metrics": [
+				{
+					"label": "Cieľ ROAS v mesiaci uvedenia"
+				},
+				{
+					"label": "Organický kapitál vybudovaný pred uvedením"
+				}
+			]
+		}
+	},
+	"articles": {
+		"why-three-disciplines": {
+			"title": "Prečo tieto tri disciplíny patria dokopy",
+			"excerpt": "Vyhľadávanie, obsah a platené médiá sa zvyčajne predávajú ako oddelené praktiky. Tu je dôvod, prečo ich pojatie ako jedného rastového systému mení výsledok.",
+			"category": "Stratégia",
+			"body": [
+				{
+					"text": "Väčšina agentúr sa organizuje okolo kanálov, pretože kanály sa ľahko predávajú. Tím pre vyhľadávanie. Tím pre sociálne siete. Tím pre obsah. Každý optimalizuje svoj kút a medzery medzi nimi sú miesta, kadiaľ rast uniká."
+				},
+				{
+					"text": "Zámer, dopyt a zrýchlenie"
+				},
+				{
+					"text": "Vyhľadávanie zachytáva zámer, ktorý už existuje. Obsah buduje dopyt, ktorý ho vytvára. Platené médiá zrýchľujú to, čo funguje, a posúvajú osvedčené do viacerých okamihov, rýchlejšie. Vyberte ktorékoľvek z nich a systém stratí páku."
+				},
+				{
+					"text": "Kanál osamote je taktika. Kanály, ktoré sa navzájom živia, sú systém."
+				},
+				{
+					"text": "Keď rovnaké myslenie formuje stratégiu kľúčových slov, redakčný kalendár aj platenú kreatívu, práca sa znásobuje. Obsah sa umiestňuje, pretože na to bol postavený. Platené médiá konvertujú, pretože posolstvo si už organicky získalo dôveru. Vyhľadávanie zachytáva dopyt, ktorý vytvorili ostatné dve."
+				},
+				{
+					"text": "Čo sa mení v praxi"
+				},
+				{
+					"text": "Menej odovzdávania. Jeden merací rámec. Kreatívna myšlienka, ktorá môže putovať z organického príspevku do plateného podkladu a na vstupnú stránku bez trojitého prestavovania. V tom je zmysel malého tímu vedeného seniormi."
+				}
+			]
+		},
+		"creative-is-the-targeting": {
+			"title": "Kreatíva je cielenie",
+			"excerpt": "Na moderných platformách platených sociálnych sietí záleží viac na tom, čo ukazujete, než komu. Poznámka o stavbe systému testovania, ktorý drží.",
+			"category": "Platené médiá",
+			"body": [
+				{
+					"text": "Stará príručka vychádzala z publika: vytvoriť dokonalú personu, presne ju zacieliť a veriť, že algoritmus nájde ďalšie podobné. Ten svet je väčšinou preč. Publiká sú širšie, signály hlučnejšie a samotná kreatíva filtruje."
+				},
+				{
+					"text": "Kreatíva rozhoduje, kto zostane"
+				},
+				{
+					"text": "Háčik, ktorý zastaví scrollovanie, osloví správneho človeka a odpudí nesprávneho. To je cielenie, len ho robí posolstvo namiesto výberu publika. Čo znamená, že pákou je teraz kreatívna pipeline."
+				},
+				{
+					"text": "Ak váš systém testovania nie je s každým cyklom ostrejší, vaša kreatíva chradne."
+				},
+				{
+					"text": "Postavte systém, nie dávku"
+				},
+				{
+					"text": "Hypotézy pred variantmi. Jasní víťazi pred škálovaním. Rytmus, ktorý produkuje poznanie, nie len podklady. Značky, ktoré víťazia na platených sociálnych sieťach, sú tie, ktorých kreatíva sa merateľne zlepšuje mesiac po mesiaci, nie tie s najväčším rozpočtom."
+				}
+			]
+		},
+		"measuring-what-comes-back": {
+			"title": "Meranie toho, čo sa vracia",
+			"excerpt": "Dashboardy platforiem vám vždy povedia, že výdavky fungovali. Takto držíme čísla poctivé.",
+			"category": "Meranie",
+			"body": [
+				{
+					"text": "Každá reklamná platforma hlási svoj vlastný úspech. Neklamú, presne povedané, ale merajú zo svojho vlastného uhla pohľadu a ten je k platforme štedrý."
+				},
+				{
+					"text": "Atribúcia je otázka, nie nastavenie"
+				},
+				{
+					"text": "Otázka nie je „priniesla táto kampaň konverzie“, ale „čo by sa stalo bez nej“. Inkrementalita, zmiešané CAC a modelovanie hodnoty konverzie na ňu odpovedajú. Dashboardy posledného kliknutia nie."
+				},
+				{
+					"text": "Ak číslo, ktoré riadi rozhodnutie, pochádza od platformy, ktorá míňa peniaze, berte ho ako tvrdenie, nie ako fakt."
+				},
+				{
+					"text": "Serverové sledovanie, čistá dátová vrstva a reportingový pohľad naviazaný na obchodné výsledky, nie na vlastné hlásenie platformy, sú miestom, kde by sa malo rozhodovať. Je to menej lichotivé a oveľa užitočnejšie."
+				}
+			]
+		}
+	}
+}

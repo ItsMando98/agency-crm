@@ -1,0 +1,720 @@
+{
+	"expertise": {
+		"seo-content": {
+			"name": "SEO & indhold",
+			"eyebrow": "01 / SEO & INDHOLD",
+			"headline": "Bliv fundet.",
+			"headlineAccent": "Bliv valgt.",
+			"summary": "Søgning fanger intention. Indhold bygger efterspørgsel. Vi forvandler spørgsmål til kvalificeret trafik og trafik til kunder, med strategi, redaktionelt arbejde og tekniske fundamenter, der forstærker sig selv over tid.",
+			"capabilities": [
+				"SEO-strategi",
+				"Indholdsstrategi",
+				"Søgeordsanalyse",
+				"Redaktionelt arbejde",
+				"On-page SEO",
+				"Indholdsoptimering"
+			],
+			"cta": "Udforsk SEO & indhold",
+			"subpages": [],
+			"body": [
+				{
+					"text": "Det meste søgetrafik går til spilde, fordi den svarer på det forkerte spørgsmål, eller på det rigtige spørgsmål dårligt. Vi tager udgangspunkt i intention, i det din målgruppe faktisk prøver at forstå, beslutte eller købe, og bygger videre derfra."
+				},
+				{
+					"text": "Strategi før produktion"
+				},
+				{
+					"text": "En indholdsmaskine virker kun, når hvert stykke har en opgave. Vi kortlægger de emner, der flytter forretningsresultater, prioriterer efter mulighed og tilrettelægger arbejdet, så momentum bygger op i stedet for at sprede sig."
+				},
+				{
+					"text": "Vær det svar, din målgruppe leder efter, ikke bare endnu et resultat på siden."
+				},
+				{
+					"text": "Tekniske fundamenter, der holder"
+				},
+				{
+					"text": "Crawlbarhed, sitearkitektur, Core Web Vitals, struktureret data. Det uglamourøse arbejde, der afgør, om godt indhold overhovedet får chancen for at ranke. Vi ser det som en del af strategien, ikke som en eftertanke."
+				},
+				{
+					"text": "Så måler vi. Data fra Search Console, rankingovervågning, konverteringsattribuering, alt sammen knyttet til de forretningsresultater, der tæller, ikke til forfængelige trafikgrafer."
+				}
+			]
+		},
+		"meta-ads": {
+			"name": "Meta Ads",
+			"eyebrow": "02 / META ADS",
+			"headline": "Forvandl opmærksomhed",
+			"headlineAccent": "til efterspørgsel.",
+			"summary": "Kreativt indhold, der rammer, kampagner, der konverterer. Vi kombinerer indsigt i målgruppen med uafbrudt test, så hver visning arbejder hårdere på Facebook, Instagram og resten af Metas økosystem.",
+			"capabilities": [
+				"Betalt social",
+				"Kreativ test",
+				"Målgruppestrategi",
+				"Kampagner for hele tragten",
+				"Konverteringsoptimering",
+				"Retargeting"
+			],
+			"cta": "Udforsk Meta Ads",
+			"subpages": [],
+			"body": [
+				{
+					"text": "Opmærksomhed er der masser af, efterspørgsel er der ikke. Betalt socials opgave er ikke at blive set, men at blive husket, overvejet og valgt. Det starter med kreativt indhold, der fortjener at stoppe scrollet."
+				},
+				{
+					"text": "Det kreative er målretningen"
+				},
+				{
+					"text": "På moderne platforme betyder det mere, hvad du viser, end hvem du viser det til. Vi bygger et struktureret system til kreativ test med hypoteser, varianter og klare vindere, så arbejdet bliver skarpere for hver cyklus."
+				},
+				{
+					"text": "Hvert klik har en opgave. Sørg for, at det tæller."
+				},
+				{
+					"text": "Hele tragten, ikke sidste klik"
+				},
+				{
+					"text": "Kendskab, overvejelse, konvertering, fastholdelse. Vi tilrettelægger rejsen, så hvert trin fodrer det næste, og måler inkrementelt, så du ved, hvad pengene faktisk gav."
+				},
+				{
+					"text": "Ingen indstil-og-glem. Ugentlige gennemgange af kreativt indhold, opdatering af målgrupper og flytning af budget mod det, der virker, og væk fra det, der ikke gør."
+				}
+			]
+		},
+		"google-ads": {
+			"name": "Google Ads",
+			"eyebrow": "03 / GOOGLE ADS",
+			"headline": "Fang intention",
+			"headlineAccent": "når det gælder.",
+			"summary": "Mød intention med præcision. Fra søgning til shopping lægger vi budgettet, hvor muligheden er, og måler, hvad der kommer tilbage, med klar forretningsrapportering.",
+			"capabilities": [
+				"Betalt søgning",
+				"Shoppingannoncer",
+				"Performance Max",
+				"Konverteringsoptimering",
+				"Budstrategi",
+				"Tracking og måling"
+			],
+			"cta": "Udforsk Google Ads",
+			"subpages": [],
+			"body": [
+				{
+					"text": "Søgning er øjeblikket, hvor intention bliver til handling. Spørgsmålet er, om du dukker op dér, og om oplevelsen konverterer, når du gør."
+				},
+				{
+					"text": "Budget, hvor muligheden er"
+				},
+				{
+					"text": "Ikke alle søgeord fortjener dine penge. Vi bygger søgeordsstrategi omkring kommerciel intention og avance, skærer spild fra brede match og brandoverlap væk og samler forbruget, hvor afkastet er reelt."
+				},
+				{
+					"text": "Mød intention med præcision. Mål, hvad der kommer tilbage."
+				},
+				{
+					"text": "Måling, du kan stole på"
+				},
+				{
+					"text": "Serverside-tracking, modellering af konverteringsværdi, ren attribuering. Så de tal, der driver beslutningerne, afspejler virkeligheden og ikke platformens egen rapportering."
+				},
+				{
+					"text": "Budstrategier tilpasset din økonomi, ikke et standardmål. Vi tester, holder øje med grænsetilfældene og holder forbruget ærligt."
+				}
+			]
+		},
+		"motion-graphics": {
+			"name": "Motion Graphics",
+			"eyebrow": "04 / MOTION GRAPHICS",
+			"headline": "Stop scrollet.",
+			"headlineAccent": "Vær umulig at overse.",
+			"summary": "Bevægelse er den hurtigste måde at vinde opmærksomhed på og den tydeligste måde at forklare en stor idé på. Vi laver annoncer, produktanimationer og brandfilm, der er bygget til at blive testet, ikke bare beundret.",
+			"capabilities": [
+				"Kreativt til betalt social",
+				"Forklarende videoer",
+				"Produktanimation",
+				"Brandfilm",
+				"Bevægelse til web og grænseflader",
+				"Materiale til kreativ test"
+			],
+			"cta": "Udforsk Motion Graphics",
+			"subpages": {
+				"paid-social-motion": {
+					"name": "Motionannoncer til betalt social",
+					"eyebrow": "04.1 / MOTIONANNONCER TIL BETALT SOCIAL",
+					"headline": "Vind det første",
+					"headlineAccent": "sekund.",
+					"summary": "Kort motion bygget til feedet: en krog, der stopper tommelfingeren, et budskab, der lander, og et variantsystem, der viser, hvilken idé der fortjener næste budget.",
+					"sample": {
+						"title": "NOVA Sparkling: en annonce på 10 sekunder, skilt ad",
+						"note": "En konceptannonce for et opfundet drikkevaremærke. Spol i den, og læs derefter de fire slag ved siden af: krog, budskab, bevis, opfordring."
+					},
+					"deliverables": [
+						{
+							"title": "Storyboards, der starter med krogen",
+							"text": "Tre til fem åbninger til hvert koncept, hver skrevet til at vinde det første sekund på egen hånd."
+						},
+						{
+							"title": "Masteranimation og kortversioner",
+							"text": "Ét hovedstykke plus versioner på 6, 15 og 30 sekunder, klippet til de placeringer, du faktisk køber."
+						},
+						{
+							"title": "Alle formater",
+							"text": "Versioner i 9:16, 4:5 og 1:1, kontrolleret for sikre zoner til Stories, Reels og feedet."
+						},
+						{
+							"title": "Variantkits",
+							"text": "Udskiftelige kroge, budskaber og slutkort bygget ind i filen, så test aldrig betyder at starte forfra."
+						},
+						{
+							"title": "Undertekster og lyd",
+							"text": "Indbrændte undertekster til visning uden lyd og lyddesign til visning med lyd."
+						},
+						{
+							"title": "Gennemgang af læring",
+							"text": "En skriftlig opsummering af, hvad hver variant lærte os, og hvad næste omgang bør ændre."
+						}
+					],
+					"steps": [
+						{
+							"title": "Læs kontoen",
+							"text": "Vi starter med performancedata: hvad der slides op, hvilke vinkler der stadig trækker, hvor folk falder fra."
+						},
+						{
+							"title": "Skriv hypoteserne",
+							"text": "Hvert koncept angiver den påstand, det tester, og det tal, det skal flytte, før noget animeres."
+						},
+						{
+							"title": "Byg systemet",
+							"text": "Først masteranimationen, derefter varianter skabt ud fra samme kilde, så udtrykket holder sammen."
+						},
+						{
+							"title": "Lancér og lær",
+							"text": "Varianterne kører mod hinanden. Vindere skaleres op, tabere pensioneres, og noterne fodrer næste runde."
+						}
+					],
+					"connects": [
+						{
+							"text": "Systemet til kreativ test, der afgør, hvilke varianter der får budget, og hvornår de pensioneres."
+						},
+						{
+							"text": "Korte versioner fungerer også som videomateriale til YouTube og Performance Max."
+						}
+					],
+					"faqs": [
+						{
+							"question": "Skal vi levere optagelser?",
+							"answer": "Nej. Vi kan arbejde ud fra brandmateriale, produktrenderinger, skærmoptagelser eller bygge hele stykket af illustration og typografi. Har I optagelser, bruger vi dem."
+						},
+						{
+							"question": "Hvor mange varianter skal vi starte med?",
+							"answer": "Nok til at lære noget, ikke så mange, at hver enkelt sultes. Vi foreslår som regel en lille matrix af kroge mod budskaber og aftaler størrelsen pr. omgang."
+						},
+						{
+							"question": "Kan I også køre mediet?",
+							"answer": "Ja, gennem vores arbejde med Meta Ads og Google Ads. I kan også tage de færdige filer og køre dem selv."
+						},
+						{
+							"question": "Hvad med musik og voiceover?",
+							"answer": "Vi bruger licenseret eller original lyd og aftaler rettighederne på forhånd, herunder hvor og hvor længe annoncen må køre."
+						},
+						{
+							"question": "Hvordan bedømmer man en motionannonce?",
+							"answer": "Ud fra det forretningsmål, den blev briefet imod, ikke ud fra hvordan den ser ud. Hvert koncept er knyttet til et tal, før det bygges."
+						}
+					]
+				},
+				"explainer-videos": {
+					"name": "Forklarende videoer",
+					"eyebrow": "04.2 / FORKLARENDE VIDEOER",
+					"headline": "Gør det komplekse",
+					"headlineAccent": "indlysende.",
+					"summary": "En kort animeret forklaring, der gør et svært produkt eller en svær idé til noget, en køber kan gentage over for sin chef.",
+					"sample": {
+						"title": "Fra spredt opmærksomhed til en kunde, på 14 sekunder",
+						"note": "En konceptvideo om, hvordan en tragt virker. Prikkerne er mennesker. Se, hvor mange der kommer ind, hvor mange der konverterer, og hvordan historien bæres af bevægelse alene."
+					},
+					"deliverables": [
+						{
+							"title": "Manuskript og fortælling",
+							"text": "Et stramt manuskript bygget omkring det ene, seeren skal tro på til sidst."
+						},
+						{
+							"title": "Stilbilleder og storyboard",
+							"text": "Udtrykket og hver scene aftalt på papir, før animationen begynder."
+						},
+						{
+							"title": "Specialtegnet illustration og animation",
+							"text": "Originale visuelle elementer bygget til dit produkt, ikke lagerikoner, der flyttes rundt."
+						},
+						{
+							"title": "Speakerinstruktion og lyd",
+							"text": "Vejledning til casting, instruktion og et mixet spor, eller en version kun med musik."
+						},
+						{
+							"title": "Kortversioner med undertekster",
+							"text": "Korte versioner til sociale medier og betalt medie med undertekster allerede bagt ind."
+						},
+						{
+							"title": "Klar til landingssiden",
+							"text": "Komprimerede filer, et plakatbillede og en transskription, så videoen hjælper siden i stedet for at gøre den langsom."
+						}
+					],
+					"steps": [
+						{
+							"title": "Definér overbevisningen",
+							"text": "Hvem ser med, hvad tvivler de på, og hvad skal de tro på, når den er slut?"
+						},
+						{
+							"title": "Skriv og lav storyboard",
+							"text": "Manuskript og storyboard sammen, så hver linje har et billede, der fortjener sin plads."
+						},
+						{
+							"title": "Design og animér",
+							"text": "Først stilbilleder, derefter animation i modulære scener, der er nemme at opdatere."
+						},
+						{
+							"title": "Afslut og udrul",
+							"text": "Lyd, undertekster, kortversioner og placering på de sider og kampagner, der har brug for den."
+						}
+					],
+					"connects": [
+						{
+							"text": "Indlejret på sider bygget til at ranke, med transskriptioner, der føjer til indholdet i stedet for at skjule det."
+						},
+						{
+							"text": "En klar forklaring på landingssiden er det, der forvandler betalte klik til henvendelser."
+						}
+					],
+					"faqs": [
+						{
+							"question": "Hvor lang bør en forklarende video være?",
+							"answer": "Så kort, som idéen tillader. De fleste lander mellem 45 og 90 sekunder, med versioner på 15 og 30 sekunder til sociale medier."
+						},
+						{
+							"question": "Skriver I manuskriptet?",
+							"answer": "Ja. Vi kan også arbejde ud fra jeres manuskript eller en grov brief og forme det til skærmen."
+						},
+						{
+							"question": "Hvad hvis produktet ændrer sig?",
+							"answer": "Vi bygger i modulære scener, så en funktion kan udskiftes eller opdateres uden at lave hele filmen om."
+						},
+						{
+							"question": "Hvor mange rettelsesrunder er inkluderet?",
+							"answer": "Vi aftaler antallet af runder for hvert projekt på forhånd og placerer dem i de faser, hvor ændringer er billige: manuskript, storyboard, derefter animation."
+						},
+						{
+							"question": "Hvor virker forklarende videoer bedst?",
+							"answer": "På landingssider, i salgspræsentationer, til onboarding, i e-mail og i betalte placeringer, der har brug for et hurtigt og klart pitch."
+						}
+					]
+				},
+				"product-animation": {
+					"name": "Produktanimation",
+					"eyebrow": "04.3 / PRODUKTANIMATION",
+					"headline": "Vis det",
+					"headlineAccent": "i funktion.",
+					"summary": "Eksploderede visninger, funktionsgennemgange og lanceringsafsløringer, der lader købere se, hvordan noget virker, før de kan røre ved det.",
+					"sample": {
+						"title": "HALO: en eksploderet visning, fem dele på ti sekunder",
+						"note": "En konceptuel smart højttaler, opfundet til denne side. Træk i tidslinjen for at skille den ad og sætte den sammen igen."
+					},
+					"deliverables": [
+						{
+							"title": "Hovedloop",
+							"text": "En ren, gentagende animation til toppen af en produkt- eller landingsside."
+						},
+						{
+							"title": "Eksploderede visninger og snit",
+							"text": "Historien indeni: dele, lag og hvordan de passer sammen."
+						},
+						{
+							"title": "Sekvenser, der fremhæver funktioner",
+							"text": "Ét kort stykke pr. funktion, hvor hvert gør én pointe klart."
+						},
+						{
+							"title": "Lanceringsafsløring",
+							"text": "Et filmisk stykke til det øjeblik, hvor produktet bliver offentligt."
+						},
+						{
+							"title": "Webklare eksporter",
+							"text": "Komprimeret video og, hvor det hjælper, letvægts vektoranimation til hurtige sider."
+						},
+						{
+							"title": "Kortversioner og stills til sociale medier",
+							"text": "Lodrette og kvadratiske versioner samt nøglebilleder til præsentationer, e-mail og presse."
+						}
+					],
+					"steps": [
+						{
+							"title": "Saml kilden",
+							"text": "CAD, renderinger, skærmoptagelser eller skitser, alt hvad der viser produktet bedst."
+						},
+						{
+							"title": "Koreografér",
+							"text": "Planlæg kameraet, rækkefølgen, delene dukker op i, og det ene, hvert skud skal forklare."
+						},
+						{
+							"title": "Lys og materiale",
+							"text": "Overflader, glød og skygger justeres, så det føles som den rigtige genstand eller grænseflade."
+						},
+						{
+							"title": "Render og lever",
+							"text": "Endelige filer til alle steder, hvor produktet optræder, med en letvægtsmulighed til web."
+						}
+					],
+					"connects": [
+						{
+							"text": "Den samme animation, klippet til feedet, gør en produktannonce til noget, der forklarer i stedet for blot at annoncere."
+						},
+						{
+							"text": "Produktsider med en klar demonstration fastholder opmærksomheden længere og giver søgning noget at ranke."
+						}
+					],
+					"faqs": [
+						{
+							"question": "Har I brug for 3D-filer?",
+							"answer": "De hjælper, men vi kan også arbejde ud fra fotografier, tegninger eller en beskrivelse. Til softwareprodukter animerer vi ud fra jeres grænseflade."
+						},
+						{
+							"question": "Kan I animere software, ikke kun fysiske produkter?",
+							"answer": "Ja. Gennemgange af grænseflader, dataflow og funktionsforklaringer kræver det samme håndværk som hardware."
+						},
+						{
+							"question": "Gør det vores website langsommere?",
+							"answer": "Vi leverer komprimerede filer og, hvor det giver mening, vektoranimation, der forbliver let. Vi aftaler et størrelsesbudget på forhånd."
+						},
+						{
+							"question": "Kan vi genbruge animationen senere?",
+							"answer": "Ja. Vi leverer kildefiler med lag og aftaler brugen, så fremtidige lanceringer kan bygge på de samme aktiver."
+						},
+						{
+							"question": "Hvor poleret er poleret?",
+							"answer": "Målet er klarhed først, derefter skønhed. Hvis et skud ser fantastisk ud, men ikke forklarer noget, bliver det klippet."
+						}
+					]
+				},
+				"brand-films": {
+					"name": "Brandfilm",
+					"eyebrow": "04.4 / BRANDFILM",
+					"headline": "Sig det én gang.",
+					"headlineAccent": "Få det til at holde.",
+					"summary": "Filmiske, typografidrevne film, der bærer et brands synspunkt, bygget til at forankre en lancering, en kampagne eller en forside.",
+					"sample": {
+						"title": "ROASWELL: en titelfilm på 16 sekunder i tre kapitler",
+						"note": "En konceptfilm for vores eget studie, lavet udelukkende i motion design. Brug kapitelmarkørerne til at hoppe mellem Signal, Intent og Return."
+					},
+					"deliverables": [
+						{
+							"title": "Koncept og treatment",
+							"text": "Idéen, tonen og det visuelle sprog, skrevet og storyboardet før produktionen."
+						},
+						{
+							"title": "Manifestmanuskript",
+							"text": "Ord, der lyder som brandet og er korte nok til at blive husket."
+						},
+						{
+							"title": "Bevægelsesledet instruktion",
+							"text": "Typografisk, illustrativ eller blandede medier, valgt efter historien og budgettet."
+						},
+						{
+							"title": "Lyd- og musikinstruktion",
+							"text": "Musik og lyddesign, der tager halvdelen af det følelsesmæssige arbejde."
+						},
+						{
+							"title": "Masterfilm og kortversioner",
+							"text": "Det fulde stykke plus versioner på 30, 15 og 6 sekunder til hver kanal."
+						},
+						{
+							"title": "Motion-værktøjskasse til brandet",
+							"text": "Overgange, easing og titelstile, så udtrykket fortsætter i alt, hvad der følger."
+						}
+					],
+					"steps": [
+						{
+							"title": "Find synspunktet",
+							"text": "Hvad tror brandet på, som dets kategori ikke gør? Det er filmen."
+						},
+						{
+							"title": "Skriv treatmentet",
+							"text": "Kapitler, rytme, nøglebilleder og lyd, aftalt før et eneste billede animeres."
+						},
+						{
+							"title": "Lav den",
+							"text": "Design, animation og lyd bygges sammen, så klippet kan ånde."
+						},
+						{
+							"title": "Udgiv og forlæng",
+							"text": "Lancér masteren, og hold derefter idéen i live med kortversioner og motion-værktøjskassen."
+						}
+					],
+					"connects": [
+						{
+							"text": "Kortversionerne bliver kendskabslaget i en plan for betalt social over hele tragten."
+						},
+						{
+							"text": "Brandsøgning og videokampagner får noget, der er værd at klikke videre til."
+						},
+						{
+							"text": "En film i hjertet af et indholdshub giver skribenter og links noget at pege på."
+						}
+					],
+					"faqs": [
+						{
+							"question": "Optager I live action?",
+							"answer": "Vi instruerer bevægelsesledede film. Hvis et projekt kræver live action, planlægger vi det med en produktionspartner og beholder motion-instruktionen internt."
+						},
+						{
+							"question": "Hvor lang er en brandfilm?",
+							"answer": "Idéen afgør det. De fleste er mellem 30 sekunder og to minutter, med kortere versioner klippet fra masteren."
+						},
+						{
+							"question": "Hvem ejer filmen?",
+							"answer": "Det gør I. Vi aftaler brugsrettigheder og leverer kildefiler med lag som en del af projektet."
+						},
+						{
+							"question": "Kan filmen ligge på vores forside?",
+							"answer": "Ja. Vi leverer et letvægtsloop og et plakatbillede, med den fulde film et klik væk."
+						},
+						{
+							"question": "Er det kun for store brands?",
+							"answer": "Nej. En stramt skrevet typografidrevet film kan koste en brøkdel af en optagelse og stadig føles som et synspunkt."
+						}
+					]
+				},
+				"web-ui-motion": {
+					"name": "Bevægelse til web og grænseflader",
+					"eyebrow": "04.5 / BEVÆGELSE TIL WEB OG GRÆNSEFLADER",
+					"headline": "Grænseflader, der",
+					"headlineAccent": "føles levende.",
+					"summary": "Scrollhistorier, mikrointeraktioner og sideovergange, der gør et website lettere at forstå og sværere at glemme, uden at det koster hastighed eller tilgængelighed.",
+					"sample": {
+						"title": "Motionlaboratoriet: syv interaktioner, du kan røre ved",
+						"note": "Ægte, fungerende bevægelse i grænsefladen, ikke en video. Skift, hold musen over, træk og klik. Alt her respekterer indstillingerne for reduceret bevægelse."
+					},
+					"deliverables": [
+						{
+							"title": "Bevægelsesprincipper",
+							"text": "Easing-, timing- og spring-tokens, så hver interaktion føles som en del af ét produkt."
+						},
+						{
+							"title": "Scroll- og sideovergange",
+							"text": "Historiedrevne scrollsekvenser og ruteovergange, der guider opmærksomheden, som dem på dette website."
+						},
+						{
+							"title": "Bibliotek af mikrointeraktioner",
+							"text": "Knapper, kontakter, menuer, kort og formularer, der reagerer med formål."
+						},
+						{
+							"title": "Produktionskode eller eksporter",
+							"text": "Ren CSS og JavaScript, eller Lottie- og videoeksporter, klar til jeres stack."
+						},
+						{
+							"title": "Varianter til tilgængelighed",
+							"text": "Alternativer med reduceret bevægelse og fokusadfærd designet ind fra start, ikke lappet på bagefter."
+						},
+						{
+							"title": "Performancebudget",
+							"text": "Bevægelsen måles mod indlæsningstid og interaktionsforsinkelse, før den udgives."
+						}
+					],
+					"steps": [
+						{
+							"title": "Gennemgå",
+							"text": "Find ud af, hvor bevægelse vil gøre noget klarere, og hvor den bare ville tilføje støj."
+						},
+						{
+							"title": "Fastlæg principperne",
+							"text": "Definér ordforrådet for easing og timing, så beslutninger ikke længere tages fra gang til gang."
+						},
+						{
+							"title": "Prototype i browseren",
+							"text": "Byg i det rigtige medie, så det, I godkender, er det, der udgives."
+						},
+						{
+							"title": "Udgiv og mål",
+							"text": "Udgiv med et performancebudget og se, hvad brugerne faktisk gør."
+						}
+					],
+					"connects": [
+						{
+							"text": "Hurtig, tilgængelig bevægelse understøtter Core Web Vitals i stedet for at kæmpe imod dem."
+						},
+						{
+							"text": "Landingssider med klare, hurtige interaktioner forvandler betalte klik til handling."
+						}
+					],
+					"faqs": [
+						{
+							"question": "Gør animation vores website langsommere?",
+							"answer": "Ikke hvis den er bygget rigtigt. Vi fastsætter et performancebudget, animerer med de billigste egenskaber og tester på rigtige enheder."
+						},
+						{
+							"question": "Skriver I koden?",
+							"answer": "Ja. Vi kan levere produktionsklar kode, eller aflevere specifikationer og eksporter, så jeres team kan implementere."
+						},
+						{
+							"question": "Hvad med tilgængelighed?",
+							"answer": "Hver bevægelse har et alternativ med reduceret bevægelse, og adfærd for tastatur og skærmlæsere designes sammen med animationen."
+						},
+						{
+							"question": "Virker det med vores CMS eller framework?",
+							"answer": "Vi arbejder med de fleste moderne stacks. Fortæl os, hvad I kører, så bekræfter vi den bedste tilgang."
+						},
+						{
+							"question": "Kan jeg se det i funktion?",
+							"answer": "Det er det, du kigger på nu. Scrollsekvenserne, tællerne og afsløringerne på dette website er bygget med samme tilgang."
+						}
+					]
+				}
+			},
+			"body": [
+				{
+					"text": "Statisk kreativt indhold beder om opmærksomhed. Bevægelse tager den. I feedets første sekund afgør bevægelsen, om et budskab får en chance, og resten af idéen betyder kun noget, hvis den overlever det sekund."
+				},
+				{
+					"text": "Bygget til feedet, ikke til showreelet"
+				},
+				{
+					"text": "Hvert stykke starter med en hypotese: krogen, budskabet, grunden til at blive ved med at se. Vi laver storyboard ud fra det tal, det skal flytte, og bygger derefter varianter, så testsystemet har ægte materiale at lære af."
+				},
+				{
+					"text": "Godt motion er ikke pynt. Det er argumentet, gjort synligt."
+				},
+				{
+					"text": "Én idé, alle flader"
+				},
+				{
+					"text": "Det samme koncept rejser fra et betalt klip på seks sekunder til en produktforklaring, en animation på landingssiden og en lanceringsfilm. Ét designsprog, ét sæt aktiver, ingen omarbejdning af idéen tre gange."
+				},
+				{
+					"text": "Fordi motion sidder i samme studie som søgning og betalt medie, bliver det kreative briefet af performancedata og bedømt på forretningsresultater, ikke på hvordan det tager sig ud på et reel."
+				}
+			]
+		}
+	},
+	"caseStudies": {
+		"search-to-significance": {
+			"title": "Fra søgeintention til efterspørgsel",
+			"discipline": "SEO & indhold",
+			"summary": "Hvordan et brand med gennemtænkte køb byggede sin organiske tilstedeværelse op omkring kommerciel intention og forvandlede trafik i toppen af tragten til kvalificeret pipeline.",
+			"challenge": "Et specialiseret B2B-brand rankede på informationssøgninger, der gav trafik, men ingen pipeline. Der var masser af indhold, men det besvarede de forkerte spørgsmål for købere længere nede i tragten.",
+			"approach": "Vi kortlagde emnelandskabet på ny omkring købsintention, samlede tyndt indhold og byggede redaktionskalenderen om omkring de beslutninger, købere faktisk står over for. Teknisk SEO, sitearkitektur, intern linking og struktureret data, gav det nye indhold plads til at ranke.",
+			"outcome": "Den organiske trafik blev omlagt mod kommercielle sider, kvalificerede henvendelser steg, og indholdsmaskinen begyndte at forstærke sig selv i stedet for at sprede sig. Arbejdet pågår, retningen er sat.",
+			"metrics": [
+				{
+					"label": "Mål for organisk trafik"
+				},
+				{
+					"label": "Mål for kvalificerede leads"
+				}
+			]
+		},
+		"making-acquisition-work-harder": {
+			"title": "Få kundeanskaffelsen til at arbejde hårdere",
+			"discipline": "Meta Ads + Google Ads",
+			"summary": "Et DTC-brand brugte mere for at få færre kunder. Et kreativt ledet nulstilling af betalt social og søgning byggede effektiviteten op fra grunden.",
+			"challenge": "Stigende CPM og kreativ træthed havde skubbet anskaffelsesomkostningen forbi grænsen for rentabilitet. Kontoen var travl, men ikke effektiv, med budgettet spredt tyndt ud over målgrupper, der ikke længere konverterede.",
+			"approach": "Vi samlede kontoen omkring et struktureret system til kreativ test, byggede sekvensen over hele tragten om og flyttede søgebudgettet mod søgeord med høj intention og høj avance. Trackingen blev flyttet til serversiden, så beslutningerne afspejlede virkeligheden.",
+			"outcome": "Anskaffelsesomkostningen faldt, afkastet på annonceforbruget kom tilbage, og testrytmen betød, at det kreative blev bedre for hver cyklus i stedet for at svinde. Brandet har nu et system, ikke bare kampagner.",
+			"metrics": [
+				{
+					"label": "Mål for afkast på annonceforbrug"
+				},
+				{
+					"label": "Mål for anskaffelsesomkostning"
+				}
+			]
+		},
+		"full-funnel-foundations": {
+			"title": "Fundament for hele tragten til en ny lancering",
+			"discipline": "SEO & indhold + betalt medie",
+			"summary": "En produktlancering krævede organisk kapital og betalt momentum på samme tid. Vi byggede begge, i en rækkefølge der forstærker sig selv.",
+			"challenge": "Et nyt tilbud havde ingen tilstedeværelse i søgning og ingen betalt historik. Risikoen var at lancere ud i stilhed: betalt forbrug uden noget, der kunne fange den efterspørgsel, det skabte.",
+			"approach": "Arbejdet med indhold og teknisk SEO startede måneder før lanceringen for at opbygge emnemæssig autoritet. Betalt social såede kendskab og retargeting, mens søgning fangede den intention, lanceringen skabte. Målingen blev sat op fra dag ét.",
+			"outcome": "Lanceringen landede i eksisterende organisk kapital i stedet for et vakuum, det betalte forbrug konverterede i et sundt tempo fra start, og brandet fik en målemodel at skalere fra.",
+			"metrics": [
+				{
+					"label": "Mål for ROAS i lanceringsmåneden"
+				},
+				{
+					"label": "Organisk kapital opbygget før lanceringen"
+				}
+			]
+		}
+	},
+	"articles": {
+		"why-three-disciplines": {
+			"title": "Hvorfor disse tre discipliner hører sammen",
+			"excerpt": "Søgning, indhold og betalt medie sælges som regel som adskilte discipliner. Her er grunden til, at det ændrer resultatet at behandle dem som ét vækstsystem.",
+			"category": "Strategi",
+			"body": [
+				{
+					"text": "De fleste bureauer organiserer sig omkring kanaler, fordi kanaler er nemme at sælge. Et søgeteam. Et socialt team. Et indholdsteam. Hver optimerer sit hjørne, og hullerne imellem er der, hvor væksten siver ud."
+				},
+				{
+					"text": "Intention, efterspørgsel og acceleration"
+				},
+				{
+					"text": "Søgning fanger intention, der allerede findes. Indhold bygger den efterspørgsel, der skaber den. Betalt medie accelererer det, der virker, og skubber det afprøvede ud i flere øjeblikke, hurtigere. Tag en af dem væk, og systemet mister kraft."
+				},
+				{
+					"text": "En kanal for sig selv er en taktik. Kanaler, der fodrer hinanden, er et system."
+				},
+				{
+					"text": "Når den samme tankegang former søgeordsstrategien, redaktionskalenderen og det betalte kreative, forstærker arbejdet sig selv. Indholdet rankes, fordi det blev bygget til det. Betalt konverterer, fordi budskabet allerede har fortjent tillid organisk. Søgning fanger den efterspørgsel, de to andre skabte."
+				},
+				{
+					"text": "Hvad der ændrer sig i praksis"
+				},
+				{
+					"text": "Færre overdragelser. Ét målerammeværk. En kreativ idé, der kan rejse fra et organisk opslag til et betalt aktiv til en landingsside uden at blive bygget om tre gange. Det er meningen med at være små og seniorledede."
+				}
+			]
+		},
+		"creative-is-the-targeting": {
+			"title": "Det kreative er målretningen",
+			"excerpt": "På moderne platforme til betalt social betyder det mere, hvad du viser, end hvem du viser det til. En note om at bygge et testsystem, der holder.",
+			"category": "Betalt medie",
+			"body": [
+				{
+					"text": "Den gamle drejebog tog udgangspunkt i målgruppen: byg den perfekte persona, ram den præcist og stol på, at algoritmen finder flere som den. Den verden er stort set væk. Målgrupperne er bredere, signalerne mere støjende, og det kreative selv står for filtreringen."
+				},
+				{
+					"text": "Det kreative afgør, hvem der bliver"
+				},
+				{
+					"text": "En krog, der stopper scrollet, taler til den rette person og afviser den forkerte. Det er målretning, bare udført af budskabet i stedet for af målgruppevælgeren. Det betyder, at den kreative pipeline nu er håndtaget."
+				},
+				{
+					"text": "Hvis dit testsystem ikke bliver skarpere for hver cyklus, svinder dit kreative ind."
+				},
+				{
+					"text": "Byg et system, ikke en omgang"
+				},
+				{
+					"text": "Hypoteser før varianter. Klare vindere før skalering. En rytme, der skaber læring, ikke bare materiale. De brands, der vinder på betalt social, er dem, hvis kreative målbart bliver bedre måned for måned, ikke dem med det største budget."
+				}
+			]
+		},
+		"measuring-what-comes-back": {
+			"title": "At måle det, der kommer tilbage",
+			"excerpt": "Platformenes dashboards vil altid fortælle dig, at forbruget virkede. Her er, hvordan vi holder tallene ærlige.",
+			"category": "Måling",
+			"body": [
+				{
+					"text": "Hver annonceplatform rapporterer om sin egen succes. De lyver ikke, ikke ligefrem, men de måler fra deres eget udsigtspunkt, og det udsigtspunkt er gavmildt over for platformen."
+				},
+				{
+					"text": "Attribuering er et spørgsmål, ikke en indstilling"
+				},
+				{
+					"text": "Spørgsmålet er ikke »drev denne kampagne konverteringer«, men »hvad ville der være sket uden den«. Inkrementalitet, blendet CAC og modellering af konverteringsværdi besvarer det. Dashboards med sidste klik gør ikke."
+				},
+				{
+					"text": "Hvis det tal, der driver beslutningen, kommer fra den platform, der bruger pengene, så behandl det som en påstand, ikke et faktum."
+				},
+				{
+					"text": "Serverside-tracking, et rent datalag og en rapportvisning knyttet til forretningsresultater, ikke til platformens egenrapportering, er der, hvor beslutningerne bør tages. Det er mindre smigrende og langt mere nyttigt."
+				}
+			]
+		}
+	}
+}

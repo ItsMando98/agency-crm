@@ -53,6 +53,82 @@ type Pages = {
   "/contact": {
     params: {};
   };
+  "/legal": {
+    params: {};
+  };
+  "/privacy": {
+    params: {};
+  };
+  "/:lang": {
+    params: {
+      "lang": string;
+    };
+  };
+  "/:lang/expertise": {
+    params: {
+      "lang": string;
+    };
+  };
+  "/:lang/expertise/:slug": {
+    params: {
+      "lang": string;
+      "slug": string;
+    };
+  };
+  "/:lang/expertise/:slug/:subSlug": {
+    params: {
+      "lang": string;
+      "slug": string;
+      "subSlug": string;
+    };
+  };
+  "/:lang/work": {
+    params: {
+      "lang": string;
+    };
+  };
+  "/:lang/work/:slug": {
+    params: {
+      "lang": string;
+      "slug": string;
+    };
+  };
+  "/:lang/approach": {
+    params: {
+      "lang": string;
+    };
+  };
+  "/:lang/insights": {
+    params: {
+      "lang": string;
+    };
+  };
+  "/:lang/insights/:slug": {
+    params: {
+      "lang": string;
+      "slug": string;
+    };
+  };
+  "/:lang/about": {
+    params: {
+      "lang": string;
+    };
+  };
+  "/:lang/contact": {
+    params: {
+      "lang": string;
+    };
+  };
+  "/:lang/legal": {
+    params: {
+      "lang": string;
+    };
+  };
+  "/:lang/privacy": {
+    params: {
+      "lang": string;
+    };
+  };
   "/sitemap.xml": {
     params: {};
   };
@@ -81,51 +157,102 @@ type Pages = {
 type RouteFiles = {
   "root.tsx": {
     id: "root";
-    page: "/" | "/expertise" | "/expertise/:slug" | "/expertise/:slug/:subSlug" | "/work" | "/work/:slug" | "/approach" | "/insights" | "/insights/:slug" | "/about" | "/contact" | "/sitemap.xml" | "/robots.txt" | "/llms.txt" | "/llms-full.txt" | "/api/health" | "/api/contact" | "/api/*";
+    page: "/" | "/expertise" | "/expertise/:slug" | "/expertise/:slug/:subSlug" | "/work" | "/work/:slug" | "/approach" | "/insights" | "/insights/:slug" | "/about" | "/contact" | "/legal" | "/privacy" | "/:lang" | "/:lang/expertise" | "/:lang/expertise/:slug" | "/:lang/expertise/:slug/:subSlug" | "/:lang/work" | "/:lang/work/:slug" | "/:lang/approach" | "/:lang/insights" | "/:lang/insights/:slug" | "/:lang/about" | "/:lang/contact" | "/:lang/legal" | "/:lang/privacy" | "/sitemap.xml" | "/robots.txt" | "/llms.txt" | "/llms-full.txt" | "/api/health" | "/api/contact" | "/api/*";
   };
   "routes/home.tsx": {
-    id: "routes/home";
+    id: "home";
     page: "/";
+  } | {
+    id: "localized-home";
+    page: "/:lang";
   };
   "routes/expertise.tsx": {
-    id: "routes/expertise";
+    id: "expertise";
     page: "/expertise";
+  } | {
+    id: "localized-expertise";
+    page: "/:lang/expertise";
   };
   "routes/expertise.$slug.tsx": {
-    id: "routes/expertise.$slug";
+    id: "expertise-discipline";
     page: "/expertise/:slug";
+  } | {
+    id: "localized-expertise-discipline";
+    page: "/:lang/expertise/:slug";
   };
   "routes/expertise.$slug.$subSlug.tsx": {
-    id: "routes/expertise.$slug.$subSlug";
+    id: "expertise-subpage";
     page: "/expertise/:slug/:subSlug";
+  } | {
+    id: "localized-expertise-subpage";
+    page: "/:lang/expertise/:slug/:subSlug";
   };
   "routes/work.tsx": {
-    id: "routes/work";
+    id: "work";
     page: "/work";
+  } | {
+    id: "localized-work";
+    page: "/:lang/work";
   };
   "routes/work.$slug.tsx": {
-    id: "routes/work.$slug";
+    id: "work-study";
     page: "/work/:slug";
+  } | {
+    id: "localized-work-study";
+    page: "/:lang/work/:slug";
   };
   "routes/approach.tsx": {
-    id: "routes/approach";
+    id: "approach";
     page: "/approach";
+  } | {
+    id: "localized-approach";
+    page: "/:lang/approach";
   };
   "routes/insights.tsx": {
-    id: "routes/insights";
+    id: "insights";
     page: "/insights";
+  } | {
+    id: "localized-insights";
+    page: "/:lang/insights";
   };
   "routes/insights.$slug.tsx": {
-    id: "routes/insights.$slug";
+    id: "insights-article";
     page: "/insights/:slug";
+  } | {
+    id: "localized-insights-article";
+    page: "/:lang/insights/:slug";
   };
   "routes/about.tsx": {
-    id: "routes/about";
+    id: "about";
     page: "/about";
+  } | {
+    id: "localized-about";
+    page: "/:lang/about";
   };
   "routes/contact.tsx": {
-    id: "routes/contact";
+    id: "contact";
     page: "/contact";
+  } | {
+    id: "localized-contact";
+    page: "/:lang/contact";
+  };
+  "routes/legal.tsx": {
+    id: "legal";
+    page: "/legal";
+  } | {
+    id: "localized-legal";
+    page: "/:lang/legal";
+  };
+  "routes/privacy.tsx": {
+    id: "privacy";
+    page: "/privacy";
+  } | {
+    id: "localized-privacy";
+    page: "/:lang/privacy";
+  };
+  "routes/locale-layout.tsx": {
+    id: "routes/locale-layout";
+    page: "/:lang" | "/:lang/expertise" | "/:lang/expertise/:slug" | "/:lang/expertise/:slug/:subSlug" | "/:lang/work" | "/:lang/work/:slug" | "/:lang/approach" | "/:lang/insights" | "/:lang/insights/:slug" | "/:lang/about" | "/:lang/contact" | "/:lang/legal" | "/:lang/privacy";
   };
   "routes/sitemap.xml.ts": {
     id: "routes/sitemap.xml";
@@ -159,17 +286,33 @@ type RouteFiles = {
 
 type RouteModules = {
   "root": typeof import("./src/root.tsx");
-  "routes/home": typeof import("./src/routes/home.tsx");
-  "routes/expertise": typeof import("./src/routes/expertise.tsx");
-  "routes/expertise.$slug": typeof import("./src/routes/expertise.$slug.tsx");
-  "routes/expertise.$slug.$subSlug": typeof import("./src/routes/expertise.$slug.$subSlug.tsx");
-  "routes/work": typeof import("./src/routes/work.tsx");
-  "routes/work.$slug": typeof import("./src/routes/work.$slug.tsx");
-  "routes/approach": typeof import("./src/routes/approach.tsx");
-  "routes/insights": typeof import("./src/routes/insights.tsx");
-  "routes/insights.$slug": typeof import("./src/routes/insights.$slug.tsx");
-  "routes/about": typeof import("./src/routes/about.tsx");
-  "routes/contact": typeof import("./src/routes/contact.tsx");
+  "home": typeof import("./src/routes/home.tsx");
+  "expertise": typeof import("./src/routes/expertise.tsx");
+  "expertise-discipline": typeof import("./src/routes/expertise.$slug.tsx");
+  "expertise-subpage": typeof import("./src/routes/expertise.$slug.$subSlug.tsx");
+  "work": typeof import("./src/routes/work.tsx");
+  "work-study": typeof import("./src/routes/work.$slug.tsx");
+  "approach": typeof import("./src/routes/approach.tsx");
+  "insights": typeof import("./src/routes/insights.tsx");
+  "insights-article": typeof import("./src/routes/insights.$slug.tsx");
+  "about": typeof import("./src/routes/about.tsx");
+  "contact": typeof import("./src/routes/contact.tsx");
+  "legal": typeof import("./src/routes/legal.tsx");
+  "privacy": typeof import("./src/routes/privacy.tsx");
+  "routes/locale-layout": typeof import("./src/routes/locale-layout.tsx");
+  "localized-home": typeof import("./src/routes/home.tsx");
+  "localized-expertise": typeof import("./src/routes/expertise.tsx");
+  "localized-expertise-discipline": typeof import("./src/routes/expertise.$slug.tsx");
+  "localized-expertise-subpage": typeof import("./src/routes/expertise.$slug.$subSlug.tsx");
+  "localized-work": typeof import("./src/routes/work.tsx");
+  "localized-work-study": typeof import("./src/routes/work.$slug.tsx");
+  "localized-approach": typeof import("./src/routes/approach.tsx");
+  "localized-insights": typeof import("./src/routes/insights.tsx");
+  "localized-insights-article": typeof import("./src/routes/insights.$slug.tsx");
+  "localized-about": typeof import("./src/routes/about.tsx");
+  "localized-contact": typeof import("./src/routes/contact.tsx");
+  "localized-legal": typeof import("./src/routes/legal.tsx");
+  "localized-privacy": typeof import("./src/routes/privacy.tsx");
   "routes/sitemap.xml": typeof import("./src/routes/sitemap.xml.ts");
   "routes/robots.txt": typeof import("./src/routes/robots.txt.ts");
   "routes/llms.txt": typeof import("./src/routes/llms.txt.ts");

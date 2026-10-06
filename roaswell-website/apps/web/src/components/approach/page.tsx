@@ -1,74 +1,64 @@
-import { Link } from 'react-router';
 import { ArrowUpRight } from 'lucide-react';
-import { approach } from '@/data/studio';
+import { APPROACH_STEPS } from '@/data/studio';
+import { Link, Lines, useT } from '@/i18n/context';
 
 export function ApproachPage() {
+	const t = useT();
+
 	return (
 		<>
 			<section className="page-hero">
 				<div className="hero-top">
 					<span className="eyebrow">
-						<i /> 03 / THE ROASWELL APPROACH
+						<i /> {t('approach.home.eyebrow')}
 					</span>
-					<span className="hero-note">Independent in spirit. Accountable by nature.</span>
+					<span className="hero-note">{t('approach.sign')}</span>
 				</div>
 				<h1>
-					Big thinking.
+					{t('approach.line1')}
 					<br />
-					Small team.
+					{t('approach.line2')}
 					<br />
-					<em>Better work.</em>
+					<em>{t('approach.line3')}</em>
 				</h1>
-				<p>
-					You work directly with the people doing the thinking — and the doing.
-					No layers. No handoffs. No mystery about where your investment goes.
-				</p>
+				<p>{t('approach.page.lede')}</p>
 			</section>
 
 			<section className="approach section">
 				<div className="approach-intro">
-					<span className="eyebrow">HOW WE WORK</span>
+					<span className="eyebrow">{t('approach.page.eyebrow')}</span>
 					<h2>
-						Senior-led.
-						<br />
-						Specialist-delivered.
+						<Lines text={t('approach.page.title')} />
 					</h2>
-					<p>
-						ROASWELL is deliberately small. The person who shapes your strategy is the
-						one who executes it — so thinking stays sharp and accountability stays close.
-					</p>
-					<span className="approach-sign">No junior handoffs. No agency bloat.</span>
+					<p>{t('approach.page.text')}</p>
+					<span className="approach-sign">{t('approach.page.sign')}</span>
 				</div>
 				<div className="approach-steps">
-					{approach.map(item => (
+					{APPROACH_STEPS.map(item => (
 						<article key={item.number}>
 							<span className="large-index">{item.number}</span>
 							<div>
-								<h3>{item.title}</h3>
-								<p>{item.text}</p>
+								<h3>{t(item.titleKey)}</h3>
+								<p>{t(item.textKey)}</p>
 							</div>
 						</article>
 					))}
 					<div className="principle">
-						<span className="status-dot" /> SENIOR-LED. SPECIALIST-DELIVERED. ALWAYS ACCOUNTABLE.
+						<span className="status-dot" /> {t('approach.principle')}
 					</div>
 				</div>
 			</section>
 
 			<section className="section">
 				<div className="section-heading">
-					<span className="eyebrow">THE STUDIO</span>
-					<h2>Who’s behind the work.</h2>
-					<p>A short note on the people and the point of view.</p>
+					<span className="eyebrow">{t('approach.studio.eyebrow')}</span>
+					<h2>{t('approach.studio.title')}</h2>
+					<p>{t('approach.studio.lede')}</p>
 				</div>
-				<p className="prose">
-					ROASWELL was founded on a simple frustration: growth work that looked busy but
-					moved nothing. We built a studio around the opposite — fewer clients, senior
-					attention, and a measurement standard that keeps the numbers honest.
-				</p>
+				<p className="prose">{t('approach.studio.text')}</p>
 				<p className="prose" style={{ marginTop: 18 }}>
 					<Link to="/about" className="discipline-cta">
-						More about the studio <ArrowUpRight size={18} />
+						{t('approach.studio.more')} <ArrowUpRight size={18} />
 					</Link>
 				</p>
 			</section>

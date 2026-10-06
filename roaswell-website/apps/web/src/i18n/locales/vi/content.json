@@ -1,0 +1,720 @@
+{
+	"expertise": {
+		"seo-content": {
+			"name": "SEO & Nội dung",
+			"eyebrow": "01 / SEO & NỘI DUNG",
+			"headline": "Được tìm thấy.",
+			"headlineAccent": "Được lựa chọn.",
+			"summary": "Tìm kiếm nắm bắt ý định. Nội dung xây dựng nhu cầu. Chúng tôi biến câu hỏi thành lưu lượng chất lượng, và lưu lượng thành khách hàng, bằng chiến lược, biên tập và nền tảng kỹ thuật cộng hưởng theo thời gian.",
+			"capabilities": [
+				"Chiến lược SEO",
+				"Chiến lược nội dung",
+				"Nghiên cứu từ khóa",
+				"Biên tập",
+				"SEO on-page",
+				"Tối ưu nội dung"
+			],
+			"cta": "Khám phá SEO & Nội dung",
+			"subpages": [],
+			"body": [
+				{
+					"text": "Phần lớn lưu lượng tìm kiếm bị lãng phí vì trả lời sai câu hỏi, hoặc trả lời đúng câu hỏi một cách tệ. Chúng tôi bắt đầu từ ý định, tức là điều khán giả của bạn thực sự muốn hiểu, quyết định hoặc mua, rồi xây dựng từ đó."
+				},
+				{
+					"text": "Chiến lược trước sản phẩm"
+				},
+				{
+					"text": "Cỗ máy nội dung chỉ chạy khi mỗi phần đều có nhiệm vụ. Chúng tôi lập bản đồ các chủ đề thúc đẩy kết quả kinh doanh, ưu tiên theo cơ hội và sắp xếp công việc để đà cộng hưởng thay vì phân tán."
+				},
+				{
+					"text": "Hãy là câu trả lời mà khán giả của bạn đang tìm, chứ không chỉ là một kết quả nữa trên trang."
+				},
+				{
+					"text": "Nền tảng kỹ thuật vững chắc"
+				},
+				{
+					"text": "Khả năng thu thập dữ liệu, kiến trúc trang, Core Web Vitals, dữ liệu có cấu trúc. Công việc không hào nhoáng quyết định liệu nội dung tuyệt vời có cơ hội xếp hạng hay không. Chúng tôi coi nó là một phần của chiến lược, không phải điều nghĩ sau."
+				},
+				{
+					"text": "Sau đó chúng tôi đo lường. Dữ liệu Search Console, theo dõi thứ hạng, quy kết chuyển đổi, gắn với những kết quả kinh doanh thật sự quan trọng, không phải biểu đồ lưu lượng để khoe."
+				}
+			]
+		},
+		"meta-ads": {
+			"name": "Quảng cáo Meta",
+			"eyebrow": "02 / QUẢNG CÁO META",
+			"headline": "Biến sự chú ý",
+			"headlineAccent": "thành nhu cầu.",
+			"summary": "Nội dung sáng tạo kết nối, chiến dịch chuyển đổi. Chúng tôi kết hợp hiểu biết về đối tượng với thử nghiệm không ngừng để mỗi lượt hiển thị làm việc hiệu quả hơn trên Facebook, Instagram và toàn hệ sinh thái Meta.",
+			"capabilities": [
+				"Mạng xã hội trả phí",
+				"Thử nghiệm sáng tạo",
+				"Chiến lược đối tượng",
+				"Chiến dịch full-funnel",
+				"Tối ưu chuyển đổi",
+				"Tiếp thị lại"
+			],
+			"cta": "Khám phá Quảng cáo Meta",
+			"subpages": [],
+			"body": [
+				{
+					"text": "Sự chú ý thì dồi dào; nhu cầu thì không. Nhiệm vụ của mạng xã hội trả phí không phải là được nhìn thấy, mà là được nhớ, được cân nhắc và được chọn. Điều đó bắt đầu từ nội dung sáng tạo xứng đáng khiến người ta dừng cuộn."
+				},
+				{
+					"text": "Sáng tạo chính là nhắm mục tiêu"
+				},
+				{
+					"text": "Trên các nền tảng hiện đại, bạn hiển thị gì quan trọng hơn bạn hiển thị cho ai. Chúng tôi xây một hệ thống thử nghiệm sáng tạo có cấu trúc, gồm giả thuyết, biến thể và người thắng rõ ràng, để công việc sắc bén hơn qua mỗi chu kỳ."
+				},
+				{
+					"text": "Mỗi cú nhấp có một nhiệm vụ phải làm. Hãy khiến nó có giá trị."
+				},
+				{
+					"text": "Full-funnel, không chỉ nhấp cuối"
+				},
+				{
+					"text": "Nhận biết, cân nhắc, chuyển đổi, giữ chân. Chúng tôi thiết kế hành trình để mỗi giai đoạn nuôi dưỡng giai đoạn kế tiếp, và đo lường theo cách gia tăng để bạn biết khoản chi thực sự tạo ra gì."
+				},
+				{
+					"text": "Không có chuyện cài đặt rồi quên. Đánh giá sáng tạo hằng tuần, làm mới đối tượng và dịch chuyển ngân sách sang thứ đang hiệu quả, rời khỏi thứ không hiệu quả."
+				}
+			]
+		},
+		"google-ads": {
+			"name": "Quảng cáo Google",
+			"eyebrow": "03 / QUẢNG CÁO GOOGLE",
+			"headline": "Nắm bắt ý định",
+			"headlineAccent": "khi nó quan trọng.",
+			"summary": "Gặp ý định bằng sự chính xác. Từ tìm kiếm đến mua sắm, chúng tôi đặt ngân sách nơi có cơ hội và đo lường những gì quay lại bằng báo cáo thương mại rõ ràng.",
+			"capabilities": [
+				"Tìm kiếm trả phí",
+				"Quảng cáo Shopping",
+				"Performance Max",
+				"Tối ưu chuyển đổi",
+				"Chiến lược đặt giá thầu",
+				"Theo dõi & đo lường"
+			],
+			"cta": "Khám phá Quảng cáo Google",
+			"subpages": [],
+			"body": [
+				{
+					"text": "Tìm kiếm là khoảnh khắc ý định trở thành hành động. Câu hỏi là bạn có xuất hiện vào khoảnh khắc đó không, và khi xuất hiện, trải nghiệm có chuyển đổi không."
+				},
+				{
+					"text": "Ngân sách nơi có cơ hội"
+				},
+				{
+					"text": "Không phải từ khóa nào cũng xứng đáng với tiền của bạn. Chúng tôi xây chiến lược từ khóa quanh ý định thương mại và biên lợi nhuận, cắt lãng phí từ sự chồng chéo giữa từ khóa rộng và thương hiệu, và tập trung chi tiêu nơi lợi nhuận là thật."
+				},
+				{
+					"text": "Gặp ý định bằng sự chính xác. Đo lường những gì quay lại."
+				},
+				{
+					"text": "Đo lường bạn có thể tin cậy"
+				},
+				{
+					"text": "Theo dõi phía máy chủ, mô hình hóa giá trị chuyển đổi, quy kết sạch. Để những con số thúc đẩy quyết định phản ánh thực tế, không phải sự tự báo cáo của nền tảng."
+				},
+				{
+					"text": "Chiến lược đặt giá thầu được tinh chỉnh theo bài toán kinh tế của bạn, không phải mục tiêu mặc định. Chúng tôi thử nghiệm, theo dõi các trường hợp biên và giữ cho chi tiêu trung thực."
+				}
+			]
+		},
+		"motion-graphics": {
+			"name": "Motion Graphics",
+			"eyebrow": "04 / MOTION GRAPHICS",
+			"headline": "Dừng cuộn.",
+			"headlineAccent": "Đừng để bị bỏ lỡ.",
+			"summary": "Motion là cách nhanh nhất để giành sự chú ý và rõ ràng nhất để giải thích một ý tưởng lớn. Chúng tôi thiết kế quảng cáo, hoạt họa sản phẩm và phim thương hiệu được xây để thử nghiệm, không chỉ để ngưỡng mộ.",
+			"capabilities": [
+				"Sáng tạo mạng xã hội trả phí",
+				"Video giải thích",
+				"Hoạt họa sản phẩm",
+				"Phim thương hiệu",
+				"Motion web & giao diện",
+				"Tài sản thử nghiệm sáng tạo"
+			],
+			"cta": "Khám phá Motion Graphics",
+			"subpages": {
+				"paid-social-motion": {
+					"name": "Quảng cáo Motion cho mạng xã hội trả phí",
+					"eyebrow": "04.1 / QUẢNG CÁO MOTION CHO MẠNG XÃ HỘI TRẢ PHÍ",
+					"headline": "Giành lấy",
+					"headlineAccent": "giây đầu tiên.",
+					"summary": "Motion ngắn xây cho nguồn cấp: một móc câu dừng ngón tay, một thông điệp trúng đích và một hệ thống biến thể cho thấy ý tưởng nào xứng đáng nhận ngân sách tiếp theo.",
+					"sample": {
+						"title": "NOVA Sparkling: quảng cáo 10 giây, được tháo rời",
+						"note": "Một quảng cáo ý tưởng cho thương hiệu đồ uống hư cấu. Kéo dòng thời gian, rồi đọc bốn nhịp bên cạnh: móc câu, thông điệp, bằng chứng, lời kêu gọi."
+					},
+					"deliverables": [
+						{
+							"title": "Storyboard đặt móc câu lên đầu",
+							"text": "Ba đến năm ý tưởng mở đầu cho mỗi concept, mỗi ý được viết để tự giành chiến thắng giây đầu tiên."
+						},
+						{
+							"title": "Hoạt họa gốc và các bản cắt ngắn",
+							"text": "Một sản phẩm chính cộng các bản 6, 15 và 30 giây được cắt cho các vị trí bạn thật sự mua."
+						},
+						{
+							"title": "Mọi định dạng",
+							"text": "Các bản 9:16, 4:5 và 1:1, đã kiểm tra vùng an toàn cho Stories, Reels và nguồn cấp."
+						},
+						{
+							"title": "Bộ biến thể",
+							"text": "Móc câu, thông điệp và thẻ kết thúc có thể thay thế được tích hợp trong tệp để thử nghiệm không bao giờ có nghĩa là bắt đầu lại."
+						},
+						{
+							"title": "Phụ đề và âm thanh",
+							"text": "Phụ đề nhúng cho người xem không bật tiếng và thiết kế âm thanh cho người xem bật tiếng."
+						},
+						{
+							"title": "Đánh giá học hỏi",
+							"text": "Một bản đọc bằng văn bản về điều mỗi biến thể dạy chúng tôi và điều lô tiếp theo nên thay đổi."
+						}
+					],
+					"steps": [
+						{
+							"title": "Đọc tài khoản",
+							"text": "Chúng tôi bắt đầu từ dữ liệu hiệu suất: cái gì đang mệt mỏi, góc nào còn hút, sự rơi rụng xảy ra ở đâu."
+						},
+						{
+							"title": "Viết giả thuyết",
+							"text": "Mỗi concept nêu thông điệp nó kiểm chứng và con số nó phải làm dịch chuyển, trước khi bất cứ thứ gì được hoạt họa."
+						},
+						{
+							"title": "Xây hệ thống",
+							"text": "Hoạt họa gốc trước, rồi các biến thể được tạo từ cùng nguồn để diện mạo nhất quán."
+						},
+						{
+							"title": "Ra mắt và học hỏi",
+							"text": "Các biến thể cạnh tranh với nhau. Người thắng được mở rộng, người thua bị loại, và ghi chú nuôi dưỡng vòng kế tiếp."
+						}
+					],
+					"connects": [
+						{
+							"text": "Hệ thống thử nghiệm sáng tạo quyết định biến thể nào nhận ngân sách và khi nào ngừng."
+						},
+						{
+							"text": "Các bản cắt ngắn đồng thời là tài sản video cho YouTube và Performance Max."
+						}
+					],
+					"faqs": [
+						{
+							"question": "Chúng tôi có cần cung cấp cảnh quay không?",
+							"answer": "Không. Chúng tôi có thể làm từ tài sản thương hiệu, render sản phẩm, ảnh chụp màn hình, hoặc xây toàn bộ sản phẩm từ minh họa và kiểu chữ. Nếu bạn có cảnh quay, chúng tôi sẽ dùng."
+						},
+						{
+							"question": "Nên bắt đầu với bao nhiêu biến thể?",
+							"answer": "Đủ để học được điều gì đó, không nhiều đến mức mỗi cái đói ngân sách. Chúng tôi thường đề xuất một ma trận nhỏ giữa móc câu và thông điệp và thống nhất quy mô mỗi lô."
+						},
+						{
+							"question": "Các bạn có thể chạy cả phần media không?",
+							"answer": "Có, thông qua công việc của chúng tôi về Quảng cáo Meta và Quảng cáo Google. Bạn cũng có thể lấy tệp hoàn thiện và tự chạy."
+						},
+						{
+							"question": "Còn nhạc và lồng tiếng thì sao?",
+							"answer": "Chúng tôi dùng âm thanh có bản quyền hoặc nguyên bản và thống nhất quyền ngay từ đầu, gồm nơi nào và trong bao lâu quảng cáo được phát."
+						},
+						{
+							"question": "Các bạn đánh giá quảng cáo motion thế nào?",
+							"answer": "Theo chỉ số kinh doanh mà nó được brief, không phải vẻ ngoài. Mỗi concept được gắn với một con số trước khi được xây dựng."
+						}
+					]
+				},
+				"explainer-videos": {
+					"name": "Video giải thích",
+					"eyebrow": "04.2 / VIDEO GIẢI THÍCH",
+					"headline": "Biến điều phức tạp",
+					"headlineAccent": "thành hiển nhiên.",
+					"summary": "Một đoạn giải thích hoạt họa ngắn biến sản phẩm hay ý tưởng khó thành điều mà người mua có thể nhắc lại với sếp của họ.",
+					"sample": {
+						"title": "Từ sự chú ý rải rác đến khách hàng, trong 14 giây",
+						"note": "Một video giải thích ý tưởng về cách phễu hoạt động. Các chấm là con người. Xem bao nhiêu người vào, bao nhiêu người chuyển đổi và câu chuyện được mang đi chỉ bằng chuyển động."
+					},
+					"deliverables": [
+						{
+							"title": "Kịch bản và mạch kể",
+							"text": "Một kịch bản chặt chẽ xoay quanh điều duy nhất người xem phải tin vào cuối."
+						},
+						{
+							"title": "Style frame và storyboard",
+							"text": "Diện mạo và từng cảnh được thống nhất trên giấy trước khi hoạt họa bắt đầu."
+						},
+						{
+							"title": "Minh họa và hoạt họa riêng",
+							"text": "Hình ảnh nguyên bản xây cho sản phẩm của bạn, không phải biểu tượng stock được di chuyển."
+						},
+						{
+							"title": "Chỉ đạo lồng tiếng và âm thanh",
+							"text": "Tư vấn chọn diễn viên, chỉ đạo và một bản âm thanh đã mix, hoặc phiên bản chỉ có nhạc."
+						},
+						{
+							"title": "Bản cắt ngắn có phụ đề",
+							"text": "Phiên bản ngắn cho mạng xã hội và quảng cáo trả phí với phụ đề nhúng sẵn."
+						},
+						{
+							"title": "Sẵn sàng cho landing page",
+							"text": "Tệp nén, khung poster và bản chép lời để video giúp trang thay vì làm chậm nó."
+						}
+					],
+					"steps": [
+						{
+							"title": "Xác định niềm tin",
+							"text": "Ai đang xem, họ nghi ngờ điều gì, và họ nên tin điều gì khi kết thúc?"
+						},
+						{
+							"text": "Kịch bản và storyboard cùng nhau, để mỗi dòng có một hình ảnh xứng đáng với vị trí của nó.",
+							"title": "Viết và vẽ storyboard"
+						},
+						{
+							"title": "Thiết kế và hoạt họa",
+							"text": "Style frame trước, rồi hoạt họa trong các cảnh mô-đun dễ cập nhật."
+						},
+						{
+							"title": "Hoàn thiện và triển khai",
+							"text": "Âm thanh, phụ đề, bản cắt ngắn và đặt vào các trang và chiến dịch cần đến."
+						}
+					],
+					"connects": [
+						{
+							"text": "Nhúng vào các trang được xây để xếp hạng, với bản chép lời bổ sung cho nội dung thay vì giấu nó đi."
+						},
+						{
+							"text": "Một lời giải thích rõ ràng trên landing page là thứ biến cú nhấp trả phí thành yêu cầu."
+						}
+					],
+					"faqs": [
+						{
+							"question": "Video giải thích nên dài bao lâu?",
+							"answer": "Ngắn nhất mà ý tưởng cho phép. Phần lớn nằm giữa 45 và 90 giây, kèm bản cắt 15 và 30 giây cho mạng xã hội."
+						},
+						{
+							"question": "Các bạn có viết kịch bản không?",
+							"answer": "Có. Chúng tôi cũng có thể làm từ kịch bản của bạn hoặc brief thô và chuyển nó thành dạng phù hợp màn hình."
+						},
+						{
+							"question": "Nếu sản phẩm thay đổi thì sao?",
+							"answer": "Chúng tôi xây bằng các cảnh mô-đun để một tính năng có thể được thay hay cập nhật mà không phải làm lại cả phim."
+						},
+						{
+							"question": "Gồm bao nhiêu vòng chỉnh sửa?",
+							"answer": "Chúng tôi thống nhất số vòng theo từng dự án từ đầu và đặt chúng ở các giai đoạn việc thay đổi còn rẻ: kịch bản, bảng, rồi hoạt họa."
+						},
+						{
+							"question": "Video giải thích hiệu quả nhất ở đâu?",
+							"answer": "Landing page, bản trình bày bán hàng, onboarding, email và các vị trí trả phí cần một lời giới thiệu nhanh và rõ."
+						}
+					]
+				},
+				"product-animation": {
+					"name": "Hoạt họa sản phẩm",
+					"eyebrow": "04.3 / HOẠT HỌA SẢN PHẨM",
+					"headline": "Cho thấy nó",
+					"headlineAccent": "đang hoạt động.",
+					"summary": "Hình tách rời, thuyết minh tính năng và màn ra mắt giúp người mua thấy cách một thứ hoạt động trước khi họ có thể chạm vào.",
+					"sample": {
+						"title": "HALO: hình tách rời, năm bộ phận trong mười giây",
+						"note": "Một chiếc loa thông minh ý tưởng, được tạo ra cho trang này. Kéo dòng thời gian để tháo rời rồi lắp lại."
+					},
+					"deliverables": [
+						{
+							"title": "Vòng lặp hero",
+							"text": "Một hoạt họa lặp gọn gàng cho phần đầu trang sản phẩm hoặc landing page."
+						},
+						{
+							"title": "Hình tách rời và mặt cắt",
+							"text": "Câu chuyện bên trong: các bộ phận, các lớp và cách chúng khớp vào nhau."
+						},
+						{
+							"title": "Chuỗi làm nổi bật tính năng",
+							"text": "Mỗi tính năng một đoạn ngắn, mỗi đoạn truyền đạt rõ một ý."
+						},
+						{
+							"title": "Màn ra mắt",
+							"text": "Một sản phẩm điện ảnh cho thời khắc sản phẩm được công bố."
+						},
+						{
+							"title": "Xuất tệp sẵn sàng cho web",
+							"text": "Video nén và, khi hữu ích, hoạt họa vector nhẹ cho các trang nhanh."
+						},
+						{
+							"title": "Bản cắt mạng xã hội và ảnh tĩnh",
+							"text": "Phiên bản dọc và vuông cùng các khung hình chính cho bản trình bày, email và báo chí."
+						}
+					],
+					"steps": [
+						{
+							"title": "Thu thập nguồn",
+							"text": "CAD, render, ghi màn hình hay phác thảo, bất cứ thứ gì thể hiện sản phẩm tốt nhất."
+						},
+						{
+							"title": "Dàn dựng chuyển động",
+							"text": "Lên kế hoạch cho máy quay, thứ tự các bộ phận xuất hiện và điều duy nhất mỗi cảnh phải giải thích."
+						},
+						{
+							"title": "Ánh sáng và chất liệu",
+							"text": "Bề mặt, ánh phát sáng và bóng đổ được tinh chỉnh để cảm giác như vật thể hay giao diện thật."
+						},
+						{
+							"title": "Render và bàn giao",
+							"text": "Tệp cuối cho mọi nơi sản phẩm xuất hiện, kèm lựa chọn nhẹ cho web."
+						}
+					],
+					"connects": [
+						{
+							"text": "Cùng hoạt họa đó cắt cho nguồn cấp tạo ra quảng cáo sản phẩm giải thích thay vì chỉ thông báo."
+						},
+						{
+							"text": "Trang sản phẩm có minh họa rõ ràng giữ sự chú ý lâu hơn và cho tìm kiếm thứ gì đó để xếp hạng."
+						}
+					],
+					"faqs": [
+						{
+							"question": "Các bạn có cần tệp 3D không?",
+							"answer": "Chúng có ích, nhưng chúng tôi cũng có thể làm từ ảnh chụp, bản vẽ hoặc mô tả. Với sản phẩm phần mềm, chúng tôi hoạt họa từ giao diện của bạn."
+						},
+						{
+							"question": "Các bạn có thể hoạt họa phần mềm, không chỉ sản phẩm vật lý?",
+							"answer": "Có. Các màn duyệt giao diện, luồng dữ liệu và giải thích tính năng theo cùng tay nghề như phần cứng."
+						},
+						{
+							"question": "Nó có làm chậm trang của chúng tôi không?",
+							"answer": "Chúng tôi bàn giao tệp nén và, khi hợp lý, hoạt họa vector vẫn nhẹ. Chúng tôi thống nhất ngân sách dung lượng từ đầu."
+						},
+						{
+							"question": "Chúng tôi có thể dùng lại hoạt họa sau này không?",
+							"answer": "Có. Chúng tôi bàn giao nguồn theo lớp và thống nhất việc sử dụng để các đợt ra mắt sau xây trên cùng tài sản."
+						},
+						{
+							"question": "Trau chuốt đến mức nào?",
+							"answer": "Rõ ràng trước, đẹp sau. Nếu một cảnh trông tuyệt nhưng không giải thích được gì, nó bị cắt."
+						}
+					]
+				},
+				"brand-films": {
+					"name": "Phim thương hiệu",
+					"eyebrow": "04.4 / PHIM THƯƠNG HIỆU",
+					"headline": "Nói một lần.",
+					"headlineAccent": "Để nó bền lâu.",
+					"summary": "Những bộ phim điện ảnh, lấy kiểu chữ làm chủ đạo, mang quan điểm của thương hiệu và neo giữ một đợt ra mắt, một chiến dịch hay một trang chủ.",
+					"sample": {
+						"title": "ROASWELL: phim tiêu đề 16 giây trong ba chương",
+						"note": "Một phim ý tưởng cho chính studio của chúng tôi, thực hiện hoàn toàn bằng thiết kế chuyển động. Dùng các đánh dấu chương để nhảy giữa Signal, Intent và Return."
+					},
+					"deliverables": [
+						{
+							"title": "Ý tưởng và treatment",
+							"text": "Ý tưởng, giọng điệu và ngôn ngữ hình ảnh, được viết và vẽ trước khi sản xuất."
+						},
+						{
+							"title": "Kịch bản tuyên ngôn",
+							"text": "Những lời nghe giống thương hiệu và đủ ngắn để được nhớ."
+						},
+						{
+							"title": "Chỉ đạo lấy motion làm chủ đạo",
+							"text": "Kiểu chữ, minh họa hoặc kết hợp, được chọn cho hợp với câu chuyện và ngân sách."
+						},
+						{
+							"title": "Chỉ đạo âm thanh và âm nhạc",
+							"text": "Nhạc nền và thiết kế âm thanh đảm nhận một nửa công việc cảm xúc."
+						},
+						{
+							"title": "Phim gốc và các bản cắt ngắn",
+							"text": "Bản đầy đủ cộng các bản 30, 15 và 6 giây cho mọi kênh."
+						},
+						{
+							"title": "Bộ công cụ motion thương hiệu",
+							"text": "Chuyển cảnh, easing và kiểu tiêu đề để diện mạo tiếp tục trong mọi thứ về sau."
+						}
+					],
+					"steps": [
+						{
+							"title": "Tìm ra quan điểm",
+							"text": "Thương hiệu tin vào điều gì mà ngành của nó không tin? Đó là bộ phim."
+						},
+						{
+							"title": "Viết treatment",
+							"text": "Chương, nhịp điệu, khung hình chính và âm thanh, thống nhất trước khi hoạt họa dù một khung."
+						},
+						{
+							"title": "Thực hiện",
+							"text": "Thiết kế, hoạt họa và âm thanh được xây cùng nhau để bản dựng biết thở."
+						},
+						{
+							"title": "Phát hành và mở rộng",
+							"text": "Ra mắt bản gốc, rồi giữ ý tưởng sống bằng các bản cắt ngắn và bộ công cụ motion."
+						}
+					],
+					"connects": [
+						{
+							"text": "Các bản cắt ngắn trở thành lớp nhận biết của kế hoạch mạng xã hội trả phí full-funnel."
+						},
+						{
+							"text": "Các chiến dịch tìm kiếm thương hiệu và video có thứ đáng để nhấp vào."
+						},
+						{
+							"text": "Một bộ phim ở trung tâm của trung tâm nội dung cho người viết và liên kết một điểm để hướng tới."
+						}
+					],
+					"faqs": [
+						{
+							"question": "Các bạn có quay phim người đóng không?",
+							"answer": "Chúng tôi chỉ đạo các bộ phim lấy motion làm chủ đạo. Nếu dự án cần quay người đóng, chúng tôi lên kế hoạch cùng đối tác sản xuất và giữ chỉ đạo motion trong nhà."
+						},
+						{
+							"question": "Phim thương hiệu dài bao lâu?",
+							"answer": "Ý tưởng quyết định. Phần lớn dài từ 30 giây đến hai phút, kèm các bản ngắn hơn cắt từ bản gốc."
+						},
+						{
+							"question": "Ai sở hữu bộ phim?",
+							"answer": "Bạn. Chúng tôi thống nhất quyền sử dụng và bàn giao tệp nguồn theo lớp như một phần của dự án."
+						},
+						{
+							"question": "Phim có thể đặt trên trang chủ của chúng tôi không?",
+							"answer": "Có. Chúng tôi bàn giao một vòng lặp nhẹ và khung poster, còn phim đầy đủ chỉ cách một cú nhấp."
+						},
+						{
+							"question": "Chỉ dành cho thương hiệu lớn thôi sao?",
+							"answer": "Không. Một bộ phim kiểu chữ được viết chặt chẽ có thể tốn một phần nhỏ so với quay phim thật mà vẫn có cảm giác là một quan điểm."
+						}
+					]
+				},
+				"web-ui-motion": {
+					"name": "Motion web & giao diện",
+					"eyebrow": "04.5 / MOTION WEB & GIAO DIỆN",
+					"headline": "Giao diện",
+					"headlineAccent": "mang cảm giác sống động.",
+					"summary": "Câu chuyện cuộn, vi tương tác và chuyển trang giúp trang web dễ hiểu hơn và khó quên hơn, mà không đánh đổi tốc độ hay khả năng truy cập.",
+					"sample": {
+						"title": "Phòng thí nghiệm motion: bảy tương tác bạn có thể chạm vào",
+						"note": "Motion giao diện thật, đang hoạt động, không phải video. Bật tắt, rê chuột, kéo và nhấp. Mọi thứ ở đây đều tôn trọng cài đặt giảm chuyển động."
+					},
+					"deliverables": [
+						{
+							"title": "Nguyên tắc motion",
+							"text": "Token easing, thời gian và lò xo để mọi tương tác có cảm giác thuộc cùng một sản phẩm."
+						},
+						{
+							"title": "Chuyển cảnh cuộn và chuyển trang",
+							"text": "Chuỗi cuộn dẫn dắt bằng câu chuyện và chuyển tuyến dẫn hướng sự chú ý, như những gì có trên trang này."
+						},
+						{
+							"title": "Thư viện vi tương tác",
+							"text": "Nút, công tắc, menu, thẻ và biểu mẫu phản hồi có mục đích."
+						},
+						{
+							"title": "Mã sản xuất hoặc tệp xuất",
+							"text": "CSS và JavaScript sạch, hoặc tệp xuất Lottie và video, sẵn sàng cho stack của bạn."
+						},
+						{
+							"title": "Biến thể trợ năng",
+							"text": "Lựa chọn giảm chuyển động và hành vi tiêu điểm được thiết kế từ đầu, không vá sau."
+						},
+						{
+							"title": "Ngân sách hiệu suất",
+							"text": "Motion được đo so với thời gian tải và độ trễ tương tác trước khi phát hành."
+						}
+					],
+					"steps": [
+						{
+							"title": "Kiểm toán",
+							"text": "Tìm nơi motion làm rõ điều gì đó và nơi nó chỉ thêm nhiễu."
+						},
+						{
+							"title": "Đặt nguyên tắc",
+							"text": "Định nghĩa bộ từ vựng easing và thời gian để quyết định không còn theo từng trường hợp."
+						},
+						{
+							"title": "Làm nguyên mẫu trong trình duyệt",
+							"text": "Xây trong môi trường thật để những gì bạn duyệt là những gì được phát hành."
+						},
+						{
+							"title": "Phát hành và đo lường",
+							"text": "Ra mắt cùng ngân sách hiệu suất và theo dõi điều người dùng thực sự làm."
+						}
+					],
+					"connects": [
+						{
+							"text": "Motion nhanh và dễ truy cập hỗ trợ Core Web Vitals thay vì chống lại chúng."
+						},
+						{
+							"text": "Landing page có tương tác rõ ràng, nhanh biến cú nhấp trả phí thành hành động."
+						}
+					],
+					"faqs": [
+						{
+							"question": "Hoạt họa có làm chậm trang của chúng tôi không?",
+							"answer": "Không nếu được xây đúng cách. Chúng tôi đặt ngân sách hiệu suất, hoạt họa bằng các thuộc tính rẻ nhất và thử trên thiết bị thật."
+						},
+						{
+							"question": "Các bạn có viết mã không?",
+							"answer": "Có. Chúng tôi có thể bàn giao mã sẵn sàng sản xuất, hoặc bàn giao đặc tả và tệp xuất để đội của bạn triển khai."
+						},
+						{
+							"question": "Còn khả năng truy cập thì sao?",
+							"answer": "Mỗi motion có phương án giảm chuyển động, và hành vi bàn phím cùng trình đọc màn hình được thiết kế cùng hoạt họa."
+						},
+						{
+							"question": "Nó có chạy với CMS hay framework của chúng tôi không?",
+							"answer": "Chúng tôi làm việc với hầu hết stack hiện đại. Hãy cho biết bạn đang dùng gì và chúng tôi sẽ xác nhận cách tiếp cận tốt nhất."
+						},
+						{
+							"question": "Tôi có thể thấy nó hoạt động không?",
+							"answer": "Bạn đang xem nó. Chuỗi cuộn, bộ đếm và hiệu ứng hiện ra trên trang này được xây bằng cùng cách tiếp cận."
+						}
+					]
+				}
+			},
+			"body": [
+				{
+					"text": "Sáng tạo tĩnh xin sự chú ý. Motion giành lấy nó. Trong giây đầu tiên của nguồn cấp, chuyển động quyết định thông điệp có được một cơ hội hay không, và phần còn lại của ý tưởng chỉ có ý nghĩa nếu nó sống sót qua giây đó."
+				},
+				{
+					"text": "Xây cho nguồn cấp, không phải cho showreel"
+				},
+				{
+					"text": "Mỗi sản phẩm bắt đầu bằng một giả thuyết: móc câu, thông điệp, lý do để xem tiếp. Chúng tôi vẽ storyboard theo chỉ số cần làm dịch chuyển, rồi xây biến thể để hệ thống thử nghiệm có chất liệu thật để học."
+				},
+				{
+					"text": "Motion tuyệt vời không phải trang trí. Nó là lập luận được làm cho nhìn thấy."
+				},
+				{
+					"text": "Một ý tưởng, mọi bề mặt"
+				},
+				{
+					"text": "Cùng một concept đi từ bản cắt trả phí sáu giây tới video giải thích sản phẩm, hoạt họa landing page và phim ra mắt. Một ngôn ngữ thiết kế, một bộ tài sản, không phải dựng lại ý tưởng ba lần."
+				},
+				{
+					"text": "Vì motion nằm trong cùng studio với tìm kiếm và truyền thông trả phí, sáng tạo được brief bằng dữ liệu hiệu suất và được đánh giá bằng kết quả kinh doanh, không phải vẻ ngoài trên một showreel."
+				}
+			]
+		}
+	},
+	"caseStudies": {
+		"search-to-significance": {
+			"title": "Biến ý định tìm kiếm thành nhu cầu",
+			"discipline": "SEO & Nội dung",
+			"summary": "Cách một thương hiệu có quyết định mua cân nhắc xây dựng lại sự hiện diện tự nhiên quanh ý định thương mại, và biến lưu lượng đầu phễu thành pipeline chất lượng.",
+			"challenge": "Một thương hiệu B2B chuyên biệt xếp hạng cho các truy vấn thông tin mang lại lưu lượng nhưng không có pipeline. Nội dung rất nhiều, nhưng trả lời sai câu hỏi cho người mua ở sâu hơn trong phễu.",
+			"approach": "Chúng tôi lập lại bản đồ chủ đề quanh ý định mua, hợp nhất nội dung mỏng và xây lại lịch biên tập quanh những quyết định người mua thực sự đối mặt. Công việc SEO kỹ thuật, gồm kiến trúc trang, liên kết nội bộ và dữ liệu có cấu trúc, tạo chỗ cho nội dung mới xếp hạng.",
+			"outcome": "Lưu lượng tự nhiên tập trung lại vào các trang thương mại, các yêu cầu chất lượng tăng, và cỗ máy nội dung bắt đầu cộng hưởng thay vì phân tán. Công việc vẫn tiếp tục; hướng đi đã định.",
+			"metrics": [
+				{
+					"label": "Mục tiêu lưu lượng tự nhiên"
+				},
+				{
+					"label": "Mục tiêu khách hàng tiềm năng chất lượng"
+				}
+			]
+		},
+		"making-acquisition-work-harder": {
+			"title": "Khiến việc thu hút khách làm việc chăm chỉ hơn",
+			"discipline": "Quảng cáo Meta + Quảng cáo Google",
+			"summary": "Một thương hiệu DTC chi nhiều hơn để thu hút ít hơn. Một lần thiết lập lại dẫn dắt bởi sáng tạo trên mạng xã hội trả phí và tìm kiếm đã xây lại hiệu quả từ gốc.",
+			"challenge": "CPM tăng và sự mệt mỏi của sáng tạo đã đẩy chi phí thu hút khách vượt ngưỡng sinh lời. Tài khoản bận rộn nhưng không hiệu quả: ngân sách trải mỏng trên các đối tượng không còn chuyển đổi.",
+			"approach": "Chúng tôi hợp nhất tài khoản quanh hệ thống thử nghiệm sáng tạo có cấu trúc, xây lại trình tự full-funnel và điều chỉnh ngân sách tìm kiếm sang các cụm từ ý định cao, biên lợi nhuận cao. Theo dõi chuyển sang phía máy chủ để quyết định phản ánh thực tế.",
+			"outcome": "Chi phí thu hút khách giảm, lợi tức chi tiêu quảng cáo hồi phục, và nhịp thử nghiệm giúp sáng tạo tốt lên mỗi chu kỳ thay vì suy giảm. Thương hiệu giờ có một hệ thống, không chỉ có chiến dịch.",
+			"metrics": [
+				{
+					"label": "Mục tiêu lợi tức chi tiêu quảng cáo"
+				},
+				{
+					"label": "Mục tiêu chi phí thu hút khách"
+				}
+			]
+		},
+		"full-funnel-foundations": {
+			"title": "Nền tảng full-funnel cho đợt ra mắt mới",
+			"discipline": "SEO & Nội dung + Trả phí",
+			"summary": "Một đợt ra mắt sản phẩm cần vốn tự nhiên và đà trả phí cùng lúc. Chúng tôi xây cả hai, sắp xếp để cộng hưởng.",
+			"challenge": "Một đề xuất mới không có sự hiện diện trên tìm kiếm cũng chẳng có lịch sử trả phí. Rủi ro là ra mắt trong im lặng: chi trả phí mà không có gì hứng nhu cầu nó tạo ra.",
+			"approach": "Công việc nội dung và SEO kỹ thuật bắt đầu nhiều tháng trước khi ra mắt để xây uy tín theo chủ đề. Mạng xã hội trả phí gieo nhận biết và tiếp thị lại, trong khi tìm kiếm nắm bắt ý định do đợt ra mắt tạo ra. Đo lường được cài từ ngày đầu.",
+			"outcome": "Đợt ra mắt đáp xuống vốn tự nhiên sẵn có thay vì khoảng trống, chi tiêu trả phí chuyển đổi với tỷ lệ lành mạnh ngay từ đầu, và thương hiệu có khung đo lường để mở rộng.",
+			"metrics": [
+				{
+					"label": "Mục tiêu ROAS tháng ra mắt"
+				},
+				{
+					"label": "Vốn tự nhiên xây trước khi ra mắt"
+				}
+			]
+		}
+	},
+	"articles": {
+		"why-three-disciplines": {
+			"title": "Vì sao ba lĩnh vực này thuộc về nhau",
+			"excerpt": "Tìm kiếm, nội dung và truyền thông trả phí thường được bán như các hoạt động riêng rẽ. Đây là lý do coi chúng là một hệ thống tăng trưởng làm thay đổi kết quả.",
+			"category": "Chiến lược",
+			"body": [
+				{
+					"text": "Hầu hết agency tổ chức theo kênh vì kênh dễ bán. Một đội tìm kiếm. Một đội mạng xã hội. Một đội nội dung. Mỗi đội tối ưu góc của mình, và những khoảng trống giữa họ là nơi tăng trưởng rò rỉ."
+				},
+				{
+					"text": "Ý định, nhu cầu và sự tăng tốc"
+				},
+				{
+					"text": "Tìm kiếm nắm bắt ý định đã tồn tại. Nội dung xây dựng nhu cầu tạo ra nó. Truyền thông trả phí tăng tốc những gì hiệu quả, đẩy điều đã được kiểm chứng vào nhiều khoảnh khắc hơn, nhanh hơn. Rút một mắt xích và hệ thống mất đòn bẩy."
+				},
+				{
+					"text": "Một kênh đứng riêng là một chiến thuật. Các kênh nuôi dưỡng lẫn nhau là một hệ thống."
+				},
+				{
+					"text": "Khi cùng một tư duy định hình chiến lược từ khóa, lịch biên tập và sáng tạo trả phí, công việc cộng hưởng. Nội dung xếp hạng vì nó được xây cho điều đó. Quảng cáo trả phí chuyển đổi vì thông điệp đã giành được niềm tin một cách tự nhiên. Tìm kiếm hứng nhu cầu mà hai thứ kia tạo ra."
+				},
+				{
+					"text": "Điều thay đổi trong thực tế"
+				},
+				{
+					"text": "Ít bàn giao hơn. Một khung đo lường. Một ý tưởng sáng tạo có thể đi từ một bài đăng tự nhiên đến tài sản trả phí rồi đến landing page mà không phải dựng lại ba lần. Đó là lý do chúng tôi giữ nhỏ và do chuyên gia cấp cao dẫn dắt."
+				}
+			]
+		},
+		"creative-is-the-targeting": {
+			"title": "Sáng tạo chính là nhắm mục tiêu",
+			"excerpt": "Trên các nền tảng mạng xã hội trả phí hiện đại, bạn hiển thị gì quan trọng hơn bạn hiển thị cho ai. Ghi chú về việc xây dựng một hệ thống thử nghiệm bền vững.",
+			"category": "Truyền thông trả phí",
+			"body": [
+				{
+					"text": "Cuốn cẩm nang cũ đặt đối tượng lên đầu: xây dựng chân dung hoàn hảo, nhắm chính xác, và tin thuật toán sẽ tìm thêm người giống vậy. Thế giới đó phần lớn đã biến mất. Đối tượng rộng hơn, tín hiệu nhiễu hơn, và chính sáng tạo thực hiện việc lọc."
+				},
+				{
+					"text": "Sáng tạo quyết định ai ở lại"
+				},
+				{
+					"text": "Một móc câu dừng cuộn nói với đúng người và đẩy người sai đi. Đó là nhắm mục tiêu, chỉ là do thông điệp làm thay vì công cụ chọn đối tượng. Nghĩa là quy trình sáng tạo giờ là đòn bẩy."
+				},
+				{
+					"text": "Nếu hệ thống thử nghiệm của bạn không sắc bén hơn qua mỗi chu kỳ, sáng tạo của bạn đang suy giảm."
+				},
+				{
+					"text": "Xây hệ thống, không phải một lô"
+				},
+				{
+					"text": "Giả thuyết trước biến thể. Người thắng rõ ràng trước khi mở rộng. Một nhịp sinh ra học hỏi, không chỉ tài sản. Các thương hiệu thắng trên mạng xã hội trả phí là những thương hiệu có sáng tạo tốt lên đo được từng tháng, không phải những thương hiệu có ngân sách lớn nhất."
+				}
+			]
+		},
+		"measuring-what-comes-back": {
+			"title": "Đo lường những gì quay lại",
+			"excerpt": "Bảng điều khiển của nền tảng luôn nói rằng chi tiêu có hiệu quả. Đây là cách chúng tôi giữ cho các con số trung thực.",
+			"category": "Đo lường",
+			"body": [
+				{
+					"text": "Mỗi nền tảng quảng cáo đều báo cáo thành công của chính nó. Họ không hẳn nói dối, nhưng họ đo từ góc nhìn của mình, và góc nhìn đó rộng rãi với nền tảng."
+				},
+				{
+					"text": "Quy kết là một câu hỏi, không phải một cài đặt"
+				},
+				{
+					"text": "Câu hỏi không phải chiến dịch này có mang lại chuyển đổi hay không, mà là điều gì sẽ xảy ra nếu không có nó. Tính gia tăng, CAC tổng hợp và mô hình hóa giá trị chuyển đổi trả lời điều đó. Bảng điều khiển nhấp cuối thì không."
+				},
+				{
+					"text": "Nếu con số thúc đẩy quyết định đến từ nền tảng đang tiêu tiền, hãy coi nó là một tuyên bố, không phải sự thật."
+				},
+				{
+					"text": "Theo dõi phía máy chủ, một lớp dữ liệu sạch và một góc nhìn báo cáo gắn với kết quả kinh doanh, không phải sự tự báo cáo của nền tảng, là nơi quyết định nên được đưa ra. Nó kém dễ nghe hơn, và hữu ích hơn nhiều."
+				}
+			]
+		}
+	}
+}

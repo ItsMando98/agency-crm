@@ -1,5 +1,6 @@
 import type { Route } from './+types/home';
-import { seo, siteOriginFrom } from '@/lib/seo';
+import { metaContext, seo } from '@/lib/seo';
+import { getCaseStudies, getDisciplines, localeFromParams } from '@/lib/content.server';
 import { SiteHeader } from '@/components/site-header';
 import { SiteFooter } from '@/components/site-footer';
 import { Hero } from '@/components/home/hero';
@@ -12,20 +13,29 @@ import { Testimonials } from '@/components/home/testimonials';
 import { Contact } from '@/components/home/contact';
 import { buildOrganizationSchema, buildWebSiteSchema } from '@/lib/schema';
 
-export function meta({ matches, location }: Route.MetaArgs) {
-	const origin = siteOriginFrom(matches);
+export async function loader({ params }: Route.LoaderArgs) {
+	const locale = localeFromParams(params);
+	const [disciplines, caseStudies] = await Promise.all([getDisciplines(locale), getCaseStudies(locale)]);
+	return { disciplines, caseStudies };
+}
+
+export function meta({ matches, location, loaderData }: Route.MetaArgs) {
+	const { origin, locale, t } = metaContext(matches);
+	const site = { origin, locale };
 	return seo(
 		{ matches, location },
 		{
-			title: 'ROASWELL — Digital Growth Studio · SEO, Meta Ads & Google Ads',
-			description:
-				'Independent, senior-led digital growth studio. Specializing in SEO & Content, Meta Ads, Google Ads, and Motion Graphics. Focused execution, transparent measurement, no agency bloat.',
-			jsonLd: [buildOrganizationSchema(origin), buildWebSiteSchema(origin)],
+			title: t('meta.home.title'),
+			description: t('meta.home.description'),
+			jsonLd: [
+				buildOrganizationSchema(site, t, loaderData?.disciplines ?? []),
+				buildWebSiteSchema(site, t),
+			],
 		},
 	);
 }
 
-export default function HomePage() {
+export default function HomePage({ loaderData }: Route.ComponentProps) {
 	return (
 		<>
 			<SiteHeader />
@@ -33,8 +43,8 @@ export default function HomePage() {
 				<Hero />
 				<Marquee />
 				<Manifesto />
-				<GrowthSystem />
-				<Work />
+				<GrowthSystem disciplines={loaderData.disciplines} />
+				<Work caseStudies={loaderData.caseStudies} />
 				<Approach />
 				<Testimonials />
 				<Contact />

@@ -1,25 +1,21 @@
+import { Lines, useT } from '@/i18n/context';
+
 export function ExpertiseHero() {
+	const t = useT();
+
 	return (
 		<section className="page-hero">
 			<div className="hero-top">
 				<span className="eyebrow">
-					<i /> 01 / EXPERTISE
+					<i /> {t('expertise.eyebrow')}
 				</span>
-				<span className="hero-note">What we do — and why it belongs together.</span>
+				<span className="hero-note">{t('expertise.note')}</span>
 			</div>
 			<h1>
-				Four disciplines.
-				<br />
-				One growth system.
+				<Lines text={t('expertise.title')} />
 			</h1>
 			<p>
-				Search captures intent.
-				<br />
-				Content builds demand.
-				<br />
-				Paid media accelerates what works.
-				<br />
-				Motion makes it unforgettable.
+				<Lines text={t('expertise.lede')} />
 			</p>
 		</section>
 	);

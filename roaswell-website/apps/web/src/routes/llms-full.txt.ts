@@ -80,7 +80,7 @@ export function loader({ request }: Route.LoaderArgs) {
 	for (const a of articles) {
 		content += `### Article: ${a.title}\n`;
 		content += `- **URL:** ${origin}/insights/${a.slug}\n`;
-		content += `- **Category:** ${a.category} (${a.readTime})\n`;
+		content += `- **Category:** ${a.category} (${a.readMinutes} min read)\n`;
 		content += `- **Date:** ${a.date}\n`;
 		content += `- **Summary:** ${a.excerpt}\n\n`;
 		for (const block of a.body) {

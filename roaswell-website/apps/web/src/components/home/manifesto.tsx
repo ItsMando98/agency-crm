@@ -1,19 +1,15 @@
 import { ScrollWords } from '@/components/motion/primitives';
-
-const TEXT =
-	'Most agencies sell channels. We build growth systems. Search captures intent. Content builds demand. Paid media accelerates what works. Pull one out and the whole machine loses leverage. Together, they compound.';
+import { useT } from '@/i18n/context';
 
 export function Manifesto() {
+	const t = useT();
+
 	return (
 		<section className="manifesto section" aria-labelledby="manifesto-label">
 			<span className="eyebrow" id="manifesto-label">
-				<i /> THE POINT OF VIEW
+				<i /> {t('manifesto.eyebrow')}
 			</span>
-			<ScrollWords
-				className="manifesto-text"
-				text={TEXT}
-				highlight={['systems', 'compound', 'intent', 'demand', 'accelerates']}
-			/>
+			<ScrollWords className="manifesto-text" text={t('manifesto.text')} />
 		</section>
 	);
 }

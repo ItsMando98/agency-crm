@@ -1,9 +1,10 @@
 import { useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router';
 import { ArrowUpRight } from 'lucide-react';
 import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion';
-import { caseStudies, type CaseStudy } from '@/data/case-studies';
+import type { CaseStudy } from '@/data/case-studies';
 import { Counter, EASE_OUT } from '@/components/motion/primitives';
+import { Link, useI18n, useLocale, useT } from '@/i18n/context';
+import { usePrimaryCta } from '@/lib/use-root-data';
 
 const BARS = [18, 23, 22, 30, 38, 45, 41, 56, 62, 69, 77, 91];
 const FUNNEL = [100, 72, 44, 23];
@@ -80,11 +81,16 @@ function parseMetric(value: string) {
 }
 
 function CasePanel({ study, index }: { study: CaseStudy; index: number }) {
+	const t = useT();
+	const locale = useLocale();
+
 	return (
 		<Link to={`/work/${study.slug}`} className="case-panel">
 			<div className="case-top">
-				<span>{study.discipline.toUpperCase()}</span>
-				<span>0{index + 1} / ILLUSTRATIVE STUDY</span>
+				<span>{study.discipline.toLocaleUpperCase(locale)}</span>
+				<span>
+					0{index + 1} / {t(study.illustrative ? 'work.illustrativeStudy' : 'work.caseStudy')}
+				</span>
 			</div>
 			<CaseArt index={index} />
 			<h3>{study.title}</h3>
@@ -103,19 +109,26 @@ function CasePanel({ study, index }: { study: CaseStudy; index: number }) {
 				})}
 			</div>
 			<span className="case-cta">
-				Read the study <ArrowUpRight size={18} />
+				{t('work.read')} <ArrowUpRight size={18} />
 			</span>
 		</Link>
 	);
 }
 
-export function Work() {
+type WorkProps = {
+	caseStudies: CaseStudy[];
+};
+
+export function Work({ caseStudies }: WorkProps) {
+	const t = useT();
+	const { direction } = useI18n();
+	const cta = usePrimaryCta();
 	const ref = useRef<HTMLElement>(null);
 	const trackRef = useRef<HTMLDivElement>(null);
 	const reduced = useReducedMotion();
 	const [distance, setDistance] = useState(0);
 	const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end end'] });
-	const x = useTransform(scrollYProgress, [0, 1], [0, -distance]);
+	const x = useTransform(scrollYProgress, [0, 1], [0, direction === 'rtl' ? distance : -distance]);
 	const fill = useTransform(scrollYProgress, [0, 1], ['0%', '100%']);
 
 	useEffect(() => {
@@ -144,36 +157,39 @@ export function Work() {
 				<motion.div ref={trackRef} className="work-track" style={{ x: reduced ? 0 : x }}>
 					<div className="work-intro">
 						<span className="eyebrow">
-							<i /> 02 / THE WORK
+							<i /> {t('work.home.eyebrow')}
 						</span>
 						<h2 id="work-title">
-							Less noise.
+							{t('work.title')}
 							<br />
-							<em>More signal.</em>
+							<em>{t('work.titleAccent')}</em>
 						</h2>
-						<p>
-							Commercial outcomes, not vanity metrics. A look at how we think about performance.
-						</p>
-						<span className="work-hint">KEEP SCROLLING &rarr;</span>
-						<p className="work-disclaimer">
-							Illustrative campaign concepts and example targets, not verified client results. Client case studies
-							are published with permission.
-						</p>
+						<p>{t('work.home.lede')}</p>
+						<span className="work-hint">{t('work.hint')}</span>
+						{caseStudies.some(study => study.illustrative) && (
+							<p className="work-disclaimer">{t('work.disclaimer')}</p>
+						)}
 					</div>
 					{caseStudies.map((study, index) => (
 						<CasePanel key={study.slug} study={study} index={index} />
 					))}
 					<div className="work-outro">
 						<h3>
-							Your brand
+							{t('work.outro')}
 							<br />
-							<span>is next.</span>
+							<span>{t('work.outroAccent')}</span>
 						</h3>
-						<Link to="/contact" className="button primary">
-							Start a conversation <ArrowUpRight size={19} />
-						</Link>
+						{cta.external ? (
+							<a href={cta.href} className="button primary" target="_blank" rel="noopener noreferrer">
+								{t(cta.labelKey)} <ArrowUpRight size={19} />
+							</a>
+						) : (
+							<Link to={cta.href} className="button primary">
+								{t(cta.labelKey)} <ArrowUpRight size={19} />
+							</Link>
+						)}
 						<Link to="/work" className="discipline-cta">
-							All studies <ArrowUpRight size={18} />
+							{t('work.all')} <ArrowUpRight size={18} />
 						</Link>
 					</div>
 				</motion.div>

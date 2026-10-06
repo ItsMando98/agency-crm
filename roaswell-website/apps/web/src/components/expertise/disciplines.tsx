@@ -1,8 +1,12 @@
-import { Link } from 'react-router';
 import { ArrowUpRight } from 'lucide-react';
-import { disciplines } from '@/data/expertise';
+import type { Discipline } from '@/data/expertise';
+import { Link } from '@/i18n/context';
 
-export function ExpertiseDisciplines() {
+type ExpertiseDisciplinesProps = {
+	disciplines: Discipline[];
+};
+
+export function ExpertiseDisciplines({ disciplines }: ExpertiseDisciplinesProps) {
 	return (
 		<div>
 			{disciplines.map(d => (

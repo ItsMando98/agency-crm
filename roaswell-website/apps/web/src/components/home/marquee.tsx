@@ -8,9 +8,10 @@ import {
 	useTransform,
 	useVelocity,
 } from 'framer-motion';
+import { useT, type MessageKey } from '@/i18n/context';
 
-const ROW_ONE = ['SEO & CONTENT', 'META ADS', 'GOOGLE ADS', 'MOTION GRAPHICS'];
-const ROW_TWO = ['CREATIVE TESTING', 'INCREMENTALITY', 'SERVER-SIDE TRACKING', 'BLENDED CAC'];
+const ROW_ONE: MessageKey[] = ['hero.discipline.seo', 'hero.discipline.meta', 'hero.discipline.google', 'hero.discipline.motion'];
+const ROW_TWO: MessageKey[] = ['marquee.testing', 'marquee.incrementality', 'marquee.tracking', 'marquee.cac'];
 
 function wrapPercent(value: number) {
 	return ((((value + 50) % 50) + 50) % 50) - 50;
@@ -53,10 +54,12 @@ function MarqueeRow({ items, direction, outlined = false }: MarqueeRowProps) {
 }
 
 export function Marquee() {
+	const t = useT();
+
 	return (
-		<section className="marquee" aria-label="Capabilities">
-			<MarqueeRow items={ROW_ONE} direction={-1} />
-			<MarqueeRow items={ROW_TWO} direction={1} outlined />
+		<section className="marquee" aria-label={t('marquee.label')}>
+			<MarqueeRow items={ROW_ONE.map(key => t(key))} direction={-1} />
+			<MarqueeRow items={ROW_TWO.map(key => t(key))} direction={1} outlined />
 		</section>
 	);
 }
