@@ -12,8 +12,6 @@ import {
 } from 'framer-motion';
 import { disciplines } from '@/data/expertise';
 import { Magnetic } from '@/components/motion/primitives';
-import { SceneCanvas } from '@/components/motion/scene-canvas';
-import { footerScene } from '@/lib/scenes/footer';
 import { clamp } from '@/lib/motion-math';
 
 const WORD = 'ROASWELL';
@@ -113,19 +111,6 @@ function FooterWordmark({ progress }: { progress: MotionValue<number> }) {
 	);
 }
 
-function FooterVideo({ progress }: { progress: MotionValue<number> }) {
-	const y = useTransform(progress, [0, 1], ['-8%', '0%']);
-
-	return (
-		<div className="footer-media" aria-hidden="true">
-			<motion.div className="footer-video" style={{ y }}>
-				<SceneCanvas scene={footerScene} fit="cover" maxDpr={1.5} className="footer-canvas" />
-			</motion.div>
-			<div className="footer-media-fade" />
-		</div>
-	);
-}
-
 function BackToTop() {
 	const reduced = useReducedMotion();
 	const { scrollYProgress } = useScroll();
@@ -153,7 +138,6 @@ export function SiteFooter() {
 
 	return (
 		<footer ref={ref} className="site-footer">
-			<FooterVideo progress={scrollYProgress} />
 
 			<div className="footer-inner">
 				<div className="footer-cta">
