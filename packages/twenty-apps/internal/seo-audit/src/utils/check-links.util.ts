@@ -1,12 +1,6 @@
 import { type CrawlResult } from 'src/types/crawl-result';
 import { type Finding } from 'src/types/finding';
-
-const IGNORED_CLIENT_ERROR_STATUS_CODES = [401, 403, 429];
-
-const isBrokenStatusCode = (statusCode: number): boolean =>
-  statusCode >= 400 &&
-  statusCode < 500 &&
-  !IGNORED_CLIENT_ERROR_STATUS_CODES.includes(statusCode);
+import { isBrokenStatusCode } from 'src/utils/is-broken-status-code.util';
 
 export const checkLinks = ({
   pages,

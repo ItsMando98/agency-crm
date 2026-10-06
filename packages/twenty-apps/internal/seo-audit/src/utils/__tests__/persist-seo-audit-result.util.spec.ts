@@ -1,6 +1,7 @@
 import { describe, expect, it, vi } from 'vitest';
 
 import { buildCrawledPage } from 'src/__mocks__/build-crawled-page.mock';
+import { buildScoredKeyword } from 'src/__mocks__/build-scored-keyword.mock';
 import { persistSeoAuditResult } from 'src/utils/persist-seo-audit-result.util';
 import { type SeoAuditResult } from 'src/types/seo-audit-result';
 
@@ -22,6 +23,8 @@ const buildResult = (overrides: Partial<SeoAuditResult> = {}): SeoAuditResult =>
       affectedUrls: ['https://example.com/a'],
     },
   ],
+  marketData: null,
+  keywords: [],
   reportMarkdown: '# Report',
   ...overrides,
 });
@@ -71,5 +74,45 @@ describe('persistSeoAuditResult', () => {
     });
 
     expect(mutation).toHaveBeenCalledTimes(1);
+  });
+
+  it('stores keyword opportunities and market data fields', async () => {
+    const { client, mutation } = buildClient();
+
+    await persistSeoAuditResult({
+      client,
+      auditId: 'audit-1',
+      result: buildResult({
+        keywords: [buildScoredKeyword({ keyword: 'kündigungsfrist' })],
+        marketData: {
+          rankings: { totalKeywords: 6500, estimatedMonthlyTraffic: 54000, positionCounts: null, keywords: [] },
+          backlinks: null,
+          backlinkTargets: [],
+          competitors: [],
+          costUsd: 0.31,
+          notes: [],
+        },
+      }),
+      finishedAt: new Date('2026-10-06T10:00:00Z'),
+    });
+
+    const calls = mutation.mock.calls.map(([payload]) => Object.keys(payload)[0]);
+
+    expect(calls).toEqual([
+      'createSeoAuditPages',
+      'createSeoAuditTasks',
+      'createSeoKeywordOpportunities',
+      'updateSeoAudit',
+    ]);
+    expect(mutation.mock.calls[2][0].createSeoKeywordOpportunities.__args.data[0]).toMatchObject({
+      seoAuditId: 'audit-1',
+      keyword: 'kündigungsfrist',
+      category: 'NEAR_PAGE_ONE',
+    });
+    expect(mutation.mock.calls[3][0].updateSeoAudit.__args.data).toMatchObject({
+      organicKeywordCount: 6500,
+      estimatedMonthlyTraffic: 54000,
+      marketDataCostUsd: 0.31,
+    });
   });
 });

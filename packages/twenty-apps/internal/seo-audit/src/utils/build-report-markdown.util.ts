@@ -2,8 +2,11 @@ import { REPORT_LABELS } from 'src/constants/report-labels.const';
 import { type AreaScores } from 'src/types/area-scores';
 import { type AuditLanguage } from 'src/types/audit-language';
 import { type AuditTask } from 'src/types/audit-task';
+import { type MarketData } from 'src/types/market-data';
 import { type PageAssessment } from 'src/types/page-assessment';
+import { type ScoredKeyword } from 'src/types/scored-keyword';
 import { type SeoArea } from 'src/types/seo-area';
+import { buildMarketReportSection } from 'src/utils/build-market-report-section.util';
 import { getTaskHorizon } from 'src/utils/get-task-horizon.util';
 
 type BuildReportMarkdownParams = {
@@ -17,6 +20,9 @@ type BuildReportMarkdownParams = {
   tasks: AuditTask[];
   assessments: PageAssessment[];
   contentQualityAssessed: boolean;
+  marketData?: MarketData | null;
+  keywords?: ScoredKeyword[];
+  isMarketDataConfigured?: boolean;
 };
 
 const MAX_URLS_SHOWN_PER_TASK = 5;
@@ -35,6 +41,9 @@ export const buildReportMarkdown = ({
   tasks,
   assessments,
   contentQualityAssessed,
+  marketData = null,
+  keywords = [],
+  isMarketDataConfigured = false,
 }: BuildReportMarkdownParams): string => {
   const labels = REPORT_LABELS[language];
   const lines: string[] = [
@@ -46,6 +55,10 @@ export const buildReportMarkdown = ({
 
   if (!contentQualityAssessed) {
     lines.push(`> ${labels.contentNotAssessed}`, '');
+  }
+
+  if (!isMarketDataConfigured) {
+    lines.push(`> ${labels.marketDataNotConfigured}`, '');
   }
 
   const rankedAreas = (Object.entries(areaScores) as [SeoArea, number][]).sort(
@@ -127,6 +140,10 @@ export const buildReportMarkdown = ({
         );
       }
     });
+  }
+
+  if (marketData !== null) {
+    lines.push(...buildMarketReportSection({ marketData, keywords, language }));
   }
 
   const reviewUrls = assessments

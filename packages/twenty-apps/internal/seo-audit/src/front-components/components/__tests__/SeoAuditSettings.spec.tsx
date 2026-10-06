@@ -42,7 +42,7 @@ const variable = (overrides: Record<string, unknown>) => ({
   ...overrides,
 });
 
-const buildVariables = (apiKeyValue = '') => [
+const buildVariables = (apiKeyValue = '', dataForSeoLogin = '', dataForSeoPassword = '') => [
   variable({
     key: 'ANTHROPIC_API_KEY',
     label: 'Anthropic API key',
@@ -61,6 +61,27 @@ const buildVariables = (apiKeyValue = '') => [
     ],
   }),
   variable({
+    key: 'DATAFORSEO_LOGIN',
+    label: 'DataForSEO API login',
+    value: dataForSeoLogin,
+  }),
+  variable({
+    key: 'DATAFORSEO_PASSWORD',
+    label: 'DataForSEO API password',
+    isSecret: true,
+    value: dataForSeoPassword,
+  }),
+  variable({
+    key: 'SEO_AUDIT_MARKET',
+    label: 'Market',
+    type: 'SELECT',
+    value: 'DE',
+    options: [
+      { label: 'Germany', value: 'DE' },
+      { label: 'Austria', value: 'AT' },
+    ],
+  }),
+  variable({
     key: 'SEO_AUDIT_MAX_PAGES',
     label: 'Maximum pages per audit',
     type: 'NUMBER',
@@ -70,11 +91,13 @@ const buildVariables = (apiKeyValue = '') => [
 
 const givenWorkspace = ({
   apiKeyValue = '',
+  dataForSeoLogin = '',
+  dataForSeoPassword = '',
   audits = [] as unknown[],
   hasFinishedAudit = false,
 } = {}) => {
   mocks.metadataQuery.mockResolvedValue({
-    findOneApplication: { id: 'app-1', applicationVariables: buildVariables(apiKeyValue) },
+    findOneApplication: { id: 'app-1', applicationVariables: buildVariables(apiKeyValue, dataForSeoLogin, dataForSeoPassword) },
   });
   mocks.metadataMutation.mockResolvedValue({});
   mocks.coreQuery.mockImplementation(async (query: { seoAudits: { __args: { filter?: unknown } } }) =>
@@ -106,6 +129,7 @@ describe('SeoAuditSettings', () => {
     render(<SeoAuditSettings />);
 
     expect((await stepStatus('Connect Anthropic')).getByText('To do')).toBeTruthy();
+    expect((await stepStatus('Connect DataForSEO')).getByText('Optional')).toBeTruthy();
     expect((await stepStatus('Choose defaults')).getByText('Optional')).toBeTruthy();
     expect((await stepStatus('Run your first audit')).getByText('To do')).toBeTruthy();
     expect(screen.getByText('0 of 2 required steps done')).toBeTruthy();
@@ -119,6 +143,41 @@ describe('SeoAuditSettings', () => {
     expect((await stepStatus('Connect Anthropic')).getByText('Done')).toBeTruthy();
     expect((await stepStatus('Run your first audit')).getByText('Done')).toBeTruthy();
     expect(screen.queryByText('No Anthropic key yet')).toBeNull();
+  });
+
+  it('marks DataForSEO as done once login and password are stored', async () => {
+    givenWorkspace({ dataForSeoLogin: 'agency@example.com', dataForSeoPassword: '••••' });
+    render(<SeoAuditSettings />);
+
+    expect((await stepStatus('Connect DataForSEO')).getByText('Done')).toBeTruthy();
+  });
+
+  it('keeps DataForSEO optional when only the login is stored', async () => {
+    givenWorkspace({ dataForSeoLogin: 'agency@example.com' });
+    render(<SeoAuditSettings />);
+
+    expect((await stepStatus('Connect DataForSEO')).getByText('Optional')).toBeTruthy();
+  });
+
+  it('saves the DataForSEO password as a secret variable', async () => {
+    givenWorkspace({ dataForSeoLogin: 'agency@example.com' });
+    const user = userEvent.setup();
+
+    render(<SeoAuditSettings />);
+
+    const passwordInput = await screen.findByLabelText('DataForSEO API password');
+
+    await user.type(passwordInput, 'api-secret');
+    await user.click(within(passwordInput.parentElement as HTMLElement).getByRole('button', { name: 'Save' }));
+
+    await waitFor(() =>
+      expect(mocks.metadataMutation).toHaveBeenCalledWith({
+        updateOneApplicationVariable: {
+          __args: { key: 'DATAFORSEO_PASSWORD', value: 'api-secret', applicationId: 'app-1' },
+        },
+      }),
+    );
+    expect((await stepStatus('Connect DataForSEO')).getByText('Done')).toBeTruthy();
   });
 
   it('saves the API key and marks the step as done', async () => {

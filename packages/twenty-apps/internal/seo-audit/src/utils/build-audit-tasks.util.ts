@@ -13,17 +13,22 @@ export const buildAuditTasks = (
     .map((finding) => {
       const definition = FINDING_CATALOG[finding.ruleId];
       const text = definition.text[language];
+      const count = finding.count ?? finding.affectedUrls.length;
+      const details = finding.details ?? [];
 
       return {
         ruleId: finding.ruleId,
-        name: text.title.replace('{count}', String(finding.affectedUrls.length)),
-        description: text.recommendation,
+        name: text.title.replace('{count}', String(count)),
+        description:
+          details.length > 0
+            ? `${text.recommendation}\n\n${details.map((detail) => `- ${detail}`).join('\n')}`
+            : text.recommendation,
         priority: definition.priority,
         effort: definition.effort,
         area: definition.area,
         source: definition.source,
         affectedUrls: finding.affectedUrls.slice(0, MAX_AFFECTED_URLS_PER_TASK),
-        affectedCount: finding.affectedUrls.length,
+        affectedCount: count,
       };
     })
     .sort(

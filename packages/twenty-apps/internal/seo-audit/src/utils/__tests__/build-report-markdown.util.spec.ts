@@ -95,4 +95,32 @@ describe('buildReportMarkdown', () => {
 
     expect(report).toContain('- ... 7 more');
   });
+
+  it('hints at DataForSEO when it is not configured', () => {
+    const report = buildReportMarkdown({ ...baseParams, language: 'EN', tasks: [] });
+
+    expect(report).toContain('DataForSEO is not set up');
+    expect(report).not.toContain('## Visibility and market');
+  });
+
+  it('adds the market section when market data exists', () => {
+    const report = buildReportMarkdown({
+      ...baseParams,
+      language: 'EN',
+      tasks: [],
+      isMarketDataConfigured: true,
+      marketData: {
+        rankings: { totalKeywords: 42, estimatedMonthlyTraffic: 100, positionCounts: null, keywords: [] },
+        backlinks: null,
+        backlinkTargets: [],
+        competitors: [],
+        costUsd: 0.1,
+        notes: [],
+      },
+    });
+
+    expect(report).toContain('## Visibility and market');
+    expect(report).toContain('Keywords ranking on Google: 42');
+    expect(report).not.toContain('DataForSEO is not set up');
+  });
 });

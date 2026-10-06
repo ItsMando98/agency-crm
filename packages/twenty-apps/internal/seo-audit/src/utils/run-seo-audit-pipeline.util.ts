@@ -1,10 +1,20 @@
 import type Anthropic from '@anthropic-ai/sdk';
 
+import { assessKeywords } from 'src/anthropic-client/assess-keywords';
 import { assessPage } from 'src/anthropic-client/assess-page';
 import { assessSiteProfile } from 'src/anthropic-client/assess-site-profile';
 import { CLASSIFIER_CONCURRENCY } from 'src/constants/classifier.const';
+import { DEFAULT_MARKET } from 'src/constants/dataforseo.const';
+import { MAX_CLASSIFIED_KEYWORDS } from 'src/constants/seo-thresholds.const';
+import { collectMarketData } from 'src/dataforseo-client/collect-market-data';
 import { type AuditLanguage } from 'src/types/audit-language';
+import { type BacklinkTarget } from 'src/types/backlink-target';
+import { type DataForSeoCredentials } from 'src/types/data-for-seo-credentials';
+import { type KeywordAssessment } from 'src/types/keyword-assessment';
+import { type Market } from 'src/types/market';
+import { type MarketData } from 'src/types/market-data';
 import { type PageAssessment } from 'src/types/page-assessment';
+import { type ScoredKeyword } from 'src/types/scored-keyword';
 import { type SeoAuditResult } from 'src/types/seo-audit-result';
 import { type SiteProfile } from 'src/types/site-profile';
 import { buildAuditTasks } from 'src/utils/build-audit-tasks.util';
@@ -15,7 +25,9 @@ import { computeOverallScore } from 'src/utils/compute-overall-score.util';
 import { crawlWebsite } from 'src/utils/crawl-website.util';
 import { isAuditablePage } from 'src/utils/is-auditable-page.util';
 import { normalizeAuditDomain } from 'src/utils/normalize-audit-domain.util';
+import { resolveBrokenBacklinkTargets } from 'src/utils/resolve-broken-backlink-targets.util';
 import { runWithConcurrency } from 'src/utils/run-with-concurrency.util';
+import { scoreKeywords } from 'src/utils/score-keywords.util';
 import { scoreToGrade } from 'src/utils/score-to-grade.util';
 
 type RunSeoAuditPipelineParams = {
@@ -23,15 +35,22 @@ type RunSeoAuditPipelineParams = {
   language: AuditLanguage;
   // Without a client the audit runs on measured rules only.
   anthropicClient: Anthropic | null;
+  // Without credentials the audit skips rankings, keywords and backlinks.
+  dataForSeoCredentials?: DataForSeoCredentials | null;
+  market?: Market;
   maxPages?: number;
   fetchImplementation?: typeof fetch;
   now?: Date;
 };
 
+const MAX_PAGE_TITLES_IN_CONTEXT = 20;
+
 export const runSeoAuditPipeline = async ({
   domain,
   language,
   anthropicClient,
+  dataForSeoCredentials = null,
+  market = DEFAULT_MARKET,
   maxPages,
   fetchImplementation,
   now = new Date(),
@@ -39,30 +58,81 @@ export const runSeoAuditPipeline = async ({
   const origin = normalizeAuditDomain(domain);
   const crawlResult = await crawlWebsite({ origin, maxPages, fetchImplementation });
   const auditablePages = crawlResult.pages.filter(isAuditablePage);
+  const [homepage] = crawlResult.pages;
 
-  let siteProfile: SiteProfile | null = null;
-  let assessments: PageAssessment[] = [];
+  const [siteProfile, assessments, marketData] = await Promise.all([
+    anthropicClient !== null && isAuditablePage(homepage)
+      ? assessSiteProfile({ client: anthropicClient, homepage })
+      : Promise.resolve<SiteProfile | null>(null),
+    anthropicClient === null
+      ? Promise.resolve<PageAssessment[]>([])
+      : runWithConcurrency(auditablePages, CLASSIFIER_CONCURRENCY, (page) =>
+          assessPage({ client: anthropicClient, page }),
+        ).then((results) =>
+          results.filter((result): result is PageAssessment => result !== null),
+        ),
+    dataForSeoCredentials === null
+      ? Promise.resolve<MarketData | null>(null)
+      : collectMarketData({
+          credentials: dataForSeoCredentials,
+          origin: crawlResult.origin,
+          market,
+          fetchImplementation,
+        }),
+  ]);
 
-  if (anthropicClient !== null) {
-    const [homepage] = crawlResult.pages;
+  let keywords: ScoredKeyword[] = [];
 
-    [siteProfile, assessments] = await Promise.all([
-      isAuditablePage(homepage)
-        ? assessSiteProfile({ client: anthropicClient, homepage })
-        : Promise.resolve(null),
-      runWithConcurrency(auditablePages, CLASSIFIER_CONCURRENCY, (page) =>
-        assessPage({ client: anthropicClient, page }),
-      ).then((results) =>
-        results.filter((result): result is PageAssessment => result !== null),
-      ),
-    ]);
+  if (marketData?.rankings) {
+    const classifiedKeywords = [...marketData.rankings.keywords]
+      .sort((first, second) => second.searchVolume - first.searchVolume)
+      .slice(0, MAX_CLASSIFIED_KEYWORDS);
+    let keywordAssessments: KeywordAssessment[] = [];
+
+    if (anthropicClient === null) {
+      marketData.notes.push('Keyword relevance was not judged because no Anthropic key is configured.');
+    } else {
+      keywordAssessments = await assessKeywords({
+        client: anthropicClient,
+        keywords: classifiedKeywords.map((keyword) => keyword.keyword),
+        context: {
+          title: homepage.title,
+          metaDescription: homepage.metaDescription,
+          businessModel: siteProfile?.businessModel ?? null,
+          pageTitles: auditablePages
+            .map((page) => page.title)
+            .filter((title): title is string => title !== null)
+            .slice(0, MAX_PAGE_TITLES_IN_CONTEXT),
+        },
+      });
+    }
+
+    keywords = scoreKeywords(classifiedKeywords, keywordAssessments);
   }
 
-  const findings = buildFindings({ crawlResult, assessments, siteProfile });
+  const brokenBacklinkTargets: BacklinkTarget[] =
+    marketData !== null && marketData.backlinkTargets.length > 0
+      ? await resolveBrokenBacklinkTargets({
+          targets: marketData.backlinkTargets,
+          crawlResult,
+          fetchImplementation,
+        })
+      : [];
+
+  const findings = buildFindings({
+    crawlResult,
+    assessments,
+    siteProfile,
+    language,
+    marketData,
+    keywords,
+    brokenBacklinkTargets,
+  });
   const areaScores = computeAreaScores({
     findings,
     assessments,
     pageCount: crawlResult.pages.length,
+    keywords,
   });
   const score = computeOverallScore(areaScores);
   const grade = scoreToGrade(score);
@@ -78,6 +148,9 @@ export const runSeoAuditPipeline = async ({
     tasks,
     assessments,
     contentQualityAssessed: assessments.length > 0,
+    marketData,
+    keywords,
+    isMarketDataConfigured: dataForSeoCredentials !== null,
   });
 
   return {
@@ -87,6 +160,8 @@ export const runSeoAuditPipeline = async ({
     pages: crawlResult.pages,
     assessments,
     tasks,
+    marketData,
+    keywords,
     reportMarkdown,
   };
 };

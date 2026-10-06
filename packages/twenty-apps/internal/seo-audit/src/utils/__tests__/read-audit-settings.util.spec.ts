@@ -4,13 +4,17 @@ import { readAuditSettings } from 'src/utils/read-audit-settings.util';
 
 describe('readAuditSettings', () => {
   it('falls back to German and the maximum page count', () => {
-    expect(readAuditSettings({})).toEqual({ defaultLanguage: 'DE', maxPages: 60 });
+    expect(readAuditSettings({})).toEqual({
+      defaultLanguage: 'DE',
+      maxPages: 60,
+      market: 'DE',
+    });
   });
 
   it('reads language and page count from the variables', () => {
     expect(
       readAuditSettings({ SEO_AUDIT_DEFAULT_LANGUAGE: ' EN ', SEO_AUDIT_MAX_PAGES: '25' }),
-    ).toEqual({ defaultLanguage: 'EN', maxPages: 25 });
+    ).toEqual({ defaultLanguage: 'EN', maxPages: 25, market: 'DE' });
   });
 
   it('clamps the page count into the allowed range', () => {
@@ -24,5 +28,11 @@ describe('readAuditSettings', () => {
 
   it('ignores unknown languages', () => {
     expect(readAuditSettings({ SEO_AUDIT_DEFAULT_LANGUAGE: 'FR' }).defaultLanguage).toBe('DE');
+  });
+
+  it('reads the market and ignores unknown ones', () => {
+    expect(readAuditSettings({ SEO_AUDIT_MARKET: 'CH' }).market).toBe('CH');
+    expect(readAuditSettings({ SEO_AUDIT_MARKET: 'XX' }).market).toBe('DE');
+    expect(readAuditSettings({ SEO_AUDIT_MARKET: 'toString' }).market).toBe('DE');
   });
 });

@@ -1,6 +1,10 @@
+import { type AuditLanguage } from 'src/types/audit-language';
+import { type BacklinkTarget } from 'src/types/backlink-target';
 import { type CrawlResult } from 'src/types/crawl-result';
 import { type Finding } from 'src/types/finding';
+import { type MarketData } from 'src/types/market-data';
 import { type PageAssessment } from 'src/types/page-assessment';
+import { type ScoredKeyword } from 'src/types/scored-keyword';
 import { type SiteProfile } from 'src/types/site-profile';
 import { checkContentQuality } from 'src/utils/check-content-quality.util';
 import { checkCrawlability } from 'src/utils/check-crawlability.util';
@@ -9,17 +13,26 @@ import { checkOnPage } from 'src/utils/check-on-page.util';
 import { checkPerformance } from 'src/utils/check-performance.util';
 import { checkSecurity } from 'src/utils/check-security.util';
 import { checkStructuredData } from 'src/utils/check-structured-data.util';
+import { checkVisibility } from 'src/utils/check-visibility.util';
 
 type BuildFindingsParams = {
   crawlResult: CrawlResult;
   assessments: PageAssessment[];
   siteProfile: SiteProfile | null;
+  language: AuditLanguage;
+  marketData?: MarketData | null;
+  keywords?: ScoredKeyword[];
+  brokenBacklinkTargets?: BacklinkTarget[];
 };
 
 export const buildFindings = ({
   crawlResult,
   assessments,
   siteProfile,
+  language,
+  marketData = null,
+  keywords = [],
+  brokenBacklinkTargets = [],
 }: BuildFindingsParams): Finding[] => [
   ...checkCrawlability(crawlResult),
   ...checkOnPage(crawlResult.pages),
@@ -28,4 +41,5 @@ export const buildFindings = ({
   ...checkPerformance(crawlResult.pages),
   ...checkStructuredData(crawlResult.pages, siteProfile),
   ...checkContentQuality(crawlResult.pages, assessments),
+  ...checkVisibility({ marketData, keywords, brokenBacklinkTargets, language }),
 ];

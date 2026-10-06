@@ -6,7 +6,10 @@ import { themeCssVariables } from 'twenty-ui/theme';
 
 import {
   ANTHROPIC_API_KEY_VARIABLE_KEY,
+  DATAFORSEO_LOGIN_VARIABLE_KEY,
+  DATAFORSEO_PASSWORD_VARIABLE_KEY,
   DEFAULT_LANGUAGE_VARIABLE_KEY,
+  MARKET_VARIABLE_KEY,
   MAX_PAGES_VARIABLE_KEY,
 } from 'src/constants/application-variable-keys.const';
 import { SEO_AUDIT_LANGUAGE } from 'src/constants/seo-audit.constants';
@@ -49,6 +52,9 @@ export const SeoAuditSettings = () => {
   const isApiKeyConfigured = getIsApplicationVariableConfigured(
     getValue(ANTHROPIC_API_KEY_VARIABLE_KEY),
   );
+  const isDataForSeoConfigured =
+    getIsApplicationVariableConfigured(getValue(DATAFORSEO_LOGIN_VARIABLE_KEY)) &&
+    getIsApplicationVariableConfigured(getValue(DATAFORSEO_PASSWORD_VARIABLE_KEY));
   const defaultLanguage: AuditLanguage =
     getValue(DEFAULT_LANGUAGE_VARIABLE_KEY) === SEO_AUDIT_LANGUAGE.EN
       ? SEO_AUDIT_LANGUAGE.EN
@@ -81,7 +87,11 @@ export const SeoAuditSettings = () => {
       }}
     >
       <SetupChecklist
-        steps={buildSetupSteps({ isApiKeyConfigured, hasFinishedAudit })}
+        steps={buildSetupSteps({
+          isApiKeyConfigured,
+          isDataForSeoConfigured,
+          hasFinishedAudit,
+        })}
       />
       <Section.Root>
         <Section.Header
@@ -91,8 +101,19 @@ export const SeoAuditSettings = () => {
         {renderField(ANTHROPIC_API_KEY_VARIABLE_KEY)}
       </Section.Root>
       <Section.Root>
+        <Section.Header
+          title="DataForSEO"
+          description="Optional. Adds rankings, keyword opportunities, backlinks and competitors. Costs about 0.15 to 0.35 USD per audit at DataForSEO."
+        />
+        <div style={{ display: 'flex', flexDirection: 'column', gap: themeCssVariables.spacing[4] }}>
+          {renderField(DATAFORSEO_LOGIN_VARIABLE_KEY)}
+          {renderField(DATAFORSEO_PASSWORD_VARIABLE_KEY)}
+        </div>
+      </Section.Root>
+      <Section.Root>
         <Section.Header title="Defaults" description="Applied when an audit is started without choices." />
         <div style={{ display: 'flex', flexDirection: 'column', gap: themeCssVariables.spacing[4] }}>
+          {renderField(MARKET_VARIABLE_KEY)}
           {renderField(DEFAULT_LANGUAGE_VARIABLE_KEY)}
           {renderField(MAX_PAGES_VARIABLE_KEY)}
         </div>

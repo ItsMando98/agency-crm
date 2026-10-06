@@ -8,9 +8,14 @@ const STEP_TEXT: Record<SetupStep['id'], { title: string; description: string }>
     title: 'Connect Anthropic',
     description: 'Add your API key so pages can be judged for helpfulness, specificity and trust.',
   },
+  DATAFORSEO: {
+    title: 'Connect DataForSEO',
+    description:
+      'Optional. Adds rankings, keyword opportunities, backlinks and competitors to every audit.',
+  },
   DEFAULTS: {
     title: 'Choose defaults',
-    description: 'Pick the report language and how many pages each audit checks.',
+    description: 'Pick the market, report language and how many pages each audit checks.',
   },
   FIRST_AUDIT: {
     title: 'Run your first audit',

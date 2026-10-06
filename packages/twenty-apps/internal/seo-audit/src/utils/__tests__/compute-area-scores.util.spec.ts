@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
+import { buildScoredKeyword } from 'src/__mocks__/build-scored-keyword.mock';
 import { computeAreaScores } from 'src/utils/compute-area-scores.util';
 
 const assessment = (helpfulness: number) => ({
@@ -70,5 +71,25 @@ describe('computeAreaScores', () => {
     });
 
     expect(scores.SECURITY).toBe(0);
+  });
+
+  it('derives visibility from judged keywords and leaves it out without them', () => {
+    expect(
+      computeAreaScores({
+        findings: [],
+        assessments: [],
+        pageCount: 1,
+        keywords: [buildScoredKeyword({ position: 1, category: 'TOP_3' })],
+      }).VISIBILITY,
+    ).toBe(100);
+    expect(computeAreaScores({ findings: [], assessments: [], pageCount: 1 }).VISIBILITY).toBeUndefined();
+    expect(
+      computeAreaScores({
+        findings: [{ ruleId: 'KEYWORD_NEAR_PAGE_ONE', affectedUrls: [] }],
+        assessments: [],
+        pageCount: 1,
+        keywords: [buildScoredKeyword({ position: 17, category: 'NEAR_PAGE_ONE', searchVolume: 100 })],
+      }).VISIBILITY,
+    ).toBe(35);
   });
 });

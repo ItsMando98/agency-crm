@@ -63,10 +63,35 @@ describe('run-seo-audit', () => {
         domain: 'https://example.com',
         language: 'EN',
         maxPages: 60,
+        market: 'DE',
+        dataForSeoCredentials: null,
       }),
     );
     expect(persistMock).toHaveBeenCalledWith(
       expect.objectContaining({ auditId: 'audit-1', result: { score: 80 } }),
+    );
+  });
+
+  it('passes DataForSEO credentials and the market from the app variables', async () => {
+    process.env.DATAFORSEO_LOGIN = 'me@example.com';
+    process.env.DATAFORSEO_PASSWORD = 'api-secret';
+    process.env.SEO_AUDIT_MARKET = 'AT';
+
+    try {
+      await handler({
+        events: [event('audit-1', { domain: 'https://example.com', status: 'QUEUED', name: 'x' })],
+      } as Batch);
+    } finally {
+      delete process.env.DATAFORSEO_LOGIN;
+      delete process.env.DATAFORSEO_PASSWORD;
+      delete process.env.SEO_AUDIT_MARKET;
+    }
+
+    expect(pipelineMock).toHaveBeenCalledWith(
+      expect.objectContaining({
+        market: 'AT',
+        dataForSeoCredentials: { login: 'me@example.com', password: 'api-secret' },
+      }),
     );
   });
 

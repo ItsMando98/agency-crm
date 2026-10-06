@@ -17,6 +17,7 @@ describe('buildFindings', () => {
       },
       assessments: [],
       siteProfile: null,
+      language: 'EN',
     });
 
     expect(findings.map((finding) => finding.ruleId)).toEqual(

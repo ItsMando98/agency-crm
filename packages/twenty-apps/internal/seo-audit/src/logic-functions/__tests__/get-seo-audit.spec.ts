@@ -16,6 +16,7 @@ const handler = getSeoAudit.config.handler as (parameters: GetSeoAuditInput) => 
   message: string;
   audit?: Record<string, unknown>;
   topTasks?: { name: string }[];
+  keywordOpportunities?: unknown[];
   reportMarkdown?: string;
 }>;
 
@@ -54,6 +55,10 @@ describe('get_seo_audit', () => {
           { node: { id: 't3', name: 'high', priority: 'HIGH' } },
         ],
       },
+    }).mockResolvedValueOnce({
+      seoKeywordOpportunities: {
+        edges: [{ node: { keyword: 'kündigungsfrist', position: 17, searchVolume: 60000 } }],
+      },
     });
 
     const result = await handler({ auditId: 'audit-1' });
@@ -61,5 +66,11 @@ describe('get_seo_audit', () => {
     expect(result.topTasks?.map((task) => task.name)).toEqual(['critical', 'high', 'low']);
     expect(result.reportMarkdown).toBe('# Report');
     expect(result.audit).not.toHaveProperty('reportMarkdown');
+    expect(result.keywordOpportunities).toEqual([
+      { keyword: 'kündigungsfrist', position: 17, searchVolume: 60000 },
+    ]);
+    expect(queryMock.mock.calls[2][0].seoKeywordOpportunities.__args.filter.category).toEqual({
+      in: ['QUICK_WIN', 'NEAR_PAGE_ONE'],
+    });
   });
 });

@@ -11,6 +11,7 @@ import { buildAuditName } from 'src/utils/build-audit-name.util';
 import { getAnthropicClient } from 'src/utils/get-anthropic-client.util';
 import { normalizeAuditDomain } from 'src/utils/normalize-audit-domain.util';
 import { persistSeoAuditResult } from 'src/utils/persist-seo-audit-result.util';
+import { readDataForSeoCredentials } from 'src/utils/read-dataforseo-credentials.util';
 import { readAuditSettings } from 'src/utils/read-audit-settings.util';
 import { runSeoAuditPipeline } from 'src/utils/run-seo-audit-pipeline.util';
 
@@ -28,7 +29,8 @@ const handler = async (
 ): Promise<void> => {
   const client = new CoreApiClient();
   const anthropicClient = getAnthropicClient();
-  const { defaultLanguage, maxPages } = readAuditSettings();
+  const { defaultLanguage, maxPages, market } = readAuditSettings();
+  const dataForSeoCredentials = readDataForSeoCredentials();
 
   for (const event of batch.events) {
     const audit = event.properties.after;
@@ -63,6 +65,8 @@ const handler = async (
         language: audit.language ?? defaultLanguage,
         anthropicClient,
         maxPages,
+        market,
+        dataForSeoCredentials,
       });
 
       await persistSeoAuditResult({

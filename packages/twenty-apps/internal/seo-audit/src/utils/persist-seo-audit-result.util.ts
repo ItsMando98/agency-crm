@@ -2,8 +2,11 @@ import { type CoreApiClient } from 'twenty-client-sdk/core';
 
 import { SEO_AUDIT_STATUS } from 'src/constants/seo-audit.constants';
 import { type SeoAuditResult } from 'src/types/seo-audit-result';
+import { buildKeywordRecordData } from 'src/utils/build-keyword-record-data.util';
+import { buildMarketAuditData } from 'src/utils/build-market-audit-data.util';
 import { buildPageRecordData } from 'src/utils/build-page-record-data.util';
 import { buildTaskRecordData } from 'src/utils/build-task-record-data.util';
+import { selectKeywordRecords } from 'src/utils/select-keyword-records.util';
 
 type PersistSeoAuditResultParams = {
   client: CoreApiClient;
@@ -46,6 +49,19 @@ export const persistSeoAuditResult = async ({
     });
   }
 
+  const keywordRecords = selectKeywordRecords(result.keywords);
+
+  if (keywordRecords.length > 0) {
+    await client.mutation({
+      createSeoKeywordOpportunities: {
+        __args: {
+          data: keywordRecords.map((keyword) => buildKeywordRecordData(auditId, keyword)),
+        },
+        id: true,
+      },
+    });
+  }
+
   await client.mutation({
     updateSeoAudit: {
       __args: {
@@ -59,6 +75,7 @@ export const persistSeoAuditResult = async ({
           reportMarkdown: result.reportMarkdown,
           finishedAt: finishedAt.toISOString(),
           failureReason: null,
+          ...buildMarketAuditData(result.marketData),
         },
       },
       id: true,

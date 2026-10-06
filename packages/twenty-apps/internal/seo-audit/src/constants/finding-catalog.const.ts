@@ -584,4 +584,80 @@ export const FINDING_CATALOG: Record<FindingRuleId, FindingDefinition> = {
       },
     },
   },
+  NO_RANKINGS: {
+    area: 'VISIBILITY',
+    severity: 'WARNING',
+    priority: 'MEDIUM',
+    effort: 'HIGH',
+    source: 'RULE',
+    text: {
+      DE: {
+        title: 'Die Website rankt bei Google für keine Keywords',
+        recommendation:
+          'Prüfe zuerst, ob die Seite indexiert ist. Baue danach Seiten für konkrete Suchanfragen deiner Kunden auf und verlinke sie intern.',
+      },
+      EN: {
+        title: 'The website ranks for no keywords on Google',
+        recommendation:
+          'First check that the site is indexed. Then build pages for concrete searches your customers make and link them internally.',
+      },
+    },
+  },
+  KEYWORD_QUICK_WINS: {
+    area: 'VISIBILITY',
+    severity: 'INFO',
+    priority: 'HIGH',
+    effort: 'MEDIUM',
+    source: 'CLASSIFIER',
+    text: {
+      DE: {
+        title: '{count} relevante Keywords auf Platz 4 bis 10 können in die Top 3',
+        recommendation:
+          'Stärke die rankende Seite für diese Suchanfragen: Suchintention direkt beantworten, Überschriften und interne Links gezielt auf das Keyword ausrichten.',
+      },
+      EN: {
+        title: '{count} relevant keywords on positions 4 to 10 can reach the top 3',
+        recommendation:
+          'Strengthen the ranking page for these searches: answer the search intent directly and align headings and internal links with the keyword.',
+      },
+    },
+  },
+  KEYWORD_NEAR_PAGE_ONE: {
+    area: 'VISIBILITY',
+    severity: 'INFO',
+    priority: 'HIGH',
+    effort: 'MEDIUM',
+    source: 'CLASSIFIER',
+    text: {
+      DE: {
+        title: '{count} relevante Keywords stehen kurz vor Seite 1 (Platz 11 bis 30)',
+        recommendation:
+          'Hier fehlt oft wenig. Baue die rankende Seite inhaltlich aus oder erstelle eine eigene Seite zum Thema und verlinke sie von starken Seiten.',
+      },
+      EN: {
+        title: '{count} relevant keywords are close to page 1 (positions 11 to 30)',
+        recommendation:
+          'Often only a little is missing. Expand the ranking page or create a dedicated page for the topic and link to it from strong pages.',
+      },
+    },
+  },
+  BACKLINKS_TO_BROKEN_PAGES: {
+    area: 'VISIBILITY',
+    severity: 'WARNING',
+    priority: 'HIGH',
+    effort: 'LOW',
+    source: 'RULE',
+    text: {
+      DE: {
+        title: '{count} Seiten mit Backlinks von anderen Websites existieren nicht mehr',
+        recommendation:
+          'Richte für diese URLs eine 301-Weiterleitung auf die passende Seite ein. So geht die Linkkraft nicht verloren.',
+      },
+      EN: {
+        title: '{count} pages with backlinks from other websites no longer exist',
+        recommendation:
+          'Add a 301 redirect from these URLs to the matching page so the link equity is not lost.',
+      },
+    },
+  },
 };

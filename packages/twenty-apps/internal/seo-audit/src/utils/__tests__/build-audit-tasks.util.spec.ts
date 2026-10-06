@@ -50,4 +50,23 @@ describe('buildAuditTasks', () => {
 
     expect(task.source).toBe('CLASSIFIER');
   });
+
+  it('uses the finding count in the title and lists details under the recommendation', () => {
+    const [task] = buildAuditTasks(
+      [
+        {
+          ruleId: 'KEYWORD_NEAR_PAGE_ONE',
+          affectedUrls: ['https://example.com/a'],
+          count: 7,
+          details: ['"kündigungsfrist": position 17, 60000 searches per month'],
+        },
+      ],
+      'EN',
+    );
+
+    expect(task.name).toBe('7 relevant keywords are close to page 1 (positions 11 to 30)');
+    expect(task.description).toContain('Often only a little is missing.');
+    expect(task.description).toContain('\n\n- "kündigungsfrist": position 17, 60000 searches per month');
+    expect(task).toMatchObject({ area: 'VISIBILITY', source: 'CLASSIFIER', priority: 'HIGH' });
+  });
 });
