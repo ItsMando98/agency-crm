@@ -36,7 +36,7 @@ export default defineObject({
     {
       universalIdentifier: SEO_KEYWORD_OPPORTUNITY_POSITION_FIELD_UNIVERSAL_IDENTIFIER,
       type: FieldType.NUMBER,
-      name: 'position',
+      name: 'rankPosition',
       label: 'Position',
       icon: 'IconListNumbers',
       isNullable: true,

@@ -8,7 +8,7 @@ describe('buildKeywordRecordData', () => {
     expect(buildKeywordRecordData('audit-1', buildScoredKeyword())).toEqual({
       seoAuditId: 'audit-1',
       keyword: 'kündigungsfrist',
-      position: 17,
+      rankPosition: 17,
       searchVolume: 60000,
       estimatedTraffic: 10,
       url: 'https://example.com/kuendigung',

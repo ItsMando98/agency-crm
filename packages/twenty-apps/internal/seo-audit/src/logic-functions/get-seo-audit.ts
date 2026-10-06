@@ -124,7 +124,7 @@ const handler = async (
       edges: {
         node: {
           keyword: true,
-          position: true,
+          rankPosition: true,
           searchVolume: true,
           url: true,
           category: true,

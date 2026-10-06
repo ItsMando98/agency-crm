@@ -38,7 +38,7 @@ const handler = async (parameters: ListSeoKeywordsInput) => {
         node: {
           id: true,
           keyword: true,
-          position: true,
+          rankPosition: true,
           searchVolume: true,
           estimatedTraffic: true,
           url: true,

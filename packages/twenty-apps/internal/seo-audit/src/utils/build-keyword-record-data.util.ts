@@ -6,7 +6,7 @@ export const buildKeywordRecordData = (
 ) => ({
   seoAuditId,
   keyword: keyword.keyword,
-  position: keyword.position,
+  rankPosition: keyword.position,
   searchVolume: keyword.searchVolume,
   estimatedTraffic: keyword.estimatedTraffic,
   url: keyword.url,
