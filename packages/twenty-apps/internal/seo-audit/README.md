@@ -30,10 +30,19 @@ The report page is built from text found on crawled websites. Everything is esca
 
 ## Tools for agents
 
+Agents inside Twenty see these as `app_<name>`. External agents reach them through the MCP tools `learn_tools` and `execute_tool`.
+
 | Tool | Purpose |
 | --- | --- |
-| `start_seo_audit` | Queues an audit for a domain (optional `companyId`, `language` `DE` or `EN`). Returns an `auditId` immediately. |
-| `get_seo_audit` | Returns status while running. When done: score, grade, area scores, top tasks and the Markdown report. |
+| `list_seo_audits` | Finds audits by `companyId`, `domain` or `status`, newest first. Check this before paying for a new audit. |
+| `start_seo_audit` | Queues an audit for a `domain` or a `companyId` (its website is used). Optional `language` `DE` or `EN`. Returns an `auditId` immediately. An audit for the same website that is already queued or running (last 30 minutes) is returned with `alreadyRunning`. |
+| `get_seo_audit` | Status while running. When done: score, grade, area scores, market data, report link, top tasks, keyword opportunities and the Markdown report (`includeReport: false` leaves it out). |
+| `list_seo_audit_tasks` | The action list, most important first and cheapest fix first. Filter by `status`, `priority`, `area`. Each task has its affected URLs as a list. |
+| `update_seo_audit_tasks` | Sets the status of up to 50 tasks per call and reports per task. |
+| `list_seo_keywords` | Ranking keywords by search volume. Filter by `category` and `minSearchVolume`. |
+| `compare_seo_audits` | Score, area and market changes plus resolved and new tasks against the previous finished audit of the same website (or a given `previousAuditId`). Tasks are matched by their `ruleId`. |
+
+The `seo-audit` skill tells in-app agents when and in which order to use them. The same guidance for external agents is in `packages/twenty-claude-skills/skills/seo-audit/SKILL.md`.
 
 Audits run asynchronously: creating a `seoAudit` record (through the tool, the UI or any API) triggers `run-seo-audit`. A cron function marks audits that never finished as failed after 20 minutes.
 

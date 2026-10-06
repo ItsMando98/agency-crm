@@ -141,7 +141,7 @@ const handler = async (
     keywordOpportunities: (seoKeywordOpportunities?.edges ?? []).map(
       (edge: { node: unknown }) => edge.node,
     ),
-    reportMarkdown,
+    reportMarkdown: parameters.includeReport === false ? undefined : reportMarkdown,
   };
 };
 

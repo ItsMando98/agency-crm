@@ -8,12 +8,12 @@ export const startSeoAuditInputSchema: InputJsonSchema = {
     domain: {
       type: 'string',
       description:
-        'Homepage URL or domain of the website to audit, for example example.com or https://www.example.com. Only public websites can be audited.',
+        'Homepage URL or domain of the website to audit, for example example.com or https://www.example.com. Only public websites can be audited. Optional when companyId is given.',
     },
     companyId: {
       type: 'string',
       description:
-        'Optional ID of the company record this audit belongs to. Use it so the audit shows up on the company page.',
+        'ID of the company record the audit belongs to. The audit then shows up on the company page. When domain is omitted, the domain of the company record is audited.',
     },
     language: {
       type: 'string',
@@ -22,6 +22,5 @@ export const startSeoAuditInputSchema: InputJsonSchema = {
         'Report language: DE for German or EN for English. Defaults to the language set in the app settings.',
     },
   },
-  required: ['domain'],
   additionalProperties: false,
 };

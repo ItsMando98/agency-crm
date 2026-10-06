@@ -18,6 +18,7 @@ export const SEO_AUDIT_TASK_PRIORITY_FIELD_UNIVERSAL_IDENTIFIER = '9eb740b9-2b5f
 export const SEO_AUDIT_TASK_EFFORT_FIELD_UNIVERSAL_IDENTIFIER = 'b7a136b2-ee7c-4e3a-8603-6f65f691fc75';
 export const SEO_AUDIT_TASK_AREA_FIELD_UNIVERSAL_IDENTIFIER = '8d49c4e3-7f0e-4b29-8d2b-1a1e65943e73';
 export const SEO_AUDIT_TASK_SOURCE_FIELD_UNIVERSAL_IDENTIFIER = '15d77070-6eba-4a8c-bd4c-e49733490471';
+export const SEO_AUDIT_TASK_RULE_ID_FIELD_UNIVERSAL_IDENTIFIER = '062e7ac9-4f74-4435-9ba2-35fcb686dd04';
 export const SEO_AUDIT_TASK_AFFECTED_URLS_FIELD_UNIVERSAL_IDENTIFIER = '529f43a0-5297-457a-84b1-04895d902649';
 
 export default defineObject({
@@ -124,6 +125,15 @@ export default defineObject({
       label: 'Affected URLs',
       description: 'One URL per line',
       icon: 'IconLinkOff',
+      isNullable: true,
+    },
+    {
+      universalIdentifier: SEO_AUDIT_TASK_RULE_ID_FIELD_UNIVERSAL_IDENTIFIER,
+      type: FieldType.TEXT,
+      name: 'ruleId',
+      label: 'Rule',
+      description: 'Stable id of the finding, used to compare audits over time',
+      icon: 'IconHash',
       isNullable: true,
     },
   ],

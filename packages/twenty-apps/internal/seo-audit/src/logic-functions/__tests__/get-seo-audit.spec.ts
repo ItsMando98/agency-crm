@@ -73,4 +73,16 @@ describe('get_seo_audit', () => {
       in: ['QUICK_WIN', 'NEAR_PAGE_ONE'],
     });
   });
+
+  it('leaves out the report when includeReport is false', async () => {
+    queryMock
+      .mockResolvedValueOnce(audit('DONE'))
+      .mockResolvedValueOnce({ seoAuditTasks: { edges: [] } })
+      .mockResolvedValueOnce({ seoKeywordOpportunities: { edges: [] } });
+
+    const result = await handler({ auditId: 'audit-1', includeReport: false });
+
+    expect(result.reportMarkdown).toBeUndefined();
+    expect(result.audit).toMatchObject({ id: 'audit-1', score: 81 });
+  });
 });

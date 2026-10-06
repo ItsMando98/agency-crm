@@ -17,6 +17,7 @@ describe('buildTaskRecordData', () => {
       }),
     ).toEqual({
       seoAuditId: 'audit-1',
+      ruleId: 'TITLE_MISSING',
       name: '2 pages without a title tag',
       description: 'Fix it',
       priority: 'HIGH',

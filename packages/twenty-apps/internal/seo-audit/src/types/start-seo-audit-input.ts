@@ -1,7 +1,7 @@
 import { type AuditLanguage } from 'src/types/audit-language';
 
 export type StartSeoAuditInput = {
-  domain: string;
+  domain?: string;
   companyId?: string;
   language?: AuditLanguage;
 };

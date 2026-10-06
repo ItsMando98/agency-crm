@@ -1,0 +1,9 @@
+export const DEFAULT_LIST_LIMIT = 10;
+export const MAX_LIST_LIMIT = 50;
+export const DEFAULT_TASK_LIMIT = 20;
+export const MAX_TASK_LIMIT = 100;
+export const DEFAULT_KEYWORD_LIMIT = 25;
+export const MAX_KEYWORD_LIMIT = 100;
+export const MAX_FETCHED_TASKS = 200;
+export const MAX_TASK_UPDATES_PER_CALL = 50;
+export const RECENT_AUDIT_WINDOW_MINUTES = 30;
