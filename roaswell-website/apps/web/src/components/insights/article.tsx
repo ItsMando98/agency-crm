@@ -1,16 +1,19 @@
-import { Link } from 'react-router';
 import type { Article } from '@/data/articles';
+import { Link, useLocale, useT } from '@/i18n/context';
 
 export function ArticleView({ article }: { article: Article }) {
+	const t = useT();
+	const locale = useLocale();
+
 	return (
 		<>
 			<section className="detail-hero">
 				<div className="hero-top">
 					<span className="eyebrow">
-						<i /> {article.category.toUpperCase()}
+						<i /> {article.category.toLocaleUpperCase(locale)}
 					</span>
 					<Link to="/insights" className="back-link">
-						← All insights
+						{t('insights.back')}
 					</Link>
 				</div>
 				<h1>{article.title}</h1>
@@ -18,23 +21,23 @@ export function ArticleView({ article }: { article: Article }) {
 					{article.excerpt}
 					<br />
 					<span className="ac-meta" style={{ display: 'inline-block', marginTop: 14 }}>
-						{article.readTime.toUpperCase()}
+						{t('insights.readTime', { minutes: article.readMinutes }).toLocaleUpperCase(locale)}
 					</span>
 				</p>
 			</section>
 
 			<section className="detail-body">
 				<aside className="detail-aside">
-					<h4>SHARE</h4>
+					<h4>{t('insights.share')}</h4>
 					<Link to="/contact" className="discipline-cta">
-						Discuss this →
+						{t('insights.discuss')}
 					</Link>
 				</aside>
 				<div className="prose">
-					{article.body.map((block, i) => {
-						if (block.type === 'h2') return <h2 key={i}>{block.text}</h2>;
-						if (block.type === 'quote') return <blockquote key={i}>{block.text}</blockquote>;
-						return <p key={i}>{block.text}</p>;
+					{article.body.map((block, index) => {
+						if (block.type === 'h2') return <h2 key={index}>{block.text}</h2>;
+						if (block.type === 'quote') return <blockquote key={index}>{block.text}</blockquote>;
+						return <p key={index}>{block.text}</p>;
 					})}
 				</div>
 			</section>

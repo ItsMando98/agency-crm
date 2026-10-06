@@ -8,6 +8,7 @@ export type CaseStudy = {
 	outcome: string;
 	metrics: { value: string; label: string }[];
 	publishedAt: string;
+	illustrative: boolean;
 };
 
 export const caseStudies: CaseStudy[] = [
@@ -28,6 +29,7 @@ export const caseStudies: CaseStudy[] = [
 			{ value: '2.4×', label: 'Qualified lead target' },
 		],
 		publishedAt: '2026-08-18T09:00:00.000Z',
+		illustrative: true,
 	},
 	{
 		slug: 'making-acquisition-work-harder',
@@ -46,6 +48,7 @@ export const caseStudies: CaseStudy[] = [
 			{ value: '−32%', label: 'Acquisition cost target' },
 		],
 		publishedAt: '2026-07-02T09:00:00.000Z',
+		illustrative: true,
 	},
 	{
 		slug: 'full-funnel-foundations',
@@ -64,6 +67,7 @@ export const caseStudies: CaseStudy[] = [
 			{ value: '0→1', label: 'Organic equity built pre-launch' },
 		],
 		publishedAt: '2026-05-21T09:00:00.000Z',
+		illustrative: true,
 	},
 ];
 

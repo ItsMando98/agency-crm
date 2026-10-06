@@ -1,5 +1,4 @@
 import { useLayoutEffect, useRef, useState } from 'react';
-import { Link } from 'react-router';
 import { ArrowUp, ArrowUpRight } from 'lucide-react';
 import {
 	motion,
@@ -10,19 +9,26 @@ import {
 	useTransform,
 	type MotionValue,
 } from 'framer-motion';
-import { disciplines } from '@/data/expertise';
+import { Link, Lines, useT } from '@/i18n/context';
+import { LanguageSwitcher } from '@/components/language-switcher';
+import { useDisciplineNav } from '@/lib/use-root-data';
 import { Magnetic } from '@/components/motion/primitives';
 import { clamp } from '@/lib/motion-math';
 
 const WORD = 'ROASWELL';
 
 const FOOTER_LINKS = [
-	{ label: 'Work', to: '/work' },
-	{ label: 'Approach', to: '/approach' },
-	{ label: 'Insights', to: '/insights' },
-	{ label: 'About', to: '/about' },
-	{ label: 'Contact', to: '/contact' },
-];
+	{ key: 'nav.work', to: '/work' },
+	{ key: 'nav.approach', to: '/approach' },
+	{ key: 'nav.insights', to: '/insights' },
+	{ key: 'nav.about', to: '/about' },
+	{ key: 'nav.contact', to: '/contact' },
+] as const;
+
+const LEGAL_LINKS = [
+	{ key: 'footer.legal', to: '/legal' },
+	{ key: 'footer.privacy', to: '/privacy' },
+] as const;
 
 type LetterProps = {
 	char: string;
@@ -93,7 +99,7 @@ function FooterWordmark({ progress }: { progress: MotionValue<number> }) {
 			onPointerMove={event => pointerX.set(event.clientX)}
 			onPointerLeave={() => pointerX.set(-9999)}
 		>
-			<div ref={rowRef} className="wm-row" role="img" aria-label="Roaswell" style={size ? { fontSize: `${size}px` } : undefined}>
+			<div ref={rowRef} className="wm-row" role="img" aria-label="ROASWELL" style={size ? { fontSize: `${size}px` } : undefined}>
 				<span ref={measureRef} className="wm-measure" aria-hidden="true">
 					{WORD.split('').map((char, index) => (
 						<span key={`${char}-${index}`} className="wm-mask">
@@ -112,6 +118,7 @@ function FooterWordmark({ progress }: { progress: MotionValue<number> }) {
 }
 
 function BackToTop() {
+	const t = useT();
 	const reduced = useReducedMotion();
 	const { scrollYProgress } = useScroll();
 	const draw = useSpring(scrollYProgress, { stiffness: 140, damping: 30 });
@@ -120,7 +127,7 @@ function BackToTop() {
 		<button
 			type="button"
 			className="back-to-top"
-			aria-label="Back to top"
+			aria-label={t('footer.backToTop')}
 			onClick={() => window.scrollTo({ top: 0, behavior: reduced ? 'auto' : 'smooth' })}
 		>
 			<svg viewBox="0 0 48 48" aria-hidden="true">
@@ -133,6 +140,8 @@ function BackToTop() {
 }
 
 export function SiteFooter() {
+	const t = useT();
+	const disciplines = useDisciplineNav();
 	const ref = useRef<HTMLElement>(null);
 	const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'end end'] });
 
@@ -142,20 +151,16 @@ export function SiteFooter() {
 			<div className="footer-inner">
 				<div className="footer-cta">
 					<span className="eyebrow">
-						<i /> START A PROJECT
+						<i /> {t('footer.eyebrow')}
 					</span>
 					<p className="footer-tagline">
-						Marketing
-						<br />
-						done <em>well.</em>
+						<Lines text={t('footer.tagline')} /> <em>{t('footer.taglineAccent')}</em>
 					</p>
-					<p className="footer-lede">
-						Four disciplines, one growth system. Senior-led from the first call to the last report.
-					</p>
+					<p className="footer-lede">{t('footer.lede')}</p>
 					<div className="footer-actions">
 						<Magnetic>
 							<Link className="button primary" to="/contact">
-								Let’s talk <ArrowUpRight size={19} />
+								{t('cta.talkShort')} <ArrowUpRight size={19} />
 							</Link>
 						</Magnetic>
 						<a className="footer-email" href="mailto:hello@roaswell.com">
@@ -164,9 +169,9 @@ export function SiteFooter() {
 					</div>
 				</div>
 
-				<nav className="footer-services" aria-label="Services">
+				<nav className="footer-services" aria-label={t('footer.services')}>
 					<span className="eyebrow">
-						<i /> WHAT WE DO
+						<i /> {t('footer.services')}
 					</span>
 					<ul>
 						{disciplines.map(discipline => (
@@ -182,22 +187,31 @@ export function SiteFooter() {
 				</nav>
 			</div>
 
-			<nav className="footer-links" aria-label="Footer navigation">
+			<nav className="footer-links" aria-label={t('footer.navigation')}>
 				{FOOTER_LINKS.map(link => (
 					<Link key={link.to} to={link.to}>
-						{link.label}
+						{t(link.key)}
 					</Link>
 				))}
 				<a href="https://client.roaswell.com" target="_blank" rel="noopener noreferrer">
-					Client Portal <ArrowUpRight size={14} />
+					{t('footer.portal')} <ArrowUpRight size={14} />
 				</a>
 			</nav>
+
+			<LanguageSwitcher variant="list" />
 
 			<FooterWordmark progress={scrollYProgress} />
 
 			<div className="footer-bottom">
 				<span>© 2026 ROASWELL</span>
-				<span className="footer-note">Independent digital growth studio</span>
+				<span className="footer-note">{t('footer.note')}</span>
+				<nav className="footer-legal" aria-label={t('footer.legalNavigation')}>
+					{LEGAL_LINKS.map(link => (
+						<Link key={link.to} to={link.to}>
+							{t(link.key)}
+						</Link>
+					))}
+				</nav>
 				<BackToTop />
 			</div>
 		</footer>

@@ -1,14 +1,23 @@
 import { useRef } from 'react';
-import { Link } from 'react-router';
 import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
 import { EASE_OUT, Magnetic, MaskedLines } from '@/components/motion/primitives';
+import { Link, Lines, useI18n, useT } from '@/i18n/context';
+import { usePrimaryCta } from '@/lib/use-root-data';
 import { HeroCanvas } from './hero-canvas';
 import { NODES, curveX, curveY, timeForReveal } from './hero-curve';
 
-const DISCIPLINES = ['SEO & CONTENT', 'META ADS', 'GOOGLE ADS', 'MOTION GRAPHICS'];
+const DISCIPLINE_KEYS = [
+	'hero.discipline.seo',
+	'hero.discipline.meta',
+	'hero.discipline.google',
+	'hero.discipline.motion',
+] as const;
 
 export function Hero() {
+	const t = useT();
+	const { direction } = useI18n();
+	const cta = usePrimaryCta();
 	const ref = useRef<HTMLElement>(null);
 	const reduced = useReducedMotion();
 	const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] });
@@ -26,7 +35,7 @@ export function Hero() {
 					<div
 						key={node.index}
 						className="hero-node-wrap"
-						style={{ left: `${curveX(node.u) * 100}%`, top: `${curveY(node.u) * 100}%` }}
+						style={{ left: `${(direction === 'rtl' ? 1 - curveX(node.u) : curveX(node.u)) * 100}%`, top: `${curveY(node.u) * 100}%` }}
 					>
 						<motion.div
 							className="hero-node"
@@ -35,7 +44,7 @@ export function Hero() {
 							transition={{ duration: 0.8, delay: reduced ? 0 : timeForReveal(node.u), ease: EASE_OUT }}
 						>
 							<span className="hn-index">{node.index}</span>
-							{node.label}
+							{t(node.labelKey)}
 						</motion.div>
 					</div>
 				))}
@@ -48,7 +57,7 @@ export function Hero() {
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ duration: 1, delay: 0.2, ease: EASE_OUT }}
 				>
-					<i /> INDEPENDENT DIGITAL GROWTH STUDIO
+					<i /> {t('hero.eyebrow')}
 				</motion.span>
 
 				<motion.h1 id="hero-title" style={{ y: titleY, scale: titleScale }}>
@@ -56,11 +65,12 @@ export function Hero() {
 						trigger="mount"
 						delay={0.3}
 						lines={[
-							'MARKETING',
+							t('hero.line1'),
 							<>
-								DONE{' '}
+								{t('hero.line2')}{' '}
 								<span className="well">
-									WELL<span className="period">.</span>
+									{t('hero.line2Accent')}
+									<span className="period">.</span>
 									<svg viewBox="0 0 600 22" preserveAspectRatio="none" aria-hidden="true">
 										<motion.path
 											d="M2 15 Q300 -5 598 10"
@@ -82,21 +92,28 @@ export function Hero() {
 					transition={{ duration: 1.1, delay: 1.1, ease: EASE_OUT }}
 				>
 					<p>
-						Search, paid media and motion, engineered as one growth system.
-						<br />
-						Senior-led. Measured to the dollar. Built to scale.
+						<Lines text={t('hero.lede')} />
 					</p>
 					<div className="hero-actions">
 						<Magnetic>
-							<Link className="hero-cta" to="/contact">
-								<span>Let’s make it count</span>
-								<span className="hero-cta-icon">
-									<ArrowUpRight size={22} />
-								</span>
-							</Link>
+							{cta.external ? (
+								<a className="hero-cta" href={cta.href} target="_blank" rel="noopener noreferrer">
+									<span>{t(cta.labelKey)}</span>
+									<span className="hero-cta-icon">
+										<ArrowUpRight size={22} />
+									</span>
+								</a>
+							) : (
+								<Link className="hero-cta" to={cta.href}>
+									<span>{t(cta.labelKey)}</span>
+									<span className="hero-cta-icon">
+										<ArrowUpRight size={22} />
+									</span>
+								</Link>
+							)}
 						</Magnetic>
 						<Link className="hero-ghost" to="/work">
-							<span>See how we think</span>
+							<span>{t('hero.secondary')}</span>
 							<ArrowRight size={20} />
 						</Link>
 					</div>
@@ -109,11 +126,11 @@ export function Hero() {
 				animate={{ opacity: 1 }}
 				transition={{ duration: 1, delay: 1.6 }}
 			>
-				{DISCIPLINES.map(label => (
-					<span key={label}>{label}</span>
+				{DISCIPLINE_KEYS.map(key => (
+					<span key={key}>{t(key)}</span>
 				))}
 				<span className="scroll-cue" aria-hidden="true">
-					SCROLL <i />
+					{t('hero.scroll')} <i />
 				</span>
 			</motion.div>
 		</section>

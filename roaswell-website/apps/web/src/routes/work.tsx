@@ -1,33 +1,37 @@
 import type { Route } from './+types/work';
-import { seo, siteOriginFrom } from '@/lib/seo';
+import { metaContext, seo } from '@/lib/seo';
+import { getCaseStudies, localeFromParams } from '@/lib/content.server';
 import { SiteHeader } from '@/components/site-header';
 import { SiteFooter } from '@/components/site-footer';
 import { WorkList } from '@/components/work/list';
 import { ContactCta } from '@/components/contact-cta';
 import { buildBreadcrumbSchema } from '@/lib/schema';
 
+export async function loader({ params }: Route.LoaderArgs) {
+	return { caseStudies: await getCaseStudies(localeFromParams(params)) };
+}
+
 export function meta({ matches, location }: Route.MetaArgs) {
-	const origin = siteOriginFrom(matches);
+	const { origin, locale, t } = metaContext(matches);
 	return seo(
 		{ matches, location },
 		{
-			title: 'Selected Work & Case Studies — ROASWELL',
-			description:
-				'Illustrative case studies in SEO & Content, Meta Ads, Google Ads, and Motion Graphics — how we think about performance and commercial outcomes, not vanity metrics.',
-			jsonLd: buildBreadcrumbSchema(origin, [
-				{ name: 'Home', path: '/' },
-				{ name: 'Work', path: '/work' },
+			title: t('meta.work.title'),
+			description: t('meta.work.description'),
+			jsonLd: buildBreadcrumbSchema({ origin, locale }, [
+				{ name: t('breadcrumb.home'), path: '/' },
+				{ name: t('nav.work'), path: '/work' },
 			]),
 		},
 	);
 }
 
-export default function WorkPage() {
+export default function WorkPage({ loaderData }: Route.ComponentProps) {
 	return (
 		<>
 			<SiteHeader />
 			<main>
-				<WorkList />
+				<WorkList caseStudies={loaderData.caseStudies} />
 				<ContactCta />
 			</main>
 			<SiteFooter />

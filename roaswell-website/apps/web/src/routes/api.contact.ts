@@ -1,4 +1,5 @@
 import { apiError, withApi } from '@/lib/api.server';
+import { isRateLimited, isValidEmail } from '@/lib/lead-guard.server';
 import { submitLeadToTwenty } from '@/lib/twenty.server';
 
 export const action = withApi(async ({ request }: { request: Request }) => {
@@ -6,7 +7,11 @@ export const action = withApi(async ({ request }: { request: Request }) => {
 		return apiError(405, 'Method not allowed');
 	}
 
-	let payload: any;
+	if (await isRateLimited(request)) {
+		return apiError(429, 'Too many requests');
+	}
+
+	let payload: Record<string, unknown> | null;
 	const contentType = request.headers.get('content-type') || '';
 
 	if (contentType.includes('application/json')) {
@@ -36,7 +41,7 @@ export const action = withApi(async ({ request }: { request: Request }) => {
 		return apiError(400, 'Missing required fields: name, email, and message are required');
 	}
 
-	if (!email.includes('@') || !email.includes('.')) {
+	if (!isValidEmail(email)) {
 		return apiError(400, 'Invalid email address format');
 	}
 

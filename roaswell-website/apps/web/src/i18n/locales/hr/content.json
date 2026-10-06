@@ -1,0 +1,720 @@
+{
+	"expertise": {
+		"seo-content": {
+			"name": "SEO i sadržaj",
+			"eyebrow": "01 / SEO I SADRŽAJ",
+			"headline": "Neka vas pronađu.",
+			"headlineAccent": "Neka vas odaberu.",
+			"summary": "Pretraga hvata namjeru. Sadržaj gradi potražnju. Pitanja pretvaramo u kvalificirani promet, a promet u kupce, strategijom, uredničkim radom i tehničkim temeljima koji se s vremenom zbrajaju.",
+			"capabilities": [
+				"SEO strategija",
+				"Strategija sadržaja",
+				"Istraživanje ključnih riječi",
+				"Uredničko pisanje",
+				"On-page SEO",
+				"Optimizacija sadržaja"
+			],
+			"cta": "Istražite SEO i sadržaj",
+			"subpages": [],
+			"body": [
+				{
+					"text": "Većina prometa iz pretrage ode u prazno jer odgovara na krivo pitanje ili na pravo pitanje loše. Polazimo od namjere, od onoga što vaša publika zaista pokušava razumjeti, odlučiti ili kupiti, i odatle gradimo."
+				},
+				{
+					"text": "Strategija prije izrade"
+				},
+				{
+					"text": "Stroj za sadržaj radi samo kad svaki komad ima zadaću. Mapiramo teme koje pomiču poslovne rezultate, prioritiziramo prema prilici i slažemo posao tako da se zamah zbraja umjesto da se raspršuje."
+				},
+				{
+					"text": "Budite odgovor koji vaša publika traži, a ne samo još jedan rezultat na stranici."
+				},
+				{
+					"text": "Tehnički temelji koji drže"
+				},
+				{
+					"text": "Mogućnost indeksiranja, arhitektura stranice, Core Web Vitals, strukturirani podaci. Nezahvalan posao koji odlučuje hoće li izvrstan sadržaj ikad dobiti priliku za rangiranje. Smatramo ga dijelom strategije, a ne naknadnom mišlju."
+				},
+				{
+					"text": "Zatim mjerimo. Podaci iz Search Consolea, praćenje pozicija, atribucija konverzija, sve vezano uz poslovne rezultate koji su važni, a ne uz taštine grafikone prometa."
+				}
+			]
+		},
+		"meta-ads": {
+			"name": "Meta Ads",
+			"eyebrow": "02 / META ADS",
+			"headline": "Pretvorite pažnju",
+			"headlineAccent": "u potražnju.",
+			"summary": "Kreativa koja povezuje, kampanje koje konvertiraju. Spajamo uvid u publiku s neumornim testiranjem kako bi svaki prikaz radio više na Facebooku, Instagramu i cijelom Metinu ekosustavu.",
+			"capabilities": [
+				"Plaćeni društveni mediji",
+				"Testiranje kreativa",
+				"Strategija publika",
+				"Kampanje za cijeli lijevak",
+				"Optimizacija konverzija",
+				"Retargetiranje"
+			],
+			"cta": "Istražite Meta Ads",
+			"subpages": [],
+			"body": [
+				{
+					"text": "Pažnje ima napretek, potražnje nema. Zadaća plaćenih društvenih mreža nije biti viđen, nego biti zapamćen, razmotren i odabran. To počinje kreativom koja zaslužuje zaustaviti pomicanje."
+				},
+				{
+					"text": "Kreativa je ciljanje"
+				},
+				{
+					"text": "Na modernim platformama važnije je što pokazujete nego kome. Gradimo strukturirani sustav testiranja kreativa, s hipotezama, varijantama i jasnim pobjednicima, tako da posao postaje oštriji u svakom ciklusu."
+				},
+				{
+					"text": "Svaki klik ima zadaću. Pobrinite se da se računa."
+				},
+				{
+					"text": "Cijeli lijevak, a ne zadnji klik"
+				},
+				{
+					"text": "Svjesnost, razmatranje, konverzija, zadržavanje. Put oblikujemo tako da svaka faza hrani sljedeću, a mjerimo inkrementalno kako biste znali što je potrošnja doista donijela."
+				},
+				{
+					"text": "Nema „postavi i zaboravi“. Tjedni pregledi kreativa, osvježavanje publika i prebacivanje proračuna prema onome što radi, a od onoga što ne radi."
+				}
+			]
+		},
+		"google-ads": {
+			"name": "Google Ads",
+			"eyebrow": "03 / GOOGLE ADS",
+			"headline": "Uhvatite namjeru",
+			"headlineAccent": "kad je važno.",
+			"summary": "Susretnite namjeru s preciznošću. Od pretrage do kupovine, proračun usmjeravamo ondje gdje je prilika i mjerimo što se vraća jasnim poslovnim izvještavanjem.",
+			"capabilities": [
+				"Plaćena pretraga",
+				"Shopping oglasi",
+				"Performance Max",
+				"Optimizacija konverzija",
+				"Strategija licitiranja",
+				"Praćenje i mjerenje"
+			],
+			"cta": "Istražite Google Ads",
+			"subpages": [],
+			"body": [
+				{
+					"text": "Pretraga je trenutak u kojem namjera postaje djelo. Pitanje je pojavljujete li se tada i konvertira li iskustvo kad se pojavite."
+				},
+				{
+					"text": "Proračun ondje gdje je prilika"
+				},
+				{
+					"text": "Ne zaslužuje svaka ključna riječ vaš novac. Gradimo strategiju ključnih riječi oko komercijalne namjere i marže, režemo rasipanje iz širokih podudaranja i preklapanja s brendom te koncentriramo potrošnju ondje gdje je povrat stvaran."
+				},
+				{
+					"text": "Susretnite namjeru s preciznošću. Mjerite što se vraća."
+				},
+				{
+					"text": "Mjerenje kojem možete vjerovati"
+				},
+				{
+					"text": "Praćenje na poslužitelju, modeliranje vrijednosti konverzije, čista atribucija. Kako bi brojke koje vode odluke odražavale stvarnost, a ne samoprijavu platforme."
+				},
+				{
+					"text": "Strategije licitiranja prilagođene vašoj ekonomiji, a ne zadanom cilju. Testiramo, pratimo rubne slučajeve i držimo potrošnju poštenom."
+				}
+			]
+		},
+		"motion-graphics": {
+			"name": "Motion grafika",
+			"eyebrow": "04 / MOTION GRAFIKA",
+			"headline": "Zaustavite pomicanje.",
+			"headlineAccent": "Budite neprekidivi.",
+			"summary": "Pokret je najbrži način da zaslužite pažnju i najjasniji način da objasnite veliku ideju. Dizajniramo oglase, animacije proizvoda i brend filmove koji su izrađeni da se testiraju, a ne samo da im se divimo.",
+			"capabilities": [
+				"Kreativa za plaćene društvene mreže",
+				"Objašnjavajući videi",
+				"Animacija proizvoda",
+				"Brend filmovi",
+				"Pokret za web i sučelja",
+				"Materijali za testiranje kreativa"
+			],
+			"cta": "Istražite motion grafiku",
+			"subpages": {
+				"paid-social-motion": {
+					"name": "Motion oglasi za plaćene društvene mreže",
+					"eyebrow": "04.1 / MOTION OGLASI ZA PLAĆENE DRUŠTVENE MREŽE",
+					"headline": "Osvojite prvu",
+					"headlineAccent": "sekundu.",
+					"summary": "Kratak pokret izrađen za feed: udica koja zaustavlja palac, poruka koja pogađa i sustav varijanti koji pokazuje koja ideja zaslužuje sljedeći proračun.",
+					"sample": {
+						"title": "NOVA Sparkling: oglas od 10 sekundi, rastavljen na dijelove",
+						"note": "Konceptni oglas za izmišljeni brend pića. Premotajte ga, a zatim pored pročitajte četiri takta: udica, poruka, dokaz, poziv."
+					},
+					"deliverables": [
+						{
+							"title": "Storyboardi koji počinju udicom",
+							"text": "Tri do pet otvaranja za svaki koncept, svako napisano da samo osvoji prvu sekundu."
+						},
+						{
+							"title": "Glavna animacija i skraćene verzije",
+							"text": "Jedan glavni komad plus verzije od 6, 15 i 30 sekundi izrezane za pozicije koje stvarno kupujete."
+						},
+						{
+							"title": "Svi formati",
+							"text": "Izvedbe 9:16, 4:5 i 1:1, provjerene za sigurne zone za Stories, Reels i feed."
+						},
+						{
+							"title": "Setovi varijanti",
+							"text": "Zamjenjive udice, poruke i završne kartice ugrađene u datoteku kako testiranje nikad ne bi značilo početi iznova."
+						},
+						{
+							"title": "Titlovi i zvuk",
+							"text": "Ugrađeni titlovi za gledanje bez zvuka i zvučni dizajn za gledanje sa zvukom."
+						},
+						{
+							"title": "Pregled naučenog",
+							"text": "Pisani osvrt na ono što nas je svaka varijanta naučila i što sljedeća serija treba promijeniti."
+						}
+					],
+					"steps": [
+						{
+							"title": "Čitamo račun",
+							"text": "Počinjemo od podataka o učinku: što se troši, koji kutovi još privlače, gdje dolazi do odustajanja."
+						},
+						{
+							"title": "Pišemo hipoteze",
+							"text": "Svaki koncept navodi tvrdnju koju testira i broj koji treba pomaknuti, prije nego što se išta animira."
+						},
+						{
+							"title": "Gradimo sustav",
+							"text": "Prvo glavna animacija, zatim varijante generirane iz istog izvora kako bi izgled ostao dosljedan."
+						},
+						{
+							"title": "Pokrećemo i učimo",
+							"text": "Varijante se natječu jedna protiv druge. Pobjednici se skaliraju, gubitnici povlače, a bilješke hrane sljedeći krug."
+						}
+					],
+					"connects": [
+						{
+							"text": "Sustav testiranja kreativa koji odlučuje koje varijante dobivaju proračun i kad ih povući."
+						},
+						{
+							"text": "Kratke verzije služe i kao videomaterijal za YouTube i Performance Max."
+						}
+					],
+					"faqs": [
+						{
+							"question": "Moramo li dostaviti snimke?",
+							"answer": "Ne. Možemo raditi s materijalima brenda, renderima proizvoda, snimkama zaslona ili izgraditi cijeli komad od ilustracije i tipografije. Ako imate snimke, upotrijebit ćemo ih."
+						},
+						{
+							"question": "S koliko varijanti početi?",
+							"answer": "S dovoljno da nešto naučimo, ne s toliko da svaka gladuje. Obično predlažemo malu matricu udica i poruka te dogovaramo veličinu po seriji."
+						},
+						{
+							"question": "Možete li voditi i medije?",
+							"answer": "Da, kroz naš rad na Meta Ads i Google Ads. Možete i preuzeti gotove datoteke i sami ih pokrenuti."
+						},
+						{
+							"question": "Što je s glazbom i govorom?",
+							"answer": "Koristimo licencirani ili izvorni zvuk i unaprijed dogovaramo prava, uključujući gdje i koliko dugo oglas smije ići."
+						},
+						{
+							"question": "Kako se prosuđuje motion oglas?",
+							"answer": "Prema poslovnoj metrici prema kojoj je brifiran, a ne prema tome kako izgleda. Svaki koncept vezan je uz broj prije izrade."
+						}
+					]
+				},
+				"explainer-videos": {
+					"name": "Objašnjavajući videi",
+					"eyebrow": "04.2 / OBJAŠNJAVAJUĆI VIDEI",
+					"headline": "Složeno učinite",
+					"headlineAccent": "očitim.",
+					"summary": "Kratko animirano objašnjenje koje težak proizvod ili ideju pretvara u nešto što kupac može ponoviti svom šefu.",
+					"sample": {
+						"title": "Od raspršene pažnje do kupca, u 14 sekundi",
+						"note": "Konceptni objašnjavajući video o tome kako radi lijevak. Točkice su ljudi. Gledajte koliko ih ulazi, koliko konvertira i kako priču nosi samo pokret."
+					},
+					"deliverables": [
+						{
+							"title": "Scenarij i naracija",
+							"text": "Zbijen scenarij izgrađen oko jedne stvari u koju gledatelj na kraju mora vjerovati."
+						},
+						{
+							"title": "Stilski kadrovi i storyboard",
+							"text": "Izgled i svaka scena dogovoreni na papiru prije početka animacije."
+						},
+						{
+							"title": "Vlastita ilustracija i animacija",
+							"text": "Izvorni vizuali izrađeni za vaš proizvod, a ne stock ikone koje se premještaju."
+						},
+						{
+							"title": "Režija glasa i zvuk",
+							"text": "Smjernice za casting, režija i miksani zapis, ili verzija samo s glazbom."
+						},
+						{
+							"title": "Skraćene verzije s titlovima",
+							"text": "Kratke verzije za društvene mreže i plaćeno oglašavanje s već ugrađenim titlovima."
+						},
+						{
+							"title": "Spremno za odredišnu stranicu",
+							"text": "Komprimirane datoteke, poster kadar i transkript kako bi video pomagao stranici, a ne usporavao je."
+						}
+					],
+					"steps": [
+						{
+							"title": "Definiramo uvjerenje",
+							"text": "Tko gleda, u što sumnja i u što treba vjerovati kad završi?"
+						},
+						{
+							"title": "Pišemo i radimo storyboard",
+							"text": "Scenarij i storyboard zajedno, tako da svaka rečenica ima sliku koja zaslužuje svoje mjesto."
+						},
+						{
+							"title": "Dizajniramo i animiramo",
+							"text": "Prvo stilski kadrovi, zatim animacija u modularnim scenama koje je lako ažurirati."
+						},
+						{
+							"title": "Dovršavamo i postavljamo",
+							"text": "Zvuk, titlovi, skraćene verzije i postavljanje na stranice i kampanje kojima treba."
+						}
+					],
+					"connects": [
+						{
+							"text": "Ugrađeno u stranice izrađene za rangiranje, s transkriptima koji nadopunjuju sadržaj umjesto da ga skrivaju."
+						},
+						{
+							"text": "Jasno objašnjenje na odredišnoj stranici pretvara plaćene klikove u upite."
+						}
+					],
+					"faqs": [
+						{
+							"question": "Koliko dug treba biti objašnjavajući video?",
+							"answer": "Što kraći, koliko ideja dopušta. Većina završi između 45 i 90 sekundi, uz verzije od 15 i 30 sekundi za društvene mreže."
+						},
+						{
+							"question": "Pišete li scenarij?",
+							"answer": "Da. Možemo raditi i prema vašem scenariju ili grubom brifu te ga oblikovati za ekran."
+						},
+						{
+							"question": "Što ako se proizvod promijeni?",
+							"answer": "Gradimo u modularnim scenama pa se značajka može zamijeniti ili ažurirati bez ponovne izrade cijelog filma."
+						},
+						{
+							"question": "Koliko je krugova ispravaka uključeno?",
+							"answer": "Broj krugova dogovaramo po projektu unaprijed i smještamo ih u faze u kojima su promjene jeftine: scenarij, storyboard, zatim animacija."
+						},
+						{
+							"question": "Gdje objašnjavajući videi najbolje rade?",
+							"answer": "Na odredišnim stranicama, u prodajnim prezentacijama, pri onboardingu, u e-pošti i na plaćenim pozicijama kojima treba brz, jasan pitch."
+						}
+					]
+				},
+				"product-animation": {
+					"name": "Animacija proizvoda",
+					"eyebrow": "04.3 / ANIMACIJA PROIZVODA",
+					"headline": "Pokažite ga",
+					"headlineAccent": "u radu.",
+					"summary": "Rastavljeni prikazi, obilasci značajki i otkrivanja pri lansiranju koji kupcima omogućuju da vide kako nešto radi prije nego što to mogu dodirnuti.",
+					"sample": {
+						"title": "HALO: rastavljeni prikaz, pet dijelova u deset sekundi",
+						"note": "Konceptni pametni zvučnik, izmišljen za ovu stranicu. Povucite vremensku crtu da ga rastavite i ponovno sastavite."
+					},
+					"deliverables": [
+						{
+							"title": "Glavna petlja",
+							"text": "Čista animacija u petlji za vrh stranice proizvoda ili odredišne stranice."
+						},
+						{
+							"title": "Rastavljeni prikazi i presjeci",
+							"text": "Priča iznutra: dijelovi, slojevi i kako se uklapaju."
+						},
+						{
+							"title": "Sekvence isticanja značajki",
+							"text": "Jedan kratak komad po značajki, a svaki jasno iznosi jednu točku."
+						},
+						{
+							"title": "Otkrivanje pri lansiranju",
+							"text": "Filmski komad za trenutak kad proizvod postaje javan."
+						},
+						{
+							"title": "Izvozi spremni za web",
+							"text": "Komprimirani video i, gdje pomaže, lagana vektorska animacija za brze stranice."
+						},
+						{
+							"title": "Skraćene verzije i stillovi za društvene mreže",
+							"text": "Okomite i kvadratne verzije plus ključni kadrovi za prezentacije, e-poštu i medije."
+						}
+					],
+					"steps": [
+						{
+							"title": "Prikupljamo izvor",
+							"text": "CAD, renderi, snimke zaslona ili skice, što god najbolje pokazuje proizvod."
+						},
+						{
+							"title": "Koreografiramo",
+							"text": "Planiramo kameru, redoslijed pojavljivanja dijelova i jednu stvar koju svaki kadar mora objasniti."
+						},
+						{
+							"title": "Svjetlo i materijal",
+							"text": "Površine, sjaj i sjene podešeni tako da se doima kao pravi predmet ili sučelje."
+						},
+						{
+							"title": "Renderiramo i isporučujemo",
+							"text": "Završne datoteke za svako mjesto na kojem se proizvod pojavljuje, s laganom opcijom za web."
+						}
+					],
+					"connects": [
+						{
+							"text": "Ista animacija izrezana za feed pretvara oglas proizvoda u nešto što objašnjava, a ne samo najavljuje."
+						},
+						{
+							"text": "Stranice proizvoda s jasnom demonstracijom dulje drže pažnju i daju pretrazi nešto za rangirati."
+						}
+					],
+					"faqs": [
+						{
+							"question": "Trebaju li vam 3D datoteke?",
+							"answer": "Pomažu, ali možemo raditi i prema fotografijama, crtežima ili opisu. Za softverske proizvode animiramo iz vašeg sučelja."
+						},
+						{
+							"question": "Možete li animirati softver, a ne samo fizičke proizvode?",
+							"answer": "Da. Obilasci sučelja, tokovi podataka i objašnjenja značajki zahtijevaju isti zanat kao i hardver."
+						},
+						{
+							"question": "Hoće li to usporiti našu stranicu?",
+							"answer": "Isporučujemo komprimirane datoteke i, gdje ima smisla, vektorsku animaciju koja ostaje lagana. Unaprijed dogovaramo proračun veličine."
+						},
+						{
+							"question": "Možemo li animaciju kasnije ponovno upotrijebiti?",
+							"answer": "Da. Isporučujemo izvor u slojevima i dogovaramo upotrebu kako bi buduća lansiranja mogla graditi na istim materijalima."
+						},
+						{
+							"question": "Koliko je uglačano uglačano?",
+							"answer": "Cilj je prvo jasnoća, zatim ljepota. Ako kadar izgleda sjajno, ali ne objašnjava, izrezuje se."
+						}
+					]
+				},
+				"brand-films": {
+					"name": "Brend filmovi",
+					"eyebrow": "04.4 / BREND FILMOVI",
+					"headline": "Recite to jednom.",
+					"headlineAccent": "Neka potraje.",
+					"summary": "Filmski, tipografijom vođeni filmovi koji nose gledište brenda, izrađeni da usidre lansiranje, kampanju ili naslovnicu.",
+					"sample": {
+						"title": "ROASWELL: uvodni film od 16 sekundi u tri poglavlja",
+						"note": "Konceptni film za naš vlastiti studio, u potpunosti izrađen u motion dizajnu. Koristite oznake poglavlja za skakanje između Signal, Intent i Return."
+					},
+					"deliverables": [
+						{
+							"title": "Koncept i treatment",
+							"text": "Ideja, ton i vizualni jezik, napisani i raspisani u storyboardu prije produkcije."
+						},
+						{
+							"title": "Scenarij-manifest",
+							"text": "Riječi koje zvuče kao brend i dovoljno su kratke da se zapamte."
+						},
+						{
+							"title": "Režija vođena pokretom",
+							"text": "Tipografska, ilustrativna ili mješovita tehnika, odabrana prema priči i proračunu."
+						},
+						{
+							"title": "Režija zvuka i glazbe",
+							"text": "Glazba i zvučni dizajn koji odrađuju pola emocionalnog posla."
+						},
+						{
+							"title": "Glavni film i skraćene verzije",
+							"text": "Cijeli komad plus verzije od 30, 15 i 6 sekundi za svaki kanal."
+						},
+						{
+							"title": "Motion alatni komplet brenda",
+							"text": "Prijelazi, easing i stilovi naslova kako bi se izgled nastavio u svemu što slijedi."
+						}
+					],
+					"steps": [
+						{
+							"title": "Pronalazimo gledište",
+							"text": "U što brend vjeruje, a njegova kategorija ne? To je film."
+						},
+						{
+							"title": "Pišemo treatment",
+							"text": "Poglavlja, ritam, ključni kadrovi i zvuk, dogovoreni prije nego što se animira i jedan kadar."
+						},
+						{
+							"title": "Izrađujemo ga",
+							"text": "Dizajn, animacija i zvuk grade se zajedno kako bi montaža disala."
+						},
+						{
+							"title": "Objavljujemo i proširujemo",
+							"text": "Lansiramo master, a zatim održavamo ideju živom skraćenim verzijama i motion alatnim kompletom."
+						}
+					],
+					"connects": [
+						{
+							"text": "Skraćene verzije postaju sloj svjesnosti u planu plaćenih društvenih mreža za cijeli lijevak."
+						},
+						{
+							"text": "Pretraga brenda i video kampanje dobivaju nešto na što se isplati kliknuti."
+						},
+						{
+							"text": "Film u srcu hub-a sadržaja daje piscima i poveznicama na što ukazati."
+						}
+					],
+					"faqs": [
+						{
+							"question": "Snimate li igrane kadrove?",
+							"answer": "Režiramo filmove vođene pokretom. Ako projekt zahtijeva snimanje, planiramo ga s produkcijskim partnerom, a motion režiju zadržavamo u kući."
+						},
+						{
+							"question": "Koliko je dug brend film?",
+							"answer": "Odlučuje ideja. Većina traje između 30 sekundi i dvije minute, s kraćim verzijama izrezanim iz mastera."
+						},
+						{
+							"question": "Tko je vlasnik filma?",
+							"answer": "Vi. Dogovaramo prava korištenja i isporučujemo izvorne datoteke u slojevima kao dio projekta."
+						},
+						{
+							"question": "Može li film živjeti na našoj naslovnici?",
+							"answer": "Da. Isporučujemo laganu petlju i poster kadar, s cijelim filmom jedan klik dalje."
+						},
+						{
+							"question": "Je li ovo samo za velike brendove?",
+							"answer": "Ne. Čvrsto napisan, tipografijom vođen film može koštati djelić snimanja, a opet djelovati kao gledište."
+						}
+					]
+				},
+				"web-ui-motion": {
+					"name": "Pokret za web i sučelja",
+					"eyebrow": "04.5 / POKRET ZA WEB I SUČELJA",
+					"headline": "Sučelja koja",
+					"headlineAccent": "djeluju živo.",
+					"summary": "Priče pri pomicanju, mikrointerakcije i prijelazi među stranicama koji stranicu čine lakšom za razumjeti i težom za zaboraviti, bez gubitka brzine ili pristupačnosti.",
+					"sample": {
+						"title": "Motion laboratorij: sedam interakcija koje možete dodirnuti",
+						"note": "Stvaran, funkcionalan pokret sučelja, a ne video. Prebacujte, prelazite mišem, povlačite i klikajte. Sve ovdje poštuje postavke smanjenog pokreta."
+					},
+					"deliverables": [
+						{
+							"title": "Načela pokreta",
+							"text": "Tokeni za easing, vremenski odnos i spring, tako da se svaka interakcija doima dijelom jednog proizvoda."
+						},
+						{
+							"title": "Prijelazi pri pomicanju i među stranicama",
+							"text": "Sekvence pomicanja vođene pričom i prijelazi među rutama koji vode pažnju, poput onih na ovoj stranici."
+						},
+						{
+							"title": "Biblioteka mikrointerakcija",
+							"text": "Gumbi, prekidači, izbornici, kartice i obrasci koji reagiraju s namjerom."
+						},
+						{
+							"title": "Produkcijski kod ili izvozi",
+							"text": "Čist CSS i JavaScript, ili izvozi za Lottie i video, spremni za vaš stack."
+						},
+						{
+							"title": "Varijante pristupačnosti",
+							"text": "Alternative sa smanjenim pokretom i ponašanje fokusa osmišljeni od početka, a ne dodani naknadno."
+						},
+						{
+							"title": "Proračun učinkovitosti",
+							"text": "Pokret se mjeri prema vremenu učitavanja i kašnjenju interakcije prije objave."
+						}
+					],
+					"steps": [
+						{
+							"title": "Audit",
+							"text": "Pronalazimo gdje bi pokret nešto razjasnio, a gdje bi samo dodao šum."
+						},
+						{
+							"title": "Postavljamo načela",
+							"text": "Definiramo rječnik easinga i vremenskih odnosa kako se odluke više ne bi donosile od slučaja do slučaja."
+						},
+						{
+							"title": "Prototip u pregledniku",
+							"text": "Gradimo u stvarnom mediju kako bi ono što odobrite bilo ono što se objavi."
+						},
+						{
+							"title": "Objavljujemo i mjerimo",
+							"text": "Objavljujemo s proračunom učinkovitosti i pratimo što korisnici stvarno rade."
+						}
+					],
+					"connects": [
+						{
+							"text": "Brz, pristupačan pokret podupire Core Web Vitals umjesto da se bori protiv njih."
+						},
+						{
+							"text": "Odredišne stranice s jasnim, brzim interakcijama pretvaraju plaćene klikove u akciju."
+						}
+					],
+					"faqs": [
+						{
+							"question": "Hoće li animacija usporiti našu stranicu?",
+							"answer": "Ne, ako je izrađena kako treba. Postavljamo proračun učinkovitosti, animiramo najjeftinijim svojstvima i testiramo na stvarnim uređajima."
+						},
+						{
+							"question": "Pišete li kod?",
+							"answer": "Da. Možemo isporučiti kod spreman za produkciju ili predati specifikacije i izvoze vašem timu za implementaciju."
+						},
+						{
+							"question": "Što je s pristupačnošću?",
+							"answer": "Svaki pokret ima alternativu sa smanjenim pokretom, a ponašanje tipkovnice i čitača zaslona osmišljava se uz animaciju."
+						},
+						{
+							"question": "Radi li to s našim CMS-om ili frameworkom?",
+							"answer": "Radimo s većinom modernih stackova. Recite nam što koristite i potvrdit ćemo najbolji pristup."
+						},
+						{
+							"question": "Mogu li to vidjeti u radu?",
+							"answer": "Upravo to gledate. Sekvence pomicanja, brojači i otkrivanja na ovoj stranici izrađeni su istim pristupom."
+						}
+					]
+				}
+			},
+			"body": [
+				{
+					"text": "Statična kreativa traži pažnju. Pokret je uzima. U prvoj sekundi feeda pokret odlučuje hoće li poruka dobiti priliku, a ostatak ideje važan je samo ako preživi tu sekundu."
+				},
+				{
+					"text": "Izrađeno za feed, a ne za showreel"
+				},
+				{
+					"text": "Svaki komad počinje hipotezom: udica, tvrdnja, razlog da se nastavi gledati. Storyboard radimo prema metrici koju mora pomaknuti, a zatim gradimo varijante kako bi sustav testiranja imao pravi materijal iz kojeg će učiti."
+				},
+				{
+					"text": "Sjajan motion nije ukras. To je argument učinjen vidljivim."
+				},
+				{
+					"text": "Jedna ideja, svaka površina"
+				},
+				{
+					"text": "Isti koncept putuje od plaćenog reza od šest sekundi do objašnjenja proizvoda, animacije na odredišnoj stranici i filma o lansiranju. Jedan dizajnerski jezik, jedan skup materijala, bez trostrukog prerađivanja ideje."
+				},
+				{
+					"text": "Budući da motion živi u istom studiju kao pretraga i plaćeni mediji, kreativu brifiraju podaci o učinku, a ocjenjuju je poslovni rezultati, a ne to kako izgleda na reelu."
+				}
+			]
+		}
+	},
+	"caseStudies": {
+		"search-to-significance": {
+			"title": "Pretvaranje namjere pretrage u potražnju",
+			"discipline": "SEO i sadržaj",
+			"summary": "Kako je brend s promišljenim kupnjama iznova izgradio svoju organsku prisutnost oko komercijalne namjere i pretvorio promet s vrha lijevka u kvalificirani prodajni pipeline.",
+			"challenge": "Specijalizirani B2B brend rangirao se za informativne upite koji su donosili promet, ali ne i pipeline. Sadržaja je bilo napretek, ali je odgovarao na krive upite za kupce niže u lijevku.",
+			"approach": "Iznova smo mapirali krajolik tema oko namjere kupnje, spojili tanak sadržaj i iznova izgradili urednički kalendar oko odluka s kojima se kupci stvarno suočavaju. Tehnički SEO, arhitektura stranice, interno povezivanje i strukturirani podaci dali su novom sadržaju prostora za rangiranje.",
+			"outcome": "Organski promet preusmjerio se prema komercijalnim stranicama, kvalificirani upiti porasli su, a stroj za sadržaj počeo se zbrajati umjesto raspršivati. Rad je u tijeku, smjer je određen.",
+			"metrics": [
+				{
+					"label": "Cilj organskog prometa"
+				},
+				{
+					"label": "Cilj kvalificiranih leadova"
+				}
+			]
+		},
+		"making-acquisition-work-harder": {
+			"title": "Neka akvizicija radi jače",
+			"discipline": "Meta Ads + Google Ads",
+			"summary": "DTC brend trošio je više da bi stjecao manje. Restart vođen kreativom na plaćenim društvenim mrežama i u pretrazi iznova je izgradio učinkovitost od temelja.",
+			"challenge": "Rastući CPM-ovi i umor od kreativa gurnuli su trošak akvizicije preko praga profitabilnosti. Račun je bio zaposlen, ali neučinkovit, s proračunom razmazanim po publikama koje više nisu konvertirale.",
+			"approach": "Račun smo objedinili oko strukturiranog sustava testiranja kreativa, iznova izgradili slijed za cijeli lijevak i preusmjerili proračun za pretragu prema pojmovima visoke namjere i visoke marže. Praćenje je premješteno na poslužitelj kako bi odluke odražavale stvarnost.",
+			"outcome": "Trošak akvizicije pao je, povrat na oglašivačku potrošnju oporavio se, a ritam testiranja značio je da se kreativa poboljšava u svakom ciklusu umjesto da propada. Brend sada ima sustav, a ne samo kampanje.",
+			"metrics": [
+				{
+					"label": "Cilj povrata na oglašivačku potrošnju"
+				},
+				{
+					"label": "Cilj troška akvizicije"
+				}
+			]
+		},
+		"full-funnel-foundations": {
+			"title": "Temelji za cijeli lijevak za novo lansiranje",
+			"discipline": "SEO i sadržaj + plaćeni mediji",
+			"summary": "Lansiranje proizvoda trebalo je organski kapital i plaćeni zamah u isto vrijeme. Izgradili smo oboje, poredano da se zbraja.",
+			"challenge": "Nova ponuda nije imala prisutnost u pretrazi niti plaćenu povijest. Rizik je bio lansirati u tišinu: plaćena potrošnja bez ičega što bi uhvatilo potražnju koju stvara.",
+			"approach": "Rad na sadržaju i tehničkom SEO-u započeo je mjesecima prije lansiranja kako bi se izgradio tematski autoritet. Plaćene društvene mreže sijale su svjesnost i retargeting, dok je pretraga hvatala namjeru koju je lansiranje stvorilo. Mjerenje je ugrađeno od prvog dana.",
+			"outcome": "Lansiranje je sletjelo u postojeći organski kapital umjesto u prazninu, plaćena potrošnja konvertirala je zdravim tempom od početka, a brend je imao okvir mjerenja iz kojeg može skalirati.",
+			"metrics": [
+				{
+					"label": "Cilj ROAS-a u mjesecu lansiranja"
+				},
+				{
+					"label": "Organski kapital izgrađen prije lansiranja"
+				}
+			]
+		}
+	},
+	"articles": {
+		"why-three-disciplines": {
+			"title": "Zašto ove tri discipline pripadaju zajedno",
+			"excerpt": "Pretraga, sadržaj i plaćeni mediji obično se prodaju kao odvojene prakse. Evo zašto njihovo tretiranje kao jednog sustava rasta mijenja ishod.",
+			"category": "Strategija",
+			"body": [
+				{
+					"text": "Većina agencija organizira se oko kanala jer se kanali lako prodaju. Tim za pretragu. Tim za društvene mreže. Tim za sadržaj. Svaki optimizira svoj kut, a praznine između njih su mjesta na kojima rast curi."
+				},
+				{
+					"text": "Namjera, potražnja i ubrzanje"
+				},
+				{
+					"text": "Pretraga hvata namjeru koja već postoji. Sadržaj gradi potražnju koja je stvara. Plaćeni mediji ubrzavaju ono što radi, gurajući provjereno u više trenutaka, brže. Izvadite bilo koje i sustav gubi polugu."
+				},
+				{
+					"text": "Kanal u izolaciji je taktika. Kanali koji hrane jedan drugoga su sustav."
+				},
+				{
+					"text": "Kad isto razmišljanje oblikuje strategiju ključnih riječi, urednički kalendar i plaćenu kreativu, rad se zbraja. Sadržaj se rangira jer je izrađen za to. Plaćeno konvertira jer je poruka već organski zaslužila povjerenje. Pretraga hvata potražnju koju su stvorila druga dva."
+				},
+				{
+					"text": "Što se mijenja u praksi"
+				},
+				{
+					"text": "Manje prepuštanja. Jedan okvir mjerenja. Kreativna ideja koja može putovati od organske objave do plaćenog materijala i odredišne stranice bez trostruke prerade. U tome je smisao ostanka malim i pod vodstvom seniora."
+				}
+			]
+		},
+		"creative-is-the-targeting": {
+			"title": "Kreativa je ciljanje",
+			"excerpt": "Na modernim platformama plaćenih društvenih mreža važnije je što pokazujete nego kome. Bilješka o izgradnji sustava testiranja koji drži.",
+			"category": "Plaćeni mediji",
+			"body": [
+				{
+					"text": "Stari priručnik počinjao je od publike: izgradi savršenu personu, precizno je ciljaj i vjeruj algoritmu da nađe još takvih. Taj je svijet uglavnom nestao. Publike su šire, signali bučniji, a filtriranje obavlja sama kreativa."
+				},
+				{
+					"text": "Kreativa odlučuje tko ostaje"
+				},
+				{
+					"text": "Udica koja zaustavlja pomicanje govori pravoj osobi, a odbija pogrešnu. To je ciljanje, samo što ga radi poruka umjesto birača publike. Što znači da je kreativni pipeline sada poluga."
+				},
+				{
+					"text": "Ako vaš sustav testiranja ne postaje oštriji u svakom ciklusu, vaša kreativa propada."
+				},
+				{
+					"text": "Izgradite sustav, a ne seriju"
+				},
+				{
+					"text": "Hipoteze prije varijanti. Jasni pobjednici prije skaliranja. Ritam koji proizvodi učenje, a ne samo materijale. Brendovi koji pobjeđuju na plaćenim društvenim mrežama su oni čija se kreativa mjerljivo poboljšava iz mjeseca u mjesec, a ne oni s najvećim proračunom."
+				}
+			]
+		},
+		"measuring-what-comes-back": {
+			"title": "Mjerenje onoga što se vraća",
+			"excerpt": "Nadzorne ploče platformi uvijek će vam reći da je potrošnja uspjela. Evo kako brojke držimo poštenima.",
+			"category": "Mjerenje",
+			"body": [
+				{
+					"text": "Svaka oglasna platforma izvještava o vlastitom uspjehu. Ne lažu, točnije rečeno, ali mjere iz vlastite perspektive, a ta je perspektiva velikodušna prema platformi."
+				},
+				{
+					"text": "Atribucija je pitanje, a ne postavka"
+				},
+				{
+					"text": "Pitanje nije „je li ova kampanja potaknula konverzije“, nego „što bi se dogodilo bez nje“. Na to odgovaraju inkrementalnost, mješoviti CAC i modeliranje vrijednosti konverzije. Nadzorne ploče po zadnjem kliku ne odgovaraju."
+				},
+				{
+					"text": "Ako broj koji vodi odluku dolazi od platforme koja troši novac, tretirajte ga kao tvrdnju, a ne kao činjenicu."
+				},
+				{
+					"text": "Praćenje na poslužitelju, čist sloj podataka i prikaz izvještavanja vezan uz poslovne rezultate, a ne uz samoprijavu platforme, mjesto su na kojem bi se odluke trebale donositi. Manje je laskavo i daleko korisnije."
+				}
+			]
+		}
+	}
+}

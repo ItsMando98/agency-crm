@@ -1,0 +1,720 @@
+{
+	"expertise": {
+		"seo-content": {
+			"name": "SEO & innehåll",
+			"eyebrow": "01 / SEO & INNEHÅLL",
+			"headline": "Bli hittad.",
+			"headlineAccent": "Bli vald.",
+			"summary": "Sök fångar intention. Innehåll bygger efterfrågan. Vi förvandlar frågor till kvalificerad trafik och trafik till kunder, med strategi, redaktionellt arbete och tekniska grunder som växer på varandra över tid.",
+			"capabilities": [
+				"SEO-strategi",
+				"Innehållsstrategi",
+				"Sökordsanalys",
+				"Redaktionellt arbete",
+				"On-page SEO",
+				"Innehållsoptimering"
+			],
+			"cta": "Utforska SEO & innehåll",
+			"subpages": [],
+			"body": [
+				{
+					"text": "Det mesta av söktrafiken går till spillo eftersom den svarar på fel fråga, eller på rätt fråga dåligt. Vi utgår från intention, det din målgrupp faktiskt försöker förstå, besluta eller köpa, och bygger utåt därifrån."
+				},
+				{
+					"text": "Strategi före produktion"
+				},
+				{
+					"text": "En innehållsmotor fungerar bara när varje del har en uppgift. Vi kartlägger de ämnen som driver affärsresultat, prioriterar efter möjlighet och sekvenserar arbetet så att momentum byggs på i stället för att spridas ut."
+				},
+				{
+					"text": "Var svaret din målgrupp letar efter, inte bara ännu ett resultat på sidan."
+				},
+				{
+					"text": "Tekniska grunder som håller"
+				},
+				{
+					"text": "Indexerbarhet, webbplatsarkitektur, Core Web Vitals, strukturerad data. Det oglamorösa arbetet som avgör om bra innehåll över huvud taget får chansen att ranka. Vi ser det som en del av strategin, inte som en eftertanke."
+				},
+				{
+					"text": "Sedan mäter vi. Data från Search Console, rankningsspårning, konverteringsattribuering, allt kopplat till de affärsresultat som räknas, inte till fåfänga trafikdiagram."
+				}
+			]
+		},
+		"meta-ads": {
+			"name": "Meta Ads",
+			"eyebrow": "02 / META ADS",
+			"headline": "Förvandla uppmärksamhet",
+			"headlineAccent": "till efterfrågan.",
+			"summary": "Kreativ som träffar, kampanjer som konverterar. Vi kombinerar målgruppsinsikt med oavbruten testning så att varje visning arbetar hårdare på Facebook, Instagram och resten av Metas ekosystem.",
+			"capabilities": [
+				"Betald social media",
+				"Kreativ testning",
+				"Målgruppsstrategi",
+				"Kampanjer för hela tratten",
+				"Konverteringsoptimering",
+				"Retargeting"
+			],
+			"cta": "Utforska Meta Ads",
+			"subpages": [],
+			"body": [
+				{
+					"text": "Uppmärksamhet finns i överflöd, efterfrågan gör det inte. Betald social medias uppgift är inte att synas, utan att bli ihågkommen, övervägd och vald. Det börjar med kreativ som förtjänar att stoppa scrollandet."
+				},
+				{
+					"text": "Kreativet är målgruppen"
+				},
+				{
+					"text": "På moderna plattformar spelar det större roll vad du visar än för vem. Vi bygger ett strukturerat system för kreativ testning, med hypoteser, varianter och tydliga vinnare, så att arbetet blir skarpare för varje cykel."
+				},
+				{
+					"text": "Varje klick har en uppgift. Se till att det räknas."
+				},
+				{
+					"text": "Hela tratten, inte sista klick"
+				},
+				{
+					"text": "Medvetenhet, övervägande, konvertering, retention. Vi utformar resan så att varje steg matar nästa, och mäter inkrementellt så att du vet vad pengarna faktiskt gav."
+				},
+				{
+					"text": "Inget ställa in och glömma. Veckovisa kreativgenomgångar, målgruppsuppdateringar och budgetförflyttningar mot det som fungerar och bort från det som inte gör det."
+				}
+			]
+		},
+		"google-ads": {
+			"name": "Google Ads",
+			"eyebrow": "03 / GOOGLE ADS",
+			"headline": "Fånga intention",
+			"headlineAccent": "när det gäller.",
+			"summary": "Möt intentionen med precision. Från sök till shopping lägger vi budgeten där möjligheten finns och mäter vad som kommer tillbaka med tydlig, affärsmässig rapportering.",
+			"capabilities": [
+				"Betald sökning",
+				"Shoppingannonser",
+				"Performance Max",
+				"Konverteringsoptimering",
+				"Budstrategi",
+				"Spårning och mätning"
+			],
+			"cta": "Utforska Google Ads",
+			"subpages": [],
+			"body": [
+				{
+					"text": "Sök är ögonblicket då intention blir handling. Frågan är om du dyker upp där, och om upplevelsen konverterar när du gör det."
+				},
+				{
+					"text": "Budget där möjligheten finns"
+				},
+				{
+					"text": "Inte varje sökord förtjänar dina pengar. Vi bygger sökordsstrategi kring kommersiell intention och marginal, tar bort spill från breda matchningar och varumärkesöverlapp och koncentrerar spenderingen där avkastningen är verklig."
+				},
+				{
+					"text": "Möt intentionen med precision. Mät vad som kommer tillbaka."
+				},
+				{
+					"text": "Mätning du kan lita på"
+				},
+				{
+					"text": "Serverside-spårning, modellering av konverteringsvärde, ren attribuering. Så att siffrorna som styr besluten speglar verkligheten och inte plattformens egen rapportering."
+				},
+				{
+					"text": "Budstrategier anpassade efter din ekonomi, inte ett standardmål. Vi testar, bevakar kantfallen och håller spenderingen ärlig."
+				}
+			]
+		},
+		"motion-graphics": {
+			"name": "Motion Graphics",
+			"eyebrow": "04 / MOTION GRAPHICS",
+			"headline": "Stoppa scrollandet.",
+			"headlineAccent": "Bli omöjlig att missa.",
+			"summary": "Rörelse är det snabbaste sättet att fånga uppmärksamhet och det tydligaste sättet att förklara en stor idé. Vi gör annonser, produktanimationer och varumärkesfilmer som är byggda för att testas, inte bara beundras.",
+			"capabilities": [
+				"Kreativ för betald social media",
+				"Förklarande filmer",
+				"Produktanimation",
+				"Varumärkesfilmer",
+				"Rörelse för webb och gränssnitt",
+				"Material för kreativ testning"
+			],
+			"cta": "Utforska Motion Graphics",
+			"subpages": {
+				"paid-social-motion": {
+					"name": "Motionannonser för betald social media",
+					"eyebrow": "04.1 / MOTIONANNONSER FÖR BETALD SOCIAL MEDIA",
+					"headline": "Vinn den första",
+					"headlineAccent": "sekunden.",
+					"summary": "Kort motion byggd för flödet: en krok som stoppar tummen, ett budskap som landar och ett variantsystem som visar vilken idé som förtjänar nästa budget.",
+					"sample": {
+						"title": "NOVA Sparkling: en annons på 10 sekunder, isärplockad",
+						"note": "En konceptannons för ett påhittat dryckesvarumärke. Spola i den och läs sedan de fyra takterna bredvid: krok, budskap, bevis, uppmaning."
+					},
+					"deliverables": [
+						{
+							"title": "Storyboards som börjar med kroken",
+							"text": "Tre till fem öppningsidéer för varje koncept, var och en skriven för att vinna första sekunden på egen hand."
+						},
+						{
+							"title": "Masteranimation och kortversioner",
+							"text": "Ett huvudstycke plus versioner på 6, 15 och 30 sekunder, klippta för de placeringar du faktiskt köper."
+						},
+						{
+							"title": "Alla format",
+							"text": "Versioner i 9:16, 4:5 och 1:1, kontrollerade mot säkra zoner för Stories, Reels och flödet."
+						},
+						{
+							"title": "Variantkit",
+							"text": "Utbytbara krokar, budskap och slutkort inbyggda i filen så att testning aldrig betyder att börja om."
+						},
+						{
+							"title": "Undertexter och ljud",
+							"text": "Inbrända undertexter för tittande utan ljud och ljuddesign för tittande med ljud."
+						},
+						{
+							"title": "Genomgång av lärdomar",
+							"text": "En skriftlig sammanfattning av vad varje variant lärde oss och vad nästa omgång bör ändra."
+						}
+					],
+					"steps": [
+						{
+							"title": "Läs kontot",
+							"text": "Vi utgår från prestandadata: vad som slits ut, vilka vinklar som fortfarande drar, var tittarna hoppar av."
+						},
+						{
+							"title": "Skriv hypoteserna",
+							"text": "Varje koncept anger vilket påstående det testar och vilket tal det ska flytta, innan något animeras."
+						},
+						{
+							"title": "Bygg systemet",
+							"text": "Först masteranimationen, sedan varianter som skapas från samma källa så att utseendet hålls enhetligt."
+						},
+						{
+							"title": "Lansera och lär",
+							"text": "Varianterna tävlar mot varandra. Vinnare skalas upp, förlorare pensioneras och anteckningarna matar nästa omgång."
+						}
+					],
+					"connects": [
+						{
+							"text": "Systemet för kreativ testning som avgör vilka varianter som får budget och när de ska pensioneras."
+						},
+						{
+							"text": "Korta versioner fungerar också som videomaterial för YouTube och Performance Max."
+						}
+					],
+					"faqs": [
+						{
+							"question": "Behöver vi leverera filmmaterial?",
+							"answer": "Nej. Vi kan arbeta med varumärkesmaterial, produktrenderingar, skärminspelningar eller bygga hela stycket av illustration och typografi. Har ni filmmaterial använder vi det."
+						},
+						{
+							"question": "Hur många varianter ska vi börja med?",
+							"answer": "Tillräckligt många för att lära sig något, men inte så många att varje enskild svälter. Vi föreslår vanligtvis en liten matris av krokar mot budskap och kommer överens om storleken per omgång."
+						},
+						{
+							"question": "Kan ni också driva medieköpet?",
+							"answer": "Ja, genom vårt arbete med Meta Ads och Google Ads. Ni kan också ta de färdiga filerna och köra dem själva."
+						},
+						{
+							"question": "Hur är det med musik och voiceover?",
+							"answer": "Vi använder licensierat eller originalljud och reder ut rättigheterna i förväg, inklusive var och hur länge annonsen får visas."
+						},
+						{
+							"question": "Hur bedömer man en motionannons?",
+							"answer": "Efter det affärsmått den briefades mot, inte efter hur den ser ut. Varje koncept knyts till ett tal innan det byggs."
+						}
+					]
+				},
+				"explainer-videos": {
+					"name": "Förklarande filmer",
+					"eyebrow": "04.2 / FÖRKLARANDE FILMER",
+					"headline": "Gör det komplicerade",
+					"headlineAccent": "uppenbart.",
+					"summary": "En kort animerad förklaring som gör en svår produkt eller idé till något en köpare kan upprepa för sin chef.",
+					"sample": {
+						"title": "Från splittrad uppmärksamhet till en kund, på 14 sekunder",
+						"note": "En konceptfilm om hur en tratt fungerar. Prickarna är människor. Se hur många som kommer in, hur många som konverterar och hur berättelsen bärs av rörelse enbart."
+					},
+					"deliverables": [
+						{
+							"title": "Manus och berättelse",
+							"text": "Ett tätt manus byggt kring det enda tittaren måste tro på i slutet."
+						},
+						{
+							"title": "Stilbilder och storyboard",
+							"text": "Utseendet och varje scen avtalade på papper innan animeringen börjar."
+						},
+						{
+							"title": "Egen illustration och animation",
+							"text": "Originalbilder byggda för din produkt, inte lagerikoner som flyttas runt."
+						},
+						{
+							"title": "Voiceover-regi och ljud",
+							"text": "Vägledning för casting, regi och ett mixat spår, eller en version med enbart musik."
+						},
+						{
+							"title": "Kortversioner med undertexter",
+							"text": "Korta versioner för sociala medier och betald media med undertexter redan inbyggda."
+						},
+						{
+							"title": "Redo för landningssidan",
+							"text": "Komprimerade filer, en affischbild och en transkription så att videon hjälper sidan i stället för att göra den långsammare."
+						}
+					],
+					"steps": [
+						{
+							"title": "Definiera övertygelsen",
+							"text": "Vem tittar, vad tvivlar de på och vad ska de tro på när filmen är slut?"
+						},
+						{
+							"title": "Skriv och storyboarda",
+							"text": "Manus och storyboard tillsammans, så att varje rad har en bild som förtjänar sin plats."
+						},
+						{
+							"title": "Designa och animera",
+							"text": "Först stilbilder, sedan animation i modulära scener som är lätta att uppdatera."
+						},
+						{
+							"title": "Slutför och publicera",
+							"text": "Ljud, undertexter, kortversioner och placering på de sidor och kampanjer som behöver den."
+						}
+					],
+					"connects": [
+						{
+							"text": "Inbäddad på sidor som byggts för att ranka, med transkriptioner som tillför innehållet i stället för att dölja det."
+						},
+						{
+							"text": "En tydlig förklaring på landningssidan är det som förvandlar betalda klick till förfrågningar."
+						}
+					],
+					"faqs": [
+						{
+							"question": "Hur lång bör en förklarande film vara?",
+							"answer": "Så kort som idén tillåter. De flesta hamnar mellan 45 och 90 sekunder, med versioner på 15 och 30 sekunder för sociala medier."
+						},
+						{
+							"question": "Skriver ni manuset?",
+							"answer": "Ja. Vi kan också utgå från ert manus eller en grov brief och forma det för skärmen."
+						},
+						{
+							"question": "Vad händer om produkten ändras?",
+							"answer": "Vi bygger i modulära scener så att en funktion kan bytas ut eller uppdateras utan att hela filmen görs om."
+						},
+						{
+							"question": "Hur många korrigeringsomgångar ingår?",
+							"answer": "Vi kommer överens om antalet omgångar per projekt i förväg och lägger dem i de steg där ändringar är billiga: manus, storyboard, sedan animation."
+						},
+						{
+							"question": "Var fungerar förklarande filmer bäst?",
+							"answer": "På landningssidor, i säljpresentationer, vid onboarding, i e-post och i betalda placeringar som behöver ett snabbt och tydligt pitch."
+						}
+					]
+				},
+				"product-animation": {
+					"name": "Produktanimation",
+					"eyebrow": "04.3 / PRODUKTANIMATION",
+					"headline": "Visa den",
+					"headlineAccent": "i funktion.",
+					"summary": "Sprängskisser, funktionsgenomgångar och lanseringsavslöjanden som låter köpare se hur något fungerar innan de kan ta på det.",
+					"sample": {
+						"title": "HALO: en sprängskiss, fem delar på tio sekunder",
+						"note": "En konceptuell smart högtalare, uppfunnen för den här sidan. Dra i tidslinjen för att plocka isär den och sätta ihop den igen."
+					},
+					"deliverables": [
+						{
+							"title": "Huvudloop",
+							"text": "En ren loopande animation för toppen av en produkt- eller landningssida."
+						},
+						{
+							"title": "Sprängskisser och genomskärningar",
+							"text": "Historien på insidan: delar, lager och hur de passar ihop."
+						},
+						{
+							"title": "Sekvenser som lyfter fram funktioner",
+							"text": "Ett kort stycke per funktion, där var och ett förmedlar en enda poäng tydligt."
+						},
+						{
+							"title": "Lanseringsavslöjande",
+							"text": "Ett filmiskt stycke för stunden då produkten blir offentlig."
+						},
+						{
+							"title": "Webbklara exporter",
+							"text": "Komprimerad video och, där det hjälper, lättviktig vektoranimation för snabba sidor."
+						},
+						{
+							"title": "Kortversioner och stillbilder för sociala medier",
+							"text": "Stående och kvadratiska versioner samt nyckelbilder för presentationer, e-post och press."
+						}
+					],
+					"steps": [
+						{
+							"title": "Samla källmaterialet",
+							"text": "CAD, renderingar, skärminspelningar eller skisser, allt som visar produkten bäst."
+						},
+						{
+							"title": "Koreografera",
+							"text": "Planera kameran, i vilken ordning delarna dyker upp och den enda sak varje bild måste förklara."
+						},
+						{
+							"title": "Ljus och material",
+							"text": "Ytor, glöd och skuggor justeras så att det känns som det verkliga föremålet eller gränssnittet."
+						},
+						{
+							"title": "Rendera och leverera",
+							"text": "Slutfiler för varje plats där produkten förekommer, med ett lättviktigt alternativ för webben."
+						}
+					],
+					"connects": [
+						{
+							"text": "Samma animation, klippt för flödet, gör en produktannons som förklarar i stället för att bara tillkännage."
+						},
+						{
+							"text": "Produktsidor med en tydlig demonstration håller kvar uppmärksamheten längre och ger sök något att ranka."
+						}
+					],
+					"faqs": [
+						{
+							"question": "Behöver ni 3D-filer?",
+							"answer": "De hjälper, men vi kan också utgå från fotografier, ritningar eller en beskrivning. För mjukvaruprodukter animerar vi utifrån ert gränssnitt."
+						},
+						{
+							"question": "Kan ni animera mjukvara, inte bara fysiska produkter?",
+							"answer": "Ja. Gränssnittsgenomgångar, dataflöden och funktionsförklaringar kräver samma hantverk som hårdvara."
+						},
+						{
+							"question": "Gör det vår webbplats långsammare?",
+							"answer": "Vi levererar komprimerade filer och, där det är rimligt, vektoranimation som förblir lätt. Vi kommer överens om en storleksbudget i förväg."
+						},
+						{
+							"question": "Kan vi återanvända animationen senare?",
+							"answer": "Ja. Vi levererar källfiler med lager och kommer överens om användningen så att framtida lanseringar kan bygga på samma material."
+						},
+						{
+							"question": "Hur polerat är polerat?",
+							"answer": "Målet är tydlighet först, skönhet sedan. Om en bild ser fantastisk ut men inte förklarar något klipps den bort."
+						}
+					]
+				},
+				"brand-films": {
+					"name": "Varumärkesfilmer",
+					"eyebrow": "04.4 / VARUMÄRKESFILMER",
+					"headline": "Säg det en gång.",
+					"headlineAccent": "Gör det bestående.",
+					"summary": "Filmiska, typografiledda filmer som bär ett varumärkes synsätt, byggda för att förankra en lansering, en kampanj eller en startsida.",
+					"sample": {
+						"title": "ROASWELL: en 16 sekunder lång titelfilm i tre kapitel",
+						"note": "En konceptfilm för vår egen studio, helt gjord i motion design. Använd kapitelmarkörerna för att hoppa mellan Signal, Intent och Return."
+					},
+					"deliverables": [
+						{
+							"title": "Koncept och treatment",
+							"text": "Idén, tonen och det visuella språket, nedskrivna och storyboardade före produktionen."
+						},
+						{
+							"title": "Manifestmanus",
+							"text": "Ord som låter som varumärket och är tillräckligt korta för att bli ihågkomna."
+						},
+						{
+							"title": "Rörelseledd regi",
+							"text": "Typografisk, illustrativ eller blandad teknik, vald för att passa berättelsen och budgeten."
+						},
+						{
+							"title": "Ljud- och musikregi",
+							"text": "Musik och ljuddesign som gör halva det känslomässiga jobbet."
+						},
+						{
+							"title": "Masterfilm och kortversioner",
+							"text": "Hela stycket plus versioner på 30, 15 och 6 sekunder för varje kanal."
+						},
+						{
+							"title": "Motion-verktygslåda för varumärket",
+							"text": "Övergångar, easing och titelstilar så att utseendet fortsätter i allt som följer."
+						}
+					],
+					"steps": [
+						{
+							"title": "Hitta synsättet",
+							"text": "Vad tror varumärket på som dess kategori inte gör? Det är filmen."
+						},
+						{
+							"title": "Skriv treatmentet",
+							"text": "Kapitel, rytm, nyckelbilder och ljud, överenskomna innan en enda bild animeras."
+						},
+						{
+							"title": "Gör den",
+							"text": "Design, animation och ljud byggs tillsammans så att klippningen andas."
+						},
+						{
+							"title": "Släpp och förläng",
+							"text": "Lansera mastern och håll sedan idén levande med kortversioner och motion-verktygslådan."
+						}
+					],
+					"connects": [
+						{
+							"text": "Kortversionerna blir medvetenhetsnivån i en plan för betald social media över hela tratten."
+						},
+						{
+							"text": "Varumärkessök och videokampanjer får något som är värt att klicka vidare till."
+						},
+						{
+							"text": "En film i hjärtat av ett innehållsnav ger skribenter och länkar något att peka på."
+						}
+					],
+					"faqs": [
+						{
+							"question": "Filmar ni skådespelade scener?",
+							"answer": "Vi regisserar rörelseledda filmer. Om ett projekt kräver inspelade scener planerar vi det med en produktionspartner och behåller motionregin internt."
+						},
+						{
+							"question": "Hur lång är en varumärkesfilm?",
+							"answer": "Idén avgör. De flesta ligger mellan 30 sekunder och två minuter, med kortare versioner klippta från mastern."
+						},
+						{
+							"question": "Vem äger filmen?",
+							"answer": "Ni. Vi kommer överens om användningsrättigheter och levererar källfiler med lager som en del av projektet."
+						},
+						{
+							"question": "Kan filmen ligga på vår startsida?",
+							"answer": "Ja. Vi levererar en lättviktig loop och en affischbild, med hela filmen ett klick bort."
+						},
+						{
+							"question": "Är det här bara för stora varumärken?",
+							"answer": "Nej. En stramt skriven typografiledd film kan kosta en bråkdel av en inspelning och ändå kännas som ett synsätt."
+						}
+					]
+				},
+				"web-ui-motion": {
+					"name": "Rörelse för webb och gränssnitt",
+					"eyebrow": "04.5 / RÖRELSE FÖR WEBB OCH GRÄNSSNITT",
+					"headline": "Gränssnitt som",
+					"headlineAccent": "känns levande.",
+					"summary": "Scrollberättelser, mikrointeraktioner och sidövergångar som gör en webbplats lättare att förstå och svårare att glömma, utan att kosta hastighet eller tillgänglighet.",
+					"sample": {
+						"title": "Motionlabbet: sju interaktioner du kan ta på",
+						"note": "Riktig, fungerande gränssnittsrörelse, inte en video. Växla, hovra, dra och klicka. Allt här respekterar inställningarna för minskad rörelse."
+					},
+					"deliverables": [
+						{
+							"title": "Rörelseprinciper",
+							"text": "Easing-, timing- och spring-tokens så att varje interaktion känns som en del av samma produkt."
+						},
+						{
+							"title": "Scroll- och sidövergångar",
+							"text": "Berättelsedrivna scrollsekvenser och ruttövergångar som styr uppmärksamheten, som de på den här webbplatsen."
+						},
+						{
+							"title": "Bibliotek för mikrointeraktioner",
+							"text": "Knappar, växlare, menyer, kort och formulär som reagerar med syfte."
+						},
+						{
+							"title": "Produktionskod eller exporter",
+							"text": "Ren CSS och JavaScript, eller Lottie- och videoexporter, redo för er stack."
+						},
+						{
+							"title": "Varianter för tillgänglighet",
+							"text": "Alternativ för minskad rörelse och fokusbeteende som är inbyggda från början, inte lappade på efteråt."
+						},
+						{
+							"title": "Prestandabudget",
+							"text": "Rörelsen mäts mot laddningstid och interaktionsfördröjning innan den släpps."
+						}
+					],
+					"steps": [
+						{
+							"title": "Granska",
+							"text": "Hitta var rörelse skulle förtydliga något och var den bara skulle tillföra brus."
+						},
+						{
+							"title": "Fastställ principerna",
+							"text": "Definiera ordförrådet för easing och timing så att besluten slutar tas från fall till fall."
+						},
+						{
+							"title": "Prototypa i webbläsaren",
+							"text": "Bygg i det riktiga mediet så att det ni godkänner är det som levereras."
+						},
+						{
+							"title": "Släpp och mät",
+							"text": "Släpp med en prestandabudget och se vad användarna faktiskt gör."
+						}
+					],
+					"connects": [
+						{
+							"text": "Snabb, tillgänglig rörelse stöder Core Web Vitals i stället för att bekämpa dem."
+						},
+						{
+							"text": "Landningssidor med tydliga, snabba interaktioner förvandlar betalda klick till handling."
+						}
+					],
+					"faqs": [
+						{
+							"question": "Gör animation vår webbplats långsammare?",
+							"answer": "Inte om den är byggd rätt. Vi sätter en prestandabudget, animerar med de billigaste egenskaperna och testar på riktiga enheter."
+						},
+						{
+							"question": "Skriver ni koden?",
+							"answer": "Ja. Vi kan leverera produktionsklar kod, eller lämna över specifikationer och exporter för ert team att implementera."
+						},
+						{
+							"question": "Hur är det med tillgänglighet?",
+							"answer": "Varje rörelse har ett alternativ för minskad rörelse, och beteendet för tangentbord och skärmläsare utformas tillsammans med animationen."
+						},
+						{
+							"question": "Fungerar det med vårt CMS eller ramverk?",
+							"answer": "Vi arbetar med de flesta moderna stackar. Berätta vad ni kör så bekräftar vi det bästa tillvägagångssättet."
+						},
+						{
+							"question": "Kan jag se det i funktion?",
+							"answer": "Det är precis det du tittar på. Scrollsekvenserna, räknarna och avslöjandena på den här webbplatsen är byggda med samma metod."
+						}
+					]
+				}
+			},
+			"body": [
+				{
+					"text": "Statisk kreativ ber om uppmärksamhet. Rörelse tar den. Under flödets första sekund avgör rörelsen om ett budskap får en chans, och resten av idén spelar bara roll om den överlever den sekunden."
+				},
+				{
+					"text": "Byggt för flödet, inte för showreelen"
+				},
+				{
+					"text": "Varje stycke börjar med en hypotes: kroken, budskapet, anledningen att fortsätta titta. Vi storyboardar mot det mått det ska flytta och bygger sedan varianter så att testsystemet har verkligt material att lära sig av."
+				},
+				{
+					"text": "Bra motion är inte dekoration. Det är argumentet, synliggjort."
+				},
+				{
+					"text": "En idé, alla ytor"
+				},
+				{
+					"text": "Samma koncept reser från ett betalt klipp på sex sekunder till en produktförklaring, en animation på landningssidan och en lanseringsfilm. Ett designspråk, en uppsättning material, ingen idé som byggs om tre gånger."
+				},
+				{
+					"text": "Eftersom motion sitter i samma studio som sök och betald media briefas kreativet av prestandadata och bedöms efter affärsresultat, inte efter hur det ser ut på en reel."
+				}
+			]
+		}
+	},
+	"caseStudies": {
+		"search-to-significance": {
+			"title": "Att förvandla sökintention till efterfrågan",
+			"discipline": "SEO & innehåll",
+			"summary": "Hur ett varumärke med övervägda köp byggde om sin organiska närvaro kring kommersiell intention och förvandlade trafik högt upp i tratten till kvalificerad pipeline.",
+			"challenge": "Ett specialiserat B2B-varumärke rankade för informationsfrågor som gav trafik men ingen pipeline. Innehåll fanns det gott om, men det besvarade fel frågor för köpare längre ner i tratten.",
+			"approach": "Vi kartlade om ämneslandskapet kring köpintention, slog ihop tunt innehåll och byggde om redaktionskalendern kring de beslut köpare faktiskt står inför. Teknisk SEO, webbplatsarkitektur, intern länkning och strukturerad data, gav det nya innehållet utrymme att ranka.",
+			"outcome": "Den organiska trafiken riktades om mot kommersiella sidor, kvalificerade förfrågningar ökade och innehållsmotorn började växa på varandra i stället för att spridas ut. Arbetet pågår, riktningen är satt.",
+			"metrics": [
+				{
+					"label": "Mål för organisk trafik"
+				},
+				{
+					"label": "Mål för kvalificerade leads"
+				}
+			]
+		},
+		"making-acquisition-work-harder": {
+			"title": "Att få kundanskaffningen att arbeta hårdare",
+			"discipline": "Meta Ads + Google Ads",
+			"summary": "Ett DTC-varumärke la mer pengar på att skaffa färre kunder. En kreativt ledd omstart av betald social media och sök byggde upp effektiviteten från grunden.",
+			"challenge": "Stigande CPM och kreativ utmattning hade drivit anskaffningskostnaden förbi lönsamhetsgränsen. Kontot var hektiskt men inte effektivt, med budgeten utspridd över målgrupper som inte längre konverterade.",
+			"approach": "Vi samlade kontot kring ett strukturerat system för kreativ testning, byggde om sekvenseringen över hela tratten och flyttade sökbudgeten mot söktermer med hög intention och hög marginal. Spårningen flyttades till serversidan så att besluten speglade verkligheten.",
+			"outcome": "Anskaffningskostnaden sjönk, avkastningen på annonsspenderingen återhämtade sig och testrytmen gjorde att kreativet blev bättre för varje cykel i stället för att tappa kraft. Varumärket har nu ett system, inte bara kampanjer.",
+			"metrics": [
+				{
+					"label": "Mål för avkastning på annonsspendering"
+				},
+				{
+					"label": "Mål för anskaffningskostnad"
+				}
+			]
+		},
+		"full-funnel-foundations": {
+			"title": "Grunder för hela tratten inför en ny lansering",
+			"discipline": "SEO & innehåll + betald media",
+			"summary": "En produktlansering behövde organiskt kapital och betalt momentum på samma gång. Vi byggde båda, sekvenserade för att växa på varandra.",
+			"challenge": "Ett nytt erbjudande saknade närvaro i sök och betald historik. Risken var att lansera in i tystnad: betald spendering utan något som fångade den efterfrågan den skapade.",
+			"approach": "Innehålls- och teknisk SEO-arbete startade månader före lanseringen för att bygga ämnesauktoritet. Betald social media sådde medvetenhet och retargeting medan sök fångade den intention lanseringen skapade. Mätningen kopplades in från dag ett.",
+			"outcome": "Lanseringen landade i befintligt organiskt kapital i stället för i ett vakuum, betald spendering konverterade i en sund takt från början och varumärket fick ett mätramverk att skala från.",
+			"metrics": [
+				{
+					"label": "Mål för ROAS lanseringsmånaden"
+				},
+				{
+					"label": "Organiskt kapital byggt före lanseringen"
+				}
+			]
+		}
+	},
+	"articles": {
+		"why-three-disciplines": {
+			"title": "Varför de här tre disciplinerna hör ihop",
+			"excerpt": "Sök, innehåll och betald media säljs oftast som separata verksamheter. Så här ändrar det utfallet att se dem som ett tillväxtsystem.",
+			"category": "Strategi",
+			"body": [
+				{
+					"text": "De flesta byråer organiserar sig kring kanaler eftersom kanaler är lätta att sälja. Ett söksteam. Ett socialt team. Ett innehållsteam. Var och en optimerar sitt hörn, och glappen mellan dem är där tillväxten läcker ut."
+				},
+				{
+					"text": "Intention, efterfrågan och acceleration"
+				},
+				{
+					"text": "Sök fångar intention som redan finns. Innehåll bygger den efterfrågan som skapar den. Betald media accelererar det som fungerar och skjuter det beprövade till fler ögonblick, snabbare. Ta bort någon av dem och systemet förlorar hävstång."
+				},
+				{
+					"text": "En kanal för sig själv är en taktik. Kanaler som matar varandra är ett system."
+				},
+				{
+					"text": "När samma tänkande formar sökordsstrategin, redaktionskalendern och det betalda kreativet växer arbetet på varandra. Innehållet rankar eftersom det byggdes för det. Betald media konverterar eftersom budskapet redan har förtjänat förtroende organiskt. Sök fångar efterfrågan som de två andra skapade."
+				},
+				{
+					"text": "Vad som förändras i praktiken"
+				},
+				{
+					"text": "Färre överlämningar. Ett mätramverk. En kreativ idé som kan vandra från ett organiskt inlägg till ett betalt material till en landningssida utan att byggas om tre gånger. Det är poängen med att vara små och seniorledda."
+				}
+			]
+		},
+		"creative-is-the-targeting": {
+			"title": "Kreativet är målgruppen",
+			"excerpt": "På moderna plattformar för betald social media spelar det större roll vad du visar än för vem. En anteckning om att bygga ett testsystem som håller.",
+			"category": "Betald media",
+			"body": [
+				{
+					"text": "Den gamla handboken utgick från målgruppen: bygg den perfekta personan, rikta in dig exakt och lita på att algoritmen hittar fler som den. Den världen är till stor del borta. Målgrupperna är bredare, signalerna brusigare och kreativet självt gör filtreringen."
+				},
+				{
+					"text": "Kreativet avgör vem som stannar"
+				},
+				{
+					"text": "En krok som stoppar scrollandet talar till rätt person och stöter bort fel. Det är targeting, fast utförd av budskapet i stället för av målgruppsväljaren. Det betyder att kreativpipelinen nu är spaken."
+				},
+				{
+					"text": "Om ditt testsystem inte blir skarpare för varje cykel så tappar ditt kreativ kraft."
+				},
+				{
+					"text": "Bygg ett system, inte en omgång"
+				},
+				{
+					"text": "Hypoteser före varianter. Tydliga vinnare före skalning. En takt som ger lärdomar, inte bara material. Varumärkena som vinner på betald social media är de vars kreativ mätbart blir bättre månad för månad, inte de med störst budget."
+				}
+			]
+		},
+		"measuring-what-comes-back": {
+			"title": "Att mäta det som kommer tillbaka",
+			"excerpt": "Plattformarnas dashboards kommer alltid att säga att spenderingen fungerade. Så här håller vi siffrorna ärliga.",
+			"category": "Mätning",
+			"body": [
+				{
+					"text": "Varje annonsplattform rapporterar sin egen framgång. De ljuger inte, precis, men de mäter från sin egen utsiktspunkt, och den utsiktspunkten är generös mot plattformen."
+				},
+				{
+					"text": "Attribuering är en fråga, inte en inställning"
+				},
+				{
+					"text": "Frågan är inte »drev den här kampanjen konverteringar« utan »vad hade hänt utan den«. Inkrementalitet, blendad CAC och modellering av konverteringsvärde svarar på det. Dashboards med sista klick gör det inte."
+				},
+				{
+					"text": "Om siffran som styr beslutet kommer från plattformen som spenderar pengarna, behandla den som ett påstående, inte ett faktum."
+				},
+				{
+					"text": "Serverside-spårning, ett rent datalager och en rapportvy kopplad till affärsresultat, inte till plattformens egenrapportering, är där besluten bör fattas. Det är mindre smickrande och mycket mer användbart."
+				}
+			]
+		}
+	}
+}

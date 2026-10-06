@@ -1,30 +1,34 @@
-import { Link } from 'react-router';
-import { articles } from '@/data/articles';
+import type { Article } from '@/data/articles';
+import { Link, Lines, useLocale, useT } from '@/i18n/context';
 
-export function InsightsList() {
+type InsightsListProps = {
+	articles: Article[];
+};
+
+export function InsightsList({ articles }: InsightsListProps) {
+	const t = useT();
+	const locale = useLocale();
+
 	return (
 		<section className="section">
 			<div className="section-heading">
-				<span className="eyebrow">04 / INSIGHTS</span>
+				<span className="eyebrow">{t('insights.eyebrow')}</span>
 				<h2>
-					Thinking,
-					<br />
-					in writing.
+					<Lines text={t('insights.title')} />
 				</h2>
 				<p>
-					Notes on search, content, and paid media —
-					<br />
-					and how the disciplines fit together.
+					<Lines text={t('insights.lede')} />
 				</p>
 			</div>
 			<div className="article-list">
-				{articles.map(a => (
-					<Link to={`/insights/${a.slug}`} className="article-card" key={a.slug}>
+				{articles.map(article => (
+					<Link to={`/insights/${article.slug}`} className="article-card" key={article.slug}>
 						<span className="ac-meta">
-							{a.category.toUpperCase()} · {a.readTime.toUpperCase()}
+							{article.category.toLocaleUpperCase(locale)} ·{' '}
+							{t('insights.readTime', { minutes: article.readMinutes }).toLocaleUpperCase(locale)}
 						</span>
-						<h3>{a.title}</h3>
-						<p>{a.excerpt}</p>
+						<h3>{article.title}</h3>
+						<p>{article.excerpt}</p>
 					</Link>
 				))}
 			</div>

@@ -1,0 +1,720 @@
+{
+	"expertise": {
+		"seo-content": {
+			"name": "SEO ja sisältö",
+			"eyebrow": "01 / SEO JA SISÄLTÖ",
+			"headline": "Tule löydetyksi.",
+			"headlineAccent": "Tule valituksi.",
+			"summary": "Haku tavoittaa aikomuksen. Sisältö rakentaa kysyntää. Muutamme kysymykset laadukkaaksi liikenteeksi ja liikenteen asiakkaiksi strategialla, toimituksellisella työllä ja teknisellä perustalla, joka kertaantuu ajan myötä.",
+			"capabilities": [
+				"SEO-strategia",
+				"Sisältöstrategia",
+				"Avainsanatutkimus",
+				"Toimituksellinen työ",
+				"Sivukohtainen SEO",
+				"Sisällön optimointi"
+			],
+			"cta": "Tutustu SEO:hon ja sisältöön",
+			"subpages": [],
+			"body": [
+				{
+					"text": "Suurin osa hakuliikenteestä menee hukkaan, koska se vastaa väärään kysymykseen tai oikeaan kysymykseen huonosti. Lähdemme aikomuksesta, siitä mitä yleisösi todella yrittää ymmärtää, päättää tai ostaa, ja rakennamme siitä eteenpäin."
+				},
+				{
+					"text": "Strategia ennen tuotantoa"
+				},
+				{
+					"text": "Sisältökone toimii vain, kun jokaisella osalla on tehtävä. Kartoitamme liiketoimintatuloksia liikuttavat aiheet, priorisoimme mahdollisuuksien mukaan ja järjestämme työn niin, että vauhti kertaantuu eikä hajoa."
+				},
+				{
+					"text": "Ole vastaus, jota yleisösi etsii, ei vain yksi tulos sivulla."
+				},
+				{
+					"text": "Tekninen perusta, joka kestää"
+				},
+				{
+					"text": "Indeksoitavuus, sivuston rakenne, Core Web Vitals, jäsennelty data. Se vähemmän loistokas työ, joka ratkaisee, saako hyvä sisältö koskaan mahdollisuutta sijoittua. Pidämme sitä osana strategiaa, emme jälkikäteen mieleen tulevana asiana."
+				},
+				{
+					"text": "Sitten mittaamme. Search Console -data, sijoitusten seuranta ja konversioiden kohdistus, kaikki sidottuna merkitseviin liiketoimintatuloksiin, ei turhamaisiin liikennekäyriin."
+				}
+			]
+		},
+		"meta-ads": {
+			"name": "Meta Ads",
+			"eyebrow": "02 / META ADS",
+			"headline": "Muuta huomio",
+			"headlineAccent": "kysynnäksi.",
+			"summary": "Luovaa, joka tavoittaa, kampanjoita, jotka konvertoivat. Yhdistämme yleisöymmärryksen väsymättömään testaukseen, jotta jokainen näyttökerta tekee enemmän työtä Facebookissa, Instagramissa ja koko Metan ekosysteemissä.",
+			"capabilities": [
+				"Maksettu sosiaalinen media",
+				"Luova testaus",
+				"Yleisöstrategia",
+				"Koko suppilon kampanjat",
+				"Konversio-optimointi",
+				"Uudelleenkohdennus"
+			],
+			"cta": "Tutustu Meta Adsiin",
+			"subpages": [],
+			"body": [
+				{
+					"text": "Huomiota on yllin kyllin, kysyntää ei. Maksetun sosiaalisen median tehtävä ei ole tulla nähdyksi vaan muistetuksi, harkituksi ja valituksi. Se alkaa luovasta, joka ansaitsee pysäyttää selaamisen."
+				},
+				{
+					"text": "Luova on kohdennus"
+				},
+				{
+					"text": "Nykyalustoilla se, mitä näytät, merkitsee enemmän kuin se, kenelle sen näytät. Rakennamme jäsennellyn luovan testauksen järjestelmän, jossa on hypoteeseja, variantteja ja selkeitä voittajia, jotta työ terävöityy joka kierroksella."
+				},
+				{
+					"text": "Jokaisella klikillä on tehtävä. Varmista, että se laskee."
+				},
+				{
+					"text": "Koko suppilo, ei viimeinen klikkaus"
+				},
+				{
+					"text": "Tunnettuus, harkinta, konversio, pysyvyys. Suunnittelemme polun niin, että jokainen vaihe ruokkii seuraavaa, ja mittaamme inkrementaalisesti, jotta tiedät, mitä käytetty raha todella tuotti."
+				},
+				{
+					"text": "Ei aseta-ja-unohda-ajattelua. Viikoittaiset luovan katsaukset, yleisöjen päivitykset ja budjetin siirrot kohti sitä, mikä toimii, ja pois siitä, mikä ei."
+				}
+			]
+		},
+		"google-ads": {
+			"name": "Google Ads",
+			"eyebrow": "03 / GOOGLE ADS",
+			"headline": "Tavoita aikomus",
+			"headlineAccent": "kun sillä on väliä.",
+			"summary": "Kohtaa aikomus tarkasti. Hausta ostoksiin ohjaamme budjetin sinne, missä mahdollisuus on, ja mittaamme, mitä takaisin tulee, selkeällä liiketoiminnan raportoinnilla.",
+			"capabilities": [
+				"Maksettu haku",
+				"Shopping-mainokset",
+				"Performance Max",
+				"Konversio-optimointi",
+				"Tarjousstrategia",
+				"Seuranta ja mittaus"
+			],
+			"cta": "Tutustu Google Adsiin",
+			"subpages": [],
+			"body": [
+				{
+					"text": "Haku on hetki, jolloin aikomus muuttuu teoksi. Kysymys on siitä, näytätkö sen hetkellä, ja konvertoiko kokemus, kun näytät."
+				},
+				{
+					"text": "Budjetti sinne, missä mahdollisuus on"
+				},
+				{
+					"text": "Kaikki avainsanat eivät ansaitse rahaasi. Rakennamme avainsanastrategian kaupallisen aikomuksen ja katteen ympärille, leikkaamme hukan laajoista osumista ja brändin päällekkäisyydestä ja keskitämme kulutuksen sinne, missä tuotto on todellista."
+				},
+				{
+					"text": "Kohtaa aikomus tarkasti. Mittaa, mitä takaisin tulee."
+				},
+				{
+					"text": "Mittaus, johon voi luottaa"
+				},
+				{
+					"text": "Palvelinpuolen seuranta, konversioarvon mallinnus, puhdas kohdistus. Jotta päätöksiä ohjaavat luvut kuvaavat todellisuutta eivätkä alustan omaa raportointia."
+				},
+				{
+					"text": "Tarjousstrategiat viritetään talouteesi sopiviksi, ei oletustavoitteeseen. Testaamme, seuraamme reunatapauksia ja pidämme kulutuksen rehellisenä."
+				}
+			]
+		},
+		"motion-graphics": {
+			"name": "Liikegrafiikka",
+			"eyebrow": "04 / LIIKEGRAFIIKKA",
+			"headline": "Pysäytä selaus.",
+			"headlineAccent": "Ole huomaamatta jättämätön.",
+			"summary": "Liike on nopein tapa ansaita huomio ja selkein tapa selittää suuri idea. Suunnittelemme mainoksia, tuoteanimaatioita ja brändielokuvia, jotka on tehty testattaviksi eikä vain ihailtaviksi.",
+			"capabilities": [
+				"Maksetun somen luova",
+				"Selitysvideot",
+				"Tuoteanimaatio",
+				"Brändielokuvat",
+				"Verkon ja käyttöliittymän liike",
+				"Luovan testauksen materiaalit"
+			],
+			"cta": "Tutustu liikegrafiikkaan",
+			"subpages": {
+				"paid-social-motion": {
+					"name": "Liikemainokset maksettuun someen",
+					"eyebrow": "04.1 / LIIKEMAINOKSET MAKSETTUUN SOMEEN",
+					"headline": "Voita ensimmäinen",
+					"headlineAccent": "sekunti.",
+					"summary": "Syötteeseen tehty lyhyt liike: koukku, joka pysäyttää peukalon, väite, joka iskee, ja varianttijärjestelmä, joka näyttää, mikä idea ansaitsee seuraavan budjetin.",
+					"sample": {
+						"title": "NOVA Sparkling: 10 sekunnin mainos, purettuna osiin",
+						"note": "Konseptimainos keksitylle juomabrändille. Selaa sitä ja lue sen vierestä neljä iskua: koukku, väite, todiste, kehotus."
+					},
+					"deliverables": [
+						{
+							"title": "Koukusta alkavat kuvakäsikirjoitukset",
+							"text": "Kolmesta viiteen avausideaa jokaiselle konseptille, jokainen kirjoitettu voittamaan ensimmäinen sekunti omillaan."
+						},
+						{
+							"title": "Pääanimaatio ja lyhennelmät",
+							"text": "Yksi pääteos sekä 6, 15 ja 30 sekunnin versiot leikattuina niille sijoituksille, joita todella ostat."
+						},
+						{
+							"title": "Kaikki formaatit",
+							"text": "9:16-, 4:5- ja 1:1-versiot, turva-alueet tarkistettuina Storiesia, Reelsiä ja syötettä varten."
+						},
+						{
+							"title": "Varianttipaketit",
+							"text": "Vaihdettavat koukut, väitteet ja loppukortit rakennettuina tiedostoon, jotta testaus ei koskaan tarkoita alusta aloittamista."
+						},
+						{
+							"title": "Tekstitykset ja ääni",
+							"text": "Poltetut tekstitykset katseluun ilman ääntä ja äänisuunnittelu katseluun äänen kanssa."
+						},
+						{
+							"title": "Oppien katsaus",
+							"text": "Kirjallinen yhteenveto siitä, mitä kukin variantti opetti ja mitä seuraavan erän pitäisi muuttaa."
+						}
+					],
+					"steps": [
+						{
+							"title": "Lue tili",
+							"text": "Aloitamme suorituskykydatasta: mikä väsyy, mitkä näkökulmat vielä vetävät, missä katsojat tippuvat."
+						},
+						{
+							"title": "Kirjoita hypoteesit",
+							"text": "Jokainen konsepti kertoo väitteen, jota se testaa, ja luvun, jota sen pitäisi liikuttaa, ennen kuin mitään animoidaan."
+						},
+						{
+							"title": "Rakenna järjestelmä",
+							"text": "Ensin pääanimaatio, sitten samasta lähteestä tuotetut variantit, jotta ilme pysyy yhtenäisenä."
+						},
+						{
+							"title": "Julkaise ja opi",
+							"text": "Variantit kisaavat toisiaan vastaan. Voittajia skaalataan, häviäjät jäävät pois, ja muistiinpanot ruokkivat seuraavaa kierrosta."
+						}
+					],
+					"connects": [
+						{
+							"text": "Luovan testauksen järjestelmä, joka päättää, mitkä variantit saavat budjettia ja milloin ne poistetaan."
+						},
+						{
+							"text": "Lyhyet versiot toimivat myös videomateriaalina YouTubeen ja Performance Maxiin."
+						}
+					],
+					"faqs": [
+						{
+							"question": "Pitääkö meidän toimittaa kuvamateriaalia?",
+							"answer": "Ei. Voimme työstää brändimateriaaleista, tuotemalleista, näyttötallenteista tai rakentaa koko teoksen kuvituksesta ja typografiasta. Jos teillä on kuvamateriaalia, käytämme sitä."
+						},
+						{
+							"question": "Kuinka monella variantilla kannattaa aloittaa?",
+							"answer": "Riittävän monella, jotta oppii jotain, mutta ei niin monella, että jokainen jää nälkään. Ehdotamme yleensä pientä koukkujen ja väitteiden matriisia ja sovimme koon erää kohden."
+						},
+						{
+							"question": "Voitteko hoitaa myös mediaostot?",
+							"answer": "Kyllä, Meta Ads- ja Google Ads -työmme kautta. Voitte myös ottaa valmiit tiedostot ja ajaa ne itse."
+						},
+						{
+							"question": "Entä musiikki ja puhuttu ääni?",
+							"answer": "Käytämme lisensoitua tai alkuperäistä ääntä ja sovimme oikeudet etukäteen, mukaan lukien missä ja kuinka kauan mainosta saa näyttää."
+						},
+						{
+							"question": "Miten liikemainosta arvioidaan?",
+							"answer": "Sen liiketoimintamittarin mukaan, jota vasten se brieffattiin, ei sen mukaan, miltä se näyttää. Jokainen konsepti sidotaan lukuun ennen rakentamista."
+						}
+					]
+				},
+				"explainer-videos": {
+					"name": "Selitysvideot",
+					"eyebrow": "04.2 / SELITYSVIDEOT",
+					"headline": "Tee monimutkaisesta",
+					"headlineAccent": "ilmeistä.",
+					"summary": "Lyhyt animoitu selitys, joka tekee vaikeasta tuotteesta tai ideasta jotain, minkä ostaja voi toistaa pomolleen.",
+					"sample": {
+						"title": "Hajanaisesta huomiosta asiakkaaksi, 14 sekunnissa",
+						"note": "Konseptiselitys siitä, miten suppilo toimii. Pisteet ovat ihmisiä. Katso, kuinka moni tulee sisään, kuinka moni konvertoi ja miten tarinaa kantaa pelkkä liike."
+					},
+					"deliverables": [
+						{
+							"title": "Käsikirjoitus ja kerronta",
+							"text": "Tiivis käsikirjoitus, joka rakentuu sen yhden asian ympärille, johon katsojan on uskottava lopussa."
+						},
+						{
+							"title": "Tyylikuvat ja kuvakäsikirjoitus",
+							"text": "Ilme ja jokainen kohtaus sovittuna paperilla ennen animaation alkua."
+						},
+						{
+							"title": "Räätälöity kuvitus ja animaatio",
+							"text": "Alkuperäistä visuaalista, joka on tehty tuotettasi varten, ei kuvapankkikuvakkeita, joita siirrellään."
+						},
+						{
+							"title": "Puheen ohjaus ja ääni",
+							"text": "Ohjeistus näyttelijävalintaan, ohjaus ja miksattu raita tai pelkkä musiikkiversio."
+						},
+						{
+							"title": "Tekstitetyt lyhennelmät",
+							"text": "Lyhyet versiot sosiaaliseen mediaan ja maksettuun mainontaan tekstitykset valmiiksi poltettuina."
+						},
+						{
+							"title": "Valmis laskeutumissivulle",
+							"text": "Pakatut tiedostot, julistekuva ja litterointi, jotta video auttaa sivua eikä hidasta sitä."
+						}
+					],
+					"steps": [
+						{
+							"title": "Määritä vakaumus",
+							"text": "Kuka katsoo, mitä hän epäilee ja mihin hänen pitäisi uskoa, kun video päättyy?"
+						},
+						{
+							"title": "Kirjoita ja kuvakäsikirjoita",
+							"text": "Käsikirjoitus ja kuvakäsikirjoitus yhdessä, jotta jokaisella rivillä on kuva, joka ansaitsee paikkansa."
+						},
+						{
+							"title": "Suunnittele ja animoi",
+							"text": "Ensin tyylikuvat, sitten animaatio moduulimaisina kohtauksina, joita on helppo päivittää."
+						},
+						{
+							"title": "Viimeistele ja ota käyttöön",
+							"text": "Ääni, tekstitykset, lyhennelmät ja sijoitus niille sivuille ja kampanjoille, jotka sitä tarvitsevat."
+						}
+					],
+					"connects": [
+						{
+							"text": "Upotettuna sijoittumaan rakennetuille sivuille, litteroinneilla, jotka täydentävät sisältöä eivätkä piilota sitä."
+						},
+						{
+							"text": "Selkeä selitys laskeutumissivulla muuttaa maksetut klikkaukset yhteydenotoiksi."
+						}
+					],
+					"faqs": [
+						{
+							"question": "Kuinka pitkä selitysvideon pitäisi olla?",
+							"answer": "Niin lyhyt kuin idea sallii. Useimmat asettuvat 45 ja 90 sekunnin välille, ja sosiaaliseen mediaan tehdään 15 ja 30 sekunnin lyhennelmät."
+						},
+						{
+							"question": "Kirjoitatteko käsikirjoituksen?",
+							"answer": "Kyllä. Voimme myös työstää teidän käsikirjoituksestanne tai karkeasta briefistä ja muokata sen ruudulle sopivaksi."
+						},
+						{
+							"question": "Entä jos tuote muuttuu?",
+							"answer": "Rakennamme moduulimaisina kohtauksina, joten ominaisuuden voi vaihtaa tai päivittää tekemättä koko elokuvaa uudelleen."
+						},
+						{
+							"question": "Kuinka monta korjauskierrosta sisältyy?",
+							"answer": "Sovimme kierrosten määrän projektikohtaisesti etukäteen ja sijoitamme ne vaiheisiin, joissa muutokset ovat halpoja: käsikirjoitus, kuvakäsikirjoitus, sitten animaatio."
+						},
+						{
+							"question": "Missä selitysvideot toimivat parhaiten?",
+							"answer": "Laskeutumissivuilla, myyntiesityksissä, perehdytyksessä, sähköpostissa ja maksetuilla sijoituksilla, jotka tarvitsevat nopean ja selkeän esityksen."
+						}
+					]
+				},
+				"product-animation": {
+					"name": "Tuoteanimaatio",
+					"eyebrow": "04.3 / TUOTEANIMAATIO",
+					"headline": "Näytä se",
+					"headlineAccent": "toiminnassa.",
+					"summary": "Räjäytyskuvat, ominaisuuskierrokset ja lanseerausten paljastukset, joiden avulla ostajat näkevät, miten jokin toimii, ennen kuin voivat koskea siihen.",
+					"sample": {
+						"title": "HALO: räjäytyskuva, viisi osaa kymmenessä sekunnissa",
+						"note": "Konseptinen älykaiutin, keksitty tätä sivua varten. Vedä aikajanaa purkaaksesi sen ja koota se takaisin."
+					},
+					"deliverables": [
+						{
+							"title": "Pääsilmukka",
+							"text": "Siisti toistuva animaatio tuote- tai laskeutumissivun yläosaan."
+						},
+						{
+							"title": "Räjäytys- ja leikkauskuvat",
+							"text": "Sisäpuolen tarina: osat, kerrokset ja se, miten ne sopivat yhteen."
+						},
+						{
+							"title": "Ominaisuuksia esiin nostavat sarjat",
+							"text": "Yksi lyhyt teos ominaisuutta kohden, joista jokainen tekee yhden asian selväksi."
+						},
+						{
+							"title": "Lanseerauksen paljastus",
+							"text": "Elokuvamainen teos hetkeen, jona tuote tulee julkiseksi."
+						},
+						{
+							"title": "Verkkovalmiit viennit",
+							"text": "Pakattu video ja, missä siitä on hyötyä, kevyt vektorianimaatio nopeille sivuille."
+						},
+						{
+							"title": "Somelyhennelmät ja still-kuvat",
+							"text": "Pysty- ja neliöversiot sekä avainkuvat esityksiin, sähköpostiin ja lehdistölle."
+						}
+					],
+					"steps": [
+						{
+							"title": "Kerää lähdemateriaali",
+							"text": "CAD, renderöinnit, näyttötallenteet tai luonnokset, mikä tahansa, joka näyttää tuotteen parhaiten."
+						},
+						{
+							"title": "Koreografioi",
+							"text": "Suunnittele kamera, osien ilmestymisjärjestys ja se yksi asia, jonka jokaisen otoksen on selitettävä."
+						},
+						{
+							"title": "Valo ja materiaali",
+							"text": "Pinnat, hehku ja varjot viritetään niin, että se tuntuu oikealta esineeltä tai käyttöliittymältä."
+						},
+						{
+							"title": "Renderöi ja toimita",
+							"text": "Lopulliset tiedostot jokaiseen paikkaan, jossa tuote esiintyy, kevyellä vaihtoehdolla verkkoon."
+						}
+					],
+					"connects": [
+						{
+							"text": "Sama animaatio syötettä varten leikattuna tekee tuotemainoksesta sellaisen, joka selittää eikä vain ilmoita."
+						},
+						{
+							"text": "Tuotesivut, joilla on selkeä demonstraatio, pitävät huomion pidempään ja antavat haulle jotain, mihin sijoittua."
+						}
+					],
+					"faqs": [
+						{
+							"question": "Tarvitsetteko 3D-tiedostoja?",
+							"answer": "Ne auttavat, mutta voimme työstää myös valokuvista, piirustuksista tai kuvauksesta. Ohjelmistotuotteissa animoimme käyttöliittymästänne."
+						},
+						{
+							"question": "Voitteko animoida ohjelmistoja, ette vain fyysisiä tuotteita?",
+							"answer": "Kyllä. Käyttöliittymäesittelyt, tietovirrat ja ominaisuusselitykset vaativat saman taidon kuin laitteistokin."
+						},
+						{
+							"question": "Hidastaako se sivustoamme?",
+							"answer": "Toimitamme pakattuja tiedostoja ja, missä se on järkevää, vektorianimaatiota, joka pysyy kevyenä. Sovimme kokobudjetin etukäteen."
+						},
+						{
+							"question": "Voimmeko käyttää animaatiota uudelleen myöhemmin?",
+							"answer": "Kyllä. Toimitamme kerroksellisen lähdetiedoston ja sovimme käytöstä, jotta tulevat lanseeraukset voivat rakentua samoille aineistoille."
+						},
+						{
+							"question": "Kuinka kiillotettua on kiillotettu?",
+							"answer": "Tavoite on selkeys ensin, kauneus toiseksi. Jos otos näyttää upealta mutta ei selitä, se leikataan pois."
+						}
+					]
+				},
+				"brand-films": {
+					"name": "Brändielokuvat",
+					"eyebrow": "04.4 / BRÄNDIELOKUVAT",
+					"headline": "Sano se kerran.",
+					"headlineAccent": "Tee siitä pysyvä.",
+					"summary": "Elokuvamaisia, typografiavetoisia elokuvia, jotka kantavat brändin näkökulmaa ja on tehty ankkuroimaan lanseeraus, kampanja tai etusivu.",
+					"sample": {
+						"title": "ROASWELL: 16 sekunnin otsikkoelokuva kolmessa luvussa",
+						"note": "Konseptielokuva omalle studiollemme, tehty kokonaan liikesuunnittelulla. Käytä lukumerkkejä hypätäksesi Signalin, Intentin ja Returnin välillä."
+					},
+					"deliverables": [
+						{
+							"title": "Konsepti ja treatment",
+							"text": "Idea, sävy ja visuaalinen kieli, kirjoitettuina ja kuvakäsikirjoitettuina ennen tuotantoa."
+						},
+						{
+							"title": "Manifestikäsikirjoitus",
+							"text": "Sanat, jotka kuulostavat brändiltä ja ovat riittävän lyhyitä muistettaviksi."
+						},
+						{
+							"title": "Liikevetoinen ohjaus",
+							"text": "Typografista, kuvituksellista tai sekatekniikkaa, valittuna tarinan ja budjetin mukaan."
+						},
+						{
+							"title": "Äänen ja musiikin ohjaus",
+							"text": "Sävellys ja äänisuunnittelu, jotka tekevät puolet tunnetyöstä."
+						},
+						{
+							"title": "Pääelokuva ja lyhennelmät",
+							"text": "Koko teos sekä 30, 15 ja 6 sekunnin versiot jokaiselle kanavalle."
+						},
+						{
+							"title": "Brändin liiketyökalupakki",
+							"text": "Siirtymät, easing ja otsikkotyylit, jotta ilme jatkuu kaikessa, mikä seuraa."
+						}
+					],
+					"steps": [
+						{
+							"title": "Löydä näkökulma",
+							"text": "Mihin brändi uskoo, mihin sen kategoria ei? Se on elokuva."
+						},
+						{
+							"title": "Kirjoita treatment",
+							"text": "Luvut, rytmi, avainkuvat ja ääni sovittuina ennen kuin yhtään ruutua animoidaan."
+						},
+						{
+							"title": "Tee se",
+							"text": "Suunnittelu, animaatio ja ääni rakennetaan yhdessä, jotta leikkaus hengittää."
+						},
+						{
+							"title": "Julkaise ja laajenna",
+							"text": "Lanseeraa pääteos ja pidä idea elossa lyhennelmillä ja liikeen työkalupakilla."
+						}
+					],
+					"connects": [
+						{
+							"text": "Lyhennelmistä tulee tunnettuuskerros koko suppilon maksetun median suunnitelmassa."
+						},
+						{
+							"text": "Brändihakuihin ja videokampanjoihin saadaan jotain, mihin kannattaa klikata."
+						},
+						{
+							"text": "Sisältökeskuksen sydämessä oleva elokuva antaa kirjoittajille ja linkeille jotain, mihin osoittaa."
+						}
+					],
+					"faqs": [
+						{
+							"question": "Kuvaatteko näytelmäelokuvaa?",
+							"answer": "Ohjaamme liikevetoisia elokuvia. Jos projekti tarvitsee kuvattua materiaalia, suunnittelemme sen tuotantokumppanin kanssa ja pidämme liikeohjauksen talon sisällä."
+						},
+						{
+							"question": "Kuinka pitkä brändielokuva on?",
+							"answer": "Idea ratkaisee. Useimmat ovat 30 sekunnin ja kahden minuutin väliltä, ja lyhyemmät versiot leikataan pääteoksesta."
+						},
+						{
+							"question": "Kenen elokuva on?",
+							"answer": "Teidän. Sovimme käyttöoikeuksista ja toimitamme kerrokselliset lähdetiedostot osana projektia."
+						},
+						{
+							"question": "Voiko elokuva olla etusivullamme?",
+							"answer": "Kyllä. Toimitamme kevyen silmukan ja julistekuvan, ja koko elokuva on yhden klikkauksen päässä."
+						},
+						{
+							"question": "Onko tämä vain suurille brändeille?",
+							"answer": "Ei. Tiukasti kirjoitettu typografiavetoinen elokuva voi maksaa murto-osan kuvauksista ja silti tuntua näkökulmalta."
+						}
+					]
+				},
+				"web-ui-motion": {
+					"name": "Verkon ja käyttöliittymän liike",
+					"eyebrow": "04.5 / VERKON JA KÄYTTÖLIITTYMÄN LIIKE",
+					"headline": "Käyttöliittymät, jotka",
+					"headlineAccent": "tuntuvat eläviltä.",
+					"summary": "Vierityskertomuksia, mikrointeraktioita ja sivusiirtymiä, jotka tekevät sivustosta helpomman ymmärtää ja vaikeamman unohtaa, nopeudesta tai saavutettavuudesta tinkimättä.",
+					"sample": {
+						"title": "Liikelaboratorio: seitsemän interaktiota, joihin voi koskea",
+						"note": "Oikeaa, toimivaa käyttöliittymäliikettä, ei videota. Vaihda, vie hiiri päälle, vedä ja klikkaa. Kaikki täällä kunnioittaa vähennetyn liikkeen asetuksia."
+					},
+					"deliverables": [
+						{
+							"title": "Liikeperiaatteet",
+							"text": "Easing-, ajoitus- ja spring-tokenit, jotta jokainen interaktio tuntuu kuuluvan samaan tuotteeseen."
+						},
+						{
+							"title": "Vieritys- ja sivusiirtymät",
+							"text": "Tarinavetoiset vierityssarjat ja reittisiirtymät, jotka ohjaavat huomiota, kuten tällä sivustolla."
+						},
+						{
+							"title": "Mikrointeraktiokirjasto",
+							"text": "Painikkeet, kytkimet, valikot, kortit ja lomakkeet, jotka reagoivat tarkoituksella."
+						},
+						{
+							"title": "Tuotantokoodi tai viennit",
+							"text": "Puhdasta CSS:ää ja JavaScriptiä tai Lottie- ja videoviennit, valmiina teidän teknologiapinoonne."
+						},
+						{
+							"title": "Saavutettavuusvariantit",
+							"text": "Vähennetyn liikkeen vaihtoehdot ja kohdistuskäyttäytyminen suunniteltu mukaan alusta asti, ei paikattu jälkikäteen."
+						},
+						{
+							"title": "Suorituskykybudjetti",
+							"text": "Liike mitataan latausaikaa ja interaktioviivettä vasten ennen julkaisua."
+						}
+					],
+					"steps": [
+						{
+							"title": "Auditoi",
+							"text": "Selvitä, missä liike selkeyttäisi jotain ja missä se vain lisäisi kohinaa."
+						},
+						{
+							"title": "Määritä periaatteet",
+							"text": "Määrittele easingin ja ajoituksen sanasto, jotta päätökset eivät enää synny tapaus tapaukselta."
+						},
+						{
+							"title": "Prototyyppi selaimessa",
+							"text": "Rakenna oikeassa mediassa, jotta se, minkä hyväksytte, on se, mikä julkaistaan."
+						},
+						{
+							"title": "Julkaise ja mittaa",
+							"text": "Julkaise suorituskykybudjetin kanssa ja katso, mitä käyttäjät todella tekevät."
+						}
+					],
+					"connects": [
+						{
+							"text": "Nopea, saavutettava liike tukee Core Web Vitalsia sen sijaan että taistelisi sitä vastaan."
+						},
+						{
+							"text": "Laskeutumissivut, joilla on selkeitä, nopeita interaktioita, muuttavat maksetut klikkaukset teoiksi."
+						}
+					],
+					"faqs": [
+						{
+							"question": "Hidastaako animaatio sivustoamme?",
+							"answer": "Ei, jos se on rakennettu oikein. Asetamme suorituskykybudjetin, animoimme halvimmilla ominaisuuksilla ja testaamme oikeilla laitteilla."
+						},
+						{
+							"question": "Kirjoitatteko koodin?",
+							"answer": "Kyllä. Voimme toimittaa tuotantovalmista koodia tai luovuttaa määrittelyt ja viennit tiimillenne toteutettaviksi."
+						},
+						{
+							"question": "Entä saavutettavuus?",
+							"answer": "Jokaisella liikkeellä on vähennetyn liikkeen vaihtoehto, ja näppäimistön ja ruudunlukijan käyttäytyminen suunnitellaan animaation rinnalla."
+						},
+						{
+							"question": "Toimiiko se sisällönhallintajärjestelmämme tai kehyksemme kanssa?",
+							"answer": "Työskentelemme useimpien nykyaikaisten teknologiapinojen kanssa. Kertokaa, mitä ajatte, niin vahvistamme parhaan lähestymistavan."
+						},
+						{
+							"question": "Voinko nähdä sen toiminnassa?",
+							"answer": "Katsot sitä juuri nyt. Tämän sivuston vierityssarjat, laskurit ja paljastukset on tehty samalla tavalla."
+						}
+					]
+				}
+			},
+			"body": [
+				{
+					"text": "Staattinen luova pyytää huomiota. Liike ottaa sen. Syötteen ensimmäisellä sekunnilla liike ratkaisee, saako viesti mahdollisuuden, ja idean muulla osalla on merkitystä vain, jos se selviää tuosta sekunnista."
+				},
+				{
+					"text": "Tehty syötettä varten, ei showreelia"
+				},
+				{
+					"text": "Jokainen teos alkaa hypoteesilla: koukku, väite, syy jatkaa katsomista. Kuvakäsikirjoitamme sen mittarin mukaan, jota sen pitää liikuttaa, ja rakennamme sitten variantit, jotta testausjärjestelmällä on oikeaa materiaalia, josta oppia."
+				},
+				{
+					"text": "Hyvä liikegrafiikka ei ole koristelua. Se on argumentti, tehtynä näkyväksi."
+				},
+				{
+					"text": "Yksi idea, kaikki pinnat"
+				},
+				{
+					"text": "Sama konsepti kulkee kuuden sekunnin maksetusta leikkeestä tuoteselitykseen, laskeutumissivun animaatioon ja lanseerauselokuvaan. Yksi suunnittelukieli, yksi aineistosarja, ei idean rakentamista uudelleen kolme kertaa."
+				},
+				{
+					"text": "Koska liike asuu samassa studiossa haun ja maksetun median kanssa, luova brieffataan suorituskykydatasta ja sitä arvioidaan liiketoimintatulosten, ei sen mukaan, miltä se näyttää showreelillä."
+				}
+			]
+		}
+	},
+	"caseStudies": {
+		"search-to-significance": {
+			"title": "Hakuaikomuksesta kysynnäksi",
+			"discipline": "SEO ja sisältö",
+			"summary": "Miten harkittuja ostoja myyvä brändi rakensi orgaanisen näkyvyytensä uudelleen kaupallisen aikomuksen ympärille ja muutti suppilon yläpään liikenteen laadukkaaksi myyntiputkeksi.",
+			"challenge": "Erikoistunut B2B-brändi sijoittui tietohakuihin, jotka toivat liikennettä mutta eivät myyntiputkea. Sisältöä oli runsaasti, mutta se vastasi vääriin kysymyksiin suppilossa alempana oleville ostajille.",
+			"approach": "Kartoitimme aihemaiseman uudelleen ostoaikomuksen ympärille, yhdistimme ohutta sisältöä ja rakensimme toimituskalenterin uudelleen niiden päätösten ympärille, joita ostajat todella kohtaavat. Tekninen SEO, sivuston rakenne, sisäinen linkitys ja jäsennelty data antoivat uudelle sisällölle tilaa sijoittua.",
+			"outcome": "Orgaaninen liikenne kohdentui uudelleen kaupallisille sivuille, laadukkaat yhteydenotot kasvoivat, ja sisältökone alkoi kertaantua hajoamisen sijaan. Työ jatkuu, suunta on asetettu.",
+			"metrics": [
+				{
+					"label": "Orgaanisen liikenteen tavoite"
+				},
+				{
+					"label": "Laadukkaiden liidien tavoite"
+				}
+			]
+		},
+		"making-acquisition-work-harder": {
+			"title": "Hankinta töihin kovemmalla tahdilla",
+			"discipline": "Meta Ads + Google Ads",
+			"summary": "DTC-brändi käytti enemmän saadakseen vähemmän asiakkaita. Luovavetoinen uudelleenkäynnistys maksetussa somessa ja haussa rakensi tehokkuuden uudelleen alusta.",
+			"challenge": "Nousevat CPM:t ja luovan väsyminen olivat nostaneet hankintakustannuksen kannattavuusrajan yli. Tili oli kiireinen mutta ei tehokas, ja budjetti oli ohuesti levitetty yleisöille, jotka eivät enää konvertoineet.",
+			"approach": "Keräsimme tilin jäsennellyn luovan testauksen järjestelmän ympärille, rakensimme koko suppilon sekvensoinnin uudelleen ja suuntasimme hakubudjetin uudelleen korkean aikomuksen ja korkean katteen hakusanoihin. Seuranta siirrettiin palvelinpuolelle, jotta päätökset kuvasivat todellisuutta.",
+			"outcome": "Hankintakustannus laski, mainoskulutuksen tuotto palautui, ja testausrytmin ansiosta luova parani joka kierroksella sen sijaan, että olisi rapistunut. Brändillä on nyt järjestelmä, ei vain kampanjoita.",
+			"metrics": [
+				{
+					"label": "Mainoskulutuksen tuoton tavoite"
+				},
+				{
+					"label": "Hankintakustannuksen tavoite"
+				}
+			]
+		},
+		"full-funnel-foundations": {
+			"title": "Koko suppilon perusta uudelle lanseeraukselle",
+			"discipline": "SEO ja sisältö + maksettu media",
+			"summary": "Tuotelanseeraus tarvitsi orgaanista pääomaa ja maksettua vauhtia samaan aikaan. Rakensimme molemmat, järjestettyinä kertaantumaan.",
+			"challenge": "Uudella tarjoomalla ei ollut hakunäkyvyyttä eikä maksettua historiaa. Riskinä oli lanseerata hiljaisuuteen: maksettua kulutusta ilman mitään, mikä tavoittaisi sen luoman kysynnän.",
+			"approach": "Sisältö- ja tekninen SEO-työ alkoi kuukausia ennen lanseerausta aihepiirin auktoriteetin rakentamiseksi. Maksettu some kylvi tunnettuutta ja uudelleenkohdennusta, kun taas haku tavoitti aikomuksen, jonka lanseeraus synnytti. Mittaus kytkettiin päälle ensimmäisestä päivästä.",
+			"outcome": "Lanseeraus laskeutui olemassa olevaan orgaaniseen pääomaan tyhjiön sijaan, maksettu kulutus konvertoi terveellä tahdilla alusta asti, ja brändillä oli mittauskehys, josta skaalata.",
+			"metrics": [
+				{
+					"label": "Lanseerauskuukauden ROAS-tavoite"
+				},
+				{
+					"label": "Ennen lanseerausta rakennettu orgaaninen pääoma"
+				}
+			]
+		}
+	},
+	"articles": {
+		"why-three-disciplines": {
+			"title": "Miksi nämä kolme osa-aluetta kuuluvat yhteen",
+			"excerpt": "Haku, sisältö ja maksettu media myydään yleensä erillisinä toimintoina. Tässä, miksi niiden käsittely yhtenä kasvujärjestelmänä muuttaa lopputulosta.",
+			"category": "Strategia",
+			"body": [
+				{
+					"text": "Useimmat toimistot järjestäytyvät kanavien ympärille, koska kanavia on helppo myydä. Hakutiimi. Sometiimi. Sisältötiimi. Jokainen optimoi omaa nurkkaansa, ja niiden väliset aukot ovat paikkoja, joista kasvu vuotaa pois."
+				},
+				{
+					"text": "Aikomus, kysyntä ja kiihdytys"
+				},
+				{
+					"text": "Haku tavoittaa jo olemassa olevan aikomuksen. Sisältö rakentaa kysynnän, joka sen synnyttää. Maksettu media kiihdyttää sitä, mikä toimii, ja työntää todistetun useampiin hetkiin nopeammin. Ota yksi pois, ja järjestelmä menettää vipuvoimaa."
+				},
+				{
+					"text": "Yksittäinen kanava on taktiikka. Kanavat, jotka ruokkivat toisiaan, ovat järjestelmä."
+				},
+				{
+					"text": "Kun sama ajattelu muotoilee avainsanastrategian, toimituskalenterin ja maksetun luovan, työ kertaantuu. Sisältö sijoittuu, koska se rakennettiin siihen. Maksettu konvertoi, koska viesti on jo ansainnut luottamuksen orgaanisesti. Haku tavoittaa kysynnän, jonka kaksi muuta loi."
+				},
+				{
+					"text": "Mikä muuttuu käytännössä"
+				},
+				{
+					"text": "Vähemmän luovutuksia. Yksi mittauskehys. Luova idea, joka voi kulkea orgaanisesta postauksesta maksettuun aineistoon ja laskeutumissivulle rakentamatta sitä uudelleen kolme kertaa. Siinä on pienenä ja senioreiden johtamana pysymisen pointti."
+				}
+			]
+		},
+		"creative-is-the-targeting": {
+			"title": "Luova on kohdennus",
+			"excerpt": "Nykyaikaisilla maksetun somen alustoilla se, mitä näytät, merkitsee enemmän kuin se, kenelle sen näytät. Muistiinpano kestävän testausjärjestelmän rakentamisesta.",
+			"category": "Maksettu media",
+			"body": [
+				{
+					"text": "Vanha ohjekirja lähti yleisöstä: rakenna täydellinen persoona, kohdenna se tarkasti ja luota algoritmiin löytämään lisää samanlaisia. Se maailma on suurelta osin poissa. Yleisöt ovat laajempia, signaalit kohinaisempia, ja luova itse tekee suodatuksen."
+				},
+				{
+					"text": "Luova päättää, kuka jää"
+				},
+				{
+					"text": "Selaamisen pysäyttävä koukku puhuu oikealle ihmiselle ja karkottaa väärän. Se on kohdennusta, vain viesti tekee sen yleisövalitsimen sijaan. Se tarkoittaa, että luovan tuotantoputki on nyt vipu."
+				},
+				{
+					"text": "Jos testausjärjestelmäsi ei terävöidy joka kierroksella, luovasi rapistuu."
+				},
+				{
+					"text": "Rakenna järjestelmä, ei erä"
+				},
+				{
+					"text": "Hypoteesit ennen variantteja. Selkeät voittajat ennen skaalausta. Rytmi, joka tuottaa oppimista, ei vain aineistoja. Maksetussa somessa voittavat ne brändit, joiden luova paranee mitattavasti kuukausi kuukaudelta, ei ne, joilla on suurin budjetti."
+				}
+			]
+		},
+		"measuring-what-comes-back": {
+			"title": "Sen mittaaminen, mikä tulee takaisin",
+			"excerpt": "Alustojen kojelaudat kertovat aina, että kulutus toimi. Tässä, miten pidämme luvut rehellisinä.",
+			"category": "Mittaus",
+			"body": [
+				{
+					"text": "Jokainen mainosalusta raportoi omasta menestyksestään. Ne eivät valehtele, ei aivan, mutta ne mittaavat omasta näkökulmastaan, ja se näkökulma on alustalle antelias."
+				},
+				{
+					"text": "Kohdistus on kysymys, ei asetus"
+				},
+				{
+					"text": "Kysymys ei ole siitä, tuottiko kampanja konversioita, vaan siitä, mitä olisi tapahtunut ilman sitä. Inkrementaalisuus, yhdistetty CAC ja konversioarvon mallinnus vastaavat siihen. Viimeisen klikkauksen kojelaudat eivät."
+				},
+				{
+					"text": "Jos päätöstä ohjaava luku tulee alustalta, joka käyttää rahat, kohtele sitä väitteenä, ei tosiasiana."
+				},
+				{
+					"text": "Palvelinpuolen seuranta, puhdas datakerros ja liiketoimintatuloksiin sidottu raporttinäkymä, ei alustan omaan raportointiin, ovat paikka, jossa päätökset tulisi tehdä. Se on vähemmän imartelevaa ja paljon hyödyllisempää."
+				}
+			]
+		}
+	}
+}

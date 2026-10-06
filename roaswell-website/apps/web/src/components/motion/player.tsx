@@ -2,6 +2,7 @@ import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { Pause, Play } from 'lucide-react';
 import { useInView, useReducedMotion } from 'framer-motion';
 import { formatTimecode } from '@/lib/motion-math';
+import { useT } from '@/i18n/context';
 
 type Chapter = { at: number; label: string };
 
@@ -26,6 +27,7 @@ export function MotionPlayer({
 	side,
 	children,
 }: MotionPlayerProps) {
+	const t = useT();
 	const rootRef = useRef<HTMLDivElement>(null);
 	const reduced = useReducedMotion();
 	const inView = useInView(rootRef, { margin: '-10% 0px -10% 0px' });
@@ -84,14 +86,14 @@ export function MotionPlayer({
 			<div className="player-main">
 				<div className="player-stage" style={stageStyle} role="img" aria-label={title}>
 					{children(time)}
-					<span className="player-badge">CONCEPT SAMPLE</span>
+					<span className="player-badge">{t('player.badge')}</span>
 				</div>
 				<div className="player-bar">
 					<button
 						type="button"
 						className="player-button"
 						onClick={togglePlaying}
-						aria-label={playing ? 'Pause sample' : 'Play sample'}
+						aria-label={playing ? t('player.pause') : t('player.play')}
 					>
 						{playing ? <Pause size={16} /> : <Play size={16} />}
 					</button>
@@ -103,7 +105,7 @@ export function MotionPlayer({
 						step={0.01}
 						value={time}
 						onChange={handleScrub}
-						aria-label="Scrub timeline"
+						aria-label={t('player.scrub')}
 						style={{ ['--progress' as string]: `${(time / duration) * 100}%` }}
 					/>
 					<span className="player-time">

@@ -12,6 +12,15 @@
 		"typecheck": "react-router typegen && tsc --noEmit"
 	},
 	"dependencies": {
+		"@fontsource-variable/manrope": "^5.3.0",
+		"@fontsource-variable/noto-sans-arabic": "^5.3.0",
+		"@fontsource-variable/noto-sans-bengali": "^5.3.0",
+		"@fontsource-variable/noto-sans-devanagari": "^5.3.0",
+		"@fontsource-variable/noto-sans-hebrew": "^5.3.0",
+		"@fontsource-variable/noto-sans-thai": "^5.3.0",
+		"@fontsource-variable/roboto-condensed": "^5.3.0",
+		"@fontsource/barlow-condensed": "^5.3.0",
+		"@fontsource/libre-caslon-text": "^5.3.0",
 		"@hookform/resolvers": "^5.2.2",
 		"@radix-ui/react-accordion": "^1.2.12",
 		"@radix-ui/react-alert-dialog": "^1.1.15",

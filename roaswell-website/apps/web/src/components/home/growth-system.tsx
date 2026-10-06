@@ -1,8 +1,8 @@
 import { useRef, useState } from 'react';
-import { Link } from 'react-router';
 import { ArrowUpRight } from 'lucide-react';
 import { AnimatePresence, motion, useMotionValueEvent, useReducedMotion, useScroll, useTransform } from 'framer-motion';
-import { disciplines } from '@/data/expertise';
+import type { Discipline } from '@/data/expertise';
+import { Link, useT } from '@/i18n/context';
 import { EASE_OUT } from '@/components/motion/primitives';
 import { SceneCanvas } from '@/components/motion/scene-canvas';
 import { seoScene } from '@/lib/scenes/seo';
@@ -11,15 +11,18 @@ import { googleScene } from '@/lib/scenes/google';
 import { motionScene } from '@/lib/scenes/motion';
 
 const SCENES = [
-	{ scene: seoScene, caption: 'Climbing the results' },
-	{ scene: metaScene, caption: 'Testing to a clear winner' },
-	{ scene: googleScene, caption: 'Intent converging on action' },
-	{ scene: motionScene, caption: 'Fluid, on purpose' },
-];
+	{ scene: seoScene, captionKey: 'system.caption.seo' },
+	{ scene: metaScene, captionKey: 'system.caption.meta' },
+	{ scene: googleScene, captionKey: 'system.caption.google' },
+	{ scene: motionScene, captionKey: 'system.caption.motion' },
+] as const;
 
-const COUNT_WORDS = ['Zero', 'One', 'Two', 'Three', 'Four', 'Five'];
+type GrowthSystemProps = {
+	disciplines: Discipline[];
+};
 
-export function GrowthSystem() {
+export function GrowthSystem({ disciplines }: GrowthSystemProps) {
+	const t = useT();
 	const ref = useRef<HTMLElement>(null);
 	const reduced = useReducedMotion();
 	const [active, setActive] = useState(0);
@@ -44,10 +47,10 @@ export function GrowthSystem() {
 			<div className="system-sticky">
 				<div className="system-head">
 					<span className="eyebrow">
-						<i /> 01 / OUR EXPERTISE
+						<i /> {t('system.eyebrow')}
 					</span>
 					<h2 id="system-title">
-						{COUNT_WORDS[count]} disciplines. <em>One growth system.</em>
+						{t('system.title')} <em>{t('system.titleAccent')}</em>
 					</h2>
 				</div>
 
@@ -90,7 +93,7 @@ export function GrowthSystem() {
 					<div className="system-media">
 						<div className="system-frame">
 							{SCENES.map((scene, index) => (
-								<div key={scene.caption} className={index === active ? 'system-scene on' : 'system-scene'}>
+								<div key={scene.captionKey} className={index === active ? 'system-scene on' : 'system-scene'}>
 									<SceneCanvas scene={scene.scene} className="system-video" active={index === active} />
 								</div>
 							))}
@@ -106,7 +109,7 @@ export function GrowthSystem() {
 									exit={{ opacity: 0, y: -8 }}
 									transition={{ duration: 0.35 }}
 								>
-									{SCENES[active].caption}
+									{t(SCENES[active].captionKey)}
 								</motion.span>
 							</AnimatePresence>
 						</div>

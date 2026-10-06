@@ -1,10 +1,13 @@
 import { useRef } from 'react';
-import { Link } from 'react-router';
 import { ArrowUpRight } from 'lucide-react';
 import { motion, useMotionTemplate, useScroll, useTransform } from 'framer-motion';
 import { Magnetic, MaskedLines } from '@/components/motion/primitives';
+import { Link, useT } from '@/i18n/context';
+import { usePrimaryCta } from '@/lib/use-root-data';
 
 export function Contact() {
+	const t = useT();
+	const cta = usePrimaryCta();
 	const ref = useRef<HTMLElement>(null);
 	const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'center center'] });
 	const radius = useTransform(scrollYProgress, [0, 1], [0, 150]);
@@ -16,25 +19,29 @@ export function Contact() {
 			<div className="contact-inner">
 				<div className="contact-top">
 					<span className="eyebrow">
-						<i /> 05 / WHAT’S NEXT?
+						<i /> {t('contact.home.eyebrow')}
 					</span>
-					<span>A better return starts with a better conversation.</span>
+					<span>{t('contact.note')}</span>
 				</div>
 				<h2 className="contact-title">
-					<MaskedLines lines={['LET’S TALK', <span key="growth" className="contact-accent">GROWTH.</span>]} />
+					<MaskedLines lines={[t('contact.home.line1'), <span key="growth" className="contact-accent">{t('contact.home.line2')}</span>]} />
 				</h2>
 				<div className="contact-bottom">
 					<p>
-						Tell us where you are.
-						<br />
-						Let’s work out where you could go.
+						{t('contact.home.lede')}
 					</p>
 					<Magnetic>
-						<Link className="button light" to="/contact">
-							Start a conversation <ArrowUpRight size={19} />
-						</Link>
+						{cta.external ? (
+							<a className="button light" href={cta.href} target="_blank" rel="noopener noreferrer">
+								{t(cta.labelKey)} <ArrowUpRight size={19} />
+							</a>
+						) : (
+							<Link className="button light" to={cta.href}>
+								{t(cta.labelKey)} <ArrowUpRight size={19} />
+							</Link>
+						)}
 					</Magnetic>
-					<a className="contact-email" href="mailto:hello@roaswell.com?subject=Let%E2%80%99s%20talk%20growth">
+					<a className="contact-email" href={`mailto:hello@roaswell.com?subject=${encodeURIComponent(t('contact.mailSubject'))}`}>
 						hello@roaswell.com <ArrowUpRight size={19} />
 					</a>
 				</div>

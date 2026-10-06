@@ -1,0 +1,720 @@
+{
+	"expertise": {
+		"seo-content": {
+			"name": "SEO ve İçerik",
+			"eyebrow": "01 / SEO VE İÇERİK",
+			"headline": "Bulunun.",
+			"headlineAccent": "Seçilin.",
+			"summary": "Arama niyeti yakalar. İçerik talebi oluşturur. Soruları nitelikli trafiğe, trafiği müşterilere çeviriyoruz; zamanla katlanan strateji, editöryal çalışma ve teknik temellerle.",
+			"capabilities": [
+				"SEO stratejisi",
+				"İçerik stratejisi",
+				"Anahtar kelime araştırması",
+				"Editöryal",
+				"Sayfa içi SEO",
+				"İçerik optimizasyonu"
+			],
+			"cta": "SEO ve İçeriği keşfedin",
+			"subpages": [],
+			"body": [
+				{
+					"text": "Arama trafiğinin çoğu boşa gider; çünkü yanlış soruyu ya da doğru soruyu kötü yanıtlar. Niyetle başlıyoruz: hedef kitlenizin gerçekte neyi anlamaya, karar vermeye ya da satın almaya çalıştığıyla. Oradan dışarıya doğru kuruyoruz."
+				},
+				{
+					"text": "Üretimden önce strateji"
+				},
+				{
+					"text": "Bir içerik motoru, ancak her parçanın bir görevi olduğunda çalışır. Ticari sonuçları hareket ettiren konuları haritalıyor, fırsata göre önceliklendiriyor ve ivmenin dağılmak yerine katlanması için işi sıralıyoruz."
+				},
+				{
+					"text": "Hedef kitlenizin aradığı cevap olun; sayfadaki bir sonuç daha değil."
+				},
+				{
+					"text": "Dayanan teknik temeller"
+				},
+				{
+					"text": "Taranabilirlik, site mimarisi, Core Web Vitals, yapılandırılmış veri. Harika bir içeriğin sıralanma şansı bulup bulmayacağına karar veren gösterişsiz iş. Bunu sonradan akla gelen bir şey değil, stratejinin parçası olarak ele alıyoruz."
+				},
+				{
+					"text": "Sonra ölçüyoruz. Search Console verileri, sıralama takibi, dönüşüm atfı; gösteriş amaçlı trafik grafiklerine değil, önemli olan ticari sonuçlara bağlanır."
+				}
+			]
+		},
+		"meta-ads": {
+			"name": "Meta Reklamları",
+			"eyebrow": "02 / META REKLAMLARI",
+			"headline": "Dikkati",
+			"headlineAccent": "talebe çevirin.",
+			"summary": "Bağ kuran yaratıcılar, dönüşüm sağlayan kampanyalar. Hedef kitle içgörüsünü yılmaz testlerle birleştirerek Facebook, Instagram ve tüm Meta ekosisteminde her gösterimin daha çok çalışmasını sağlıyoruz.",
+			"capabilities": [
+				"Ücretli sosyal",
+				"Yaratıcı test",
+				"Hedef kitle stratejisi",
+				"Tam huni kampanyaları",
+				"Dönüşüm optimizasyonu",
+				"Yeniden pazarlama"
+			],
+			"cta": "Meta Reklamlarını keşfedin",
+			"subpages": [],
+			"body": [
+				{
+					"text": "Dikkat bol; talep değil. Ücretli sosyalin işi görülmek değil, hatırlanmak, düşünülmek ve seçilmektir. Bu, kaydırmayı durduran yaratıcıyla başlar."
+				},
+				{
+					"text": "Yaratıcı hedeflemenin kendisidir"
+				},
+				{
+					"text": "Günümüz platformlarında neyi gösterdiğiniz, kime gösterdiğinizden daha önemlidir. Hipotezler, varyantlar ve net kazananlardan oluşan yapılandırılmış bir yaratıcı test sistemi kuruyoruz; böylece iş her döngüde keskinleşir."
+				},
+				{
+					"text": "Her tıklamanın yapacağı bir iş var. Değerli kılın."
+				},
+				{
+					"text": "Son tıklama değil, tam huni"
+				},
+				{
+					"text": "Farkındalık, değerlendirme, dönüşüm, elde tutma. Yolculuğu her aşamanın bir sonrakini beslemesi için tasarlıyor ve harcamanın gerçekte ne ürettiğini bilmeniz için artımsal ölçüyoruz."
+				},
+				{
+					"text": "Kur ve unut yok. Haftalık yaratıcı incelemeler, hedef kitle yenilemeleri ve bütçeyi işe yarayana kaydırıp yaramayandan uzaklaştırma."
+				}
+			]
+		},
+		"google-ads": {
+			"name": "Google Reklamları",
+			"eyebrow": "03 / GOOGLE REKLAMLARI",
+			"headline": "Niyeti",
+			"headlineAccent": "önemli olduğu anda yakalayın.",
+			"summary": "Niyetle hassasiyetle buluşun. Aramadan alışverişe, bütçeyi fırsatın olduğu yere koyuyor ve geri dönenleri net, ticari raporlamayla ölçüyoruz.",
+			"capabilities": [
+				"Ücretli arama",
+				"Alışveriş reklamları",
+				"Performance Max",
+				"Dönüşüm optimizasyonu",
+				"Teklif stratejisi",
+				"Takip ve ölçüm"
+			],
+			"cta": "Google Reklamlarını keşfedin",
+			"subpages": [],
+			"body": [
+				{
+					"text": "Arama, niyetin eyleme dönüştüğü andır. Soru, o anda orada olup olmadığınız ve olduğunuzda deneyimin dönüşüm sağlayıp sağlamadığıdır."
+				},
+				{
+					"text": "Bütçe fırsatın olduğu yerde"
+				},
+				{
+					"text": "Her anahtar kelime paranızı hak etmez. Anahtar kelime stratejisini ticari niyet ve marj etrafında kuruyor, geniş ve marka çakışmalarındaki israfı kesiyor ve harcamayı getirinin gerçek olduğu yerde topluyoruz."
+				},
+				{
+					"text": "Niyetle hassasiyetle buluşun. Geri dönenleri ölçün."
+				},
+				{
+					"text": "Güvenebileceğiniz ölçüm"
+				},
+				{
+					"text": "Sunucu taraflı takip, dönüşüm değeri modellemesi, temiz atıf. Kararları yönlendiren sayılar, platformların kendi beyanını değil gerçeği yansıtsın diye."
+				},
+				{
+					"text": "Varsayılan bir hedefe değil, ekonomisine göre ayarlanmış teklif stratejileri. Test ediyor, uç durumları izliyor ve harcamayı dürüst tutuyoruz."
+				}
+			]
+		},
+		"motion-graphics": {
+			"name": "Motion Graphics",
+			"eyebrow": "04 / MOTION GRAPHICS",
+			"headline": "Kaydırmayı durdurun.",
+			"headlineAccent": "Gözden kaçmayın.",
+			"summary": "Hareket, dikkat kazanmanın en hızlı, büyük bir fikri anlatmanın en net yoludur. Yalnızca beğenilmek için değil, test edilmek için tasarlanmış reklamlar, ürün animasyonları ve marka filmleri tasarlıyoruz.",
+			"capabilities": [
+				"Ücretli sosyal yaratıcıları",
+				"Açıklayıcı videolar",
+				"Ürün animasyonu",
+				"Marka filmleri",
+				"Web ve arayüz hareketi",
+				"Yaratıcı test varlıkları"
+			],
+			"cta": "Motion Graphics'i keşfedin",
+			"subpages": {
+				"paid-social-motion": {
+					"name": "Ücretli sosyal hareket reklamları",
+					"eyebrow": "04.1 / ÜCRETLİ SOSYAL HAREKET REKLAMLARI",
+					"headline": "İlk",
+					"headlineAccent": "saniyeyi kazanın.",
+					"summary": "Akış için yapılmış kısa hareket: başparmağı durduran bir kanca, yerini bulan bir iddia ve hangi fikrin sıradaki bütçeyi hak ettiğini gösteren bir varyant sistemi.",
+					"sample": {
+						"title": "NOVA Sparkling: 10 saniyelik bir reklam, parçalarına ayrılmış",
+						"note": "Kurgusal bir içecek markası için konsept reklam. Zaman çizelgesini kaydırın, yanındaki dört vuruşu okuyun: kanca, iddia, kanıt, çağrı."
+					},
+					"deliverables": [
+						{
+							"title": "Kanca öncelikli storyboard'lar",
+							"text": "Her konsept için üç ila beş açılış fikri; her biri ilk saniyeyi tek başına kazanmak üzere yazıldı."
+						},
+						{
+							"title": "Ana animasyon ve kısaltmalar",
+							"text": "Bir ana parça ve gerçekten satın aldığınız yerleşimlere göre kesilmiş 6, 15 ve 30 saniyelik sürümler."
+						},
+						{
+							"title": "Her format",
+							"text": "9:16, 4:5 ve 1:1 uygulamalar; Hikayeler, Reels ve akış için güvenli bölgeler kontrol edilmiş."
+						},
+						{
+							"title": "Varyant kitleri",
+							"text": "Dosyaya yerleştirilmiş değiştirilebilir kancalar, iddialar ve bitiş kartları; test etmek asla baştan başlamak anlamına gelmesin."
+						},
+						{
+							"title": "Altyazı ve ses",
+							"text": "Sessiz izleme için gömülü altyazılar ve sesli izleme için ses tasarımı."
+						},
+						{
+							"title": "Öğrenme incelemesi",
+							"text": "Her varyantın bize ne öğrettiğine ve sonraki partinin neyi değiştirmesi gerektiğine dair yazılı bir değerlendirme."
+						}
+					],
+					"steps": [
+						{
+							"title": "Hesabı okumak",
+							"text": "Performans verisiyle başlarız: neyin yorulduğu, hangi açıların hâlâ çektiği, kaybın nerede yaşandığı."
+						},
+						{
+							"title": "Hipotezleri yazmak",
+							"text": "Her konsept, herhangi bir şey canlandırılmadan önce test ettiği iddiayı ve hareket ettirmesi gereken sayıyı belirtir."
+						},
+						{
+							"title": "Sistemi kurmak",
+							"text": "Önce ana animasyon, ardından görünümün tutarlı kalması için aynı kaynaktan üretilen varyantlar."
+						},
+						{
+							"title": "Yayına almak ve öğrenmek",
+							"text": "Varyantlar birbiriyle yarışır. Kazananlar ölçeklenir, kaybedenler emekliye ayrılır, notlar sonraki turu besler."
+						}
+					],
+					"connects": [
+						{
+							"text": "Hangi varyantların bütçe alacağına ve ne zaman emekli edileceğine karar veren yaratıcı test sistemi."
+						},
+						{
+							"text": "Kısa kesimler aynı zamanda YouTube ve Performance Max için video varlığı olarak iş görür."
+						}
+					],
+					"faqs": [
+						{
+							"question": "Çekim görüntüsü sağlamamız gerekir mi?",
+							"answer": "Hayır. Marka varlıkları, ürün render'ları, ekran kayıtlarıyla çalışabilir veya parçanın tamamını illüstrasyon ve tipografiyle kurabiliriz. Görüntünüz varsa kullanırız."
+						},
+						{
+							"question": "Kaç varyantla başlamalıyız?",
+							"answer": "Bir şey öğrenmeye yetecek kadar, her birinin bütçesiz kalacağı kadar değil. Genellikle kancalar ve iddialardan oluşan küçük bir matris önerir, parti başına boyutu birlikte belirleriz."
+						},
+						{
+							"question": "Medya yönetimini de yapabilir misiniz?",
+							"answer": "Evet, Meta Reklamları ve Google Reklamları çalışmamız aracılığıyla. Bitmiş dosyaları alıp kendiniz de yayınlayabilirsiniz."
+						},
+						{
+							"question": "Müzik ve seslendirme ne olacak?",
+							"answer": "Lisanslı veya özgün ses kullanır, reklamın nerede ve ne kadar süreyle yayınlanabileceği dahil hakları baştan netleştiririz."
+						},
+						{
+							"question": "Bir hareket reklamını nasıl değerlendirirsiniz?",
+							"answer": "Nasıl göründüğüyle değil, brief edildiği ticari metrikle. Her konsept yapılmadan önce bir sayıya bağlanır."
+						}
+					]
+				},
+				"explainer-videos": {
+					"name": "Açıklayıcı videolar",
+					"eyebrow": "04.2 / AÇIKLAYICI VİDEOLAR",
+					"headline": "Karmaşık olanı",
+					"headlineAccent": "açık hale getirin.",
+					"summary": "Zor bir ürünü veya fikri, alıcının patronuna tekrar edebileceği bir şeye dönüştüren kısa animasyonlu bir açıklama.",
+					"sample": {
+						"title": "Dağınık dikkatten müşteriye, 14 saniyede",
+						"note": "Bir hunin nasıl çalıştığını anlatan konsept açıklayıcı video. Noktalar insanlardır. Kaç kişinin girdiğini, kaçının dönüştüğünü ve hikâyenin yalnızca hareketle nasıl taşındığını izleyin."
+					},
+					"deliverables": [
+						{
+							"title": "Senaryo ve anlatı",
+							"text": "İzleyicinin sonunda inanması gereken tek şeyin etrafında kurulmuş sıkı bir senaryo."
+						},
+						{
+							"title": "Stil kareleri ve storyboard",
+							"text": "Animasyon başlamadan önce görünüm ve her sahne kağıt üzerinde kararlaştırılır."
+						},
+						{
+							"title": "Özel illüstrasyon ve animasyon",
+							"text": "Hazır ikonların yer değiştirmesi değil, ürününüz için yapılmış özgün görseller."
+						},
+						{
+							"title": "Seslendirme yönetimi ve ses",
+							"text": "Oyuncu seçimi rehberliği, yönetim ve miksajlı bir kanal ya da yalnızca müzikli sürüm."
+						},
+						{
+							"title": "Altyazılı kısaltmalar",
+							"text": "Altyazıları hazır gömülü, sosyal ve ücretli için kısa sürümler."
+						},
+						{
+							"title": "Açılış sayfasına hazır",
+							"text": "Sıkıştırılmış dosyalar, bir kapak karesi ve bir döküm; video sayfayı yavaşlatmak yerine desteklesin."
+						}
+					],
+					"steps": [
+						{
+							"title": "İnancı tanımlamak",
+							"text": "Kim izliyor, neyden şüphe duyuyor ve bittiğinde neye inanmalı?"
+						},
+						{
+							"title": "Yazmak ve storyboard çizmek",
+							"text": "Senaryo ve storyboard birlikte; her satırın yerini hak eden bir görüntüsü olsun."
+						},
+						{
+							"title": "Tasarlamak ve canlandırmak",
+							"text": "Önce stil kareleri, ardından kolayca güncellenebilen modüler sahnelerle animasyon."
+						},
+						{
+							"title": "Tamamlamak ve yaymak",
+							"text": "Ses, altyazılar, kısaltmalar ve ihtiyaç duyan sayfa ve kampanyalara yerleştirme."
+						}
+					],
+					"connects": [
+						{
+							"text": "Sıralanmak için kurulmuş sayfalara gömülür; dökümler içeriği gizlemek yerine zenginleştirir."
+						},
+						{
+							"text": "Açılış sayfasındaki net bir açıklama, ücretli tıklamaları taleplere dönüştüren şeydir."
+						}
+					],
+					"faqs": [
+						{
+							"question": "Açıklayıcı video ne kadar uzun olmalı?",
+							"answer": "Fikrin izin verdiği kadar kısa. Çoğu 45 ile 90 saniye arasında olur; sosyal için 15 ve 30 saniyelik kısaltmalar eklenir."
+						},
+						{
+							"question": "Senaryoyu siz mi yazıyorsunuz?",
+							"answer": "Evet. Sizin senaryonuzdan veya kaba bir brief'ten de çalışıp ekrana göre şekillendirebiliriz."
+						},
+						{
+							"question": "Ürün değişirse ne olur?",
+							"answer": "Modüler sahnelerle kurarız; böylece bir özellik, tüm filmi yeniden yapmadan değiştirilebilir ya da güncellenebilir."
+						},
+						{
+							"question": "Kaç revizyon turu dahil?",
+							"answer": "Turları proje başına baştan belirler ve değişikliğin ucuz olduğu aşamalara yerleştiririz: senaryo, panolar, sonra animasyon."
+						},
+						{
+							"question": "Açıklayıcı videolar en iyi nerede çalışır?",
+							"answer": "Açılış sayfalarında, satış sunumlarında, ilk kullanım sürecinde, e-postada ve hızlı, net bir sunum gerektiren ücretli yerleşimlerde."
+						}
+					]
+				},
+				"product-animation": {
+					"name": "Ürün animasyonu",
+					"eyebrow": "04.3 / ÜRÜN ANİMASYONU",
+					"headline": "Çalışırken",
+					"headlineAccent": "gösterin.",
+					"summary": "Patlatılmış görünümler, özellik turları ve lansman açılışları; alıcılar dokunamadan önce bir şeyin nasıl çalıştığını görsün.",
+					"sample": {
+						"title": "HALO: patlatılmış görünüm, on saniyede beş parça",
+						"note": "Bu sayfa için icat edilmiş konsept bir akıllı hoparlör. Zaman çizelgesini sürükleyerek söküp tekrar monte edin."
+					},
+					"deliverables": [
+						{
+							"title": "Hero döngüsü",
+							"text": "Bir ürün ya da açılış sayfasının üstü için temiz döngü animasyon."
+						},
+						{
+							"title": "Patlatılmış ve kesit görünümler",
+							"text": "İçeriğin hikâyesi: parçalar, katmanlar ve birbirine nasıl oturdukları."
+						},
+						{
+							"title": "Özellik vurgu dizileri",
+							"text": "Özellik başına kısa bir parça; her biri tek bir noktayı net biçimde vurgular."
+						},
+						{
+							"title": "Lansman açılışı",
+							"text": "Ürünün kamuya açıldığı an için sinematik bir parça."
+						},
+						{
+							"title": "Web'e hazır çıktılar",
+							"text": "Sıkıştırılmış video ve yardımcı olduğunda hızlı sayfalar için hafif vektör animasyon."
+						},
+						{
+							"title": "Sosyal kısaltmalar ve durağan kareler",
+							"text": "Dikey ve kare sürümler ile sunumlar, e-posta ve basın için anahtar kareler."
+						}
+					],
+					"steps": [
+						{
+							"title": "Kaynağı toplamak",
+							"text": "CAD, render'lar, ekran kayıtları veya eskizler; ürünü en iyi gösteren neyse."
+						},
+						{
+							"title": "Koreografi yapmak",
+							"text": "Kamerayı, parçaların beliriş sırasını ve her çekimin açıklaması gereken tek şeyi planlamak."
+						},
+						{
+							"title": "Işık ve malzeme",
+							"text": "Yüzeyler, parlama ve gölge; gerçek nesne veya arayüz gibi hissettirecek şekilde ayarlanır."
+						},
+						{
+							"title": "Render ve teslim",
+							"text": "Ürünün göründüğü her yer için nihai dosyalar; web için hafif bir seçenekle."
+						}
+					],
+					"connects": [
+						{
+							"text": "Akış için kesilmiş aynı animasyon, yalnızca duyurmak yerine açıklayan bir ürün reklamı yapar."
+						},
+						{
+							"text": "Net bir gösterimi olan ürün sayfaları dikkati daha uzun tutar ve aramaya sıralayacak bir şey verir."
+						}
+					],
+					"faqs": [
+						{
+							"question": "3D dosyalara ihtiyacınız var mı?",
+							"answer": "Yardımcı olurlar, ancak fotoğraf, çizim veya bir tanımdan da çalışabiliriz. Yazılım ürünlerinde arayüzünüzden canlandırırız."
+						},
+						{
+							"question": "Yalnızca fiziksel ürünleri değil, yazılımı da canlandırabilir misiniz?",
+							"answer": "Evet. Arayüz turları, veri akışları ve özellik açıklamaları donanımla aynı zanaati izler."
+						},
+						{
+							"question": "Sitemizi yavaşlatır mı?",
+							"answer": "Sıkıştırılmış dosyalar ve mantıklı olduğunda hafif kalan vektör animasyon teslim ederiz. Boyut bütçesini baştan belirleriz."
+						},
+						{
+							"question": "Animasyonu daha sonra yeniden kullanabilir miyiz?",
+							"answer": "Evet. Katmanlı kaynakları teslim eder ve kullanım koşullarını belirleriz; böylece gelecek lansmanlar aynı varlıklar üzerine kurulabilir."
+						},
+						{
+							"question": "Cilalı ne kadar cilalıdır?",
+							"answer": "Önce netlik, sonra güzellik. Bir çekim harika görünüyor ama açıklamıyorsa kesilir."
+						}
+					]
+				},
+				"brand-films": {
+					"name": "Marka filmleri",
+					"eyebrow": "04.4 / MARKA FİLMLERİ",
+					"headline": "Bir kez söyleyin.",
+					"headlineAccent": "Kalıcı kılın.",
+					"summary": "Bir markanın bakış açısını taşıyan, sinematik ve tipografi öncelikli filmler; bir lansmanı, kampanyayı ya da ana sayfayı çıpalamak için.",
+					"sample": {
+						"title": "ROASWELL: üç bölümde 16 saniyelik bir başlık filmi",
+						"note": "Kendi stüdyomuz için, tamamen hareket tasarımıyla yapılmış konsept bir film. Bölüm işaretleriyle Signal, Intent ve Return arasında gezinin."
+					},
+					"deliverables": [
+						{
+							"title": "Konsept ve senaryo taslağı",
+							"text": "Fikir, ton ve görsel dil; prodüksiyondan önce yazılı ve çizili olarak."
+						},
+						{
+							"title": "Manifesto metni",
+							"text": "Markaya benzeyen ve akılda kalacak kadar kısa sözler."
+						},
+						{
+							"title": "Hareket odaklı yönetim",
+							"text": "Tipografik, illüstratif veya karma; hikâyeye ve bütçeye uyacak şekilde seçilir."
+						},
+						{
+							"title": "Ses ve müzik yönetimi",
+							"text": "Duygusal işin yarısını yapan bir müzik ve ses tasarımı."
+						},
+						{
+							"title": "Ana film ve kısaltmalar",
+							"text": "Tam parça ve her kanal için 30, 15 ve 6 saniyelik sürümler."
+						},
+						{
+							"title": "Marka hareket araç seti",
+							"text": "Geçişler, yumuşatma eğrileri ve başlık stilleri; görünüm sonrasındaki her şeyde sürsün diye."
+						}
+					],
+					"steps": [
+						{
+							"title": "Bakış açısını bulmak",
+							"text": "Marka, kategorisinin inanmadığı neye inanıyor? Film budur."
+						},
+						{
+							"title": "Taslağı yazmak",
+							"text": "Bölümler, ritim, anahtar kareler ve ses; tek bir kare canlandırılmadan önce kararlaştırılır."
+						},
+						{
+							"title": "Yapmak",
+							"text": "Tasarım, animasyon ve ses birlikte kurulur; kurgu nefes alsın."
+						},
+						{
+							"title": "Yayınlamak ve genişletmek",
+							"text": "Ana filmi yayınlayın, ardından kısaltmalar ve hareket araç setiyle fikri canlı tutun."
+						}
+					],
+					"connects": [
+						{
+							"text": "Kısaltmalar, tam huni bir ücretli sosyal planın farkındalık katmanı olur."
+						},
+						{
+							"text": "Marka arama ve video kampanyalarının tıklayıp gidecek değerli bir yeri olur."
+						},
+						{
+							"text": "Bir içerik merkezinin kalbindeki film, yazarlara ve bağlantılara işaret edecek bir şey verir."
+						}
+					],
+					"faqs": [
+						{
+							"question": "Gerçek görüntü (live action) çekiyor musunuz?",
+							"answer": "Hareket odaklı filmleri yönetiriz. Bir proje live action gerektiriyorsa bir yapım ortağıyla planlar, hareket yönetimini şirket içinde tutarız."
+						},
+						{
+							"question": "Bir marka filmi ne kadar sürer?",
+							"answer": "Fikir belirler. Çoğu 30 saniye ile iki dakika arasındadır; ana filmden daha kısa sürümler kesilir."
+						},
+						{
+							"question": "Filmin sahibi kim?",
+							"answer": "Siz. Kullanım haklarını belirler ve proje kapsamında katmanlı kaynak dosyalarını teslim ederiz."
+						},
+						{
+							"question": "Film ana sayfamızda yer alabilir mi?",
+							"answer": "Evet. Hafif bir döngü ve bir kapak karesi teslim ederiz; tam film bir tık uzaklıkta."
+						},
+						{
+							"question": "Bu yalnızca büyük markalar için mi?",
+							"answer": "Hayır. Sıkı yazılmış tipografi odaklı bir film, bir çekimin çok küçük bir maliyetiyle yine de bir bakış açısı gibi hissettirir."
+						}
+					]
+				},
+				"web-ui-motion": {
+					"name": "Web ve arayüz hareketi",
+					"eyebrow": "04.5 / WEB VE ARAYÜZ HAREKETİ",
+					"headline": "Canlı hissettiren",
+					"headlineAccent": "arayüzler.",
+					"summary": "Bir siteyi anlamayı kolaylaştıran ve unutmayı zorlaştıran kaydırma hikâyeleri, mikro etkileşimler ve sayfa geçişleri; hızdan ya da erişilebilirlikten ödün vermeden.",
+					"sample": {
+						"title": "Hareket laboratuvarı: dokunabileceğiniz yedi etkileşim",
+						"note": "Video değil, gerçek, çalışan arayüz hareketi. Anahtarlayın, üzerine gelin, sürükleyin ve tıklayın. Buradaki her şey hareket azaltma ayarlarına saygı gösterir."
+					},
+					"deliverables": [
+						{
+							"title": "Hareket ilkeleri",
+							"text": "Her etkileşimin tek bir ürüne ait hissettirmesi için yumuşatma, zamanlama ve yay belirteçleri."
+						},
+						{
+							"title": "Kaydırma ve sayfa geçişleri",
+							"text": "Bu sitedekiler gibi dikkati yönlendiren, hikâye odaklı kaydırma dizileri ve rota geçişleri."
+						},
+						{
+							"title": "Mikro etkileşim kütüphanesi",
+							"text": "Amaçla tepki veren düğmeler, anahtarlar, menüler, kartlar ve formlar."
+						},
+						{
+							"title": "Üretim kodu veya çıktılar",
+							"text": "Temiz CSS ve JavaScript ya da Lottie ve video çıktıları; yığınınıza hazır."
+						},
+						{
+							"title": "Erişilebilirlik varyantları",
+							"text": "Sonradan yamanmak yerine baştan tasarlanmış hareket azaltma alternatifleri ve odak davranışı."
+						},
+						{
+							"title": "Performans bütçesi",
+							"text": "Hareket, yayına çıkmadan önce yüklenme süresine ve etkileşim gecikmesine karşı ölçülür."
+						}
+					],
+					"steps": [
+						{
+							"title": "Denetim",
+							"text": "Hareketin bir şeyi netleştireceği yeri ve yalnızca gürültü ekleyeceği yeri bulmak."
+						},
+						{
+							"title": "İlkeleri belirlemek",
+							"text": "Kararların vaka bazlı olmaktan çıkması için yumuşatma ve zamanlama sözlüğünü tanımlamak."
+						},
+						{
+							"title": "Tarayıcıda prototip",
+							"text": "Gerçek ortamda kurmak; onayladığınız şey yayına çıkan şey olsun."
+						},
+						{
+							"title": "Yayına almak ve ölçmek",
+							"text": "Bir performans bütçesiyle yayınlayıp kullanıcıların gerçekte ne yaptığını izlemek."
+						}
+					],
+					"connects": [
+						{
+							"text": "Hızlı, erişilebilir hareket Core Web Vitals ile savaşmak yerine onu destekler."
+						},
+						{
+							"text": "Net, hızlı etkileşimleri olan açılış sayfaları ücretli tıklamaları eyleme dönüştürür."
+						}
+					],
+					"faqs": [
+						{
+							"question": "Animasyon sitemizi yavaşlatır mı?",
+							"answer": "Doğru kurulursa hayır. Bir performans bütçesi belirler, en ucuz özelliklerle canlandırır ve gerçek cihazlarda test ederiz."
+						},
+						{
+							"question": "Kodu siz mi yazıyorsunuz?",
+							"answer": "Evet. Üretime hazır kod teslim edebilir ya da ekibinizin uygulaması için spesifikasyon ve çıktıları devredebiliriz."
+						},
+						{
+							"question": "Erişilebilirlik ne olacak?",
+							"answer": "Her hareketin bir hareket azaltma alternatifi vardır; klavye ve ekran okuyucu davranışı animasyonla birlikte tasarlanır."
+						},
+						{
+							"question": "CMS'imiz veya framework'ümüzle çalışır mı?",
+							"answer": "Çoğu modern yığınla çalışırız. Neyi kullandığınızı söyleyin, en iyi yaklaşımı onaylayalım."
+						},
+						{
+							"question": "Çalışırken görebilir miyim?",
+							"answer": "Şu an bakıyorsunuz. Bu sitedeki kaydırma dizileri, sayaçlar ve açılışlar aynı yaklaşımla kurulmuştur."
+						}
+					]
+				}
+			},
+			"body": [
+				{
+					"text": "Statik yaratıcı dikkat ister. Hareket onu alır. Bir akışın ilk saniyesinde hareket, bir mesajın şans bulup bulmayacağına karar verir ve fikrin geri kalanı yalnızca o saniyeyi atlatırsa önem taşır."
+				},
+				{
+					"text": "Showreel için değil, akış için yapıldı"
+				},
+				{
+					"text": "Her parça bir hipotezle başlar: kanca, iddia, izlemeye devam etme nedeni. Hareket ettirmesi gereken metriğe göre storyboard çizer, sonra test sisteminin öğrenecek gerçek malzemesi olsun diye varyantlar kurarız."
+				},
+				{
+					"text": "Harika hareket süs değildir. Görünür kılınmış argümandır."
+				},
+				{
+					"text": "Bir fikir, her yüzey"
+				},
+				{
+					"text": "Aynı konsept altı saniyelik ücretli bir kesimden ürün açıklayıcısına, açılış sayfası animasyonuna ve lansman filmine uzanır. Tek tasarım dili, tek varlık seti, fikri üç kez yeniden kurmadan."
+				},
+				{
+					"text": "Hareket, aramayla ve ücretli medyayla aynı stüdyoda yer aldığı için yaratıcı performans verisiyle brief edilir ve bir reel'de nasıl göründüğüyle değil, ticari sonuçlarla yargılanır."
+				}
+			]
+		}
+	},
+	"caseStudies": {
+		"search-to-significance": {
+			"title": "Arama niyetini talebe çevirmek",
+			"discipline": "SEO ve İçerik",
+			"summary": "Düşünülerek satın alınan ürünler satan bir marka, organik varlığını ticari niyet etrafında nasıl yeniden kurdu ve huninin üstündeki trafiği nitelikli satış hattına dönüştürdü.",
+			"challenge": "Uzman bir B2B markası trafik getiren ama satış hattı üretmeyen bilgi amaçlı sorgularda sıralanıyordu. İçerik boldu, ancak huninin daha aşağısındaki alıcıların yanlış sorularını yanıtlıyordu.",
+			"approach": "Konu manzarasını satın alma niyeti etrafında yeniden haritaladık, zayıf içerikleri birleştirdik ve editöryal takvimi alıcıların gerçekte karşılaştığı kararlar etrafında yeniden kurduk. Site mimarisi, iç bağlantılar ve yapılandırılmış veri gibi teknik SEO çalışması, yeni içeriğe sıralanma alanı açtı.",
+			"outcome": "Organik trafik ticari sayfalara odaklandı, nitelikli talepler arttı ve içerik motoru dağılmak yerine katlanmaya başladı. Çalışma sürüyor; yön belli.",
+			"metrics": [
+				{
+					"label": "Organik trafik hedefi"
+				},
+				{
+					"label": "Nitelikli potansiyel müşteri hedefi"
+				}
+			]
+		},
+		"making-acquisition-work-harder": {
+			"title": "Edinimi daha çok çalıştırmak",
+			"discipline": "Meta Reklamları + Google Reklamları",
+			"summary": "Bir DTC markası daha azını edinmek için daha çok harcıyordu. Ücretli sosyal ve arama genelinde yaratıcı odaklı bir sıfırlama, verimliliği temelden yeniden kurdu.",
+			"challenge": "Yükselen CPM'ler ve yaratıcı yorgunluğu, edinim maliyetini kârlılık eşiğinin ötesine itmişti. Hesap meşguldü ama etkili değildi: bütçe artık dönüşüm sağlamayan hedef kitlelere dağılmıştı.",
+			"approach": "Hesabı yapılandırılmış bir yaratıcı test sistemi etrafında birleştirdik, tam huni sıralamasını yeniden kurduk ve arama bütçesini yüksek niyetli, yüksek marjlı terimlere kaydırdık. Kararlar gerçeği yansıtsın diye takip sunucu tarafına taşındı.",
+			"outcome": "Edinim maliyeti düştü, reklam harcaması getirisi toparlandı ve test ritmi, yaratıcının bozulmak yerine her döngüde gelişmesini sağladı. Markanın artık yalnızca kampanyaları değil, bir sistemi var.",
+			"metrics": [
+				{
+					"label": "Reklam harcaması getirisi hedefi"
+				},
+				{
+					"label": "Edinim maliyeti hedefi"
+				}
+			]
+		},
+		"full-funnel-foundations": {
+			"title": "Yeni bir lansman için tam huni temelleri",
+			"discipline": "SEO ve İçerik + Ücretli",
+			"summary": "Bir ürün lansmanı organik birikime ve ücretli ivmeye aynı anda ihtiyaç duyuyordu. İkisini de, katlanacak şekilde sıralayarak kurduk.",
+			"challenge": "Yeni bir teklifin ne arama varlığı ne de ücretli geçmişi vardı. Risk, sessizliğe lansman yapmaktı: yarattığı talebi yakalayacak hiçbir şey olmadan ücretli harcama.",
+			"approach": "İçerik ve teknik SEO çalışması, konusal otorite kurmak için lansmandan aylar önce başladı. Ücretli sosyal farkındalık ve yeniden pazarlamayı ekti, arama ise lansmanın yarattığı niyeti yakaladı. Ölçüm ilk günden kuruldu.",
+			"outcome": "Lansman boşluğa değil mevcut organik birikime indi, ücretli harcama baştan sağlıklı bir oranda dönüştü ve markanın ölçeklenebileceği bir ölçüm çerçevesi vardı.",
+			"metrics": [
+				{
+					"label": "Lansman ayı ROAS hedefi"
+				},
+				{
+					"label": "Lansman öncesi kurulan organik birikim"
+				}
+			]
+		}
+	},
+	"articles": {
+		"why-three-disciplines": {
+			"title": "Bu üç disiplin neden birbirine ait",
+			"excerpt": "Arama, içerik ve ücretli medya genellikle ayrı pratikler olarak satılır. Bunları tek bir büyüme sistemi olarak ele almanın sonucu neden değiştirdiği burada.",
+			"category": "Strateji",
+			"body": [
+				{
+					"text": "Çoğu ajans kanalların etrafında örgütlenir; çünkü kanalları satmak kolaydır. Bir arama ekibi. Bir sosyal ekibi. Bir içerik ekibi. Her biri kendi köşesini optimize eder ve aralarındaki boşluklar büyümenin sızdığı yerdir."
+				},
+				{
+					"text": "Niyet, talep ve hızlanma"
+				},
+				{
+					"text": "Arama zaten var olan niyeti yakalar. İçerik onu yaratan talebi oluşturur. Ücretli medya işe yarayanı hızlandırır; kanıtlanmış olanı daha çok ana, daha hızlı taşır. Birini çıkarın, sistem kaldıracını kaybeder."
+				},
+				{
+					"text": "Tek başına bir kanal bir taktiktir. Birbirini besleyen kanallar bir sistemdir."
+				},
+				{
+					"text": "Aynı düşünce anahtar kelime stratejisini, editöryal takvimi ve ücretli yaratıcıyı şekillendirdiğinde iş katlanır. İçerik, bunun için kurulduğundan sıralanır. Ücretli, mesaj zaten organik olarak güven kazandığından dönüşür. Arama, diğer ikisinin yarattığı talebi yakalar."
+				},
+				{
+					"text": "Pratikte ne değişir"
+				},
+				{
+					"text": "Daha az devir. Tek bir ölçüm çerçevesi. Organik bir gönderiden ücretli bir varlığa ve bir açılış sayfasına, üç kez yeniden kurulmadan taşınabilen yaratıcı bir fikir. Küçük ve kıdemli tutmanın amacı budur."
+				}
+			]
+		},
+		"creative-is-the-targeting": {
+			"title": "Yaratıcı, hedeflemenin kendisidir",
+			"excerpt": "Günümüz ücretli sosyal platformlarında neyi gösterdiğiniz, kime gösterdiğinizden daha önemlidir. Dayanıklı bir test sistemi kurmaya dair bir not.",
+			"category": "Ücretli medya",
+			"body": [
+				{
+					"text": "Eski kitap hedef kitle öncelikliydi: mükemmel personayı kur, onu hassasça hedefle ve algoritmanın benzerlerini bulmasına güven. O dünya büyük ölçüde bitti. Hedef kitleler daha geniş, sinyaller daha gürültülü ve filtrelemeyi yaratıcının kendisi yapıyor."
+				},
+				{
+					"text": "Kimin kalacağına yaratıcı karar verir"
+				},
+				{
+					"text": "Kaydırmayı durduran bir kanca doğru kişiyle konuşur, yanlış kişiyi iter. Bu hedeflemedir; yalnızca hedef kitle seçicisi yerine mesaj tarafından yapılır. Yani yaratıcı hattı artık kaldıraçtır."
+				},
+				{
+					"text": "Test sisteminiz her döngüde keskinleşmiyorsa, yaratıcınız bozuluyordur."
+				},
+				{
+					"text": "Bir parti değil, bir sistem kurun"
+				},
+				{
+					"text": "Varyantlardan önce hipotezler. Ölçeklemeden önce net kazananlar. Yalnızca varlık değil, öğrenme üreten bir ritim. Ücretli sosyalde kazanan markalar, yaratıcısı ay be ay ölçülebilir biçimde gelişenlerdir; en büyük bütçeye sahip olanlar değil."
+				}
+			]
+		},
+		"measuring-what-comes-back": {
+			"title": "Geri dönenleri ölçmek",
+			"excerpt": "Platform panoları size her zaman harcamanın işe yaradığını söyleyecektir. Sayıları nasıl dürüst tuttuğumuz burada.",
+			"category": "Ölçüm",
+			"body": [
+				{
+					"text": "Her reklam platformu kendi başarısını raporlar. Tam olarak yalan söylemiyorlar, ama kendi bakış açılarından ölçüyorlar ve bu bakış açısı platforma cömert."
+				},
+				{
+					"text": "Atıf bir ayar değil, bir sorudur"
+				},
+				{
+					"text": "Soru, bu kampanyanın dönüşüm getirip getirmediği değil, onsuz ne olacağıdır. Artımsallık, karma MAK ve dönüşüm değeri modellemesi bunu yanıtlar. Son tıklama panoları yanıtlamaz."
+				},
+				{
+					"text": "Kararı yönlendiren sayı parayı harcayan platformdan geliyorsa, onu bir gerçek değil bir iddia olarak ele alın."
+				},
+				{
+					"text": "Sunucu taraflı takip, temiz bir veri katmanı ve platform beyanına değil ticari sonuçlara bağlı bir raporlama görünümü: kararlar burada verilmeli. Daha az iltifat edici, çok daha kullanışlı."
+				}
+			]
+		}
+	}
+}

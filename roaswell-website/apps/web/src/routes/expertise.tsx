@@ -1,5 +1,6 @@
 import type { Route } from './+types/expertise';
-import { seo, siteOriginFrom } from '@/lib/seo';
+import { metaContext, seo } from '@/lib/seo';
+import { getDisciplines, localeFromParams } from '@/lib/content.server';
 import { SiteHeader } from '@/components/site-header';
 import { SiteFooter } from '@/components/site-footer';
 import { ExpertiseHero } from '@/components/expertise/hero';
@@ -7,29 +8,32 @@ import { ExpertiseDisciplines } from '@/components/expertise/disciplines';
 import { ContactCta } from '@/components/contact-cta';
 import { buildBreadcrumbSchema } from '@/lib/schema';
 
+export async function loader({ params }: Route.LoaderArgs) {
+	return { disciplines: await getDisciplines(localeFromParams(params)) };
+}
+
 export function meta({ matches, location }: Route.MetaArgs) {
-	const origin = siteOriginFrom(matches);
+	const { origin, locale, t } = metaContext(matches);
 	return seo(
 		{ matches, location },
 		{
-			title: 'Expertise: SEO, Meta Ads, Google Ads & Motion Graphics — ROASWELL',
-			description:
-				'Four disciplines — SEO & Content, Meta Ads, Google Ads and Motion Graphics — as one growth system. Search captures intent, content builds demand, paid media accelerates what works, motion makes it unforgettable.',
-			jsonLd: buildBreadcrumbSchema(origin, [
-				{ name: 'Home', path: '/' },
-				{ name: 'Expertise', path: '/expertise' },
+			title: t('meta.expertise.title'),
+			description: t('meta.expertise.description'),
+			jsonLd: buildBreadcrumbSchema({ origin, locale }, [
+				{ name: t('breadcrumb.home'), path: '/' },
+				{ name: t('nav.expertise'), path: '/expertise' },
 			]),
 		},
 	);
 }
 
-export default function ExpertisePage() {
+export default function ExpertisePage({ loaderData }: Route.ComponentProps) {
 	return (
 		<>
 			<SiteHeader />
 			<main>
 				<ExpertiseHero />
-				<ExpertiseDisciplines />
+				<ExpertiseDisciplines disciplines={loaderData.disciplines} />
 				<ContactCta />
 			</main>
 			<SiteFooter />

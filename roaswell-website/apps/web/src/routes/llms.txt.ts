@@ -1,6 +1,7 @@
 import type { Route } from './+types/llms.txt';
 import { siteOrigin } from '@/lib/site-origin.server';
 import { disciplines } from '@/data/expertise';
+import { LOCALES, localizePath } from '@/i18n/locales';
 
 export function loader({ request }: Route.LoaderArgs) {
 	const origin = siteOrigin(request);
@@ -8,6 +9,8 @@ export function loader({ request }: Route.LoaderArgs) {
 	const specialisms = disciplines
 		.flatMap(d => d.subpages.map(subpage => `- [${subpage.name}](${origin}/expertise/${d.slug}/${subpage.slug}): ${subpage.summary}`))
 		.join('\n');
+
+	const languages = LOCALES.map(locale => `- [${locale.name}](${origin}${localizePath('/', locale.code)})`).join('\n');
 
 	const content = `# ROASWELL
 
@@ -44,6 +47,12 @@ ${specialisms}
 - [Why These Three Disciplines Belong Together](${origin}/insights/why-three-disciplines): How search, content, and paid media feed each other as a unified system.
 - [Creative is the Targeting](${origin}/insights/creative-is-the-targeting): Building a high-velocity testing system for modern algorithmic ad platforms.
 - [Measuring What Comes Back](${origin}/insights/measuring-what-comes-back): Incrementality, blended CAC, and why platform self-reporting is a claim, not a fact.
+
+## Languages
+
+The full site is available in the following languages. Page paths are identical under each language prefix.
+
+${languages}
 
 ## Contact & Engagements
 

@@ -1,0 +1,720 @@
+{
+	"expertise": {
+		"seo-content": {
+			"name": "SEO és tartalom",
+			"eyebrow": "01 / SEO ÉS TARTALOM",
+			"headline": "Találjanak rá.",
+			"headlineAccent": "Önt válasszák.",
+			"summary": "A keresés megragadja a szándékot. A tartalom keresletet épít. A kérdéseket minőségi forgalommá, a forgalmat ügyfelekké alakítjuk stratégiával, szerkesztői munkával és olyan technikai alapokkal, amelyek idővel összeadódnak.",
+			"capabilities": [
+				"SEO-stratégia",
+				"Tartalomstratégia",
+				"Kulcsszókutatás",
+				"Szerkesztés",
+				"On-page SEO",
+				"Tartalom-optimalizálás"
+			],
+			"cta": "Fedezze fel a SEO-t és a tartalmat",
+			"subpages": [],
+			"body": [
+				{
+					"text": "A keresési forgalom nagy része kárba vész, mert rossz kérdésre válaszol, vagy a jó kérdésre válaszol rosszul. A szándékból indulunk ki, abból, hogy a közönsége valójában mit próbál megérteni, eldönteni vagy megvenni, és onnan építkezünk."
+				},
+				{
+					"text": "Stratégia a gyártás előtt"
+				},
+				{
+					"text": "Egy tartalmi gépezet csak akkor működik, ha minden darabnak van feladata. Feltérképezzük az üzleti eredményeket mozgató témákat, lehetőség szerint rangsoroljuk őket, és úgy rakjuk sorrendbe a munkát, hogy a lendület összeadódjon, ne szóródjon szét."
+				},
+				{
+					"text": "Legyen az a válasz, amit a közönsége keres, ne csak egy újabb találat az oldalon."
+				},
+				{
+					"text": "Technikai alapok, amelyek kitartanak"
+				},
+				{
+					"text": "Bejárhatóság, oldalarchitektúra, Core Web Vitals, strukturált adatok. A nem látványos munka, amely eldönti, hogy egy kiváló tartalom egyáltalán esélyt kap-e a rangsorolásra. A stratégia részének tekintjük, nem utólagos ötletnek."
+				},
+				{
+					"text": "Aztán mérünk. Search Console adatok, helyezéskövetés, konverziókövetés, mind az igazán számító üzleti eredményekhez kötve, nem hiú forgalmi grafikonokhoz."
+				}
+			]
+		},
+		"meta-ads": {
+			"name": "Meta Ads",
+			"eyebrow": "02 / META ADS",
+			"headline": "Alakítsa a figyelmet",
+			"headlineAccent": "keresletté.",
+			"summary": "Kreatív, ami megszólít, kampányok, amelyek konvertálnak. A közönségismeretet megállás nélküli teszteléssel párosítjuk, hogy minden megjelenés keményebben dolgozzon a Facebookon, az Instagramon és a Meta teljes ökoszisztémájában.",
+			"capabilities": [
+				"Fizetett közösségi média",
+				"Kreatív tesztelés",
+				"Közönségstratégia",
+				"Teljes tölcséres kampányok",
+				"Konverzióoptimalizálás",
+				"Remarketing"
+			],
+			"cta": "Fedezze fel a Meta Adst",
+			"subpages": [],
+			"body": [
+				{
+					"text": "Figyelem van bőven, kereslet nincs. A fizetett közösségi média feladata nem az, hogy lássák, hanem hogy megjegyezzék, megfontolják és kiválasszák. Ez egy olyan kreatívval kezdődik, amely megérdemli, hogy megállítsa a görgetést."
+				},
+				{
+					"text": "A kreatív maga a célzás"
+				},
+				{
+					"text": "A modern platformokon fontosabb, mit mutat, mint hogy kinek. Strukturált kreatívteszt-rendszert építünk hipotézisekkel, változatokkal és egyértelmű győztesekkel, hogy a munka minden ciklusban élesebb legyen."
+				},
+				{
+					"text": "Minden kattintásnak van feladata. Gondoskodjon róla, hogy számítson."
+				},
+				{
+					"text": "Teljes tölcsér, nem utolsó kattintás"
+				},
+				{
+					"text": "Ismertség, mérlegelés, konverzió, megtartás. Úgy tervezzük az utat, hogy minden szakasz táplálja a következőt, és inkrementálisan mérünk, hogy tudja, mit hozott valójában a ráfordítás."
+				},
+				{
+					"text": "Nincs beállít-és-felejts. Heti kreatív áttekintések, közönségfrissítések és költségvetés-átcsoportosítás afelé, ami működik, és el attól, ami nem."
+				}
+			]
+		},
+		"google-ads": {
+			"name": "Google Ads",
+			"eyebrow": "03 / GOOGLE ADS",
+			"headline": "Ragadja meg a szándékot",
+			"headlineAccent": "amikor számít.",
+			"summary": "Találkozzon a szándékkal pontosan. A keresésről a shoppingig oda tesszük a költségvetést, ahol a lehetőség van, és világos, üzleti riportolással mérjük, mi jön vissza.",
+			"capabilities": [
+				"Fizetett keresés",
+				"Shopping hirdetések",
+				"Performance Max",
+				"Konverzióoptimalizálás",
+				"Licitstratégia",
+				"Követés és mérés"
+			],
+			"cta": "Fedezze fel a Google Adst",
+			"subpages": [],
+			"body": [
+				{
+					"text": "A keresés az a pillanat, amikor a szándék tetté válik. A kérdés az, hogy megjelenik-e ott, és hogy a megjelenés után az élmény konvertál-e."
+				},
+				{
+					"text": "Költségvetés ott, ahol a lehetőség van"
+				},
+				{
+					"text": "Nem minden kulcsszó érdemli meg a pénzét. A kulcsszóstratégiát az üzleti szándék és az árrés köré építjük, kivágjuk a pazarlást a tág egyezésekből és a márka átfedéseiből, és oda koncentráljuk a ráfordítást, ahol a megtérülés valódi."
+				},
+				{
+					"text": "Találkozzon a szándékkal pontosan. Mérje, mi jön vissza."
+				},
+				{
+					"text": "Mérés, amiben megbízhat"
+				},
+				{
+					"text": "Szerveroldali követés, konverziós érték modellezése, tiszta attribúció. Hogy a döntéseket irányító számok a valóságot tükrözzék, nem a platform önbevallását."
+				},
+				{
+					"text": "A gazdaságához hangolt licitstratégiák, nem egy alapértelmezett célhoz. Tesztelünk, figyeljük a szélső eseteket, és őszintén tartjuk a ráfordítást."
+				}
+			]
+		},
+		"motion-graphics": {
+			"name": "Mozgógrafika",
+			"eyebrow": "04 / MOZGÓGRAFIKA",
+			"headline": "Állítsa meg a görgetést.",
+			"headlineAccent": "Legyen megkerülhetetlen.",
+			"summary": "A mozgás a leggyorsabb módja a figyelem megnyerésének és a legvilágosabb módja egy nagy ötlet elmagyarázásának. Hirdetéseket, termékanimációkat és márkafilmeket tervezünk, amelyeket tesztelésre, nem csak csodálatra építettek.",
+			"capabilities": [
+				"Kreatív a fizetett közösségi médiához",
+				"Magyarázó videók",
+				"Termékanimáció",
+				"Márkafilmek",
+				"Web- és felületmozgás",
+				"Anyagok kreatív teszteléshez"
+			],
+			"cta": "Fedezze fel a mozgógrafikát",
+			"subpages": {
+				"paid-social-motion": {
+					"name": "Mozgóhirdetések fizetett közösségi médiához",
+					"eyebrow": "04.1 / MOZGÓHIRDETÉSEK FIZETETT KÖZÖSSÉGI MÉDIÁHOZ",
+					"headline": "Nyerje meg az első",
+					"headlineAccent": "másodpercet.",
+					"summary": "A hírfolyamnak épített rövid mozgás: egy horog, amely megállítja a hüvelykujjat, egy üzenet, amely célba talál, és egy változatrendszer, amely megmutatja, melyik ötlet érdemli meg a következő költségvetést.",
+					"sample": {
+						"title": "NOVA Sparkling: egy 10 másodperces hirdetés, darabjaira szedve",
+						"note": "Koncepcióhirdetés egy kitalált italmárkához. Tekerje végig, majd olvassa mellette a négy ütemet: horog, üzenet, bizonyíték, felhívás."
+					},
+					"deliverables": [
+						{
+							"title": "Horoggal induló storyboardok",
+							"text": "Három-öt nyitóötlet minden koncepcióhoz, mindegyik úgy írva, hogy önmagában megnyerje az első másodpercet."
+						},
+						{
+							"title": "Fő animáció és rövidített változatok",
+							"text": "Egy fő darab plusz 6, 15 és 30 másodperces változatok, azokra a helyekre vágva, amelyeket ténylegesen vásárol."
+						},
+						{
+							"title": "Minden formátum",
+							"text": "9:16, 4:5 és 1:1 kiadások, biztonságos zónákra ellenőrizve a Stories, a Reels és a hírfolyam számára."
+						},
+						{
+							"title": "Változatkészletek",
+							"text": "Cserélhető horgok, üzenetek és zárókártyák a fájlba építve, hogy a tesztelés soha ne jelentsen újrakezdést."
+						},
+						{
+							"title": "Feliratok és hang",
+							"text": "Beégetett feliratok a hang nélküli nézéshez és hangtervezés a hanggal való nézéshez."
+						},
+						{
+							"title": "Tanulságok áttekintése",
+							"text": "Írásos összegzés arról, mit tanított nekünk az egyes változat, és mit változtasson a következő adag."
+						}
+					],
+					"steps": [
+						{
+							"title": "A fiók elolvasása",
+							"text": "A teljesítményadatokból indulunk ki: mi fárad el, mely szögek húznak még, hol esnek ki a nézők."
+						},
+						{
+							"title": "A hipotézisek megírása",
+							"text": "Minden koncepció megnevezi az állítást, amit tesztel, és a számot, amelyet mozgatnia kell, mielőtt bármit animálnánk."
+						},
+						{
+							"title": "A rendszer felépítése",
+							"text": "Először a fő animáció, aztán ugyanabból a forrásból generált változatok, hogy a megjelenés egységes maradjon."
+						},
+						{
+							"title": "Indítás és tanulás",
+							"text": "A változatok egymás ellen futnak. A győztesek skálázódnak, a vesztesek visszavonulnak, a jegyzetek pedig a következő kört táplálják."
+						}
+					],
+					"connects": [
+						{
+							"text": "A kreatívteszt-rendszer, amely eldönti, mely változatok kapnak költségvetést, és mikor vonulnak vissza."
+						},
+						{
+							"text": "A rövid változatok videóanyagként is szolgálnak a YouTube-hoz és a Performance Maxhoz."
+						}
+					],
+					"faqs": [
+						{
+							"question": "Kell felvételt biztosítanunk?",
+							"answer": "Nem. Dolgozhatunk márkaanyagokból, termékrenderekből, képernyőfelvételekből, vagy az egész darabot felépíthetjük illusztrációból és tipográfiából. Ha van felvétele, felhasználjuk."
+						},
+						{
+							"question": "Hány változattal induljunk?",
+							"answer": "Éppen eleget ahhoz, hogy tanuljunk valamit, de nem annyit, hogy mindegyik éhezzen. Általában egy kis mátrixot javaslunk horgokból és üzenetekből, és adagonként megállapodunk a méretben."
+						},
+						{
+							"question": "A médiát is tudják vinni?",
+							"answer": "Igen, a Meta Ads és Google Ads munkánkon keresztül. A kész fájlokat el is viheti, és saját maga futtathatja."
+						},
+						{
+							"question": "Mi a helyzet a zenével és a narrációval?",
+							"answer": "Licencelt vagy eredeti hangot használunk, a jogokat előre egyeztetjük, beleértve azt is, hol és meddig futhat a hirdetés."
+						},
+						{
+							"question": "Hogyan értékelik a mozgóhirdetést?",
+							"answer": "Az üzleti mutató szerint, amelyre a briefet írták, nem azon, hogy hogy néz ki. Minden koncepció egy számhoz kötődik, mielőtt elkészül."
+						}
+					]
+				},
+				"explainer-videos": {
+					"name": "Magyarázó videók",
+					"eyebrow": "04.2 / MAGYARÁZÓ VIDEÓK",
+					"headline": "Tegye a bonyolultat",
+					"headlineAccent": "nyilvánvalóvá.",
+					"summary": "Rövid animált magyarázat, amely egy nehéz terméket vagy ötletet olyasmivé alakít, amit egy vásárló meg tud ismételni a főnökének.",
+					"sample": {
+						"title": "A szétszórt figyelemtől az ügyfélig, 14 másodperc alatt",
+						"note": "Koncepcióvideó arról, hogyan működik egy tölcsér. A pontok emberek. Nézze, hányan lépnek be, hányan konvertálnak, és hogyan viszi a történetet pusztán a mozgás."
+					},
+					"deliverables": [
+						{
+							"title": "Forgatókönyv és narratíva",
+							"text": "Szoros forgatókönyv, amely egyetlen dolog köré épül, amiben a nézőnek a végére hinnie kell."
+						},
+						{
+							"title": "Stílusképek és storyboard",
+							"text": "A megjelenés és minden jelenet papíron megegyezve, mielőtt az animáció elkezdődik."
+						},
+						{
+							"title": "Egyedi illusztráció és animáció",
+							"text": "A termékéhez épített eredeti vizuálok, nem stock ikonok mozgatása."
+						},
+						{
+							"title": "Narrációrendezés és hang",
+							"text": "Szereposztási tanácsok, rendezés és kevert sáv, vagy csak zenés változat."
+						},
+						{
+							"title": "Feliratos rövidített változatok",
+							"text": "Rövid változatok közösségi médiára és fizetett hirdetésre, a feliratokkal már beégetve."
+						},
+						{
+							"title": "Landing oldalra kész",
+							"text": "Tömörített fájlok, borítókép és átirat, hogy a videó segítse az oldalt, ne lassítsa."
+						}
+					],
+					"steps": [
+						{
+							"title": "A meggyőződés meghatározása",
+							"text": "Ki nézi, miben kételkedik, és miben kell hinnie, amikor vége?"
+						},
+						{
+							"title": "Írás és storyboard",
+							"text": "A forgatókönyv és a storyboard együtt, hogy minden sornak legyen egy képe, amely kiérdemli a helyét."
+						},
+						{
+							"title": "Tervezés és animálás",
+							"text": "Először stílusképek, aztán animáció moduláris jelenetekben, amelyeket könnyű frissíteni."
+						},
+						{
+							"title": "Befejezés és bevezetés",
+							"text": "Hang, feliratok, rövidített változatok és elhelyezés az oldalakon és kampányokban, amelyeknek kell."
+						}
+					],
+					"connects": [
+						{
+							"text": "Rangsorolásra épített oldalakba ágyazva, átiratokkal, amelyek hozzáadnak a tartalomhoz, nem elrejtik azt."
+						},
+						{
+							"text": "A világos magyarázat a landing oldalon az, ami a fizetett kattintásokat megkeresésekké alakítja."
+						}
+					],
+					"faqs": [
+						{
+							"question": "Milyen hosszú legyen egy magyarázó videó?",
+							"answer": "Olyan rövid, amilyet az ötlet enged. A legtöbb 45 és 90 másodperc közé esik, 15 és 30 másodperces változatokkal a közösségi médiához."
+						},
+						{
+							"question": "Önök írják a forgatókönyvet?",
+							"answer": "Igen. Dolgozhatunk az Ön forgatókönyvéből vagy egy nyers briefből is, és formálhatjuk a képernyőre."
+						},
+						{
+							"question": "Mi van, ha a termék megváltozik?",
+							"answer": "Moduláris jelenetekben építkezünk, így egy funkció cserélhető vagy frissíthető anélkül, hogy az egész filmet újra kellene csinálni."
+						},
+						{
+							"question": "Hány javítási kör van benne?",
+							"answer": "A köröket projektenként előre egyeztetjük, és azokra a szakaszokra tesszük, ahol a változtatás olcsó: forgatókönyv, storyboard, aztán animáció."
+						},
+						{
+							"question": "Hol működnek a legjobban a magyarázó videók?",
+							"answer": "Landing oldalakon, értékesítési prezentációkban, onboardingban, e-mailben és olyan fizetett elhelyezésekben, amelyeknek gyors, világos bemutatkozás kell."
+						}
+					]
+				},
+				"product-animation": {
+					"name": "Termékanimáció",
+					"eyebrow": "04.3 / TERMÉKANIMÁCIÓ",
+					"headline": "Mutassa meg",
+					"headlineAccent": "működés közben.",
+					"summary": "Robbantott nézetek, funkcióbemutatók és bevezetési leleplezések, amelyek lehetővé teszik a vásárlóknak, hogy lássák, hogyan működik valami, mielőtt megérinthetnék.",
+					"sample": {
+						"title": "HALO: egy robbantott nézet, öt alkatrész tíz másodperc alatt",
+						"note": "Egy koncepció okoshangszóró, ehhez az oldalhoz kitalálva. Húzza az idővonalat, hogy szétszedje, majd összerakja."
+					},
+					"deliverables": [
+						{
+							"title": "Főhurok",
+							"text": "Tiszta, ismétlődő animáció egy termék- vagy landing oldal tetejére."
+						},
+						{
+							"title": "Robbantott és metszeti nézetek",
+							"text": "A belső történet: alkatrészek, rétegek és az, hogyan illeszkednek egymásba."
+						},
+						{
+							"title": "Funkciókiemelő szekvenciák",
+							"text": "Egy rövid darab funkciónként, mindegyik egyetlen pontot tesz világossá."
+						},
+						{
+							"title": "Bevezetési leleplezés",
+							"text": "Filmszerű darab arra a pillanatra, amikor a termék nyilvánossá válik."
+						},
+						{
+							"title": "Webre kész exportok",
+							"text": "Tömörített videó és, ahol segít, könnyű vektoranimáció gyors oldalakhoz."
+						},
+						{
+							"title": "Közösségi médiás rövidítések és állóképek",
+							"text": "Álló és négyzet alakú változatok, valamint kulcsképek prezentációkhoz, e-mailhez és sajtóhoz."
+						}
+					],
+					"steps": [
+						{
+							"title": "A forrás összegyűjtése",
+							"text": "CAD, renderek, képernyőfelvételek vagy vázlatok, bármi, ami a legjobban mutatja a terméket."
+						},
+						{
+							"title": "Koreográfia",
+							"text": "Megtervezzük a kamerát, az alkatrészek megjelenési sorrendjét és azt az egy dolgot, amit minden beállításnak el kell magyaráznia."
+						},
+						{
+							"title": "Fény és anyag",
+							"text": "A felületek, a fény és az árnyékok úgy hangolva, hogy valódi tárgynak vagy felületnek tűnjön."
+						},
+						{
+							"title": "Renderelés és szállítás",
+							"text": "Végleges fájlok minden helyre, ahol a termék megjelenik, könnyű opcióval a webre."
+						}
+					],
+					"connects": [
+						{
+							"text": "Ugyanez az animáció a hírfolyamra vágva olyan termékhirdetést ad, amely magyaráz, nem csak bejelent."
+						},
+						{
+							"text": "A világos bemutatóval ellátott termékoldalak tovább fogják a figyelmet, és a keresésnek is adnak mit rangsorolni."
+						}
+					],
+					"faqs": [
+						{
+							"question": "Kellenek 3D fájlok?",
+							"answer": "Segítenek, de dolgozhatunk fotókból, rajzokból vagy leírásból is. Szoftvertermékeknél az Ön felületéből animálunk."
+						},
+						{
+							"question": "Szoftvert is tudnak animálni, nem csak fizikai termékeket?",
+							"answer": "Igen. A felületbemutatók, adatfolyamok és funkciómagyarázatok ugyanazt a mesterséget igénylik, mint a hardver."
+						},
+						{
+							"question": "Lassítani fogja az oldalunkat?",
+							"answer": "Tömörített fájlokat szállítunk, és ahol van értelme, könnyű marad vektoranimációt. A méretkeretet előre megegyezzük."
+						},
+						{
+							"question": "Újrahasználhatjuk később az animációt?",
+							"answer": "Igen. Rétegezett forrást szállítunk, és megegyezünk a felhasználásban, hogy a jövőbeli bevezetések ugyanazokra az anyagokra építhessenek."
+						},
+						{
+							"question": "Mennyire csiszolt a csiszolt?",
+							"answer": "A cél először az érthetőség, aztán a szépség. Ha egy beállítás remekül néz ki, de nem magyaráz, kimarad."
+						}
+					]
+				},
+				"brand-films": {
+					"name": "Márkafilmek",
+					"eyebrow": "04.4 / MÁRKAFILMEK",
+					"headline": "Mondja el egyszer.",
+					"headlineAccent": "Maradjon meg.",
+					"summary": "Filmszerű, tipográfiavezérelt filmek, amelyek egy márka nézőpontját hordozzák, egy bevezetés, kampány vagy nyitóoldal horgonyának szánva.",
+					"sample": {
+						"title": "ROASWELL: egy 16 másodperces főcímfilm három fejezetben",
+						"note": "Koncepciófilm a saját stúdiónknak, teljesen mozgástervezésben készítve. A fejezetjelölőkkel ugorjon a Signal, az Intent és a Return között."
+					},
+					"deliverables": [
+						{
+							"title": "Koncepció és treatment",
+							"text": "Az ötlet, a hangnem és a vizuális nyelv, leírva és storyboardolva a gyártás előtt."
+						},
+						{
+							"title": "Kiáltvány-forgatókönyv",
+							"text": "Szavak, amelyek úgy hangzanak, mint a márka, és elég rövidek ahhoz, hogy megjegyezzék őket."
+						},
+						{
+							"title": "Mozgásvezérelt rendezés",
+							"text": "Tipográfiai, illusztratív vagy vegyes technika, a történethez és a költségvetéshez igazítva."
+						},
+						{
+							"title": "Hang- és zenerendezés",
+							"text": "Zene és hangtervezés, amely az érzelmi munka felét elvégzi."
+						},
+						{
+							"title": "Fő film és rövidített változatok",
+							"text": "A teljes darab plusz 30, 15 és 6 másodperces változatok minden csatornára."
+						},
+						{
+							"title": "Márka mozgáseszköztára",
+							"text": "Átmenetek, easing és címstílusok, hogy a megjelenés folytatódjon mindenben, ami ezután jön."
+						}
+					],
+					"steps": [
+						{
+							"title": "A nézőpont megtalálása",
+							"text": "Miben hisz a márka, amiben a kategóriája nem? Ez a film."
+						},
+						{
+							"title": "A treatment megírása",
+							"text": "Fejezetek, ritmus, kulcsképek és hang, megegyezve, mielőtt egyetlen képkockát animálnánk."
+						},
+						{
+							"title": "Elkészítés",
+							"text": "A tervezés, az animáció és a hang együtt készül, hogy a vágás lélegezzen."
+						},
+						{
+							"title": "Megjelenés és kiterjesztés",
+							"text": "Indítsa el a mestert, aztán tartsa életben az ötletet rövidített változatokkal és a mozgáseszköztárral."
+						}
+					],
+					"connects": [
+						{
+							"text": "A rövidített változatok a teljes tölcséres fizetett közösségi terv ismertségi rétegévé válnak."
+						},
+						{
+							"text": "A márkakeresés és a videókampányok kapnak valamit, amire érdemes átkattintani."
+						},
+						{
+							"text": "Egy tartalmi központ szívében álló film ad az íróknak és a hivatkozásoknak valamit, amire mutathatnak."
+						}
+					],
+					"faqs": [
+						{
+							"question": "Forgatnak élőszereplős anyagot?",
+							"answer": "Mozgásvezérelt filmeket rendezünk. Ha egy projekthez élőszereplős anyag kell, produkciós partnerrel tervezzük, a mozgásrendezést pedig házon belül tartjuk."
+						},
+						{
+							"question": "Milyen hosszú egy márkafilm?",
+							"answer": "Az ötlet dönt. A legtöbb 30 másodperc és két perc között van, rövidebb változatokkal, amelyeket a mesterből vágunk."
+						},
+						{
+							"question": "Kié a film?",
+							"answer": "Az Öné. Megegyezünk a felhasználási jogokról, és a projekt részeként rétegezett forrásfájlokat szállítunk."
+						},
+						{
+							"question": "Lehet a film a nyitóoldalunkon?",
+							"answer": "Igen. Könnyű hurkot és borítóképet szállítunk, a teljes film egy kattintásra."
+						},
+						{
+							"question": "Ez csak nagy márkáknak való?",
+							"answer": "Nem. Egy szorosan megírt, tipográfiavezérelt film egy forgatás töredékébe kerülhet, és mégis nézőpontnak érződhet."
+						}
+					]
+				},
+				"web-ui-motion": {
+					"name": "Web- és felületmozgás",
+					"eyebrow": "04.5 / WEB- ÉS FELÜLETMOZGÁS",
+					"headline": "Felületek, amelyek",
+					"headlineAccent": "élőnek érződnek.",
+					"summary": "Görgetéses történetek, mikrointerakciók és oldalátmenetek, amelyek könnyebben érthetővé és nehezebben felejthetővé teszik az oldalt, sebesség vagy akadálymentesség árán nélkül.",
+					"sample": {
+						"title": "A mozgáslabor: hét interakció, amelyet megérinthet",
+						"note": "Valódi, működő felületmozgás, nem videó. Kapcsoljon, vigye fölé az egeret, húzzon és kattintson. Minden itt tiszteletben tartja a csökkentett mozgás beállítását."
+					},
+					"deliverables": [
+						{
+							"title": "Mozgási alapelvek",
+							"text": "Easing-, időzítési és spring-tokenek, hogy minden interakció ugyanahhoz a termékhez tartozónak érződjön."
+						},
+						{
+							"title": "Görgetési és oldalátmenetek",
+							"text": "Történetvezérelt görgetési szekvenciák és útvonalátmenetek, amelyek irányítják a figyelmet, mint az ezen az oldalon láthatók."
+						},
+						{
+							"title": "Mikrointerakció-könyvtár",
+							"text": "Gombok, kapcsolók, menük, kártyák és űrlapok, amelyek céllal reagálnak."
+						},
+						{
+							"title": "Éles kód vagy exportok",
+							"text": "Tiszta CSS és JavaScript, vagy Lottie- és videóexportok, a stackjére készen."
+						},
+						{
+							"title": "Akadálymentességi változatok",
+							"text": "Csökkentett mozgású alternatívák és fókuszviselkedés, amelyeket az elejétől megterveztek, nem utólag ragasztottak rá."
+						},
+						{
+							"title": "Teljesítménykeret",
+							"text": "A mozgást a betöltési idővel és az interakciós késleltetéssel mérjük, mielőtt élesbe kerül."
+						}
+					],
+					"steps": [
+						{
+							"title": "Audit",
+							"text": "Kiderítjük, hol tisztázna valamit a mozgás, és hol adna csak zajt hozzá."
+						},
+						{
+							"title": "Az alapelvek lefektetése",
+							"text": "Meghatározzuk az easing és az időzítés szókincsét, hogy a döntések ne esetről esetre szülessenek."
+						},
+						{
+							"title": "Prototípus a böngészőben",
+							"text": "A valódi közegben építünk, hogy amit jóváhagy, az kerüljön élesbe."
+						},
+						{
+							"title": "Élesítés és mérés",
+							"text": "Teljesítménykerettel élesítünk, és figyeljük, mit csinálnak valójában a felhasználók."
+						}
+					],
+					"connects": [
+						{
+							"text": "A gyors, akadálymentes mozgás támogatja a Core Web Vitalst, nem küzd ellene."
+						},
+						{
+							"text": "A világos, gyors interakciókkal rendelkező landing oldalak a fizetett kattintásokat tettekké alakítják."
+						}
+					],
+					"faqs": [
+						{
+							"question": "Lassítja az animáció az oldalunkat?",
+							"answer": "Nem, ha helyesen építik. Teljesítménykeretet határozunk meg, a legolcsóbb tulajdonságokkal animálunk, és valódi eszközökön tesztelünk."
+						},
+						{
+							"question": "Önök írják a kódot?",
+							"answer": "Igen. Szállíthatunk éles kódot, vagy átadhatunk specifikációkat és exportokat a csapatának a megvalósításhoz."
+						},
+						{
+							"question": "Mi a helyzet az akadálymentességgel?",
+							"answer": "Minden mozgásnak van csökkentett mozgású alternatívája, a billentyűzet- és képernyőolvasó-viselkedést pedig az animációval együtt tervezzük."
+						},
+						{
+							"question": "Működik a CMS-ünkkel vagy keretrendszerünkkel?",
+							"answer": "A legtöbb modern stackkel dolgozunk. Mondja el, mit használ, és megerősítjük a legjobb megközelítést."
+						},
+						{
+							"question": "Láthatom működés közben?",
+							"answer": "Éppen azt nézi. A görgetési szekvenciák, számlálók és leleplezések ezen az oldalon ugyanezzel a megközelítéssel készültek."
+						}
+					]
+				}
+			},
+			"body": [
+				{
+					"text": "A statikus kreatív figyelmet kér. A mozgás elveszi. A hírfolyam első másodpercében a mozgás dönti el, kap-e esélyt egy üzenet, és az ötlet többi része csak akkor számít, ha túléli azt a másodpercet."
+				},
+				{
+					"text": "A hírfolyamnak építve, nem a showreelnek"
+				},
+				{
+					"text": "Minden darab hipotézissel indul: a horog, az üzenet, az ok, hogy tovább nézzék. Annak a mutatónak megfelelően storyboardolunk, amelyet mozgatnia kell, aztán változatokat építünk, hogy a tesztrendszernek legyen valódi anyaga a tanuláshoz."
+				},
+				{
+					"text": "A nagyszerű mozgógrafika nem dísz. Ez az érvelés, láthatóvá téve."
+				},
+				{
+					"text": "Egy ötlet, minden felület"
+				},
+				{
+					"text": "Ugyanaz a koncepció elutazik egy hatmásodperces fizetett vágástól a termékmagyarázóig, a landing oldal animációjáig és a bevezetési filmig. Egy tervezési nyelv, egy eszközkészlet, az ötletet nem kell háromszor újraépíteni."
+				},
+				{
+					"text": "Mivel a mozgógrafika ugyanabban a stúdióban ül, mint a keresés és a fizetett média, a kreatív briefjét teljesítményadatok adják, és üzleti eredmények alapján ítélik meg, nem aszerint, hogyan fest egy reelen."
+				}
+			]
+		}
+	},
+	"caseStudies": {
+		"search-to-significance": {
+			"title": "A keresési szándék keresletté alakítása",
+			"discipline": "SEO és tartalom",
+			"summary": "Hogyan építette újra egy megfontolt vásárlású márka az organikus jelenlétét az üzleti szándék köré, és alakította a tölcsér tetejéről érkező forgalmat minősített értékesítési csővé.",
+			"challenge": "Egy specializált B2B márka olyan információs keresésekre rangsorolt, amelyek forgalmat hoztak, de értékesítési csövet nem. Bőven volt tartalom, de rossz kérdésekre válaszolt a tölcsérben lejjebb lévő vásárlóknak.",
+			"approach": "Újratérképeztük a témák tájképét a vásárlási szándék köré, összevontuk a vékony tartalmat, és a szerkesztői naptárat azokra a döntésekre építettük újra, amelyekkel a vásárlók valójában szembesülnek. A technikai SEO, az oldalarchitektúra, a belső linkelés és a strukturált adatok helyet adtak az új tartalomnak a rangsoroláshoz.",
+			"outcome": "Az organikus forgalom az üzleti oldalak felé fókuszálódott, a minősített megkeresések száma nőtt, és a tartalmi gépezet összeadódni kezdett ahelyett, hogy szétszóródott volna. A munka folytatódik, az irány meg van adva.",
+			"metrics": [
+				{
+					"label": "Organikus forgalmi cél"
+				},
+				{
+					"label": "Minősített lead cél"
+				}
+			]
+		},
+		"making-acquisition-work-harder": {
+			"title": "Keményebben dolgoztatni az ügyfélszerzést",
+			"discipline": "Meta Ads + Google Ads",
+			"summary": "Egy DTC márka többet költött azért, hogy kevesebbet szerezzen. A fizetett közösségi médiát és keresést érintő kreatívvezérelt újraindítás alulról építette újra a hatékonyságot.",
+			"challenge": "Az emelkedő CPM-ek és a kreatív kifáradás a megszerzési költséget a jövedelmezőségi határ fölé tolták. A fiók elfoglalt volt, de nem hatékony, a költségvetés szétszórva olyan közönségek között, amelyek már nem konvertáltak.",
+			"approach": "A fiókot egy strukturált kreatívteszt-rendszer köré konszolidáltuk, újraépítettük a teljes tölcséres szekvenciát, és a keresési költségvetést a nagy szándékú, magas árrésű kifejezések felé igazítottuk át. A követés szerveroldalra került, hogy a döntések a valóságot tükrözzék.",
+			"outcome": "A megszerzési költség csökkent, a hirdetési ráfordítás megtérülése helyreállt, és a tesztelési ritmus miatt a kreatív minden ciklusban javult, nem romlott. A márkának most rendszere van, nem csak kampányai.",
+			"metrics": [
+				{
+					"label": "Hirdetési ráfordítás megtérülési cél"
+				},
+				{
+					"label": "Megszerzési költség cél"
+				}
+			]
+		},
+		"full-funnel-foundations": {
+			"title": "Teljes tölcséres alapok egy új bevezetéshez",
+			"discipline": "SEO és tartalom + fizetett média",
+			"summary": "Egy termékbevezetéshez egyszerre kellett organikus tőke és fizetett lendület. Mindkettőt felépítettük, összeadódó sorrendben.",
+			"challenge": "Az új kínálatnak nem volt keresési jelenléte és fizetett története. A kockázat az volt, hogy némaságba indulnak: fizetett költés, amely mellett nincs semmi, ami befogná az általa teremtett keresletet.",
+			"approach": "A tartalmi és technikai SEO munka hónapokkal a bevezetés előtt kezdődött, hogy tematikus hitelességet építsen. A fizetett közösségi média ismertséget és remarketinget vetett, a keresés pedig befogta a bevezetés által keltett szándékot. A mérést az első naptól bekötöttük.",
+			"outcome": "A bevezetés meglévő organikus tőkére érkezett vákuum helyett, a fizetett költés az elejétől egészséges ütemben konvertált, és a márka kapott egy mérési keretet, amelyből skálázhat.",
+			"metrics": [
+				{
+					"label": "Bevezetési havi ROAS cél"
+				},
+				{
+					"label": "A bevezetés előtt épített organikus tőke"
+				}
+			]
+		}
+	},
+	"articles": {
+		"why-three-disciplines": {
+			"title": "Miért tartozik össze ez a három terület",
+			"excerpt": "A keresést, a tartalmat és a fizetett médiát általában külön szakmaként árulják. Itt van, miért változtatja meg az eredményt, ha egyetlen növekedési rendszerként kezeljük őket.",
+			"category": "Stratégia",
+			"body": [
+				{
+					"text": "A legtöbb ügynökség csatornák köré szerveződik, mert a csatornákat könnyű eladni. Egy keresési csapat. Egy közösségi csapat. Egy tartalmi csapat. Mindegyik a saját sarkát optimalizálja, a köztük lévő hézagok pedig azok a helyek, ahol a növekedés kiszivárog."
+				},
+				{
+					"text": "Szándék, kereslet és gyorsítás"
+				},
+				{
+					"text": "A keresés a már létező szándékot ragadja meg. A tartalom azt a keresletet építi, amely létrehozza. A fizetett média felgyorsítja, ami működik, a bevált dolgot több pillanatba tolja, gyorsabban. Vegye ki bármelyiket, és a rendszer elveszíti az erejét."
+				},
+				{
+					"text": "Egy csatorna elszigetelten taktika. Az egymást tápláló csatornák rendszer."
+				},
+				{
+					"text": "Amikor ugyanaz a gondolkodás alakítja a kulcsszóstratégiát, a szerkesztői naptárat és a fizetett kreatívot, a munka összeadódik. A tartalom rangsorol, mert arra építették. A fizetett konvertál, mert az üzenet már organikusan kiérdemelte a bizalmat. A keresés befogja azt a keresletet, amelyet a másik kettő teremtett."
+				},
+				{
+					"text": "Mi változik a gyakorlatban"
+				},
+				{
+					"text": "Kevesebb átadás. Egyetlen mérési keret. Egy kreatív ötlet, amely háromszori újraépítés nélkül utazhat egy organikus bejegyzéstől egy fizetett eszközig és egy landing oldalig. Ez a lényege annak, hogy kicsik és senior vezetésűek maradunk."
+				}
+			]
+		},
+		"creative-is-the-targeting": {
+			"title": "A kreatív maga a célzás",
+			"excerpt": "A modern fizetett közösségi platformokon fontosabb, mit mutat, mint hogy kinek. Egy jegyzet egy olyan tesztrendszer építéséről, amely kitart.",
+			"category": "Fizetett média",
+			"body": [
+				{
+					"text": "A régi forgatókönyv közönségből indult ki: építsd meg a tökéletes perszónát, célozd pontosan, és bízd az algoritmusra, hogy találjon még hasonlókat. Az a világ nagyrészt eltűnt. A közönségek szélesebbek, a jelek zajosabbak, és maga a kreatív végzi a szűrést."
+				},
+				{
+					"text": "A kreatív dönti el, ki marad"
+				},
+				{
+					"text": "A görgetést megállító horog a megfelelő emberhez szól, a nem megfelelőt pedig taszítja. Ez célzás, csak az üzenet végzi a közönségválasztó helyett. Ami azt jelenti, hogy a kreatív csővezeték most a kar."
+				},
+				{
+					"text": "Ha a tesztrendszere nem lesz élesebb minden ciklusban, a kreatívja romlik."
+				},
+				{
+					"text": "Rendszert építsen, ne adagot"
+				},
+				{
+					"text": "Hipotézisek a változatok előtt. Egyértelmű győztesek a skálázás előtt. Olyan ritmus, amely tanulást termel, nem csak anyagot. A fizetett közösségi médián azok a márkák nyernek, amelyek kreatívja mérhetően javul hónapról hónapra, nem azok, amelyeknek a legnagyobb a költségvetésük."
+				}
+			]
+		},
+		"measuring-what-comes-back": {
+			"title": "Mérni, ami visszajön",
+			"excerpt": "A platformok dashboardjai mindig azt mondják majd, hogy a költés működött. Így tartjuk őszintén a számokat.",
+			"category": "Mérés",
+			"body": [
+				{
+					"text": "Minden hirdetési platform a saját sikeréről számol be. Nem hazudnak, pontosan véve, de a saját nézőpontjukból mérnek, és az a nézőpont nagylelkű a platformmal szemben."
+				},
+				{
+					"text": "Az attribúció kérdés, nem beállítás"
+				},
+				{
+					"text": "A kérdés nem az, hogy „hozott-e ez a kampány konverziót”, hanem hogy „mi történt volna nélküle”. Erre válaszol az inkrementalitás, a vegyes CAC és a konverziós érték modellezése. Az utolsó kattintás dashboardok nem."
+				},
+				{
+					"text": "Ha a döntést vezérlő szám attól a platformtól jön, amely a pénzt költi, kezelje állításként, nem tényként."
+				},
+				{
+					"text": "A szerveroldali követés, a tiszta adatréteg és az üzleti eredményekhez kötött riportnézet, nem a platformok önbevallása, az a hely, ahol a döntéseket meg kell hozni. Ez kevésbé hízelgő, és sokkal hasznosabb."
+				}
+			]
+		}
+	}
+}

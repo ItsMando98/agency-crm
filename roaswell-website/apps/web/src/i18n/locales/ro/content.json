@@ -1,0 +1,720 @@
+{
+	"expertise": {
+		"seo-content": {
+			"name": "SEO și conținut",
+			"eyebrow": "01 / SEO ȘI CONȚINUT",
+			"headline": "Fii găsit.",
+			"headlineAccent": "Fii ales.",
+			"summary": "Căutarea captează intenția. Conținutul construiește cererea. Transformăm întrebările în trafic calificat și traficul în clienți, cu strategie, muncă editorială și fundații tehnice care se compun în timp.",
+			"capabilities": [
+				"Strategie SEO",
+				"Strategie de conținut",
+				"Cercetare de cuvinte-cheie",
+				"Editorial",
+				"SEO on-page",
+				"Optimizarea conținutului"
+			],
+			"cta": "Descoperă SEO și conținut",
+			"subpages": [],
+			"body": [
+				{
+					"text": "Cea mai mare parte a traficului din căutare se irosește, pentru că răspunde la întrebarea greșită sau la întrebarea corectă, dar prost. Pornim de la intenție, de la ceea ce publicul tău încearcă de fapt să înțeleagă, să decidă sau să cumpere, și construim de acolo spre exterior."
+				},
+				{
+					"text": "Strategie înaintea producției"
+				},
+				{
+					"text": "Un motor de conținut funcționează doar când fiecare piesă are o sarcină. Cartografiem subiectele care mută rezultatele comerciale, prioritizăm după oportunitate și secvențiem munca astfel încât avântul să se compună, nu să se împrăștie."
+				},
+				{
+					"text": "Fii răspunsul pe care îl caută publicul tău, nu doar încă un rezultat pe pagină."
+				},
+				{
+					"text": "Fundații tehnice care rezistă"
+				},
+				{
+					"text": "Indexabilitate, arhitectura site-ului, Core Web Vitals, date structurate. Munca fără strălucire care hotărăște dacă un conținut excelent are vreodată șansa să se claseze. O tratăm ca parte din strategie, nu ca un gând de după."
+				},
+				{
+					"text": "Apoi măsurăm. Date din Search Console, urmărirea pozițiilor, atribuirea conversiilor, toate legate de rezultatele comerciale care contează, nu de grafice de trafic de vanitate."
+				}
+			]
+		},
+		"meta-ads": {
+			"name": "Meta Ads",
+			"eyebrow": "02 / META ADS",
+			"headline": "Transformă atenția",
+			"headlineAccent": "în cerere.",
+			"summary": "Creativ care se conectează, campanii care convertesc. Îmbinăm înțelegerea publicului cu testare neobosită, ca fiecare afișare să muncească mai mult pe Facebook, Instagram și în restul ecosistemului Meta.",
+			"capabilities": [
+				"Social plătit",
+				"Testare creativă",
+				"Strategie de public",
+				"Campanii pe tot parcursul pâlniei",
+				"Optimizarea conversiilor",
+				"Retargeting"
+			],
+			"cta": "Descoperă Meta Ads",
+			"subpages": [],
+			"body": [
+				{
+					"text": "Atenția este din belșug, cererea nu. Rolul social-ului plătit nu este să fie văzut, ci să fie ținut minte, luat în calcul și ales. Totul începe cu un creativ care merită să oprească derularea."
+				},
+				{
+					"text": "Creativul este țintirea"
+				},
+				{
+					"text": "Pe platformele moderne, contează mai mult ce arăți decât cui arăți. Construim un sistem structurat de testare creativă, cu ipoteze, variante și câștigători clari, astfel încât munca să devină mai ascuțită la fiecare ciclu."
+				},
+				{
+					"text": "Fiecare click are o sarcină. Fă-l să conteze."
+				},
+				{
+					"text": "Pe toată pâlnia, nu doar ultimul click"
+				},
+				{
+					"text": "Notorietate, considerare, conversie, retenție. Proiectăm parcursul astfel încât fiecare etapă să o hrănească pe următoarea și măsurăm incremental, ca să știi ce a produs de fapt cheltuiala."
+				},
+				{
+					"text": "Fără setează-și-uită. Revizuiri creative săptămânale, reîmprospătări de public și mutări de buget către ce funcționează și departe de ce nu."
+				}
+			]
+		},
+		"google-ads": {
+			"name": "Google Ads",
+			"eyebrow": "03 / GOOGLE ADS",
+			"headline": "Captează intenția",
+			"headlineAccent": "când contează.",
+			"summary": "Întâmpină intenția cu precizie. De la căutare la shopping, punem bugetul acolo unde e oportunitatea și măsurăm ce se întoarce, cu raportare comercială clară.",
+			"capabilities": [
+				"Căutare plătită",
+				"Reclame Shopping",
+				"Performance Max",
+				"Optimizarea conversiilor",
+				"Strategie de licitare",
+				"Urmărire și măsurare"
+			],
+			"cta": "Descoperă Google Ads",
+			"subpages": [],
+			"body": [
+				{
+					"text": "Căutarea este momentul în care intenția devine acțiune. Întrebarea este dacă apari atunci și dacă experiența convertește când apari."
+				},
+				{
+					"text": "Buget acolo unde este oportunitatea"
+				},
+				{
+					"text": "Nu orice cuvânt-cheie merită banii tăi. Construim strategia de cuvinte-cheie în jurul intenției comerciale și al marjei, tăiem risipa din potriviri largi și din suprapunerea cu brandul și concentrăm cheltuiala acolo unde randamentul este real."
+				},
+				{
+					"text": "Întâmpină intenția cu precizie. Măsoară ce se întoarce."
+				},
+				{
+					"text": "Măsurare în care poți avea încredere"
+				},
+				{
+					"text": "Urmărire pe server, modelarea valorii conversiilor, atribuire curată. Pentru ca numerele care conduc deciziile să reflecte realitatea, nu auto-raportarea platformei."
+				},
+				{
+					"text": "Strategii de licitare reglate pe economia ta, nu pe o țintă implicită. Testăm, urmărim cazurile limită și ținem cheltuiala onestă."
+				}
+			]
+		},
+		"motion-graphics": {
+			"name": "Motion Graphics",
+			"eyebrow": "04 / MOTION GRAPHICS",
+			"headline": "Oprește derularea.",
+			"headlineAccent": "Fii imposibil de ignorat.",
+			"summary": "Mișcarea este cea mai rapidă cale de a câștiga atenție și cea mai clară cale de a explica o idee mare. Proiectăm reclame, animații de produs și filme de brand construite pentru a fi testate, nu doar admirate.",
+			"capabilities": [
+				"Creativ pentru social plătit",
+				"Videoclipuri explicative",
+				"Animație de produs",
+				"Filme de brand",
+				"Mișcare pentru web și interfețe",
+				"Materiale pentru testare creativă"
+			],
+			"cta": "Descoperă Motion Graphics",
+			"subpages": {
+				"paid-social-motion": {
+					"name": "Reclame motion pentru social plătit",
+					"eyebrow": "04.1 / RECLAME MOTION PENTRU SOCIAL PLĂTIT",
+					"headline": "Câștigă prima",
+					"headlineAccent": "secundă.",
+					"summary": "Mișcare scurtă construită pentru feed: un cârlig care oprește degetul, un mesaj care aterizează și un sistem de variante care arată ce idee merită următorul buget.",
+					"sample": {
+						"title": "NOVA Sparkling: o reclamă de 10 secunde, desfăcută pe bucăți",
+						"note": "O reclamă concept pentru un brand de băuturi inventat. Derulează-o, apoi citește alături cele patru bătăi: cârlig, mesaj, dovadă, îndemn."
+					},
+					"deliverables": [
+						{
+							"title": "Storyboarduri care încep cu cârligul",
+							"text": "Trei până la cinci deschideri pentru fiecare concept, fiecare scrisă să câștige prima secundă de una singură."
+						},
+						{
+							"title": "Animație master și variante scurtate",
+							"text": "O piesă principală plus versiuni de 6, 15 și 30 de secunde tăiate pentru plasamentele pe care le cumperi efectiv."
+						},
+						{
+							"title": "Toate formatele",
+							"text": "Versiuni 9:16, 4:5 și 1:1, cu zonele sigure verificate pentru Stories, Reels și feed."
+						},
+						{
+							"title": "Kituri de variante",
+							"text": "Cârlige, mesaje și cartonașe finale interschimbabile, construite în fișier, ca testarea să nu însemne niciodată să o iei de la capăt."
+						},
+						{
+							"title": "Subtitrări și sunet",
+							"text": "Subtitrări încorporate pentru vizionarea fără sunet și design sonor pentru vizionarea cu sunet."
+						},
+						{
+							"title": "Analiza lecțiilor",
+							"text": "O sinteză scrisă a ceea ce ne-a învățat fiecare variantă și a ceea ce ar trebui să schimbe următorul lot."
+						}
+					],
+					"steps": [
+						{
+							"title": "Citim contul",
+							"text": "Pornim de la datele de performanță: ce obosește, ce unghiuri mai trag, unde se produce abandonul."
+						},
+						{
+							"title": "Scriem ipotezele",
+							"text": "Fiecare concept stabilește afirmația pe care o testează și numărul pe care ar trebui să-l miște, înainte ca ceva să fie animat."
+						},
+						{
+							"title": "Construim sistemul",
+							"text": "Mai întâi animația master, apoi variante generate din aceeași sursă, ca aspectul să rămână consecvent."
+						},
+						{
+							"title": "Lansăm și învățăm",
+							"text": "Variantele concurează între ele. Câștigătoarele sunt scalate, cele învinse sunt retrase, iar notele alimentează runda următoare."
+						}
+					],
+					"connects": [
+						{
+							"text": "Sistemul de testare creativă care decide ce variante primesc buget și când sunt retrase."
+						},
+						{
+							"text": "Variantele scurte servesc și ca materiale video pentru YouTube și Performance Max."
+						}
+					],
+					"faqs": [
+						{
+							"question": "Trebuie să furnizăm filmări?",
+							"answer": "Nu. Putem lucra cu materiale de brand, randări de produs, înregistrări de ecran sau putem construi întreaga piesă din ilustrație și tipografie. Dacă aveți filmări, le vom folosi."
+						},
+						{
+							"question": "Cu câte variante ar trebui să începem?",
+							"answer": "Suficiente cât să învățăm ceva, nu atât de multe încât fiecare să fie lipsită de resurse. De obicei propunem o matrice mică de cârlige față de mesaje și stabilim dimensiunea pe lot."
+						},
+						{
+							"question": "Puteți gestiona și media?",
+							"answer": "Da, prin munca noastră în Meta Ads și Google Ads. Puteți și să luați fișierele finale și să le rulați singuri."
+						},
+						{
+							"question": "Dar muzica și vocea?",
+							"answer": "Folosim audio licențiat sau original și stabilim drepturile de la început, inclusiv unde și cât timp poate rula reclama."
+						},
+						{
+							"question": "Cum se judecă o reclamă motion?",
+							"answer": "După metrica comercială față de care a fost brieffată, nu după cum arată. Fiecare concept este legat de un număr înainte să fie construit."
+						}
+					]
+				},
+				"explainer-videos": {
+					"name": "Videoclipuri explicative",
+					"eyebrow": "04.2 / VIDEOCLIPURI EXPLICATIVE",
+					"headline": "Fă complexul",
+					"headlineAccent": "evident.",
+					"summary": "O explicație animată scurtă care transformă un produs sau o idee dificilă în ceva ce un cumpărător poate repeta șefului său.",
+					"sample": {
+						"title": "De la atenție împrăștiată la un client, în 14 secunde",
+						"note": "Un explicativ concept despre cum funcționează o pâlnie. Punctele sunt oameni. Urmărește câți intră, câți convertesc și cum povestea este purtată doar de mișcare."
+					},
+					"deliverables": [
+						{
+							"title": "Scenariu și narațiune",
+							"text": "Un scenariu strâns, construit în jurul singurului lucru în care spectatorul trebuie să creadă la final."
+						},
+						{
+							"title": "Cadre de stil și storyboard",
+							"text": "Aspectul și fiecare scenă convenite pe hârtie înainte să înceapă animația."
+						},
+						{
+							"title": "Ilustrație și animație la comandă",
+							"text": "Vizualuri originale construite pentru produsul tău, nu pictograme de stoc mutate de colo-colo."
+						},
+						{
+							"title": "Regia vocii și sunet",
+							"text": "Îndrumări de casting, regie și o pistă mixată, sau o versiune doar cu muzică."
+						},
+						{
+							"title": "Variante scurte subtitrate",
+							"text": "Versiuni scurte pentru social și plătit, cu subtitrările deja integrate."
+						},
+						{
+							"title": "Gata pentru pagina de destinație",
+							"text": "Fișiere comprimate, un cadru-afiș și o transcriere, ca videoclipul să ajute pagina, nu să o încetinească."
+						}
+					],
+					"steps": [
+						{
+							"title": "Definim convingerea",
+							"text": "Cine se uită, de ce se îndoiește și ce ar trebui să creadă la final?"
+						},
+						{
+							"title": "Scriem și facem storyboard",
+							"text": "Scenariu și storyboard împreună, ca fiecare rând să aibă o imagine care își merită locul."
+						},
+						{
+							"title": "Proiectăm și animăm",
+							"text": "Mai întâi cadre de stil, apoi animație în scene modulare ușor de actualizat."
+						},
+						{
+							"title": "Finalizăm și implementăm",
+							"text": "Sunet, subtitrări, variante scurte și plasare pe paginile și campaniile care au nevoie de el."
+						}
+					],
+					"connects": [
+						{
+							"text": "Încorporat în pagini construite să se claseze, cu transcrieri care adaugă conținutului în loc să-l ascundă."
+						},
+						{
+							"text": "O explicație clară pe pagina de destinație este ceea ce transformă click-urile plătite în solicitări."
+						}
+					],
+					"faqs": [
+						{
+							"question": "Cât de lung ar trebui să fie un explicativ?",
+							"answer": "Cât de scurt permite ideea. Majoritatea ajung între 45 și 90 de secunde, cu variante de 15 și 30 de secunde pentru social."
+						},
+						{
+							"question": "Scrieți voi scenariul?",
+							"answer": "Da. Putem lucra și pornind de la scenariul vostru sau de la un brief aproximativ și îl putem modela pentru ecran."
+						},
+						{
+							"question": "Ce se întâmplă dacă produsul se schimbă?",
+							"answer": "Construim în scene modulare, astfel încât o funcție poate fi înlocuită sau actualizată fără a reface întregul film."
+						},
+						{
+							"question": "Câte runde de revizuiri sunt incluse?",
+							"answer": "Stabilim numărul de runde pentru fiecare proiect de la început și le plasăm în etapele în care modificările sunt ieftine: scenariu, storyboard, apoi animație."
+						},
+						{
+							"question": "Unde funcționează cel mai bine explicativele?",
+							"answer": "Pe pagini de destinație, în prezentări de vânzări, la onboarding, în e-mail și în plasamente plătite care au nevoie de un pitch rapid și clar."
+						}
+					]
+				},
+				"product-animation": {
+					"name": "Animație de produs",
+					"eyebrow": "04.3 / ANIMAȚIE DE PRODUS",
+					"headline": "Arată-l",
+					"headlineAccent": "în funcțiune.",
+					"summary": "Vederi explodate, prezentări de funcții și dezvăluiri de lansare care le permit cumpărătorilor să vadă cum funcționează ceva înainte să-l poată atinge.",
+					"sample": {
+						"title": "HALO: o vedere explodată, cinci piese în zece secunde",
+						"note": "Un difuzor inteligent concept, inventat pentru această pagină. Trage de cronologie pentru a-l desface și a-l reasambla."
+					},
+					"deliverables": [
+						{
+							"title": "Buclă principală",
+							"text": "O animație curată, în buclă, pentru partea de sus a unei pagini de produs sau de destinație."
+						},
+						{
+							"title": "Vederi explodate și secțiuni",
+							"text": "Povestea dinăuntru: piese, straturi și cum se îmbină."
+						},
+						{
+							"title": "Secvențe de evidențiere a funcțiilor",
+							"text": "O piesă scurtă pentru fiecare funcție, fiecare transmițând clar un singur lucru."
+						},
+						{
+							"title": "Dezvăluire de lansare",
+							"text": "O piesă cinematografică pentru momentul în care produsul devine public."
+						},
+						{
+							"title": "Exporturi pregătite pentru web",
+							"text": "Video comprimat și, unde ajută, animație vectorială ușoară pentru pagini rapide."
+						},
+						{
+							"title": "Variante scurte și statice pentru social",
+							"text": "Versiuni verticale și pătrate, plus cadre-cheie pentru prezentări, e-mail și presă."
+						}
+					],
+					"steps": [
+						{
+							"title": "Adunăm sursele",
+							"text": "CAD, randări, înregistrări de ecran sau schițe, orice arată cel mai bine produsul."
+						},
+						{
+							"title": "Coregrafiem",
+							"text": "Planificăm camera, ordinea în care apar piesele și singurul lucru pe care fiecare cadru trebuie să-l explice."
+						},
+						{
+							"title": "Lumină și material",
+							"text": "Suprafețe, strălucire și umbre reglate astfel încât să se simtă ca obiectul sau interfața reală."
+						},
+						{
+							"title": "Randăm și livrăm",
+							"text": "Fișiere finale pentru fiecare loc unde apare produsul, cu o opțiune ușoară pentru web."
+						}
+					],
+					"connects": [
+						{
+							"text": "Aceeași animație, tăiată pentru feed, face dintr-o reclamă de produs una care explică, nu doar anunță."
+						},
+						{
+							"text": "Paginile de produs cu o demonstrație clară rețin atenția mai mult și oferă căutării ceva de clasat."
+						}
+					],
+					"faqs": [
+						{
+							"question": "Aveți nevoie de fișiere 3D?",
+							"answer": "Ajută, dar putem lucra și din fotografii, desene sau o descriere. Pentru produsele software animăm pornind de la interfața voastră."
+						},
+						{
+							"question": "Puteți anima software, nu doar produse fizice?",
+							"answer": "Da. Prezentările de interfață, fluxurile de date și explicațiile de funcții urmează același meșteșug ca hardware-ul."
+						},
+						{
+							"question": "Ne va încetini site-ul?",
+							"answer": "Livrăm fișiere comprimate și, acolo unde are sens, animație vectorială care rămâne ușoară. Stabilim un buget de dimensiune de la început."
+						},
+						{
+							"question": "Putem refolosi animația mai târziu?",
+							"answer": "Da. Livrăm sursa pe straturi și stabilim utilizarea, astfel încât lansările viitoare să se poată baza pe aceleași resurse."
+						},
+						{
+							"question": "Cât de lustruit este lustruit?",
+							"answer": "Scopul este mai întâi claritatea, apoi frumusețea. Dacă un cadru arată grozav, dar nu explică, este tăiat."
+						}
+					]
+				},
+				"brand-films": {
+					"name": "Filme de brand",
+					"eyebrow": "04.4 / FILME DE BRAND",
+					"headline": "Spune-o o dată.",
+					"headlineAccent": "Fă-o să dureze.",
+					"summary": "Filme cinematografice, conduse de tipografie, care poartă punctul de vedere al unui brand, construite să ancoreze o lansare, o campanie sau o pagină de start.",
+					"sample": {
+						"title": "ROASWELL: un film-generic de 16 secunde în trei capitole",
+						"note": "Un film concept pentru propriul nostru studio, realizat integral în motion design. Folosește marcajele de capitol pentru a sări între Signal, Intent și Return."
+					},
+					"deliverables": [
+						{
+							"title": "Concept și tratament",
+							"text": "Ideea, tonul și limbajul vizual, scrise și desenate în storyboard înainte de producție."
+						},
+						{
+							"title": "Scenariu-manifest",
+							"text": "Cuvinte care sună ca brandul și sunt destul de scurte ca să fie ținute minte."
+						},
+						{
+							"title": "Regie condusă de mișcare",
+							"text": "Tipografică, ilustrativă sau în tehnică mixtă, aleasă după poveste și buget."
+						},
+						{
+							"title": "Regie de sunet și muzică",
+							"text": "O coloană sonoră și un design sonor care fac jumătate din munca emoțională."
+						},
+						{
+							"title": "Film master și variante scurte",
+							"text": "Piesa completă plus versiuni de 30, 15 și 6 secunde pentru fiecare canal."
+						},
+						{
+							"title": "Set de instrumente motion pentru brand",
+							"text": "Tranziții, easing și stiluri de titluri, ca aspectul să continue în tot ce urmează."
+						}
+					],
+					"steps": [
+						{
+							"title": "Găsim punctul de vedere",
+							"text": "În ce crede brandul ceea ce categoria lui nu crede? Acela este filmul."
+						},
+						{
+							"title": "Scriem tratamentul",
+							"text": "Capitole, ritm, cadre-cheie și sunet, convenite înainte să fie animat un singur cadru."
+						},
+						{
+							"title": "Îl realizăm",
+							"text": "Design, animație și sunet construite împreună, ca montajul să respire."
+						},
+						{
+							"title": "Lansăm și extindem",
+							"text": "Lansăm masterul, apoi ținem ideea vie cu variante scurte și setul de instrumente motion."
+						}
+					],
+					"connects": [
+						{
+							"text": "Variantele scurte devin stratul de notorietate al unui plan de social plătit pe toată pâlnia."
+						},
+						{
+							"text": "Căutările de brand și campaniile video au ceva care merită accesat."
+						},
+						{
+							"text": "Un film în inima unui hub de conținut le oferă autorilor și linkurilor ceva spre care să trimită."
+						}
+					],
+					"faqs": [
+						{
+							"question": "Filmați imagini reale?",
+							"answer": "Regizăm filme conduse de mișcare. Dacă un proiect cere imagini filmate, îl planificăm cu un partener de producție și păstrăm regia de motion în interior."
+						},
+						{
+							"question": "Cât de lung este un film de brand?",
+							"answer": "Ideea decide. Majoritatea au între 30 de secunde și două minute, cu versiuni mai scurte tăiate din master."
+						},
+						{
+							"question": "Al cui este filmul?",
+							"answer": "Al vostru. Stabilim drepturile de utilizare și livrăm fișierele sursă pe straturi ca parte a proiectului."
+						},
+						{
+							"question": "Poate filmul să stea pe pagina noastră de start?",
+							"answer": "Da. Livrăm o buclă ușoară și un cadru-afiș, cu filmul complet la un click distanță."
+						},
+						{
+							"question": "Este doar pentru branduri mari?",
+							"answer": "Nu. Un film condus de tipografie, scris strâns, poate costa o fracțiune dintr-o filmare și tot să se simtă ca un punct de vedere."
+						}
+					]
+				},
+				"web-ui-motion": {
+					"name": "Mișcare pentru web și interfețe",
+					"eyebrow": "04.5 / MIȘCARE PENTRU WEB ȘI INTERFEȚE",
+					"headline": "Interfețe care",
+					"headlineAccent": "par vii.",
+					"summary": "Povești la derulare, micro-interacțiuni și tranziții de pagină care fac un site mai ușor de înțeles și mai greu de uitat, fără a costa viteză sau accesibilitate.",
+					"sample": {
+						"title": "Laboratorul de motion: șapte interacțiuni pe care le poți atinge",
+						"note": "Mișcare reală, funcțională, de interfață, nu un videoclip. Comută, plimbă cursorul, trage și dă click. Tot ce e aici respectă setările de mișcare redusă."
+					},
+					"deliverables": [
+						{
+							"title": "Principii de mișcare",
+							"text": "Tokeni de easing, timing și spring, ca fiecare interacțiune să pară că aparține aceluiași produs."
+						},
+						{
+							"title": "Tranziții la derulare și între pagini",
+							"text": "Secvențe de derulare conduse de poveste și tranziții de rută care ghidează atenția, ca cele de pe acest site."
+						},
+						{
+							"title": "Bibliotecă de micro-interacțiuni",
+							"text": "Butoane, comutatoare, meniuri, carduri și formulare care răspund cu scop."
+						},
+						{
+							"title": "Cod de producție sau exporturi",
+							"text": "CSS și JavaScript curat, sau exporturi Lottie și video, gata pentru stack-ul vostru."
+						},
+						{
+							"title": "Variante de accesibilitate",
+							"text": "Alternative cu mișcare redusă și comportament al focusului proiectate de la început, nu adăugate pe urmă."
+						},
+						{
+							"title": "Buget de performanță",
+							"text": "Mișcarea este măsurată față de timpul de încărcare și latența interacțiunilor înainte să fie lansată."
+						}
+					],
+					"steps": [
+						{
+							"title": "Audit",
+							"text": "Aflăm unde ar clarifica mișcarea ceva și unde ar adăuga doar zgomot."
+						},
+						{
+							"title": "Stabilim principiile",
+							"text": "Definim vocabularul de easing și timing, ca deciziile să nu mai fie luate de la caz la caz."
+						},
+						{
+							"title": "Prototip în browser",
+							"text": "Construim în mediul real, astfel încât ce aprobați să fie ce se lansează."
+						},
+						{
+							"title": "Lansăm și măsurăm",
+							"text": "Lansăm cu un buget de performanță și urmărim ce fac utilizatorii în realitate."
+						}
+					],
+					"connects": [
+						{
+							"text": "Mișcarea rapidă și accesibilă susține Core Web Vitals în loc să se lupte cu ele."
+						},
+						{
+							"text": "Paginile de destinație cu interacțiuni clare și rapide transformă click-urile plătite în acțiune."
+						}
+					],
+					"faqs": [
+						{
+							"question": "Ne va încetini animația site-ul?",
+							"answer": "Nu, dacă este construită corect. Stabilim un buget de performanță, animăm cu cele mai ieftine proprietăți și testăm pe dispozitive reale."
+						},
+						{
+							"question": "Scrieți voi codul?",
+							"answer": "Da. Putem livra cod gata de producție sau putem preda specificații și exporturi echipei voastre pentru implementare."
+						},
+						{
+							"question": "Dar accesibilitatea?",
+							"answer": "Fiecare mișcare are o alternativă cu mișcare redusă, iar comportamentul pentru tastatură și cititoare de ecran este proiectat odată cu animația."
+						},
+						{
+							"question": "Funcționează cu CMS-ul sau framework-ul nostru?",
+							"answer": "Lucrăm cu majoritatea stack-urilor moderne. Spuneți-ne ce folosiți și vom confirma cea mai bună abordare."
+						},
+						{
+							"question": "Pot să o văd în funcțiune?",
+							"answer": "O privești chiar acum. Secvențele de derulare, contoarele și dezvăluirile de pe acest site sunt construite cu aceeași abordare."
+						}
+					]
+				}
+			},
+			"body": [
+				{
+					"text": "Creativul static cere atenție. Mișcarea o ia. În prima secundă a unui feed, mișcarea decide dacă un mesaj primește o șansă, iar restul ideii contează doar dacă supraviețuiește acelei secunde."
+				},
+				{
+					"text": "Construit pentru feed, nu pentru showreel"
+				},
+				{
+					"text": "Fiecare piesă începe cu o ipoteză: cârligul, afirmația, motivul de a continua să te uiți. Facem storyboard față de metrica pe care trebuie s-o miște, apoi construim variante, ca sistemul de testare să aibă material real din care să învețe."
+				},
+				{
+					"text": "Motion-ul bun nu este decor. Este argumentul, făcut vizibil."
+				},
+				{
+					"text": "O singură idee, toate suprafețele"
+				},
+				{
+					"text": "Același concept călătorește de la o variantă plătită de șase secunde la un explicativ de produs, o animație de pagină de destinație și un film de lansare. Un singur limbaj de design, un singur set de resurse, fără a reconstrui ideea de trei ori."
+				},
+				{
+					"text": "Pentru că motion-ul stă în același studio cu căutarea și media plătită, creativul este brieffat de date de performanță și judecat după rezultate comerciale, nu după cum arată pe un reel."
+				}
+			]
+		}
+	},
+	"caseStudies": {
+		"search-to-significance": {
+			"title": "Transformarea intenției de căutare în cerere",
+			"discipline": "SEO și conținut",
+			"summary": "Cum și-a reconstruit un brand cu achiziții îndelung gândite prezența organică în jurul intenției comerciale și a transformat traficul din vârful pâlniei în pipeline calificat.",
+			"challenge": "Un brand B2B specializat se clasa pe căutări informaționale care aduceau trafic, dar nu pipeline. Conținut era din belșug, dar răspundea la întrebările greșite pentru cumpărătorii aflați mai jos în pâlnie.",
+			"approach": "Am recartografiat peisajul de subiecte în jurul intenției de cumpărare, am consolidat conținutul subțire și am reconstruit calendarul editorial în jurul deciziilor cu care se confruntă efectiv cumpărătorii. SEO tehnic, arhitectura site-ului, legăturile interne și date structurate, au oferit noului conținut loc să se claseze.",
+			"outcome": "Traficul organic s-a reorientat spre paginile comerciale, solicitările calificate au crescut, iar motorul de conținut a început să se compună în loc să se împrăștie. Munca continuă, direcția este stabilită.",
+			"metrics": [
+				{
+					"label": "Țintă de trafic organic"
+				},
+				{
+					"label": "Țintă de lead-uri calificate"
+				}
+			]
+		},
+		"making-acquisition-work-harder": {
+			"title": "Achiziția care muncește mai mult",
+			"discipline": "Meta Ads + Google Ads",
+			"summary": "Un brand DTC cheltuia mai mult ca să achiziționeze mai puțin. O resetare condusă de creativ în social plătit și căutare a reconstruit eficiența de la zero.",
+			"challenge": "CPM-urile în creștere și oboseala creativă împinseseră costul de achiziție dincolo de pragul de profitabilitate. Contul era aglomerat, dar ineficient, cu bugetul împrăștiat pe audiențe care nu mai convertau.",
+			"approach": "Am consolidat contul în jurul unui sistem structurat de testare creativă, am reconstruit secvențierea pe toată pâlnia și am realiniat bugetul de căutare spre termeni cu intenție ridicată și marjă mare. Urmărirea a trecut pe server, astfel încât deciziile să reflecte realitatea.",
+			"outcome": "Costul de achiziție a scăzut, randamentul cheltuielilor publicitare și-a revenit, iar ritmul de testare a făcut ca creativul să se îmbunătățească la fiecare ciclu, nu să se degradeze. Brandul are acum un sistem, nu doar campanii.",
+			"metrics": [
+				{
+					"label": "Țintă de randament al cheltuielilor publicitare"
+				},
+				{
+					"label": "Țintă de cost de achiziție"
+				}
+			]
+		},
+		"full-funnel-foundations": {
+			"title": "Fundații pe toată pâlnia pentru o lansare nouă",
+			"discipline": "SEO și conținut + media plătită",
+			"summary": "O lansare de produs avea nevoie de capital organic și avânt plătit în același timp. Le-am construit pe amândouă, secvențiate să se compună.",
+			"challenge": "O ofertă nouă nu avea prezență în căutare și nici istoric plătit. Riscul era să lansezi în tăcere: cheltuială plătită fără nimic care să capteze cererea generată.",
+			"approach": "Munca de conținut și SEO tehnic a început cu luni înaintea lansării pentru a construi autoritate tematică. Social-ul plătit a semănat notorietate și retargeting, în timp ce căutarea a captat intenția generată de lansare. Măsurarea a fost integrată din prima zi.",
+			"outcome": "Lansarea a aterizat într-un capital organic existent, nu în vid, cheltuiala plătită a convertit într-un ritm sănătos de la început, iar brandul a avut un cadru de măsurare de la care să scaleze.",
+			"metrics": [
+				{
+					"label": "Țintă ROAS în luna lansării"
+				},
+				{
+					"label": "Capital organic construit înainte de lansare"
+				}
+			]
+		}
+	},
+	"articles": {
+		"why-three-disciplines": {
+			"title": "De ce aceste trei discipline se potrivesc împreună",
+			"excerpt": "Căutarea, conținutul și media plătită sunt de obicei vândute ca practici separate. Iată de ce tratarea lor ca un singur sistem de creștere schimbă rezultatul.",
+			"category": "Strategie",
+			"body": [
+				{
+					"text": "Majoritatea agențiilor se organizează în jurul canalelor, pentru că canalele sunt ușor de vândut. O echipă de căutare. O echipă de social. O echipă de conținut. Fiecare își optimizează colțul, iar golurile dintre ele sunt locul pe unde se scurge creșterea."
+				},
+				{
+					"text": "Intenție, cerere și accelerare"
+				},
+				{
+					"text": "Căutarea captează intenția care există deja. Conținutul construiește cererea care o creează. Media plătită accelerează ce funcționează, împingând ce s-a dovedit în mai multe momente, mai repede. Scoate oricare dintre ele și sistemul își pierde pârghia."
+				},
+				{
+					"text": "Un canal izolat este o tactică. Canalele care se hrănesc reciproc sunt un sistem."
+				},
+				{
+					"text": "Când același mod de a gândi modelează strategia de cuvinte-cheie, calendarul editorial și creativul plătit, munca se compune. Conținutul se clasează pentru că a fost construit pentru asta. Plătitul convertește pentru că mesajul și-a câștigat deja încrederea organic. Căutarea captează cererea creată de celelalte două."
+				},
+				{
+					"text": "Ce se schimbă în practică"
+				},
+				{
+					"text": "Mai puține predări. Un singur cadru de măsurare. O idee creativă care poate călători de la o postare organică la un material plătit și la o pagină de destinație fără a fi reconstruită de trei ori. Acesta este rostul de a rămâne mici și conduși de seniori."
+				}
+			]
+		},
+		"creative-is-the-targeting": {
+			"title": "Creativul este țintirea",
+			"excerpt": "Pe platformele moderne de social plătit, contează mai mult ce arăți decât cui arăți. O notă despre construirea unui sistem de testare care ține.",
+			"category": "Media plătită",
+			"body": [
+				{
+					"text": "Vechiul manual pornea de la public: construiești persona perfectă, o țintești precis și te bazezi pe algoritm să găsească mai mulți ca ea. Lumea aceea a dispărut în mare parte. Publicurile sunt mai largi, semnalele mai zgomotoase, iar creativul însuși face filtrarea."
+				},
+				{
+					"text": "Creativul decide cine rămâne"
+				},
+				{
+					"text": "Un cârlig care oprește derularea vorbește omului potrivit și îl respinge pe cel nepotrivit. Aceasta este țintire, doar că făcută de mesaj în loc de selectorul de public. Ceea ce înseamnă că fluxul creativ este acum pârghia."
+				},
+				{
+					"text": "Dacă sistemul tău de testare nu devine mai ascuțit la fiecare ciclu, creativul tău se degradează."
+				},
+				{
+					"text": "Construiește un sistem, nu un lot"
+				},
+				{
+					"text": "Ipoteze înaintea variantelor. Câștigători clari înainte de scalare. Un ritm care produce învățare, nu doar materiale. Brandurile care câștigă pe social plătit sunt cele al căror creativ se îmbunătățește măsurabil de la o lună la alta, nu cele cu cel mai mare buget."
+				}
+			]
+		},
+		"measuring-what-comes-back": {
+			"title": "Măsurăm ce se întoarce",
+			"excerpt": "Dashboardurile platformelor îți vor spune mereu că cheltuiala a funcționat. Iată cum ținem cifrele oneste.",
+			"category": "Măsurare",
+			"body": [
+				{
+					"text": "Fiecare platformă de reclame raportează propriul succes. Nu mint, tocmai, dar măsoară din propriul unghi, iar acel unghi este generos cu platforma."
+				},
+				{
+					"text": "Atribuirea este o întrebare, nu o setare"
+				},
+				{
+					"text": "Întrebarea nu este „a generat această campanie conversii”, ci „ce s-ar fi întâmplat fără ea”. Incrementalitatea, CAC-ul combinat și modelarea valorii conversiei răspund la asta. Dashboardurile pe ultimul click, nu."
+				},
+				{
+					"text": "Dacă numărul care conduce decizia vine de la platforma care cheltuiește banii, tratează-l ca pe o afirmație, nu ca pe un fapt."
+				},
+				{
+					"text": "Urmărirea pe server, un strat de date curat și o vizualizare de raportare legată de rezultate comerciale, nu de auto-raportarea platformei, este locul în care ar trebui luate deciziile. Este mai puțin măgulitor și mult mai util."
+				}
+			]
+		}
+	}
+}

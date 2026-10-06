@@ -1,13 +1,14 @@
 import type { Route } from './+types/work.$slug';
-import { seo, siteOriginFrom } from '@/lib/seo';
+import { metaContext, seo } from '@/lib/seo';
+import { getCaseStudies, localeFromParams } from '@/lib/content.server';
 import { SiteHeader } from '@/components/site-header';
 import { SiteFooter } from '@/components/site-footer';
 import { CaseStudyView } from '@/components/work/case-study';
-import { getCaseStudy } from '@/data/case-studies';
 import { buildCaseStudySchema, buildBreadcrumbSchema } from '@/lib/schema';
 
-export function loader({ params }: Route.LoaderArgs) {
-	const study = getCaseStudy(params.slug);
+export async function loader({ params }: Route.LoaderArgs) {
+	const caseStudies = await getCaseStudies(localeFromParams(params));
+	const study = caseStudies.find(item => item.slug === params.slug);
 	if (!study) {
 		throw new Response('Case study not found', { status: 404 });
 	}
@@ -15,26 +16,27 @@ export function loader({ params }: Route.LoaderArgs) {
 }
 
 export function meta({ matches, location, loaderData }: Route.MetaArgs) {
-	const s = loaderData?.study;
-	if (!s) {
+	const { origin, locale, t } = metaContext(matches);
+	const study = loaderData?.study;
+	if (!study) {
 		return seo(
 			{ matches, location },
-			{ title: 'Not found — ROASWELL', description: 'This page could not be found.', noindex: true },
+			{ title: t('meta.notFound.title'), description: t('meta.notFound.description'), noindex: true },
 		);
 	}
-	const origin = siteOriginFrom(matches);
+	const site = { origin, locale };
 	return seo(
 		{ matches, location },
 		{
-			title: `${s.title} — ROASWELL Case Study`,
-			description: s.summary,
+			title: t('meta.study.title', { title: study.title }),
+			description: study.summary,
 			type: 'article',
 			jsonLd: [
-				buildCaseStudySchema(origin, s),
-				buildBreadcrumbSchema(origin, [
-					{ name: 'Home', path: '/' },
-					{ name: 'Work', path: '/work' },
-					{ name: s.title, path: `/work/${s.slug}` },
+				buildCaseStudySchema(site, study),
+				buildBreadcrumbSchema(site, [
+					{ name: t('breadcrumb.home'), path: '/' },
+					{ name: t('nav.work'), path: '/work' },
+					{ name: study.title, path: `/work/${study.slug}` },
 				]),
 			],
 		},
