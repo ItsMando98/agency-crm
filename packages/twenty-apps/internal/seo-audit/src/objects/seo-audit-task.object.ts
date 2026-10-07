@@ -103,6 +103,7 @@ export default defineObject({
         { id: '525b33c2-fd72-4008-91ab-9fcc3c695cb2', value: SEO_AREA.STRUCTURED_DATA, label: 'Structured data', color: 'pink' },
         { id: '53b14c51-faac-4d3b-b356-e212c652d0b0', value: SEO_AREA.PERFORMANCE, label: 'Performance', color: 'orange' },
         { id: '9b6a9fd2-8ed8-45bb-ac1b-ce567bf6c70e', value: SEO_AREA.SECURITY, label: 'Security', color: 'red' },
+        { id: 'e8b1c4a7-2d6f-4b83-a915-6c0e3f7d2a48', value: SEO_AREA.VISIBILITY, label: 'Visibility', color: 'green' },
       ]),
     },
     {

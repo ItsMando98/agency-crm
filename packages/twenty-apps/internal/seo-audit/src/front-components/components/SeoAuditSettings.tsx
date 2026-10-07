@@ -1,7 +1,7 @@
 import 'twenty-ui/style.css';
 
 import { useState } from 'react';
-import { Callout, Section } from 'twenty-ui/components';
+import { Callout } from 'twenty-ui/components';
 import { themeCssVariables } from 'twenty-ui/theme';
 
 import {
@@ -21,6 +21,8 @@ import { SEO_AUDIT_LANGUAGE } from 'src/constants/seo-audit.constants';
 import { ApplicationVariableField } from 'src/front-components/components/ApplicationVariableField';
 import { FieldGroup } from 'src/front-components/components/FieldGroup';
 import { RecentAuditsSection } from 'src/front-components/components/RecentAuditsSection';
+import { SettingsPanel } from 'src/front-components/components/SettingsPanel';
+import { SettingsSection } from 'src/front-components/components/SettingsSection';
 import { SetupChecklist } from 'src/front-components/components/SetupChecklist';
 import { StartAuditSection } from 'src/front-components/components/StartAuditSection';
 import { SETUP_STEP_FOCUS_TARGET_ID } from 'src/front-components/constants/focus-target-ids.const';
@@ -43,7 +45,30 @@ export const SeoAuditSettings = () => {
   const [savedValueByKey, setSavedValueByKey] = useState<Record<string, string>>({});
 
   if (isLoading) {
-    return <Callout variant="neutral" title="Loading settings" />;
+    return (
+      <div
+        aria-busy="true"
+        aria-label="Loading settings"
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: themeCssVariables.spacing[4],
+          width: '100%',
+        }}
+      >
+        {[168, 148, 96].map((height) => (
+          <div
+            key={height}
+            style={{
+              background: themeCssVariables.background.transparent.lighter,
+              border: `1px solid ${themeCssVariables.border.color.medium}`,
+              borderRadius: themeCssVariables.border.radius.md,
+              height,
+            }}
+          />
+        ))}
+      </div>
+    );
   }
 
   if (hasError || applicationId === undefined) {
@@ -103,7 +128,7 @@ export const SeoAuditSettings = () => {
         boxSizing: 'border-box',
         display: 'flex',
         flexDirection: 'column',
-        gap: themeCssVariables.spacing[8],
+        gap: themeCssVariables.spacing[4],
         width: '100%',
       }}
     >
@@ -122,44 +147,51 @@ export const SeoAuditSettings = () => {
         onAuditStarted={refresh}
       />
       <RecentAuditsSection audits={recentAudits} isLoading={isLoadingAudits} />
-      <Section.Root>
-        <Section.Header
+      <SettingsPanel>
+        <SettingsSection
           title="Anthropic"
           description="The key stays in your workspace and is only used for audits."
-        />
-        {renderField(ANTHROPIC_API_KEY_VARIABLE_KEY)}
-      </Section.Root>
-      <Section.Root>
-        <Section.Header
+        >
+          {renderField(ANTHROPIC_API_KEY_VARIABLE_KEY)}
+        </SettingsSection>
+      </SettingsPanel>
+      <SettingsPanel>
+        <SettingsSection
           title="DataForSEO"
           description="Optional. Adds rankings, keyword opportunities, backlinks and competitors. Costs about 0.15 to 0.35 USD per audit at DataForSEO."
-        />
-        <FieldGroup>
-          {renderField(DATAFORSEO_LOGIN_VARIABLE_KEY)}
-          {renderField(DATAFORSEO_PASSWORD_VARIABLE_KEY)}
-        </FieldGroup>
-      </Section.Root>
-      <Section.Root>
-        <Section.Header title="Defaults" description="Applied when an audit is started without choices." />
-        <FieldGroup>
-          {renderField(MARKET_VARIABLE_KEY)}
-          {renderField(DEFAULT_LANGUAGE_VARIABLE_KEY)}
-          {renderField(MAX_PAGES_VARIABLE_KEY)}
-        </FieldGroup>
-      </Section.Root>
-      <Section.Root>
-        <Section.Header
+        >
+          <FieldGroup>
+            {renderField(DATAFORSEO_LOGIN_VARIABLE_KEY)}
+            {renderField(DATAFORSEO_PASSWORD_VARIABLE_KEY)}
+          </FieldGroup>
+        </SettingsSection>
+      </SettingsPanel>
+      <SettingsPanel>
+        <SettingsSection
+          title="Defaults"
+          description="Applied when an audit is started without choices."
+        >
+          <FieldGroup>
+            {renderField(MARKET_VARIABLE_KEY)}
+            {renderField(DEFAULT_LANGUAGE_VARIABLE_KEY)}
+            {renderField(MAX_PAGES_VARIABLE_KEY)}
+          </FieldGroup>
+        </SettingsSection>
+      </SettingsPanel>
+      <SettingsPanel>
+        <SettingsSection
           title="Reports and PDF"
           description="Every audit gets an HTML report page and an Excel file. The PDF is rendered from the report page."
-        />
-        <FieldGroup>
-          {renderField(REPORT_BRAND_NAME_VARIABLE_KEY)}
-          {renderField(REPORT_ACCENT_COLOR_VARIABLE_KEY)}
-          {renderField(REPORT_PUBLIC_URL_VARIABLE_KEY)}
-          {renderField(PDF_RENDERER_URL_VARIABLE_KEY)}
-          {renderField(PDF_RENDERER_API_KEY_VARIABLE_KEY)}
-        </FieldGroup>
-      </Section.Root>
+        >
+          <FieldGroup>
+            {renderField(REPORT_BRAND_NAME_VARIABLE_KEY)}
+            {renderField(REPORT_ACCENT_COLOR_VARIABLE_KEY)}
+            {renderField(REPORT_PUBLIC_URL_VARIABLE_KEY)}
+            {renderField(PDF_RENDERER_URL_VARIABLE_KEY)}
+            {renderField(PDF_RENDERER_API_KEY_VARIABLE_KEY)}
+          </FieldGroup>
+        </SettingsSection>
+      </SettingsPanel>
     </div>
   );
 };

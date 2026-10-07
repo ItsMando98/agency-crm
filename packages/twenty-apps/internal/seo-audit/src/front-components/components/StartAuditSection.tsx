@@ -1,9 +1,12 @@
 import { useState } from 'react';
 import { AppPath, enqueueSnackbar, navigate } from 'twenty-sdk/front-component';
-import { Callout, Section } from 'twenty-ui/components';
-import { Button, Input, SegmentedControl } from 'twenty-ui/primitives/input';
+import { Callout } from 'twenty-ui/components';
+import { Button, Input } from 'twenty-ui/primitives/input';
 import { themeCssVariables } from 'twenty-ui/theme';
 
+import { ChoiceButtons } from 'src/front-components/components/ChoiceButtons';
+import { SettingsPanel } from 'src/front-components/components/SettingsPanel';
+import { SettingsSection } from 'src/front-components/components/SettingsSection';
 import { SEO_AUDIT_LANGUAGE } from 'src/constants/seo-audit.constants';
 import { START_AUDIT_DOMAIN_INPUT_ID } from 'src/front-components/constants/focus-target-ids.const';
 import { useStartSeoAudit } from 'src/front-components/hooks/use-start-seo-audit';
@@ -49,23 +52,22 @@ export const StartAuditSection = ({
   };
 
   return (
-    <Section.Root>
-      <Section.Header
+    <SettingsPanel emphasis>
+      <SettingsSection
         title="Run an audit"
         description="Enter the homepage of any public website."
-      />
-      <div style={{ display: 'flex', flexDirection: 'column', gap: themeCssVariables.spacing[2] }}>
-        {!isApiKeyConfigured && (
-          <Callout
-            variant="warning"
-            title="No Anthropic key yet"
-            description="The audit still runs, but without the content quality judgement."
-          />
-        )}
-        {errorMessage !== undefined && (
-          <Callout variant="error" title="Audit not started" description={errorMessage} />
-        )}
-        <div style={{ display: 'flex', gap: themeCssVariables.spacing[2] }}>
+      >
+        <div style={{ display: 'flex', flexDirection: 'column', gap: themeCssVariables.spacing[3] }}>
+          {!isApiKeyConfigured && (
+            <Callout
+              variant="warning"
+              title="No Anthropic key yet"
+              description="The audit still runs, but without the content quality judgement."
+            />
+          )}
+          {errorMessage !== undefined && (
+            <Callout variant="error" title="Audit not started" description={errorMessage} />
+          )}
           <Input
             id={START_AUDIT_DOMAIN_INPUT_ID}
             aria-label="Website"
@@ -78,26 +80,52 @@ export const StartAuditSection = ({
               }
             }}
           />
-          <SegmentedControl
-            aria-label="Report language"
-            options={[
-              { value: SEO_AUDIT_LANGUAGE.DE, label: 'DE' },
-              { value: SEO_AUDIT_LANGUAGE.EN, label: 'EN' },
-            ]}
-            value={language ?? defaultLanguage}
-            onValueChange={(value) => setLanguage(value as AuditLanguage)}
-          />
-          <Button
-            variant="solid"
-            color="accent"
-            loading={isStarting}
-            disabled={domain.trim() === ''}
-            onClick={submit}
+          <div
+            style={{
+              alignItems: 'center',
+              display: 'flex',
+              flexWrap: 'wrap',
+              gap: themeCssVariables.spacing[3],
+              justifyContent: 'space-between',
+            }}
           >
-            Start audit
-          </Button>
+            <div
+              style={{
+                alignItems: 'center',
+                display: 'flex',
+                gap: themeCssVariables.spacing[2],
+              }}
+            >
+              <span
+                style={{
+                  color: themeCssVariables.font.color.tertiary,
+                  fontSize: themeCssVariables.font.size.sm,
+                }}
+              >
+                Language
+              </span>
+              <ChoiceButtons
+                ariaLabel="Report language"
+                options={[
+                  { value: SEO_AUDIT_LANGUAGE.DE, label: 'DE' },
+                  { value: SEO_AUDIT_LANGUAGE.EN, label: 'EN' },
+                ]}
+                value={language ?? defaultLanguage}
+                onValueChange={(nextValue) => setLanguage(nextValue as AuditLanguage)}
+              />
+            </div>
+            <Button
+              variant="solid"
+              color="accent"
+              loading={isStarting}
+              disabled={domain.trim() === ''}
+              onClick={submit}
+            >
+              Start audit
+            </Button>
+          </div>
         </div>
-      </div>
-    </Section.Root>
+      </SettingsSection>
+    </SettingsPanel>
   );
 };

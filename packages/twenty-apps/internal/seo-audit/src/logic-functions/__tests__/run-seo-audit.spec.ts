@@ -205,10 +205,22 @@ describe('run-seo-audit', () => {
     expect(persistMock).not.toHaveBeenCalled();
   });
 
-  it('fails an audit without a usable domain', async () => {
-    await handler({ events: [event('audit-1', { domain: '', status: 'QUEUED', name: 'x' })] } as Batch);
+  it('leaves a new audit queued when the website is still empty', async () => {
+    await handler({ events: [event('audit-1', { domain: '   ', status: 'QUEUED', name: 'x' })] } as Batch);
 
-    expect(lastUpdate().data).toMatchObject({ status: 'FAILED' });
+    expect(mutationMock).not.toHaveBeenCalled();
+    expect(pipelineMock).not.toHaveBeenCalled();
+  });
+
+  it('fails an audit whose website is not a public http URL', async () => {
+    await handler({
+      events: [event('audit-1', { domain: 'ftp://example.com', status: 'QUEUED', name: 'x' })],
+    } as Batch);
+
+    expect(lastUpdate().data).toMatchObject({
+      status: 'FAILED',
+      failureReason: 'Only http and https URLs can be audited',
+    });
     expect(pipelineMock).not.toHaveBeenCalled();
   });
 

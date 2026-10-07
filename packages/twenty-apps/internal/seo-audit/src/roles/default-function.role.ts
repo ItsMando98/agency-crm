@@ -1,4 +1,4 @@
-import { defineApplicationRole } from 'twenty-sdk/define';
+import { defineApplicationRole, SystemPermissionFlag } from 'twenty-sdk/define';
 
 export const DEFAULT_FUNCTION_ROLE_UNIVERSAL_IDENTIFIER = '23fc22a6-e6a7-4ecf-82a1-641b1d83bd98';
 
@@ -10,4 +10,6 @@ export default defineApplicationRole({
   canUpdateAllObjectRecords: true,
   canSoftDeleteAllObjectRecords: false,
   canDestroyAllObjectRecords: false,
+  // The Setup page runs as this role and calls findOneApplication, which requires the Applications setting.
+  permissionFlagUniversalIdentifiers: [SystemPermissionFlag.APPLICATIONS],
 });

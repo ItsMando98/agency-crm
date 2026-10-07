@@ -1,3 +1,11 @@
+import {
+  IconFileExport,
+  IconKey,
+  IconPlayerPlay,
+  IconSearch,
+  IconSettings,
+  type IconComponent,
+} from 'twenty-ui/icon';
 import { Status } from 'twenty-ui/primitives/data-display';
 import { themeCssVariables } from 'twenty-ui/theme';
 
@@ -29,6 +37,14 @@ const STEP_TEXT: Record<SetupStep['id'], { title: string; description: string }>
   },
 };
 
+const STEP_ICON: Record<SetupStep['id'], IconComponent> = {
+  ANTHROPIC_KEY: IconKey,
+  DATAFORSEO: IconSearch,
+  DEFAULTS: IconSettings,
+  PDF_EXPORT: IconFileExport,
+  FIRST_AUDIT: IconPlayerPlay,
+};
+
 const STATUS_PRESENTATION: Record<
   SetupStep['status'],
   { color: 'green' | 'orange' | 'gray'; label: string }
@@ -36,6 +52,20 @@ const STATUS_PRESENTATION: Record<
   DONE: { color: 'green', label: 'Done' },
   TODO: { color: 'orange', label: 'To do' },
   OPTIONAL: { color: 'gray', label: 'Optional' },
+};
+
+// Resolved during render. The manifest loader mocks twenty-ui, so reading
+// theme tokens while the module loads crashes the install.
+const getStepIconColor = (status: SetupStep['status']) => {
+  if (status === 'DONE') {
+    return themeCssVariables.color.green;
+  }
+
+  if (status === 'TODO') {
+    return themeCssVariables.accent.primary;
+  }
+
+  return themeCssVariables.font.color.tertiary;
 };
 
 type SetupStepRowProps = {
@@ -46,30 +76,58 @@ type SetupStepRowProps = {
 export const SetupStepRow = ({ step, onSelect }: SetupStepRowProps) => {
   const text = STEP_TEXT[step.id];
   const presentation = STATUS_PRESENTATION[step.status];
+  const StepIcon = STEP_ICON[step.id];
 
   return (
     <li style={{ listStyle: 'none' }}>
       <RowButton onClick={() => onSelect(step.id)}>
-        <div style={{ display: 'flex', flexDirection: 'column' }}>
+        <span
+          style={{
+            alignItems: 'center',
+            display: 'flex',
+            gap: themeCssVariables.spacing[3],
+            minWidth: 0,
+          }}
+        >
           <span
+            aria-hidden
             style={{
-              color: themeCssVariables.font.color.primary,
-              fontSize: themeCssVariables.font.size.md,
-              fontWeight: themeCssVariables.font.weight.medium,
+              alignItems: 'center',
+              background: themeCssVariables.background.transparent.light,
+              borderRadius: themeCssVariables.border.radius.sm,
+              display: 'flex',
+              flexShrink: 0,
+              height: 28,
+              justifyContent: 'center',
+              width: 28,
             }}
           >
-            {text.title}
+            <StepIcon size={16} color={getStepIconColor(step.status)} />
           </span>
-          <span
-            style={{
-              color: themeCssVariables.font.color.tertiary,
-              fontSize: themeCssVariables.font.size.sm,
-            }}
-          >
-            {text.description}
+          <span style={{ display: 'flex', flexDirection: 'column', minWidth: 0 }}>
+            <span
+              style={{
+                color: themeCssVariables.font.color.primary,
+                fontSize: themeCssVariables.font.size.md,
+                fontWeight: themeCssVariables.font.weight.medium,
+              }}
+            >
+              {text.title}
+            </span>
+            <span
+              style={{
+                color: themeCssVariables.font.color.tertiary,
+                fontSize: themeCssVariables.font.size.sm,
+                lineHeight: themeCssVariables.text.lineHeight.lg,
+              }}
+            >
+              {text.description}
+            </span>
           </span>
-        </div>
-        <Status color={presentation.color}>{presentation.label}</Status>
+        </span>
+        <span style={{ flexShrink: 0 }}>
+          <Status color={presentation.color}>{presentation.label}</Status>
+        </span>
       </RowButton>
     </li>
   );

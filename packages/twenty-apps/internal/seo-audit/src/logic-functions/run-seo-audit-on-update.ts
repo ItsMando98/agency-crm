@@ -1,45 +1,43 @@
 import { CoreApiClient } from 'twenty-client-sdk/core';
 import {
   defineLogicFunction,
-  type ObjectRecordCreateEvent,
+  type ObjectRecordUpdateEvent,
 } from 'twenty-sdk/define';
 import { type DatabaseEventBatchPayload } from 'twenty-sdk/logic-function';
 
-import { SEO_AUDIT_STATUS } from 'src/constants/seo-audit.constants';
 import { type SeoAuditRecord } from 'src/types/seo-audit-record';
 import { runQueuedSeoAudit } from 'src/utils/run-queued-seo-audit.util';
+import { shouldRunAuditOnUpdate } from 'src/utils/should-run-audit-on-update.util';
 
 const handler = async (
-  batch: DatabaseEventBatchPayload<ObjectRecordCreateEvent<SeoAuditRecord>>,
+  batch: DatabaseEventBatchPayload<ObjectRecordUpdateEvent<SeoAuditRecord>>,
 ): Promise<void> => {
   const client = new CoreApiClient();
 
   for (const event of batch.events) {
-    const audit = event.properties.after;
+    const { before, after } = event.properties;
 
-    if (
-      typeof audit.status === 'string' &&
-      audit.status !== SEO_AUDIT_STATUS.QUEUED
-    ) {
+    if (!shouldRunAuditOnUpdate(before, after) || after === undefined) {
       continue;
     }
 
     await runQueuedSeoAudit({
       client,
       auditId: event.recordId,
-      audit,
+      audit: after,
     });
   }
 };
 
 export default defineLogicFunction({
-  universalIdentifier: '389e7901-3623-4801-b0ad-bab96f660fc6',
-  name: 'run-seo-audit',
+  universalIdentifier: 'f3a8c2e1-7b4d-4e90-9c16-2a5d8f0b6e47',
+  name: 'run-seo-audit-on-update',
   description:
-    'Runs the SEO audit for newly created audit records that already have a website. A record created without a website stays queued until one is entered.',
+    'Starts an SEO audit when a website is saved onto a queued or failed record, or when status is set back to Queued.',
   timeoutSeconds: 600,
   databaseEventTriggerSettings: {
-    eventName: 'seoAudit.created',
+    eventName: 'seoAudit.updated',
+    updatedFields: ['domain', 'status'],
     batchMode: true,
   },
   handler,

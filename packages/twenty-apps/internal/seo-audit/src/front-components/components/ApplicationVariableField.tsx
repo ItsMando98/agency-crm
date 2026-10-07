@@ -1,9 +1,10 @@
 import { useId, useState } from 'react';
 import { enqueueSnackbar } from 'twenty-sdk/front-component';
 import { Status } from 'twenty-ui/primitives/data-display';
-import { Button, Input, SegmentedControl } from 'twenty-ui/primitives/input';
+import { Button, Input } from 'twenty-ui/primitives/input';
 import { themeCssVariables } from 'twenty-ui/theme';
 
+import { ChoiceButtons } from 'src/front-components/components/ChoiceButtons';
 import { useUpdateApplicationVariable } from 'src/front-components/hooks/use-update-application-variable';
 import { type SeoAuditApplicationVariable } from 'src/front-components/types/seo-audit-application-variable';
 import { getVariableInputId } from 'src/front-components/utils/get-variable-input-id.util';
@@ -97,17 +98,24 @@ export const ApplicationVariableField = ({
         {variable.description}
       </span>
       {variable.type === 'SELECT' && variable.options !== null ? (
-        <SegmentedControl
-          aria-label={variable.label}
+        <ChoiceButtons
+          ariaLabel={variable.label}
           options={variable.options}
           value={storedValue}
-          onValueChange={(value) => save(String(value))}
+          onValueChange={(nextValue) => save(nextValue)}
         />
       ) : (
-        <div style={{ display: 'flex', gap: themeCssVariables.spacing[2] }}>
+        <div
+          style={{
+            alignItems: 'center',
+            display: 'flex',
+            gap: themeCssVariables.spacing[2],
+          }}
+        >
           <Input
             id={inputId}
             aria-describedby={descriptionId}
+            style={{ flex: '1 1 auto', minWidth: 0 }}
             type={variable.isSecret ? 'password' : variable.type === 'NUMBER' ? 'number' : 'text'}
             autoComplete="off"
             placeholder={isSecretStored ? 'Key saved. Enter a new key to replace it.' : 'Value'}

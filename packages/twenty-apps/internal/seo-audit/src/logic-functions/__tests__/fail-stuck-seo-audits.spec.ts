@@ -22,7 +22,29 @@ describe('fail-stuck-seo-audits', () => {
   });
 
   it('marks old queued or running audits as failed', async () => {
-    queryMock.mockResolvedValue({ seoAudits: { edges: [{ node: { id: 'a' } }, { node: { id: 'b' } }] } });
+    queryMock.mockResolvedValue({
+      seoAudits: {
+        edges: [
+          {
+            node: {
+              id: 'a',
+              domain: 'https://example.com',
+              status: 'QUEUED',
+              createdAt: '2020-01-01T00:00:00.000Z',
+            },
+          },
+          {
+            node: {
+              id: 'b',
+              domain: 'https://example.com',
+              status: 'RUNNING',
+              createdAt: '2020-01-01T00:00:00.000Z',
+              startedAt: '2020-01-01T00:00:00.000Z',
+            },
+          },
+        ],
+      },
+    });
 
     await handler();
 
@@ -38,6 +60,49 @@ describe('fail-stuck-seo-audits', () => {
 
   it('does nothing when no audit is stuck', async () => {
     queryMock.mockResolvedValue({ seoAudits: { edges: [] } });
+
+    await handler();
+
+    expect(mutationMock).not.toHaveBeenCalled();
+  });
+
+  it('leaves a draft with no website queued', async () => {
+    queryMock.mockResolvedValue({
+      seoAudits: {
+        edges: [
+          {
+            node: {
+              id: 'draft',
+              domain: '',
+              status: 'QUEUED',
+              createdAt: '2020-01-01T00:00:00.000Z',
+            },
+          },
+        ],
+      },
+    });
+
+    await handler();
+
+    expect(mutationMock).not.toHaveBeenCalled();
+  });
+
+  it('does not fail a retry that started again recently', async () => {
+    queryMock.mockResolvedValue({
+      seoAudits: {
+        edges: [
+          {
+            node: {
+              id: 'retry',
+              domain: 'https://example.com',
+              status: 'RUNNING',
+              createdAt: '2020-01-01T00:00:00.000Z',
+              startedAt: new Date().toISOString(),
+            },
+          },
+        ],
+      },
+    });
 
     await handler();
 

@@ -11,13 +11,19 @@ type RowButtonProps = {
 export const RowButton = ({ onClick, children }: RowButtonProps) => {
   const [isHovered, setIsHovered] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
+  const [isPressed, setIsPressed] = useState(false);
 
   return (
     <button
       type="button"
       onClick={onClick}
       onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      onMouseLeave={() => {
+        setIsHovered(false);
+        setIsPressed(false);
+      }}
+      onMouseDown={() => setIsPressed(true)}
+      onMouseUp={() => setIsPressed(false)}
       onFocus={() => setIsFocused(true)}
       onBlur={() => setIsFocused(false)}
       style={{
@@ -34,14 +40,15 @@ export const RowButton = ({ onClick, children }: RowButtonProps) => {
         display: 'flex',
         fontFamily: 'inherit',
         fontSize: themeCssVariables.font.size.md,
-        gap: themeCssVariables.spacing[2],
+        gap: themeCssVariables.spacing[3],
         justifyContent: 'space-between',
+        minHeight: '44px',
         outline: isFocused
           ? `1px solid ${themeCssVariables.border.color.blue}`
           : 'none',
-        padding: themeCssVariables.spacing[2],
+        padding: `${themeCssVariables.spacing[2]} ${themeCssVariables.spacing[2]}`,
         textAlign: 'left',
-        transition: 'background 120ms ease',
+        transform: isPressed ? 'scale(0.99)' : 'none',
         width: '100%',
       }}
     >
