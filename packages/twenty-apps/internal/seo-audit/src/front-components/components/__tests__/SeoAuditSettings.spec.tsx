@@ -469,5 +469,6 @@ describe('SeoAuditSettings', () => {
     render(<SeoAuditSettings />);
 
     expect(await screen.findByText('Settings could not be loaded')).toBeTruthy();
+    expect(screen.getByText('network')).toBeTruthy();
   });
 });

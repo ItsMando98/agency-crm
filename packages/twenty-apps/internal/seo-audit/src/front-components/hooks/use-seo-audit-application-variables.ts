@@ -10,6 +10,7 @@ type SeoAuditApplicationVariablesState = {
   applicationVariables: SeoAuditApplicationVariable[];
   isLoading: boolean;
   hasError: boolean;
+  errorMessage?: string;
 };
 
 export const useSeoAuditApplicationVariables =
@@ -59,14 +60,20 @@ export const useSeoAuditApplicationVariables =
               })),
             isLoading: false,
             hasError: application?.id === undefined,
+            errorMessage:
+              application?.id === undefined
+                ? 'The SEO Audit application was not found.'
+                : undefined,
           });
-        } catch {
+        } catch (error) {
           if (!isCancelled) {
             setState({
               applicationId: undefined,
               applicationVariables: [],
               isLoading: false,
               hasError: true,
+              errorMessage:
+                error instanceof Error ? error.message : String(error),
             });
           }
         }

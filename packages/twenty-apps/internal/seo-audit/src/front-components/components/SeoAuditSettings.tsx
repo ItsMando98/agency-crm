@@ -32,7 +32,7 @@ import { getIsApplicationVariableConfigured } from 'src/front-components/utils/g
 import { type AuditLanguage } from 'src/types/audit-language';
 
 export const SeoAuditSettings = () => {
-  const { applicationId, applicationVariables, isLoading, hasError } =
+  const { applicationId, applicationVariables, isLoading, hasError, errorMessage } =
     useSeoAuditApplicationVariables();
   const {
     recentAudits,
@@ -51,7 +51,7 @@ export const SeoAuditSettings = () => {
       <Callout
         variant="error"
         title="Settings could not be loaded"
-        description="Please try again later."
+        description={errorMessage ?? 'Please try again later.'}
       />
     );
   }
