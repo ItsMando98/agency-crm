@@ -1,12 +1,13 @@
 import { MIN_PAGES_WITHOUT_STRUCTURED_DATA_SHARE } from 'src/constants/seo-thresholds.const';
+import {
+  LOCAL_BUSINESS_TYPE_PATTERN,
+  ORGANIZATION_TYPE_PATTERN,
+} from 'src/constants/structured-data-types.const';
 import { type CrawledPage } from 'src/types/crawled-page';
 import { type Finding } from 'src/types/finding';
 import { type SiteProfile } from 'src/types/site-profile';
 import { isAuditablePage } from 'src/utils/is-auditable-page.util';
 
-const ORGANIZATION_TYPE_PATTERN = /^(Organization|Corporation|WebSite|LocalBusiness)$/;
-const LOCAL_BUSINESS_TYPE_PATTERN =
-  /(LocalBusiness|Store|Restaurant|Dentist|Physician|Attorney|LegalService|AutoRepair|RealEstateAgent|Plumber|Electrician|Locksmith|MovingCompany|HomeAndConstructionBusiness|HealthAndBeautyBusiness|FoodEstablishment|Hotel|Lodging)/;
 const MIN_PROFILE_CONFIDENCE = 0.6;
 const MIN_PAGES_FOR_SHARE_CHECK = 3;
 

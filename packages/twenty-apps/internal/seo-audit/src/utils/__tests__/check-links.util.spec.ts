@@ -15,6 +15,8 @@ const buildCrawlResult = (
   linkTargetStatusCodes,
   linksByPage,
   robotsTxtFound: true,
+  robotsTxt: null,
+  llmsTxtFound: false,
   sitemapFound: true,
   blockedByRobotsCount: 0,
 });

@@ -9,6 +9,7 @@ export const AREA_WEIGHTS: Record<SeoArea, number> = {
   PERFORMANCE: 10,
   SECURITY: 10,
   VISIBILITY: 15,
+  AI_VISIBILITY: 15,
 };
 
 export const SEVERITY_PENALTY = {

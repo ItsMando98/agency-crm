@@ -508,6 +508,63 @@ export const FINDING_CATALOG: Record<FindingRuleId, FindingDefinition> = {
       },
     },
   },
+  AI_CRAWLERS_BLOCKED: {
+    area: 'AI_VISIBILITY',
+    severity: 'WARNING',
+    priority: 'MEDIUM',
+    effort: 'LOW',
+    source: 'RULE',
+    text: {
+      DE: {
+        title: 'Die robots.txt sperrt {count} KI-Crawler aus',
+        recommendation:
+          'Prüfe, ob die Sperre gewollt ist. KI-Systeme können eine Website nur nennen, wenn ihre Crawler die Startseite lesen dürfen. Wer in KI-Antworten vorkommen will, erlaubt die Crawler der gewünschten Systeme. Eine Sperre kann auch eine bewusste Entscheidung sein, etwa gegen die Nutzung der Inhalte zum Training.',
+      },
+      EN: {
+        title: 'robots.txt blocks {count} AI crawlers',
+        recommendation:
+          'Check whether the block is intended. AI systems can only mention a website when their crawlers may read the homepage. Allow the crawlers of the systems you want to appear in. A block can also be a deliberate choice, for example against using the content for training.',
+      },
+    },
+  },
+  LLMS_TXT_MISSING: {
+    area: 'AI_VISIBILITY',
+    severity: 'INFO',
+    priority: 'LOW',
+    effort: 'LOW',
+    source: 'RULE',
+    text: {
+      DE: {
+        title: 'Keine llms.txt gefunden',
+        recommendation:
+          'Eine llms.txt ist eine Textdatei im Hauptverzeichnis, die KI-Systemen die wichtigsten Seiten erklärt. Ob Suchsysteme sie auswerten, ist offen. Der Aufwand ist gering.',
+      },
+      EN: {
+        title: 'No llms.txt found',
+        recommendation:
+          'An llms.txt is a text file in the root directory that explains the most important pages to AI systems. Whether search systems use it is still open. The effort is low.',
+      },
+    },
+  },
+  FAQ_SCHEMA_MISSING: {
+    area: 'AI_VISIBILITY',
+    severity: 'INFO',
+    priority: 'LOW',
+    effort: 'LOW',
+    source: 'RULE',
+    text: {
+      DE: {
+        title: 'Keine FAQ-Auszeichnung gefunden',
+        recommendation:
+          'Wenn eine Seite häufige Kundenfragen beantwortet, kannst du sie mit FAQPage-Markup auszeichnen. Das hilft Maschinen, Frage und Antwort zu erkennen. Google zeigt dafür kaum noch eigene Rich Results.',
+      },
+      EN: {
+        title: 'No FAQ markup found',
+        recommendation:
+          'If a page answers frequent customer questions, you can mark it up with FAQPage markup. This helps machines recognize question and answer. Google rarely shows its own rich results for it anymore.',
+      },
+    },
+  },
   HOMEPAGE_STRUCTURED_DATA_MISSING: {
     area: 'STRUCTURED_DATA',
     severity: 'WARNING',

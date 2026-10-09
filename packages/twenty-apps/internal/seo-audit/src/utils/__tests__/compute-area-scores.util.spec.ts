@@ -26,6 +26,29 @@ describe('computeAreaScores', () => {
     });
   });
 
+  it('scores AI visibility from the readiness and leaves it out without one', () => {
+    const aiReadiness = {
+      crawlerAccess: {
+        GPTBOT: 'ALLOWED',
+        OAI_SEARCHBOT: 'ALLOWED',
+        CLAUDEBOT: 'ALLOWED',
+        PERPLEXITYBOT: 'ALLOWED',
+        GOOGLE_EXTENDED: 'ALLOWED',
+      },
+      llmsTxtFound: false,
+      organizationSchemaFound: true,
+      faqSchemaFound: false,
+    } as const;
+    const findings = [{ ruleId: 'LLMS_TXT_MISSING' as const, affectedUrls: [] }];
+
+    expect(
+      computeAreaScores({ findings, assessments: [], pageCount: 5, aiReadiness }).AI_VISIBILITY,
+    ).toBe(80);
+    expect(
+      computeAreaScores({ findings, assessments: [], pageCount: 5 }).AI_VISIBILITY,
+    ).toBeUndefined();
+  });
+
   it('subtracts penalties only from the area of the finding', () => {
     const scores = computeAreaScores({
       findings: [{ ruleId: 'NOT_HTTPS', affectedUrls: [] }],

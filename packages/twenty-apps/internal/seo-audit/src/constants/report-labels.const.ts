@@ -32,7 +32,7 @@ export const REPORT_LABELS: Record<AuditLanguage, ReportLabels> = {
       'Bei diesen Seiten war die automatische Bewertung unsicher. Sie fließen nicht in die Maßnahmen ein.',
     methodologyHeading: 'Methodik',
     methodology:
-      'Gemessen (Quelle "Regel"): Statuscodes, Titles, Descriptions, Überschriften, Links, HTTPS, Antwortzeit und strukturierte Daten werden vom Code gezählt und nicht geschätzt. Beurteilt (Quelle "Klassifikator"): Seitentyp, Suchintention, Hilfreichkeit, Konkretheit und Vertrauen bewertet ein Sprachmodell. Die Konfidenz ist eine Selbsteinschätzung des Modells und keine berechnete Wahrscheinlichkeit. Rankings, Suchvolumen, Backlinks und Wettbewerber stammen von DataForSEO. Der Sichtbarkeits-Score gewichtet die Platzierungen relevanter Keywords nach Suchvolumen. Die Ladegeschwindigkeit der Startseite auf dem Handy misst Lighthouse über DataForSEO.',
+      'Gemessen (Quelle "Regel"): Statuscodes, Titles, Descriptions, Überschriften, Links, HTTPS, Antwortzeit und strukturierte Daten werden vom Code gezählt und nicht geschätzt. Beurteilt (Quelle "Klassifikator"): Seitentyp, Suchintention, Hilfreichkeit, Konkretheit und Vertrauen bewertet ein Sprachmodell. Die Konfidenz ist eine Selbsteinschätzung des Modells und keine berechnete Wahrscheinlichkeit. Rankings, Suchvolumen, Backlinks und Wettbewerber stammen von DataForSEO. Der Sichtbarkeits-Score gewichtet die Platzierungen relevanter Keywords nach Suchvolumen. Die Ladegeschwindigkeit der Startseite auf dem Handy misst Lighthouse über DataForSEO. Die KI-Bereitschaft prüft robots.txt, llms.txt und strukturierte Daten und misst nicht, ob KI-Systeme die Website tatsächlich nennen.',
     contentNotAssessed:
       'Die Inhaltsqualität wurde nicht bewertet, weil kein Klassifikator konfiguriert war. Der Gesamtscore beruht nur auf gemessenen Regeln.',
     marketDataNotConfigured:
@@ -44,6 +44,19 @@ export const REPORT_LABELS: Record<AuditLanguage, ReportLabels> = {
     largestContentfulPaint: 'Hauptinhalt sichtbar (LCP)',
     layoutShift: 'Layoutverschiebung (CLS)',
     blockingTime: 'Blockierzeit (TBT)',
+    aiReadinessHeading: 'KI-Bereitschaft',
+    aiReadinessIntro:
+      'Zeigt, ob KI-Systeme die Website lesen und einem Unternehmen zuordnen können. Gemessen aus robots.txt, llms.txt und dem Markup der Seiten. Ob die Website in KI-Antworten genannt wird, zeigt diese Prüfung nicht.',
+    aiReadinessCheckColumn: 'Prüfung',
+    aiReadinessStatusColumn: 'Status',
+    crawlerAccess: 'Crawler-Zugriff',
+    crawlerAllowed: 'erlaubt',
+    crawlerBlocked: 'gesperrt',
+    present: 'vorhanden',
+    missing: 'fehlt',
+    llmsTxt: 'llms.txt',
+    organizationMarkup: 'Organisations-Markup auf der Startseite',
+    faqMarkup: 'FAQ-Markup',
     keywordsTotal: 'Keywords mit Google-Ranking',
     trafficEstimate: 'Geschätzte Besucher pro Monat',
     positionsHeading: 'Verteilung der Platzierungen',
@@ -73,6 +86,7 @@ export const REPORT_LABELS: Record<AuditLanguage, ReportLabels> = {
       PERFORMANCE: 'Ladezeit',
       SECURITY: 'Sicherheit',
       VISIBILITY: 'Sichtbarkeit',
+      AI_VISIBILITY: 'KI-Sichtbarkeit',
     },
     priorities: {
       CRITICAL: 'Kritisch',
@@ -113,7 +127,7 @@ export const REPORT_LABELS: Record<AuditLanguage, ReportLabels> = {
       'The automatic assessment was unsure about these pages. They do not feed into the actions.',
     methodologyHeading: 'Methodology',
     methodology:
-      'Measured (source "Rule"): status codes, titles, descriptions, headings, links, HTTPS, response time and structured data are counted by code, never estimated. Judged (source "Classifier"): page type, search intent, helpfulness, specificity and trust are rated by a language model. Confidence is the model self-assessment, not a computed probability. Rankings, search volume, backlinks and competitors come from DataForSEO. The visibility score weights the positions of relevant keywords by search volume. The mobile loading speed of the homepage is measured by Lighthouse through DataForSEO.',
+      'Measured (source "Rule"): status codes, titles, descriptions, headings, links, HTTPS, response time and structured data are counted by code, never estimated. Judged (source "Classifier"): page type, search intent, helpfulness, specificity and trust are rated by a language model. Confidence is the model self-assessment, not a computed probability. Rankings, search volume, backlinks and competitors come from DataForSEO. The visibility score weights the positions of relevant keywords by search volume. The mobile loading speed of the homepage is measured by Lighthouse through DataForSEO. The AI readiness checks robots.txt, llms.txt and structured data and does not measure whether AI systems actually mention the website.',
     contentNotAssessed:
       'Content quality was not assessed because no classifier was configured. The overall score only reflects measured rules.',
     marketDataNotConfigured:
@@ -125,6 +139,19 @@ export const REPORT_LABELS: Record<AuditLanguage, ReportLabels> = {
     largestContentfulPaint: 'Main content visible (LCP)',
     layoutShift: 'Layout shift (CLS)',
     blockingTime: 'Blocking time (TBT)',
+    aiReadinessHeading: 'AI readiness',
+    aiReadinessIntro:
+      'Shows whether AI systems can read the website and attribute it to a business. Measured from robots.txt, llms.txt and the markup of the pages. This check does not show whether the website is mentioned in AI answers.',
+    aiReadinessCheckColumn: 'Check',
+    aiReadinessStatusColumn: 'Status',
+    crawlerAccess: 'Crawler access',
+    crawlerAllowed: 'allowed',
+    crawlerBlocked: 'blocked',
+    present: 'present',
+    missing: 'missing',
+    llmsTxt: 'llms.txt',
+    organizationMarkup: 'Organization markup on the homepage',
+    faqMarkup: 'FAQ markup',
     keywordsTotal: 'Keywords ranking on Google',
     trafficEstimate: 'Estimated monthly visitors',
     positionsHeading: 'Position distribution',
@@ -154,6 +181,7 @@ export const REPORT_LABELS: Record<AuditLanguage, ReportLabels> = {
       PERFORMANCE: 'Performance',
       SECURITY: 'Security',
       VISIBILITY: 'Visibility',
+      AI_VISIBILITY: 'AI visibility',
     },
     priorities: {
       CRITICAL: 'Critical',

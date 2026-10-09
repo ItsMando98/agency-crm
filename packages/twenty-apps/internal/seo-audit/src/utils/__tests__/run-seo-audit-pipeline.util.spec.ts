@@ -72,6 +72,35 @@ describe('runSeoAuditPipeline', () => {
     expect(result.reportMarkdown).toContain('Seiten helfen dem Besucher kaum weiter');
   });
 
+  it('checks how ready the site is for AI crawlers and scores it as its own area', async () => {
+    const site = createFakeFetch({
+      'https://example.com/': { body: goodPage('Start') },
+      'https://example.com/robots.txt': {
+        contentType: 'text/plain',
+        body: 'User-agent: GPTBot\nDisallow: /',
+      },
+      'https://example.com/llms.txt': { contentType: 'text/plain', body: '# Example\n> Handwerk in Berlin' },
+    });
+
+    const result = await runSeoAuditPipeline({
+      domain: 'example.com',
+      language: 'EN',
+      anthropicClient: null,
+      fetchImplementation: site,
+      now: NOW,
+    });
+    const ruleIds = result.tasks.map((task) => task.ruleId);
+
+    expect(result.aiReadiness.crawlerAccess.GPTBOT).toBe('BLOCKED');
+    expect(result.aiReadiness.llmsTxtFound).toBe(true);
+    expect(ruleIds).toContain('AI_CRAWLERS_BLOCKED');
+    expect(ruleIds).toContain('FAQ_SCHEMA_MISSING');
+    expect(ruleIds).not.toContain('LLMS_TXT_MISSING');
+    expect(result.areaScores.AI_VISIBILITY).toBe(80);
+    expect(result.reportMarkdown).toContain('## AI readiness');
+    expect(result.reportMarkdown).toContain('| Crawler access: GPTBot | blocked |');
+  });
+
   it('runs on measured rules only when no classifier is configured', async () => {
     const result = await runSeoAuditPipeline({
       domain: 'https://example.com',

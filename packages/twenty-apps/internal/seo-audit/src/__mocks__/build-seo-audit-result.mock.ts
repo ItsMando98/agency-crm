@@ -1,3 +1,4 @@
+import { buildAiReadiness } from 'src/__mocks__/build-ai-readiness.mock';
 import { buildCrawledPage } from 'src/__mocks__/build-crawled-page.mock';
 import { buildScoredKeyword } from 'src/__mocks__/build-scored-keyword.mock';
 import { type SeoAuditResult } from 'src/types/seo-audit-result';
@@ -12,6 +13,7 @@ export const buildSeoAuditResult = (
     origin: 'https://www.kanzlei-beispiel.de',
     language,
     generatedAt: '2026-10-06T10:00:00.000Z',
+    aiReadiness: buildAiReadiness(),
     score: 84,
     grade: 'B',
     areaScores: {

@@ -77,6 +77,53 @@ describe('crawlWebsite', () => {
     expect(result.sitemapFound).toBe(false);
   });
 
+  it('keeps the robots.txt content so the AI crawler rules can be read from it', async () => {
+    const result = await crawlWebsite({
+      origin: 'https://example.com',
+      fetchImplementation: createFakeFetch(SITE),
+    });
+
+    expect(result.robotsTxt).toContain('Disallow: /private');
+  });
+
+  it('finds an llms.txt and ignores an HTML error page served in its place', async () => {
+    const withLlmsTxt = await crawlWebsite({
+      origin: 'https://example.com',
+      fetchImplementation: createFakeFetch({
+        ...SITE,
+        'https://example.com/llms.txt': { contentType: 'text/plain', body: '# Example\n> About us' },
+      }),
+    });
+    const withErrorPage = await crawlWebsite({
+      origin: 'https://example.com',
+      fetchImplementation: createFakeFetch({
+        ...SITE,
+        'https://example.com/llms.txt': { contentType: 'text/html', body: '<html>Not found</html>' },
+      }),
+    });
+    const withEmptyFile = await crawlWebsite({
+      origin: 'https://example.com',
+      fetchImplementation: createFakeFetch({
+        ...SITE,
+        'https://example.com/llms.txt': { contentType: 'text/plain', body: '  \n' },
+      }),
+    });
+
+    expect(withLlmsTxt.llmsTxtFound).toBe(true);
+    expect(withErrorPage.llmsTxtFound).toBe(false);
+    expect(withEmptyFile.llmsTxtFound).toBe(false);
+  });
+
+  it('reports no robots.txt content and no llms.txt for a bare site', async () => {
+    const result = await crawlWebsite({
+      origin: 'https://example.com',
+      fetchImplementation: createFakeFetch({ 'https://example.com/': { body: page('Home', []) } }),
+    });
+
+    expect(result.robotsTxt).toBeNull();
+    expect(result.llmsTxtFound).toBe(false);
+  });
+
   it('follows the homepage redirect to the canonical origin', async () => {
     const result = await crawlWebsite({
       origin: 'http://example.com',

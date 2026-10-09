@@ -10,6 +10,8 @@ const buildCrawlResult = (origin: string, insecureResourceUrls: string[] = []): 
   linkTargetStatusCodes: {},
   linksByPage: {},
   robotsTxtFound: true,
+  robotsTxt: null,
+  llmsTxtFound: false,
   sitemapFound: true,
   blockedByRobotsCount: 0,
 });

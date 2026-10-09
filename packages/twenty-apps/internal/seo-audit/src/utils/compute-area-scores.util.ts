@@ -1,10 +1,12 @@
 import { FINDING_CATALOG } from 'src/constants/finding-catalog.const';
 import { SEO_AREA } from 'src/constants/seo-audit.constants';
+import { type AiReadiness } from 'src/types/ai-readiness';
 import { type AreaScores } from 'src/types/area-scores';
 import { type Finding } from 'src/types/finding';
 import { type PageAssessment } from 'src/types/page-assessment';
 import { type ScoredKeyword } from 'src/types/scored-keyword';
 import { type SeoArea } from 'src/types/seo-area';
+import { computeAiReadinessScore } from 'src/utils/compute-ai-readiness-score.util';
 import { computeContentQualityScore } from 'src/utils/compute-content-quality-score.util';
 import { computeFindingPenalty } from 'src/utils/compute-finding-penalty.util';
 import { computeVisibilityScore } from 'src/utils/compute-visibility-score.util';
@@ -14,6 +16,7 @@ type ComputeAreaScoresParams = {
   assessments: PageAssessment[];
   pageCount: number;
   keywords?: ScoredKeyword[];
+  aiReadiness?: AiReadiness | null;
 };
 
 const clampScore = (score: number): number =>
@@ -24,6 +27,7 @@ export const computeAreaScores = ({
   assessments,
   pageCount,
   keywords = [],
+  aiReadiness = null,
 }: ComputeAreaScoresParams): AreaScores => {
   const scores: AreaScores = {};
 
@@ -43,6 +47,15 @@ export const computeAreaScores = ({
 
       if (visibilityScore !== null) {
         scores[area] = clampScore(visibilityScore);
+      }
+
+      continue;
+    }
+
+    // The readiness score already contains what the AI findings say.
+    if (area === SEO_AREA.AI_VISIBILITY) {
+      if (aiReadiness !== null) {
+        scores[area] = clampScore(computeAiReadinessScore(aiReadiness));
       }
 
       continue;

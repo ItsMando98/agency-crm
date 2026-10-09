@@ -41,6 +41,18 @@ export type ReportLabels = {
   largestContentfulPaint: string;
   layoutShift: string;
   blockingTime: string;
+  aiReadinessHeading: string;
+  aiReadinessIntro: string;
+  aiReadinessCheckColumn: string;
+  aiReadinessStatusColumn: string;
+  crawlerAccess: string;
+  crawlerAllowed: string;
+  crawlerBlocked: string;
+  present: string;
+  missing: string;
+  llmsTxt: string;
+  organizationMarkup: string;
+  faqMarkup: string;
   keywordsTotal: string;
   trafficEstimate: string;
   positionsHeading: string;

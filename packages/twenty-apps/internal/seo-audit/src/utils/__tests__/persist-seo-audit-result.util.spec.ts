@@ -1,5 +1,6 @@
 import { describe, expect, it, vi } from 'vitest';
 
+import { buildAiReadiness } from 'src/__mocks__/build-ai-readiness.mock';
 import { buildCrawledPage } from 'src/__mocks__/build-crawled-page.mock';
 import { buildScoredKeyword } from 'src/__mocks__/build-scored-keyword.mock';
 import { persistSeoAuditResult } from 'src/utils/persist-seo-audit-result.util';
@@ -10,6 +11,7 @@ const buildResult = (overrides: Partial<SeoAuditResult> = {}): SeoAuditResult =>
   language: 'EN',
   generatedAt: '2026-10-06T10:00:00.000Z',
   brokenBacklinkTargets: [],
+  aiReadiness: buildAiReadiness(),
   score: 81,
   grade: 'B',
   areaScores: { SECURITY: 98 },

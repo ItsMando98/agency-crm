@@ -1,3 +1,4 @@
+import { type AiReadiness } from 'src/types/ai-readiness';
 import { type AuditLanguage } from 'src/types/audit-language';
 import { type BacklinkTarget } from 'src/types/backlink-target';
 import { type CrawlResult } from 'src/types/crawl-result';
@@ -6,6 +7,7 @@ import { type MarketData } from 'src/types/market-data';
 import { type PageAssessment } from 'src/types/page-assessment';
 import { type ScoredKeyword } from 'src/types/scored-keyword';
 import { type SiteProfile } from 'src/types/site-profile';
+import { checkAiReadiness } from 'src/utils/check-ai-readiness.util';
 import { checkContentQuality } from 'src/utils/check-content-quality.util';
 import { checkCoreWebVitals } from 'src/utils/check-core-web-vitals.util';
 import { checkCrawlability } from 'src/utils/check-crawlability.util';
@@ -24,6 +26,7 @@ type BuildFindingsParams = {
   marketData?: MarketData | null;
   keywords?: ScoredKeyword[];
   brokenBacklinkTargets?: BacklinkTarget[];
+  aiReadiness?: AiReadiness | null;
 };
 
 export const buildFindings = ({
@@ -34,6 +37,7 @@ export const buildFindings = ({
   marketData = null,
   keywords = [],
   brokenBacklinkTargets = [],
+  aiReadiness = null,
 }: BuildFindingsParams): Finding[] => [
   ...checkCrawlability(crawlResult),
   ...checkOnPage(crawlResult.pages),
@@ -44,4 +48,5 @@ export const buildFindings = ({
   ...checkStructuredData(crawlResult.pages, siteProfile),
   ...checkContentQuality(crawlResult.pages, assessments),
   ...checkVisibility({ marketData, keywords, brokenBacklinkTargets, language }),
+  ...(aiReadiness === null ? [] : checkAiReadiness({ aiReadiness, language })),
 ];

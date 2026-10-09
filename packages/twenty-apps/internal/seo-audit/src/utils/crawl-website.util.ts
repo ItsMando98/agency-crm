@@ -24,6 +24,16 @@ type CrawlWebsiteParams = {
 const isHtmlContentType = (contentType: string | null): boolean =>
   /html/i.test(contentType ?? '');
 
+// Servers often answer a missing text file with an HTML error page and status 200.
+const isTextFileResponse = (response: {
+  statusCode: number;
+  body: string | null;
+  contentType: string | null;
+}): boolean =>
+  response.statusCode === 200 &&
+  response.body !== null &&
+  !isHtmlContentType(response.contentType);
+
 export const crawlWebsite = async ({
   origin,
   maxPages = MAX_CRAWLED_PAGES,
@@ -43,11 +53,13 @@ export const crawlWebsite = async ({
 
   const siteOrigin = new URL(homepageResponse.url).origin;
   const robotsResponse = await fetchWith(`${siteOrigin}/robots.txt`);
-  const robotsTxtFound =
-    robotsResponse.statusCode === 200 &&
-    robotsResponse.body !== null &&
-    !isHtmlContentType(robotsResponse.contentType);
-  const robotsRules = parseRobotsRules(robotsTxtFound ? (robotsResponse.body ?? '') : '');
+  const robotsTxtFound = isTextFileResponse(robotsResponse);
+  const robotsTxt = robotsTxtFound ? (robotsResponse.body ?? '') : null;
+  const robotsRules = parseRobotsRules(robotsTxt ?? '');
+  const llmsTxtResponse = await fetchWith(`${siteOrigin}/llms.txt`);
+  const llmsTxtFound =
+    isTextFileResponse(llmsTxtResponse) &&
+    (llmsTxtResponse.body ?? '').trim() !== '';
 
   const sitemapQueue = (
     robotsRules.sitemapUrls.length > 0
@@ -213,6 +225,8 @@ export const crawlWebsite = async ({
     linkTargetStatusCodes,
     linksByPage,
     robotsTxtFound,
+    robotsTxt,
+    llmsTxtFound,
     sitemapFound,
     blockedByRobotsCount,
   };

@@ -211,7 +211,7 @@ Zurückgestellt: Lead-Magnet-Sperre im Report (3 bis 5 Findings sichtbar, Rest a
 |---|---|---|
 | 0 | Smoke-Test, Fixtures, Entscheidung 1 | 0,5 Tag |
 | 1 | Lighthouse | 1 Tag (**umgesetzt am 2026-10-09**, 587 Tests grün, Build ok, noch nicht committet und nicht deployt) |
-| 2a | AI-Readiness | 1 Tag |
+| 2a | AI-Readiness | 1 Tag (**umgesetzt am 2026-10-09**, 618 Tests grün, Build ok, noch nicht deployt) |
 | 2b | AI-Presence | 2 bis 3 Tage |
 | 3 | Report, Excel, Vergleich, Agent-Tools | 1,5 Tage |
 | 4 | Release auf `roaswell`, Test-Audit | 0,5 Tag |

@@ -10,6 +10,8 @@ const buildCrawlResult = (overrides: Partial<CrawlResult> = {}): CrawlResult => 
   linkTargetStatusCodes: {},
   linksByPage: {},
   robotsTxtFound: true,
+  robotsTxt: null,
+  llmsTxtFound: false,
   sitemapFound: true,
   blockedByRobotsCount: 0,
   ...overrides,
@@ -44,6 +46,8 @@ describe('checkCrawlability', () => {
         buildCrawledPage({ url: 'https://example.com/err', statusCode: 500, isHtml: false }),
       ],
       robotsTxtFound: false,
+      robotsTxt: null,
+      llmsTxtFound: false,
       sitemapFound: false,
     });
 

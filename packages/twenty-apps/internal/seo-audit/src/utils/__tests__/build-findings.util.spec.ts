@@ -11,6 +11,8 @@ const buildCrawlResult = (): CrawlResult => ({
   linkTargetStatusCodes: {},
   linksByPage: {},
   robotsTxtFound: true,
+  robotsTxt: null,
+  llmsTxtFound: false,
   sitemapFound: true,
   blockedByRobotsCount: 0,
 });
@@ -69,6 +71,8 @@ describe('buildFindings', () => {
         linkTargetStatusCodes: {},
         linksByPage: {},
         robotsTxtFound: false,
+        robotsTxt: null,
+        llmsTxtFound: false,
         sitemapFound: true,
         blockedByRobotsCount: 0,
       },

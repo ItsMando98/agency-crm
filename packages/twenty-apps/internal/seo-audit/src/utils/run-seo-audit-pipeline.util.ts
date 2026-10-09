@@ -23,6 +23,7 @@ import { buildReportMarkdown } from 'src/utils/build-report-markdown.util';
 import { computeAreaScores } from 'src/utils/compute-area-scores.util';
 import { computeOverallScore } from 'src/utils/compute-overall-score.util';
 import { crawlWebsite } from 'src/utils/crawl-website.util';
+import { evaluateAiReadiness } from 'src/utils/evaluate-ai-readiness.util';
 import { isAuditablePage } from 'src/utils/is-auditable-page.util';
 import { normalizeAuditDomain } from 'src/utils/normalize-audit-domain.util';
 import { resolveBrokenBacklinkTargets } from 'src/utils/resolve-broken-backlink-targets.util';
@@ -58,6 +59,7 @@ export const runSeoAuditPipeline = async ({
   const origin = normalizeAuditDomain(domain);
   const crawlResult = await crawlWebsite({ origin, maxPages, fetchImplementation });
   const auditablePages = crawlResult.pages.filter(isAuditablePage);
+  const aiReadiness = evaluateAiReadiness(crawlResult);
   const [homepage] = crawlResult.pages;
 
   const [siteProfile, assessments, marketData] = await Promise.all([
@@ -127,12 +129,14 @@ export const runSeoAuditPipeline = async ({
     marketData,
     keywords,
     brokenBacklinkTargets,
+    aiReadiness,
   });
   const areaScores = computeAreaScores({
     findings,
     assessments,
     pageCount: crawlResult.pages.length,
     keywords,
+    aiReadiness,
   });
   const score = computeOverallScore(areaScores);
   const grade = scoreToGrade(score);
@@ -151,6 +155,7 @@ export const runSeoAuditPipeline = async ({
     marketData,
     keywords,
     isMarketDataConfigured: dataForSeoCredentials !== null,
+    aiReadiness,
   });
 
   return {
@@ -158,6 +163,7 @@ export const runSeoAuditPipeline = async ({
     language,
     generatedAt: now.toISOString(),
     brokenBacklinkTargets,
+    aiReadiness,
     score,
     grade,
     areaScores,

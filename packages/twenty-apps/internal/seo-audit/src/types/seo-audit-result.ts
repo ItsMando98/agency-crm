@@ -1,3 +1,4 @@
+import { type AiReadiness } from 'src/types/ai-readiness';
 import { type AreaScores } from 'src/types/area-scores';
 import { type AuditLanguage } from 'src/types/audit-language';
 import { type AuditTask } from 'src/types/audit-task';
@@ -13,6 +14,7 @@ export type SeoAuditResult = {
   // ISO timestamp of when the audit finished.
   generatedAt: string;
   brokenBacklinkTargets: BacklinkTarget[];
+  aiReadiness: AiReadiness;
   score: number;
   grade: string;
   areaScores: AreaScores;

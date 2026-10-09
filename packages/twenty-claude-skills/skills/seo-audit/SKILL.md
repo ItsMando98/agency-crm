@@ -40,7 +40,7 @@ Use the connected Twenty MCP server: `learn_tools` to see the SEO audit tools an
 ## Reading the result
 
 - Score runs from 0 to 100. 80 and above is strong, 60 to 79 is okay, below 60 is weak. Grades go from A (90+) to F.
-- Areas: CRAWLABILITY, ON_PAGE, CONTENT_QUALITY, LINKS, STRUCTURED_DATA, PERFORMANCE, SECURITY and VISIBILITY. VISIBILITY only exists when DataForSEO is configured.
+- Areas: CRAWLABILITY, ON_PAGE, CONTENT_QUALITY, LINKS, STRUCTURED_DATA, PERFORMANCE, SECURITY, VISIBILITY and AI_VISIBILITY. VISIBILITY only exists when DataForSEO is configured. AI_VISIBILITY measures how ready the site is for AI crawlers (robots.txt access, llms.txt, organization and FAQ markup), not whether AI systems mention it.
 - Task source RULE means the code measured it, so it is a fact. Source CLASSIFIER means a model judged content quality or relevance, so treat it as a well-founded opinion that a person should skim.
 - Pages and keywords with needsReview true were judged with low confidence. Do not present them as facts. Say they need a manual look.
 - Priority sets the order, effort sets the cost. Critical or high priority with low effort belongs in the first week. Other high priority work fits the first month, the rest into the quarter.
