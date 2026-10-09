@@ -6,6 +6,7 @@ import {
 import { DataForSeoError } from 'src/dataforseo-client/dataforseo-error';
 import { type DataForSeoCredentials } from 'src/types/data-for-seo-credentials';
 import { classifyDataForSeoStatus } from 'src/utils/classify-dataforseo-status.util';
+import { describeDataForSeoFailure } from 'src/utils/describe-dataforseo-failure.util';
 
 type RequestDataForSeoParams = {
   credentials: DataForSeoCredentials;
@@ -60,9 +61,15 @@ export const requestDataForSeo = async ({
   }
 
   if (!response.ok) {
+    const kind = classifyDataForSeoStatus(response.status);
+
     throw new DataForSeoError(
-      classifyDataForSeoStatus(response.status),
-      payload?.status_message ?? `HTTP ${response.status}`,
+      kind,
+      describeDataForSeoFailure({
+        kind,
+        code: payload?.status_code ?? response.status,
+        message: payload?.status_message ?? `HTTP ${response.status}`,
+      }),
     );
   }
 
@@ -73,11 +80,17 @@ export const requestDataForSeo = async ({
   );
 
   if (payload === null || failingCode !== undefined || task === undefined) {
+    const kind = classifyDataForSeoStatus(failingCode ?? 0);
+
     throw new DataForSeoError(
-      classifyDataForSeoStatus(failingCode ?? 0),
-      task?.status_message ??
-        payload?.status_message ??
-        'Unexpected DataForSEO response',
+      kind,
+      payload === null
+        ? 'Unexpected DataForSEO response'
+        : describeDataForSeoFailure({
+            kind,
+            code: failingCode,
+            message: task?.status_message ?? payload.status_message,
+          }),
     );
   }
 

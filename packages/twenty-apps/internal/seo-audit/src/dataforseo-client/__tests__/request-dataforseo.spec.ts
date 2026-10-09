@@ -64,6 +64,56 @@ describe('requestDataForSeo', () => {
     await expect(request).rejects.toMatchObject({ message: 'Access denied. Visit the pricing page.' });
   });
 
+  it('says that the balance is used up on an HTTP 402', async () => {
+    const { fetchImplementation } = createRecordingFetch(() => ({
+      status: 402,
+      json: { status_code: 40200, status_message: 'Payment Required.', tasks: null },
+    }));
+
+    await expect(
+      requestDataForSeo({ credentials: CREDENTIALS, path: '/v3/x', fetchImplementation }),
+    ).rejects.toMatchObject({
+      kind: 'PAYMENT',
+      message: 'The DataForSEO balance is used up (Payment Required, code 40200). Top up the account.',
+    });
+  });
+
+  it('says that the balance is used up when the payment error sits inside a 200 response', async () => {
+    const { fetchImplementation } = createRecordingFetch(() => ({
+      json: buildDataForSeoEnvelope(null, { taskStatusCode: 40200, statusMessage: 'Payment Required.' }),
+    }));
+
+    await expect(
+      requestDataForSeo({ credentials: CREDENTIALS, path: '/v3/x', fetchImplementation }),
+    ).rejects.toMatchObject({
+      kind: 'PAYMENT',
+      message: 'The DataForSEO balance is used up (Payment Required, code 40200). Top up the account.',
+    });
+  });
+
+  it('explains an answer that carries no task instead of repeating "Ok."', async () => {
+    const { fetchImplementation } = createRecordingFetch(() => ({
+      json: { status_code: 20000, status_message: 'Ok.', tasks: null },
+    }));
+
+    await expect(
+      requestDataForSeo({ credentials: CREDENTIALS, path: '/v3/x', fetchImplementation }),
+    ).rejects.toMatchObject({
+      kind: 'OTHER',
+      message: 'DataForSEO returned no task for this request. The account balance may be used up.',
+    });
+  });
+
+  it('adds the code when the message says nothing', async () => {
+    const { fetchImplementation } = createRecordingFetch(() => ({
+      json: buildDataForSeoEnvelope(null, { taskStatusCode: 50000, statusMessage: 'Ok.' }),
+    }));
+
+    await expect(
+      requestDataForSeo({ credentials: CREDENTIALS, path: '/v3/x', fetchImplementation }),
+    ).rejects.toMatchObject({ message: 'DataForSEO error code 50000' });
+  });
+
   it('rejects a response without tasks', async () => {
     const { fetchImplementation } = createRecordingFetch(() => ({ json: { status_code: 20000 } }));
 
