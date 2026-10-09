@@ -44,6 +44,10 @@ export const AI_MIN_QUERIES = 5;
 export const AI_MAX_REQUESTS = 30;
 export const AI_REQUEST_CONCURRENCY = 4;
 export const AI_REQUEST_TIMEOUT_MS = 90_000;
+// Engines sometimes refuse a burst of requests. A pause and a second try usually gets the answer.
+export const AI_MAX_ATTEMPTS = 3;
+export const AI_RETRY_DELAY_MS = 3_000;
+export const AI_RETRYABLE_ERROR_PATTERN = /rate_limit|rate limit|too many requests|unavailable|429/i;
 export const AI_DEADLINE_MS = 240_000;
 export const AI_MIN_ANSWER_LENGTH = 20;
 export const AI_MIN_BRAND_NAME_LENGTH = 4;

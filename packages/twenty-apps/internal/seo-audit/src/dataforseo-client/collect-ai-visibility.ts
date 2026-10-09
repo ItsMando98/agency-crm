@@ -1,10 +1,13 @@
 import {
   AI_DEADLINE_MS,
   AI_ENGINES,
+  AI_MAX_ATTEMPTS,
   AI_MAX_COMPETITORS_SHOWN,
   AI_MAX_REQUESTS,
   AI_MENTIONED_WEIGHT,
   AI_REQUEST_CONCURRENCY,
+  AI_RETRY_DELAY_MS,
+  AI_RETRYABLE_ERROR_PATTERN,
 } from 'src/constants/ai-visibility.const';
 import { fetchAiAnswer } from 'src/dataforseo-client/fetch-ai-answer';
 import {
@@ -25,6 +28,7 @@ type CollectAiVisibilityParams = {
   now: Date;
   deadlineMs?: number;
   maxRequests?: number;
+  retryDelayMs?: number;
   fetchImplementation?: typeof fetch;
 };
 
@@ -34,6 +38,9 @@ type Outcome =
   | { task: Task; kind: 'ANSWERED'; status: AiAnswerStatus; competitorDomains: string[]; cost: number }
   | { task: Task; kind: 'FAILED'; message: string }
   | { task: Task; kind: 'SKIPPED'; reason: 'DEADLINE' | 'REQUEST_LIMIT' };
+
+const wait = (milliseconds: number): Promise<void> =>
+  new Promise((resolve) => setTimeout(resolve, milliseconds));
 
 const describeSkipped = (
   count: number,
@@ -102,6 +109,7 @@ export const collectAiVisibility = async ({
   now,
   deadlineMs = AI_DEADLINE_MS,
   maxRequests = AI_MAX_REQUESTS,
+  retryDelayMs = AI_RETRY_DELAY_MS,
   fetchImplementation,
 }: CollectAiVisibilityParams): Promise<AiVisibility> => {
   const tasks: Task[] = queries.flatMap((query) =>
@@ -124,26 +132,38 @@ export const collectAiVisibility = async ({
 
       startedRequests += 1;
 
-      try {
-        const { answer, cost } = await fetchAiAnswer({
-          credentials,
-          engine: task.engine,
-          query: task.query,
-          fetchImplementation,
-        });
+      let attempt = 0;
 
-        return {
-          task,
-          kind: 'ANSWERED',
-          cost,
-          ...classifyAiAnswer({ answer, ownDomain, brandNames }),
-        };
-      } catch (error) {
-        return {
-          task,
-          kind: 'FAILED',
-          message: error instanceof Error ? error.message : 'request failed',
-        };
+      for (;;) {
+        attempt += 1;
+
+        try {
+          const { answer, cost } = await fetchAiAnswer({
+            credentials,
+            engine: task.engine,
+            query: task.query,
+            fetchImplementation,
+          });
+
+          return {
+            task,
+            kind: 'ANSWERED',
+            cost,
+            ...classifyAiAnswer({ answer, ownDomain, brandNames }),
+          };
+        } catch (error) {
+          const message = error instanceof Error ? error.message : 'request failed';
+          const canTryAgain =
+            attempt < AI_MAX_ATTEMPTS &&
+            AI_RETRYABLE_ERROR_PATTERN.test(message) &&
+            Date.now() < deadline;
+
+          if (!canTryAgain) {
+            return { task, kind: 'FAILED', message };
+          }
+
+          await wait(retryDelayMs * attempt);
+        }
       }
     },
   );

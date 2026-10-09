@@ -40,6 +40,7 @@ describe('generateAiQueries', () => {
     const request = create.mock.calls[0][0] as { system: string; messages: { content: string }[] };
 
     expect(request.system).toContain('never use the name');
+    expect(request.system).toContain('never address the business directly');
     expect(request.messages[0].content).toContain('Kanzlei Beispiel | Arbeitsrecht Berlin');
     expect(request.messages[0].content).toContain('Fachanwälte für Arbeitsrecht in Berlin.');
     expect(request.messages[0].content).toContain('Serves a local area: yes');

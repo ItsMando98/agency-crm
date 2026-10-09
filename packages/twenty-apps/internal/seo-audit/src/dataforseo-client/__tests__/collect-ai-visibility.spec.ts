@@ -101,6 +101,76 @@ describe('collectAiVisibility', () => {
     expect(visibility.rows.map((row) => row.results.CHATGPT)).toEqual(['ABSENT', 'ABSENT']);
   });
 
+  it('asks a rate limited engine again after a pause and keeps the answer', async () => {
+    let geminiAttempts = 0;
+    const { fetchImplementation, requests } = createRecordingFetch(({ url }) => {
+      if (!url.includes('/gemini/')) {
+        return { json: buildDataForSeoEnvelope(buildLlmResult({ sourceUrls: ['https://rival.de/'] })) };
+      }
+
+      geminiAttempts += 1;
+
+      return geminiAttempts === 1
+        ? {
+            json: buildDataForSeoEnvelope(null, {
+              taskStatusCode: 50000,
+              statusMessage: '3rd Party API Service Unavailable (rate_limit_exceeded).',
+            }),
+          }
+        : { json: buildDataForSeoEnvelope(buildLlmResult({ sourceUrls: ['https://www.kanzlei-beispiel.de/'] })) };
+    });
+
+    const visibility = await collectAiVisibility({
+      ...PARAMS,
+      queries: ['Frage eins zur Kanzlei?'],
+      retryDelayMs: 0,
+      fetchImplementation,
+    });
+
+    expect(requests.filter((request) => request.url.includes('/gemini/'))).toHaveLength(2);
+    expect(visibility.rows[0].results.GEMINI).toBe('CITED');
+    expect(visibility.notes).toEqual([]);
+  });
+
+  it('gives up after three attempts and notes the engine once', async () => {
+    const { fetchImplementation, requests } = createRecordingFetch(({ url }) =>
+      url.includes('/gemini/')
+        ? {
+            json: buildDataForSeoEnvelope(null, {
+              taskStatusCode: 50000,
+              statusMessage: '3rd Party API Service Unavailable (rate_limit_exceeded).',
+            }),
+          }
+        : { json: buildDataForSeoEnvelope(buildLlmResult()) },
+    );
+
+    const visibility = await collectAiVisibility({
+      ...PARAMS,
+      queries: ['Frage eins zur Kanzlei?', 'Frage zwei zur Kanzlei?'],
+      retryDelayMs: 0,
+      fetchImplementation,
+    });
+
+    expect(requests.filter((request) => request.url.includes('/gemini/'))).toHaveLength(6);
+    expect(visibility.rows.map((row) => row.results.GEMINI)).toEqual(['UNKNOWN', 'UNKNOWN']);
+    expect(visibility.notes).toEqual(['Gemini: 3rd Party API Service Unavailable (rate_limit_exceeded).']);
+  });
+
+  it('does not ask again after an error that more attempts cannot fix', async () => {
+    const { fetchImplementation, requests } = createRecordingFetch(() => ({
+      json: buildDataForSeoEnvelope(null, { taskStatusCode: 40501, statusMessage: 'Invalid Field: model_name.' }),
+    }));
+
+    await collectAiVisibility({
+      ...PARAMS,
+      queries: ['Frage eins zur Kanzlei?'],
+      retryDelayMs: 0,
+      fetchImplementation,
+    });
+
+    expect(requests).toHaveLength(3);
+  });
+
   it('stops asking once the request limit is used up', async () => {
     const { fetchImplementation, requests } = createRecordingFetch(
       respondByEngine({ chat_gpt: buildLlmResult(), perplexity: buildLlmResult(), gemini: buildLlmResult() }),

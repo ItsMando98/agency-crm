@@ -573,12 +573,12 @@ export const FINDING_CATALOG: Record<FindingRuleId, FindingDefinition> = {
     source: 'RULE',
     text: {
       DE: {
-        title: 'Bei {count} typischen Kundenfragen nennt keine KI-Antwort die Website',
+        title: 'Bei {count} typischen Kundenfragen nennt keine der ausgewerteten KI-Antworten die Website',
         recommendation:
           'KI-Systeme nennen vor allem Seiten, die eine Frage direkt und mit konkreten Angaben beantworten. Lege zu diesen Fragen eigene Seiten oder Abschnitte an, etwa zu Leistung, Preis, Ablauf und Vergleich, und belege sie mit Zahlen und Quellen. Die Antworten der KI-Systeme schwanken von Lauf zu Lauf, der Befund ist eine Stichprobe.',
       },
       EN: {
-        title: 'For {count} typical customer questions no AI answer names the website',
+        title: 'For {count} typical customer questions none of the evaluated AI answers names the website',
         recommendation:
           'AI systems mostly name pages that answer a question directly and with concrete detail. Create pages or sections for these questions, for example on service, price, process and comparison, and back them with numbers and sources. AI answers vary from run to run, so this finding is a sample.',
       },
