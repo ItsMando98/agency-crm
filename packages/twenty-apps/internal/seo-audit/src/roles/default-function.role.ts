@@ -11,5 +11,9 @@ export default defineApplicationRole({
   canSoftDeleteAllObjectRecords: false,
   canDestroyAllObjectRecords: false,
   // The Setup page runs as this role and calls findOneApplication, which requires the Applications setting.
-  permissionFlagUniversalIdentifiers: [SystemPermissionFlag.APPLICATIONS],
+  // The audit run uploads the Excel and PDF exports to the audit record, which requires the upload permission.
+  permissionFlagUniversalIdentifiers: [
+    SystemPermissionFlag.APPLICATIONS,
+    SystemPermissionFlag.UPLOAD_FILE,
+  ],
 });
