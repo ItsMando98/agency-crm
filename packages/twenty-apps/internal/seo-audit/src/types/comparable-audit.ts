@@ -6,5 +6,10 @@ export type ComparableAudit = {
   estimatedMonthlyTraffic: number | null;
   backlinkCount: number | null;
   referringDomainCount: number | null;
+  mobilePerformanceScore: number | null;
+  mobileLcpMs: number | null;
+  mobileCls: number | null;
+  mobileTbtMs: number | null;
+  aiPresenceRate: number | null;
   tasks: { ruleId: string | null; name: string; priority: string }[];
 };

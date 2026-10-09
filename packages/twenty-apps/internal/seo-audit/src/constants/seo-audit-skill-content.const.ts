@@ -20,16 +20,16 @@ export const SEO_AUDIT_SKILL_CONTENT = `You run and interpret SEO audits for web
 
 - \`app_list_seo_audits\`: find audits by companyId, domain or status, newest first.
 - \`app_start_seo_audit\`: queue an audit for a domain or company. Returns an auditId at once.
-- \`app_get_seo_audit\`: status while running, full result when done.
+- \`app_get_seo_audit\`: status while running, full result when done. It also returns the mobile speed of the homepage (Lighthouse) when DataForSEO is configured and the AI answers when the AI visibility check ran.
 - \`app_list_seo_audit_tasks\`: action items with fix description, affected URLs, priority, effort, area, source and status. Filter by status, priority or area.
 - \`app_update_seo_audit_tasks\`: change the status of up to 50 tasks per call.
 - \`app_list_seo_keywords\`: ranking keywords with position, search volume and category. Needs DataForSEO.
-- \`app_compare_seo_audits\`: change against the previous finished audit of the same website.
+- \`app_compare_seo_audits\`: change against the previous finished audit of the same website, including mobile speed and AI presence. When \`scoreNote\` is set, the two overall scores cover different areas, so compare the area scores.
 
 ## Reading the result
 
 - Score runs from 0 to 100. 80 and above is strong, 60 to 79 is okay, below 60 is weak. Grades go from A (90+) to F.
-- Areas: CRAWLABILITY, ON_PAGE, CONTENT_QUALITY, LINKS, STRUCTURED_DATA, PERFORMANCE, SECURITY, VISIBILITY and AI_VISIBILITY. VISIBILITY only exists when DataForSEO is configured. AI_VISIBILITY measures how ready the site is for AI crawlers (robots.txt access, llms.txt, organization and FAQ markup), not whether AI systems mention it.
+- Areas: CRAWLABILITY, ON_PAGE, CONTENT_QUALITY, LINKS, STRUCTURED_DATA, PERFORMANCE, SECURITY, VISIBILITY and AI_VISIBILITY. VISIBILITY only exists when DataForSEO is configured. AI_VISIBILITY combines how ready the site is for AI crawlers (robots.txt access, llms.txt, organization and FAQ markup) with, when the optional and paid AI visibility check is switched on in the Variables tab, how often ChatGPT, Perplexity and Gemini name the site in answers to typical customer questions. Those answers vary from run to run, so treat them as a sample.
 - Task source RULE means the code measured it, so it is a fact. Source CLASSIFIER means a model judged content quality or relevance, so treat it as a well-founded opinion that a person should skim.
 - Pages and keywords with needsReview true were judged with low confidence. Do not present them as facts. Say they need a manual look.
 - Priority sets the order, effort sets the cost. Critical or high priority with low effort belongs in the first week. Other high priority work fits the first month, the rest into the quarter.

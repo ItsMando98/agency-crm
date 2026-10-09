@@ -23,6 +23,11 @@ const AUDIT_FIELDS = {
   estimatedMonthlyTraffic: true,
   backlinkCount: true,
   referringDomainCount: true,
+  mobilePerformanceScore: true,
+  mobileLcpMs: true,
+  mobileCls: true,
+  mobileTbtMs: true,
+  aiPresenceRate: true,
 } as const;
 
 export type LoadedAudit = {
@@ -65,6 +70,11 @@ export const loadComparableAudit = async (
       estimatedMonthlyTraffic: asFiniteNumber(node.estimatedMonthlyTraffic),
       backlinkCount: asFiniteNumber(node.backlinkCount),
       referringDomainCount: asFiniteNumber(node.referringDomainCount),
+      mobilePerformanceScore: asFiniteNumber(node.mobilePerformanceScore),
+      mobileLcpMs: asFiniteNumber(node.mobileLcpMs),
+      mobileCls: asFiniteNumber(node.mobileCls),
+      mobileTbtMs: asFiniteNumber(node.mobileTbtMs),
+      aiPresenceRate: asFiniteNumber(node.aiPresenceRate),
       tasks: ((seoAuditTasks?.edges ?? []) as { node: Record<string, unknown> }[]).map(({ node: task }) => ({
         ruleId: typeof task.ruleId === 'string' ? task.ruleId : null,
         name: String(task.name ?? ''),

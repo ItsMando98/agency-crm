@@ -35,6 +35,26 @@ describe('get_seo_audit', () => {
     expect(await handler({ auditId: 'nope' })).toMatchObject({ success: false });
   });
 
+  it('asks for the mobile speed values and the AI answers', async () => {
+    queryMock.mockResolvedValueOnce(audit('RUNNING'));
+
+    await handler({ auditId: 'audit-1' });
+
+    const requestedFields = Object.keys(queryMock.mock.calls[0][0].seoAudits.edges.node);
+
+    expect(requestedFields).toEqual(
+      expect.arrayContaining([
+        'mobilePerformanceScore',
+        'mobileLcpMs',
+        'mobileCls',
+        'mobileTbtMs',
+        'aiPresenceRate',
+        'aiQueriesTested',
+        'aiVisibility',
+      ]),
+    );
+  });
+
   it('returns only the status while the audit is not finished', async () => {
     queryMock.mockResolvedValueOnce(audit('RUNNING'));
 

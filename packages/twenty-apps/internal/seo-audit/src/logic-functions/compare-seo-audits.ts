@@ -48,7 +48,8 @@ const handler = async (parameters: CompareSeoAuditsInput) => {
 
   return {
     success: true,
-    message: 'Compared with the earlier audit. Positive deltas are improvements for scores.',
+    message:
+      'Compared with the earlier audit. Positive deltas are improvements for scores and for the AI presence. For LCP, CLS and TBT lower is better. If scoreNote is set, the overall scores cover different areas.',
     current: current.summary,
     previous: previous.summary,
     comparison: computeAuditComparison(previous.comparable, current.comparable),
@@ -59,7 +60,7 @@ export default defineLogicFunction({
   universalIdentifier: 'ae6c0ca7-0e3f-4aef-bfa3-84710922eff7',
   name: 'compare_seo_audits',
   description:
-    'Compares an SEO audit with the earlier finished audit of the same website: score and grade change, change per area, market metrics (ranking keywords, traffic, backlinks), tasks that are resolved and tasks that are new. Use it to show a client progress or to check whether fixes worked.',
+    'Compares an SEO audit with the earlier finished audit of the same website: score and grade change, change per area, market metrics (ranking keywords, traffic, backlinks), mobile speed (Lighthouse), how often AI assistants name the website, tasks that are resolved and tasks that are new. Use it to show a client progress or to check whether fixes worked.',
   timeoutSeconds: 30,
   toolTriggerSettings: { inputSchema: compareSeoAuditsInputSchema },
   handler,

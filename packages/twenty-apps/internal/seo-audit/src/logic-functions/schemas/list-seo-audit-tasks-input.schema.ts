@@ -24,7 +24,7 @@ export const listSeoAuditTasksInputSchema: InputJsonSchema = {
     area: {
       type: 'string',
       enum: Object.values(SEO_AREA),
-      description: 'Only tasks of this area, for example ON_PAGE or VISIBILITY.',
+      description: 'Only tasks of this area, for example ON_PAGE, VISIBILITY or AI_VISIBILITY.',
     },
     limit: {
       type: 'integer',

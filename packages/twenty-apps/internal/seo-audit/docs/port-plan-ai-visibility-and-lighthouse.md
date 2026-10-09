@@ -174,6 +174,15 @@ Aufwand: zwei bis drei Tage, davon der größte Teil Parser und Tests gegen die 
 
 Aufwand: eineinhalb Tage.
 
+**Umsetzungsstand Phase 3 (2026-10-09):**
+
+- `get_seo_audit` liefert jetzt `mobilePerformanceScore`, `mobileLcpMs`, `mobileCls`, `mobileTbtMs`, `aiPresenceRate`, `aiQueriesTested` und die Zeilen in `aiVisibility`.
+- `compare_seo_audits` vergleicht mobile Geschwindigkeit und KI-Präsenz. Fehlt ein Bereich in einem der beiden Audits (zum Beispiel `AI_VISIBILITY` im älteren), steht er in `areasOnlyInOneAudit`, und `scoreNote` warnt, dass die Gesamtscores nicht vergleichbar sind. Die Bereichswerte bleiben einzeln vergleichbar.
+- `list_seo_audit_tasks` kennt den Bereich `AI_VISIBILITY` über die Aufzählung `SEO_AREA`.
+- Beide Skill-Texte (App und `twenty-claude-skills`) beschreiben die neuen Felder und die Einschränkung der Stichprobe.
+- **Nicht umgesetzt: `aiQueries` als Eingabe von `start_seo_audit`.** Die Pipeline läuft im Ereignis `seoAudit.created`, eigene Fragen müssten dafür am Audit-Datensatz gespeichert werden. Das lohnt sich erst, wenn die automatisch erzeugten Fragen in der Praxis nicht reichen.
+- Der Schalter `SEO_AUDIT_AI_VISIBILITY` steht im Tab Variables der App, noch nicht in der Setup-Seite.
+
 ## 9. Tests und Auslieferung
 
 **Tests** (vitest, wie in der App üblich, Verhalten statt Implementierung):
@@ -225,7 +234,7 @@ Zurückgestellt: Lead-Magnet-Sperre im Report (3 bis 5 Findings sichtbar, Rest a
 | 1 | Lighthouse | 1 Tag (**umgesetzt am 2026-10-09**, 587 Tests grün, Build ok, noch nicht committet und nicht deployt) |
 | 2a | AI-Readiness | 1 Tag (**umgesetzt am 2026-10-09**, 618 Tests grün, Build ok, noch nicht deployt) |
 | 2b | AI-Presence | 2 bis 3 Tage (**umgesetzt am 2026-10-09 für ChatGPT, Perplexity und Gemini**, 696 Tests grün, Build ok, noch nicht deployt; AI Overview folgt) |
-| 3 | Report, Excel, Vergleich, Agent-Tools | 1,5 Tage |
+| 3 | Report, Excel, Vergleich, Agent-Tools | 1,5 Tage (**Agent-Tools und Vergleich umgesetzt am 2026-10-09**, Report und Excel kamen schon mit Phase 1 bis 2b; 701 Tests grün; `aiQueries` bewusst nicht umgesetzt) |
 | 4 | Release auf `roaswell`, Test-Audit | 0,5 Tag |
 
 Phase 1 und 2a sind unabhängig von den KI-Endpunkten und können direkt nach Phase 0 parallel laufen. Phase 2b hängt an den Fixtures aus Phase 0.

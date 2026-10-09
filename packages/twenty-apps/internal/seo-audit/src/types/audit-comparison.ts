@@ -20,6 +20,16 @@ export type AuditComparison = {
     backlinkCount: ComparedValue;
     referringDomainCount: ComparedValue;
   };
+  mobileSpeed: {
+    performanceScore: ComparedValue;
+    largestContentfulPaintMs: ComparedValue;
+    cumulativeLayoutShift: ComparedValue;
+    totalBlockingTimeMs: ComparedValue;
+  };
+  aiPresenceRate: ComparedValue;
+  // Areas that only one of the two audits has, so the overall scores are not like for like.
+  areasOnlyInOneAudit: string[];
+  scoreNote: string | null;
   resolvedTasks: ComparedTask[];
   newTasks: ComparedTask[];
   persistingTaskCount: number;
