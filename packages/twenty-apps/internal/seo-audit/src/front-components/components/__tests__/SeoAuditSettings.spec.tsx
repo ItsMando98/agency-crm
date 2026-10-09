@@ -97,6 +97,17 @@ const buildVariables = (
     type: 'NUMBER',
     value: '60',
   }),
+  variable({
+    key: 'SEO_AUDIT_AI_VISIBILITY',
+    label: 'AI visibility check',
+    description: 'Optional and paid.',
+    type: 'SELECT',
+    value: 'OFF',
+    options: [
+      { label: 'Off', value: 'OFF' },
+      { label: 'On', value: 'ON' },
+    ],
+  }),
 ];
 
 const givenWorkspace = ({
@@ -278,6 +289,34 @@ describe('SeoAuditSettings', () => {
       ),
     );
     expect((await stepStatus('Connect Anthropic')).getByText('To do')).toBeTruthy();
+  });
+
+  it('offers the AI visibility check on the Setup page and switches it on', async () => {
+    givenWorkspace();
+    const user = userEvent.setup();
+
+    render(<SeoAuditSettings />);
+
+    expect(await screen.findByText('AI visibility check')).toBeTruthy();
+    expect(screen.getByRole('button', { name: 'Off', pressed: true })).toBeTruthy();
+
+    await user.click(screen.getByRole('button', { name: 'On' }));
+
+    await waitFor(() =>
+      expect(mocks.metadataMutation).toHaveBeenCalledWith({
+        updateOneApplicationVariable: {
+          __args: { key: 'SEO_AUDIT_AI_VISIBILITY', value: 'ON', applicationId: 'app-1' },
+        },
+      }),
+    );
+  });
+
+  it('warns that the AI visibility check needs both keys and costs money', async () => {
+    givenWorkspace();
+
+    render(<SeoAuditSettings />);
+
+    expect(await screen.findByText(/needs the Anthropic key and DataForSEO/)).toBeTruthy();
   });
 
   it('clamps the maximum pages before saving', async () => {

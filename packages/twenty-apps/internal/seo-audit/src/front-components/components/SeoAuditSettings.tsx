@@ -5,6 +5,7 @@ import { Callout } from 'twenty-ui/components';
 import { themeCssVariables } from 'twenty-ui/theme';
 
 import {
+  AI_VISIBILITY_VARIABLE_KEY,
   ANTHROPIC_API_KEY_VARIABLE_KEY,
   DATAFORSEO_LOGIN_VARIABLE_KEY,
   DATAFORSEO_PASSWORD_VARIABLE_KEY,
@@ -164,6 +165,14 @@ export const SeoAuditSettings = () => {
             {renderField(DATAFORSEO_LOGIN_VARIABLE_KEY)}
             {renderField(DATAFORSEO_PASSWORD_VARIABLE_KEY)}
           </FieldGroup>
+        </SettingsSection>
+      </SettingsPanel>
+      <SettingsPanel>
+        <SettingsSection
+          title="AI visibility"
+          description="Optional and paid. Asks ChatGPT, Perplexity and Gemini typical customer questions and checks whether the website is named. It needs the Anthropic key and DataForSEO, and roughly 0.5 to 1 USD per audit."
+        >
+          {renderField(AI_VISIBILITY_VARIABLE_KEY)}
         </SettingsSection>
       </SettingsPanel>
       <SettingsPanel>
