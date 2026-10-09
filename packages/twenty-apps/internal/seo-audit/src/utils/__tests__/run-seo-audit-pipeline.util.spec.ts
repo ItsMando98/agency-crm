@@ -1,3 +1,4 @@
+import Anthropic from '@anthropic-ai/sdk';
 import { describe, expect, it } from 'vitest';
 
 import { createFakeAnthropicClient, buildTextMessage } from 'src/__mocks__/create-fake-anthropic-client.mock';
@@ -99,6 +100,42 @@ describe('runSeoAuditPipeline', () => {
     expect(result.areaScores.AI_VISIBILITY).toBe(80);
     expect(result.reportMarkdown).toContain('## AI readiness');
     expect(result.reportMarkdown).toContain('| Crawler access: GPTBot | blocked |');
+  });
+
+  it('names the reason when the classifier requests fail instead of hiding it', async () => {
+    const { client } = createFakeAnthropicClient(() => {
+      throw Anthropic.APIError.generate(
+        400,
+        { error: { message: 'output_config is not supported' } },
+        'output_config is not supported',
+        new Headers(),
+      );
+    });
+
+    const result = await runSeoAuditPipeline({
+      domain: 'example.com',
+      language: 'EN',
+      anthropicClient: client,
+      fetchImplementation: SITE,
+      now: NOW,
+    });
+
+    expect(result.assessments).toEqual([]);
+    expect(result.notes).toHaveLength(1);
+    expect(result.notes[0]).toMatch(/^Content classifier: \d+ requests failed\. First error: /);
+    expect(result.notes[0]).toContain('output_config is not supported');
+  });
+
+  it('has no notes when everything worked', async () => {
+    const result = await runSeoAuditPipeline({
+      domain: 'example.com',
+      language: 'EN',
+      anthropicClient: null,
+      fetchImplementation: SITE,
+      now: NOW,
+    });
+
+    expect(result.notes).toEqual([]);
   });
 
   it('runs on measured rules only when no classifier is configured', async () => {

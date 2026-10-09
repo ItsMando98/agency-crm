@@ -6,8 +6,8 @@ type BuildAiVisibilityAuditDataParams = {
   marketData: MarketData | null;
 };
 
-// The cost and the notes go into the same fields as the market data ones, so
-// one place shows everything the audit spent at DataForSEO.
+// The cost goes into the same field as the market data cost, so one place
+// shows everything the audit spent at DataForSEO.
 export const buildAiVisibilityAuditData = ({
   aiVisibility,
   marketData,
@@ -16,13 +16,10 @@ export const buildAiVisibilityAuditData = ({
     return {};
   }
 
-  const notes = [...(marketData?.notes ?? []), ...aiVisibility.notes];
-
   return {
     aiPresenceRate: aiVisibility.presenceRate,
     aiQueriesTested: aiVisibility.queriesTested,
     aiVisibility,
     marketDataCostUsd: (marketData?.costUsd ?? 0) + aiVisibility.costUsd,
-    marketDataNotes: notes.length > 0 ? notes.join('\n') : null,
   };
 };

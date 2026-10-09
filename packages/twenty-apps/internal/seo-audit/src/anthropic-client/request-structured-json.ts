@@ -8,6 +8,8 @@ type RequestStructuredJsonParams = {
   userContent: string;
   schema: Record<string, unknown>;
   maxTokens: number;
+  // Lets the caller explain why a single answer is missing instead of losing the reason.
+  onError?: (message: string) => void;
 };
 
 // Returns null when the model gave no usable answer for this single request.
@@ -19,6 +21,7 @@ export const requestStructuredJson = async ({
   userContent,
   schema,
   maxTokens,
+  onError,
 }: RequestStructuredJsonParams): Promise<unknown | null> => {
   try {
     const response = await client.messages.create({
@@ -31,6 +34,10 @@ export const requestStructuredJson = async ({
     });
 
     if (response.stop_reason !== 'end_turn') {
+      onError?.(
+        `The model stopped with ${response.stop_reason} before it finished the answer.`,
+      );
+
       return null;
     }
 
@@ -44,6 +51,14 @@ export const requestStructuredJson = async ({
     ) {
       throw error;
     }
+
+    onError?.(
+      error instanceof SyntaxError
+        ? `The answer was not valid JSON: ${error.message}`
+        : error instanceof Error
+          ? error.message
+          : 'The request failed.',
+    );
 
     return null;
   }

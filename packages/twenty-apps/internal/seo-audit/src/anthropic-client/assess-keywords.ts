@@ -19,12 +19,14 @@ type AssessKeywordsParams = {
   client: Anthropic;
   keywords: string[];
   context: KeywordSiteContext;
+  onError?: (message: string) => void;
 };
 
 export const assessKeywords = async ({
   client,
   keywords,
   context,
+  onError,
 }: AssessKeywordsParams): Promise<KeywordAssessment[]> => {
   const batches = chunkArray(keywords, KEYWORD_BATCH_SIZE);
 
@@ -39,6 +41,7 @@ export const assessKeywords = async ({
           userContent: buildKeywordClassifierInput(context, batch),
           schema: KEYWORD_ASSESSMENT_JSON_SCHEMA,
           maxTokens: KEYWORD_ASSESSMENT_MAX_TOKENS,
+          onError,
         }),
         batch,
       ),

@@ -12,11 +12,13 @@ import { parsePageAssessment } from 'src/utils/parse-page-assessment.util';
 type AssessPageParams = {
   client: Anthropic;
   page: CrawledPage;
+  onError?: (message: string) => void;
 };
 
 export const assessPage = async ({
   client,
   page,
+  onError,
 }: AssessPageParams): Promise<PageAssessment | null> =>
   parsePageAssessment(
     page.url,
@@ -26,5 +28,6 @@ export const assessPage = async ({
       userContent: buildPageClassifierInput(page),
       schema: PAGE_ASSESSMENT_JSON_SCHEMA,
       maxTokens: PAGE_ASSESSMENT_MAX_TOKENS,
+      onError,
     }),
   );

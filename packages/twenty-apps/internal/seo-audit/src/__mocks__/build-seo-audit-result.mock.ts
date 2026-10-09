@@ -15,6 +15,7 @@ export const buildSeoAuditResult = (
     generatedAt: '2026-10-06T10:00:00.000Z',
     aiReadiness: buildAiReadiness(),
     aiVisibility: null,
+    notes: [],
     score: 84,
     grade: 'B',
     areaScores: {

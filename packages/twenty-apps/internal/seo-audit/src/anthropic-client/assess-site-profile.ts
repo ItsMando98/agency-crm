@@ -12,11 +12,13 @@ import { parseSiteProfile } from 'src/utils/parse-site-profile.util';
 type AssessSiteProfileParams = {
   client: Anthropic;
   homepage: CrawledPage;
+  onError?: (message: string) => void;
 };
 
 export const assessSiteProfile = async ({
   client,
   homepage,
+  onError,
 }: AssessSiteProfileParams): Promise<SiteProfile | null> =>
   parseSiteProfile(
     await requestStructuredJson({
@@ -25,5 +27,6 @@ export const assessSiteProfile = async ({
       userContent: buildPageClassifierInput(homepage),
       schema: SITE_PROFILE_JSON_SCHEMA,
       maxTokens: SITE_PROFILE_MAX_TOKENS,
+      onError,
     }),
   );

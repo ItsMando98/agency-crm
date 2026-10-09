@@ -65,10 +65,14 @@ export const runSeoAuditPipeline = async ({
   const auditablePages = crawlResult.pages.filter(isAuditablePage);
   const aiReadiness = evaluateAiReadiness(crawlResult);
   const [homepage] = crawlResult.pages;
+  const classifierErrors: string[] = [];
+  const recordClassifierError = (message: string): void => {
+    classifierErrors.push(message);
+  };
 
   const siteProfilePromise =
     anthropicClient !== null && isAuditablePage(homepage)
-      ? assessSiteProfile({ client: anthropicClient, homepage })
+      ? assessSiteProfile({ client: anthropicClient, homepage, onError: recordClassifierError })
       : Promise.resolve<SiteProfile | null>(null);
 
   // The questions need the site profile, so this starts as soon as it is known
@@ -93,7 +97,7 @@ export const runSeoAuditPipeline = async ({
     anthropicClient === null
       ? Promise.resolve<PageAssessment[]>([])
       : runWithConcurrency(auditablePages, CLASSIFIER_CONCURRENCY, (page) =>
-          assessPage({ client: anthropicClient, page }),
+          assessPage({ client: anthropicClient, page, onError: recordClassifierError }),
         ).then((results) =>
           results.filter((result): result is PageAssessment => result !== null),
         ),
@@ -122,6 +126,7 @@ export const runSeoAuditPipeline = async ({
       keywordAssessments = await assessKeywords({
         client: anthropicClient,
         keywords: classifiedKeywords.map((keyword) => keyword.keyword),
+        onError: recordClassifierError,
         context: {
           title: homepage.title,
           metaDescription: homepage.metaDescription,
@@ -145,6 +150,13 @@ export const runSeoAuditPipeline = async ({
           fetchImplementation,
         })
       : [];
+
+  const notes =
+    classifierErrors.length === 0
+      ? []
+      : [
+          `Content classifier: ${classifierErrors.length} requests failed. First error: ${classifierErrors[0]}`,
+        ];
 
   const findings = buildFindings({
     crawlResult,
@@ -193,6 +205,7 @@ export const runSeoAuditPipeline = async ({
     brokenBacklinkTargets,
     aiReadiness,
     aiVisibility,
+    notes,
     score,
     grade,
     areaScores,

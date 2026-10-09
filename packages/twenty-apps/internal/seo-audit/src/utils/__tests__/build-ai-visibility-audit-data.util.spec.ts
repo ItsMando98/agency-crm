@@ -18,9 +18,9 @@ describe('buildAiVisibilityAuditData', () => {
     });
   });
 
-  it('adds the cost and the notes to the market data ones', () => {
+  it('adds the cost to the market data cost', () => {
     const data = buildAiVisibilityAuditData({
-      aiVisibility: buildAiVisibility({ costUsd: 0.6, notes: ['Gemini: Gemini is down.'] }),
+      aiVisibility: buildAiVisibility({ costUsd: 0.6 }),
       marketData: {
         rankings: null,
         backlinks: null,
@@ -28,17 +28,10 @@ describe('buildAiVisibilityAuditData', () => {
         lighthouse: null,
         competitors: [],
         costUsd: 0.31,
-        notes: ['Backlinks: Access denied.'],
+        notes: [],
       },
     });
 
     expect(data.marketDataCostUsd).toBeCloseTo(0.91);
-    expect(data.marketDataNotes).toBe('Backlinks: Access denied.\nGemini: Gemini is down.');
-  });
-
-  it('keeps the notes empty when there are none', () => {
-    expect(
-      buildAiVisibilityAuditData({ aiVisibility: buildAiVisibility({ notes: [] }), marketData: null }).marketDataNotes,
-    ).toBeNull();
   });
 });

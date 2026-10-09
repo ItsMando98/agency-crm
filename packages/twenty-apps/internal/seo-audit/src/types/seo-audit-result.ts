@@ -18,6 +18,8 @@ export type SeoAuditResult = {
   aiReadiness: AiReadiness;
   // Null when the paid AI visibility check is switched off.
   aiVisibility: AiVisibility | null;
+  // Why a part of the audit is missing or incomplete, for example failed classifier requests.
+  notes: string[];
   score: number;
   grade: string;
   areaScores: AreaScores;

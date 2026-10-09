@@ -3,6 +3,7 @@ import { type CoreApiClient } from 'twenty-client-sdk/core';
 import { SEO_AUDIT_STATUS } from 'src/constants/seo-audit.constants';
 import { type SeoAuditResult } from 'src/types/seo-audit-result';
 import { buildAiVisibilityAuditData } from 'src/utils/build-ai-visibility-audit-data.util';
+import { buildAuditNotes } from 'src/utils/build-audit-notes.util';
 import { buildKeywordRecordData } from 'src/utils/build-keyword-record-data.util';
 import { buildMarketAuditData } from 'src/utils/build-market-audit-data.util';
 import { buildPageRecordData } from 'src/utils/build-page-record-data.util';
@@ -94,6 +95,7 @@ export const persistSeoAuditResult = async ({
             aiVisibility: result.aiVisibility,
             marketData: result.marketData,
           }),
+          marketDataNotes: buildAuditNotes(result),
           ...(exports === undefined
             ? {}
             : {

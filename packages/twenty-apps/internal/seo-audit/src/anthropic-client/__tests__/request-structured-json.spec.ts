@@ -55,6 +55,40 @@ describe('requestStructuredJson', () => {
     expect(await requestStructuredJson({ client, ...PARAMS })).toBeNull();
   });
 
+  it('reports an API error to the caller before returning null', async () => {
+    const { client } = createFakeAnthropicClient(() => {
+      throw Anthropic.APIError.generate(400, { error: { message: 'unsupported parameter' } }, 'unsupported parameter', new Headers());
+    });
+    const reported: string[] = [];
+
+    await requestStructuredJson({ client, ...PARAMS, onError: (message) => reported.push(message) });
+
+    expect(reported).toHaveLength(1);
+    expect(reported[0]).toContain('unsupported parameter');
+  });
+
+  it('reports an unfinished answer to the caller', async () => {
+    const { client } = createFakeAnthropicClient(() => ({ stop_reason: 'max_tokens', content: [] }));
+    const reported: string[] = [];
+
+    await requestStructuredJson({ client, ...PARAMS, onError: (message) => reported.push(message) });
+
+    expect(reported).toEqual(['The model stopped with max_tokens before it finished the answer.']);
+  });
+
+  it('reports an answer that is not valid JSON', async () => {
+    const { client } = createFakeAnthropicClient(() => ({
+      stop_reason: 'end_turn',
+      content: [{ type: 'text', text: '{ nope' }],
+    }));
+    const reported: string[] = [];
+
+    await requestStructuredJson({ client, ...PARAMS, onError: (message) => reported.push(message) });
+
+    expect(reported).toHaveLength(1);
+    expect(reported[0]).toContain('not valid JSON');
+  });
+
   it('rethrows credential errors so a bad key fails the audit', async () => {
     const { client } = createFakeAnthropicClient(() => {
       throw Anthropic.APIError.generate(401, { error: { message: 'invalid x-api-key' } }, 'invalid x-api-key', new Headers());

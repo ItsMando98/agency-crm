@@ -14,6 +14,7 @@ const buildResult = (overrides: Partial<SeoAuditResult> = {}): SeoAuditResult =>
   brokenBacklinkTargets: [],
   aiReadiness: buildAiReadiness(),
   aiVisibility: null,
+  notes: [],
   score: 81,
   grade: 'B',
   areaScores: { SECURITY: 98 },
@@ -158,6 +159,46 @@ describe('persistSeoAuditResult', () => {
 
     expect(data).toMatchObject({ aiPresenceRate: 0.25, aiQueriesTested: 8, aiVisibility });
     expect(data.marketDataCostUsd).toBeCloseTo(0.91);
+  });
+
+  it('merges the audit notes with the market data and AI notes into one field', async () => {
+    const { client, mutation } = buildClient();
+
+    await persistSeoAuditResult({
+      client,
+      auditId: 'audit-1',
+      result: buildResult({
+        notes: ['Content classifier: 3 requests failed. First error: 400 bad request'],
+        aiVisibility: buildAiVisibility({ notes: ['Gemini: Gemini is down.'] }),
+        marketData: {
+          rankings: null,
+          backlinks: null,
+          backlinkTargets: [],
+          lighthouse: null,
+          competitors: [],
+          costUsd: 0.01,
+          notes: ['Backlinks: Access denied.'],
+        },
+      }),
+      finishedAt: new Date('2026-10-10T10:00:00Z'),
+    });
+
+    expect(lastUpdateData(mutation).marketDataNotes).toBe(
+      'Backlinks: Access denied.\nContent classifier: 3 requests failed. First error: 400 bad request\nGemini: Gemini is down.',
+    );
+  });
+
+  it('keeps the notes field empty when there are no notes', async () => {
+    const { client, mutation } = buildClient();
+
+    await persistSeoAuditResult({
+      client,
+      auditId: 'audit-1',
+      result: buildResult({ notes: [] }),
+      finishedAt: new Date('2026-10-10T10:00:00Z'),
+    });
+
+    expect(lastUpdateData(mutation).marketDataNotes).toBeNull();
   });
 
   it('stores the report, share link and file references in the final update', async () => {
