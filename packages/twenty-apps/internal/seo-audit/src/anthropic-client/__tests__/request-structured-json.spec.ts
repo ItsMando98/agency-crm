@@ -21,7 +21,7 @@ describe('requestStructuredJson', () => {
     expect(await requestStructuredJson({ client, ...PARAMS })).toEqual({ ok: true });
     expect(create).toHaveBeenCalledWith(
       expect.objectContaining({
-        model: 'claude-haiku-4-5',
+        model: 'claude-sonnet-5-5',
         max_tokens: 100,
         temperature: 0,
         system: 'system prompt',

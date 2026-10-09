@@ -7,7 +7,7 @@ Give it a homepage. A few minutes later the audit record holds a score, a grade,
 ## How it works
 
 1. Code crawls up to 60 pages (robots.txt respected, sitemap used) and measures everything that can be counted: status codes, titles, descriptions, headings, canonicals, links, HTTPS and mixed content, response time, structured data.
-2. A small model (Claude Haiku 4.5, structured output) judges what code cannot: page type, search intent, helpfulness, specificity, trust, and what kind of business the site belongs to. Every answer carries a self-reported confidence. Unsure pages are listed for manual review and never turn into tasks.
+2. A model (Claude Sonnet 5.5, structured output; the constant is `CLASSIFIER_MODEL`) judges what code cannot: page type, search intent, helpfulness, specificity, trust, and what kind of business the site belongs to. Every answer carries a self-reported confidence. Unsure pages are listed for manual review and never turn into tasks.
 3. Findings become tasks with priority and effort, sorted into this week, this month and this quarter. Task source tells whether a rule measured it or the classifier judged it.
 
 4. With DataForSEO connected, the audit adds market data: ranking keywords with search volume and estimated traffic, backlinks, and competitors. The classifier judges every ranking keyword for relevance (a ceramic butter dish does not bring customers to a tile shop) and only relevant keywords become opportunities: positions 4 to 10 as quick wins, positions 11 to 30 as keywords close to page one. Backlink targets are checked live, so links pointing to deleted pages turn into redirect tasks.
