@@ -23,11 +23,18 @@ describe('requestStructuredJson', () => {
       expect.objectContaining({
         model: 'claude-sonnet-5-5',
         max_tokens: 100,
-        temperature: 0,
         system: 'system prompt',
         output_config: { format: { type: 'json_schema', schema: { type: 'object' } } },
       }),
     );
+  });
+
+  it('does not send a temperature, which newer models reject', async () => {
+    const { client, create } = createFakeAnthropicClient(() => buildTextMessage({ ok: true }));
+
+    await requestStructuredJson({ client, ...PARAMS });
+
+    expect(create.mock.calls[0][0]).not.toHaveProperty('temperature');
   });
 
   it('returns null when the model did not finish normally', async () => {

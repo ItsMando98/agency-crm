@@ -27,7 +27,6 @@ export const requestStructuredJson = async ({
     const response = await client.messages.create({
       model: CLASSIFIER_MODEL,
       max_tokens: maxTokens,
-      temperature: 0,
       system,
       messages: [{ role: 'user', content: userContent }],
       output_config: { format: { type: 'json_schema', schema } },
