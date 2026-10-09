@@ -6,6 +6,8 @@ import {
   ANTHROPIC_API_KEY_VARIABLE_KEY,
   DATAFORSEO_LOGIN_VARIABLE_KEY,
   DATAFORSEO_PASSWORD_VARIABLE_KEY,
+  TREG_ORG_VARIABLE_KEY,
+  TREG_TOKEN_VARIABLE_KEY,
   DEFAULT_LANGUAGE_VARIABLE_KEY,
   MARKET_VARIABLE_KEY,
   MAX_PAGES_VARIABLE_KEY,
@@ -49,6 +51,22 @@ export default defineApplication({
       description:
         'The API password from the DataForSEO dashboard, not your account password.',
       isSecret: true,
+    },
+    [TREG_TOKEN_VARIABLE_KEY]: {
+      universalIdentifier: '4cc2fe62-5d78-4ed5-a2a0-18cf29715afd',
+      label: 'treg token',
+      description:
+        'Optional. Lets the AI visibility check ask ChatGPT, Gemini and Perplexity through treg.to, which costs less than DataForSEO. Create an agent token at treg.to.',
+      isSecret: true,
+    },
+    [TREG_ORG_VARIABLE_KEY]: {
+      universalIdentifier: 'd4465d4e-4a5a-4d1c-836d-05377b0d18b8',
+      label: 'treg team',
+      description:
+        'The team slug in treg. Only needed for tokens created with the treg login, not for agent tokens.',
+      type: FieldType.TEXT,
+      isSecret: false,
+      value: '',
     },
     [REPORT_BRAND_NAME_VARIABLE_KEY]: {
       universalIdentifier: '42e31f7e-5681-4899-98d0-ef921966114a',
@@ -126,7 +144,7 @@ export default defineApplication({
       universalIdentifier: 'd2c8217e-a10c-458c-9ae3-302aa793f362',
       label: 'AI visibility check',
       description:
-        'Optional and paid. Asks ChatGPT, Perplexity and Gemini typical customer questions and checks whether the website is named. Needs DataForSEO and the Anthropic key. A first measurement put the cost at roughly 0.5 to 1 USD per audit at DataForSEO.',
+        'Optional and paid. Asks ChatGPT, Perplexity and Gemini typical customer questions and checks whether the website is named. Needs treg or DataForSEO, and the Anthropic key. Through treg it costs roughly 0.1 USD per audit, through DataForSEO roughly 0.5 to 1 USD.',
       type: FieldType.SELECT,
       options: [
         { label: 'Off', value: AI_VISIBILITY_SWITCH.OFF },

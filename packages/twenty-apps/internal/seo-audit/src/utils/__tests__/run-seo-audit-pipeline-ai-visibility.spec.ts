@@ -111,7 +111,7 @@ describe('runSeoAuditPipeline with the AI visibility check', () => {
     });
 
     expect(result.aiVisibility?.notes).toEqual([
-      'AI visibility needs DataForSEO and an Anthropic key. It was skipped.',
+      'AI visibility needs treg or DataForSEO, and an Anthropic key. It was skipped.',
     ]);
     expect(result.aiVisibility?.presenceRate).toBeNull();
     expect(result.areaScores.AI_VISIBILITY).toBe(80);

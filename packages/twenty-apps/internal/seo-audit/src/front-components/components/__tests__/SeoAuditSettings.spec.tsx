@@ -76,6 +76,8 @@ const buildVariables = (
     isSecret: true,
     value: dataForSeoPassword,
   }),
+  variable({ key: 'TREG_TOKEN', label: 'treg token', isSecret: true }),
+  variable({ key: 'TREG_ORG', label: 'treg team' }),
   variable({
     key: 'SEO_AUDIT_MARKET',
     label: 'Market',
@@ -223,6 +225,26 @@ describe('SeoAuditSettings', () => {
     );
   });
 
+  it('saves the treg token as a secret variable', async () => {
+    givenWorkspace();
+    const user = userEvent.setup();
+
+    render(<SeoAuditSettings />);
+
+    const tokenInput = await screen.findByLabelText('treg token');
+
+    await user.type(tokenInput, 'agent-token');
+    await user.click(within(tokenInput.parentElement as HTMLElement).getByRole('button', { name: 'Save' }));
+
+    await waitFor(() =>
+      expect(mocks.metadataMutation).toHaveBeenCalledWith({
+        updateOneApplicationVariable: {
+          __args: { key: 'TREG_TOKEN', value: 'agent-token', applicationId: 'app-1' },
+        },
+      }),
+    );
+  });
+
   it('saves the DataForSEO password as a secret variable', async () => {
     givenWorkspace({ dataForSeoLogin: 'agency@example.com' });
     const user = userEvent.setup();
@@ -311,12 +333,12 @@ describe('SeoAuditSettings', () => {
     );
   });
 
-  it('warns that the AI visibility check needs both keys and costs money', async () => {
+  it('warns that the AI visibility check needs a provider and costs money', async () => {
     givenWorkspace();
 
     render(<SeoAuditSettings />);
 
-    expect(await screen.findByText(/needs the Anthropic key and DataForSEO/)).toBeTruthy();
+    expect(await screen.findByText(/needs the Anthropic key and treg or DataForSEO/)).toBeTruthy();
   });
 
   it('clamps the maximum pages before saving', async () => {

@@ -47,7 +47,25 @@ export const AI_REQUEST_TIMEOUT_MS = 90_000;
 // Engines sometimes refuse a burst of requests. A pause and a second try usually gets the answer.
 export const AI_MAX_ATTEMPTS = 3;
 export const AI_RETRY_DELAY_MS = 3_000;
-export const AI_RETRYABLE_ERROR_PATTERN = /rate_limit|rate limit|too many requests|unavailable|429/i;
+export const AI_RETRYABLE_ERROR_PATTERN =
+  /rate_limit|rate limit|too many requests|unavailable|saturated|429/i;
+
+export const TREG_BASE_URL = 'https://treg.to';
+// treg stops a single call that would cost more, and charges nothing then.
+export const TREG_MAX_COST_PER_CALL_USD = '0.05';
+// The consumer interfaces take 30 to 80 seconds per answer.
+export const TREG_REQUEST_TIMEOUT_MS = 120_000;
+export const TREG_DEADLINE_MS = 420_000;
+export const TREG_REQUEST_CONCURRENCY = 8;
+
+// ChatGPT and Gemini are asked through the real consumer interfaces (cloro).
+// Perplexity goes through the DataForSEO endpoint that treg serves, because
+// the cloro Perplexity route answered only about half of its requests.
+export const AI_TREG_ENDPOINTS = {
+  CHATGPT: 'cloro.ai-search.chatgpt.scrape',
+  GEMINI: 'cloro.ai-search.gemini.scrape',
+  PERPLEXITY: 'dataforseo.x.ai-optimization-perplexity-llm-responses-live',
+} as const;
 export const AI_DEADLINE_MS = 240_000;
 export const AI_MIN_ANSWER_LENGTH = 20;
 export const AI_MIN_BRAND_NAME_LENGTH = 4;

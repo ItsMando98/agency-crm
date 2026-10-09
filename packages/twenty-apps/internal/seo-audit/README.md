@@ -14,7 +14,7 @@ Give it a homepage. A few minutes later the audit record holds a score, a grade,
 
 5. With DataForSEO connected, a mobile Lighthouse run measures the homepage: performance score, largest contentful paint (LCP), layout shift (CLS) and total blocking time (TBT). Slow values become tasks in the performance area.
 6. The AI readiness check reads the robots.txt rules for GPTBot, OAI-SearchBot, ClaudeBot, PerplexityBot and Google-Extended, looks for an llms.txt and for organization and FAQ markup. It costs nothing and feeds the AI visibility area.
-7. Optional and paid, off by default: the AI visibility check. The classifier writes typical customer questions for the business, ChatGPT, Perplexity and Gemini answer them through DataForSEO, and code judges per answer whether the website is cited (it is among the sources), mentioned (named in the text) or absent. Questions never contain the company name. Tasks show the questions where no assistant names the website and the competitors named instead.
+7. Optional and paid, off by default: the AI visibility check. The classifier writes typical customer questions for the business, ChatGPT, Perplexity and Gemini answer them through treg or DataForSEO, and code judges per answer whether the website is cited (it is among the sources), mentioned (named in the text) or absent. Questions never contain the company name. Tasks show the questions where no assistant names the website and the competitors named instead.
 
 Content quality weighs 25% of the score, so a technically clean site with weak pages does not get an A. The AI visibility area weighs 15%: readiness alone, or 70% presence and 30% readiness when the check ran.
 
@@ -66,9 +66,9 @@ The app's health check shows a banner on the app page when the key is missing or
 
 DataForSEO is optional. Enter the API login and API password from the DataForSEO dashboard under API Access (not your account password) and pick the market (country and language). Market data costs roughly 0.15 to 0.35 USD per audit, shown on the audit as DataForSEO cost. If a request fails, for example because the account has no Backlinks API subscription, the audit still completes and lists what was skipped.
 
-The AI visibility check is switched on in the Variables tab with `SEO_AUDIT_AI_VISIBILITY` set to `ON`. It needs DataForSEO and the Anthropic key. A first measurement put the cost at roughly 0.5 to 1 USD per audit, mostly for Gemini. A mobile Lighthouse run costs about half a cent.
+The AI visibility check is switched on on the Setup page (`SEO_AUDIT_AI_VISIBILITY` set to `ON`). It needs the Anthropic key and either treg or DataForSEO. With a treg token (`TREG_TOKEN`, plus `TREG_ORG` for tokens from the treg login) the answers come from treg: ChatGPT and Gemini through the real consumer interfaces at about 0.003 USD per answer, Perplexity through the DataForSEO endpoint that treg serves. A full run of 24 answers costs roughly 0.1 USD. A treg token takes precedence over DataForSEO for this check. Through DataForSEO a first measurement put the cost at roughly 0.5 to 1 USD per audit, mostly for Gemini. A mobile Lighthouse run costs about half a cent and needs DataForSEO.
 
-The same variables are also editable on the built-in Variables tab: `ANTHROPIC_API_KEY`, `DATAFORSEO_LOGIN`, `DATAFORSEO_PASSWORD`, `SEO_AUDIT_MARKET`, `SEO_AUDIT_DEFAULT_LANGUAGE`, `SEO_AUDIT_MAX_PAGES`, `SEO_AUDIT_AI_VISIBILITY`, `SEO_AUDIT_BRAND_NAME`, `SEO_AUDIT_ACCENT_COLOR`, `SEO_AUDIT_PUBLIC_URL`, `PDF_RENDERER_URL`, `PDF_RENDERER_API_KEY`.
+The same variables are also editable on the built-in Variables tab: `ANTHROPIC_API_KEY`, `DATAFORSEO_LOGIN`, `DATAFORSEO_PASSWORD`, `TREG_TOKEN`, `TREG_ORG`, `SEO_AUDIT_MARKET`, `SEO_AUDIT_DEFAULT_LANGUAGE`, `SEO_AUDIT_MAX_PAGES`, `SEO_AUDIT_AI_VISIBILITY`, `SEO_AUDIT_BRAND_NAME`, `SEO_AUDIT_ACCENT_COLOR`, `SEO_AUDIT_PUBLIC_URL`, `PDF_RENDERER_URL`, `PDF_RENDERER_API_KEY`.
 
 ```bash
 yarn install

@@ -9,19 +9,25 @@ import {
   AI_RETRY_DELAY_MS,
   AI_RETRYABLE_ERROR_PATTERN,
 } from 'src/constants/ai-visibility.const';
-import { fetchAiAnswer } from 'src/dataforseo-client/fetch-ai-answer';
 import {
+  type AiAnswer,
   type AiAnswerStatus,
   type AiEngineId,
   type AiVisibility,
   type AiVisibilityRow,
 } from 'src/types/ai-visibility';
-import { type DataForSeoCredentials } from 'src/types/data-for-seo-credentials';
 import { classifyAiAnswer } from 'src/utils/classify-ai-answer.util';
 import { runWithConcurrency } from 'src/utils/run-with-concurrency.util';
 
+type Engine = (typeof AI_ENGINES)[number];
+
+export type FetchAiAnswer = (params: {
+  engine: Engine;
+  query: string;
+}) => Promise<{ answer: AiAnswer | null; cost: number }>;
+
 type CollectAiVisibilityParams = {
-  credentials: DataForSeoCredentials;
+  fetchAnswer: FetchAiAnswer;
   queries: string[];
   ownDomain: string;
   brandNames: string[];
@@ -29,10 +35,9 @@ type CollectAiVisibilityParams = {
   deadlineMs?: number;
   maxRequests?: number;
   retryDelayMs?: number;
-  fetchImplementation?: typeof fetch;
+  concurrency?: number;
 };
 
-type Engine = (typeof AI_ENGINES)[number];
 type Task = { query: string; engine: Engine };
 type Outcome =
   | { task: Task; kind: 'ANSWERED'; status: AiAnswerStatus; competitorDomains: string[]; cost: number }
@@ -102,7 +107,7 @@ const computePresenceRate = (rows: AiVisibilityRow[]): number | null => {
 
 // Each request fails on its own, so one engine going down costs only its column.
 export const collectAiVisibility = async ({
-  credentials,
+  fetchAnswer,
   queries,
   ownDomain,
   brandNames,
@@ -110,7 +115,7 @@ export const collectAiVisibility = async ({
   deadlineMs = AI_DEADLINE_MS,
   maxRequests = AI_MAX_REQUESTS,
   retryDelayMs = AI_RETRY_DELAY_MS,
-  fetchImplementation,
+  concurrency = AI_REQUEST_CONCURRENCY,
 }: CollectAiVisibilityParams): Promise<AiVisibility> => {
   const tasks: Task[] = queries.flatMap((query) =>
     AI_ENGINES.map((engine) => ({ query, engine })),
@@ -120,7 +125,7 @@ export const collectAiVisibility = async ({
 
   const outcomes = await runWithConcurrency<Task, Outcome>(
     tasks,
-    AI_REQUEST_CONCURRENCY,
+    concurrency,
     async (task) => {
       if (Date.now() >= deadline) {
         return { task, kind: 'SKIPPED', reason: 'DEADLINE' };
@@ -138,11 +143,9 @@ export const collectAiVisibility = async ({
         attempt += 1;
 
         try {
-          const { answer, cost } = await fetchAiAnswer({
-            credentials,
+          const { answer, cost } = await fetchAnswer({
             engine: task.engine,
             query: task.query,
-            fetchImplementation,
           });
 
           return {

@@ -14,6 +14,7 @@ import { normalizeAuditDomain } from 'src/utils/normalize-audit-domain.util';
 import { persistSeoAuditResult } from 'src/utils/persist-seo-audit-result.util';
 import { readAuditSettings } from 'src/utils/read-audit-settings.util';
 import { readDataForSeoCredentials } from 'src/utils/read-dataforseo-credentials.util';
+import { readTregCredentials } from 'src/utils/read-treg-credentials.util';
 import { readPdfRendererSettings } from 'src/utils/read-pdf-renderer-settings.util';
 import { readReportBaseUrl } from 'src/utils/read-report-base-url.util';
 import { readReportBranding } from 'src/utils/read-report-branding.util';
@@ -77,6 +78,7 @@ export const runQueuedSeoAudit = async ({
   const anthropicClient = getAnthropicClient();
   const { defaultLanguage, maxPages, market, isAiVisibilityEnabled } = readAuditSettings();
   const dataForSeoCredentials = readDataForSeoCredentials();
+  const tregCredentials = readTregCredentials();
 
   await client.mutation({
     updateSeoAudit: {
@@ -101,6 +103,7 @@ export const runQueuedSeoAudit = async ({
       maxPages,
       market,
       dataForSeoCredentials,
+      tregCredentials,
       isAiVisibilityEnabled,
     });
 

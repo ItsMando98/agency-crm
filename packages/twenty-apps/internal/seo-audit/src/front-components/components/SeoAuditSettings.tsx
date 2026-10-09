@@ -17,6 +17,8 @@ import {
   REPORT_ACCENT_COLOR_VARIABLE_KEY,
   REPORT_BRAND_NAME_VARIABLE_KEY,
   REPORT_PUBLIC_URL_VARIABLE_KEY,
+  TREG_ORG_VARIABLE_KEY,
+  TREG_TOKEN_VARIABLE_KEY,
 } from 'src/constants/application-variable-keys.const';
 import { SEO_AUDIT_LANGUAGE } from 'src/constants/seo-audit.constants';
 import { ApplicationVariableField } from 'src/front-components/components/ApplicationVariableField';
@@ -170,9 +172,20 @@ export const SeoAuditSettings = () => {
       <SettingsPanel>
         <SettingsSection
           title="AI visibility"
-          description="Optional and paid. Asks ChatGPT, Perplexity and Gemini typical customer questions and checks whether the website is named. It needs the Anthropic key and DataForSEO, and roughly 0.5 to 1 USD per audit."
+          description="Optional and paid. Asks ChatGPT, Perplexity and Gemini typical customer questions and checks whether the website is named. It needs the Anthropic key and treg or DataForSEO. Through treg it costs roughly 0.1 USD per audit, through DataForSEO roughly 0.5 to 1 USD."
         >
           {renderField(AI_VISIBILITY_VARIABLE_KEY)}
+        </SettingsSection>
+      </SettingsPanel>
+      <SettingsPanel>
+        <SettingsSection
+          title="treg"
+          description="Optional. Answers the AI visibility questions through treg.to and is used before DataForSEO. Paste an agent token and leave the team empty, or use a login token together with the team."
+        >
+          <FieldGroup>
+            {renderField(TREG_TOKEN_VARIABLE_KEY)}
+            {renderField(TREG_ORG_VARIABLE_KEY)}
+          </FieldGroup>
         </SettingsSection>
       </SettingsPanel>
       <SettingsPanel>

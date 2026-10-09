@@ -10,6 +10,7 @@ import { collectMarketData } from 'src/dataforseo-client/collect-market-data';
 import { type AuditLanguage } from 'src/types/audit-language';
 import { type BacklinkTarget } from 'src/types/backlink-target';
 import { type DataForSeoCredentials } from 'src/types/data-for-seo-credentials';
+import { type TregCredentials } from 'src/types/treg-credentials';
 import { type KeywordAssessment } from 'src/types/keyword-assessment';
 import { type Market } from 'src/types/market';
 import { type MarketData } from 'src/types/market-data';
@@ -39,6 +40,8 @@ type RunSeoAuditPipelineParams = {
   anthropicClient: Anthropic | null;
   // Without credentials the audit skips rankings, keywords and backlinks.
   dataForSeoCredentials?: DataForSeoCredentials | null;
+  // Answers the AI visibility questions. Preferred over DataForSEO for that part.
+  tregCredentials?: TregCredentials | null;
   market?: Market;
   maxPages?: number;
   // Paid: asks AI assistants typical customer questions and checks who they name.
@@ -54,6 +57,7 @@ export const runSeoAuditPipeline = async ({
   language,
   anthropicClient,
   dataForSeoCredentials = null,
+  tregCredentials = null,
   market = DEFAULT_MARKET,
   maxPages,
   isAiVisibilityEnabled = false,
@@ -82,6 +86,7 @@ export const runSeoAuditPipeline = async ({
       isEnabled: isAiVisibilityEnabled,
       anthropicClient,
       credentials: dataForSeoCredentials,
+      tregCredentials,
       origin: crawlResult.origin,
       homepage,
       auditablePages,

@@ -4,14 +4,20 @@ import { buildDataForSeoEnvelope } from 'src/__mocks__/build-dataforseo-envelope
 import { buildLlmResult } from 'src/__mocks__/build-llm-result.mock';
 import { createRecordingFetch } from 'src/__mocks__/create-recording-fetch.mock';
 import { collectAiVisibility } from 'src/dataforseo-client/collect-ai-visibility';
+import { fetchAiAnswer } from 'src/dataforseo-client/fetch-ai-answer';
 
 const NOW = new Date('2026-10-09T10:00:00Z');
+const CREDENTIALS = { login: 'login', password: 'password' };
 const PARAMS = {
-  credentials: { login: 'login', password: 'password' },
   ownDomain: 'kanzlei-beispiel.de',
   brandNames: ['kanzlei-beispiel', 'kanzlei beispiel'],
   now: NOW,
 };
+
+const throughDataForSeo =
+  (fetchImplementation: typeof fetch) =>
+  ({ engine, query }: { engine: Parameters<typeof fetchAiAnswer>[0]['engine']; query: string }) =>
+    fetchAiAnswer({ credentials: CREDENTIALS, engine, query, fetchImplementation });
 
 const respondByEngine =
   (byEngine: { chat_gpt?: unknown; perplexity?: unknown; gemini?: unknown }, cost = 0.01) =>
@@ -34,7 +40,7 @@ describe('collectAiVisibility', () => {
     const visibility = await collectAiVisibility({
       ...PARAMS,
       queries: ['Frage eins zur Kanzlei?', 'Frage zwei zur Kanzlei?'],
-      fetchImplementation,
+      fetchAnswer: throughDataForSeo(fetchImplementation),
     });
 
     expect(requests).toHaveLength(6);
@@ -60,7 +66,7 @@ describe('collectAiVisibility', () => {
       }),
     );
 
-    const visibility = await collectAiVisibility({ ...PARAMS, queries: ['Frage eins zur Kanzlei?'], fetchImplementation });
+    const visibility = await collectAiVisibility({ ...PARAMS, queries: ['Frage eins zur Kanzlei?'], fetchAnswer: throughDataForSeo(fetchImplementation) });
 
     expect(visibility.rows[0].results).toEqual({ CHATGPT: 'CITED', PERPLEXITY: 'UNKNOWN', GEMINI: 'UNKNOWN' });
     expect(visibility.presenceRate).toBe(1);
@@ -71,7 +77,7 @@ describe('collectAiVisibility', () => {
       json: buildDataForSeoEnvelope(null, { taskStatusCode: 40501, statusMessage: 'Invalid Field: model_name.' }),
     }));
 
-    const visibility = await collectAiVisibility({ ...PARAMS, queries: ['Frage eins zur Kanzlei?'], fetchImplementation });
+    const visibility = await collectAiVisibility({ ...PARAMS, queries: ['Frage eins zur Kanzlei?'], fetchAnswer: throughDataForSeo(fetchImplementation) });
 
     expect(visibility.presenceRate).toBeNull();
     expect(visibility.queriesTested).toBe(0);
@@ -93,7 +99,7 @@ describe('collectAiVisibility', () => {
     const visibility = await collectAiVisibility({
       ...PARAMS,
       queries: ['Frage eins zur Kanzlei?', 'Frage zwei zur Kanzlei?'],
-      fetchImplementation,
+      fetchAnswer: throughDataForSeo(fetchImplementation),
     });
 
     expect(visibility.notes).toEqual(['Gemini: Gemini is down.']);
@@ -124,7 +130,7 @@ describe('collectAiVisibility', () => {
       ...PARAMS,
       queries: ['Frage eins zur Kanzlei?'],
       retryDelayMs: 0,
-      fetchImplementation,
+      fetchAnswer: throughDataForSeo(fetchImplementation),
     });
 
     expect(requests.filter((request) => request.url.includes('/gemini/'))).toHaveLength(2);
@@ -148,7 +154,7 @@ describe('collectAiVisibility', () => {
       ...PARAMS,
       queries: ['Frage eins zur Kanzlei?', 'Frage zwei zur Kanzlei?'],
       retryDelayMs: 0,
-      fetchImplementation,
+      fetchAnswer: throughDataForSeo(fetchImplementation),
     });
 
     expect(requests.filter((request) => request.url.includes('/gemini/'))).toHaveLength(6);
@@ -165,10 +171,33 @@ describe('collectAiVisibility', () => {
       ...PARAMS,
       queries: ['Frage eins zur Kanzlei?'],
       retryDelayMs: 0,
-      fetchImplementation,
+      fetchAnswer: throughDataForSeo(fetchImplementation),
     });
 
     expect(requests).toHaveLength(3);
+  });
+
+  it('uses the injected answer source and the given concurrency', async () => {
+    let running = 0;
+    let highest = 0;
+    const fetchAnswer = async () => {
+      running += 1;
+      highest = Math.max(highest, running);
+      await new Promise((resolve) => setTimeout(resolve, 5));
+      running -= 1;
+
+      return { answer: { text: 'Antwort', sources: [] }, cost: 0.003 };
+    };
+
+    const visibility = await collectAiVisibility({
+      ...PARAMS,
+      queries: ['Frage eins zur Kanzlei?', 'Frage zwei zur Kanzlei?'],
+      concurrency: 2,
+      fetchAnswer,
+    });
+
+    expect(highest).toBe(2);
+    expect(visibility.costUsd).toBeCloseTo(0.018);
   });
 
   it('stops asking once the request limit is used up', async () => {
@@ -180,7 +209,7 @@ describe('collectAiVisibility', () => {
       ...PARAMS,
       queries: ['Frage eins zur Kanzlei?', 'Frage zwei zur Kanzlei?'],
       maxRequests: 4,
-      fetchImplementation,
+      fetchAnswer: throughDataForSeo(fetchImplementation),
     });
 
     expect(requests).toHaveLength(4);
@@ -196,7 +225,7 @@ describe('collectAiVisibility', () => {
       ...PARAMS,
       queries: ['Frage eins zur Kanzlei?'],
       deadlineMs: -1,
-      fetchImplementation,
+      fetchAnswer: throughDataForSeo(fetchImplementation),
     });
 
     expect(requests).toHaveLength(0);

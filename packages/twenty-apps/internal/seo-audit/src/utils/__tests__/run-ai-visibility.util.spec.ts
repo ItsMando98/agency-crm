@@ -15,6 +15,7 @@ const buildParams = (overrides: Partial<Parameters<typeof runAiVisibility>[0]> =
   isEnabled: true,
   anthropicClient: createFakeAnthropicClient(() => buildTextMessage({ queries: QUERIES })).client,
   credentials: { login: 'login', password: 'password' },
+  tregCredentials: null,
   origin: 'https://www.kanzlei-beispiel.de',
   homepage,
   auditablePages: [homepage],
@@ -47,6 +48,41 @@ describe('runAiVisibility', () => {
     expect(visibility?.notes).toEqual([]);
   });
 
+  it('asks through treg when a treg token is set, with the country of the market', async () => {
+    const { fetchImplementation, requests } = createRecordingFetch(({ url }) =>
+      url.includes('perplexity')
+        ? { json: buildDataForSeoEnvelope(buildLlmResult({ sourceUrls: ['https://rival.de/'] })) }
+        : { json: { success: true, result: { text: 'Antwort', sources: [{ url: 'https://www.kanzlei-beispiel.de/a', label: '' }] } } },
+    );
+
+    const visibility = await runAiVisibility(
+      buildParams({
+        credentials: null,
+        tregCredentials: { token: 'treg-token', organization: null },
+        market: 'UK',
+        fetchImplementation,
+      }),
+    );
+
+    expect(requests).toHaveLength(24);
+    expect(requests.every((request) => request.url.startsWith('https://treg.to/call/'))).toBe(true);
+    expect(requests[0].body).toEqual({ prompt: QUERIES[0], country: 'GB' });
+    expect(visibility?.queriesTested).toBe(8);
+    expect(visibility?.notes).toEqual([]);
+  });
+
+  it('prefers treg over DataForSEO when both are set', async () => {
+    const { fetchImplementation, requests } = createRecordingFetch(() => ({
+      json: { success: true, result: { text: 'Antwort', sources: [] } },
+    }));
+
+    await runAiVisibility(
+      buildParams({ tregCredentials: { token: 'treg-token', organization: null }, fetchImplementation }),
+    );
+
+    expect(requests.some((request) => request.url.includes('dataforseo.com'))).toBe(false);
+  });
+
   it('explains what is missing instead of failing when a key is not set', async () => {
     const withoutCredentials = await runAiVisibility(buildParams({ credentials: null }));
     const withoutModel = await runAiVisibility(buildParams({ anthropicClient: null }));
@@ -54,7 +90,7 @@ describe('runAiVisibility', () => {
     for (const visibility of [withoutCredentials, withoutModel]) {
       expect(visibility?.rows).toEqual([]);
       expect(visibility?.presenceRate).toBeNull();
-      expect(visibility?.notes).toEqual(['AI visibility needs DataForSEO and an Anthropic key. It was skipped.']);
+      expect(visibility?.notes).toEqual(['AI visibility needs treg or DataForSEO, and an Anthropic key. It was skipped.']);
     }
   });
 

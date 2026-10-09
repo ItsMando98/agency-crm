@@ -10,11 +10,11 @@ export const BACKLINK_TARGETS_LIMIT = 40;
 export const LOW_BALANCE_THRESHOLD_USD = 1;
 
 export const MARKETS = {
-  DE: { locationCode: 2276, languageCode: 'de', label: 'Germany' },
-  AT: { locationCode: 2040, languageCode: 'de', label: 'Austria' },
-  CH: { locationCode: 2756, languageCode: 'de', label: 'Switzerland' },
-  US: { locationCode: 2840, languageCode: 'en', label: 'United States' },
-  UK: { locationCode: 2826, languageCode: 'en', label: 'United Kingdom' },
+  DE: { locationCode: 2276, languageCode: 'de', countryCode: 'DE', label: 'Germany' },
+  AT: { locationCode: 2040, languageCode: 'de', countryCode: 'AT', label: 'Austria' },
+  CH: { locationCode: 2756, languageCode: 'de', countryCode: 'CH', label: 'Switzerland' },
+  US: { locationCode: 2840, languageCode: 'en', countryCode: 'US', label: 'United States' },
+  UK: { locationCode: 2826, languageCode: 'en', countryCode: 'GB', label: 'United Kingdom' },
 } as const;
 
 export const DEFAULT_MARKET = 'DE';
