@@ -75,7 +75,7 @@ export const runQueuedSeoAudit = async ({
   }
 
   const anthropicClient = getAnthropicClient();
-  const { defaultLanguage, maxPages, market } = readAuditSettings();
+  const { defaultLanguage, maxPages, market, isAiVisibilityEnabled } = readAuditSettings();
   const dataForSeoCredentials = readDataForSeoCredentials();
 
   await client.mutation({
@@ -101,6 +101,7 @@ export const runQueuedSeoAudit = async ({
       maxPages,
       market,
       dataForSeoCredentials,
+      isAiVisibilityEnabled,
     });
 
     const auditExports = await buildAuditExports({

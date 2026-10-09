@@ -1,6 +1,7 @@
 import { describe, expect, it, vi } from 'vitest';
 
 import { buildAiReadiness } from 'src/__mocks__/build-ai-readiness.mock';
+import { buildAiVisibility } from 'src/__mocks__/build-ai-visibility.mock';
 import { buildCrawledPage } from 'src/__mocks__/build-crawled-page.mock';
 import { buildScoredKeyword } from 'src/__mocks__/build-scored-keyword.mock';
 import { persistSeoAuditResult } from 'src/utils/persist-seo-audit-result.util';
@@ -12,6 +13,7 @@ const buildResult = (overrides: Partial<SeoAuditResult> = {}): SeoAuditResult =>
   generatedAt: '2026-10-06T10:00:00.000Z',
   brokenBacklinkTargets: [],
   aiReadiness: buildAiReadiness(),
+  aiVisibility: null,
   score: 81,
   grade: 'B',
   areaScores: { SECURITY: 98 },
@@ -128,6 +130,34 @@ describe('persistSeoAuditResult', () => {
       estimatedMonthlyTraffic: 54000,
       marketDataCostUsd: 0.31,
     });
+  });
+
+  it('stores the AI answers and adds their cost to the market data cost', async () => {
+    const { client, mutation } = buildClient();
+    const aiVisibility = buildAiVisibility({ costUsd: 0.6, presenceRate: 0.25, queriesTested: 8 });
+
+    await persistSeoAuditResult({
+      client,
+      auditId: 'audit-1',
+      result: buildResult({
+        aiVisibility,
+        marketData: {
+          rankings: null,
+          backlinks: null,
+          backlinkTargets: [],
+          lighthouse: null,
+          competitors: [],
+          costUsd: 0.31,
+          notes: [],
+        },
+      }),
+      finishedAt: new Date('2026-10-09T10:00:00Z'),
+    });
+
+    const data = lastUpdateData(mutation);
+
+    expect(data).toMatchObject({ aiPresenceRate: 0.25, aiQueriesTested: 8, aiVisibility });
+    expect(data.marketDataCostUsd).toBeCloseTo(0.91);
   });
 
   it('stores the report, share link and file references in the final update', async () => {

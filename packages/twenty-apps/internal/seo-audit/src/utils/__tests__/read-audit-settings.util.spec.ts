@@ -8,13 +8,19 @@ describe('readAuditSettings', () => {
       defaultLanguage: 'DE',
       maxPages: 60,
       market: 'DE',
+      isAiVisibilityEnabled: false,
     });
   });
 
   it('reads language and page count from the variables', () => {
     expect(
       readAuditSettings({ SEO_AUDIT_DEFAULT_LANGUAGE: ' EN ', SEO_AUDIT_MAX_PAGES: '25' }),
-    ).toEqual({ defaultLanguage: 'EN', maxPages: 25, market: 'DE' });
+    ).toEqual({
+      defaultLanguage: 'EN',
+      maxPages: 25,
+      market: 'DE',
+      isAiVisibilityEnabled: false,
+    });
   });
 
   it('clamps the page count into the allowed range', () => {
@@ -34,5 +40,13 @@ describe('readAuditSettings', () => {
     expect(readAuditSettings({ SEO_AUDIT_MARKET: 'CH' }).market).toBe('CH');
     expect(readAuditSettings({ SEO_AUDIT_MARKET: 'XX' }).market).toBe('DE');
     expect(readAuditSettings({ SEO_AUDIT_MARKET: 'toString' }).market).toBe('DE');
+  });
+
+  it('switches the AI visibility check on only for the value ON', () => {
+    expect(readAuditSettings({ SEO_AUDIT_AI_VISIBILITY: 'ON' }).isAiVisibilityEnabled).toBe(true);
+    expect(readAuditSettings({ SEO_AUDIT_AI_VISIBILITY: ' ON ' }).isAiVisibilityEnabled).toBe(true);
+    expect(readAuditSettings({ SEO_AUDIT_AI_VISIBILITY: 'OFF' }).isAiVisibilityEnabled).toBe(false);
+    expect(readAuditSettings({ SEO_AUDIT_AI_VISIBILITY: 'true' }).isAiVisibilityEnabled).toBe(false);
+    expect(readAuditSettings({}).isAiVisibilityEnabled).toBe(false);
   });
 });

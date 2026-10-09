@@ -10,6 +10,7 @@ export const EXCEL_LABELS: Record<AuditLanguage, ExcelLabels> = {
       keywords: 'Keywords',
       backlinks: 'Backlinks',
       competitors: 'Wettbewerber',
+      aiAnswers: 'KI-Antworten',
       review: 'Prüfliste',
     },
     overview: {
@@ -95,6 +96,7 @@ export const EXCEL_LABELS: Record<AuditLanguage, ExcelLabels> = {
       keywords: 'Keywords',
       backlinks: 'Backlinks',
       competitors: 'Competitors',
+      aiAnswers: 'AI answers',
       review: 'To review',
     },
     overview: {

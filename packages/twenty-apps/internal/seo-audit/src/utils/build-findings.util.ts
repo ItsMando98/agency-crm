@@ -1,4 +1,5 @@
 import { type AiReadiness } from 'src/types/ai-readiness';
+import { type AiVisibility } from 'src/types/ai-visibility';
 import { type AuditLanguage } from 'src/types/audit-language';
 import { type BacklinkTarget } from 'src/types/backlink-target';
 import { type CrawlResult } from 'src/types/crawl-result';
@@ -7,6 +8,7 @@ import { type MarketData } from 'src/types/market-data';
 import { type PageAssessment } from 'src/types/page-assessment';
 import { type ScoredKeyword } from 'src/types/scored-keyword';
 import { type SiteProfile } from 'src/types/site-profile';
+import { checkAiPresence } from 'src/utils/check-ai-presence.util';
 import { checkAiReadiness } from 'src/utils/check-ai-readiness.util';
 import { checkContentQuality } from 'src/utils/check-content-quality.util';
 import { checkCoreWebVitals } from 'src/utils/check-core-web-vitals.util';
@@ -27,6 +29,7 @@ type BuildFindingsParams = {
   keywords?: ScoredKeyword[];
   brokenBacklinkTargets?: BacklinkTarget[];
   aiReadiness?: AiReadiness | null;
+  aiVisibility?: AiVisibility | null;
 };
 
 export const buildFindings = ({
@@ -38,6 +41,7 @@ export const buildFindings = ({
   keywords = [],
   brokenBacklinkTargets = [],
   aiReadiness = null,
+  aiVisibility = null,
 }: BuildFindingsParams): Finding[] => [
   ...checkCrawlability(crawlResult),
   ...checkOnPage(crawlResult.pages),
@@ -49,4 +53,5 @@ export const buildFindings = ({
   ...checkContentQuality(crawlResult.pages, assessments),
   ...checkVisibility({ marketData, keywords, brokenBacklinkTargets, language }),
   ...(aiReadiness === null ? [] : checkAiReadiness({ aiReadiness, language })),
+  ...checkAiPresence({ aiVisibility, language }),
 ];

@@ -1,4 +1,6 @@
+import { AI_VISIBILITY_SWITCH } from 'src/constants/ai-visibility.const';
 import {
+  AI_VISIBILITY_VARIABLE_KEY,
   DEFAULT_LANGUAGE_VARIABLE_KEY,
   MARKET_VARIABLE_KEY,
   MAX_PAGES_VARIABLE_KEY,
@@ -13,6 +15,7 @@ type AuditSettings = {
   defaultLanguage: AuditLanguage;
   maxPages: number;
   market: Market;
+  isAiVisibilityEnabled: boolean;
 };
 
 export const readAuditSettings = (
@@ -34,5 +37,7 @@ export const readAuditSettings = (
     market: Object.keys(MARKETS).includes(market)
       ? (market as Market)
       : DEFAULT_MARKET,
+    isAiVisibilityEnabled:
+      environment[AI_VISIBILITY_VARIABLE_KEY]?.trim() === AI_VISIBILITY_SWITCH.ON,
   };
 };

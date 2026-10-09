@@ -6,6 +6,7 @@ export type ExcelLabels = {
     keywords: string;
     backlinks: string;
     competitors: string;
+    aiAnswers: string;
     review: string;
   };
   overview: {

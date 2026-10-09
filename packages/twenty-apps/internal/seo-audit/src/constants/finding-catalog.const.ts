@@ -565,6 +565,44 @@ export const FINDING_CATALOG: Record<FindingRuleId, FindingDefinition> = {
       },
     },
   },
+  AI_NOT_CITED: {
+    area: 'AI_VISIBILITY',
+    severity: 'WARNING',
+    priority: 'HIGH',
+    effort: 'HIGH',
+    source: 'RULE',
+    text: {
+      DE: {
+        title: 'Bei {count} typischen Kundenfragen nennt keine KI-Antwort die Website',
+        recommendation:
+          'KI-Systeme nennen vor allem Seiten, die eine Frage direkt und mit konkreten Angaben beantworten. Lege zu diesen Fragen eigene Seiten oder Abschnitte an, etwa zu Leistung, Preis, Ablauf und Vergleich, und belege sie mit Zahlen und Quellen. Die Antworten der KI-Systeme schwanken von Lauf zu Lauf, der Befund ist eine Stichprobe.',
+      },
+      EN: {
+        title: 'For {count} typical customer questions no AI answer names the website',
+        recommendation:
+          'AI systems mostly name pages that answer a question directly and with concrete detail. Create pages or sections for these questions, for example on service, price, process and comparison, and back them with numbers and sources. AI answers vary from run to run, so this finding is a sample.',
+      },
+    },
+  },
+  AI_COMPETITOR_PREFERRED: {
+    area: 'AI_VISIBILITY',
+    severity: 'WARNING',
+    priority: 'MEDIUM',
+    effort: 'HIGH',
+    source: 'RULE',
+    text: {
+      DE: {
+        title: 'KI-Antworten nennen immer wieder dieselben Wettbewerber statt der Website',
+        recommendation:
+          'Sieh dir an, welche Fragen diese Seiten beantworten und womit sie ihre Aussagen belegen, und beantworte dieselben Fragen konkreter und besser belegt.',
+      },
+      EN: {
+        title: 'AI answers repeatedly name the same competitors instead of the website',
+        recommendation:
+          'Look at which questions these pages answer and how they back up their claims, and answer the same questions more concretely and with better evidence.',
+      },
+    },
+  },
   HOMEPAGE_STRUCTURED_DATA_MISSING: {
     area: 'STRUCTURED_DATA',
     severity: 'WARNING',

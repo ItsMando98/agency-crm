@@ -142,6 +142,18 @@ Aufwand: etwa ein Tag.
    - `AI_COMPETITOR_PREFERRED` (wenn dieselbe fremde Domain in mindestens 3 Fragen statt des Kunden auftaucht).
    - Beide sind `source: 'RULE'`, weil gemessen. Ein Finding entsteht nur, wenn mindestens 6 Zeilen auswertbar waren (das Kit verlangt mindestens 8 Fragen mit Ergebnissen in mindestens zwei Engines).
 
+**Umsetzungsstand und Abweichungen (2026-10-09):**
+
+- Umgesetzt sind ChatGPT (`gpt-5.4-mini`), Perplexity (`sonar`) und Gemini (`gemini-3.5-flash`). Die Modellnamen stehen in `ai-visibility.const.ts`.
+- **AI Overview fehlt noch.** Der gefüllte Block wurde nicht gesehen. Dafür gibt es die Stufe `--stage overview` im Smoke-Test-Skript. Erst nach diesem Probeaufruf wird ein Parser geschrieben.
+- Die Einstellung heißt `SEO_AUDIT_AI_VISIBILITY` mit den Werten `OFF` (Standard) und `ON`. Die Engines sind nicht einzeln abschaltbar.
+- Markennamen werden nur aus der Domain abgeleitet (`deriveBrandNames`). Seitentitel und der Firmenname des verknüpften CRM-Datensatzes fließen nicht ein, damit kurze, häufige Wörter keine "erwähnt"-Treffer erzeugen. Der Firmenname wäre eine sinnvolle Ergänzung, sobald der Audit-Datensatz ihn an die Pipeline durchreicht.
+- Fragen: 8 Stück (`AI_QUERY_COUNT`), das Modell schreibt 10 und was den Firmennamen enthält, fällt weg. Unter 5 brauchbaren Fragen wird übersprungen.
+- Limits: höchstens 30 Requests und 240 s Zeitbudget. Überzählige Requests werden als `UNKNOWN` mit Notiz geführt.
+- Findings erscheinen erst ab 6 auswertbaren Fragen. `AI_NOT_CITED` kommt bei einer Präsenzquote unter 50 Prozent, `AI_COMPETITOR_PREFERRED` bei einem Wettbewerber in mindestens 3 der Fragen ohne Nennung.
+- Kosten und Notizen der KI-Abfragen werden zu `marketDataCostUsd` und `marketDataNotes` addiert.
+- Zeilen der Tabelle liegen im JSON-Feld `aiVisibility`; Phase 3 reicht sie an `get_seo_audit` weiter.
+
 **Neue Einstellungen** (`application-variable-keys.const.ts`, `application.config.ts`, Setup-UI):
 
 - `SEO_AUDIT_AI_VISIBILITY` (`true`/`false`, Standard **aus**, weil es Geld kostet)
@@ -212,7 +224,7 @@ Zurückgestellt: Lead-Magnet-Sperre im Report (3 bis 5 Findings sichtbar, Rest a
 | 0 | Smoke-Test, Fixtures, Entscheidung 1 | 0,5 Tag |
 | 1 | Lighthouse | 1 Tag (**umgesetzt am 2026-10-09**, 587 Tests grün, Build ok, noch nicht committet und nicht deployt) |
 | 2a | AI-Readiness | 1 Tag (**umgesetzt am 2026-10-09**, 618 Tests grün, Build ok, noch nicht deployt) |
-| 2b | AI-Presence | 2 bis 3 Tage |
+| 2b | AI-Presence | 2 bis 3 Tage (**umgesetzt am 2026-10-09 für ChatGPT, Perplexity und Gemini**, 696 Tests grün, Build ok, noch nicht deployt; AI Overview folgt) |
 | 3 | Report, Excel, Vergleich, Agent-Tools | 1,5 Tage |
 | 4 | Release auf `roaswell`, Test-Audit | 0,5 Tag |
 

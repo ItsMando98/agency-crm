@@ -1,5 +1,6 @@
 import { REPORT_LABELS } from 'src/constants/report-labels.const';
 import { type AiReadiness } from 'src/types/ai-readiness';
+import { type AiVisibility } from 'src/types/ai-visibility';
 import { type AreaScores } from 'src/types/area-scores';
 import { type AuditLanguage } from 'src/types/audit-language';
 import { type AuditTask } from 'src/types/audit-task';
@@ -8,6 +9,7 @@ import { type PageAssessment } from 'src/types/page-assessment';
 import { type ScoredKeyword } from 'src/types/scored-keyword';
 import { type SeoArea } from 'src/types/seo-area';
 import { buildAiReadinessReportSection } from 'src/utils/build-ai-readiness-report-section.util';
+import { buildAiVisibilityReportSection } from 'src/utils/build-ai-visibility-report-section.util';
 import { buildMarketReportSection } from 'src/utils/build-market-report-section.util';
 import { getTaskHorizon } from 'src/utils/get-task-horizon.util';
 
@@ -26,6 +28,7 @@ type BuildReportMarkdownParams = {
   keywords?: ScoredKeyword[];
   isMarketDataConfigured?: boolean;
   aiReadiness?: AiReadiness | null;
+  aiVisibility?: AiVisibility | null;
 };
 
 const MAX_URLS_SHOWN_PER_TASK = 5;
@@ -48,6 +51,7 @@ export const buildReportMarkdown = ({
   keywords = [],
   isMarketDataConfigured = false,
   aiReadiness = null,
+  aiVisibility = null,
 }: BuildReportMarkdownParams): string => {
   const labels = REPORT_LABELS[language];
   const lines: string[] = [
@@ -152,6 +156,10 @@ export const buildReportMarkdown = ({
 
   if (aiReadiness !== null) {
     lines.push(...buildAiReadinessReportSection({ aiReadiness, language }));
+  }
+
+  if (aiVisibility !== null) {
+    lines.push(...buildAiVisibilityReportSection({ aiVisibility, language }));
   }
 
   const reviewUrls = assessments

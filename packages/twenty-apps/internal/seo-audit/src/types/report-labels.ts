@@ -53,6 +53,16 @@ export type ReportLabels = {
   llmsTxt: string;
   organizationMarkup: string;
   faqMarkup: string;
+  aiVisibilityHeading: string;
+  aiVisibilityIntro: string;
+  aiVisibilityPresence: string;
+  aiVisibilityTestedOn: string;
+  questionColumn: string;
+  namedInsteadColumn: string;
+  statusCited: string;
+  statusMentioned: string;
+  statusAbsent: string;
+  statusUnknown: string;
   keywordsTotal: string;
   trafficEstimate: string;
   positionsHeading: string;

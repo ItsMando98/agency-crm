@@ -1,6 +1,7 @@
 import ExcelJS from 'exceljs';
 import { describe, expect, it } from 'vitest';
 
+import { buildAiVisibility } from 'src/__mocks__/build-ai-visibility.mock';
 import { buildSeoAuditResult } from 'src/__mocks__/build-seo-audit-result.mock';
 import { buildAuditWorkbook } from 'src/utils/build-audit-workbook.util';
 
@@ -62,6 +63,36 @@ describe('buildAuditWorkbook', () => {
     expect(sheet?.getCell('A9').value).toBe('Sicherheit');
     expect(sheet?.getCell('B9').value).toBe(98);
     expect(sheet?.getCell('C9').value).toBe('Stark');
+  });
+
+  it('adds a sheet with the AI answers when the check ran', async () => {
+    const workbook = await readWorkbook(
+      await buildAuditWorkbook(buildSeoAuditResult({ language: 'EN', aiVisibility: buildAiVisibility() }), branding),
+    );
+    const sheet = workbook.getWorksheet('AI answers');
+
+    expect(sheet?.getRow(1).values).toEqual([undefined, 'Question', 'ChatGPT', 'Perplexity', 'Gemini', 'Named instead']);
+    expect(sheet?.getRow(2).values).toEqual([
+      undefined,
+      'Welcher Anwalt hilft bei einer Kündigung?',
+      'cited',
+      'absent',
+      'n/a',
+      'rival.de, other.de',
+    ]);
+  });
+
+  it('leaves the AI answers sheet out when the check was off or asked nothing', async () => {
+    const off = await readWorkbook(await buildAuditWorkbook(buildSeoAuditResult({ language: 'EN' }), branding));
+    const empty = await readWorkbook(
+      await buildAuditWorkbook(
+        buildSeoAuditResult({ language: 'EN', aiVisibility: buildAiVisibility({ rows: [], presenceRate: null }) }),
+        branding,
+      ),
+    );
+
+    expect(off.getWorksheet('AI answers')).toBeUndefined();
+    expect(empty.getWorksheet('AI answers')).toBeUndefined();
   });
 
   it('adds the mobile Lighthouse values below the area ratings', async () => {

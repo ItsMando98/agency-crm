@@ -2,6 +2,7 @@ import { defineApplication, FieldType } from 'twenty-sdk/define';
 
 import { APPLICATION_UNIVERSAL_IDENTIFIER } from 'src/constants/application-universal-identifier.const';
 import {
+  AI_VISIBILITY_VARIABLE_KEY,
   ANTHROPIC_API_KEY_VARIABLE_KEY,
   DATAFORSEO_LOGIN_VARIABLE_KEY,
   DATAFORSEO_PASSWORD_VARIABLE_KEY,
@@ -14,6 +15,7 @@ import {
   REPORT_BRAND_NAME_VARIABLE_KEY,
   REPORT_PUBLIC_URL_VARIABLE_KEY,
 } from 'src/constants/application-variable-keys.const';
+import { AI_VISIBILITY_SWITCH } from 'src/constants/ai-visibility.const';
 import { MAX_CRAWLED_PAGES } from 'src/constants/crawl.const';
 import { DEFAULT_MARKET, MARKETS } from 'src/constants/dataforseo.const';
 import { DEFAULT_ACCENT_COLOR } from 'src/constants/report.const';
@@ -119,6 +121,19 @@ export default defineApplication({
       type: FieldType.NUMBER,
       isSecret: false,
       value: MAX_CRAWLED_PAGES,
+    },
+    [AI_VISIBILITY_VARIABLE_KEY]: {
+      universalIdentifier: 'd2c8217e-a10c-458c-9ae3-302aa793f362',
+      label: 'AI visibility check',
+      description:
+        'Optional and paid. Asks ChatGPT, Perplexity and Gemini typical customer questions and checks whether the website is named. Needs DataForSEO and the Anthropic key. A first measurement put the cost at roughly 0.5 to 1 USD per audit at DataForSEO.',
+      type: FieldType.SELECT,
+      options: [
+        { label: 'Off', value: AI_VISIBILITY_SWITCH.OFF },
+        { label: 'On', value: AI_VISIBILITY_SWITCH.ON },
+      ],
+      isSecret: false,
+      value: AI_VISIBILITY_SWITCH.OFF,
     },
   },
 });

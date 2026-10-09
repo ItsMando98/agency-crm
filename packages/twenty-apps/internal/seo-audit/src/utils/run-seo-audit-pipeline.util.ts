@@ -27,6 +27,7 @@ import { evaluateAiReadiness } from 'src/utils/evaluate-ai-readiness.util';
 import { isAuditablePage } from 'src/utils/is-auditable-page.util';
 import { normalizeAuditDomain } from 'src/utils/normalize-audit-domain.util';
 import { resolveBrokenBacklinkTargets } from 'src/utils/resolve-broken-backlink-targets.util';
+import { runAiVisibility } from 'src/utils/run-ai-visibility.util';
 import { runWithConcurrency } from 'src/utils/run-with-concurrency.util';
 import { scoreKeywords } from 'src/utils/score-keywords.util';
 import { scoreToGrade } from 'src/utils/score-to-grade.util';
@@ -40,6 +41,8 @@ type RunSeoAuditPipelineParams = {
   dataForSeoCredentials?: DataForSeoCredentials | null;
   market?: Market;
   maxPages?: number;
+  // Paid: asks AI assistants typical customer questions and checks who they name.
+  isAiVisibilityEnabled?: boolean;
   fetchImplementation?: typeof fetch;
   now?: Date;
 };
@@ -53,6 +56,7 @@ export const runSeoAuditPipeline = async ({
   dataForSeoCredentials = null,
   market = DEFAULT_MARKET,
   maxPages,
+  isAiVisibilityEnabled = false,
   fetchImplementation,
   now = new Date(),
 }: RunSeoAuditPipelineParams): Promise<SeoAuditResult> => {
@@ -62,10 +66,30 @@ export const runSeoAuditPipeline = async ({
   const aiReadiness = evaluateAiReadiness(crawlResult);
   const [homepage] = crawlResult.pages;
 
-  const [siteProfile, assessments, marketData] = await Promise.all([
+  const siteProfilePromise =
     anthropicClient !== null && isAuditablePage(homepage)
       ? assessSiteProfile({ client: anthropicClient, homepage })
-      : Promise.resolve<SiteProfile | null>(null),
+      : Promise.resolve<SiteProfile | null>(null);
+
+  // The questions need the site profile, so this starts as soon as it is known
+  // and runs next to the page classifier and the market data.
+  const aiVisibilityPromise = siteProfilePromise.then((profile) =>
+    runAiVisibility({
+      isEnabled: isAiVisibilityEnabled,
+      anthropicClient,
+      credentials: dataForSeoCredentials,
+      origin: crawlResult.origin,
+      homepage,
+      auditablePages,
+      siteProfile: profile,
+      market,
+      now,
+      fetchImplementation,
+    }),
+  );
+
+  const [siteProfile, assessments, marketData, aiVisibility] = await Promise.all([
+    siteProfilePromise,
     anthropicClient === null
       ? Promise.resolve<PageAssessment[]>([])
       : runWithConcurrency(auditablePages, CLASSIFIER_CONCURRENCY, (page) =>
@@ -81,6 +105,7 @@ export const runSeoAuditPipeline = async ({
           market,
           fetchImplementation,
         }),
+    aiVisibilityPromise,
   ]);
 
   let keywords: ScoredKeyword[] = [];
@@ -130,6 +155,7 @@ export const runSeoAuditPipeline = async ({
     keywords,
     brokenBacklinkTargets,
     aiReadiness,
+    aiVisibility,
   });
   const areaScores = computeAreaScores({
     findings,
@@ -137,6 +163,7 @@ export const runSeoAuditPipeline = async ({
     pageCount: crawlResult.pages.length,
     keywords,
     aiReadiness,
+    aiVisibility,
   });
   const score = computeOverallScore(areaScores);
   const grade = scoreToGrade(score);
@@ -156,6 +183,7 @@ export const runSeoAuditPipeline = async ({
     keywords,
     isMarketDataConfigured: dataForSeoCredentials !== null,
     aiReadiness,
+    aiVisibility,
   });
 
   return {
@@ -164,6 +192,7 @@ export const runSeoAuditPipeline = async ({
     generatedAt: now.toISOString(),
     brokenBacklinkTargets,
     aiReadiness,
+    aiVisibility,
     score,
     grade,
     areaScores,

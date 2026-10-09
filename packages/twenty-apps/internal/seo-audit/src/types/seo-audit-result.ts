@@ -1,4 +1,5 @@
 import { type AiReadiness } from 'src/types/ai-readiness';
+import { type AiVisibility } from 'src/types/ai-visibility';
 import { type AreaScores } from 'src/types/area-scores';
 import { type AuditLanguage } from 'src/types/audit-language';
 import { type AuditTask } from 'src/types/audit-task';
@@ -15,6 +16,8 @@ export type SeoAuditResult = {
   generatedAt: string;
   brokenBacklinkTargets: BacklinkTarget[];
   aiReadiness: AiReadiness;
+  // Null when the paid AI visibility check is switched off.
+  aiVisibility: AiVisibility | null;
   score: number;
   grade: string;
   areaScores: AreaScores;

@@ -3,6 +3,7 @@ import ExcelJS from 'exceljs';
 import { type ReportBranding } from 'src/types/report-branding';
 import { type SeoAuditResult } from 'src/types/seo-audit-result';
 import { addActionListSheet } from 'src/utils/add-action-list-sheet.util';
+import { addAiVisibilitySheet } from 'src/utils/add-ai-visibility-sheet.util';
 import { addBacklinksSheet } from 'src/utils/add-backlinks-sheet.util';
 import { addCompetitorsSheet } from 'src/utils/add-competitors-sheet.util';
 import { addKeywordsSheet } from 'src/utils/add-keywords-sheet.util';
@@ -35,6 +36,10 @@ export const buildAuditWorkbook = async (
 
   if ((result.marketData?.competitors.length ?? 0) > 0) {
     addCompetitorsSheet(workbook, result);
+  }
+
+  if (result.aiVisibility !== null && result.aiVisibility.rows.length > 0) {
+    addAiVisibilitySheet(workbook, result.aiVisibility, result.language);
   }
 
   if (

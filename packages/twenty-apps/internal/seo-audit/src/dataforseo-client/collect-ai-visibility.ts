@@ -1,0 +1,190 @@
+import {
+  AI_DEADLINE_MS,
+  AI_ENGINES,
+  AI_MAX_COMPETITORS_SHOWN,
+  AI_MAX_REQUESTS,
+  AI_MENTIONED_WEIGHT,
+  AI_REQUEST_CONCURRENCY,
+} from 'src/constants/ai-visibility.const';
+import { fetchAiAnswer } from 'src/dataforseo-client/fetch-ai-answer';
+import {
+  type AiAnswerStatus,
+  type AiEngineId,
+  type AiVisibility,
+  type AiVisibilityRow,
+} from 'src/types/ai-visibility';
+import { type DataForSeoCredentials } from 'src/types/data-for-seo-credentials';
+import { classifyAiAnswer } from 'src/utils/classify-ai-answer.util';
+import { runWithConcurrency } from 'src/utils/run-with-concurrency.util';
+
+type CollectAiVisibilityParams = {
+  credentials: DataForSeoCredentials;
+  queries: string[];
+  ownDomain: string;
+  brandNames: string[];
+  now: Date;
+  deadlineMs?: number;
+  maxRequests?: number;
+  fetchImplementation?: typeof fetch;
+};
+
+type Engine = (typeof AI_ENGINES)[number];
+type Task = { query: string; engine: Engine };
+type Outcome =
+  | { task: Task; kind: 'ANSWERED'; status: AiAnswerStatus; competitorDomains: string[]; cost: number }
+  | { task: Task; kind: 'FAILED'; message: string }
+  | { task: Task; kind: 'SKIPPED'; reason: 'DEADLINE' | 'REQUEST_LIMIT' };
+
+const describeSkipped = (
+  count: number,
+  reason: 'DEADLINE' | 'REQUEST_LIMIT',
+  maxRequests: number,
+): string => {
+  const subject = count === 1 ? '1 request was' : `${count} requests were`;
+
+  return reason === 'DEADLINE'
+    ? `${subject} skipped because the time budget ran out.`
+    : `${subject} skipped because the request limit of ${maxRequests} was reached.`;
+};
+
+const buildRow = (query: string, outcomes: Outcome[]): AiVisibilityRow => {
+  const results = Object.fromEntries(
+    AI_ENGINES.map(({ id }) => {
+      const outcome = outcomes.find((candidate) => candidate.task.engine.id === id);
+
+      return [id, outcome?.kind === 'ANSWERED' ? outcome.status : 'UNKNOWN'];
+    }),
+  ) as Record<AiEngineId, AiAnswerStatus>;
+  const counts = new Map<string, number>();
+
+  outcomes.forEach((outcome) => {
+    if (outcome.kind === 'ANSWERED') {
+      outcome.competitorDomains.forEach((domain) =>
+        counts.set(domain, (counts.get(domain) ?? 0) + 1),
+      );
+    }
+  });
+
+  return {
+    query,
+    results,
+    instead: [...counts.entries()]
+      .sort((first, second) => second[1] - first[1])
+      .slice(0, AI_MAX_COMPETITORS_SHOWN)
+      .map(([domain]) => domain),
+  };
+};
+
+const computePresenceRate = (rows: AiVisibilityRow[]): number | null => {
+  const statuses = rows
+    .flatMap((row) => Object.values(row.results))
+    .filter((status) => status !== 'UNKNOWN');
+
+  if (statuses.length === 0) {
+    return null;
+  }
+
+  const weighted = statuses.reduce(
+    (sum, status) =>
+      sum + (status === 'CITED' ? 1 : status === 'MENTIONED' ? AI_MENTIONED_WEIGHT : 0),
+    0,
+  );
+
+  return weighted / statuses.length;
+};
+
+// Each request fails on its own, so one engine going down costs only its column.
+export const collectAiVisibility = async ({
+  credentials,
+  queries,
+  ownDomain,
+  brandNames,
+  now,
+  deadlineMs = AI_DEADLINE_MS,
+  maxRequests = AI_MAX_REQUESTS,
+  fetchImplementation,
+}: CollectAiVisibilityParams): Promise<AiVisibility> => {
+  const tasks: Task[] = queries.flatMap((query) =>
+    AI_ENGINES.map((engine) => ({ query, engine })),
+  );
+  const deadline = Date.now() + deadlineMs;
+  let startedRequests = 0;
+
+  const outcomes = await runWithConcurrency<Task, Outcome>(
+    tasks,
+    AI_REQUEST_CONCURRENCY,
+    async (task) => {
+      if (Date.now() >= deadline) {
+        return { task, kind: 'SKIPPED', reason: 'DEADLINE' };
+      }
+
+      if (startedRequests >= maxRequests) {
+        return { task, kind: 'SKIPPED', reason: 'REQUEST_LIMIT' };
+      }
+
+      startedRequests += 1;
+
+      try {
+        const { answer, cost } = await fetchAiAnswer({
+          credentials,
+          engine: task.engine,
+          query: task.query,
+          fetchImplementation,
+        });
+
+        return {
+          task,
+          kind: 'ANSWERED',
+          cost,
+          ...classifyAiAnswer({ answer, ownDomain, brandNames }),
+        };
+      } catch (error) {
+        return {
+          task,
+          kind: 'FAILED',
+          message: error instanceof Error ? error.message : 'request failed',
+        };
+      }
+    },
+  );
+
+  const rows = queries.map((query) =>
+    buildRow(query, outcomes.filter((outcome) => outcome.task.query === query)),
+  );
+  const notes: string[] = [];
+
+  for (const { id, label } of AI_ENGINES) {
+    const firstFailure = outcomes.find(
+      (outcome) => outcome.kind === 'FAILED' && outcome.task.engine.id === id,
+    );
+
+    if (firstFailure?.kind === 'FAILED') {
+      notes.push(`${label}: ${firstFailure.message}`);
+    }
+  }
+
+  for (const reason of ['DEADLINE', 'REQUEST_LIMIT'] as const) {
+    const skippedCount = outcomes.filter(
+      (outcome) => outcome.kind === 'SKIPPED' && outcome.reason === reason,
+    ).length;
+
+    if (skippedCount > 0) {
+      notes.push(describeSkipped(skippedCount, reason, maxRequests));
+    }
+  }
+
+  return {
+    rows,
+    engines: AI_ENGINES.map(({ id }) => id),
+    presenceRate: computePresenceRate(rows),
+    queriesTested: rows.filter((row) =>
+      Object.values(row.results).some((status) => status !== 'UNKNOWN'),
+    ).length,
+    testedAt: now.toISOString(),
+    costUsd: outcomes.reduce(
+      (sum, outcome) => sum + (outcome.kind === 'ANSWERED' ? outcome.cost : 0),
+      0,
+    ),
+    notes,
+  };
+};
