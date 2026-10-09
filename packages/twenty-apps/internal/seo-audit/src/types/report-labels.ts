@@ -36,6 +36,11 @@ export type ReportLabels = {
   marketDataNotConfigured: string;
   marketHeading: string;
   marketNotes: string;
+  lighthouseHeading: string;
+  performanceScore: string;
+  largestContentfulPaint: string;
+  layoutShift: string;
+  blockingTime: string;
   keywordsTotal: string;
   trafficEstimate: string;
   positionsHeading: string;

@@ -3,6 +3,7 @@ import { MAX_KEYWORDS_SHOWN_PER_CATEGORY } from 'src/constants/seo-thresholds.co
 import { REPORT_HTML_LABELS } from 'src/constants/report-html-labels.const';
 import { REPORT_LABELS } from 'src/constants/report-labels.const';
 import { type SeoAuditResult } from 'src/types/seo-audit-result';
+import { buildLighthouseDisplayRows } from 'src/utils/build-lighthouse-display-rows.util';
 import { escapeHtml } from 'src/utils/escape-html.util';
 import { formatNumber } from 'src/utils/format-number.util';
 
@@ -20,6 +21,23 @@ export const buildReportMarketHtml = (result: SeoAuditResult): string => {
   const htmlLabels = REPORT_HTML_LABELS[language];
   const { rankings, backlinks, competitors } = marketData;
   const parts: string[] = [`<h2>${escapeHtml(labels.marketHeading)}</h2>`];
+
+  const lighthouseRows =
+    marketData.lighthouse === null
+      ? []
+      : buildLighthouseDisplayRows(marketData.lighthouse, language);
+
+  if (lighthouseRows.length > 0) {
+    parts.push(
+      `<h3>${escapeHtml(labels.lighthouseHeading)}</h3>`,
+      `<div class="tiles" style="--tile-columns: ${lighthouseRows.length}">${lighthouseRows
+        .map(
+          (row) =>
+            `<div class="tile"><div class="tile-label">${escapeHtml(row.label)}</div><div class="tile-value">${escapeHtml(row.value)}</div></div>`,
+        )
+        .join('')}</div>`,
+    );
+  }
 
   if (rankings?.positionCounts) {
     const { position1, positions2To3, positions4To10, positions11To20 } = rankings.positionCounts;

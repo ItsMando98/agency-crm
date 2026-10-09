@@ -18,6 +18,10 @@ export type ExcelLabels = {
     area: string;
     areaScore: string;
     band: string;
+    mobilePerformanceScore: string;
+    mobileLcp: string;
+    mobileCls: string;
+    mobileTbt: string;
   };
   actions: {
     number: string;

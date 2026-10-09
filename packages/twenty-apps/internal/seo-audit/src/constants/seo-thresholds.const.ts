@@ -2,6 +2,11 @@ export const TITLE_MIN_LENGTH = 15;
 export const TITLE_MAX_LENGTH = 60;
 export const DESCRIPTION_MAX_LENGTH = 160;
 export const SLOW_RESPONSE_THRESHOLD_MS = 2_000;
+// Limits for a "good" rating. Starting values taken from Google's published Core Web Vitals thresholds.
+export const LARGEST_CONTENTFUL_PAINT_GOOD_MS = 2_500;
+export const LARGEST_CONTENTFUL_PAINT_POOR_MS = 4_000;
+export const CUMULATIVE_LAYOUT_SHIFT_GOOD = 0.1;
+export const TOTAL_BLOCKING_TIME_GOOD_MS = 200;
 export const THIN_CONTENT_WORD_COUNT = 150;
 export const LOW_SCORE_THRESHOLD = 2;
 export const NEEDS_REVIEW_CONFIDENCE_THRESHOLD = 0.7;

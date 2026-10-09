@@ -7,6 +7,7 @@ import { type PageAssessment } from 'src/types/page-assessment';
 import { type ScoredKeyword } from 'src/types/scored-keyword';
 import { type SiteProfile } from 'src/types/site-profile';
 import { checkContentQuality } from 'src/utils/check-content-quality.util';
+import { checkCoreWebVitals } from 'src/utils/check-core-web-vitals.util';
 import { checkCrawlability } from 'src/utils/check-crawlability.util';
 import { checkLinks } from 'src/utils/check-links.util';
 import { checkOnPage } from 'src/utils/check-on-page.util';
@@ -39,6 +40,7 @@ export const buildFindings = ({
   ...checkLinks(crawlResult),
   ...checkSecurity(crawlResult),
   ...checkPerformance(crawlResult.pages),
+  ...checkCoreWebVitals({ lighthouse: marketData?.lighthouse ?? null, language }),
   ...checkStructuredData(crawlResult.pages, siteProfile),
   ...checkContentQuality(crawlResult.pages, assessments),
   ...checkVisibility({ marketData, keywords, brokenBacklinkTargets, language }),

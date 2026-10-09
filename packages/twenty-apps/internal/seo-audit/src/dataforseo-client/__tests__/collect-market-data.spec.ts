@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 
 import { buildDataForSeoEnvelope } from 'src/__mocks__/build-dataforseo-envelope.mock';
+import { buildLighthouseResult } from 'src/__mocks__/build-lighthouse-result.mock';
 import { buildRankedKeywordsResult } from 'src/__mocks__/build-ranked-keywords-result.mock';
 import { createRecordingFetch } from 'src/__mocks__/create-recording-fetch.mock';
 import { collectMarketData } from 'src/dataforseo-client/collect-market-data';
@@ -12,8 +13,12 @@ const PARAMS = {
 };
 
 describe('collectMarketData', () => {
-  it('combines all four requests and sums their cost', async () => {
+  it('combines all five requests and sums their cost', async () => {
     const { fetchImplementation, requests } = createRecordingFetch(({ url }) => {
+      if (url.includes('lighthouse')) {
+        return { json: buildDataForSeoEnvelope(buildLighthouseResult({ performanceScore: 0.65 }), { cost: 0.005 }) };
+      }
+
       if (url.includes('ranked_keywords')) {
         return { json: buildDataForSeoEnvelope(buildRankedKeywordsResult([{ keyword: 'a', position: 2, volume: 10 }]), { cost: 0.07 }) };
       }
@@ -31,14 +36,34 @@ describe('collectMarketData', () => {
 
     const marketData = await collectMarketData({ ...PARAMS, fetchImplementation });
 
-    expect(requests).toHaveLength(4);
-    expect(requests.every((request) => (request.body as { target: string }[])[0].target === 'example.com')).toBe(true);
+    expect(requests).toHaveLength(5);
+    const marketRequests = requests.filter((request) => !request.url.includes('lighthouse'));
+
+    expect(marketRequests.every((request) => (request.body as { target: string }[])[0].target === 'example.com')).toBe(true);
+    expect(requests.find((request) => request.url.includes('lighthouse'))?.body).toEqual([
+      { url: 'https://www.example.com', for_mobile: true, categories: ['performance'] },
+    ]);
+    expect(marketData.lighthouse?.performanceScore).toBe(65);
     expect(marketData.rankings?.totalKeywords).toBe(1);
     expect(marketData.backlinks?.backlinks).toBe(10);
     expect(marketData.backlinkTargets).toHaveLength(1);
     expect(marketData.competitors).toHaveLength(1);
-    expect(marketData.costUsd).toBeCloseTo(0.16);
+    expect(marketData.costUsd).toBeCloseTo(0.165);
     expect(marketData.notes).toEqual([]);
+  });
+
+  it('keeps the market data when Lighthouse fails', async () => {
+    const { fetchImplementation } = createRecordingFetch(({ url }) =>
+      url.includes('lighthouse')
+        ? { json: buildDataForSeoEnvelope(null, { taskStatusCode: 50000, statusMessage: 'Lighthouse run failed.' }) }
+        : { json: buildDataForSeoEnvelope(url.includes('ranked_keywords') ? buildRankedKeywordsResult([{ keyword: 'a', position: 2, volume: 10 }]) : { items: [] }) },
+    );
+
+    const marketData = await collectMarketData({ ...PARAMS, fetchImplementation });
+
+    expect(marketData.rankings).not.toBeNull();
+    expect(marketData.lighthouse).toBeNull();
+    expect(marketData.notes).toEqual(['Lighthouse: Lighthouse run failed.']);
   });
 
   it('keeps the rankings when the backlinks subscription is missing', async () => {
@@ -68,7 +93,7 @@ describe('collectMarketData', () => {
     const marketData = await collectMarketData({ ...PARAMS, fetchImplementation });
 
     expect(marketData.rankings).toBeNull();
-    expect(marketData.notes).toHaveLength(4);
+    expect(marketData.notes).toHaveLength(5);
     expect(marketData.notes[0]).toBe('Rankings: Authentication failed');
     expect(marketData.costUsd).toBe(0);
   });

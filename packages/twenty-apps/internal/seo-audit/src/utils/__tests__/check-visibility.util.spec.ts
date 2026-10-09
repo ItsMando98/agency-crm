@@ -8,6 +8,7 @@ const buildMarketData = (totalKeywords = 10): MarketData => ({
   rankings: { totalKeywords, estimatedMonthlyTraffic: 0, positionCounts: null, keywords: [] },
   backlinks: null,
   backlinkTargets: [],
+  lighthouse: null,
   competitors: [],
   costUsd: 0,
   notes: [],

@@ -1,6 +1,7 @@
 import { fetchBacklinkSummary } from 'src/dataforseo-client/fetch-backlink-summary';
 import { fetchBacklinkTargets } from 'src/dataforseo-client/fetch-backlink-targets';
 import { fetchCompetitors } from 'src/dataforseo-client/fetch-competitors';
+import { fetchLighthouse } from 'src/dataforseo-client/fetch-lighthouse';
 import { fetchRankedKeywords } from 'src/dataforseo-client/fetch-ranked-keywords';
 import { type DataForSeoCredentials } from 'src/types/data-for-seo-credentials';
 import { type Market } from 'src/types/market';
@@ -45,7 +46,7 @@ export const collectMarketData = async ({
     }
   };
 
-  const [rankings, backlinkSummary, backlinkTargets, competitors] =
+  const [rankings, backlinkSummary, backlinkTargets, competitors, lighthouse] =
     await Promise.all([
       attempt('Rankings', () =>
         fetchRankedKeywords({ credentials, target, market, fetchImplementation }),
@@ -59,6 +60,9 @@ export const collectMarketData = async ({
       attempt('Competitors', () =>
         fetchCompetitors({ credentials, target, market, fetchImplementation }),
       ),
+      attempt('Lighthouse', () =>
+        fetchLighthouse({ credentials, url: origin, fetchImplementation }),
+      ),
     ]);
 
   return {
@@ -66,6 +70,7 @@ export const collectMarketData = async ({
     backlinks: backlinkSummary?.summary ?? null,
     backlinkTargets: backlinkTargets?.targets ?? [],
     competitors: competitors?.competitors ?? [],
+    lighthouse: lighthouse?.lighthouse ?? null,
     costUsd,
     notes,
   };

@@ -70,6 +70,7 @@ export const buildSeoAuditResult = (
       },
       backlinks: { backlinks: 12840, referringDomains: 940, brokenBacklinks: 64, brokenPages: 45, rank: 300 },
       backlinkTargets: [],
+      lighthouse: null,
       competitors: [{ domain: 'anwalt-konkurrent.de', commonKeywords: 3400, estimatedTraffic: 480000 }],
       costUsd: 0.31,
       notes: [],

@@ -11,6 +11,7 @@ type RequestDataForSeoParams = {
   credentials: DataForSeoCredentials;
   path: string;
   body?: unknown[];
+  timeoutMs?: number;
   fetchImplementation?: typeof fetch;
 };
 
@@ -35,6 +36,7 @@ export const requestDataForSeo = async ({
   credentials,
   path,
   body,
+  timeoutMs = DATAFORSEO_REQUEST_TIMEOUT_MS,
   fetchImplementation = fetch,
 }: RequestDataForSeoParams): Promise<DataForSeoResult> => {
   const basicToken = btoa(`${credentials.login}:${credentials.password}`);
@@ -46,7 +48,7 @@ export const requestDataForSeo = async ({
       'content-type': 'application/json',
     },
     body: body === undefined ? undefined : JSON.stringify(body),
-    signal: AbortSignal.timeout(DATAFORSEO_REQUEST_TIMEOUT_MS),
+    signal: AbortSignal.timeout(timeoutMs),
   });
 
   let payload: DataForSeoResponse | null = null;

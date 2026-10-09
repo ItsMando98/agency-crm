@@ -113,6 +113,7 @@ describe('buildReportMarkdown', () => {
         rankings: { totalKeywords: 42, estimatedMonthlyTraffic: 100, positionCounts: null, keywords: [] },
         backlinks: null,
         backlinkTargets: [],
+        lighthouse: null,
         competitors: [],
         costUsd: 0.1,
         notes: [],

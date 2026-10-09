@@ -4,6 +4,7 @@ import { MAX_KEYWORDS_SHOWN_PER_CATEGORY } from 'src/constants/seo-thresholds.co
 import { type AuditLanguage } from 'src/types/audit-language';
 import { type MarketData } from 'src/types/market-data';
 import { type ScoredKeyword } from 'src/types/scored-keyword';
+import { buildLighthouseDisplayRows } from 'src/utils/build-lighthouse-display-rows.util';
 
 type BuildMarketReportSectionParams = {
   marketData: MarketData;
@@ -23,6 +24,19 @@ export const buildMarketReportSection = ({
   const labels = REPORT_LABELS[language];
   const lines: string[] = [`## ${labels.marketHeading}`, ''];
   const { rankings, backlinks, competitors } = marketData;
+  const lighthouseRows =
+    marketData.lighthouse === null
+      ? []
+      : buildLighthouseDisplayRows(marketData.lighthouse, language);
+
+  if (lighthouseRows.length > 0) {
+    lines.push(
+      `### ${labels.lighthouseHeading}`,
+      '',
+      ...lighthouseRows.map((row) => `- ${row.label}: ${row.value}`),
+      '',
+    );
+  }
 
   if (rankings !== null) {
     lines.push(

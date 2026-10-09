@@ -64,6 +64,7 @@ describe('buildReportHtml', () => {
           rankings: null,
           backlinks: null,
           backlinkTargets: [],
+          lighthouse: null,
           competitors: [{ domain: evil, commonKeywords: 1, estimatedTraffic: 1 }],
           costUsd: 0,
           notes: [evil],

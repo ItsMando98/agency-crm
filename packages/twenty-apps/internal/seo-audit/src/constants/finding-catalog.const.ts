@@ -432,6 +432,82 @@ export const FINDING_CATALOG: Record<FindingRuleId, FindingDefinition> = {
       },
     },
   },
+  LCP_SLOW: {
+    area: 'PERFORMANCE',
+    severity: 'WARNING',
+    priority: 'MEDIUM',
+    effort: 'MEDIUM',
+    source: 'RULE',
+    text: {
+      DE: {
+        title: 'Startseite zeigt auf dem Handy ihren Hauptinhalt zu spät (LCP über 2,5 Sekunden)',
+        recommendation:
+          'Komprimiere das größte Bild im sichtbaren Bereich, nutze moderne Formate wie WebP oder AVIF, lade es mit hoher Priorität und entferne Skripte, die das Rendern blockieren.',
+      },
+      EN: {
+        title: 'Homepage shows its main content late on mobile (LCP over 2.5 seconds)',
+        recommendation:
+          'Compress the largest image above the fold, use modern formats such as WebP or AVIF, load it with high priority and remove scripts that block rendering.',
+      },
+    },
+  },
+  LCP_VERY_SLOW: {
+    area: 'PERFORMANCE',
+    severity: 'CRITICAL',
+    priority: 'HIGH',
+    effort: 'MEDIUM',
+    source: 'RULE',
+    text: {
+      DE: {
+        title: 'Startseite zeigt auf dem Handy ihren Hauptinhalt sehr spät (LCP über 4 Sekunden)',
+        recommendation:
+          'Das ist der größte Hebel für Ladegefühl und Absprungrate. Komprimiere das größte Bild im sichtbaren Bereich, nutze WebP oder AVIF, lade es mit hoher Priorität und entferne große Videos, Slider und blockierende Skripte aus dem ersten Bildschirm.',
+      },
+      EN: {
+        title: 'Homepage shows its main content very late on mobile (LCP over 4 seconds)',
+        recommendation:
+          'This is the biggest lever for perceived speed and bounce rate. Compress the largest image above the fold, use WebP or AVIF, load it with high priority and remove large videos, sliders and blocking scripts from the first screen.',
+      },
+    },
+  },
+  CLS_HIGH: {
+    area: 'PERFORMANCE',
+    severity: 'WARNING',
+    priority: 'MEDIUM',
+    effort: 'MEDIUM',
+    source: 'RULE',
+    text: {
+      DE: {
+        title: 'Die Startseite springt beim Laden (Layoutverschiebung über 0,1)',
+        recommendation:
+          'Gib Bildern, Videos und Werbeflächen feste Maße, reserviere Platz für nachladende Inhalte und lade Schriften so, dass der Text nicht umbricht.',
+      },
+      EN: {
+        title: 'The homepage shifts while loading (layout shift over 0.1)',
+        recommendation:
+          'Give images, videos and ad slots fixed dimensions, reserve space for late content and load fonts so the text does not reflow.',
+      },
+    },
+  },
+  TBT_HIGH: {
+    area: 'PERFORMANCE',
+    severity: 'WARNING',
+    priority: 'MEDIUM',
+    effort: 'HIGH',
+    source: 'RULE',
+    text: {
+      DE: {
+        title: 'Die Startseite reagiert beim Laden verzögert (Blockierzeit über 200 ms)',
+        recommendation:
+          'Reduziere und verzögere JavaScript, besonders Tracking, Chat-Widgets und Slider, und teile große Skripte in kleinere Teile.',
+      },
+      EN: {
+        title: 'The homepage responds with a delay while loading (blocking time over 200 ms)',
+        recommendation:
+          'Reduce and defer JavaScript, especially tracking, chat widgets and sliders, and split large scripts into smaller parts.',
+      },
+    },
+  },
   HOMEPAGE_STRUCTURED_DATA_MISSING: {
     area: 'STRUCTURED_DATA',
     severity: 'WARNING',

@@ -13,6 +13,7 @@ const marketData: MarketData = {
   },
   backlinks: { backlinks: 900, referringDomains: 70, brokenBacklinks: 31, brokenPages: 6, rank: null },
   backlinkTargets: [],
+  lighthouse: null,
   competitors: [{ domain: 'rival.de', commonKeywords: 340, estimatedTraffic: 500 }],
   costUsd: 0.3,
   notes: ['Backlink targets: Access denied.'],
@@ -41,6 +42,30 @@ describe('buildMarketReportSection', () => {
     expect(text).toContain('Verweisende Domains: 70');
     expect(text).toContain('| rival.de | 340 | 500 |');
     expect(text).toContain('> - Backlink targets: Access denied.');
+  });
+
+  it('lists the Lighthouse measurement for agents', () => {
+    const text = buildMarketReportSection({
+      marketData: {
+        ...marketData,
+        lighthouse: {
+          url: 'https://example.com/',
+          performanceScore: 65,
+          largestContentfulPaintMs: 7138,
+          cumulativeLayoutShift: 0.123,
+          totalBlockingTimeMs: 182,
+          fetchedAt: null,
+        },
+      },
+      language: 'EN',
+      keywords: [],
+    }).join('\n');
+
+    expect(text).toContain('### Mobile loading speed');
+    expect(text).toContain('- Performance score: 65');
+    expect(text).toContain('- Main content visible (LCP): 7.1 s');
+    expect(text).toContain('- Layout shift (CLS): 0.12');
+    expect(text).toContain('- Blocking time (TBT): 182 ms');
   });
 
   it('renders an English section and skips empty parts', () => {

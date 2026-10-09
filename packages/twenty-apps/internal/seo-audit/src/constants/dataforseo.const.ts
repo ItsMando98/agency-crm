@@ -1,5 +1,7 @@
 export const DATAFORSEO_BASE_URL = 'https://api.dataforseo.com';
 export const DATAFORSEO_REQUEST_TIMEOUT_MS = 45_000;
+// DataForSEO lets a Lighthouse run take up to 120 seconds.
+export const DATAFORSEO_LIGHTHOUSE_TIMEOUT_MS = 130_000;
 export const DATAFORSEO_SUCCESS_STATUS_CODE = 20000;
 export const RANKED_KEYWORDS_LIMIT = 500;
 export const COMPETITORS_LIMIT = 15;

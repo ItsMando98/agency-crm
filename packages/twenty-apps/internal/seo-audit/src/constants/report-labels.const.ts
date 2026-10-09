@@ -32,13 +32,18 @@ export const REPORT_LABELS: Record<AuditLanguage, ReportLabels> = {
       'Bei diesen Seiten war die automatische Bewertung unsicher. Sie fließen nicht in die Maßnahmen ein.',
     methodologyHeading: 'Methodik',
     methodology:
-      'Gemessen (Quelle "Regel"): Statuscodes, Titles, Descriptions, Überschriften, Links, HTTPS, Antwortzeit und strukturierte Daten werden vom Code gezählt und nicht geschätzt. Beurteilt (Quelle "Klassifikator"): Seitentyp, Suchintention, Hilfreichkeit, Konkretheit und Vertrauen bewertet ein Sprachmodell. Die Konfidenz ist eine Selbsteinschätzung des Modells und keine berechnete Wahrscheinlichkeit. Rankings, Suchvolumen, Backlinks und Wettbewerber stammen von DataForSEO. Der Sichtbarkeits-Score gewichtet die Platzierungen relevanter Keywords nach Suchvolumen.',
+      'Gemessen (Quelle "Regel"): Statuscodes, Titles, Descriptions, Überschriften, Links, HTTPS, Antwortzeit und strukturierte Daten werden vom Code gezählt und nicht geschätzt. Beurteilt (Quelle "Klassifikator"): Seitentyp, Suchintention, Hilfreichkeit, Konkretheit und Vertrauen bewertet ein Sprachmodell. Die Konfidenz ist eine Selbsteinschätzung des Modells und keine berechnete Wahrscheinlichkeit. Rankings, Suchvolumen, Backlinks und Wettbewerber stammen von DataForSEO. Der Sichtbarkeits-Score gewichtet die Platzierungen relevanter Keywords nach Suchvolumen. Die Ladegeschwindigkeit der Startseite auf dem Handy misst Lighthouse über DataForSEO.',
     contentNotAssessed:
       'Die Inhaltsqualität wurde nicht bewertet, weil kein Klassifikator konfiguriert war. Der Gesamtscore beruht nur auf gemessenen Regeln.',
     marketDataNotConfigured:
       'Rankings, Keywords und Backlinks fehlen, weil DataForSEO nicht eingerichtet ist. Du kannst es im Setup-Tab ergänzen.',
     marketHeading: 'Sichtbarkeit und Markt',
     marketNotes: 'Nicht verfügbar',
+    lighthouseHeading: 'Ladegeschwindigkeit auf dem Handy',
+    performanceScore: 'Performance-Score',
+    largestContentfulPaint: 'Hauptinhalt sichtbar (LCP)',
+    layoutShift: 'Layoutverschiebung (CLS)',
+    blockingTime: 'Blockierzeit (TBT)',
     keywordsTotal: 'Keywords mit Google-Ranking',
     trafficEstimate: 'Geschätzte Besucher pro Monat',
     positionsHeading: 'Verteilung der Platzierungen',
@@ -108,13 +113,18 @@ export const REPORT_LABELS: Record<AuditLanguage, ReportLabels> = {
       'The automatic assessment was unsure about these pages. They do not feed into the actions.',
     methodologyHeading: 'Methodology',
     methodology:
-      'Measured (source "Rule"): status codes, titles, descriptions, headings, links, HTTPS, response time and structured data are counted by code, never estimated. Judged (source "Classifier"): page type, search intent, helpfulness, specificity and trust are rated by a language model. Confidence is the model self-assessment, not a computed probability. Rankings, search volume, backlinks and competitors come from DataForSEO. The visibility score weights the positions of relevant keywords by search volume.',
+      'Measured (source "Rule"): status codes, titles, descriptions, headings, links, HTTPS, response time and structured data are counted by code, never estimated. Judged (source "Classifier"): page type, search intent, helpfulness, specificity and trust are rated by a language model. Confidence is the model self-assessment, not a computed probability. Rankings, search volume, backlinks and competitors come from DataForSEO. The visibility score weights the positions of relevant keywords by search volume. The mobile loading speed of the homepage is measured by Lighthouse through DataForSEO.',
     contentNotAssessed:
       'Content quality was not assessed because no classifier was configured. The overall score only reflects measured rules.',
     marketDataNotConfigured:
       'Rankings, keywords and backlinks are missing because DataForSEO is not set up. You can add it in the Setup tab.',
     marketHeading: 'Visibility and market',
     marketNotes: 'Not available',
+    lighthouseHeading: 'Mobile loading speed',
+    performanceScore: 'Performance score',
+    largestContentfulPaint: 'Main content visible (LCP)',
+    layoutShift: 'Layout shift (CLS)',
+    blockingTime: 'Blocking time (TBT)',
     keywordsTotal: 'Keywords ranking on Google',
     trafficEstimate: 'Estimated monthly visitors',
     positionsHeading: 'Position distribution',

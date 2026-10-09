@@ -1,12 +1,15 @@
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 
 import { buildDataForSeoEnvelope } from 'src/__mocks__/build-dataforseo-envelope.mock';
+import { buildLighthouseResult } from 'src/__mocks__/build-lighthouse-result.mock';
 import { buildRankedKeywordsResult } from 'src/__mocks__/build-ranked-keywords-result.mock';
 import { createRecordingFetch } from 'src/__mocks__/create-recording-fetch.mock';
 import { checkDataForSeoCredentials } from 'src/dataforseo-client/check-dataforseo-credentials';
 import { fetchBacklinkSummary } from 'src/dataforseo-client/fetch-backlink-summary';
 import { fetchBacklinkTargets } from 'src/dataforseo-client/fetch-backlink-targets';
+import { DATAFORSEO_LIGHTHOUSE_TIMEOUT_MS } from 'src/constants/dataforseo.const';
 import { fetchCompetitors } from 'src/dataforseo-client/fetch-competitors';
+import { fetchLighthouse } from 'src/dataforseo-client/fetch-lighthouse';
 import { fetchRankedKeywords } from 'src/dataforseo-client/fetch-ranked-keywords';
 
 const CREDENTIALS = { login: 'login', password: 'password' };
@@ -90,6 +93,28 @@ describe('DataForSEO fetchers', () => {
       { target: 'example.com', location_code: 2840, language_code: 'en', limit: 15 },
     ]);
     expect(competitors).toEqual([{ domain: 'rival.de', commonKeywords: 40, estimatedTraffic: 0 }]);
+  });
+
+  it('requests a mobile Lighthouse run and waits longer than a normal request', async () => {
+    const timeoutSpy = vi.spyOn(AbortSignal, 'timeout');
+    const { fetchImplementation, requests } = createRecordingFetch(() => ({
+      json: buildDataForSeoEnvelope(buildLighthouseResult({ performanceScore: 0.65 }), { cost: 0.005 }),
+    }));
+
+    const { lighthouse, cost } = await fetchLighthouse({
+      credentials: CREDENTIALS,
+      url: 'https://www.example.com',
+      fetchImplementation,
+    });
+
+    expect(requests[0].url).toBe('https://api.dataforseo.com/v3/on_page/lighthouse/live/json');
+    expect(requests[0].body).toEqual([
+      { url: 'https://www.example.com', for_mobile: true, categories: ['performance'] },
+    ]);
+    expect(timeoutSpy).toHaveBeenCalledWith(DATAFORSEO_LIGHTHOUSE_TIMEOUT_MS);
+    expect(lighthouse).toMatchObject({ performanceScore: 65, largestContentfulPaintMs: 1800 });
+    expect(cost).toBe(0.005);
+    timeoutSpy.mockRestore();
   });
 
   it('reads the balance when checking credentials', async () => {

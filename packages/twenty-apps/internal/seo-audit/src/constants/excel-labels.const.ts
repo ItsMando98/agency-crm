@@ -22,6 +22,10 @@ export const EXCEL_LABELS: Record<AuditLanguage, ExcelLabels> = {
       area: 'Bereich',
       areaScore: 'Score',
       band: 'Einstufung',
+      mobilePerformanceScore: 'Mobil: Performance-Score',
+      mobileLcp: 'Mobil: LCP (ms)',
+      mobileCls: 'Mobil: CLS',
+      mobileTbt: 'Mobil: TBT (ms)',
     },
     actions: {
       number: 'Nr.',
@@ -103,6 +107,10 @@ export const EXCEL_LABELS: Record<AuditLanguage, ExcelLabels> = {
       area: 'Area',
       areaScore: 'Score',
       band: 'Rating',
+      mobilePerformanceScore: 'Mobile performance score',
+      mobileLcp: 'Mobile LCP (ms)',
+      mobileCls: 'Mobile CLS',
+      mobileTbt: 'Mobile TBT (ms)',
     },
     actions: {
       number: 'No.',

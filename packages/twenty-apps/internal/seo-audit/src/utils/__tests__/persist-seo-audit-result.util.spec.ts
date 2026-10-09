@@ -99,6 +99,7 @@ describe('persistSeoAuditResult', () => {
           rankings: { totalKeywords: 6500, estimatedMonthlyTraffic: 54000, positionCounts: null, keywords: [] },
           backlinks: null,
           backlinkTargets: [],
+          lighthouse: null,
           competitors: [],
           costUsd: 0.31,
           notes: [],

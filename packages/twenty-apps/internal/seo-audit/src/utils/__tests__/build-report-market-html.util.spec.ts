@@ -20,6 +20,70 @@ describe('buildReportMarketHtml', () => {
     expect(html).toContain('anwalt-konkurrent.de');
   });
 
+  it('renders the Lighthouse measurement as tiles', () => {
+    const html = buildReportMarketHtml(
+      buildSeoAuditResult({
+        language: 'EN',
+        marketData: {
+          rankings: null,
+          backlinks: null,
+          backlinkTargets: [],
+          lighthouse: {
+            url: 'https://www.kanzlei-beispiel.de/',
+            performanceScore: 65,
+            largestContentfulPaintMs: 7138,
+            cumulativeLayoutShift: 0.123,
+            totalBlockingTimeMs: 182,
+            fetchedAt: null,
+          },
+          competitors: [],
+          costUsd: 0.005,
+          notes: [],
+        },
+      }),
+    );
+
+    expect(html).toContain('Mobile loading speed');
+    expect(html).toContain('>65<');
+    expect(html).toContain('>7.1 s<');
+    expect(html).toContain('>0.12<');
+    expect(html).toContain('>182 ms<');
+  });
+
+  it('leaves out the loading speed block without a Lighthouse measurement', () => {
+    expect(buildReportMarketHtml(buildSeoAuditResult({ language: 'EN' }))).not.toContain(
+      'Mobile loading speed',
+    );
+  });
+
+  it('shows only the Lighthouse metrics that were measured', () => {
+    const html = buildReportMarketHtml(
+      buildSeoAuditResult({
+        language: 'DE',
+        marketData: {
+          rankings: null,
+          backlinks: null,
+          backlinkTargets: [],
+          lighthouse: {
+            url: 'https://www.kanzlei-beispiel.de/',
+            performanceScore: null,
+            largestContentfulPaintMs: 3200,
+            cumulativeLayoutShift: null,
+            totalBlockingTimeMs: null,
+            fetchedAt: null,
+          },
+          competitors: [],
+          costUsd: 0,
+          notes: [],
+        },
+      }),
+    );
+
+    expect(html).toContain('>3,2 s<');
+    expect(html).not.toContain('Layoutverschiebung');
+    expect(html).not.toContain('Performance-Score');
+  });
+
   it('renders nothing without market data', () => {
     expect(buildReportMarketHtml(buildSeoAuditResult({ marketData: null }))).toBe('');
   });
@@ -39,6 +103,7 @@ describe('buildReportMarketHtml', () => {
           rankings: null,
           backlinks: null,
           backlinkTargets: [],
+          lighthouse: null,
           competitors: [],
           costUsd: 0,
           notes: ['Backlinks: Access denied.'],

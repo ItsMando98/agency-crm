@@ -47,4 +47,23 @@ export const addOverviewSheet = (workbook: Workbook, result: SeoAuditResult): vo
     .forEach(([area, score]) => {
       sheet.addRow([reportLabels.areas[area], score, bandLabels[getScoreBand(score)]]);
     });
+
+  const lighthouse = result.marketData?.lighthouse ?? null;
+
+  if (lighthouse === null) {
+    return;
+  }
+
+  sheet.addRow([]);
+
+  [
+    [labels.overview.mobilePerformanceScore, lighthouse.performanceScore],
+    [labels.overview.mobileLcp, lighthouse.largestContentfulPaintMs],
+    [labels.overview.mobileCls, lighthouse.cumulativeLayoutShift],
+    [labels.overview.mobileTbt, lighthouse.totalBlockingTimeMs],
+  ].forEach(([label, value]) => {
+    if (value !== null) {
+      sheet.addRow([label, value]).getCell(1).font = { bold: true };
+    }
+  });
 };

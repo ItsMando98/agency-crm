@@ -64,6 +64,46 @@ describe('buildAuditWorkbook', () => {
     expect(sheet?.getCell('C9').value).toBe('Stark');
   });
 
+  it('adds the mobile Lighthouse values below the area ratings', async () => {
+    const result = buildSeoAuditResult({
+      language: 'EN',
+      marketData: {
+        rankings: null,
+        backlinks: null,
+        backlinkTargets: [],
+        lighthouse: {
+          url: 'https://www.kanzlei-beispiel.de/',
+          performanceScore: 65,
+          largestContentfulPaintMs: 7138,
+          cumulativeLayoutShift: 0.123,
+          totalBlockingTimeMs: 182,
+          fetchedAt: null,
+        },
+        competitors: [],
+        costUsd: 0.005,
+        notes: [],
+      },
+    });
+    const sheet = (await readWorkbook(await buildAuditWorkbook(result, branding))).getWorksheet('Overview');
+    const valueByLabel = new Map<string, unknown>();
+
+    sheet?.eachRow((row) => valueByLabel.set(String(row.getCell(1).value), row.getCell(2).value));
+
+    expect(valueByLabel.get('Mobile performance score')).toBe(65);
+    expect(valueByLabel.get('Mobile LCP (ms)')).toBe(7138);
+    expect(valueByLabel.get('Mobile CLS')).toBe(0.123);
+    expect(valueByLabel.get('Mobile TBT (ms)')).toBe(182);
+  });
+
+  it('leaves the Lighthouse rows out without a measurement', async () => {
+    const sheet = (await readWorkbook(await buildAuditWorkbook(buildSeoAuditResult({ language: 'EN' }), branding))).getWorksheet('Overview');
+    const labels: string[] = [];
+
+    sheet?.eachRow((row) => labels.push(String(row.getCell(1).value)));
+
+    expect(labels).not.toContain('Mobile LCP (ms)');
+  });
+
   it('turns the action list into a checklist with a status dropdown', async () => {
     const result = buildSeoAuditResult();
     const workbook = await readWorkbook(await buildAuditWorkbook(result, branding));
