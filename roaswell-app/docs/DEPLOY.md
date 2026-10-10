@@ -15,12 +15,13 @@ Auf dem VPS liegen eigene Apps unter `/opt/<name>/compose.yaml`, hängen am Dock
 rsync -a --exclude node_modules --exclude build --exclude .react-router roaswell-app/ root@82.165.222.228:/opt/roaswell-app/
 ```
 
-Auf dem Server in `/opt/roaswell-app` eine Datei mit den Variablen anlegen (Namen siehe README, `SESSION_SECRET` mit `openssl rand -hex 32` erzeugen), dann:
+Die Variablen trägst du selbst auf dem Server ein. Das Skript fragt Key, Mail-Zugang und Team-Adressen ab, erzeugt `SESSION_SECRET`, schreibt alles mit Rechten 600 und startet die App:
 
 ```bash
-cd /opt/roaswell-app && docker compose up -d --build
-docker compose logs --tail 30 app
+ssh -t root@82.165.222.228 'bash /opt/roaswell-app/scripts/configure-server.sh'
 ```
+
+Logs: `cd /opt/roaswell-app && docker compose logs --tail 30 app`.
 
 ## Prüfen
 
