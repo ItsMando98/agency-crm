@@ -12,26 +12,26 @@ import {
   DEFAULT_LANGUAGE_VARIABLE_KEY,
   MARKET_VARIABLE_KEY,
   MAX_PAGES_VARIABLE_KEY,
-  PDF_RENDERER_API_KEY_VARIABLE_KEY,
   PDF_RENDERER_URL_VARIABLE_KEY,
   REPORT_ACCENT_COLOR_VARIABLE_KEY,
   REPORT_BRAND_NAME_VARIABLE_KEY,
   REPORT_PUBLIC_URL_VARIABLE_KEY,
-  TREG_ORG_VARIABLE_KEY,
   TREG_TOKEN_VARIABLE_KEY,
 } from 'src/constants/application-variable-keys.const';
 import { SEO_AUDIT_LANGUAGE } from 'src/constants/seo-audit.constants';
 import { ApplicationVariableField } from 'src/front-components/components/ApplicationVariableField';
+import { ConnectionsSection } from 'src/front-components/components/ConnectionsSection';
 import { FieldGroup } from 'src/front-components/components/FieldGroup';
+import { PageSectionHeading } from 'src/front-components/components/PageSectionHeading';
 import { RecentAuditsSection } from 'src/front-components/components/RecentAuditsSection';
 import { SettingsPanel } from 'src/front-components/components/SettingsPanel';
-import { SettingsSection } from 'src/front-components/components/SettingsSection';
 import { SetupChecklist } from 'src/front-components/components/SetupChecklist';
 import { StartAuditSection } from 'src/front-components/components/StartAuditSection';
 import { SETUP_STEP_FOCUS_TARGET_ID } from 'src/front-components/constants/focus-target-ids.const';
 import { useRecentSeoAudits } from 'src/front-components/hooks/use-recent-seo-audits';
 import { type SetupStep } from 'src/front-components/types/setup-step';
 import { useSeoAuditApplicationVariables } from 'src/front-components/hooks/use-seo-audit-application-variables';
+import { describeAiVisibilityProvider } from 'src/front-components/utils/describe-ai-visibility-provider.util';
 import { buildSetupSteps } from 'src/front-components/utils/build-setup-steps.util';
 import { getIsApplicationVariableConfigured } from 'src/front-components/utils/get-is-application-variable-configured.util';
 import { type AuditLanguage } from 'src/types/audit-language';
@@ -96,6 +96,7 @@ export const SeoAuditSettings = () => {
   const isDataForSeoConfigured =
     getIsApplicationVariableConfigured(getValue(DATAFORSEO_LOGIN_VARIABLE_KEY)) &&
     getIsApplicationVariableConfigured(getValue(DATAFORSEO_PASSWORD_VARIABLE_KEY));
+  const isTregConfigured = getIsApplicationVariableConfigured(getValue(TREG_TOKEN_VARIABLE_KEY));
   const isPdfRendererConfigured = getIsApplicationVariableConfigured(
     getValue(PDF_RENDERER_URL_VARIABLE_KEY),
   );
@@ -131,7 +132,7 @@ export const SeoAuditSettings = () => {
         boxSizing: 'border-box',
         display: 'flex',
         flexDirection: 'column',
-        gap: themeCssVariables.spacing[4],
+        gap: themeCssVariables.spacing[6],
         width: '100%',
       }}
     >
@@ -144,76 +145,69 @@ export const SeoAuditSettings = () => {
         })}
         onStepSelect={focusSetupStep}
       />
-      <StartAuditSection
+      <div style={{ display: 'flex', flexDirection: 'column', gap: themeCssVariables.spacing[3] }}>
+        <StartAuditSection
+          isApiKeyConfigured={isApiKeyConfigured}
+          defaultLanguage={defaultLanguage}
+          onAuditStarted={refresh}
+        />
+        <RecentAuditsSection audits={recentAudits} isLoading={isLoadingAudits} />
+      </div>
+      <ConnectionsSection
+        renderField={renderField}
+        getValue={getValue}
         isApiKeyConfigured={isApiKeyConfigured}
-        defaultLanguage={defaultLanguage}
-        onAuditStarted={refresh}
+        isDataForSeoConfigured={isDataForSeoConfigured}
+        isTregConfigured={isTregConfigured}
+        isPdfRendererConfigured={isPdfRendererConfigured}
       />
-      <RecentAuditsSection audits={recentAudits} isLoading={isLoadingAudits} />
-      <SettingsPanel>
-        <SettingsSection
-          title="Anthropic"
-          description="The key stays in your workspace and is only used for audits."
-        >
-          {renderField(ANTHROPIC_API_KEY_VARIABLE_KEY)}
-        </SettingsSection>
-      </SettingsPanel>
-      <SettingsPanel>
-        <SettingsSection
-          title="DataForSEO"
-          description="Optional. Adds rankings, keyword opportunities, backlinks and competitors. Costs about 0.15 to 0.35 USD per audit at DataForSEO."
-        >
-          <FieldGroup>
-            {renderField(DATAFORSEO_LOGIN_VARIABLE_KEY)}
-            {renderField(DATAFORSEO_PASSWORD_VARIABLE_KEY)}
-          </FieldGroup>
-        </SettingsSection>
-      </SettingsPanel>
-      <SettingsPanel>
-        <SettingsSection
-          title="AI visibility"
-          description="Optional and paid. Asks ChatGPT, Perplexity and Gemini typical customer questions and checks whether the website is named. It needs the Anthropic key and treg or DataForSEO. Through treg it costs roughly 0.1 USD per audit, through DataForSEO roughly 0.5 to 1 USD."
-        >
-          {renderField(AI_VISIBILITY_VARIABLE_KEY)}
-        </SettingsSection>
-      </SettingsPanel>
-      <SettingsPanel>
-        <SettingsSection
-          title="treg"
-          description="Optional. Answers the AI visibility questions through treg.to and is used before DataForSEO. Paste an agent token and leave the team empty, or use a login token together with the team."
-        >
-          <FieldGroup>
-            {renderField(TREG_TOKEN_VARIABLE_KEY)}
-            {renderField(TREG_ORG_VARIABLE_KEY)}
-          </FieldGroup>
-        </SettingsSection>
-      </SettingsPanel>
-      <SettingsPanel>
-        <SettingsSection
-          title="Defaults"
+      <section
+        aria-label="Audit options"
+        style={{ display: 'flex', flexDirection: 'column', gap: themeCssVariables.spacing[3] }}
+      >
+        <PageSectionHeading
+          title="Audit options"
           description="Applied when an audit is started without choices."
-        >
+        />
+        <SettingsPanel>
           <FieldGroup>
             {renderField(MARKET_VARIABLE_KEY)}
             {renderField(DEFAULT_LANGUAGE_VARIABLE_KEY)}
             {renderField(MAX_PAGES_VARIABLE_KEY)}
           </FieldGroup>
-        </SettingsSection>
-      </SettingsPanel>
-      <SettingsPanel>
-        <SettingsSection
-          title="Reports and PDF"
-          description="Every audit gets an HTML report page and an Excel file. The PDF is rendered from the report page."
-        >
+        </SettingsPanel>
+        <SettingsPanel>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: themeCssVariables.spacing[3] }}>
+            {renderField(AI_VISIBILITY_VARIABLE_KEY)}
+            <p
+              style={{
+                color: themeCssVariables.font.color.secondary,
+                fontSize: themeCssVariables.font.size.sm,
+                lineHeight: themeCssVariables.text.lineHeight.lg,
+                margin: 0,
+              }}
+            >
+              {describeAiVisibilityProvider({ isTregConfigured, isDataForSeoConfigured })}
+            </p>
+          </div>
+        </SettingsPanel>
+      </section>
+      <section
+        aria-label="Reports"
+        style={{ display: 'flex', flexDirection: 'column', gap: themeCssVariables.spacing[3] }}
+      >
+        <PageSectionHeading
+          title="Reports"
+          description="Every audit gets an HTML report page and an Excel file. Connect a PDF renderer above to attach a PDF as well."
+        />
+        <SettingsPanel>
           <FieldGroup>
             {renderField(REPORT_BRAND_NAME_VARIABLE_KEY)}
             {renderField(REPORT_ACCENT_COLOR_VARIABLE_KEY)}
             {renderField(REPORT_PUBLIC_URL_VARIABLE_KEY)}
-            {renderField(PDF_RENDERER_URL_VARIABLE_KEY)}
-            {renderField(PDF_RENDERER_API_KEY_VARIABLE_KEY)}
           </FieldGroup>
-        </SettingsSection>
-      </SettingsPanel>
+        </SettingsPanel>
+      </section>
     </div>
   );
 };

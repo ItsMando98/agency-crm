@@ -68,6 +68,8 @@ DataForSEO is optional. Enter the API login and API password from the DataForSEO
 
 The AI visibility check is switched on on the Setup page (`SEO_AUDIT_AI_VISIBILITY` set to `ON`). It needs the Anthropic key and either treg or DataForSEO. With a treg token (`TREG_TOKEN`, plus `TREG_ORG` for tokens from the treg login) the answers come from treg: ChatGPT and Gemini through the real consumer interfaces at about 0.003 USD per answer, Perplexity through the DataForSEO endpoint that treg serves. A full run of 24 answers costs roughly 0.1 USD. A treg token takes precedence over DataForSEO for this check. Through DataForSEO a first measurement put the cost at roughly 0.5 to 1 USD per audit, mostly for Gemini. A mobile Lighthouse run costs about half a cent and needs DataForSEO.
 
+Every connection card on the Setup page has a Test connection button. It checks the saved values against the provider: Anthropic answers one token with the classifier model, DataForSEO shows the balance, treg lists its tools with the token (free) and the PDF renderer renders a test page. The result stays on the card until a value of that connection is saved again.
+
 The same variables are also editable on the built-in Variables tab: `ANTHROPIC_API_KEY`, `DATAFORSEO_LOGIN`, `DATAFORSEO_PASSWORD`, `TREG_TOKEN`, `TREG_ORG`, `SEO_AUDIT_MARKET`, `SEO_AUDIT_DEFAULT_LANGUAGE`, `SEO_AUDIT_MAX_PAGES`, `SEO_AUDIT_AI_VISIBILITY`, `SEO_AUDIT_BRAND_NAME`, `SEO_AUDIT_ACCENT_COLOR`, `SEO_AUDIT_PUBLIC_URL`, `PDF_RENDERER_URL`, `PDF_RENDERER_API_KEY`.
 
 ```bash

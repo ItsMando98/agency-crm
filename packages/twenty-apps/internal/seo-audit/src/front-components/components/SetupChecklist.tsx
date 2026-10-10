@@ -14,15 +14,22 @@ type SetupChecklistProps = {
 export const SetupChecklist = ({ steps, onStepSelect }: SetupChecklistProps) => {
   const { completed, total, percentage } = getSetupProgress(steps);
 
+  if (completed === total) {
+    return (
+      <SettingsPanel>
+        <SettingsSection
+          title="SEO Audit is ready"
+          description="Run audits from here, from a company or through your agents."
+        />
+      </SettingsPanel>
+    );
+  }
+
   return (
     <SettingsPanel>
       <SettingsSection
         title="Set up SEO Audit"
-        description={
-          completed === total
-            ? 'Everything is ready. Run audits from here, from a company or through your agents.'
-            : `${completed} of ${total} required steps done`
-        }
+        description={`${completed} of ${total} required steps done`}
         adornment={
             <span
               style={{

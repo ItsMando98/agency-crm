@@ -8,6 +8,7 @@ const mocks = vi.hoisted(() => ({
   metadataMutation: vi.fn(),
   coreQuery: vi.fn(),
   coreMutation: vi.fn(),
+  restGet: vi.fn(),
   enqueueSnackbar: vi.fn(),
   navigate: vi.fn(),
 }));
@@ -20,6 +21,11 @@ vi.mock('twenty-client-sdk/metadata', () => ({
 vi.mock('twenty-client-sdk/core', () => ({
   CoreApiClient: vi.fn(function () {
     return { query: mocks.coreQuery, mutation: mocks.coreMutation };
+  }),
+}));
+vi.mock('twenty-client-sdk/rest', () => ({
+  RestApiClient: vi.fn(function () {
+    return { get: mocks.restGet };
   }),
 }));
 vi.mock('twenty-sdk/front-component', () => ({
@@ -161,13 +167,21 @@ describe('SeoAuditSettings', () => {
     expect(screen.getByText('No Anthropic key yet')).toBeTruthy();
   });
 
-  it('shows completed steps for a configured workspace', async () => {
-    givenWorkspace({ apiKeyValue: 'sk-ant-••••1234', hasFinishedAudit: true });
+  it('shows the done steps while the first audit is still missing', async () => {
+    givenWorkspace({ apiKeyValue: 'sk-ant-••••1234' });
     render(<SeoAuditSettings />);
 
     expect((await stepStatus('Connect Anthropic')).getByText('Done')).toBeTruthy();
-    expect((await stepStatus('Run your first audit')).getByText('Done')).toBeTruthy();
+    expect((await stepStatus('Run your first audit')).getByText('To do')).toBeTruthy();
     expect(screen.queryByText('No Anthropic key yet')).toBeNull();
+  });
+
+  it('folds the checklist into a ready message once everything required is done', async () => {
+    givenWorkspace({ apiKeyValue: 'sk-ant-••••1234', hasFinishedAudit: true });
+    render(<SeoAuditSettings />);
+
+    expect(await screen.findByText('SEO Audit is ready')).toBeTruthy();
+    expect(screen.queryByText('Run your first audit')).toBeNull();
   });
 
   it('marks DataForSEO as done once login and password are stored', async () => {
@@ -333,12 +347,81 @@ describe('SeoAuditSettings', () => {
     );
   });
 
-  it('warns that the AI visibility check needs a provider and costs money', async () => {
+  it('tells which provider answers the AI visibility questions', async () => {
     givenWorkspace();
 
     render(<SeoAuditSettings />);
 
-    expect(await screen.findByText(/needs the Anthropic key and treg or DataForSEO/)).toBeTruthy();
+    expect(
+      await screen.findByText('Add a treg token or a DataForSEO login to use this check.'),
+    ).toBeTruthy();
+  });
+
+  it('tests the saved treg token and shows the answer on that card', async () => {
+    givenWorkspace();
+    mocks.restGet.mockResolvedValue({ status: 'OK', message: 'Token accepted.' });
+    const user = userEvent.setup();
+
+    render(<SeoAuditSettings />);
+
+    await user.click(await screen.findByRole('button', { name: 'Test treg connection' }));
+
+    expect(await screen.findByText('Token accepted.')).toBeTruthy();
+    expect(mocks.restGet).toHaveBeenCalledWith('/s/seo-audit/test-connection', {
+      query: { service: 'TREG' },
+    });
+    expect(
+      within(screen.getByRole('region', { name: 'treg' })).getByText('Works'),
+    ).toBeTruthy();
+  });
+
+  it('shows why a test failed and marks only that card as failed', async () => {
+    givenWorkspace();
+    mocks.restGet.mockResolvedValue({
+      status: 'FAILED',
+      message: 'Anthropic refused the key: invalid x-api-key',
+    });
+    const user = userEvent.setup();
+
+    render(<SeoAuditSettings />);
+
+    await user.click(await screen.findByRole('button', { name: 'Test Anthropic connection' }));
+
+    expect(await screen.findByText('Anthropic refused the key: invalid x-api-key')).toBeTruthy();
+    expect(within(screen.getByRole('region', { name: 'Anthropic' })).getByText('Failed')).toBeTruthy();
+    expect(within(screen.getByRole('region', { name: 'DataForSEO' })).queryByText('Failed')).toBeNull();
+  });
+
+  it('explains it when the test request itself cannot be sent', async () => {
+    givenWorkspace();
+    mocks.restGet.mockRejectedValue(new Error('network down'));
+    const user = userEvent.setup();
+
+    render(<SeoAuditSettings />);
+
+    await user.click(await screen.findByRole('button', { name: 'Test PDF renderer connection' }));
+
+    expect(
+      await screen.findByText('The test could not be started. Reload the page and try again.'),
+    ).toBeTruthy();
+  });
+
+  it('clears an old test result once a value of that connection is saved', async () => {
+    givenWorkspace({ dataForSeoLogin: 'agency@example.com' });
+    mocks.restGet.mockResolvedValue({ status: 'FAILED', message: 'DataForSEO refused the login.' });
+    const user = userEvent.setup();
+
+    render(<SeoAuditSettings />);
+
+    await user.click(await screen.findByRole('button', { name: 'Test DataForSEO connection' }));
+    expect(await screen.findByText('DataForSEO refused the login.')).toBeTruthy();
+
+    const passwordInput = await screen.findByLabelText('DataForSEO API password');
+
+    await user.type(passwordInput, 'new-secret');
+    await user.click(within(passwordInput.parentElement as HTMLElement).getByRole('button', { name: 'Save' }));
+
+    await waitFor(() => expect(screen.queryByText('DataForSEO refused the login.')).toBeNull());
   });
 
   it('clamps the maximum pages before saving', async () => {
