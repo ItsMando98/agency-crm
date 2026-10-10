@@ -1,4 +1,5 @@
 import type Anthropic from '@anthropic-ai/sdk';
+import { createUsageTracker, withUsageTracking } from 'src/anthropic-client/track-usage';
 
 import { assessKeywords } from 'src/anthropic-client/assess-keywords';
 import { assessPage } from 'src/anthropic-client/assess-page';
@@ -55,7 +56,7 @@ const MAX_PAGE_TITLES_IN_CONTEXT = 20;
 export const runSeoAuditPipeline = async ({
   domain,
   language,
-  anthropicClient,
+  anthropicClient: untrackedClient,
   dataForSeoCredentials = null,
   tregCredentials = null,
   market = DEFAULT_MARKET,
@@ -65,6 +66,9 @@ export const runSeoAuditPipeline = async ({
   now = new Date(),
 }: RunSeoAuditPipelineParams): Promise<SeoAuditResult> => {
   const origin = normalizeAuditDomain(domain);
+  const usageTracker = createUsageTracker();
+  const anthropicClient =
+    untrackedClient === null ? null : withUsageTracking(untrackedClient, usageTracker);
   const crawlResult = await crawlWebsite({ origin, maxPages, fetchImplementation });
   const auditablePages = crawlResult.pages.filter(isAuditablePage);
   const aiReadiness = evaluateAiReadiness(crawlResult);
@@ -220,5 +224,6 @@ export const runSeoAuditPipeline = async ({
     marketData,
     keywords,
     reportMarkdown,
+    aiUsage: usageTracker.snapshot(),
   };
 };

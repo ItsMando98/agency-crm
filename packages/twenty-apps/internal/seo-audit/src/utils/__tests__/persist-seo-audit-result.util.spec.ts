@@ -14,6 +14,7 @@ const buildResult = (overrides: Partial<SeoAuditResult> = {}): SeoAuditResult =>
   brokenBacklinkTargets: [],
   aiReadiness: buildAiReadiness(),
   aiVisibility: null,
+  aiUsage: {},
   notes: [],
   score: 81,
   grade: 'B',

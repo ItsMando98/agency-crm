@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+import { CLASSIFIER_MODEL } from 'src/constants/classifier.const';
 
 import { buildDataForSeoEnvelope } from 'src/__mocks__/build-dataforseo-envelope.mock';
 import { createFakeAnthropicClient } from 'src/__mocks__/create-fake-anthropic-client.mock';
@@ -24,8 +25,8 @@ describe('runConnectionTest', () => {
       const result = await runConnectionTest({ service: 'ANTHROPIC', anthropicClient: client });
 
       expect(result.status).toBe('OK');
-      expect(result.message).toContain('claude-sonnet-5-5');
-      expect(create).toHaveBeenCalledWith(expect.objectContaining({ model: 'claude-sonnet-5-5', max_tokens: 1 }));
+      expect(result.message).toContain(CLASSIFIER_MODEL);
+      expect(create).toHaveBeenCalledWith(expect.objectContaining({ model: CLASSIFIER_MODEL, max_tokens: 1 }));
     });
 
     it('reports the reason when Anthropic refuses the key', async () => {

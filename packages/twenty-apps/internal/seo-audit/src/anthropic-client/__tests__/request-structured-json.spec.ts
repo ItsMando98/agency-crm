@@ -1,4 +1,5 @@
 import Anthropic from '@anthropic-ai/sdk';
+import { CLASSIFIER_MODEL } from 'src/constants/classifier.const';
 import { describe, expect, it } from 'vitest';
 
 import {
@@ -21,7 +22,7 @@ describe('requestStructuredJson', () => {
     expect(await requestStructuredJson({ client, ...PARAMS })).toEqual({ ok: true });
     expect(create).toHaveBeenCalledWith(
       expect.objectContaining({
-        model: 'claude-sonnet-5-5',
+        model: CLASSIFIER_MODEL,
         max_tokens: 100,
         system: 'system prompt',
         output_config: { format: { type: 'json_schema', schema: { type: 'object' } } },

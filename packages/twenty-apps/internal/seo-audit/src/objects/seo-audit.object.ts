@@ -260,6 +260,15 @@ export default defineObject({
       isNullable: true,
     },
     {
+      universalIdentifier: '60cb4212-090b-45a8-8c36-84e74ea1fd00',
+      type: FieldType.RAW_JSON,
+      name: 'aiUsage',
+      label: 'AI usage',
+      description: 'Tokens per model used by this audit, to work out its cost',
+      icon: 'IconCoin',
+      isNullable: true,
+    },
+    {
       universalIdentifier: 'a15e094e-48fa-4b3a-a107-729b28ebe09a',
       type: FieldType.RAW_JSON,
       name: 'aiVisibility',

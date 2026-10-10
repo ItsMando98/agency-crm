@@ -1,4 +1,5 @@
 import { type AiReadiness } from 'src/types/ai-readiness';
+import { type AiUsage } from 'src/types/ai-usage';
 import { type AiVisibility } from 'src/types/ai-visibility';
 import { type AreaScores } from 'src/types/area-scores';
 import { type AuditLanguage } from 'src/types/audit-language';
@@ -29,4 +30,6 @@ export type SeoAuditResult = {
   marketData: MarketData | null;
   keywords: ScoredKeyword[];
   reportMarkdown: string;
+  // Tokens per model used by this audit.
+  aiUsage: AiUsage;
 };

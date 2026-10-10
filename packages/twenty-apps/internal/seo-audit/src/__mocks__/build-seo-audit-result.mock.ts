@@ -16,6 +16,7 @@ export const buildSeoAuditResult = (
     aiReadiness: buildAiReadiness(),
     aiVisibility: null,
     notes: [],
+    aiUsage: {},
     score: 84,
     grade: 'B',
     areaScores: {
