@@ -72,6 +72,7 @@ export const auditDetailSchema = auditSummarySchema.extend({
   failureReason: nullableString,
   startedAt: nullableString,
   reportUrl: nullableString,
+  shareToken: nullableString,
   aiQueriesTested: nullableNumber,
   organicKeywordCount: nullableNumber,
   estimatedMonthlyTraffic: nullableNumber,

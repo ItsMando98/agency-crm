@@ -28,6 +28,7 @@ npm run lint
 | `SESSION_SECRET` | ja | mindestens 32 Zeichen, signiert Login-Links und Sitzungen |
 | `TEAM_EMAILS` | ja | kommagetrennte Adressen mit Team-Zugriff |
 | `TWENTY_API_URL` | nein | Standard `http://twenty-server:3000` |
+| `TWENTY_PUBLIC_URL` | nein | Adresse des Twenty-Workspace, Standard `https://crm.roaswell.com`. Darüber werden die Berichts-Links gebaut |
 | `APP_URL` | nein | öffentliche Adresse, Teil des Login-Links |
 | `TEAM_PASSWORD_HASH` | empfohlen | Hash des Team-Passworts. Erzeugen mit `printf '%s' "passwort" \| node scripts/hash-password.mjs` |
 | `SETTINGS_DIR` | nein | Ablage der Einstellungen, Standard `./data` (im Container `/data`, Volume) |

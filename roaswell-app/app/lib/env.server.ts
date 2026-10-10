@@ -23,6 +23,8 @@ const envSchema = z.object({
         .map((email) => email.trim().toLowerCase())
         .filter((email) => email !== ''),
     ),
+  // Address of the Twenty workspace, where the public report route is served.
+  TWENTY_PUBLIC_URL: z.string().url().default('https://crm.roaswell.com'),
   TEAM_PASSWORD_HASH: optionalText,
   SETTINGS_DIR: z.string().default('./data'),
   SMTP_HOST: optionalText,

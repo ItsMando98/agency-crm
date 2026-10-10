@@ -13,6 +13,7 @@ services:
       PORT: "3000"
       APP_URL: https://${APP_HOST:-app.roaswell.com}
       TWENTY_API_URL: http://twenty-server:3000
+      TWENTY_PUBLIC_URL: ${TWENTY_PUBLIC_URL:-https://crm.roaswell.com}
       TWENTY_API_KEY: ${TWENTY_API_KEY:?set TWENTY_API_KEY}
       SESSION_SECRET: ${SESSION_SECRET:?set SESSION_SECRET}
       TEAM_EMAILS: ${TEAM_EMAILS:?set TEAM_EMAILS}

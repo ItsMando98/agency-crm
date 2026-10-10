@@ -8,7 +8,9 @@ import { Badge } from '~/components/ui/badge';
 import { Button } from '~/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '~/components/ui/card';
 import { compareAudits } from '~/lib/compare-audits';
+import { buildReportLink } from '~/lib/build-report-link';
 import { describeStrength } from '~/lib/describe-strength';
+import { getEnv } from '~/lib/env.server';
 import {
   ENGINE_LABELS,
   formatDate,
@@ -55,6 +57,11 @@ export const loader = async ({ request, params }: Route.LoaderArgs) => {
     tasks,
     keywords,
     pages,
+    reportLink: buildReportLink({
+      publicBaseUrl: getEnv().TWENTY_PUBLIC_URL,
+      auditId: audit.id,
+      shareToken: audit.shareToken,
+    }),
     comparison: previous === null ? null : compareAudits(audit, previous),
     previousDate: previous?.createdAt ?? null,
     canEdit: principal.kind === 'TEAM',
@@ -165,7 +172,7 @@ const RESULT_TONE = { CITED: 'success', MENTIONED: 'warning', ABSENT: 'neutral',
 const RESULT_LABEL = { CITED: 'Zitiert', MENTIONED: 'Genannt', ABSENT: 'Nicht genannt', UNKNOWN: 'Unklar' } as const;
 
 export default function AuditDetail({ loaderData }: Route.ComponentProps) {
-  const { audit, tasks, keywords, pages, comparison, previousDate, canEdit } = loaderData;
+  const { audit, tasks, keywords, pages, reportLink, comparison, previousDate, canEdit } = loaderData;
   const insights = audit.insights;
   const weakestPages = sortWeakest(pages);
   const revalidator = useRevalidator();
@@ -202,9 +209,9 @@ export default function AuditDetail({ loaderData }: Route.ComponentProps) {
               {audit.pagesCrawled !== null && ` · ${audit.pagesCrawled} Seiten geprüft`}
             </p>
           </div>
-          {audit.reportUrl !== null && (
+          {reportLink !== null && (
             <Button asChild variant="outline">
-              <a href={audit.reportUrl} target="_blank" rel="noreferrer">
+              <a href={reportLink} target="_blank" rel="noreferrer">
                 Bericht öffnen <ExternalLink className="h-4 w-4" aria-hidden />
               </a>
             </Button>
