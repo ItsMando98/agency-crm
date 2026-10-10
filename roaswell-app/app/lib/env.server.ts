@@ -2,6 +2,12 @@ import { z } from 'zod';
 
 const MIN_SECRET_LENGTH = 32;
 
+// Compose passes unset optional variables as empty strings.
+const optionalText = z
+  .string()
+  .optional()
+  .transform((value) => (value === undefined || value.trim() === '' ? undefined : value.trim()));
+
 const envSchema = z.object({
   NODE_ENV: z.string().default('development'),
   APP_URL: z.string().url().default('http://localhost:3100'),
@@ -17,10 +23,15 @@ const envSchema = z.object({
         .map((email) => email.trim().toLowerCase())
         .filter((email) => email !== ''),
     ),
-  SMTP_HOST: z.string().optional(),
-  SMTP_PORT: z.coerce.number().default(587),
-  SMTP_USER: z.string().optional(),
-  SMTP_PASSWORD: z.string().optional(),
+  TEAM_PASSWORD_HASH: optionalText,
+  SETTINGS_DIR: z.string().default('./data'),
+  SMTP_HOST: optionalText,
+  SMTP_PORT: z
+    .string()
+    .optional()
+    .transform((value) => (value === undefined || value.trim() === '' ? 587 : Number(value))),
+  SMTP_USER: optionalText,
+  SMTP_PASSWORD: optionalText,
   MAIL_FROM: z.string().default('Roaswell <no-reply@roaswell.com>'),
 });
 

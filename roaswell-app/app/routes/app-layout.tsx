@@ -1,5 +1,5 @@
 import { Form, NavLink, Outlet } from 'react-router';
-import { Building2, ClipboardList, Kanban, LayoutDashboard, LogOut, Sparkles, Users } from 'lucide-react';
+import { Building2, ClipboardList, Kanban, LayoutDashboard, LogOut, Settings, Sparkles, Users } from 'lucide-react';
 
 import { cn } from '~/lib/cn';
 import { requirePrincipal } from '~/lib/server/require-principal.server';
@@ -19,6 +19,7 @@ const NAV_ITEMS = [
   { to: '/companies', label: 'Firmen', icon: Building2, end: false, teamOnly: true },
   { to: '/people', label: 'Kontakte', icon: Users, end: false, teamOnly: true },
   { to: '/pipeline', label: 'Pipeline', icon: Kanban, end: false, teamOnly: true },
+  { to: '/settings', label: 'Einstellungen', icon: Settings, end: false, teamOnly: true },
 ] as const;
 
 export default function AppLayout({ loaderData }: Route.ComponentProps) {

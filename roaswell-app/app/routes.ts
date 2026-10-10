@@ -12,6 +12,7 @@ export default [
     route('companies', 'routes/companies.tsx'),
     route('companies/:companyId', 'routes/company-detail.tsx'),
     route('people', 'routes/people.tsx'),
+    route('settings', 'routes/settings.tsx'),
     route('creators', 'routes/creators.tsx'),
     route('creators/:creatorId', 'routes/creator-detail.tsx'),
     route('pipeline', 'routes/pipeline.tsx'),

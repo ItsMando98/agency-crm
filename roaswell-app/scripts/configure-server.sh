@@ -29,27 +29,24 @@ fi
 
 twenty_api_key="$(ask 'Twenty API key' yes)"
 team_emails="$(ask 'Team email addresses, comma separated')"
-smtp_host="$(ask 'SMTP host')"
-smtp_port="$(ask 'SMTP port [587]')"
-smtp_user="$(ask 'SMTP user')"
-smtp_password="$(ask 'SMTP password' yes)"
-mail_from="$(ask 'Sender address, for example Roaswell <no-reply@roaswell.com>')"
+password="$(ask 'Login password, at least 12 characters' yes)"
+password_repeat="$(ask 'Repeat the password' yes)"
 
 [ -n "$twenty_api_key" ] && [ -n "$team_emails" ] || { echo "API key and team addresses are required." >&2; exit 1; }
+[ "$password" = "$password_repeat" ] || { echo "The passwords differ." >&2; exit 1; }
+
+password_hash="$(printf '%s' "$password" | docker run --rm -i -v "$PWD/scripts:/scripts:ro" node:22-alpine node /scripts/hash-password.mjs)"
 
 umask 077
 {
   echo "TWENTY_API_KEY='$twenty_api_key'"
   echo "SESSION_SECRET='$(openssl rand -hex 32)'"
   echo "TEAM_EMAILS='$team_emails'"
-  echo "SMTP_HOST='$smtp_host'"
-  echo "SMTP_PORT='${smtp_port:-587}'"
-  echo "SMTP_USER='$smtp_user'"
-  echo "SMTP_PASSWORD='$smtp_password'"
-  echo "MAIL_FROM='${mail_from:-Roaswell <no-reply@roaswell.com>}'"
+  echo "TEAM_PASSWORD_HASH='$password_hash'"
 } > "$target"
 
+echo "Mail (Resend) is set up in the app under Einstellungen after the first login."
 docker compose up -d --build
 sleep 8
 docker compose ps
-echo "Health: $(curl -fsS http://127.0.0.1:3000/api/health 2>/dev/null || docker compose exec -T app wget -qO- http://127.0.0.1:3000/api/health)"
+echo "Health: $(docker compose exec -T app wget -qO- http://127.0.0.1:3000/api/health)"

@@ -16,11 +16,15 @@ services:
       TWENTY_API_KEY: ${TWENTY_API_KEY:?set TWENTY_API_KEY}
       SESSION_SECRET: ${SESSION_SECRET:?set SESSION_SECRET}
       TEAM_EMAILS: ${TEAM_EMAILS:?set TEAM_EMAILS}
+      TEAM_PASSWORD_HASH: ${TEAM_PASSWORD_HASH:-}
+      SETTINGS_DIR: /data
       SMTP_HOST: ${SMTP_HOST:-}
       SMTP_PORT: ${SMTP_PORT:-587}
       SMTP_USER: ${SMTP_USER:-}
       SMTP_PASSWORD: ${SMTP_PASSWORD:-}
       MAIL_FROM: ${MAIL_FROM:-Roaswell <no-reply@roaswell.com>}
+    volumes:
+      - roaswell-app-data:/data
     networks:
       - coolify
     healthcheck:
@@ -42,6 +46,9 @@ services:
       traefik.http.routers.roaswell-app-https.tls: "true"
       traefik.http.routers.roaswell-app-https.tls.certresolver: letsencrypt
       traefik.http.services.roaswell-app.loadbalancer.server.port: "3000"
+
+volumes:
+  roaswell-app-data:
 
 networks:
   coolify:

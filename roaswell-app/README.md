@@ -29,7 +29,9 @@ npm run lint
 | `TEAM_EMAILS` | ja | kommagetrennte Adressen mit Team-Zugriff |
 | `TWENTY_API_URL` | nein | Standard `http://twenty-server:3000` |
 | `APP_URL` | nein | öffentliche Adresse, Teil des Login-Links |
-| `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASSWORD`, `MAIL_FROM` | in Produktion ja | Versand der Login-Links. Ohne `SMTP_HOST` schreibt der Entwicklungsmodus den Link ins Log |
+| `TEAM_PASSWORD_HASH` | empfohlen | Hash des Team-Passworts. Erzeugen mit `printf '%s' "passwort" \| node scripts/hash-password.mjs` |
+| `SETTINGS_DIR` | nein | Ablage der Einstellungen, Standard `./data` (im Container `/data`, Volume) |
+| `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASSWORD`, `MAIL_FROM` | nein | Rückfall für den Mailversand. Normalerweise stellst du Resend oder SMTP in der App unter Einstellungen ein |
 
 ## Rechte
 
