@@ -53,6 +53,22 @@ describe('parseCompetingPages', () => {
     ).toEqual([{ topic: 'Zwei', urls: ['u0', 'u1'] }]);
   });
 
+  it('drops a group whose pages are only translations of each other', () => {
+    expect(
+      parseCompetingPages(
+        {
+          groups: [
+            { topic: 'Expertise', pages: [0, 1] },
+            { topic: 'Leistungen', pages: [2, 3] },
+          ],
+        },
+        ['https://x.de/expertise', 'https://x.de/de/expertise', 'https://x.de/de/leistung', 'https://x.de/en/blog/leistung'],
+      ),
+    ).toEqual([
+      { topic: 'Leistungen', urls: ['https://x.de/de/leistung', 'https://x.de/en/blog/leistung'] },
+    ]);
+  });
+
   it('returns nothing for unexpected shapes', () => {
     expect(parseCompetingPages(null, urls)).toEqual([]);
     expect(parseCompetingPages({ groups: 'x' }, urls)).toEqual([]);

@@ -1,4 +1,5 @@
-export const AUDIT_SUMMARY_MAX_TOKENS = 1_800;
+// The first real summary needed 1,524 of 1,800 tokens, so there was no room left.
+export const AUDIT_SUMMARY_MAX_TOKENS = 3_500;
 export const SUMMARY_MAX_ITEMS_PER_SECTION = 4;
 export const SUMMARY_MAX_ITEM_LENGTH = 450;
 export const FACT_SHEET_MAX_TASKS = 15;
