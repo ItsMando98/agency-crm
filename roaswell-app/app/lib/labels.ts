@@ -71,3 +71,28 @@ export const formatMoney = (amount: number | null, currency: string): string =>
   amount === null
     ? '-'
     : new Intl.NumberFormat('de-DE', { style: 'currency', currency, maximumFractionDigits: 0 }).format(amount);
+
+export const CREATOR_STATUS_LABELS: Record<string, string> = {
+  DRAFT: 'Entwurf',
+  ACTIVE: 'Aktiv',
+  ARCHIVED: 'Archiviert',
+};
+
+export const ASSET_TYPE_LABELS: Record<string, string> = {
+  IMAGE: 'Bild',
+  VOICE: 'Stimme',
+  VIDEO: 'Video',
+};
+
+export const ASSET_STATUS_LABELS: Record<string, string> = {
+  QUEUED: 'In Warteschlange',
+  RUNNING: 'Wird erzeugt',
+  DONE: 'Fertig',
+  FAILED: 'Fehlgeschlagen',
+};
+
+export const PLATFORM_LABELS: Record<string, string> = {
+  TIKTOK: 'TikTok',
+  REELS: 'Reels',
+  SHORTS: 'Shorts',
+};

@@ -5,7 +5,10 @@ Webapp für Audits, CRM und AI-UGC-Creator. Twenty (crm.roaswell.com) bleibt das
 ## Stand
 
 - M1 Audits: Login per Magic Link, Übersicht, Audit-Liste, Audit starten, Detail mit Score, Bereichen, Aufgaben (Status ändern), KI-Sichtbarkeit, Keywords, Vergleich mit dem vorigen Audit.
-- Folgt: M2 CRM, M3 Creator Studio, M4 Kundenportal. Plan siehe `docs/m0-findings.md` und den Projektplan.
+- M2 CRM: Firmen (Liste, Anlage, Detail mit Kontakten, Deals, Notizen, Aufgaben, Audits), Kontakte, Pipeline über die fünf Phasen.
+- M3 Creator: Profile verwalten, Bilder, Stimmen und Kurzvideos bestellen, Galerie mit Kosten. Die Erzeugung läuft in der Twenty-App `creator-studio` (`packages/twenty-apps/internal/creator-studio`), die Webapp legt nur den Auftrag an und zeigt das Ergebnis.
+- Folgt: M4 Kundenportal (Anmeldung für Kunden, Einladung aus der Kontaktseite). Die Rollenlogik in der Datenschicht ist schon da.
+- Plan und Befunde: `docs/m0-findings.md`.
 
 ## Entwicklung
 

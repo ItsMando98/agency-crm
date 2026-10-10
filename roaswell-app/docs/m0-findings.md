@@ -30,6 +30,14 @@ Stand 2026-10-10. Quellen: Twenty-Server-Code, treg-Katalog. Nicht gegen den VPS
 | Video (günstig) | `openrouter.x.google-veo-3-1-lite` | 0,64 USD pro Aufruf | |
 | Video (Bild zu Video) | `minimax.video-gen.from_image` | 0,56 USD pro Aufruf | |
 
+Mit echten Aufrufen bestätigt (2026-10-10):
+
+- Bild: Aufruf gibt `{ id, status: 'processing' }` zurück (0,03 USD). `reapi.tasks.get` mit `id` liefert nach kurzer Zeit `status: 'completed'` und `output.image_urls[0]` (jpg). Das Polling kostet nichts.
+- Stimme: antwortet synchron mit `candidates[0].content.parts[0].inlineData` (base64 WAV), Kosten 0,0008 USD für einen Satz. Mit `fields=` bleibt die Antwort klein.
+- Video: nur aus der Dokumentation, nicht ausgelöst (Mindestpreis 0,40 USD).
+
+Offen: Wie Twenty die Dateien eines FILES-Felds über REST ausliefert (Feld `url` oder signierte Adresse). Die Galerie liest `file[0].url` und zeigt sonst den Hinweis, dass die Datei in Twenty liegt.
+
 Seedance 2.5 kostet 13 bis 26 USD pro Aufruf und wird nicht angeboten.
 treg-Guthaben am 2026-10-10: 0,90 USD, reicht für Bilder und Stimme, nicht für mehr als ein bis zwei Videos.
 

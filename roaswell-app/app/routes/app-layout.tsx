@@ -1,5 +1,5 @@
 import { Form, NavLink, Outlet } from 'react-router';
-import { Building2, ClipboardList, Kanban, LayoutDashboard, LogOut, Users } from 'lucide-react';
+import { Building2, ClipboardList, Kanban, LayoutDashboard, LogOut, Sparkles, Users } from 'lucide-react';
 
 import { cn } from '~/lib/cn';
 import { requirePrincipal } from '~/lib/server/require-principal.server';
@@ -15,6 +15,7 @@ export const loader = async ({ request }: Route.LoaderArgs) => {
 const NAV_ITEMS = [
   { to: '/', label: 'Übersicht', icon: LayoutDashboard, end: true, teamOnly: false },
   { to: '/audits', label: 'Audits', icon: ClipboardList, end: false, teamOnly: false },
+  { to: '/creators', label: 'Creator', icon: Sparkles, end: false, teamOnly: false },
   { to: '/companies', label: 'Firmen', icon: Building2, end: false, teamOnly: true },
   { to: '/people', label: 'Kontakte', icon: Users, end: false, teamOnly: true },
   { to: '/pipeline', label: 'Pipeline', icon: Kanban, end: false, teamOnly: true },
