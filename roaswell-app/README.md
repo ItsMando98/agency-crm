@@ -7,7 +7,7 @@ Webapp für Audits, CRM und AI-UGC-Creator. Twenty (crm.roaswell.com) bleibt das
 - M1 Audits: Login per Magic Link, Übersicht, Audit-Liste, Audit starten, Detail mit Score, Bereichen, Aufgaben (Status ändern), KI-Sichtbarkeit, Keywords, Vergleich mit dem vorigen Audit.
 - M2 CRM: Firmen (Liste, Anlage, Detail mit Kontakten, Deals, Notizen, Aufgaben, Audits), Kontakte, Pipeline über die fünf Phasen.
 - M3 Creator: Profile verwalten, Bilder, Stimmen und Kurzvideos bestellen, Galerie mit Kosten. Die Erzeugung läuft in der Twenty-App `creator-studio` (`packages/twenty-apps/internal/creator-studio`), die Webapp legt nur den Auftrag an und zeigt das Ergebnis.
-- Folgt: M4 Kundenportal (Anmeldung für Kunden, Einladung aus der Kontaktseite). Die Rollenlogik in der Datenschicht ist schon da.
+- M4 Kundenportal: Kunden melden sich mit der Adresse eines Kontakts an, der in Twenty das Feld `portalAccess` hat (Feld kommt aus `agency-ops` 0.3.0) und zu einer Firma gehört. Einladung und Entzug auf der Firmenseite. Ein Kunde sieht nur Audits, Berichte und Creator seiner Firma, nie das CRM.
 - Plan und Befunde: `docs/m0-findings.md`.
 
 ## Entwicklung
@@ -37,4 +37,4 @@ Die App spricht mit einem einzigen API-Key, der alles sieht. Deshalb erzwingt `a
 
 ## Deployment
 
-`compose.yaml` hängt die App ans Coolify-Netz und routet `app.roaswell.com` über Traefik. Voraussetzungen: DNS-Eintrag, die Variablen oben in Coolify, ein Twenty-API-Key.
+Siehe `docs/DEPLOY.md`.

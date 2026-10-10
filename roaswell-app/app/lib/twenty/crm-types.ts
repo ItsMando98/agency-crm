@@ -45,6 +45,7 @@ export const personSchema = z
     jobTitle: nullableString,
     city: nullableString,
     companyId: nullableString,
+    portalAccess: z.boolean().nullish().transform((value) => value ?? false),
   })
   .transform((raw) => {
     const name = record(raw.name);
@@ -59,6 +60,7 @@ export const personSchema = z
       jobTitle: raw.jobTitle,
       city: raw.city,
       companyId: raw.companyId,
+      portalAccess: raw.portalAccess,
     };
   });
 

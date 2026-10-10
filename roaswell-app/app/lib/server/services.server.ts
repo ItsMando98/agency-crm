@@ -1,7 +1,9 @@
 import { type Principal } from '~/lib/auth/principal';
+import { resolvePrincipalFromDirectory } from '~/lib/auth/resolve-principal';
 import { createRateLimiter } from '~/lib/auth/rate-limit.server';
 import { getEnv } from '~/lib/env.server';
 import { createMailer } from '~/lib/server/mailer.server';
+import { findPortalContact } from '~/lib/twenty/portal.server';
 import { createTwentyClient } from '~/lib/twenty/twenty-client.server';
 
 const LOGIN_MAX_ATTEMPTS = 5;
@@ -12,20 +14,25 @@ const loginLimiter = createRateLimiter({
   windowMs: LOGIN_WINDOW_MS,
 });
 
-// Team members come from the allow list. Client logins arrive with the portal
-// milestone and resolve to a person with portal access and a company.
-export const resolvePrincipal = async (email: string): Promise<Principal | null> => {
-  const normalized = email.trim().toLowerCase();
+const buildTwentyClient = () => {
+  const env = getEnv();
 
-  return getEnv().TEAM_EMAILS.includes(normalized) ? { kind: 'TEAM', email: normalized } : null;
+  return createTwentyClient({ baseUrl: env.TWENTY_API_URL, apiKey: env.TWENTY_API_KEY });
 };
+
+// Team members come from the allow list, clients from contacts with portal access.
+export const resolvePrincipal = (email: string): Promise<Principal | null> =>
+  resolvePrincipalFromDirectory(email, {
+    teamEmails: getEnv().TEAM_EMAILS,
+    findPortalContact: (candidate) => findPortalContact(buildTwentyClient(), candidate),
+  });
 
 export const getServices = () => {
   const env = getEnv();
 
   return {
     env,
-    twenty: createTwentyClient({ baseUrl: env.TWENTY_API_URL, apiKey: env.TWENTY_API_KEY }),
+    twenty: buildTwentyClient(),
     sendMail: createMailer(env),
     isLoginAllowed: loginLimiter.isAllowed,
   };

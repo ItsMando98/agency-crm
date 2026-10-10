@@ -6,10 +6,12 @@ import { Button } from '~/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '~/components/ui/card';
 import { Input } from '~/components/ui/input';
 import { CRM_TASK_STATUS_LABELS, formatDate, formatHost, formatMoney, getScoreTone, STAGE_LABELS, STATUS_LABELS } from '~/lib/labels';
+import { buildInvitationLink } from '~/lib/auth/build-invitation-link';
 import { normalizeDomain } from '~/lib/normalize-domain';
 import { requireTeam } from '~/lib/server/require-principal.server';
 import { getServices } from '~/lib/server/services.server';
 import { listAudits, startAudit } from '~/lib/twenty/audits.server';
+import { grantPortalAccess, revokePortalAccess } from '~/lib/twenty/portal.server';
 import { CRM_TASK_STATUSES, type CrmTask } from '~/lib/twenty/crm-types';
 import {
   createCompanyNote,
@@ -46,7 +48,7 @@ export const loader = async ({ request, params }: Route.LoaderArgs) => {
   return { company, people, deals, notes, tasks, audits };
 };
 
-type ActionResult = { ok: boolean; error?: string };
+type ActionResult = { ok: boolean; error?: string; message?: string };
 
 export const action = async ({ request, params }: Route.ActionArgs): Promise<ActionResult> => {
   const principal = await requireTeam(request);
@@ -99,6 +101,29 @@ export const action = async ({ request, params }: Route.ActionArgs): Promise<Act
       const ok = await updateCrmTaskStatus(twenty, principal, text('taskId'), status);
 
       return ok ? { ok: true } : failed('Der Status konnte nicht geändert werden.');
+    }
+    case 'invite-person': {
+      const { env, sendMail } = getServices();
+      const granted = await grantPortalAccess(twenty, principal, text('personId'));
+
+      if (granted === null) return failed('Der Kontakt braucht eine E-Mail-Adresse und eine Firma.');
+
+      try {
+        await sendMail({
+          to: granted.email,
+          kind: 'INVITE',
+          link: buildInvitationLink({ email: granted.email, secret: env.SESSION_SECRET, appUrl: env.APP_URL }),
+        });
+      } catch {
+        return failed('Der Zugang ist freigeschaltet, aber die Einladung konnte nicht versendet werden.');
+      }
+
+      return { ok: true, message: `Einladung an ${granted.email} gesendet.` };
+    }
+    case 'revoke-person': {
+      const ok = await revokePortalAccess(twenty, principal, text('personId'));
+
+      return ok ? { ok: true, message: 'Portal-Zugang entzogen.' } : failed('Der Zugang konnte nicht entzogen werden.');
     }
     case 'start-audit': {
       const company = await getCompany(twenty, principal, params.companyId);
@@ -177,6 +202,9 @@ export default function CompanyDetail({ loaderData }: Route.ComponentProps) {
       {result?.ok === false && result.error !== undefined && (
         <p role="alert" className="rounded-md border border-danger px-3 py-2 text-sm text-danger">{result.error}</p>
       )}
+      {result?.ok === true && result.message !== undefined && (
+        <p role="status" className="rounded-md border border-success px-3 py-2 text-sm text-success">{result.message}</p>
+      )}
 
       <div className="grid gap-4 lg:grid-cols-2">
         <Card>
@@ -185,9 +213,24 @@ export default function CompanyDetail({ loaderData }: Route.ComponentProps) {
             {people.length === 0 ? <p className="text-sm text-muted-foreground">Noch kein Kontakt.</p> : (
               <ul className="divide-y divide-border">
                 {people.map((person) => (
-                  <li key={person.id} className="py-2">
-                    <span className="font-medium">{person.fullName}</span>
-                    <span className="block text-xs text-muted-foreground">{[person.jobTitle, person.email].filter(Boolean).join(' · ')}</span>
+                  <li key={person.id} className="flex items-center justify-between gap-3 py-2">
+                    <span className="min-w-0">
+                      <span className="block truncate font-medium">{person.fullName}</span>
+                      <span className="block truncate text-xs text-muted-foreground">{[person.jobTitle, person.email].filter(Boolean).join(' · ')}</span>
+                    </span>
+                    {person.email !== null && (
+                      <Form method="post" className="flex shrink-0 items-center gap-2">
+                        <input type="hidden" name="personId" value={person.id} />
+                        {person.portalAccess ? (
+                          <>
+                            <Badge tone="success">Portal</Badge>
+                            <Button type="submit" name="intent" value="revoke-person" size="sm" variant="ghost">Entziehen</Button>
+                          </>
+                        ) : (
+                          <Button type="submit" name="intent" value="invite-person" size="sm" variant="outline">Zum Portal einladen</Button>
+                        )}
+                      </Form>
+                    )}
                   </li>
                 ))}
               </ul>

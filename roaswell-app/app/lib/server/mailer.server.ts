@@ -2,7 +2,28 @@ import nodemailer from 'nodemailer';
 
 import { type AppEnv } from '~/lib/env.server';
 
-export const createMailer = (env: AppEnv) => async ({ to, link }: { to: string; link: string }) => {
+type MailKind = 'LOGIN' | 'INVITE';
+
+const BODIES: Record<MailKind, { subject: string; intro: string }> = {
+  LOGIN: {
+    subject: 'Dein Login-Link für Roaswell',
+    intro: 'Mit diesem Link meldest du dich an. Er ist 15 Minuten gültig:',
+  },
+  INVITE: {
+    subject: 'Dein Zugang zum Roaswell Kundenportal',
+    intro: 'Du wurdest zum Kundenportal eingeladen. Dort siehst du deine Audits, Berichte und Creator. Der Link ist 7 Tage gültig:',
+  },
+};
+
+export const createMailer = (env: AppEnv) => async ({
+  to,
+  link,
+  kind = 'LOGIN',
+}: {
+  to: string;
+  link: string;
+  kind?: MailKind;
+}) => {
   if (env.SMTP_HOST === undefined) {
     if (env.NODE_ENV === 'production') {
       throw new Error('Mail is not configured. Set SMTP_HOST to send login links.');
@@ -27,7 +48,7 @@ export const createMailer = (env: AppEnv) => async ({ to, link }: { to: string; 
   await transport.sendMail({
     from: env.MAIL_FROM,
     to,
-    subject: 'Dein Login-Link für Roaswell',
-    text: `Mit diesem Link meldest du dich an. Er ist 15 Minuten gültig:\n\n${link}\n\nWenn du ihn nicht angefordert hast, ignoriere diese E-Mail.`,
+    subject: BODIES[kind].subject,
+    text: `${BODIES[kind].intro}\n\n${link}\n\nWenn du das nicht erwartet hast, ignoriere diese E-Mail.`,
   });
 };
