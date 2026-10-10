@@ -1,5 +1,5 @@
 import { Form, NavLink, Outlet } from 'react-router';
-import { ClipboardList, LayoutDashboard, LogOut } from 'lucide-react';
+import { Building2, ClipboardList, Kanban, LayoutDashboard, LogOut, Users } from 'lucide-react';
 
 import { cn } from '~/lib/cn';
 import { requirePrincipal } from '~/lib/server/require-principal.server';
@@ -13,8 +13,11 @@ export const loader = async ({ request }: Route.LoaderArgs) => {
 };
 
 const NAV_ITEMS = [
-  { to: '/', label: 'Übersicht', icon: LayoutDashboard, end: true },
-  { to: '/audits', label: 'Audits', icon: ClipboardList, end: false },
+  { to: '/', label: 'Übersicht', icon: LayoutDashboard, end: true, teamOnly: false },
+  { to: '/audits', label: 'Audits', icon: ClipboardList, end: false, teamOnly: false },
+  { to: '/companies', label: 'Firmen', icon: Building2, end: false, teamOnly: true },
+  { to: '/people', label: 'Kontakte', icon: Users, end: false, teamOnly: true },
+  { to: '/pipeline', label: 'Pipeline', icon: Kanban, end: false, teamOnly: true },
 ] as const;
 
 export default function AppLayout({ loaderData }: Route.ComponentProps) {
@@ -23,7 +26,7 @@ export default function AppLayout({ loaderData }: Route.ComponentProps) {
       <aside className="flex flex-col gap-6 border-b border-border bg-card p-4 md:border-b-0 md:border-r">
         <div className="px-2 text-lg font-semibold tracking-tight">Roaswell</div>
         <nav aria-label="Hauptnavigation" className="flex flex-row gap-1 md:flex-col">
-          {NAV_ITEMS.map(({ to, label, icon: Icon, end }) => (
+          {NAV_ITEMS.filter((item) => !item.teamOnly || loaderData.role === 'TEAM').map(({ to, label, icon: Icon, end }) => (
             <NavLink
               key={to}
               to={to}

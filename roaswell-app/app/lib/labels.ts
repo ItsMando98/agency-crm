@@ -52,3 +52,22 @@ export const formatDate = (iso: string | null): string =>
 
 export const formatHost = (domain: string | null): string =>
   (domain ?? '').replace(/^https?:\/\//, '');
+
+export const STAGE_LABELS: Record<string, string> = {
+  NEW: 'Neu',
+  SCREENING: 'Prüfung',
+  MEETING: 'Gespräch',
+  PROPOSAL: 'Angebot',
+  CUSTOMER: 'Kunde',
+};
+
+export const CRM_TASK_STATUS_LABELS: Record<string, string> = {
+  TODO: 'Offen',
+  IN_PROGRESS: 'In Arbeit',
+  DONE: 'Erledigt',
+};
+
+export const formatMoney = (amount: number | null, currency: string): string =>
+  amount === null
+    ? '-'
+    : new Intl.NumberFormat('de-DE', { style: 'currency', currency, maximumFractionDigits: 0 }).format(amount);

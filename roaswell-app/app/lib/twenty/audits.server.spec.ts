@@ -61,6 +61,16 @@ describe('audits data layer', () => {
     );
   });
 
+  it('lets the team narrow the list to one company but never widens a client', async () => {
+    const findMany = vi.fn(async () => ({ records: [], totalCount: 0, endCursor: null, hasNextPage: false }));
+
+    await listAudits(buildClient({ findMany }), team, { companyId: 'company-9' });
+    await listAudits(buildClient({ findMany }), client, { companyId: 'company-9' });
+
+    expect(findMany).toHaveBeenNthCalledWith(1, expect.objectContaining({ filter: 'and(companyId[eq]:"company-9")' }));
+    expect(findMany).toHaveBeenNthCalledWith(2, expect.objectContaining({ filter: 'and(companyId[eq]:"company-1")' }));
+  });
+
   it('does not let a quote in the search text change the filter', async () => {
     const findMany = vi.fn(async () => ({ records: [], totalCount: 0, endCursor: null, hasNextPage: false }));
 

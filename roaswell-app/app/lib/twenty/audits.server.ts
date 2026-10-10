@@ -35,6 +35,7 @@ const canSee = (principal: Principal, audit: { companyId: string | null }): bool
 
 export type ListAuditsParams = {
   status?: AuditStatus;
+  companyId?: string;
   domainContains?: string;
   limit?: number;
   startingAfter?: string;
@@ -43,12 +44,17 @@ export type ListAuditsParams = {
 export const listAudits = async (
   client: TwentyClient,
   principal: Principal,
-  { status, domainContains, limit = DEFAULT_LIST_LIMIT, startingAfter }: ListAuditsParams = {},
+  { status, companyId, domainContains, limit = DEFAULT_LIST_LIMIT, startingAfter }: ListAuditsParams = {},
 ): Promise<{ audits: AuditSummary[]; totalCount: number; endCursor: string | null; hasNextPage: boolean }> => {
   const conditions: Condition[] = [...scopeConditions(principal)];
 
   if (status !== undefined) {
     conditions.push({ field: 'status', comparator: 'eq', value: status });
+  }
+
+  // For a client the scope condition above already pins this to their company.
+  if (companyId !== undefined && principal.kind === 'TEAM') {
+    conditions.push({ field: 'companyId', comparator: 'eq', value: companyId });
   }
 
   if (domainContains !== undefined && domainContains.trim() !== '') {

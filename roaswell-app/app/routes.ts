@@ -9,5 +9,9 @@ export default [
     index('routes/dashboard.tsx'),
     route('audits', 'routes/audits.tsx'),
     route('audits/:auditId', 'routes/audit-detail.tsx'),
+    route('companies', 'routes/companies.tsx'),
+    route('companies/:companyId', 'routes/company-detail.tsx'),
+    route('people', 'routes/people.tsx'),
+    route('pipeline', 'routes/pipeline.tsx'),
   ]),
 ] satisfies RouteConfig;
