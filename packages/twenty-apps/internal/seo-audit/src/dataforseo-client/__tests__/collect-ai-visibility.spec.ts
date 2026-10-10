@@ -3,7 +3,7 @@ import { describe, expect, it } from 'vitest';
 import { buildDataForSeoEnvelope } from 'src/__mocks__/build-dataforseo-envelope.mock';
 import { buildLlmResult } from 'src/__mocks__/build-llm-result.mock';
 import { createRecordingFetch } from 'src/__mocks__/create-recording-fetch.mock';
-import { collectAiVisibility } from 'src/dataforseo-client/collect-ai-visibility';
+import { collectAiVisibility, planRetry } from 'src/dataforseo-client/collect-ai-visibility';
 import { fetchAiAnswer } from 'src/dataforseo-client/fetch-ai-answer';
 
 const NOW = new Date('2026-10-09T10:00:00Z');
@@ -254,5 +254,45 @@ describe('collectAiVisibility', () => {
     expect(requests).toHaveLength(0);
     expect(visibility.presenceRate).toBeNull();
     expect(visibility.notes).toEqual(['3 requests were skipped because the time budget ran out.']);
+  });
+});
+
+describe('planRetry', () => {
+  it('waits as long as the provider asks, up to a cap, and allows more tries', () => {
+    expect(planRetry({ error: { retryAfterMs: 12_000 }, attempt: 1, baseDelayMs: 3000 })).toEqual({ delayMs: 12_000, maxAttempts: 5 });
+    expect(planRetry({ error: { retryAfterMs: 600_000 }, attempt: 1, baseDelayMs: 3000 })).toEqual({ delayMs: 30_000, maxAttempts: 5 });
+  });
+
+  it('keeps the growing pause and three tries without a hint', () => {
+    expect(planRetry({ error: new Error('rate_limit'), attempt: 2, baseDelayMs: 3000 })).toEqual({ delayMs: 6000, maxAttempts: 3 });
+  });
+});
+
+describe('collectAiVisibility with a provider that says how long to wait', () => {
+  it('asks again up to five times and keeps the answer', async () => {
+    let attempts = 0;
+    const fetchAnswer = async ({ engine }: { engine: { id: string } }) => {
+      if (engine.id !== 'PERPLEXITY') {
+        return { answer: { text: 'Antwort', sources: [] }, cost: 0 };
+      }
+
+      attempts += 1;
+
+      if (attempts < 5) {
+        throw Object.assign(new Error('treg is saturated or the provider is unavailable (HTTP 503)'), { retryAfterMs: 1 });
+      }
+
+      return { answer: { text: 'Antwort', sources: [{ url: 'https://rival.de/', title: null }] }, cost: 0.006 };
+    };
+
+    const visibility = await collectAiVisibility({
+      ...PARAMS,
+      queries: ['Frage eins zur Kanzlei?'],
+      fetchAnswer: fetchAnswer as never,
+    });
+
+    expect(attempts).toBe(5);
+    expect(visibility.rows[0]?.results.PERPLEXITY).toBe('ABSENT');
+    expect(visibility.notes).toEqual([]);
   });
 });

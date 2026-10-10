@@ -2,6 +2,8 @@ import {
   AI_DEADLINE_MS,
   AI_ENGINES,
   AI_MAX_ATTEMPTS,
+  AI_MAX_ATTEMPTS_WHEN_TOLD_TO_WAIT,
+  AI_MAX_RETRY_AFTER_MS,
   AI_MAX_COMPETITORS_SHOWN,
   AI_MAX_REQUESTS,
   AI_MENTIONED_WEIGHT,
@@ -43,6 +45,32 @@ type Outcome =
   | { task: Task; kind: 'ANSWERED'; status: AiAnswerStatus; competitorDomains: string[]; cost: number }
   | { task: Task; kind: 'FAILED'; message: string }
   | { task: Task; kind: 'SKIPPED'; reason: 'DEADLINE' | 'REQUEST_LIMIT' };
+
+const readRetryAfterMs = (error: unknown): number | null => {
+  const value = (error as { retryAfterMs?: unknown } | null)?.retryAfterMs;
+
+  return typeof value === 'number' && value > 0 ? value : null;
+};
+
+// How long to wait before the next try, and how many tries are allowed.
+export const planRetry = ({
+  error,
+  attempt,
+  baseDelayMs,
+}: {
+  error: unknown;
+  attempt: number;
+  baseDelayMs: number;
+}): { delayMs: number; maxAttempts: number } => {
+  const retryAfterMs = readRetryAfterMs(error);
+
+  return retryAfterMs === null
+    ? { delayMs: baseDelayMs * attempt, maxAttempts: AI_MAX_ATTEMPTS }
+    : {
+        delayMs: Math.min(retryAfterMs, AI_MAX_RETRY_AFTER_MS),
+        maxAttempts: AI_MAX_ATTEMPTS_WHEN_TOLD_TO_WAIT,
+      };
+};
 
 const wait = (milliseconds: number): Promise<void> =>
   new Promise((resolve) => setTimeout(resolve, milliseconds));
@@ -156,8 +184,9 @@ export const collectAiVisibility = async ({
           };
         } catch (error) {
           const message = error instanceof Error ? error.message : 'request failed';
+          const retry = planRetry({ error, attempt, baseDelayMs: retryDelayMs });
           const canTryAgain =
-            attempt < AI_MAX_ATTEMPTS &&
+            attempt < retry.maxAttempts &&
             AI_RETRYABLE_ERROR_PATTERN.test(message) &&
             Date.now() < deadline;
 
@@ -165,7 +194,7 @@ export const collectAiVisibility = async ({
             return { task, kind: 'FAILED', message };
           }
 
-          await wait(retryDelayMs * attempt);
+          await wait(retry.delayMs);
         }
       }
     },

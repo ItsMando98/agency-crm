@@ -593,7 +593,7 @@ Page titles:
     
   </article>
       <h5>Wiederholungen und Grenzen</h5>
-      <dl class="facts"><dt>Versuche pro Anfrage</dt><dd>3, mit steigender Pause (3 s mal Versuchsnummer)</dd><dt>Wiederholt wird bei</dt><dd><code>rate_limit | rate limit | too many requests | unavailable | saturated | timeout | timed out | 429</code></dd><dt>Nicht wiederholt</dt><dd>Alles andere, zum Beispiel falscher Token (401) oder leeres Guthaben (402)</dd><dt>Ein Ausfall</dt><dd>Eine Spalte (ein Assistent) bleibt "Unklar", die anderen laufen weiter. Der Grund steht als Notiz im Bericht.</dd><dt>Zeitbudget leer</dt><dd>Noch nicht gestartete Anfragen werden übersprungen und im Bericht gezählt.</dd></dl>
+      <dl class="facts"><dt>Versuche pro Anfrage</dt><dd>3, mit steigender Pause (3 s mal Versuchsnummer)</dd><dt>Sagt treg, wie lange</dt><dd>Bei einem 503 mit Header <code>Retry-After</code> wartet der Audit genau so lange (höchstens 30 s) und versucht bis zu 5 Mal.</dd><dt>Wiederholt wird bei</dt><dd><code>rate_limit | rate limit | too many requests | unavailable | saturated | timeout | timed out | 429</code></dd><dt>Nicht wiederholt</dt><dd>Alles andere, zum Beispiel falscher Token (401) oder leeres Guthaben (402)</dd><dt>Ein Ausfall</dt><dd>Eine Spalte (ein Assistent) bleibt "Unklar", die anderen laufen weiter. Der Grund steht als Notiz im Bericht.</dd><dt>Zeitbudget leer</dt><dd>Noch nicht gestartete Anfragen werden übersprungen und im Bericht gezählt.</dd></dl>
       <h4 class="sub">C4: Jede Antwort per Code einstufen (kein Modell)</h4>
       <table class="table">
         <thead><tr><th>Ergebnis</th><th>Regel</th><th>Gewicht in der Rate</th></tr></thead>

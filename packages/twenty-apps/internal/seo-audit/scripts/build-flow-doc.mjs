@@ -55,6 +55,8 @@ const ai = {
   maxRequests: num('constants/ai-visibility.const.ts', 'AI_MAX_REQUESTS'),
   attempts: num('constants/ai-visibility.const.ts', 'AI_MAX_ATTEMPTS'),
   retryDelay: num('constants/ai-visibility.const.ts', 'AI_RETRY_DELAY_MS'),
+  attemptsWhenTold: num('constants/ai-visibility.const.ts', 'AI_MAX_ATTEMPTS_WHEN_TOLD_TO_WAIT'),
+  maxRetryAfter: num('constants/ai-visibility.const.ts', 'AI_MAX_RETRY_AFTER_MS'),
   dfsConcurrency: num('constants/ai-visibility.const.ts', 'AI_REQUEST_CONCURRENCY'),
   dfsTimeout: num('constants/ai-visibility.const.ts', 'AI_REQUEST_TIMEOUT_MS'),
   dfsDeadline: num('constants/ai-visibility.const.ts', 'AI_DEADLINE_MS'),
@@ -614,6 +616,7 @@ phases.push(
       <h5>Wiederholungen und Grenzen</h5>
       ${rows([
         ['Versuche pro Anfrage', `${ai.attempts}, mit steigender Pause (${seconds(ai.retryDelay)} mal Versuchsnummer)`],
+        ['Sagt treg, wie lange', `Bei einem 503 mit Header ${code('Retry-After')} wartet der Audit genau so lange (höchstens ${seconds(ai.maxRetryAfter)}) und versucht bis zu ${ai.attemptsWhenTold} Mal.`],
         ['Wiederholt wird bei', code(ai.retryPattern)],
         ['Nicht wiederholt', 'Alles andere, zum Beispiel falscher Token (401) oder leeres Guthaben (402)'],
         ['Ein Ausfall', 'Eine Spalte (ein Assistent) bleibt "Unklar", die anderen laufen weiter. Der Grund steht als Notiz im Bericht.'],

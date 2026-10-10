@@ -47,6 +47,9 @@ export const AI_REQUEST_TIMEOUT_MS = 90_000;
 // Engines sometimes refuse a burst of requests. A pause and a second try usually gets the answer.
 export const AI_MAX_ATTEMPTS = 3;
 export const AI_RETRY_DELAY_MS = 3_000;
+// When the provider says how long to wait, it is asked again more often and after that wait.
+export const AI_MAX_ATTEMPTS_WHEN_TOLD_TO_WAIT = 5;
+export const AI_MAX_RETRY_AFTER_MS = 30_000;
 export const AI_RETRYABLE_ERROR_PATTERN =
   /rate_limit|rate limit|too many requests|unavailable|saturated|timeout|timed out|429/i;
 

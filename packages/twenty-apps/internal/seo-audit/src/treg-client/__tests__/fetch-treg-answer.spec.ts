@@ -4,7 +4,7 @@ import { buildDataForSeoEnvelope } from 'src/__mocks__/build-dataforseo-envelope
 import { buildLlmResult } from 'src/__mocks__/build-llm-result.mock';
 import { createRecordingFetch } from 'src/__mocks__/create-recording-fetch.mock';
 import { AI_ENGINES } from 'src/constants/ai-visibility.const';
-import { fetchTregAnswer } from 'src/treg-client/fetch-treg-answer';
+import { fetchTregAnswer, TregRequestError } from 'src/treg-client/fetch-treg-answer';
 
 const [CHATGPT, PERPLEXITY, GEMINI] = AI_ENGINES;
 const CREDENTIALS = { token: 'tok_123', organization: null };
@@ -129,5 +129,45 @@ describe('fetchTregAnswer', () => {
     await expect(
       fetchTregAnswer({ credentials: CREDENTIALS, engine: CHATGPT, query: QUERY, countryCode: 'DE', fetchImplementation }),
     ).rejects.toThrow('cloro: prompt blocked');
+  });
+});
+
+describe('fetchTregAnswer failures that say how long to wait', () => {
+  it('names the reason treg gives and carries the wait time', async () => {
+    const { fetchImplementation } = createRecordingFetch(() => ({
+      status: 503,
+      json: { error: { code: 'treg_saturated', message: 'Too many calls to this provider' } },
+      headers: { 'retry-after': '12' },
+    }));
+
+    const error = await fetchTregAnswer({
+      credentials: { token: 't', organization: null },
+      engine: PERPLEXITY,
+      query: 'Frage',
+      countryCode: 'DE',
+      fetchImplementation,
+    }).catch((caught: unknown) => caught);
+
+    expect(error).toBeInstanceOf(TregRequestError);
+    expect((error as TregRequestError).retryAfterMs).toBe(12_000);
+    expect((error as Error).message).toContain('treg_saturated');
+    expect((error as Error).message).toContain('Too many calls');
+  });
+
+  it('shows the start of an unknown body instead of hiding the cause', async () => {
+    const { fetchImplementation } = createRecordingFetch(() => ({
+      status: 503,
+      json: { weird: 'shape' },
+    }));
+
+    await expect(
+      fetchTregAnswer({
+        credentials: { token: 't', organization: null },
+        engine: PERPLEXITY,
+        query: 'Frage',
+        countryCode: 'DE',
+        fetchImplementation,
+      }),
+    ).rejects.toThrow('{"weird":"shape"}');
   });
 });

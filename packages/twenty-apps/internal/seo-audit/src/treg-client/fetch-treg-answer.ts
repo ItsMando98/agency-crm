@@ -38,16 +38,57 @@ const buildBody = (
       ]
     : { prompt: query, country: countryCode };
 
-const readErrorText = (payload: unknown): string | null => {
-  const error = asRecord(payload)?.error;
+const MAX_PAYLOAD_EXCERPT_LENGTH = 160;
+const MILLISECONDS_PER_SECOND = 1000;
 
-  if (typeof error === 'string') {
-    return error;
+// Carries how long treg asked to wait, so the caller can wait that long.
+export class TregRequestError extends Error {
+  readonly retryAfterMs: number | null;
+
+  constructor(message: string, retryAfterMs: number | null = null) {
+    super(message);
+    this.name = 'TregRequestError';
+    this.retryAfterMs = retryAfterMs;
+  }
+}
+
+const asText = (value: unknown): string | null =>
+  typeof value === 'string' && value.trim() !== '' ? value.trim() : null;
+
+// The reason treg gives, whichever of its fields carries it. Without any
+// readable field the start of the body is shown, so the cause is never hidden.
+const readErrorText = (payload: unknown): string | null => {
+  const record = asRecord(payload);
+  const error = asRecord(record?.error);
+  const parts = [
+    asText(record?.error),
+    asText(error?.code),
+    asText(error?.message),
+    asText(record?.code),
+    asText(record?.message),
+    asText(record?.reason),
+  ].filter((part): part is string => part !== null);
+
+  if (parts.length > 0) {
+    return [...new Set(parts)].join(': ');
   }
 
-  const message = asRecord(error)?.message;
+  if (payload === null || payload === undefined) {
+    return null;
+  }
 
-  return typeof message === 'string' ? message : null;
+  const excerpt = JSON.stringify(payload);
+
+  return excerpt === undefined || excerpt === '{}' ? null : excerpt.slice(0, MAX_PAYLOAD_EXCERPT_LENGTH);
+};
+
+const readRetryAfterMs = (response: Response, payload: unknown): number | null => {
+  const record = asRecord(payload);
+  const seconds = Number(
+    response.headers.get('retry-after') ?? record?.retry_after ?? record?.retry_after_seconds,
+  );
+
+  return Number.isFinite(seconds) && seconds > 0 ? seconds * MILLISECONDS_PER_SECOND : null;
 };
 
 const describeHttpFailure = (status: number, payload: unknown): string => {
@@ -70,7 +111,7 @@ const describeHttpFailure = (status: number, payload: unknown): string => {
   }
 
   if (status === 503) {
-    return `treg is saturated or the provider is unavailable (${errorText ?? 'HTTP 503'}). Try again shortly.`;
+    return `treg is saturated or the provider is unavailable (HTTP 503${errorText === null ? '' : `, ${errorText}`}). Try again shortly.`;
   }
 
   return `treg returned HTTP ${status}${errorText === null ? '' : `: ${errorText}`}`;
@@ -125,7 +166,10 @@ export const fetchTregAnswer = async ({
   }
 
   if (!response.ok) {
-    throw new Error(describeHttpFailure(response.status, payload));
+    throw new TregRequestError(
+      describeHttpFailure(response.status, payload),
+      readRetryAfterMs(response, payload),
+    );
   }
 
   const costMicro = Number(response.headers.get('x-treg-cost-micro'));
