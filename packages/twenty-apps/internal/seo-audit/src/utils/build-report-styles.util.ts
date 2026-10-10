@@ -114,6 +114,25 @@ td.url { word-break: break-all; color: var(--ink-3); font-size: 8.5pt; }
 .small-list { margin: 4px 0 0; padding-left: 18px; color: var(--ink-2); }
 .small-list li { word-break: break-all; }
 .methodology { color: var(--ink-3); font-size: 9pt; }
+.summary-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px 18px; }
+.summary-block h3 { font-size: 10.5pt; margin: 0 0 4px; }
+.summary-block ul { margin: 0; padding-left: 18px; color: var(--ink-2); }
+.unverified { color: var(--status-critical); font-size: 8.5pt; }
+.compare { display: flex; gap: 12px; margin: 6px 0 10px; }
+.compare-cell { flex: 1; background: var(--tile); border-radius: 8px; padding: 10px 12px; }
+.compare-value { display: block; font-size: 22pt; font-weight: 650; font-variant-numeric: tabular-nums; }
+.compare-label { color: var(--ink-3); font-size: 8.5pt; }
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 10px; margin: 8px 0 12px; }
+.page-card { background: var(--tile); border-radius: 8px; padding: 10px 12px; }
+.page-card-url { font-size: 8.5pt; word-break: break-all; color: var(--ink-2); }
+.page-card-meta { font-size: 8.5pt; color: var(--ink-3); margin: 4px 0 6px; }
+.page-card-scores { display: flex; flex-wrap: wrap; gap: 4px; }
+.heat { border-radius: 4px; padding: 1px 6px; font-size: 8.5pt; }
+td.heat { text-align: center; border-radius: 0; font-variant-numeric: tabular-nums; }
+.heat-1 { background: #f6c9c9; } .heat-2 { background: #fadccc; } .heat-3 { background: #fdeab8; }
+.heat-4 { background: #cfeccf; } .heat-5 { background: #a6dca6; }
+.check { color: var(--status-critical); font-weight: 600; }
+@media print { .summary-grid { grid-template-columns: repeat(2, 1fr); } }
 .keep-together { break-inside: avoid; }
 @media print {
   html { background: none; }

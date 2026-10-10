@@ -89,6 +89,7 @@ export const persistSeoAuditResult = async ({
           areaScores: result.areaScores,
           reportMarkdown: result.reportMarkdown,
           aiUsage: result.aiUsage,
+          insights: result.insights,
           finishedAt: finishedAt.toISOString(),
           failureReason: null,
           ...buildMarketAuditData(result.marketData),

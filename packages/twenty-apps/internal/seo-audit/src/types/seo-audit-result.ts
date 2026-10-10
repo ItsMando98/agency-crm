@@ -2,6 +2,7 @@ import { type AiReadiness } from 'src/types/ai-readiness';
 import { type AiUsage } from 'src/types/ai-usage';
 import { type AiVisibility } from 'src/types/ai-visibility';
 import { type AreaScores } from 'src/types/area-scores';
+import { type AuditInsights } from 'src/types/audit-insights';
 import { type AuditLanguage } from 'src/types/audit-language';
 import { type AuditTask } from 'src/types/audit-task';
 import { type BacklinkTarget } from 'src/types/backlink-target';
@@ -32,4 +33,6 @@ export type SeoAuditResult = {
   reportMarkdown: string;
   // Tokens per model used by this audit.
   aiUsage: AiUsage;
+  // Judgement based additions: summary, strengths, comparison, confidence.
+  insights: AuditInsights;
 };

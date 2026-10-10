@@ -1,4 +1,6 @@
 import { REPORT_LABELS } from 'src/constants/report-labels.const';
+import { type AuditInsights } from 'src/types/audit-insights';
+import { buildInsightsMarkdown, buildSummaryMarkdown } from 'src/utils/build-insights-markdown.util';
 import { type AiReadiness } from 'src/types/ai-readiness';
 import { type AiVisibility } from 'src/types/ai-visibility';
 import { type AreaScores } from 'src/types/area-scores';
@@ -29,6 +31,7 @@ type BuildReportMarkdownParams = {
   isMarketDataConfigured?: boolean;
   aiReadiness?: AiReadiness | null;
   aiVisibility?: AiVisibility | null;
+  insights?: AuditInsights | null;
 };
 
 const MAX_URLS_SHOWN_PER_TASK = 5;
@@ -52,7 +55,9 @@ export const buildReportMarkdown = ({
   isMarketDataConfigured = false,
   aiReadiness = null,
   aiVisibility = null,
+  insights = null,
 }: BuildReportMarkdownParams): string => {
+  const insightsSource = insights === null ? null : { language, score, assessments, insights };
   const labels = REPORT_LABELS[language];
   const lines: string[] = [
     `# ${labels.title}: ${origin}`,
@@ -72,6 +77,10 @@ export const buildReportMarkdown = ({
   const rankedAreas = (Object.entries(areaScores) as [SeoArea, number][]).sort(
     (first, second) => second[1] - first[1],
   );
+
+  if (insightsSource !== null) {
+    lines.push(...buildSummaryMarkdown(insightsSource));
+  }
 
   lines.push(
     `## ${labels.areasHeading}`,
@@ -148,6 +157,10 @@ export const buildReportMarkdown = ({
         );
       }
     });
+  }
+
+  if (insightsSource !== null) {
+    lines.push(...buildInsightsMarkdown(insightsSource));
   }
 
   if (marketData !== null) {

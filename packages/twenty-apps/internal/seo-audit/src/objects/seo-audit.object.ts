@@ -269,6 +269,15 @@ export default defineObject({
       isNullable: true,
     },
     {
+      universalIdentifier: 'ea6d2a3d-d0d7-44e1-a789-baeb206e7de3',
+      type: FieldType.RAW_JSON,
+      name: 'insights',
+      label: 'Insights',
+      description: 'Summary, strengths, score comparison, confidence, competing pages and missing location pages',
+      icon: 'IconBulb',
+      isNullable: true,
+    },
+    {
       universalIdentifier: 'a15e094e-48fa-4b3a-a107-729b28ebe09a',
       type: FieldType.RAW_JSON,
       name: 'aiVisibility',

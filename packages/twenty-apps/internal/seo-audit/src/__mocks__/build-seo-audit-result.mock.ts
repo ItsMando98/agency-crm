@@ -1,4 +1,5 @@
 import { buildAiReadiness } from 'src/__mocks__/build-ai-readiness.mock';
+import { buildAuditInsights } from 'src/utils/build-audit-insights.util';
 import { buildCrawledPage } from 'src/__mocks__/build-crawled-page.mock';
 import { buildScoredKeyword } from 'src/__mocks__/build-scored-keyword.mock';
 import { type SeoAuditResult } from 'src/types/seo-audit-result';
@@ -17,6 +18,13 @@ export const buildSeoAuditResult = (
     aiVisibility: null,
     notes: [],
     aiUsage: {},
+    insights: buildAuditInsights({
+      areaScores: { CRAWLABILITY: 95, ON_PAGE: 76, CONTENT_QUALITY: 59, SECURITY: 98, VISIBILITY: 64 },
+      assessments: [],
+      keywords: [],
+      aiReadiness: null,
+      aiVisibility: null,
+    }),
     score: 84,
     grade: 'B',
     areaScores: {

@@ -15,6 +15,7 @@ const buildResult = (overrides: Partial<SeoAuditResult> = {}): SeoAuditResult =>
   aiReadiness: buildAiReadiness(),
   aiVisibility: null,
   aiUsage: {},
+  insights: { rulesOnlyScore: null, confidence: { total: 0, definitive: 0, sharePercent: null }, strengths: [], competingPages: [], missingLocations: [], summary: null },
   notes: [],
   score: 81,
   grade: 'B',

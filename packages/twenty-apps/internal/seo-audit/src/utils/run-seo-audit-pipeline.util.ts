@@ -1,4 +1,5 @@
 import type Anthropic from '@anthropic-ai/sdk';
+import { buildAuditInsights } from 'src/utils/build-audit-insights.util';
 import { createUsageTracker, withUsageTracking } from 'src/anthropic-client/track-usage';
 
 import { assessKeywords } from 'src/anthropic-client/assess-keywords';
@@ -189,6 +190,13 @@ export const runSeoAuditPipeline = async ({
   const score = computeOverallScore(areaScores);
   const grade = scoreToGrade(score);
   const tasks = buildAuditTasks(findings, language);
+  const insights = buildAuditInsights({
+    areaScores,
+    assessments,
+    keywords,
+    aiReadiness,
+    aiVisibility,
+  });
   const reportMarkdown = buildReportMarkdown({
     origin: crawlResult.origin,
     language,
@@ -205,6 +213,7 @@ export const runSeoAuditPipeline = async ({
     isMarketDataConfigured: dataForSeoCredentials !== null,
     aiReadiness,
     aiVisibility,
+    insights,
   });
 
   return {
@@ -225,5 +234,6 @@ export const runSeoAuditPipeline = async ({
     keywords,
     reportMarkdown,
     aiUsage: usageTracker.snapshot(),
+    insights,
   };
 };

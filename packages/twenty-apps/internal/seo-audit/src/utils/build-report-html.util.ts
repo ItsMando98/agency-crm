@@ -2,6 +2,7 @@ import { REPORT_HTML_LABELS } from 'src/constants/report-html-labels.const';
 import { REPORT_PRINT_SCRIPT } from 'src/constants/report-print-script.const';
 import { type ReportBranding } from 'src/types/report-branding';
 import { type SeoAuditResult } from 'src/types/seo-audit-result';
+import { buildOpportunitiesHtml, buildPagesHtml, buildStrengthsHtml, buildSummaryHtml } from 'src/utils/build-insights-html.util';
 import { buildReportAppendixHtml } from 'src/utils/build-report-appendix-html.util';
 import { buildReportAiReadinessHtml } from 'src/utils/build-report-ai-readiness-html.util';
 import { buildReportAiVisibilityHtml } from 'src/utils/build-report-ai-visibility-html.util';
@@ -45,9 +46,13 @@ export const buildReportHtml = (
 <div class="toolbar"><span>${escapeHtml(htmlLabels.printHint)}</span><button type="button" id="print-report">${escapeHtml(htmlLabels.printButton)}</button></div>
 <main class="document">
 ${buildReportCoverHtml(result, branding)}
+${buildSummaryHtml(result)}
 ${buildReportAreasHtml(result)}
+${buildStrengthsHtml(result)}
 ${buildReportTasksHtml(result)}
+${buildPagesHtml(result)}
 ${buildReportMarketHtml(result)}
+${buildOpportunitiesHtml(result)}
 ${buildReportAiReadinessHtml(result)}
 ${buildReportAiVisibilityHtml(result)}
 ${buildReportAppendixHtml(result)}
