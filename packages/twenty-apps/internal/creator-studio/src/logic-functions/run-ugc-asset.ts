@@ -11,7 +11,7 @@ import { readTregCredentials } from 'src/utils/read-treg-credentials.util';
 
 type UgcAssetEventRecord = {
   status?: string | null;
-  type?: string | null;
+  assetType?: string | null;
   prompt?: string | null;
   script?: string | null;
   durationSeconds?: number | null;
@@ -32,7 +32,7 @@ const handler = async (
   // One asset after another: a video can run for minutes and treg bills each call.
   for (const event of batch.events) {
     const record = event.properties.after;
-    const type = ASSET_TYPES.find((candidate) => candidate === record.type);
+    const type = ASSET_TYPES.find((candidate) => candidate === record.assetType);
 
     if (typeof record.status === 'string' && record.status !== ASSET_STATUS.QUEUED) {
       continue;

@@ -51,7 +51,8 @@ export const assetSchema = z
   .object({
     id: z.string(),
     name: nullableString,
-    type: pick(ASSET_TYPES, 'IMAGE'),
+    // `type` is a reserved field name in Twenty, so the field is called assetType.
+    assetType: pick(ASSET_TYPES, 'IMAGE'),
     status: pick(ASSET_STATUSES, 'QUEUED'),
     prompt: nullableString,
     script: nullableString,
@@ -63,6 +64,10 @@ export const assetSchema = z
     createdAt: nullableString,
     file: z.unknown().optional(),
   })
-  .transform(({ file, ...asset }) => ({ ...asset, fileUrl: firstFileUrl(file) }));
+  .transform(({ file, assetType, ...asset }) => ({
+    ...asset,
+    type: assetType,
+    fileUrl: firstFileUrl(file),
+  }));
 
 export type Asset = z.infer<typeof assetSchema>;

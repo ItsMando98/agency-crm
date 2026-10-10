@@ -208,7 +208,7 @@ export const requestAsset = async (
     singular: 'ugcAsset',
     data: {
       name: `${request.type} ${creator.name ?? 'Creator'}`,
-      type: request.type,
+      assetType: request.type,
       status: 'QUEUED',
       creatorId,
       ...(prompt === '' ? {} : { prompt }),

@@ -33,7 +33,7 @@ export default defineObject({
     {
       universalIdentifier: UGC_ASSET_TYPE_FIELD_UNIVERSAL_IDENTIFIER,
       type: FieldType.SELECT,
-      name: 'type',
+      name: 'assetType',
       label: 'Type',
       icon: 'IconCategory',
       defaultValue: `'${ASSET_TYPE.IMAGE}'`,

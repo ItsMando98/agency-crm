@@ -55,8 +55,8 @@ describe('creators data layer', () => {
     const findMany = vi.fn(async () => ({
       ...emptyPage,
       records: [
-        { id: 'a1', type: 'IMAGE', status: 'DONE', costUsd: 0.03, creatorId: 'creator-1', file: [{ fileId: 'f1', url: 'https://crm/file/f1' }] },
-        { id: 'a2', type: 'VIDEO', status: 'RUNNING', creatorId: 'creator-1' },
+        { id: 'a1', assetType: 'IMAGE', status: 'DONE', costUsd: 0.03, creatorId: 'creator-1', file: [{ fileId: 'f1', url: 'https://crm/file/f1' }] },
+        { id: 'a2', assetType: 'VIDEO', status: 'RUNNING', creatorId: 'creator-1' },
       ],
     }));
 
@@ -96,7 +96,7 @@ describe('requestAsset', () => {
     expect(create).toHaveBeenCalledWith({
       object: 'ugcAssets',
       singular: 'ugcAsset',
-      data: { name: 'IMAGE Mara', type: 'IMAGE', status: 'QUEUED', creatorId: 'creator-1', prompt: 'Im Park' },
+      data: { name: 'IMAGE Mara', assetType: 'IMAGE', status: 'QUEUED', creatorId: 'creator-1', prompt: 'Im Park' },
     });
   });
 
