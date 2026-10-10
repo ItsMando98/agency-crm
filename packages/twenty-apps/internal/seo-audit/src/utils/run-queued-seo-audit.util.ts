@@ -76,7 +76,8 @@ export const runQueuedSeoAudit = async ({
   }
 
   const anthropicClient = getAnthropicClient();
-  const { defaultLanguage, maxPages, market, isAiVisibilityEnabled } = readAuditSettings();
+  const { defaultLanguage, maxPages, market, isAiVisibilityEnabled, isAiSummaryEnabled } =
+    readAuditSettings();
   const dataForSeoCredentials = readDataForSeoCredentials();
   const tregCredentials = readTregCredentials();
 
@@ -105,6 +106,7 @@ export const runQueuedSeoAudit = async ({
       dataForSeoCredentials,
       tregCredentials,
       isAiVisibilityEnabled,
+      isAiSummaryEnabled,
     });
 
     const auditExports = await buildAuditExports({

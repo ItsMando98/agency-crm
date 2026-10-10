@@ -9,6 +9,7 @@ describe('readAuditSettings', () => {
       maxPages: 60,
       market: 'DE',
       isAiVisibilityEnabled: false,
+      isAiSummaryEnabled: true,
     });
   });
 
@@ -20,6 +21,7 @@ describe('readAuditSettings', () => {
       maxPages: 25,
       market: 'DE',
       isAiVisibilityEnabled: false,
+      isAiSummaryEnabled: true,
     });
   });
 
@@ -48,5 +50,11 @@ describe('readAuditSettings', () => {
     expect(readAuditSettings({ SEO_AUDIT_AI_VISIBILITY: 'OFF' }).isAiVisibilityEnabled).toBe(false);
     expect(readAuditSettings({ SEO_AUDIT_AI_VISIBILITY: 'true' }).isAiVisibilityEnabled).toBe(false);
     expect(readAuditSettings({}).isAiVisibilityEnabled).toBe(false);
+  });
+
+  it('keeps the summary on unless it is switched off', () => {
+    expect(readAuditSettings({}).isAiSummaryEnabled).toBe(true);
+    expect(readAuditSettings({ SEO_AUDIT_AI_SUMMARY: 'ON' }).isAiSummaryEnabled).toBe(true);
+    expect(readAuditSettings({ SEO_AUDIT_AI_SUMMARY: ' OFF ' }).isAiSummaryEnabled).toBe(false);
   });
 });

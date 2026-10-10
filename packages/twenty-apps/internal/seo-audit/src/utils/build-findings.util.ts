@@ -1,4 +1,5 @@
 import { type AiReadiness } from 'src/types/ai-readiness';
+import { type CompetingPageGroup, type MissingLocation } from 'src/types/audit-insights';
 import { type AiVisibility } from 'src/types/ai-visibility';
 import { type AuditLanguage } from 'src/types/audit-language';
 import { type BacklinkTarget } from 'src/types/backlink-target';
@@ -30,6 +31,8 @@ type BuildFindingsParams = {
   brokenBacklinkTargets?: BacklinkTarget[];
   aiReadiness?: AiReadiness | null;
   aiVisibility?: AiVisibility | null;
+  missingLocations?: MissingLocation[];
+  competingPages?: CompetingPageGroup[];
 };
 
 export const buildFindings = ({
@@ -42,6 +45,8 @@ export const buildFindings = ({
   brokenBacklinkTargets = [],
   aiReadiness = null,
   aiVisibility = null,
+  missingLocations = [],
+  competingPages = [],
 }: BuildFindingsParams): Finding[] => [
   ...checkCrawlability(crawlResult),
   ...checkOnPage(crawlResult.pages),
@@ -51,7 +56,17 @@ export const buildFindings = ({
   ...checkCoreWebVitals({ lighthouse: marketData?.lighthouse ?? null, language }),
   ...checkStructuredData(crawlResult.pages, siteProfile),
   ...checkContentQuality(crawlResult.pages, assessments),
-  ...checkVisibility({ marketData, keywords, brokenBacklinkTargets, language }),
+  ...checkVisibility({ marketData, keywords, brokenBacklinkTargets, language, missingLocations }),
+  ...(competingPages.length === 0
+    ? []
+    : [
+        {
+          ruleId: 'COMPETING_PAGES' as const,
+          affectedUrls: competingPages.flatMap((group) => group.urls),
+          count: competingPages.length,
+          details: competingPages.map((group) => `${group.topic} (${group.urls.length})`),
+        },
+      ]),
   ...(aiReadiness === null ? [] : checkAiReadiness({ aiReadiness, language })),
   ...checkAiPresence({ aiVisibility, language }),
 ];

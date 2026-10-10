@@ -1,4 +1,5 @@
 import { VISIBILITY_DETAIL_LABELS } from 'src/constants/visibility-detail-labels.const';
+import { type MissingLocation } from 'src/types/audit-insights';
 import { KEYWORD_CATEGORY } from 'src/constants/seo-audit.constants';
 import {
   NEAR_PAGE_ONE_MIN_SEARCH_VOLUME,
@@ -16,6 +17,7 @@ type CheckVisibilityParams = {
   keywords: ScoredKeyword[];
   brokenBacklinkTargets: BacklinkTarget[];
   language: AuditLanguage;
+  missingLocations?: MissingLocation[];
 };
 
 const MAX_DETAILS = 5;
@@ -25,6 +27,7 @@ export const checkVisibility = ({
   keywords,
   brokenBacklinkTargets,
   language,
+  missingLocations = [],
 }: CheckVisibilityParams): Finding[] => {
   const labels = VISIBILITY_DETAIL_LABELS[language];
   const findings: Finding[] = [];
@@ -81,6 +84,20 @@ export const checkVisibility = ({
       NEAR_PAGE_ONE_MIN_SEARCH_VOLUME,
     ),
   );
+
+  if (missingLocations.length > 0) {
+    findings.push({
+      ruleId: 'MISSING_LOCATION_PAGES',
+      affectedUrls: [],
+      count: missingLocations.length,
+      details: missingLocations
+        .slice(0, MAX_DETAILS)
+        .map(
+          (location) =>
+            `${location.place}: ${new Intl.NumberFormat(language === 'DE' ? 'de-DE' : 'en-US').format(location.searchVolume)} ${language === 'DE' ? 'Suchen im Monat' : 'searches per month'}`,
+        ),
+    });
+  }
 
   if (brokenBacklinkTargets.length > 0) {
     findings.push({

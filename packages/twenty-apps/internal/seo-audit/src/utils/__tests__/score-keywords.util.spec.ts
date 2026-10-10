@@ -15,8 +15,8 @@ describe('scoreKeywords', () => {
     const scored = scoreKeywords(
       [keyword('Kündigungsfrist', 17), keyword('keramik butterdose', 2), keyword('unjudged', 5)],
       [
-        { keyword: 'kündigungsfrist', relevance: 0.9, confidence: 0.9, needsReview: false },
-        { keyword: 'keramik butterdose', relevance: 0.03, confidence: 0.95, needsReview: false },
+        { keyword: 'kündigungsfrist', relevance: 0.9, confidence: 0.9, needsReview: false, place: null },
+        { keyword: 'keramik butterdose', relevance: 0.03, confidence: 0.95, needsReview: false, place: null },
       ],
     );
 

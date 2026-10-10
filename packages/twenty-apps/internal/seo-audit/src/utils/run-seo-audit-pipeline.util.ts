@@ -1,4 +1,9 @@
 import type Anthropic from '@anthropic-ai/sdk';
+import { writeAuditSummary } from 'src/anthropic-client/write-audit-summary';
+import { buildAuditFactSheet } from 'src/utils/build-audit-fact-sheet.util';
+import { findCompetingPages } from 'src/anthropic-client/find-competing-pages';
+import { buildCompetingPageCandidates } from 'src/utils/build-competing-pages-input.util';
+import { findMissingLocations } from 'src/utils/find-missing-locations.util';
 import { buildAuditInsights } from 'src/utils/build-audit-insights.util';
 import { createUsageTracker, withUsageTracking } from 'src/anthropic-client/track-usage';
 
@@ -48,6 +53,8 @@ type RunSeoAuditPipelineParams = {
   maxPages?: number;
   // Paid: asks AI assistants typical customer questions and checks who they name.
   isAiVisibilityEnabled?: boolean;
+  // A strong model writes the summary, every number is checked against the audit.
+  isAiSummaryEnabled?: boolean;
   fetchImplementation?: typeof fetch;
   now?: Date;
 };
@@ -63,6 +70,7 @@ export const runSeoAuditPipeline = async ({
   market = DEFAULT_MARKET,
   maxPages,
   isAiVisibilityEnabled = false,
+  isAiSummaryEnabled = true,
   fetchImplementation,
   now = new Date(),
 }: RunSeoAuditPipelineParams): Promise<SeoAuditResult> => {
@@ -168,6 +176,16 @@ export const runSeoAuditPipeline = async ({
           `Content classifier: ${classifierErrors.length} requests failed. First error: ${classifierErrors[0]}`,
         ];
 
+  const missingLocations = findMissingLocations(keywords, crawlResult.pages);
+  const competingPages =
+    anthropicClient === null
+      ? []
+      : await findCompetingPages({
+          client: anthropicClient,
+          candidates: buildCompetingPageCandidates(crawlResult.pages, assessments),
+          onError: recordClassifierError,
+        });
+
   const findings = buildFindings({
     crawlResult,
     assessments,
@@ -178,6 +196,8 @@ export const runSeoAuditPipeline = async ({
     brokenBacklinkTargets,
     aiReadiness,
     aiVisibility,
+    missingLocations,
+    competingPages,
   });
   const areaScores = computeAreaScores({
     findings,
@@ -190,13 +210,46 @@ export const runSeoAuditPipeline = async ({
   const score = computeOverallScore(areaScores);
   const grade = scoreToGrade(score);
   const tasks = buildAuditTasks(findings, language);
-  const insights = buildAuditInsights({
+  const baseInsights = buildAuditInsights({
     areaScores,
     assessments,
     keywords,
     aiReadiness,
     aiVisibility,
+    competingPages,
+    missingLocations,
   });
+  const summaryErrors: string[] = [];
+  const summary =
+    anthropicClient === null || !isAiSummaryEnabled
+      ? null
+      : await writeAuditSummary({
+          client: anthropicClient,
+          language,
+          facts: buildAuditFactSheet({
+            origin: crawlResult.origin,
+            language,
+            score,
+            grade,
+            areaScores,
+            pageCount: crawlResult.pages.length,
+            tasks,
+            assessments,
+            siteProfile,
+            keywords,
+            marketData,
+            aiVisibility,
+            insights: baseInsights,
+          }),
+          onError: (message) => summaryErrors.push(message),
+        });
+  const insights = { ...baseInsights, summary };
+
+  if (anthropicClient !== null && isAiSummaryEnabled && summary === null) {
+    notes.push(
+      `Summary: ${summaryErrors[0] ?? 'the model gave no usable summary'}. The report uses the standard summary.`,
+    );
+  }
   const reportMarkdown = buildReportMarkdown({
     origin: crawlResult.origin,
     language,

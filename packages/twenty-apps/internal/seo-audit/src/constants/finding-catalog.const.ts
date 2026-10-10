@@ -812,6 +812,44 @@ export const FINDING_CATALOG: Record<FindingRuleId, FindingDefinition> = {
       },
     },
   },
+  MISSING_LOCATION_PAGES: {
+    area: 'VISIBILITY',
+    severity: 'INFO',
+    priority: 'MEDIUM',
+    effort: 'MEDIUM',
+    source: 'CLASSIFIER',
+    text: {
+      DE: {
+        title: 'Für {count} Orte wird gesucht, aber es gibt keine eigene Seite',
+        recommendation:
+          'Lege für jeden dieser Orte eine eigene Seite mit echten Angaben an (Leistung vor Ort, Anfahrt, Ansprechpartner, Referenzen) und verlinke sie von der Leistungsseite.',
+      },
+      EN: {
+        title: 'People search for {count} places but there is no page of its own',
+        recommendation:
+          'Create a dedicated page for each place with real details (service on site, how to reach you, contact person, references) and link it from the service page.',
+      },
+    },
+  },
+  COMPETING_PAGES: {
+    area: 'CONTENT_QUALITY',
+    severity: 'INFO',
+    priority: 'MEDIUM',
+    effort: 'MEDIUM',
+    source: 'CLASSIFIER',
+    text: {
+      DE: {
+        title: '{count} Themen werden von mehreren Seiten gleichzeitig bedient',
+        recommendation:
+          'Entscheide je Thema, welche Seite führen soll. Fasse die übrigen mit ihr zusammen (301-Weiterleitung) oder richte sie klar auf eine andere Suchabsicht aus.',
+      },
+      EN: {
+        title: '{count} topics are served by several pages at once',
+        recommendation:
+          'Decide per topic which page should lead. Merge the others into it (301 redirect) or clearly aim them at a different search intent.',
+      },
+    },
+  },
   BACKLINKS_TO_BROKEN_PAGES: {
     area: 'VISIBILITY',
     severity: 'WARNING',

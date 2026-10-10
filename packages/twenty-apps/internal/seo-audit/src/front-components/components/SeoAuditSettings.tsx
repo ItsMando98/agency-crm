@@ -5,6 +5,7 @@ import { Callout } from 'twenty-ui/components';
 import { themeCssVariables } from 'twenty-ui/theme';
 
 import {
+  AI_SUMMARY_VARIABLE_KEY,
   AI_VISIBILITY_VARIABLE_KEY,
   ANTHROPIC_API_KEY_VARIABLE_KEY,
   DATAFORSEO_LOGIN_VARIABLE_KEY,
@@ -175,6 +176,9 @@ export const SeoAuditSettings = () => {
             {renderField(DEFAULT_LANGUAGE_VARIABLE_KEY)}
             {renderField(MAX_PAGES_VARIABLE_KEY)}
           </FieldGroup>
+        </SettingsPanel>
+        <SettingsPanel>
+          {renderField(AI_SUMMARY_VARIABLE_KEY)}
         </SettingsPanel>
         <SettingsPanel>
           <div style={{ display: 'flex', flexDirection: 'column', gap: themeCssVariables.spacing[3] }}>

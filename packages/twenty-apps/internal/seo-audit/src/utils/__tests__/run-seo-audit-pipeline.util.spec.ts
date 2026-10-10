@@ -3,6 +3,7 @@ import { describe, expect, it } from 'vitest';
 
 import { createFakeAnthropicClient, buildTextMessage } from 'src/__mocks__/create-fake-anthropic-client.mock';
 import { createFakeFetch } from 'src/__mocks__/create-fake-fetch.mock';
+import { CLASSIFIER_MODEL, SUMMARY_MODEL } from 'src/constants/classifier.const';
 import { runSeoAuditPipeline } from 'src/utils/run-seo-audit-pipeline.util';
 
 const goodPage = (title: string, extraLinks: string[] = []) => `<html lang="de"><head>
@@ -121,7 +122,8 @@ describe('runSeoAuditPipeline', () => {
     });
 
     expect(result.assessments).toEqual([]);
-    expect(result.notes).toHaveLength(1);
+    expect(result.notes).toHaveLength(2);
+    expect(result.notes[1]).toMatch(/^Summary: /);
     expect(result.notes[0]).toMatch(/^Content classifier: \d+ requests failed\. First error: /);
     expect(result.notes[0]).toContain('output_config is not supported');
   });
@@ -176,5 +178,69 @@ describe('runSeoAuditPipeline', () => {
 
     expect(result.assessments).toEqual([]);
     expect(result.tasks.length).toBeGreaterThan(0);
+  });
+
+  describe('summary', () => {
+    const respondByModel = ({ system, model }: { system: string; model: string }) => {
+      if (model === SUMMARY_MODEL) {
+        return buildTextMessage({
+          headline: 'Technisch solide, inhaltlich schwach.',
+          strengths: ['Die Sicherheit ist hoch.'],
+          blockers: ['Es gibt 999 Fehler.'],
+          thisWeek: ['Tote Links beheben.'],
+          thisMonth: [],
+          thisQuarter: [],
+        });
+      }
+
+      return system.includes('what kind of business')
+        ? buildTextMessage({ businessModel: 'LOCAL_SERVICE', servesLocalArea: true, confidence: 0.95 })
+        : buildTextMessage({
+            pageType: 'SERVICE',
+            searchIntent: 'COMMERCIAL',
+            helpfulness: 2,
+            specificity: 2,
+            trust: 4,
+            confidence: 0.9,
+            groups: [],
+          });
+    };
+
+    it('lets the strong model write the summary and marks numbers the audit does not back up', async () => {
+      const { client, create } = createFakeAnthropicClient(respondByModel);
+
+      const result = await runSeoAuditPipeline({
+        domain: 'example.com',
+        language: 'DE',
+        anthropicClient: client,
+        fetchImplementation: SITE,
+        now: NOW,
+      });
+
+      expect(result.insights.summary?.headline.text).toBe('Technisch solide, inhaltlich schwach.');
+      expect(result.insights.summary?.blockers[0]?.unverifiedNumbers).toEqual(['999']);
+      expect(result.insights.summary?.isFullyVerified).toBe(false);
+      expect(result.reportMarkdown).toContain('## Zusammenfassung');
+      expect(result.reportMarkdown).toContain('(nicht belegt: 999)');
+      expect(Object.keys(result.aiUsage)).toEqual(expect.arrayContaining([CLASSIFIER_MODEL]));
+      expect(create.mock.calls.filter(([request]) => (request as { model: string }).model === SUMMARY_MODEL)).toHaveLength(1);
+    });
+
+    it('does not call the strong model when the summary is switched off', async () => {
+      const { client, create } = createFakeAnthropicClient(respondByModel);
+
+      const result = await runSeoAuditPipeline({
+        domain: 'example.com',
+        language: 'DE',
+        anthropicClient: client,
+        isAiSummaryEnabled: false,
+        fetchImplementation: SITE,
+        now: NOW,
+      });
+
+      expect(result.insights.summary).toBeNull();
+      expect(result.notes.some((note) => note.startsWith('Summary:'))).toBe(false);
+      expect(create.mock.calls.some(([request]) => (request as { model: string }).model === SUMMARY_MODEL)).toBe(false);
+    });
   });
 });

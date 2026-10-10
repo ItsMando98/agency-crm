@@ -7,6 +7,7 @@ const assessment = (relevance: number, confidence = 0.9) => ({
   relevance,
   confidence,
   needsReview: confidence < 0.7,
+  place: null,
 });
 
 describe('categorizeKeyword', () => {

@@ -1,5 +1,6 @@
 import { AI_VISIBILITY_SWITCH } from 'src/constants/ai-visibility.const';
 import {
+  AI_SUMMARY_VARIABLE_KEY,
   AI_VISIBILITY_VARIABLE_KEY,
   DEFAULT_LANGUAGE_VARIABLE_KEY,
   MARKET_VARIABLE_KEY,
@@ -16,6 +17,7 @@ type AuditSettings = {
   maxPages: number;
   market: Market;
   isAiVisibilityEnabled: boolean;
+  isAiSummaryEnabled: boolean;
 };
 
 export const readAuditSettings = (
@@ -39,5 +41,8 @@ export const readAuditSettings = (
       : DEFAULT_MARKET,
     isAiVisibilityEnabled:
       environment[AI_VISIBILITY_VARIABLE_KEY]?.trim() === AI_VISIBILITY_SWITCH.ON,
+    // On unless someone switched it off, because the summary is the point of the report.
+    isAiSummaryEnabled:
+      environment[AI_SUMMARY_VARIABLE_KEY]?.trim() !== AI_VISIBILITY_SWITCH.OFF,
   };
 };

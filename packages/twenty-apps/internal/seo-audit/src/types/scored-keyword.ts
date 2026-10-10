@@ -6,4 +6,5 @@ export type ScoredKeyword = RankedKeyword & {
   relevance: number | null;
   confidence: number | null;
   needsReview: boolean;
+  place: string | null;
 };

@@ -20,6 +20,7 @@ export const scoreKeywords = (
       relevance: assessment?.relevance ?? null,
       confidence: assessment?.confidence ?? null,
       needsReview: assessment === undefined || assessment.needsReview,
+      place: assessment?.place ?? null,
     };
   });
 };

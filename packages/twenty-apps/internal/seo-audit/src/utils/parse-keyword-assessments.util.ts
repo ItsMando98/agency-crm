@@ -3,6 +3,8 @@ import { type KeywordAssessment } from 'src/types/keyword-assessment';
 import { asFiniteNumber } from 'src/utils/as-finite-number.util';
 import { asRecord } from 'src/utils/as-record.util';
 
+const MAX_PLACE_LENGTH = 60;
+
 const clampToUnit = (value: number): number => Math.max(0, Math.min(1, value));
 
 export const parseKeywordAssessments = (
@@ -38,6 +40,7 @@ export const parseKeywordAssessments = (
       relevance: clampToUnit(relevance),
       confidence: clampToUnit(confidence),
       needsReview: clampToUnit(confidence) < NEEDS_REVIEW_CONFIDENCE_THRESHOLD,
+      place: typeof record?.place === 'string' && record.place.trim() !== '' ? record.place.trim().slice(0, MAX_PLACE_LENGTH) : null,
     });
   }
 

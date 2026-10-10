@@ -73,6 +73,21 @@ const ai = {
   retryPattern: source.retryPattern(),
 };
 
+const summaryModel = str('constants/classifier.const.ts', 'SUMMARY_MODEL');
+const competing = {
+  tokens: num('constants/competing-pages.const.ts', 'COMPETING_PAGES_MAX_TOKENS'),
+  minPages: num('constants/competing-pages.const.ts', 'COMPETING_PAGES_MIN_PAGES'),
+  maxGroups: num('constants/competing-pages.const.ts', 'COMPETING_PAGES_MAX_GROUPS'),
+  maxInput: num('constants/competing-pages.const.ts', 'COMPETING_PAGES_MAX_INPUT_PAGES'),
+  prompt: template('constants/competing-pages.const.ts', 'COMPETING_PAGES_SYSTEM_PROMPT'),
+};
+const summary = {
+  tokens: num('constants/audit-summary.const.ts', 'AUDIT_SUMMARY_MAX_TOKENS'),
+  maxItems: num('constants/audit-summary.const.ts', 'SUMMARY_MAX_ITEMS_PER_SECTION'),
+  maxLength: num('constants/audit-summary.const.ts', 'SUMMARY_MAX_ITEM_LENGTH'),
+  maxTasks: num('constants/audit-summary.const.ts', 'FACT_SHEET_MAX_TASKS'),
+  prompt: template('constants/audit-summary.const.ts', 'AUDIT_SUMMARY_SYSTEM_PROMPT'),
+};
 const stuckMinutes = num('constants/seo-audit.constants.ts', 'STUCK_AUDIT_TIMEOUT_MINUTES');
 const pdfTimeout = num('constants/report.const.ts', 'PDF_RENDER_TIMEOUT_MS');
 const keywordRecords = num('constants/seo-thresholds.const.ts', 'MAX_KEYWORD_RECORDS');
@@ -127,8 +142,13 @@ const schemas = {
         type: 'array',
         items: {
           type: 'object',
-          properties: { index: { type: 'integer' }, relevance: { type: 'number' }, confidence: { type: 'number' } },
-          required: ['index', 'relevance', 'confidence'],
+          properties: {
+            index: { type: 'integer' },
+            relevance: { type: 'number' },
+            confidence: { type: 'number' },
+            place: { type: 'string' },
+          },
+          required: ['index', 'relevance', 'confidence', 'place'],
           additionalProperties: false,
         },
       },
@@ -142,6 +162,36 @@ const schemas = {
     required: ['queries'],
     additionalProperties: false,
   },
+};
+
+schemas.competing = {
+  type: 'object',
+  properties: {
+    groups: {
+      type: 'array',
+      items: {
+        type: 'object',
+        properties: { topic: { type: 'string' }, pages: { type: 'array', items: { type: 'integer' } } },
+        required: ['topic', 'pages'],
+        additionalProperties: false,
+      },
+    },
+  },
+  required: ['groups'],
+  additionalProperties: false,
+};
+schemas.summary = {
+  type: 'object',
+  properties: {
+    headline: { type: 'string' },
+    strengths: { type: 'array', items: { type: 'string' } },
+    blockers: { type: 'array', items: { type: 'string' } },
+    thisWeek: { type: 'array', items: { type: 'string' } },
+    thisMonth: { type: 'array', items: { type: 'string' } },
+    thisQuarter: { type: 'array', items: { type: 'string' } },
+  },
+  required: ['headline', 'strengths', 'blockers', 'thisWeek', 'thisMonth', 'thisQuarter'],
+  additionalProperties: false,
 };
 
 const dfsPaths = {
@@ -275,7 +325,30 @@ const userQueries = [
   '- ... (bis zu 20)',
 ].join('\n');
 
-const jsonExample = (value) => JSON.stringify(value, null, 2);
+const userCompeting = [
+  'Pages of one website:',
+  '<pages>',
+  '0: Kündigungsfrist berechnen | https://beispiel.de/kuendigungsfrist | SERVICE | COMMERCIAL',
+  '1: Kündigungsfristen im Überblick | https://beispiel.de/blog/kuendigungsfristen | ARTICLE | INFORMATIONAL',
+  '2: Kontakt | https://beispiel.de/kontakt | CONTACT | NAVIGATIONAL',
+  `... (bis zu ${competing.maxInput} Seiten)`,
+  '</pages>',
+].join('\n');
+
+const userSummary = [
+  'Write the summary in German.',
+  '',
+  'Facts of the audit:',
+  '<facts>',
+  '{ "website": "https://beispiel.de", "score": 74, "grade": "C", "scoreWithoutContentJudgement": 91,',
+  '  "areas": { "Sicherheit": 100, "Inhaltsqualität": 34, ... },',
+  `  "tasks": { "total": 10, "critical": 0, "items": [ { "number": 1, "title": "...", "horizon": "WEEK", ... } ] },  // bis zu ${summary.maxTasks}`,
+  '  "pages": { "assessed": 60, "clearJudgementsPercent": 69, "weakest": [ ... ] },',
+  '  "keywords": { "rankedTotal": 6500, "topThree": 122, "quickWins": 8, "best": [ ... ] },',
+  '  "backlinks": { "total": ..., "deadTargetPages": 6 }, "aiVisibility": { ... },',
+  '  "strengths": [ "..." ], "competingTopics": [ ... ], "placesWithoutPage": [ ... ] }',
+  '</facts>',
+].join('\n');
 
 // ---------------------------------------------------------------- phases
 
@@ -564,10 +637,10 @@ phases.push(
   phase({
     id: 'p-after',
     marker: '5',
-    title: 'Nach den Strängen: Keywords bewerten und Backlink-Ziele prüfen',
-    when: 'Sobald A, B und C fertig sind. Nur wenn B Rankings geliefert hat.',
+    title: 'Nach den Strängen: Keywords, Backlink-Ziele, konkurrierende Seiten, Orte',
+    when: 'Sobald A, B und C fertig sind. Die Keyword-Bewertung nur, wenn B Rankings geliefert hat.',
     summary:
-      'Die Rankings enthalten viele Begriffe, die nichts mit dem Geschäft zu tun haben. Das Modell sortiert sie aus, danach wird geprüft, ob verlinkte Seiten noch existieren.',
+      'Die Rankings enthalten viele Begriffe, die nichts mit dem Geschäft zu tun haben. Das Modell sortiert sie aus, danach wird geprüft, ob verlinkte Seiten noch existieren, ob Seiten um dasselbe Thema konkurrieren und für welche Orte keine eigene Seite da ist.',
     services: ['ANTHROPIC', 'WEB'],
     body: `
       ${call({
@@ -579,6 +652,7 @@ phases.push(
           ['Modell', code(model)],
           ['max_tokens', String(classifier.keywordTokens)],
           ['Parallel', `${classifier.concurrency} gleichzeitig`],
+          ['Zusätzlich', 'Der Ort, den ein Keyword nennt (leer, wenn keiner). Daraus entsteht später die Liste der Orte ohne eigene Seite.'],
           ['Ergebnis', `Relevanz 0 bis 1 und Konfidenz je Keyword. Ab ${num('constants/seo-thresholds.const.ts', 'KEYWORD_RELEVANCE_THRESHOLD')} Relevanz wird ein Keyword zur Chance: Plätze 4 bis 10 ab ${num('constants/seo-thresholds.const.ts', 'QUICK_WIN_MIN_SEARCH_VOLUME')} Suchanfragen als Quick Win, Plätze 11 bis 30 ab ${num('constants/seo-thresholds.const.ts', 'NEAR_PAGE_ONE_MIN_SEARCH_VOLUME')} als "nah an Seite 1".`],
           ['Ohne Anthropic-Key', 'Die Keywords bleiben unbewertet, im Bericht steht eine Notiz.'],
         ],
@@ -592,6 +666,30 @@ phases.push(
         facts: [
           ['Ablauf', `Bereits vom Crawl bekannte Status werden wiederverwendet, der Rest per HEAD geprüft (bei 405 oder 501 per GET), ${crawl.concurrency} parallel.`],
           ['Ergebnis', 'Ziele, die mit 404 oder Fehler antworten, werden zu Weiterleitungs-Aufgaben.'],
+        ],
+      })}
+      ${call({
+        service: 'ANTHROPIC',
+        method: 'POST',
+        target: 'messages.create',
+        title: 'Konkurrieren zwei Seiten um dieselbe Suche? Eine Anfrage für die ganze Website',
+        facts: [
+          ['Modell', code(model)],
+          ['max_tokens', String(competing.tokens)],
+          ['Übergeben wird', `Nummer, Titel, Adresse, Seitentyp und Suchabsicht jeder bewerteten Seite (bis ${competing.maxInput}). Läuft erst ab ${competing.minPages} Seiten.`],
+          ['Prüfung im Code', `Nur Gruppen aus mindestens zwei bekannten Seiten zählen, eine Seite steht in höchstens einer Gruppe, bis ${competing.maxGroups} Gruppen.`],
+          ['Ergebnis', 'Aufgabe "Themen werden von mehreren Seiten bedient" mit den Adressen.'],
+        ],
+        extra: promptBlock('Prompt anzeigen: konkurrierende Seiten', competing.prompt, userCompeting, schemas.competing),
+      })}
+      ${call({
+        service: 'CODE',
+        method: 'Code',
+        target: 'Orte ohne eigene Seite',
+        title: 'Kein weiterer Aufruf: wertet das Feld "place" der Keyword-Bewertung aus',
+        facts: [
+          ['Regel', 'Relevante Keywords mit Ort werden je Ort aufsummiert. Steht der Ort weder in einer Seitenadresse noch in einem Seitentitel (Umlaute werden gleichgesetzt), und liegt das Suchvolumen bei mindestens 100, fehlt die Seite.'],
+          ['Ergebnis', 'Bis zu fünf Orte mit Suchvolumen, als Aufgabe und als Abschnitt im Bericht.'],
         ],
       })}`,
   }),
@@ -628,14 +726,48 @@ phases.push(
             .join('')}<tr><td>darunter</td><td class="num">F</td></tr></tbody></table>
         </div>
       </div>
+      <p class="note"><strong>Zusätzlich berechnet der Code:</strong> den Score nur mit den gemessenen Regeln (ohne Inhaltsqualität und Keyword-Sichtbarkeit, die vom Modell abhängen), den Anteil eindeutiger Seitenurteile (Konfidenz ab 0,7), und die Stärken aus den Daten (starke Bereiche, Top-3-Rankings, hilfreiche Seiten, KI-Bereitschaft).</p>
       <p class="note">Der Bereich KI-Sichtbarkeit ist ${Math.round(ai.presenceShare * 100)} % Präsenz und ${Math.round((1 - ai.presenceShare) * 100)} % Bereitschaft. Ohne ausgeführten Check zählt nur die Bereitschaft. Befunde zur Präsenz entstehen erst ab ${ai.minForFindings} beantworteten Fragen.</p>`,
   }),
 );
 
 phases.push(
   phase({
-    id: 'p-export',
+    id: 'p-summary',
     marker: '7',
+    title: 'Zusammenfassung schreiben und Zahlen prüfen (starkes Modell)',
+    when: 'Nach der Bewertung. Ein Aufruf, abschaltbar in den App-Variablen ("Written summary"), standardmäßig an.',
+    summary:
+      'Ein starkes Modell bekommt nur das fertige Faktenblatt des Audits und formuliert daraus, was gut läuft, was bremst und was diese Woche, diesen Monat und dieses Quartal zu tun ist. Danach prüft der Code jede Zahl im Text gegen das Faktenblatt.',
+    services: ['ANTHROPIC', 'CODE'],
+    body: `
+      <ol class="steps">
+        ${step('Der Code baut das Faktenblatt: Score und Note, Score nur mit Regeln, Bereiche, die wichtigsten Aufgaben mit Horizont, schwächste Seiten, Keyword-Zahlen, Backlinks, mobile Geschwindigkeit, KI-Sichtbarkeit, Stärken, konkurrierende Themen und Orte ohne Seite.', ['CODE'])}
+        ${step('Das Modell schreibt die Zusammenfassung in der Sprache des Audits.', ['ANTHROPIC'])}
+        ${step('Der Code liest jede Zahl aus jedem Satz (deutsche und englische Schreibweise) und vergleicht sie mit allen Zahlen des Faktenblatts. Ein Anteil wie 0,69 gilt auch als 69.', ['CODE'])}
+        ${step('Jeder Satz mit einer Zahl, die das Faktenblatt nicht enthält, wird im Bericht als "nicht belegt" markiert. Der Audit gilt dann als nicht vollständig geprüft.', ['CODE'])}
+      </ol>
+      ${call({
+        service: 'ANTHROPIC',
+        method: 'POST',
+        target: 'messages.create',
+        facts: [
+          ['Modell', code(summaryModel)],
+          ['max_tokens', String(summary.tokens)],
+          ['Parallel', '1 Aufruf'],
+          ['Begrenzung', `Höchstens ${summary.maxItems} Einträge je Abschnitt, jeder höchstens ${summary.maxLength} Zeichen, bis ${summary.maxTasks} Aufgaben im Faktenblatt.`],
+          ['Fehlerfall', 'Fällt der Aufruf aus oder fehlt die Überschrift, nutzt der Bericht die Code-Zusammenfassung und nennt den Grund als Notiz ("Summary: ...").'],
+        ],
+        extra: promptBlock('Prompt anzeigen: Zusammenfassung', summary.prompt, userSummary, schemas.summary),
+      })}
+      <p class="note">Das Modell sagt keine Rankings oder Besucherzahlen voraus und schreibt keine neuen Aufgaben. Wo der Text eine Zahl nennt, die es nicht geben darf, steht das im Bericht, statt dass sie stillschweigend durchgeht.</p>`,
+  }),
+);
+
+phases.push(
+  phase({
+    id: 'p-export',
+    marker: '8',
     title: 'Exporte erzeugen',
     when: 'Nach der Bewertung, wenige Sekunden.',
     summary:
@@ -663,7 +795,7 @@ phases.push(
 phases.push(
   phase({
     id: 'p-save',
-    marker: '8',
+    marker: '9',
     title: 'Speichern und abschließen',
     when: 'Letzter Schritt.',
     summary:
@@ -701,6 +833,8 @@ phases.push(
           <tr><td>Einzelne Seitenbewertung scheitert</td><td>Diese Seite bleibt ohne Urteil, der Bericht nennt die Zahl der Fehler und den ersten Grund.</td></tr>
           <tr><td>Eine DataForSEO-Anfrage scheitert</td><td>Nur dieser Teil fehlt, Notiz bei den Marktdaten.</td></tr>
           <tr><td>Ein KI-Assistent scheitert oder läuft in den Timeout</td><td>Bis zu ${ai.attempts} Versuche, danach "Unklar" und eine Notiz.</td></tr>
+          <tr><td>Zusammenfassung scheitert oder enthält eine Zahl, die der Audit nicht belegt</td><td>Bei einem Ausfall steht die Code-Zusammenfassung im Bericht und eine Notiz nennt den Grund. Unbelegte Zahlen werden im Text markiert.</td></tr>
+          <tr><td>Konkurrierende Seiten werden nicht erkannt</td><td>Die Gruppen bleiben leer, der Audit läuft weiter.</td></tr>
           <tr><td>Excel, PDF oder Upload scheitern</td><td>Der Audit wird fertig, die Notiz steht bei den Exporten.</td></tr>
           <tr><td>Die Funktion läuft in den Timeout (600 s) oder stirbt</td><td>Alle 15 Minuten setzt eine Aufräum-Funktion Audits, die länger als ${stuckMinutes} Minuten QUEUED oder RUNNING sind, auf FAILED ("No result after ${stuckMinutes} minutes").</td></tr>
         </tbody>
@@ -718,8 +852,9 @@ const matrixPhases = [
   ['A Seiten', { ANTHROPIC: 1 }],
   ['B Markt', { DATAFORSEO: 1 }],
   ['C KI-Check', { ANTHROPIC: 1, TREG: 1, DATAFORSEO: 1 }],
-  ['Keywords', { ANTHROPIC: 1, WEB: 1 }],
+  ['Keywords, Seiten', { ANTHROPIC: 1, WEB: 1 }],
   ['Bewertung', { CODE: 1 }],
+  ['Zusammenfassung', { ANTHROPIC: 1, CODE: 1 }],
   ['Exporte', { CODE: 1, PDF: 1 }],
   ['Speichern', { TWENTY: 1 }],
 ];
@@ -812,7 +947,8 @@ const costSection = `
       <thead><tr><th>Posten</th><th>Anzahl Aufrufe</th><th>Kosten</th></tr></thead>
       <tbody>
         <tr><td>${badge('WEB')} Crawl</td><td>bis ${crawl.maxPages} Seiten plus Sonderdateien und Linkprüfung</td><td>keine</td></tr>
-        <tr><td>${badge('ANTHROPIC')} Profil, Seiten, Fragen, Keywords</td><td>1 + bis ${crawl.maxPages} + 1 + bis ${Math.ceil(classifier.keywordMax / classifier.keywordBatch)}</td><td>nach Tokens, nicht gemessen</td></tr>
+        <tr><td>${badge('ANTHROPIC')} ${esc(model)}: Profil, Seiten, Fragen, Keywords, konkurrierende Seiten</td><td>1 + bis ${crawl.maxPages} + 1 + bis ${Math.ceil(classifier.keywordMax / classifier.keywordBatch)} + 1</td><td>nach Tokens. Seit dieser Version werden die Tokens je Modell im Audit gespeichert (Feld "AI usage")</td></tr>
+        <tr><td>${badge('ANTHROPIC')} ${esc(summaryModel)}: Zusammenfassung</td><td>1</td><td>nach Tokens, im selben Feld erfasst</td></tr>
         <tr><td>${badge('DATAFORSEO')} Marktdaten</td><td>5</td><td>etwa 0,15 bis 0,35 USD</td></tr>
         <tr><td>${badge('TREG')} KI-Check</td><td>bis ${ai.queryCount * 3}</td><td>gemessen am 2026-10-10 für roaswell.com: 0,09 USD für 23 Antworten</td></tr>
         <tr><td>${badge('DATAFORSEO')} KI-Check als Rückfall</td><td>bis ${ai.queryCount * 3}</td><td>etwa 0,5 bis 1 USD</td></tr>
@@ -927,10 +1063,11 @@ const toc = [
   ['p-a', 'A Seiten bewerten'],
   ['p-b', 'B Marktdaten'],
   ['p-c', 'C KI-Sichtbarkeit'],
-  ['p-after', '5 Keywords und Backlinks'],
+  ['p-after', '5 Keywords, Seiten, Orte'],
   ['p-score', '6 Bewertung'],
-  ['p-export', '7 Exporte'],
-  ['p-save', '8 Speichern'],
+  ['p-summary', '7 Zusammenfassung'],
+  ['p-export', '8 Exporte'],
+  ['p-save', '9 Speichern'],
   ['p-failure', 'Wenn etwas schiefgeht'],
   ['creator', 'Creator Studio'],
   ['webapp', 'Webapp'],

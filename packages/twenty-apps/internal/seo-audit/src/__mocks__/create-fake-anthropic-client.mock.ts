@@ -12,7 +12,7 @@ export const buildTextMessage = (payload: unknown): FakeMessage => ({
 });
 
 export const createFakeAnthropicClient = (
-  respond: (request: { system: string; messages: { content: string }[] }) => FakeMessage | Promise<FakeMessage>,
+  respond: (request: { system: string; model: string; messages: { content: string }[] }) => FakeMessage | Promise<FakeMessage>,
 ) => {
   const create = vi.fn(respond);
 

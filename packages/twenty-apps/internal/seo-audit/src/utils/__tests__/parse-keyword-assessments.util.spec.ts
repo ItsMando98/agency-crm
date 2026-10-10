@@ -8,15 +8,15 @@ describe('parseKeywordAssessments', () => {
       parseKeywordAssessments(
         {
           keywords: [
-            { index: 1, relevance: 0.03, confidence: 0.95 },
-            { index: 0, relevance: 0.9, confidence: 0.6 },
+            { index: 1, relevance: 0.03, confidence: 0.95, place: '' },
+            { index: 0, relevance: 0.9, confidence: 0.6, place: ' Düsseldorf ' },
           ],
         },
         ['fliesen kaufen', 'keramik butterdose'],
       ),
     ).toEqual([
-      { keyword: 'keramik butterdose', relevance: 0.03, confidence: 0.95, needsReview: false },
-      { keyword: 'fliesen kaufen', relevance: 0.9, confidence: 0.6, needsReview: true },
+      { keyword: 'keramik butterdose', relevance: 0.03, confidence: 0.95, needsReview: false, place: null },
+      { keyword: 'fliesen kaufen', relevance: 0.9, confidence: 0.6, needsReview: true, place: 'Düsseldorf' },
     ]);
   });
 
@@ -34,7 +34,7 @@ describe('parseKeywordAssessments', () => {
         },
         ['a', 'b'],
       ),
-    ).toEqual([{ keyword: 'a', relevance: 1, confidence: 0, needsReview: true }]);
+    ).toEqual([{ keyword: 'a', relevance: 1, confidence: 0, needsReview: true, place: null }]);
   });
 
   it('returns nothing for unexpected shapes', () => {

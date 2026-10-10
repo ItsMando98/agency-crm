@@ -8,6 +8,8 @@ type RequestStructuredJsonParams = {
   userContent: string;
   schema: Record<string, unknown>;
   maxTokens: number;
+  // Defaults to the classifier model.
+  model?: string;
   // Lets the caller explain why a single answer is missing instead of losing the reason.
   onError?: (message: string) => void;
 };
@@ -21,11 +23,12 @@ export const requestStructuredJson = async ({
   userContent,
   schema,
   maxTokens,
+  model = CLASSIFIER_MODEL,
   onError,
 }: RequestStructuredJsonParams): Promise<unknown | null> => {
   try {
     const response = await client.messages.create({
-      model: CLASSIFIER_MODEL,
+      model,
       max_tokens: maxTokens,
       system,
       messages: [{ role: 'user', content: userContent }],

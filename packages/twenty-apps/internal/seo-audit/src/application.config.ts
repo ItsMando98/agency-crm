@@ -2,6 +2,7 @@ import { defineApplication, FieldType } from 'twenty-sdk/define';
 
 import { APPLICATION_UNIVERSAL_IDENTIFIER } from 'src/constants/application-universal-identifier.const';
 import {
+  AI_SUMMARY_VARIABLE_KEY,
   AI_VISIBILITY_VARIABLE_KEY,
   ANTHROPIC_API_KEY_VARIABLE_KEY,
   DATAFORSEO_LOGIN_VARIABLE_KEY,
@@ -152,6 +153,19 @@ export default defineApplication({
       ],
       isSecret: false,
       value: AI_VISIBILITY_SWITCH.OFF,
+    },
+    [AI_SUMMARY_VARIABLE_KEY]: {
+      universalIdentifier: 'd90ea8cf-9470-475b-86d5-45e0fe2a9a96',
+      label: 'Written summary',
+      description:
+        'A strong Claude model writes the summary of every audit: what works, what holds the site back, and what to do this week, this month and this quarter. Each number in the text is checked against the audit. Costs a few cents per audit at Anthropic. Needs the Anthropic key.',
+      type: FieldType.SELECT,
+      options: [
+        { label: 'On', value: AI_VISIBILITY_SWITCH.ON },
+        { label: 'Off', value: AI_VISIBILITY_SWITCH.OFF },
+      ],
+      isSecret: false,
+      value: AI_VISIBILITY_SWITCH.ON,
     },
   },
 });

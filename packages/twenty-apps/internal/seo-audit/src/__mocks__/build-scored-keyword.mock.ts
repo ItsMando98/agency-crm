@@ -10,5 +10,6 @@ export const buildScoredKeyword = (overrides: Partial<ScoredKeyword> = {}): Scor
   relevance: 0.9,
   confidence: 0.9,
   needsReview: false,
+  place: null,
   ...overrides,
 });

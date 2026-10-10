@@ -16,6 +16,11 @@ Give it a homepage. A few minutes later the audit record holds a score, a grade,
 6. The AI readiness check reads the robots.txt rules for GPTBot, OAI-SearchBot, ClaudeBot, PerplexityBot and Google-Extended, looks for an llms.txt and for organization and FAQ markup. It costs nothing and feeds the AI visibility area.
 7. Optional and paid, off by default: the AI visibility check. The classifier writes typical customer questions for the business, ChatGPT, Perplexity and Gemini answer them through treg or DataForSEO, and code judges per answer whether the website is cited (it is among the sources), mentioned (named in the text) or absent. Questions never contain the company name. Tasks show the questions where no assistant names the website and the competitors named instead.
 
+8. After the scoring, a strong model (`SUMMARY_MODEL`, set in `constants/classifier.const.ts`) writes the summary from a fact sheet of the audit: what works, what holds the site back, and what to do this week, this month and this quarter. The code then checks every number of the text against the fact sheet and marks the ones the audit does not back up. The step can be switched off with `SEO_AUDIT_AI_SUMMARY`. When it fails, the report keeps the standard summary and names the reason in the notes.
+9. The report also shows what already works, the score by the measured rules alone next to the full score, the heatmap and cards of the pages with the share of clear judgements, topics where several pages compete, and places that people search for but that have no page of their own.
+
+The many small decisions (pages, keywords, profile, questions, competing pages) are made by `CLASSIFIER_MODEL`. The tokens of every audit are stored per model in the `AI usage` field, so the cost can be worked out from the price list.
+
 Content quality weighs 25% of the score, so a technically clean site with weak pages does not get an A. The AI visibility area weighs 15%: readiness alone, or 70% presence and 30% readiness when the check ran.
 
 ## Reports and exports
