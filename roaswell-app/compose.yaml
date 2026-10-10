@@ -1,0 +1,48 @@
+name: roaswell-app
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: roaswell-app:latest
+    container_name: roaswell-app
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      PORT: "3000"
+      APP_URL: https://app.roaswell.com
+      TWENTY_API_URL: http://twenty-server:3000
+      TWENTY_API_KEY: ${TWENTY_API_KEY:?set TWENTY_API_KEY}
+      SESSION_SECRET: ${SESSION_SECRET:?set SESSION_SECRET}
+      TEAM_EMAILS: ${TEAM_EMAILS:?set TEAM_EMAILS}
+      SMTP_HOST: ${SMTP_HOST:-}
+      SMTP_PORT: ${SMTP_PORT:-587}
+      SMTP_USER: ${SMTP_USER:-}
+      SMTP_PASSWORD: ${SMTP_PASSWORD:-}
+      MAIL_FROM: ${MAIL_FROM:-Roaswell <no-reply@roaswell.com>}
+    networks:
+      - coolify
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://127.0.0.1:3000/api/health"]
+      interval: 15s
+      timeout: 5s
+      start_period: 15s
+      retries: 3
+    labels:
+      traefik.enable: "true"
+      traefik.docker.network: coolify
+      traefik.http.middlewares.roaswell-app-redirect.redirectscheme.scheme: https
+      traefik.http.middlewares.roaswell-app-redirect.redirectscheme.permanent: "true"
+      traefik.http.routers.roaswell-app-http.rule: Host(`app.roaswell.com`)
+      traefik.http.routers.roaswell-app-http.entrypoints: http
+      traefik.http.routers.roaswell-app-http.middlewares: roaswell-app-redirect
+      traefik.http.routers.roaswell-app-https.rule: Host(`app.roaswell.com`)
+      traefik.http.routers.roaswell-app-https.entrypoints: https
+      traefik.http.routers.roaswell-app-https.tls: "true"
+      traefik.http.routers.roaswell-app-https.tls.certresolver: letsencrypt
+      traefik.http.services.roaswell-app.loadbalancer.server.port: "3000"
+
+networks:
+  coolify:
+    external: true
