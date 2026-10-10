@@ -82,6 +82,11 @@ export const auditDetailSchema = auditSummarySchema.extend({
   mobileTbtMs: nullableNumber,
   marketDataNotes: nullableString,
   exportNotes: nullableString,
+  insights: z.unknown().optional().transform((value): AuditInsights | null => {
+    const parsed = insightsSchema.safeParse(value);
+
+    return parsed.success ? parsed.data : null;
+  }),
   aiVisibility: z.unknown().optional().transform((value): AiVisibility | null => {
     const parsed = aiVisibilitySchema.safeParse(value);
 
@@ -125,3 +130,83 @@ export const keywordSchema = z.object({
 });
 
 export type AuditKeyword = z.infer<typeof keywordSchema>;
+
+const summaryItemSchema = z.object({
+  text: z.string(),
+  unverifiedNumbers: z.array(z.string()).default([]),
+});
+
+export type SummaryItem = z.infer<typeof summaryItemSchema>;
+
+const strengthSchema = z.discriminatedUnion('kind', [
+  z.object({
+    kind: z.literal('STRONG_AREAS'),
+    areas: z.array(z.object({ area: z.string(), score: z.number() })),
+  }),
+  z.object({
+    kind: z.literal('TOP_RANKINGS'),
+    count: z.number(),
+    examples: z.array(z.object({ keyword: z.string(), position: z.number(), searchVolume: z.number() })),
+  }),
+  z.object({ kind: z.literal('HELPFUL_PAGES'), count: z.number(), total: z.number() }),
+  z.object({ kind: z.literal('AI_READINESS'), passed: z.array(z.string()) }),
+  z.object({ kind: z.literal('AI_PRESENCE'), ratePercent: z.number(), queriesTested: z.number() }),
+]);
+
+export type Strength = z.infer<typeof strengthSchema>;
+
+export const insightsSchema = z.object({
+  rulesOnlyScore: z.number().nullable().default(null),
+  confidence: z
+    .object({
+      total: z.number().default(0),
+      definitive: z.number().default(0),
+      sharePercent: z.number().nullable().default(null),
+    })
+    .default({ total: 0, definitive: 0, sharePercent: null }),
+  strengths: z
+    .array(z.unknown())
+    .default([])
+    .transform((items) =>
+      items.flatMap((item) => {
+        const parsed = strengthSchema.safeParse(item);
+
+        return parsed.success ? [parsed.data] : [];
+      }),
+    ),
+  competingPages: z
+    .array(z.object({ topic: z.string(), urls: z.array(z.string()) }))
+    .default([]),
+  missingLocations: z
+    .array(z.object({ place: z.string(), searchVolume: z.number(), keywords: z.array(z.string()) }))
+    .default([]),
+  summary: z
+    .object({
+      model: z.string(),
+      headline: summaryItemSchema,
+      strengths: z.array(summaryItemSchema).default([]),
+      blockers: z.array(summaryItemSchema).default([]),
+      thisWeek: z.array(summaryItemSchema).default([]),
+      thisMonth: z.array(summaryItemSchema).default([]),
+      thisQuarter: z.array(summaryItemSchema).default([]),
+      isFullyVerified: z.boolean().default(false),
+    })
+    .nullable()
+    .default(null),
+});
+
+export type AuditInsights = z.infer<typeof insightsSchema>;
+
+export const pageAssessmentSchema = z.object({
+  id: z.string(),
+  url: nullableString,
+  title: nullableString,
+  pageType: nullableString,
+  searchIntent: nullableString,
+  helpfulness: nullableNumber,
+  specificity: nullableNumber,
+  trust: nullableNumber,
+  needsReview: z.boolean().nullish().transform((value) => value ?? false),
+});
+
+export type AuditPage = z.infer<typeof pageAssessmentSchema>;

@@ -8,6 +8,7 @@ import { Badge } from '~/components/ui/badge';
 import { Button } from '~/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '~/components/ui/card';
 import { compareAudits } from '~/lib/compare-audits';
+import { describeStrength } from '~/lib/describe-strength';
 import {
   ENGINE_LABELS,
   formatDate,
@@ -19,11 +20,12 @@ import {
 } from '~/lib/labels';
 import { requirePrincipal, requireTeam } from '~/lib/server/require-principal.server';
 import { getServices } from '~/lib/server/services.server';
-import { TASK_STATUSES, type AuditTask, type TaskStatus } from '~/lib/twenty/audit-types';
+import { TASK_STATUSES, type AuditPage, type AuditTask, type SummaryItem, type TaskStatus } from '~/lib/twenty/audit-types';
 import {
   getAudit,
   getPreviousAudit,
   listAuditKeywords,
+  listAuditPages,
   listAuditTasks,
   updateTaskStatus,
 } from '~/lib/twenty/audits.server';
@@ -41,9 +43,10 @@ export const loader = async ({ request, params }: Route.LoaderArgs) => {
     throw data('Audit nicht gefunden', { status: 404 });
   }
 
-  const [tasks, keywords, previous] = await Promise.all([
+  const [tasks, keywords, pages, previous] = await Promise.all([
     listAuditTasks(twenty, principal, audit.id),
     listAuditKeywords(twenty, principal, audit.id),
+    listAuditPages(twenty, principal, audit.id),
     audit.status === 'DONE' ? getPreviousAudit(twenty, principal, audit) : Promise.resolve(null),
   ]);
 
@@ -51,6 +54,7 @@ export const loader = async ({ request, params }: Route.LoaderArgs) => {
     audit,
     tasks,
     keywords,
+    pages,
     comparison: previous === null ? null : compareAudits(audit, previous),
     previousDate: previous?.createdAt ?? null,
     canEdit: principal.kind === 'TEAM',
@@ -119,11 +123,51 @@ const TaskRow = ({ task, canEdit }: { task: AuditTask; canEdit: boolean }) => {
   );
 };
 
+const pageScore = (page: AuditPage): number =>
+  (page.helpfulness ?? 0) + (page.specificity ?? 0) + (page.trust ?? 0);
+
+const sortWeakest = (pages: AuditPage[]): AuditPage[] =>
+  [...pages].sort(
+    (first, second) =>
+      pageScore(first) - pageScore(second) ||
+      Number(second.needsReview) - Number(first.needsReview) ||
+      (first.url ?? '').localeCompare(second.url ?? ''),
+  );
+
+const HEAT_CLASS: Record<number, string> = {
+  1: 'bg-danger/25',
+  2: 'bg-warning/30',
+  3: 'bg-warning/15',
+  4: 'bg-success/15',
+  5: 'bg-success/30',
+};
+
+const MAX_HEATMAP_ROWS = 25;
+
+const SummaryList = ({ title, items }: { title: string; items: SummaryItem[] }) =>
+  items.length === 0 ? null : (
+    <div>
+      <h3 className="mb-1 text-sm font-semibold">{title}</h3>
+      <ul className="flex flex-col gap-1 text-sm text-muted-foreground">
+        {items.map((item) => (
+          <li key={item.text}>
+            {item.text}
+            {item.unverifiedNumbers.length > 0 && (
+              <span className="ml-1 text-xs text-danger">(nicht belegt: {item.unverifiedNumbers.join(', ')})</span>
+            )}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+
 const RESULT_TONE = { CITED: 'success', MENTIONED: 'warning', ABSENT: 'neutral', UNKNOWN: 'neutral' } as const;
 const RESULT_LABEL = { CITED: 'Zitiert', MENTIONED: 'Genannt', ABSENT: 'Nicht genannt', UNKNOWN: 'Unklar' } as const;
 
 export default function AuditDetail({ loaderData }: Route.ComponentProps) {
-  const { audit, tasks, keywords, comparison, previousDate, canEdit } = loaderData;
+  const { audit, tasks, keywords, pages, comparison, previousDate, canEdit } = loaderData;
+  const insights = audit.insights;
+  const weakestPages = sortWeakest(pages);
   const revalidator = useRevalidator();
   const isWorking = AUTO_REFRESH_STATUSES.includes(audit.status);
 
@@ -190,10 +234,44 @@ export default function AuditDetail({ loaderData }: Route.ComponentProps) {
 
       {audit.status === 'DONE' && (
         <>
+          {insights?.summary != null && (
+            <Card>
+              <CardHeader>
+                <CardTitle>Zusammenfassung</CardTitle>
+                <p className="text-base font-medium">
+                  {insights.summary.headline.text}
+                  {insights.summary.headline.unverifiedNumbers.length > 0 && (
+                    <span className="ml-1 text-xs font-normal text-danger">
+                      (nicht belegt: {insights.summary.headline.unverifiedNumbers.join(', ')})
+                    </span>
+                  )}
+                </p>
+              </CardHeader>
+              <CardContent className="grid gap-5 md:grid-cols-2">
+                <SummaryList title="Was gut läuft" items={insights.summary.strengths} />
+                <SummaryList title="Was bremst" items={insights.summary.blockers} />
+                <SummaryList title="Diese Woche" items={insights.summary.thisWeek} />
+                <SummaryList title="Diesen Monat" items={insights.summary.thisMonth} />
+                <SummaryList title="Dieses Quartal" items={insights.summary.thisQuarter} />
+                <p className="text-xs text-muted-foreground md:col-span-2">
+                  Geschrieben von {insights.summary.model}.{' '}
+                  {insights.summary.isFullyVerified
+                    ? 'Jede Zahl wurde mit den Messwerten des Audits abgeglichen.'
+                    : 'Zahlen, die der Audit nicht belegt, sind markiert.'}
+                </p>
+              </CardContent>
+            </Card>
+          )}
+
           <section className="grid gap-4 md:grid-cols-[auto_1fr]" aria-label="Ergebnis">
             <Card>
               <CardContent className="flex flex-col items-center gap-3 pt-5">
                 <ScoreRing score={audit.score} grade={audit.grade} />
+                {insights?.rulesOnlyScore != null && insights.rulesOnlyScore !== audit.score && (
+                  <p className="max-w-[10rem] text-center text-xs text-muted-foreground">
+                    Nur mit den gemessenen Regeln: {insights.rulesOnlyScore}. Die Inhaltsbewertung senkt oder hebt den Wert auf {audit.score}.
+                  </p>
+                )}
                 {comparison?.scoreDelta !== null && comparison !== null && (
                   <p className="text-sm text-muted-foreground">
                     {comparison.scoreDelta === 0
@@ -209,6 +287,19 @@ export default function AuditDetail({ loaderData }: Route.ComponentProps) {
               <CardContent><AreaBars areaScores={audit.areaScores} /></CardContent>
             </Card>
           </section>
+
+          {insights !== null && insights.strengths.length > 0 && (
+            <Card>
+              <CardHeader><CardTitle>Was schon funktioniert</CardTitle></CardHeader>
+              <CardContent>
+                <ul className="flex flex-col gap-2 text-sm">
+                  {insights.strengths.map((strength) => (
+                    <li key={describeStrength(strength)}>{describeStrength(strength)}</li>
+                  ))}
+                </ul>
+              </CardContent>
+            </Card>
+          )}
 
           <Card>
             <CardHeader>
@@ -229,6 +320,87 @@ export default function AuditDetail({ loaderData }: Route.ComponentProps) {
               )}
             </CardContent>
           </Card>
+
+          {weakestPages.length > 0 && (
+            <Card>
+              <CardHeader>
+                <CardTitle>Seiten im Detail</CardTitle>
+                <p className="text-sm text-muted-foreground">
+                  1 ist schwach, 5 ist stark. Bei Unsicherheit steht "bitte prüfen".
+                  {insights?.confidence.sharePercent != null &&
+                    ` ${insights.confidence.definitive} von ${insights.confidence.total} Bewertungen (${insights.confidence.sharePercent} %) waren eindeutig.`}
+                </p>
+              </CardHeader>
+              <CardContent className="overflow-x-auto">
+                <table className="w-full text-sm">
+                  <thead>
+                    <tr className="text-left text-muted-foreground">
+                      <th className="pb-2 font-medium">Seite</th>
+                      <th className="pb-2 text-center font-medium">Hilfreich</th>
+                      <th className="pb-2 text-center font-medium">Konkret</th>
+                      <th className="pb-2 text-center font-medium">Vertrauen</th>
+                      <th className="pb-2 pl-3 font-medium">Sicherheit</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-border">
+                    {weakestPages.slice(0, MAX_HEATMAP_ROWS).map((page) => (
+                      <tr key={page.id}>
+                        <td className="max-w-sm truncate py-2 pr-3" title={page.url ?? ''}>{page.url}</td>
+                        {[page.helpfulness, page.specificity, page.trust].map((value, index) => (
+                          <td key={index} className={`py-2 text-center tabular-nums ${HEAT_CLASS[value ?? 0] ?? ''}`}>{value ?? '-'}</td>
+                        ))}
+                        <td className="py-2 pl-3">
+                          {page.needsReview ? <Badge tone="danger">bitte prüfen</Badge> : <span className="text-muted-foreground">eindeutig</span>}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+                {weakestPages.length > MAX_HEATMAP_ROWS && (
+                  <p className="mt-2 text-xs text-muted-foreground">und {weakestPages.length - MAX_HEATMAP_ROWS} weitere Seiten</p>
+                )}
+              </CardContent>
+            </Card>
+          )}
+
+          {insights !== null && insights.competingPages.length > 0 && (
+            <Card>
+              <CardHeader>
+                <CardTitle>Seiten, die um dasselbe Thema konkurrieren</CardTitle>
+              </CardHeader>
+              <CardContent className="flex flex-col gap-3 text-sm">
+                {insights.competingPages.map((group) => (
+                  <div key={group.topic}>
+                    <strong>{group.topic}</strong>
+                    <ul className="text-muted-foreground">
+                      {group.urls.map((url) => <li key={url} className="truncate">{url}</li>)}
+                    </ul>
+                  </div>
+                ))}
+              </CardContent>
+            </Card>
+          )}
+
+          {insights !== null && insights.missingLocations.length > 0 && (
+            <Card>
+              <CardHeader>
+                <CardTitle>Orte mit Suchvolumen, aber ohne eigene Seite</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <ul className="divide-y divide-border text-sm">
+                  {insights.missingLocations.map((location) => (
+                    <li key={location.place} className="flex items-center justify-between gap-3 py-2">
+                      <span>
+                        <strong>{location.place}</strong>
+                        <span className="ml-2 text-muted-foreground">{location.keywords.join(', ')}</span>
+                      </span>
+                      <span className="tabular-nums">{new Intl.NumberFormat('de-DE').format(location.searchVolume)} Suchen im Monat</span>
+                    </li>
+                  ))}
+                </ul>
+              </CardContent>
+            </Card>
+          )}
 
           {audit.aiVisibility !== null && audit.aiVisibility.rows.length > 0 && (
             <Card>

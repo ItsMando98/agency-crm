@@ -10,6 +10,8 @@ import {
   auditSummarySchema,
   auditTaskSchema,
   keywordSchema,
+  pageAssessmentSchema,
+  type AuditPage,
   TASK_STATUSES,
 } from '~/lib/twenty/audit-types';
 import { buildFilter } from '~/lib/twenty/build-filter';
@@ -239,4 +241,28 @@ export const getPreviousAudit = async (
   const parsed = auditSummarySchema.safeParse(result.records[0]);
 
   return parsed.success ? parsed.data : null;
+};
+
+const MAX_PAGES = 200;
+
+export const listAuditPages = async (
+  client: TwentyClient,
+  principal: Principal,
+  auditId: string,
+): Promise<AuditPage[]> => {
+  if ((await getAudit(client, principal, auditId)) === null) {
+    return [];
+  }
+
+  const result = await client.findMany({
+    object: 'seoAuditPages',
+    filter: buildFilter([{ field: 'seoAuditId', comparator: 'eq', value: auditId }]),
+    limit: MAX_PAGES,
+  });
+
+  return result.records.flatMap((record) => {
+    const parsed = pageAssessmentSchema.safeParse(record);
+
+    return parsed.success && parsed.data.helpfulness !== null ? [parsed.data] : [];
+  });
 };
