@@ -200,6 +200,29 @@ describe('collectAiVisibility', () => {
     expect(visibility.costUsd).toBeCloseTo(0.018);
   });
 
+  it('asks again after a timeout and keeps the answer', async () => {
+    let attempts = 0;
+    const fetchAnswer = async () => {
+      attempts += 1;
+
+      if (attempts === 1) {
+        throw new Error('The operation was aborted due to timeout');
+      }
+
+      return { answer: { text: 'Antwort', sources: [] }, cost: 0.003 };
+    };
+
+    const visibility = await collectAiVisibility({
+      ...PARAMS,
+      queries: ['Frage eins zur Kanzlei?'],
+      retryDelayMs: 0,
+      fetchAnswer,
+    });
+
+    expect(attempts).toBe(4);
+    expect(visibility.notes).toEqual([]);
+  });
+
   it('stops asking once the request limit is used up', async () => {
     const { fetchImplementation, requests } = createRecordingFetch(
       respondByEngine({ chat_gpt: buildLlmResult(), perplexity: buildLlmResult(), gemini: buildLlmResult() }),

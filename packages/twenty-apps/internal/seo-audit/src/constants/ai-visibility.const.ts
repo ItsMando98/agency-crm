@@ -48,7 +48,7 @@ export const AI_REQUEST_TIMEOUT_MS = 90_000;
 export const AI_MAX_ATTEMPTS = 3;
 export const AI_RETRY_DELAY_MS = 3_000;
 export const AI_RETRYABLE_ERROR_PATTERN =
-  /rate_limit|rate limit|too many requests|unavailable|saturated|429/i;
+  /rate_limit|rate limit|too many requests|unavailable|saturated|timeout|timed out|429/i;
 
 export const TREG_BASE_URL = 'https://treg.to';
 // treg stops a single call that would cost more, and charges nothing then.
