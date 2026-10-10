@@ -1,0 +1,2 @@
+export const APPLICATION_UNIVERSAL_IDENTIFIER =
+  'e7c2b142-a863-4b9c-b05f-58ea59e6a5f7';

@@ -1,0 +1,2 @@
+export const TREG_TOKEN_VARIABLE_KEY = 'TREG_TOKEN';
+export const TREG_ORG_VARIABLE_KEY = 'TREG_ORG';
