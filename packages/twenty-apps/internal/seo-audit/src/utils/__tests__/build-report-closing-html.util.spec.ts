@@ -14,12 +14,12 @@ describe('buildReportClosingHtml', () => {
     expect(html).not.toContain('class="cta"');
   });
 
-  it('renders the call to action with the number of actions and the link', () => {
+  it('renders the call to action with the link', () => {
     const result = buildSeoAuditResult({ language: 'EN' });
     const html = buildReportClosingHtml(result, { ...branding, bookingUrl: 'https://cal.example.com/me' });
 
     expect(html).toContain('class="cta"');
-    expect(html).toContain(`We go through the ${result.tasks.length} actions together`);
+    expect(html).toContain('In 30 minutes we go through the audit with you');
     expect(html).toContain('href="https://cal.example.com/me"');
   });
 

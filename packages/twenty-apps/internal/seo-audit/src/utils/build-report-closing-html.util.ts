@@ -17,7 +17,7 @@ export const buildReportClosingHtml = (result: SeoAuditResult, branding: ReportB
     <div class="eyebrow">${escapeHtml(design.ctaEyebrow)}</div>
     <h2>${escapeHtml(design.ctaLine1)}<br><span class="w">${escapeHtml(design.ctaLine2)}</span></h2>
     <div class="cta-row">
-      <p>${escapeHtml(design.ctaText(result.tasks.length))}</p>
+      <p>${escapeHtml(design.ctaText)}</p>
       <a class="btn invert" href="${escapeHtml(branding.bookingUrl)}" rel="noopener noreferrer">${escapeHtml(design.ctaButton)}</a>
     </div>
   </div>

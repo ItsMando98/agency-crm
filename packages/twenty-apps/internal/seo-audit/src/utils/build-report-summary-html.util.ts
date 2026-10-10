@@ -1,30 +1,17 @@
+import { INSIGHTS_LABELS } from 'src/constants/insights-labels.const';
 import { REPORT_DESIGN_LABELS } from 'src/constants/report-design-labels.const';
 import { REPORT_HTML_LABELS } from 'src/constants/report-html-labels.const';
-import { REPORT_LABELS } from 'src/constants/report-labels.const';
-import { type SummaryItem } from 'src/types/audit-insights';
 import { type ReportSection } from 'src/types/report-section';
 import { type SeoAuditResult } from 'src/types/seo-audit-result';
-import { type SeoArea } from 'src/types/seo-area';
 import { escapeHtml } from 'src/utils/escape-html.util';
 import { formatNumber } from 'src/utils/format-number.util';
-import { INSIGHTS_LABELS } from 'src/constants/insights-labels.const';
+import { getLeadSummary } from 'src/utils/get-lead-summary.util';
 
-type Language = SeoAuditResult['language'];
-
-const itemHtml = (item: SummaryItem, language: Language): string => {
-  const marker =
-    item.unverifiedNumbers.length === 0
-      ? ''
-      : `<span class="unverified">${escapeHtml(INSIGHTS_LABELS[language].unverifiedMarker(item.unverifiedNumbers.join(', ')))}</span>`;
-
-  return `${escapeHtml(item.text)}${marker}`;
-};
-
-const digestCard = (title: string, items: SummaryItem[], tone: string, language: Language): string =>
+const digestCard = (title: string, items: string[], tone: string): string =>
   items.length === 0
     ? ''
     : `<article class="digest-card ${tone}"><h3>${escapeHtml(title)}</h3><ul>${items
-        .map((item) => `<li>${itemHtml(item, language)}</li>`)
+        .map((item) => `<li>${escapeHtml(item)}</li>`)
         .join('')}</ul></article>`;
 
 const kpi = (value: string, label: string, isHot = false): string =>
@@ -34,29 +21,16 @@ export const buildReportSummarySection = (result: SeoAuditResult): ReportSection
   const { language, insights, marketData } = result;
   const design = REPORT_DESIGN_LABELS[language];
   const htmlLabels = REPORT_HTML_LABELS[language];
-  const labels = REPORT_LABELS[language];
   const insightLabels = INSIGHTS_LABELS[language];
+  const leadSummary = getLeadSummary(result);
   const rankings = marketData?.rankings ?? null;
   const backlinks = marketData?.backlinks ?? null;
   const criticalCount = result.tasks.filter((task) => task.priority === 'CRITICAL').length;
-  const rankedAreas = (Object.entries(result.areaScores) as [SeoArea, number][]).sort(
-    (first, second) => second[1] - first[1],
-  );
-  const fallbackSentence =
-    rankedAreas.length > 1
-      ? htmlLabels.summarySentence(
-          labels.areas[rankedAreas[0][0]],
-          rankedAreas[0][1],
-          labels.areas[rankedAreas[rankedAreas.length - 1][0]],
-          rankedAreas[rankedAreas.length - 1][1],
-        )
-      : undefined;
-  const summary = insights.summary;
 
   const kpis = [
     kpi(formatNumber(result.pages.length, language), htmlLabels.kpiPages),
     kpi(formatNumber(result.tasks.length, language), htmlLabels.kpiTasks),
-    kpi(formatNumber(criticalCount, language), htmlLabels.kpiCritical, criticalCount > 0),
+    ...(criticalCount === 0 ? [] : [kpi(formatNumber(criticalCount, language), htmlLabels.kpiCritical, true)]),
     ...(rankings === null
       ? []
       : [
@@ -68,19 +42,13 @@ export const buildReportSummarySection = (result: SeoAuditResult): ReportSection
       : [kpi(formatNumber(backlinks.backlinks, language), htmlLabels.kpiBacklinks)]),
   ];
 
-  const digest =
-    summary === null
-      ? ''
-      : `<div class="digest">
-      ${digestCard(insightLabels.summaryStrengths, summary.strengths, 'c-good', language)}
-      ${digestCard(insightLabels.summaryBlockers, summary.blockers, 'c-crit', language)}
-      ${digestCard(insightLabels.summaryWeek, summary.thisWeek, '', language)}
-      ${digestCard(insightLabels.summaryMonth, summary.thisMonth, '', language)}
-      ${digestCard(insightLabels.summaryQuarter, summary.thisQuarter, '', language)}
-    </div>`;
+  const digest = [
+    leadSummary === null ? '' : digestCard(insightLabels.summaryStrengths, leadSummary.strengths, 'c-good'),
+    leadSummary === null ? '' : digestCard(insightLabels.summaryBlockers, leadSummary.blockers, 'c-crit'),
+  ].join('');
 
   const impact =
-    insights.rulesOnlyScore !== null && insights.rulesOnlyScore !== result.score
+    insights.rulesOnlyScore !== null && insights.rulesOnlyScore > result.score
       ? `<div class="impact">
       <div>
         <div class="eyebrow" style="margin-bottom:12px">${escapeHtml(design.impactEyebrow)}</div>
@@ -96,19 +64,9 @@ export const buildReportSummarySection = (result: SeoAuditResult): ReportSection
     eyebrow: design.sections.summary.eyebrow,
     plain: design.sections.summary.plain,
     accent: design.sections.summary.accent,
-    lead: summary === null ? fallbackSentence : summary.headline.text,
-    body: `${
-      summary !== null && summary.headline.unverifiedNumbers.length > 0
-        ? `<p class="hint">${escapeHtml(insightLabels.unverifiedMarker(summary.headline.unverifiedNumbers.join(', ')))}</p>`
-        : ''
-    }
-    ${digest}
+    body: `${digest === '' ? '' : `<div class="digest">${digest}</div>`}
     <div class="kpis">${kpis.join('')}</div>
     ${impact}
     ${result.assessments.length === 0 ? `<p class="hint">${escapeHtml(htmlLabels.contentNotAssessed)}</p>` : ''}`,
-    source:
-      summary === null
-        ? undefined
-        : `${insightLabels.summaryWrittenBy(summary.model)} ${summary.isFullyVerified ? insightLabels.summaryAllVerified : insightLabels.summarySomeUnverified}`,
   };
 };

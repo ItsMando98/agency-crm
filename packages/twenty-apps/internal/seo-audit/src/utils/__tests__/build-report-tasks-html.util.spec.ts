@@ -8,35 +8,36 @@ const render = (overrides: Parameters<typeof buildSeoAuditResult>[0]): string =>
   buildReportTasksSection(buildSeoAuditResult(overrides))?.body ?? '';
 
 describe('buildReportTasksSection', () => {
-  it('renders each task with priority, area, effort, source and horizon as text', () => {
+  it('names the problem and what it costs, but not the steps to fix it', () => {
     const body = render({ language: 'EN' });
 
     expect(body).toContain('class="finding');
-    expect(body).toContain('Effort: Low');
-    expect(body).toContain('This week');
+    expect(body).toContain('Why it matters');
     expect(body).toContain('1 internally linked pages no longer exist (4xx)');
-    expect(body).toContain('<li>&quot;kündigungsfrist&quot;: position 17, 60000 searches per month</li>');
+    expect(body).not.toContain('Effort');
+    expect(body).not.toContain('position 17, 60000 searches per month');
   });
 
-  it('shows at most three URLs and counts the rest', () => {
+  it('shows at most two example URLs and counts the rest', () => {
     const urls = Array.from({ length: 8 }, (_, index) => `https://kanzlei-beispiel.de/p${index}`);
     const body = render({
       language: 'EN',
       tasks: buildAuditTasks([{ ruleId: 'MIXED_CONTENT', affectedUrls: urls }], 'EN'),
     });
 
-    expect(body).toContain('https://kanzlei-beispiel.de/p2');
-    expect(body).not.toContain('https://kanzlei-beispiel.de/p3');
-    expect(body).toContain('and 5 more');
+    expect(body).toContain('https://kanzlei-beispiel.de/p1');
+    expect(body).not.toContain('https://kanzlei-beispiel.de/p2');
+    expect(body).toContain('and 6 more');
   });
 
-  it('lists tasks beyond the detailed ones in a compact table', () => {
-    const tasks = Array.from({ length: 15 }, () => buildSeoAuditResult({ language: 'EN' }).tasks[0]);
+  it('groups the points beyond the detailed ones by area without naming them', () => {
+    const [task] = buildSeoAuditResult({ language: 'EN' }).tasks;
+    const tasks = Array.from({ length: 10 }, (_, index) => ({ ...task, name: `Distinct finding ${index}` }));
     const body = render({ language: 'EN', tasks });
 
-    expect(body.match(/class="finding/g)).toHaveLength(12);
-    expect(body).toContain('More actions');
-    expect(body).toContain('<td class="num">13</td>');
+    expect(body.match(/class="finding/g)).toHaveLength(6);
+    expect(body).toContain('There are 4 more points in 1 area.');
+    expect(body).not.toContain('Distinct finding 6');
   });
 
   it('says so when there are no tasks', () => {

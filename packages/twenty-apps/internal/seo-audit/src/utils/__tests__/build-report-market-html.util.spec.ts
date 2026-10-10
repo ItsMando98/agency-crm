@@ -90,7 +90,28 @@ describe('buildReportMarketSection', () => {
     expect(buildReportMarketSection(buildSeoAuditResult({ marketData: null }))).toBeNull();
   });
 
-  it('shows notes about unavailable data and escapes keywords', () => {
+  it('leaves the section out when the market data holds only notes', () => {
+    const section = buildReportMarketSection(
+      buildSeoAuditResult({
+        language: 'EN',
+        keywords: [],
+        brokenBacklinkTargets: [],
+        marketData: {
+          rankings: null,
+          backlinks: null,
+          backlinkTargets: [],
+          lighthouse: null,
+          competitors: [],
+          costUsd: 0,
+          notes: ['Rankings: account paused.'],
+        },
+      }),
+    );
+
+    expect(section).toBeNull();
+  });
+
+  it('keeps notes about unavailable data out and escapes keywords', () => {
     const html = buildReportMarketBody(
       buildSeoAuditResult({
         language: 'EN',
@@ -108,7 +129,7 @@ describe('buildReportMarketSection', () => {
       }),
     );
 
-    expect(html).toContain('Backlinks: Access denied.');
+    expect(html).not.toContain('Backlinks: Access denied.');
     expect(html).toContain('&lt;b&gt;x&lt;/b&gt;');
     expect(html).not.toContain('Position distribution');
   });

@@ -32,9 +32,51 @@ describe('buildReportHeroHtml', () => {
       branding,
     );
 
-    expect(without).not.toContain('AI engines');
-    expect(withCheck).toContain('AI engines');
+    expect(without).not.toContain('AI assistants tested');
+    expect(withCheck).toContain('AI assistants tested');
     expect(withCheck).toContain('ChatGPT');
+  });
+
+  it('uses the verified headline of the summary as verdict', () => {
+    const base = buildSeoAuditResult();
+    const summary = {
+      model: 'any',
+      headline: { text: 'Die Website trägt dein Geschäft noch nicht.', unverifiedNumbers: [] },
+      strengths: [],
+      blockers: [],
+      thisWeek: [],
+      thisMonth: [],
+      thisQuarter: [],
+      isFullyVerified: true,
+    };
+
+    const verified = buildReportHeroHtml(
+      buildSeoAuditResult({ insights: { ...base.insights, summary } }),
+      branding,
+    );
+    const unverified = buildReportHeroHtml(
+      buildSeoAuditResult({
+        insights: {
+          ...base.insights,
+          summary: { ...summary, headline: { text: 'Es gibt 777 Fehler.', unverifiedNumbers: ['777'] } },
+        },
+      }),
+      branding,
+    );
+
+    expect(verified).toContain('Die Website trägt dein Geschäft noch nicht.');
+    expect(unverified).not.toContain('777');
+    expect(unverified).toContain('Am stärksten ist der Bereich');
+  });
+
+  it('shows the technical only score when content pulls the score down', () => {
+    const base = buildSeoAuditResult({ language: 'EN', score: 70 });
+    const html = buildReportHeroHtml(
+      buildSeoAuditResult({ language: 'EN', score: 70, insights: { ...base.insights, rulesOnlyScore: 90 } }),
+      branding,
+    );
+
+    expect(html).toContain('Technical only: 90');
   });
 
   it('adds the booking button to the header only when a link is set', () => {

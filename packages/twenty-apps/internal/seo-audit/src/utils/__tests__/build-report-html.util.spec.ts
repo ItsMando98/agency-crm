@@ -58,6 +58,41 @@ describe('buildReportHtml', () => {
     expect(html).not.toContain('Visibility and market');
   });
 
+  it('names no model, vendor or technical failure to the reader', () => {
+    const base = buildSeoAuditResult({ language: 'DE' });
+    const html = buildReportHtml(
+      buildSeoAuditResult({
+        language: 'DE',
+        insights: {
+          ...base.insights,
+          summary: {
+            model: 'claude-opus-5-5',
+            headline: { text: 'Die Website holt zu wenig aus ihrem Angebot.', unverifiedNumbers: [] },
+            strengths: [],
+            blockers: [],
+            thisWeek: [],
+            thisMonth: [],
+            thisQuarter: [],
+            isFullyVerified: true,
+          },
+        },
+        marketData: {
+          rankings: null,
+          backlinks: { backlinks: 10, referringDomains: 5, brokenBacklinks: 0, brokenPages: 0, rank: 1 },
+          backlinkTargets: [],
+          lighthouse: null,
+          competitors: [],
+          costUsd: 0,
+          notes: ['Rankings: DataForSEO account paused.'],
+        },
+      }),
+      branding,
+    );
+
+    expect(html).not.toMatch(/claude-|opus|anthropic|dataforseo|lighthouse|klassifikator|sprachmodell/i);
+    expect(html).toContain('Die Website holt zu wenig aus ihrem Angebot.');
+  });
+
   it('has no external resources, so it renders the same offline and in the PDF renderer', () => {
     const html = buildReportHtml(buildSeoAuditResult(), branding);
 

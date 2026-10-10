@@ -48,13 +48,24 @@ describe('report sections', () => {
     );
   });
 
-  it('builds the page rows with the weakest page first and flags unsure ratings', () => {
-    const section = buildReportPagesSection(buildSeoAuditResult({ language: 'DE', insights: insights() }));
+  it('builds the page rows from sure judgements only, weakest first', () => {
+    const section = buildReportPagesSection(
+      buildSeoAuditResult({
+        language: 'DE',
+        insights: insights(),
+        assessments: [
+          { url: 'https://x.de/gut', pageType: 'SERVICE', searchIntent: 'COMMERCIAL', helpfulness: 4, specificity: 4, trust: 4, confidence: 0.9, needsReview: false },
+          { url: 'https://x.de/schwach', pageType: 'SERVICE', searchIntent: 'COMMERCIAL', helpfulness: 2, specificity: 2, trust: 3, confidence: 0.9, needsReview: false },
+          { url: 'https://x.de/unsicher', pageType: 'OTHER', searchIntent: 'NONE', helpfulness: 1, specificity: 1, trust: 1, confidence: 0.3, needsReview: true },
+        ],
+      }),
+    );
 
     expect(section?.body).toContain('class="h h2"');
-    expect(section?.body).toContain('bitte prüfen');
-    expect(section?.body.indexOf('/unsicher')).toBeLessThan(section?.body.lastIndexOf('/kuendigung') ?? 0);
-    expect(section?.lead).toContain('1 von 2 Bewertungen (50 %) waren eindeutig');
+    expect(section?.body).not.toContain('bitte prüfen');
+    expect(section?.body).not.toContain('/unsicher');
+    expect(section?.body.indexOf('/schwach')).toBeLessThan(section?.body.lastIndexOf('/gut') ?? 0);
+    expect(section?.lead).not.toContain('Bewertungen');
   });
 
   it('leaves the pages out without assessments', () => {
@@ -94,7 +105,7 @@ describe('report sections', () => {
     expect(buildReportOpportunitiesSection(buildSeoAuditResult({ insights: insights() }))).toBeNull();
   });
 
-  it('marks numbers in the summary that the audit does not back up', () => {
+  it('leaves summary sentences with unbacked numbers out of the report', () => {
     const result = buildSeoAuditResult({
       language: 'DE',
       insights: insights({
@@ -114,44 +125,91 @@ describe('report sections', () => {
     const section = buildReportSummarySection(result);
     const markdown = buildSummaryMarkdown(result).join('\n');
 
-    expect(section.lead).toBe('Technisch stark, inhaltlich schwach.');
-    expect(section.body).toContain('nicht belegt: 777');
-    expect(section.source).toContain('Zahlen, die der Audit nicht belegt, sind markiert');
+    expect(section.body).toContain('Sicherheit liegt bei 98.');
+    expect(section.body).not.toContain('777');
+    expect(section.body).not.toContain('nicht belegt');
+    expect(section.source).toBeUndefined();
+    expect(JSON.stringify(section)).not.toContain('claude-opus');
     expect(markdown).toContain('(nicht belegt: 777)');
     expect(markdown).toContain('### Diese Woche');
     expect(markdown).not.toContain('### Diesen Monat');
   });
 
-  it('falls back to the strongest and weakest area without a written summary', () => {
+  it('builds the summary section without a written summary', () => {
     const section = buildReportSummarySection(buildSeoAuditResult({ language: 'DE' }));
 
-    expect(section.lead).toContain('Am stärksten ist der Bereich');
-    expect(section.source).toBeUndefined();
+    expect(section.body).not.toContain('class="digest"');
+    expect(section.body).toContain('class="kpis"');
     expect(buildSummaryMarkdown(buildSeoAuditResult())).toEqual([]);
   });
 
-  it('puts every task into the phase of its horizon', () => {
+  it('only shows the technical-only comparison when content pulls the score down', () => {
+    const lower = buildReportSummarySection(
+      buildSeoAuditResult({ language: 'DE', score: 74, insights: insights({ rulesOnlyScore: 91 }) }),
+    );
+    const higher = buildReportSummarySection(
+      buildSeoAuditResult({ language: 'DE', score: 74, insights: insights({ rulesOnlyScore: 60 }) }),
+    );
+
+    expect(lower.body).toContain('Ein rein technischer Check käme auf 91 Punkte');
+    expect(higher.body).not.toContain('technischer Check');
+  });
+
+  it('shows how much work each step holds without naming the tasks', () => {
     const section = buildReportRoadmapSection(buildSeoAuditResult({ language: 'EN' }));
 
     expect(section?.body.match(/class="phase"/g)).toHaveLength(3);
     expect(section?.body).toContain('7<small>days</small>');
-    expect(section?.body).toContain('1 internally linked pages no longer exist (4xx)');
+    expect(section?.body).toMatch(/\d+ actions?/);
+    expect(section?.body).not.toContain('internally linked pages');
+  });
+
+  it('leaves the effect line out of a step without actions', () => {
+    const [task] = buildSeoAuditResult({ language: 'EN' }).tasks;
+    const section = buildReportRoadmapSection(
+      buildSeoAuditResult({ language: 'EN', tasks: [{ ...task, priority: 'LOW', effort: 'HIGH' }] }),
+    );
+
+    expect(section?.body).toContain('Nothing urgent is due here.');
+    expect(section?.body.match(/class="res"/g)).toHaveLength(1);
+  });
+
+  it('shows the verified summary sentences of each step', () => {
+    const section = buildReportRoadmapSection(
+      buildSeoAuditResult({
+        language: 'DE',
+        insights: insights({
+          summary: {
+            model: 'x',
+            headline: item('x'),
+            strengths: [],
+            blockers: [],
+            thisWeek: [item('Die Startseite sagt klar, was ihr tut.')],
+            thisMonth: [item('Es gibt 999 offene Punkte.', ['999'])],
+            thisQuarter: [],
+            isFullyVerified: false,
+          },
+        }),
+      }),
+    );
+
+    expect(section?.body).toContain('Die Startseite sagt klar, was ihr tut.');
+    expect(section?.body).not.toContain('999');
   });
 
   it('leaves the roadmap out without tasks', () => {
     expect(buildReportRoadmapSection(buildSeoAuditResult({ tasks: [] }))).toBeNull();
   });
 
-  it('lists the uncertain judgements in the method section', () => {
+  it('names no model, tool or provider in the method section', () => {
     const { body } = buildReportMethodSection(buildSeoAuditResult({ language: 'EN' }));
 
     expect(body).toContain('Crawl');
-    expect(body).toContain('https://kanzlei-beispiel.de/unsicher');
-    expect(body).toContain('unklarer begriff');
-    expect(body).toContain('fixed text blocks');
+    expect(body).not.toMatch(/claude|opus|anthropic|dataforseo|lighthouse|classifier|model/i);
+    expect(body).not.toContain('https://kanzlei-beispiel.de/unsicher');
   });
 
-  it('names the summary model when a summary exists', () => {
+  it('adds the summary card only when a summary exists', () => {
     const { body } = buildReportMethodSection(
       buildSeoAuditResult({
         language: 'EN',
@@ -170,7 +228,9 @@ describe('report sections', () => {
       }),
     );
 
-    expect(body).toContain('claude-opus-5-5 writes it');
-    expect(body).toContain('Every number is backed up.');
+    expect(body).toContain('Every number in the summary was checked');
+    expect(buildReportMethodSection(buildSeoAuditResult({ language: 'EN' })).body).not.toContain(
+      'Every number in the summary',
+    );
   });
 });

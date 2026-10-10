@@ -19,8 +19,8 @@ describe('buildReportAreasSection', () => {
   it('counts the open actions of each area', () => {
     const { body } = buildReportAreasSection(buildSeoAuditResult({ language: 'EN' }));
 
-    expect(body).toContain('No action needed');
-    expect(body).toMatch(/\d+ open actions?/);
+    expect(body).toMatch(/\d+ starting points?/);
+    expect(body).not.toContain('No action needed');
   });
 
   it('keeps the bar inside its track for out-of-range scores', () => {

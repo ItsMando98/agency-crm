@@ -9,6 +9,7 @@ import { escapeHtml } from 'src/utils/escape-html.util';
 import { formatNumber } from 'src/utils/format-number.util';
 import { formatReportDate } from 'src/utils/format-report-date.util';
 import { getBandClass } from 'src/utils/get-band-class.util';
+import { getLeadSummary } from 'src/utils/get-lead-summary.util';
 import { getScoreBand } from 'src/utils/get-score-band.util';
 
 const MARQUEE_REPEATS = 2;
@@ -39,7 +40,7 @@ export const buildReportHeroHtml = (result: SeoAuditResult, branding: ReportBran
   const rankedAreas = (Object.entries(result.areaScores) as [SeoArea, number][]).sort(
     (first, second) => second[1] - first[1],
   );
-  const verdict =
+  const fallbackVerdict =
     rankedAreas.length > 1
       ? htmlLabels.summarySentence(
           labels.areas[rankedAreas[0][0]],
@@ -48,6 +49,7 @@ export const buildReportHeroHtml = (result: SeoAuditResult, branding: ReportBran
           rankedAreas[rankedAreas.length - 1][1],
         )
       : null;
+  const verdict = getLeadSummary(result)?.headline ?? fallbackVerdict;
   const hasAiAnswers = result.aiVisibility !== null && result.aiVisibility.rows.length > 0;
   const { rulesOnlyScore } = result.insights;
   const logoText = branding.brandName ?? htmlLabels.documentTitle;
@@ -82,9 +84,9 @@ export const buildReportHeroHtml = (result: SeoAuditResult, branding: ReportBran
         <p class="tiny" style="margin-bottom:14px">${escapeHtml(design.gaugeCaption)}</p>
         <span class="badge">${escapeHtml(design.gradeWord)} ${escapeHtml(result.grade)}</span>
         ${
-          rulesOnlyScore === null || rulesOnlyScore === result.score
+          rulesOnlyScore === null || rulesOnlyScore <= result.score
             ? ''
-            : `<p class="tiny" style="margin-top:14px">${escapeHtml(design.rulesOnlyAverage(rulesOnlyScore))}</p>`
+            : `<p class="tiny" style="margin-top:14px">${escapeHtml(design.technicalOnlyScore(rulesOnlyScore))}</p>`
         }
       </div>
     </div>

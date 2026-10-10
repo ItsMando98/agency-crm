@@ -48,16 +48,25 @@ describe('buildReportAiSection', () => {
     expect(body).not.toContain('<table');
   });
 
-  it('shows notes when nothing could be asked', () => {
-    const { body } = buildReportAiSection(
+  it('keeps technical notes out and asks about readiness when nothing could be asked', () => {
+    const section = buildReportAiSection(
       buildSeoAuditResult({
         language: 'EN',
         aiVisibility: buildAiVisibility({ rows: [], presenceRate: null, queriesTested: 0, notes: ['Skipped for a reason.'] }),
       }),
     );
 
-    expect(body).toContain('Skipped for a reason.');
-    expect(body).not.toContain('<table');
+    expect(section.body).not.toContain('Skipped for a reason.');
+    expect(section.body).not.toContain('<table');
+    expect(section.accent).toBe('AI search?');
+  });
+
+  it('asks what customers ask AI when answers were measured', () => {
+    const section = buildReportAiSection(
+      buildSeoAuditResult({ language: 'EN', aiVisibility: buildAiVisibility() }),
+    );
+
+    expect(section.accent).toBe('ask AI.');
   });
 
   it('escapes questions and domains', () => {

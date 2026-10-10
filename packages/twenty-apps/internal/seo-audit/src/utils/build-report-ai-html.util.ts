@@ -79,18 +79,15 @@ export const buildReportAiSection = (result: SeoAuditResult): ReportSection => {
     `<p class="sub">${escapeHtml(design.aiReadinessChips)}</p><div class="chips" style="margin-top:16px">${readiness.join('')}</div>`,
   );
 
-  if (aiVisibility !== null && aiVisibility.notes.length > 0) {
-    parts.push(
-      `<p class="hint">${escapeHtml(labels.marketNotes)}: ${aiVisibility.notes.map((note) => escapeHtml(note)).join(' · ')}</p>`,
-    );
-  }
+  const hasAnswers = aiVisibility !== null && aiVisibility.rows.length > 0;
+  const sectionLabels = hasAnswers ? design.sections.ai : design.sections.aiReadiness;
 
   return {
     id: 'ai',
-    eyebrow: design.sections.ai.eyebrow,
-    plain: design.sections.ai.plain,
-    accent: design.sections.ai.accent,
-    lead: aiVisibility !== null && aiVisibility.rows.length > 0 ? labels.aiVisibilityIntro : labels.aiReadinessIntro,
+    eyebrow: sectionLabels.eyebrow,
+    plain: sectionLabels.plain,
+    accent: sectionLabels.accent,
+    lead: hasAnswers ? labels.aiVisibilityIntro : labels.aiReadinessIntro,
     body: parts.join('\n'),
   };
 };

@@ -18,6 +18,8 @@ const RANK_TONES = ['c-good', 'c-good', 'c-mid', 'c-crit'] as const;
 const kpi = (value: string, label: string): string =>
   `<div class="kpi"><div class="num">${escapeHtml(value)}</div><p>${escapeHtml(label)}</p></div>`;
 
+// Notes about data that could not be fetched stay out of the report. They sit
+// on the audit record for the team.
 export const buildReportMarketSection = (result: SeoAuditResult): ReportSection | null => {
   const { marketData, keywords, language } = result;
 
@@ -138,10 +140,8 @@ export const buildReportMarketSection = (result: SeoAuditResult): ReportSection 
     );
   }
 
-  if (marketData.notes.length > 0) {
-    parts.push(
-      `<p class="hint">${escapeHtml(labels.marketNotes)}: ${marketData.notes.map((note) => escapeHtml(note)).join(' · ')}</p>`,
-    );
+  if (parts.length === 0) {
+    return null;
   }
 
   return {

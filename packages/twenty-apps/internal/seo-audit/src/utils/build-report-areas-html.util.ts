@@ -32,7 +32,7 @@ export const buildReportAreasSection = (result: SeoAuditResult): ReportSection =
         const taskCount = result.tasks.filter((task) => task.area === area).length;
         const weight = totalWeight === 0 ? 0 : Math.round((AREA_WEIGHTS[area] / totalWeight) * MAX_SCORE);
 
-        return `<article class="cat ${getBandClass(band)}"><header><b>${escapeHtml(labels.areas[area])} <span class="tiny">${weight} %</span></b><em>${score}</em></header><div class="bar"><i style="--v:${Math.max(0, Math.min(MAX_SCORE, score))}"></i></div><p>${escapeHtml(htmlLabels.bands[band])} · ${escapeHtml(taskCount === 0 ? design.noTasksInArea : design.tasksInArea(taskCount))}</p></article>`;
+        return `<article class="cat ${getBandClass(band)}"><header><b>${escapeHtml(labels.areas[area])} <span class="tiny">${weight} %</span></b><em>${score}</em></header><div class="bar"><i style="--v:${Math.max(0, Math.min(MAX_SCORE, score))}"></i></div><p>${escapeHtml(htmlLabels.bands[band])}${taskCount === 0 ? '' : ` · ${escapeHtml(design.tasksInArea(taskCount))}`}</p></article>`;
       })
       .join('')}</div>`,
   };
