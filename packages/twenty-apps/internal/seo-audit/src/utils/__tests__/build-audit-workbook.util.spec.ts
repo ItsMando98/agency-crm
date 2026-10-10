@@ -5,7 +5,7 @@ import { buildAiVisibility } from 'src/__mocks__/build-ai-visibility.mock';
 import { buildSeoAuditResult } from 'src/__mocks__/build-seo-audit-result.mock';
 import { buildAuditWorkbook } from 'src/utils/build-audit-workbook.util';
 
-const branding = { brandName: 'Muster Agentur', accentColor: '#7a3aa7' };
+const branding = { brandName: 'Muster Agentur', accentColor: '#7a3aa7', bookingUrl: null };
 
 const readWorkbook = async (buffer: Buffer): Promise<ExcelJS.Workbook> => {
   const workbook = new ExcelJS.Workbook();
@@ -44,7 +44,7 @@ describe('buildAuditWorkbook', () => {
           brokenBacklinkTargets: [],
           assessments: [],
         }),
-        { brandName: null, accentColor: '#2a78d6' },
+        { brandName: null, accentColor: '#2a78d6', bookingUrl: null },
       ),
     );
 

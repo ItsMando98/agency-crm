@@ -2,13 +2,15 @@ import { describe, expect, it } from 'vitest';
 
 import { buildScoredKeyword } from 'src/__mocks__/build-scored-keyword.mock';
 import { buildSeoAuditResult } from 'src/__mocks__/build-seo-audit-result.mock';
-import { buildReportMarketHtml } from 'src/utils/build-report-market-html.util';
+import { buildReportMarketSection } from 'src/utils/build-report-market-html.util';
 
-describe('buildReportMarketHtml', () => {
+const buildReportMarketBody = (result: Parameters<typeof buildReportMarketSection>[0]): string =>
+  buildReportMarketSection(result)?.body ?? '';
+
+describe('buildReportMarketSection', () => {
   it('renders positions, opportunities, discarded rankings, backlinks and competitors', () => {
-    const html = buildReportMarketHtml(buildSeoAuditResult({ language: 'EN' }));
+    const html = buildReportMarketBody(buildSeoAuditResult({ language: 'EN' }));
 
-    expect(html).toContain('Visibility and market');
     expect(html).toContain('Position distribution');
     expect(html).toContain('>1,200<');
     expect(html).toContain('Keyword opportunities: Positions 4 to 10');
@@ -20,8 +22,8 @@ describe('buildReportMarketHtml', () => {
     expect(html).toContain('anwalt-konkurrent.de');
   });
 
-  it('renders the Lighthouse measurement as tiles', () => {
-    const html = buildReportMarketHtml(
+  it('renders the Lighthouse measurement as key figures', () => {
+    const html = buildReportMarketBody(
       buildSeoAuditResult({
         language: 'EN',
         marketData: {
@@ -51,13 +53,13 @@ describe('buildReportMarketHtml', () => {
   });
 
   it('leaves out the loading speed block without a Lighthouse measurement', () => {
-    expect(buildReportMarketHtml(buildSeoAuditResult({ language: 'EN' }))).not.toContain(
+    expect(buildReportMarketBody(buildSeoAuditResult({ language: 'EN' }))).not.toContain(
       'Mobile loading speed',
     );
   });
 
   it('shows only the Lighthouse metrics that were measured', () => {
-    const html = buildReportMarketHtml(
+    const html = buildReportMarketBody(
       buildSeoAuditResult({
         language: 'DE',
         marketData: {
@@ -84,18 +86,12 @@ describe('buildReportMarketHtml', () => {
     expect(html).not.toContain('Performance-Score');
   });
 
-  it('renders nothing without market data', () => {
-    expect(buildReportMarketHtml(buildSeoAuditResult({ marketData: null }))).toBe('');
-  });
-
-  it('keeps each opportunity table together with its heading', () => {
-    const html = buildReportMarketHtml(buildSeoAuditResult({ language: 'EN' }));
-
-    expect(html.match(/<div class="keep-together"><h3>Keyword opportunities/g)).toHaveLength(2);
+  it('leaves the section out without market data', () => {
+    expect(buildReportMarketSection(buildSeoAuditResult({ marketData: null }))).toBeNull();
   });
 
   it('shows notes about unavailable data and escapes keywords', () => {
-    const html = buildReportMarketHtml(
+    const html = buildReportMarketBody(
       buildSeoAuditResult({
         language: 'EN',
         keywords: [buildScoredKeyword({ keyword: '<b>x</b>', category: 'QUICK_WIN', position: 5 })],

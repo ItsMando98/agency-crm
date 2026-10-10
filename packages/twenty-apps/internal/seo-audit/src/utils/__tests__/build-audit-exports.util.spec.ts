@@ -3,7 +3,7 @@ import { describe, expect, it, vi } from 'vitest';
 import { buildSeoAuditResult } from 'src/__mocks__/build-seo-audit-result.mock';
 import { buildAuditExports } from 'src/utils/build-audit-exports.util';
 
-const branding = { brandName: 'Muster Agentur', accentColor: '#7a3aa7' };
+const branding = { brandName: 'Muster Agentur', accentColor: '#7a3aa7', bookingUrl: null };
 const pdfResponse = () => new Response(new TextEncoder().encode('%PDF-1.7 body'));
 
 describe('buildAuditExports', () => {

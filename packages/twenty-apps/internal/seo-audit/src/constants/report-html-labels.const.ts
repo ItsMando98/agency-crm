@@ -4,10 +4,7 @@ import { type ReportHtmlLabels } from 'src/types/report-html-labels';
 export const REPORT_HTML_LABELS: Record<AuditLanguage, ReportHtmlLabels> = {
   DE: {
     documentTitle: 'SEO-Audit',
-    preparedBy: 'Erstellt von',
     overallScore: 'Gesamtscore',
-    outOf: 'von 100',
-    gradeLabel: 'Note',
     kpiPages: 'Seiten geprüft',
     kpiTasks: 'Maßnahmen',
     kpiCritical: 'davon kritisch',
@@ -15,7 +12,6 @@ export const REPORT_HTML_LABELS: Record<AuditLanguage, ReportHtmlLabels> = {
     kpiTraffic: 'Besucher pro Monat (geschätzt)',
     kpiBacklinks: 'Backlinks',
     kpiDomains: 'Verweisende Domains',
-    areasIntro: 'So schneidet die Website in den einzelnen Bereichen ab.',
     bands: { STRONG: 'Stark', OKAY: 'Solide', WEAK: 'Schwach' },
     summarySentence: (strongest, strongestScore, weakest, weakestScore) =>
       `Am stärksten ist der Bereich ${strongest} (${strongestScore}), am schwächsten ${weakest} (${weakestScore}).`,
@@ -24,12 +20,8 @@ export const REPORT_HTML_LABELS: Record<AuditLanguage, ReportHtmlLabels> = {
       MONTH: 'Als Nächstes umsetzen',
       QUARTER: 'Langfristig einplanen',
     },
-    effort: 'Aufwand',
     contentNotAssessed:
       'Die Inhaltsqualität wurde nicht bewertet. Der Score beruht nur auf gemessenen Regeln.',
-    printHint: 'Zum Speichern als PDF im Druckdialog "Als PDF speichern" wählen.',
-    printButton: 'Als PDF speichern',
-    pageWord: 'Seite',
     brokenBacklinksHeading: 'Backlinks auf nicht mehr existierende Seiten',
     backlinksColumn: 'Backlinks',
     domainsColumn: 'Domains',
@@ -39,10 +31,7 @@ export const REPORT_HTML_LABELS: Record<AuditLanguage, ReportHtmlLabels> = {
   },
   EN: {
     documentTitle: 'SEO audit',
-    preparedBy: 'Prepared by',
     overallScore: 'Overall score',
-    outOf: 'out of 100',
-    gradeLabel: 'Grade',
     kpiPages: 'Pages checked',
     kpiTasks: 'Actions',
     kpiCritical: 'of which critical',
@@ -50,7 +39,6 @@ export const REPORT_HTML_LABELS: Record<AuditLanguage, ReportHtmlLabels> = {
     kpiTraffic: 'Visitors per month (estimated)',
     kpiBacklinks: 'Backlinks',
     kpiDomains: 'Referring domains',
-    areasIntro: 'How the website performs in each area.',
     bands: { STRONG: 'Strong', OKAY: 'Okay', WEAK: 'Weak' },
     summarySentence: (strongest, strongestScore, weakest, weakestScore) =>
       `The strongest area is ${strongest} (${strongestScore}), the weakest is ${weakest} (${weakestScore}).`,
@@ -59,12 +47,8 @@ export const REPORT_HTML_LABELS: Record<AuditLanguage, ReportHtmlLabels> = {
       MONTH: 'Tackle next',
       QUARTER: 'Plan for the longer term',
     },
-    effort: 'Effort',
     contentNotAssessed:
       'Content quality was not assessed. The score only reflects measured rules.',
-    printHint: 'To save as PDF, choose "Save as PDF" in the print dialog.',
-    printButton: 'Save as PDF',
-    pageWord: 'Page',
     brokenBacklinksHeading: 'Backlinks pointing to pages that no longer exist',
     backlinksColumn: 'Backlinks',
     domainsColumn: 'Domains',

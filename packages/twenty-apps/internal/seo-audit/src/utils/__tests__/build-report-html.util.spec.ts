@@ -5,7 +5,7 @@ import { buildSeoAuditResult } from 'src/__mocks__/build-seo-audit-result.mock';
 import { REPORT_PRINT_SCRIPT } from 'src/constants/report-print-script.const';
 import { buildReportHtml } from 'src/utils/build-report-html.util';
 
-const branding = { brandName: 'Muster Agentur', accentColor: '#7a3aa7' };
+const branding = { brandName: 'Muster Agentur', accentColor: '#7a3aa7', bookingUrl: null };
 
 describe('buildReportHtml', () => {
   it('builds a standalone, print-ready German page', () => {
@@ -14,17 +14,43 @@ describe('buildReportHtml', () => {
     expect(html.startsWith('<!doctype html>')).toBe(true);
     expect(html).toContain('<html lang="de">');
     expect(html).toContain('<title>SEO-Audit www.kanzlei-beispiel.de</title>');
-    expect(html).toContain('size: A4');
-    expect(html).toContain('Muster Agentur · SEO-Audit www.kanzlei-beispiel.de · 06.10.2026');
+    expect(html).toContain('size:A4');
+    expect(html).toContain('Muster Agentur');
+    expect(html).toContain('Audit · www.kanzlei-beispiel.de · 06.10.2026');
     expect(html).toContain('id="print-report"');
     expect(html).toContain('Sichtbarkeit und Markt');
-    expect(html).toContain('Methodik');
+    expect(html).toContain('So haben wir geprüft');
+  });
+
+  it('numbers the sections in order and skips the ones without content', () => {
+    const html = buildReportHtml(
+      buildSeoAuditResult({ language: 'EN', marketData: null, keywords: [], tasks: [] }),
+      branding,
+    );
+    const labels = [...html.matchAll(/class="eyebrow">(\d{2}) \//g)].map((match) => match[1]);
+
+    expect(labels[0]).toBe('01');
+    expect(labels).toEqual(labels.map((_, index) => String(index + 1).padStart(2, '0')));
+    expect(html).not.toContain('id="market"');
+    expect(html).not.toContain('id="roadmap"');
+  });
+
+  it('ends with the call to action only when a booking link is set', () => {
+    const without = buildReportHtml(buildSeoAuditResult({ language: 'EN' }), branding);
+    const withLink = buildReportHtml(buildSeoAuditResult({ language: 'EN' }), {
+      ...branding,
+      bookingUrl: 'https://cal.example.com/me',
+    });
+
+    expect(without).not.toContain('class="cta"');
+    expect(withLink).toContain('class="cta"');
+    expect(withLink).toContain('href="https://cal.example.com/me"');
   });
 
   it('builds an English page without brand and without market section', () => {
     const html = buildReportHtml(
       buildSeoAuditResult({ language: 'EN', marketData: null, keywords: [] }),
-      { brandName: null, accentColor: '#2a78d6' },
+      { brandName: null, accentColor: '#2a78d6', bookingUrl: null },
     );
 
     expect(html).toContain('<html lang="en">');
@@ -70,7 +96,7 @@ describe('buildReportHtml', () => {
           notes: [evil],
         },
       }),
-      { brandName: evil, accentColor: '#7a3aa7' },
+      { brandName: evil, accentColor: '#7a3aa7', bookingUrl: null },
     );
 
     expect(html.match(/<script>/g)).toHaveLength(1);

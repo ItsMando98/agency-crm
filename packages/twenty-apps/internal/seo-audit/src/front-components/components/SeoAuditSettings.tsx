@@ -15,6 +15,7 @@ import {
   MAX_PAGES_VARIABLE_KEY,
   PDF_RENDERER_URL_VARIABLE_KEY,
   REPORT_ACCENT_COLOR_VARIABLE_KEY,
+  REPORT_BOOKING_URL_VARIABLE_KEY,
   REPORT_BRAND_NAME_VARIABLE_KEY,
   REPORT_PUBLIC_URL_VARIABLE_KEY,
   TREG_TOKEN_VARIABLE_KEY,
@@ -208,6 +209,7 @@ export const SeoAuditSettings = () => {
           <FieldGroup>
             {renderField(REPORT_BRAND_NAME_VARIABLE_KEY)}
             {renderField(REPORT_ACCENT_COLOR_VARIABLE_KEY)}
+            {renderField(REPORT_BOOKING_URL_VARIABLE_KEY)}
             {renderField(REPORT_PUBLIC_URL_VARIABLE_KEY)}
           </FieldGroup>
         </SettingsPanel>

@@ -3,25 +3,30 @@ import { describe, expect, it } from 'vitest';
 import { buildReportStyles } from 'src/utils/build-report-styles.util';
 
 describe('buildReportStyles', () => {
-  it('defines an A4 print page with footer and page numbers', () => {
-    const css = buildReportStyles({ accentColor: '#7a3aa7', footerText: 'Agentur · Audit', pageWord: 'Seite' });
+  it('defines an A4 print page and a print media block', () => {
+    const css = buildReportStyles({ accentColor: '#7a3aa7' });
 
-    expect(css).toContain('size: A4');
-    expect(css).toContain('content: "Agentur · Audit"');
-    expect(css).toContain('content: "Seite " counter(page)');
-    expect(css).toContain('--accent: #7a3aa7');
+    expect(css).toContain('size:A4');
     expect(css).toContain('@media print');
   });
 
-  it('cannot be broken out of by the footer text', () => {
-    const css = buildReportStyles({ accentColor: '#2a78d6', footerText: '"; } body { display: none } /*', pageWord: 'Page' });
+  it('uses the accent color and a darker shade of it', () => {
+    const css = buildReportStyles({ accentColor: '#ff0000' });
 
-    expect(css).toContain('content: "\\"; } body { display: none } /*"');
+    expect(css).toContain('--red:#ff0000');
+    expect(css).toContain('--red-d:rgb(199,0,0)');
   });
 
-  it('keeps data colors fixed whatever the accent is', () => {
-    const css = buildReportStyles({ accentColor: '#ff0000', footerText: 'x', pageWord: 'Page' });
+  it('keeps status colors fixed whatever the accent is', () => {
+    const css = buildReportStyles({ accentColor: '#ff0000' });
 
-    expect(css).toContain('--bar: #2a78d6');
+    expect(css).toContain('--ok:#3ddc97');
+    expect(css).toContain('--crit:#ff3347');
+  });
+
+  it('loads no external font or file', () => {
+    const css = buildReportStyles({ accentColor: '#7a3aa7' });
+
+    expect(css).not.toMatch(/@import|url\(/);
   });
 });

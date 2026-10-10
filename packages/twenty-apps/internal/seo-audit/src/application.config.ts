@@ -15,6 +15,7 @@ import {
   PDF_RENDERER_API_KEY_VARIABLE_KEY,
   PDF_RENDERER_URL_VARIABLE_KEY,
   REPORT_ACCENT_COLOR_VARIABLE_KEY,
+  REPORT_BOOKING_URL_VARIABLE_KEY,
   REPORT_BRAND_NAME_VARIABLE_KEY,
   REPORT_PUBLIC_URL_VARIABLE_KEY,
 } from 'src/constants/application-variable-keys.const';
@@ -80,10 +81,19 @@ export default defineApplication({
     [REPORT_ACCENT_COLOR_VARIABLE_KEY]: {
       universalIdentifier: 'de515325-c9b5-4e54-b113-86b22c8bdd0f',
       label: 'Report accent color',
-      description: 'Hex color of the cover line, for example #2a78d6.',
+      description: 'Hex color of the accent in reports, for example #d81b2c.',
       type: FieldType.TEXT,
       isSecret: false,
       value: DEFAULT_ACCENT_COLOR,
+    },
+    [REPORT_BOOKING_URL_VARIABLE_KEY]: {
+      universalIdentifier: '229a8f54-72c3-4a0d-aa02-f90f02f465e7',
+      label: 'Report booking link',
+      description:
+        'Optional. A https link to your calendar. When set, reports end with a call to action that opens it.',
+      type: FieldType.TEXT,
+      isSecret: false,
+      value: '',
     },
     [REPORT_PUBLIC_URL_VARIABLE_KEY]: {
       universalIdentifier: '3dbd616f-4153-4944-b3fa-4a127aecb01f',

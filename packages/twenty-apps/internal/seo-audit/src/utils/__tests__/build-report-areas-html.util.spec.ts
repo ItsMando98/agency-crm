@@ -1,24 +1,34 @@
 import { describe, expect, it } from 'vitest';
 
 import { buildSeoAuditResult } from 'src/__mocks__/build-seo-audit-result.mock';
-import { buildReportAreasHtml } from 'src/utils/build-report-areas-html.util';
+import { buildReportAreasSection } from 'src/utils/build-report-areas-html.util';
 
-describe('buildReportAreasHtml', () => {
-  it('lists areas from strongest to weakest with width, value and a text rating', () => {
-    const html = buildReportAreasHtml(buildSeoAuditResult());
+describe('buildReportAreasSection', () => {
+  it('lists areas from weakest to strongest with value, weight and a text rating', () => {
+    const { body } = buildReportAreasSection(buildSeoAuditResult());
 
-    expect(html.indexOf('Sicherheit')).toBeLessThan(html.indexOf('Inhaltsqualität'));
-    expect(html).toContain('style="width: 98%"');
-    expect(html).toContain('<strong>59</strong>');
-    expect(html).toContain('Stark');
-    expect(html).toContain('Schwach');
-    expect(html).toContain('dot-WEAK');
+    expect(body.indexOf('Inhaltsqualität')).toBeLessThan(body.indexOf('Sicherheit'));
+    expect(body).toContain('style="--v:98"');
+    expect(body).toContain('<em>59</em>');
+    expect(body).toContain('Stark');
+    expect(body).toContain('Schwach');
+    expect(body).toContain('cat c-crit');
+    expect(body).toContain('cat c-good');
+  });
+
+  it('counts the open actions of each area', () => {
+    const { body } = buildReportAreasSection(buildSeoAuditResult({ language: 'EN' }));
+
+    expect(body).toContain('No action needed');
+    expect(body).toMatch(/\d+ open actions?/);
   });
 
   it('keeps the bar inside its track for out-of-range scores', () => {
-    const html = buildReportAreasHtml(buildSeoAuditResult({ areaScores: { SECURITY: 140, LINKS: -5 } }));
+    const { body } = buildReportAreasSection(
+      buildSeoAuditResult({ areaScores: { SECURITY: 140, LINKS: -5 } }),
+    );
 
-    expect(html).toContain('width: 100%');
-    expect(html).toContain('width: 0%');
+    expect(body).toContain('--v:100');
+    expect(body).toContain('--v:0');
   });
 });
